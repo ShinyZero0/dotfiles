@@ -1,0 +1,3 @@
+pkill picom
+"$@"
+picom
