@@ -1,0 +1,100 @@
+{
+  "border": "normal",
+  "current_border_width": -1,
+  "floating": "auto_off",
+  "fullscreen_mode": 0,
+  "geometry": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "layout": "splith",
+  "marks": [],
+  "name": "1: Browser",
+  "orientation": "horizontal",
+  "percent": 0.3333333333333333,
+  "scratchpad_state": "none",
+  "sticky": false,
+  "type": "workspace",
+  "workspace_layout": "default",
+  "nodes": [
+    {
+      "border": "normal",
+      "current_border_width": -1,
+      "floating": "auto_off",
+      "fullscreen_mode": 0,
+      "geometry": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "layout": "tabbed",
+      "marks": [],
+      "name": null,
+      "orientation": "horizontal",
+      "percent": null,
+      "scratchpad_state": "none",
+      "sticky": false,
+      "type": "con",
+      "workspace_layout": "default",
+      "nodes": [
+        {
+          "border": "pixel",
+          "current_border_width": 1,
+          "floating": "auto_off",
+          "fullscreen_mode": 0,
+          "geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 783,
+            "height": 836
+          },
+          "layout": "splith",
+          "marks": [],
+          "name": "unity - How can I find *.desktop files? - Ask Ubuntu \u2014 Mozilla Firefox",
+          "orientation": "none",
+          "percent": 0.5,
+          "scratchpad_state": "none",
+          "sticky": false,
+          "type": "con",
+          "workspace_layout": "default",
+          "swallows": [
+            {
+              "class": "^firefox$",
+              "instance": "^Navigator$"
+            }
+          ]
+        },
+        {
+          "border": "pixel",
+          "current_border_width": 1,
+          "floating": "auto_off",
+          "fullscreen_mode": 0,
+          "geometry": {
+            "x": 11,
+            "y": 53,
+            "width": 1578,
+            "height": 836
+          },
+          "layout": "splith",
+          "marks": [],
+          "name": "Telegram",
+          "orientation": "none",
+          "percent": 0.5,
+          "scratchpad_state": "none",
+          "sticky": false,
+          "type": "con",
+          "workspace_layout": "default",
+          "swallows": [
+            {
+              "instance": "^telegram-desktop$",
+              "class": "^TelegramDesktop$"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

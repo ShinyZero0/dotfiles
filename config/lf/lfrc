@@ -1,0 +1,67 @@
+set shell sh
+set previewer ~/.config/lf/lf_kitty_preview
+set cleaner ~/.config/lf/lf_kitty_clean
+
+# Mappings
+#
+map <backspace2> set hidden!
+map <insert> push $touch<space>
+map R $lf -remote "send $id reload"
+
+map +x ${{
+chmod +x $fx
+lf -remote "send $id reload"
+}}
+map +r ${{
+chmod +r $fx
+lf -remote "send $id reload"
+}}
+map +w ${{
+chmod +w $fx
+lf -remote "send $id reload"
+}}
+
+cmd yankfile ${{
+    xclip -selection clipboard -t $(file --mime-type $f | sed -e 's/.*: //') -i $fx
+}}
+cmd yankpath ${{
+    echo -n $fx | xclip -selection clipboard 
+}}
+map y
+map yf yankfile
+map yp yankpath
+map yy copy
+
+cmd trash %trash-put $fx
+map D trash
+
+cmd open-with ${{
+    set -f
+    clear
+    rifle -l $fx
+    read -p "Open with: " method
+    rifle -p $method $fx
+}}
+
+cmd open $set -f; rifle -p 0 $fx
+map <enter> open
+
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 1 | fzf --cycle  --bind=tab:down,btab:up --reverse --exact --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    if [ -d "$res" ] ; then
+        cmd="cd"
+    elif [ -f "$res" ] ; then
+        cmd="select"
+    else
+        exit 0
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+
+map / fzf_jump
+
+cmd extract ${{
+    set -f
+    atool -x $f
+}}
+# vim: ft=sh

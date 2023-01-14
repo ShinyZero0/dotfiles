@@ -20,11 +20,12 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # AutoWorkspace
 
-exec ~/scripts/startup-ws.sh
+exec ~/.scripts/startup-ws.sh
 
 # AutoRestart
 
 exec_always --no-startup-id pkill polybar ; polybar upperbar
+exec_always --no-startup-id pkill dunst
 exec_always --no-startup-id nitrogen --restore
 
 # Style
@@ -75,7 +76,7 @@ bindsym $mod+w kill
 bindsym mod1+F4 kill
 
 # A more modern dmenu replacement is rofi:
-bindsym $mod+Return exec --no-startup-id "rofi -show combi -modes combi -combi-modes drun,run"
+bindsym $mod+Return exec --no-startup-id "rofi  -show-icons -show combi -modes combi -combi-modes drun,run -display-run '' -display-drun ''"
 bindsym XF86PowerOff exec "rofi -show power-menu -theme ~/Personalization/powermenu.rasi -modi power-menu:rofi-power-menu"
 bindsym $mod+Shift+e exec "rofi -show power-menu -theme ~/Personalization/powermenu.rasi -modi power-menu:rofi-power-menu"
 
@@ -86,8 +87,8 @@ bindsym Print exec --no-startup-id maim --format=png | tee "$HOME/Images/$(date)
 bindsym control+mod1+t exec --no-startup-id kitty
 bindsym $mod+s move scratchpad
 bindsym $mod+Shift+s scratchpad show
-bindsym $mod+p exec --no-startup-id ~/scripts/togglepavuctl.sh 
-bindsym $mod+g exec --no-startup-id ~/scripts/togglepicom.sh
+bindsym $mod+p exec --no-startup-id ~/.scripts/togglepavuctl.sh 
+bindsym $mod+g exec --no-startup-id ~/.scripts/togglepicom.sh
 
 # switch tabs
 bindsym mod1+Tab focus parent; focus right
