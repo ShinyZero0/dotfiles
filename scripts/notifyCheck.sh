@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
     isPaused=`dunstctl is-paused`
     if [ "$isPaused" = false ]; then
-        echo ""
+        echo ""
     else
-        echo ""
+        echo "%{F#c991e1}"
     fi
