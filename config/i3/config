@@ -15,6 +15,7 @@ set $ws10 "10"
 
 exec --no-startup-id "lxpolkit & sleep 1; dex-autostart --autostart --environment i3"
 exec --no-startup-id picom -b
+exec --no-startup-id xset r rate 250 15 
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
@@ -26,6 +27,7 @@ exec ~/.scripts/startup-ws.sh
 
 exec_always --no-startup-id pkill polybar ; polybar upperbar
 exec_always --no-startup-id pkill dunst
+exec_always --no-startup-id pkill picom ; picom -b
 exec_always --no-startup-id nitrogen --restore
 
 # Style
@@ -127,7 +129,7 @@ bindsym $mod+space       focus mode_toggle
 # switch to workspace
 bindsym $mod+1 workspace number $ws1 
 bindsym $mod+2 workspace number $ws2 ; exec --no-startup-id picom -b
-bindsym $mod+3 workspace number $ws3 ; exec --no-startup-id pkill picom
+bindsym $mod+3 workspace number $ws3 ; exec --no-startup-id pkill picom; exec --no-startup-id dunstctl set-paused true
 bindsym $mod+4 workspace number $ws4 ; exec --no-startup-id picom -b
 bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6

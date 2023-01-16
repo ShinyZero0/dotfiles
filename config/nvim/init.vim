@@ -22,8 +22,23 @@ set number
 set noswapfile
 set clipboard=unnamed
 colorscheme challenger_deep
-" let g:colorizer_colornames = 0
+let g:colorizer_colornames = 0
 " let g:colorizer_auto_color = 1
 " let g:colorizer_disable_bufleave = 1
 " let g:coq_settings = { 'auto_start': 'shut-up' }
-autocmd FileType '*' : ColorizerAttachToBuffer
+autocmd BufEnter * :ColorHighlight
+
+" Show relative numbers
+" in visual mode only
+function ToggleNumbers()
+    set number!
+    set relativenumber!
+endfunction
+
+augroup VisualEvent
+  autocmd!
+  " on visual mode enter
+  autocmd ModeChanged *:[vV\x16]* call ToggleNumbers()
+  " on visual mode leave
+  autocmd Modechanged [vV\x16]*:* call ToggleNumbers()
+augroup END

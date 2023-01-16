@@ -4,13 +4,14 @@ set cleaner ~/.config/lf/lf_kitty_clean
 set scrolloff 5
 set ratios 1:2:2
 
+
 # Mappings
 
 map <pgdn> half-down
 map <pgup> half-up
 map <backspace2> set hidden!
 map <insert> push $touch<space>
-map R $lf -remote "send $id reload"
+map R reload
 
 map +x ${{
 chmod +x $fx
@@ -22,6 +23,19 @@ lf -remote "send $id reload"
 }}
 map +w ${{
 chmod +w $fx
+lf -remote "send $id reload"
+}}
+
+map -x ${{
+chmod -x $fx
+lf -remote "send $id reload"
+}}
+map -r ${{
+chmod -r $fx
+lf -remote "send $id reload"
+}}
+map -w ${{
+chmod -w $fx
 lf -remote "send $id reload"
 }}
 
@@ -69,4 +83,13 @@ cmd extract ${{
     set -f
     atool -x $f
 }}
-# vim: ft=sh
+
+cmd on-cd &{{
+    # '&' commands run silently in background (which is what we want here),
+    # but are not connected to stdout.
+    # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
+    printf "\033]0; $(pwd | sed "s|$HOME|~|")\007" > /dev/tty
+}}
+on-cd
+
+# vim: ft=go
