@@ -18,13 +18,6 @@ require("lazy").setup({
     { "nvim-telescope/telescope.nvim", branch = "0.1.x" } ,
     "Fymyte/rasi.vim" ,
     "neovim/nvim-lspconfig" ,
-    "hrsh7th/cmp-vsnip" ,
-    'hrsh7th/vim-vsnip' ,
-    "hrsh7th/cmp-nvim-lsp" ,
-    "hrsh7th/cmp-buffer" ,
-    "hrsh7th/cmp-path" ,
-    "hrsh7th/cmp-cmdline" ,
-    "hrsh7th/nvim-cmp" ,
     "tpope/vim-surround" ,
     "junegunn/vim-easy-align",
     { "ms-jpq/chadtree", build = "python3 -m chadtree deps" },
@@ -41,12 +34,17 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
-    -- "norcalli/nvim-colorizer.lua",
-    -- { "ms-jpq/coq_nvim", branch = "coq" },
-    -- { "ms-jpq/coq.artifacts", branch = "artifacts" },
-    -- 'junnplus/lsp-setup.nvim',
+
+    -- NVIM-CMP
+    'hrsh7th/vim-vsnip' ,
+    "hrsh7th/cmp-vsnip" ,
+    "hrsh7th/cmp-nvim-lsp" ,
+    "hrsh7th/cmp-buffer" ,
+    "hrsh7th/cmp-path" ,
+    "hrsh7th/cmp-cmdline" ,
+    "hrsh7th/nvim-cmp" ,
     
-    --Themes
+    -- THEMES
     "sjl/badwolf",
     "ray-x/aurora",
     "wuelnerdotexe/vim-enfocado",
@@ -54,6 +52,11 @@ require("lazy").setup({
     "savq/melange",
     "nyoom-engineering/oxocarbon.nvim",
     "EdenEast/Nightfox.nvim",
+
+    -- "norcalli/nvim-colorizer.lua",
+    -- { "ms-jpq/coq_nvim", branch = "coq" },
+    -- { "ms-jpq/coq.artifacts", branch = "artifacts" },
+    -- 'junnplus/lsp-setup.nvim',
 })
 
 require("color-picker").setup {
