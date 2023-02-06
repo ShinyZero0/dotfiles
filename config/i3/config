@@ -1,10 +1,10 @@
 # i3 config file (v4)
 
-set $ws1  "1: Browser"
-set $ws2  "2: Dev"
-set $ws3  "3: Game"
-set $ws4  "4: Dev"
-set $ws5  "5: Trash"
+set $ws1  "1"
+set $ws2  "2"
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
 set $ws6  "6"
 set $ws7  "7"
 set $ws8  "8"
@@ -15,7 +15,6 @@ set $ws10 "10"
 
 exec --no-startup-id "lxpolkit & sleep 1; dex-autostart --autostart --environment i3"
 exec --no-startup-id picom -b
-exec --no-startup-id xset r rate 250 15 
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
@@ -25,9 +24,10 @@ exec ~/.scripts/startup-ws.sh
 
 # AutoRestart
 
-exec_always --no-startup-id pkill polybar ; polybar upperbar
+exec_always --no-startup-id "pkill polybar ; polybar upperbar"
+exec_always --no-startup-id "pkill xkeysnail ; xkeysnail .scripts/xkeysnail.py & sleep 1 ; xset r rate 250 15"
 exec_always --no-startup-id pkill dunst
-exec_always --no-startup-id pkill picom ; picom -b
+exec_always --no-startup-id "pkill picom & sleep 1 ; picom -b"
 exec_always --no-startup-id nitrogen --restore
 
 # Style
@@ -75,7 +75,7 @@ for_window [class="Font-manager"] floating enable resize set 900 600
 set $mod Mod4
 
 bindsym $mod+w kill
-bindsym mod1+F4 kill
+bindsym $mod+q kill
 
 # A more modern dmenu replacement is rofi:
 bindsym $mod+Return exec --no-startup-id "rofi  -show-icons -show combi -modes combi -combi-modes drun,run -display-run '' -display-drun ''"
@@ -92,8 +92,10 @@ bindsym $mod+Shift+s scratchpad show
 bindsym $mod+p exec --no-startup-id ~/.scripts/togglepavuctl.sh 
 bindsym $mod+g exec --no-startup-id ~/.scripts/togglepicom.sh
 
-# switch tabs
-bindsym mod1+Tab focus parent; focus right
+bindsym $mod+Tab   focus right
+bindsym $mod+grave focus down
+bindsym $mod+Shift+Tab   focus left
+bindsym $mod+Shift+grave focus up
 
 bindsym $mod+j focus left
 bindsym $mod+k focus down
