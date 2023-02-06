@@ -1,3 +1,0 @@
-pkill picom
-"$@"
-picom
