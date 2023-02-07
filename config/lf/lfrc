@@ -1,12 +1,30 @@
 set shell sh
 set previewer ~/.config/lf/lf_kitty_preview
 set cleaner ~/.config/lf/lf_kitty_clean
+set scrolloff 5
+set ratios 1:2:2
+set ifs "\n"
+
 
 # Mappings
-#
+
+map <pgdn> half-down
+map <pgup> half-up
+
 map <backspace2> set hidden!
 map <insert> push $touch<space>
-map R $lf -remote "send $id reload"
+map <f-7> push $mkdir<space>
+map R reload
+
+map n
+map nf push $touch<space>
+map nd push $mkdir<space>
+
+map s
+map sa :{{set sortby atime; set info atime; set reverse; top; }}
+map st :{{set sortby time; set info time; set reverse; top; }}
+map sc :{{set sortby ctime; set info ctime; set reverse; top; }}
+map sn :{{set sortby natural; set info; set noreverse; top; }}
 
 map +x ${{
 chmod +x $fx
@@ -18,6 +36,19 @@ lf -remote "send $id reload"
 }}
 map +w ${{
 chmod +w $fx
+lf -remote "send $id reload"
+}}
+
+map -x ${{
+chmod -x $fx
+lf -remote "send $id reload"
+}}
+map -r ${{
+chmod -r $fx
+lf -remote "send $id reload"
+}}
+map -w ${{
+chmod -w $fx
 lf -remote "send $id reload"
 }}
 
@@ -33,21 +64,31 @@ map yp yankpath
 map yy copy
 
 cmd trash %trash-put $fx
-map D trash
+map D delete
 
 cmd open-with ${{
-    set -f
-    clear
-    rifle -l $fx
-    read -p "Open with: " method
-    rifle -p $method $fx
+    printf '\e[?1049h'
+    mimeopen --ask $fx
+    printf '\e[?1049l'
 }}
-
-cmd open $set -f; rifle -p 0 $fx
+cmd open ${{
+    for i in $fx
+    do
+        mimetype=$(xdg-mime query filetype "$i")
+        prog=$(xdg-mime query default "$mimetype")
+        if grep -qs Terminal=true "/usr/share/applications/$prog"
+        then
+            xdg-open "$i"
+        else
+            xdg-open "$i" >/dev/null 2>/dev/null &
+        fi
+    done
+}}
 map <enter> open
 
 cmd fzf_jump ${{
-    res="$(find . -maxdepth 2 | fzf --cycle  --bind=tab:down,btab:up --reverse --exact --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id set hidden"
+    res="$(find . -maxdepth 2 -printf "%d %p\n" | sort -n | perl -pe 's/^\d+\s//;' | fzf --cycle --bind=tab:down,btab:up --reverse --exact --header='Jump to location' --no-sort --color=dark,fg:#cbe3e7,bg:#1b182c,hl:#c991e1,fg+:#aaffe4,bg+:#565575,hl+:#c991e1,gutter:#1b182c,pointer:#aaffe4,prompt:#c991e1,info:#ffe9aa,header:#cbe3e7,spinner:#63f2f1  | sed 's/\\/\\\\/g;s/"/\\"/g')"
     if [ -d "$res" ] ; then
         cmd="cd"
     elif [ -f "$res" ] ; then
@@ -56,7 +97,7 @@ cmd fzf_jump ${{
         exit 0
     fi
     lf -remote "send $id $cmd \"$res\""
-}}
+}} 
 
 map / fzf_jump
 
@@ -64,4 +105,20 @@ cmd extract ${{
     set -f
     atool -x $f
 }}
-# vim: ft=sh
+
+cmd on-cd &{{
+    # '&' commands run silently in background (which is what we want here),
+    # but are not connected to stdout.
+    # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
+    printf "\033]0; $(pwd | sed "s|$HOME|~|")\007" > /dev/tty
+}}
+on-cd
+
+cmd follow_link %{{
+  lf -remote "send ${id} select '$(readlink $f)'"
+}}
+map gl follow_link
+map g/ cd /
+
+
+# vim: ft=go
