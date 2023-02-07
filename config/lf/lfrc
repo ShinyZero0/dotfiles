@@ -1,6 +1,4 @@
 set shell sh
-set previewer ~/.config/lf/lf_kitty_preview
-set cleaner ~/.config/lf/lf_kitty_clean
 set scrolloff 5
 set ratios 1:2:2
 set ifs "\n"
@@ -70,19 +68,6 @@ cmd open-with ${{
     printf '\e[?1049h'
     mimeopen --ask $fx
     printf '\e[?1049l'
-}}
-cmd open ${{
-    for i in $fx
-    do
-        mimetype=$(xdg-mime query filetype "$i")
-        prog=$(xdg-mime query default "$mimetype")
-        if grep -qs Terminal=true "/usr/share/applications/$prog"
-        then
-            xdg-open "$i"
-        else
-            xdg-open "$i" >/dev/null 2>/dev/null &
-        fi
-    done
 }}
 map <enter> open
 

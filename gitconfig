@@ -1,0 +1,7 @@
+[user]
+	name = zero mobile
+	email = shinyzero0@gmail.com
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
