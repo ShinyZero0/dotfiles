@@ -51,11 +51,11 @@ set_from_resource $alert    xrdb.color5
 set_from_resource $border   xrdb.color6
 
 # Class:                border    backgr.   text   indicator child_border
-client.focused          $active   $active   $btext $active   $border
-client.focused_inactive $inactive $inactive $wtext $bground  $bground
-client.unfocused        $bground  $bground  $wtext $bground  $bground
-client.urgent           $bground  $alert    $wtext $alert    $alert
-client.placeholder      $btext    $btext    $wtext $bground  $bground
+client.focused          $active   $active   $btext $active  $border
+client.focused_inactive $inactive $inactive $wtext $bground $bground
+client.unfocused        $bground  $bground  $wtext $bground $bground
+client.urgent           $bground  $alert    $wtext $alert   $alert
+client.placeholder      $alert    $btext    $wtext $alert   $alert
 
 for_window [class="Steam"] move container to workspace $ws5
 for_window [class="War Thunder \(Vulkan, 64bit\)"] move container to workspace $ws3

@@ -8,6 +8,13 @@ local d = ls.dynamic_node
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
+local get_visual = function(args, parent)
+    if (#parent.snippet.env.SELECT_RAW > 0) then
+        return sn(nil, i(1, parent.snippet.env.SELECT_RAW))
+    else  -- If SELECT_RAW is empty, return a blank insert node
+        return sn(nil, i(1))
+    end
+end
 return {
 }
 

@@ -1,6 +1,5 @@
 set termguicolors
 
-let g:lf_map_keys = 0
 source $HOME/.config/nvim/keys.vim
 lua require('plugins')
 filetype plugin indent on
@@ -16,10 +15,11 @@ let g:vim_json_conceal=0
 let g:markdown_syntax_conceal=0
 
 set tabstop=4
-set softtabstop=4
 set shiftwidth=4
-set smarttab
 set expandtab
+" set softtabstop=4
+" set smarttab
+
 set breakindent
 
 set number
@@ -28,11 +28,14 @@ set clipboard=unnamed
 set title
 set notimeout
 set scrolloff=8
-
+set cursorline
 
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_quickfix_enabled = 0
 let g:vimtex_indent_enabled = 0
+let g:vimtex_syntax_conceal_disable = 1
+
+autocmd BufEnter *.axaml,*.xaml set ft=xml
 
 augroup vimtex
   autocmd!

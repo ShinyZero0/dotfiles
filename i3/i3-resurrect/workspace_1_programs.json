@@ -1,0 +1,14 @@
+[
+  {
+    "command": [
+      "/usr/lib64/firefox/firefox"
+    ],
+    "working_directory": "/home/zero"
+  },
+  {
+    "command": [
+      "/usr/bin/telegram-desktop"
+    ],
+    "working_directory": "/home/zero/.local/share/TelegramDesktop"
+  }
+]

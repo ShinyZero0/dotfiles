@@ -15,6 +15,7 @@ map <backspace2> set hidden!
 map <insert> push $touch<space>
 map <f-7> push $mkdir<space>
 map R reload
+map ; :
 
 map n
 map nf push $touch<space>
@@ -100,6 +101,7 @@ cmd fzf_jump ${{
 }} 
 
 map / fzf_jump
+map i fzf_jump
 
 cmd extract ${{
     set -f

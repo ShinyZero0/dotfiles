@@ -1,0 +1,20 @@
+[
+  {
+    "command": [
+      "/usr/bin/kitty"
+    ],
+    "working_directory": "/home/zero"
+  },
+  {
+    "command": [
+      "/usr/bin/kitty"
+    ],
+    "working_directory": "/home/zero"
+  },
+  {
+    "command": [
+      "/usr/bin/kitty"
+    ],
+    "working_directory": "/home/zero"
+  }
+]
