@@ -11,15 +11,18 @@ require("telescope").setup{
         layout_strategy = "horizontal",
         mappings = {
             ["n"] = {
-                [" "] = actions.toggle_selection + actions.move_selection_next,
+                ["<leader>"] = actions.toggle_selection + actions.move_selection_next,
                 ["<Tab>"] = actions.move_selection_next,
                 ["<S-Tab>"] = actions.move_selection_previous,
                 ["q"] = actions.close,
+                ["<C-q>"] = actions.close,
             },
             ["i"] = {
                 ["<Esc>"] = actions.close,
                 ["<Tab>"] = actions.move_selection_next,
                 ["<S-Tab>"] = actions.move_selection_previous,
+                ["<C-q>"] = actions.close,
+                ["<S-CR>"] = actions.select_tab,
             }
         },
     },
@@ -28,11 +31,6 @@ require("telescope").setup{
         file_browser = {
             initial_mode = "normal",
             scroll_strategy = "limit",
-            layout_config = {
-                horizontal = {
-                    prompt_position = "bottom",
-                },
-            },
             hijack_netrw = true,
             grouped = true,
             hide_parent_dir = true,
@@ -44,10 +42,19 @@ require("telescope").setup{
                     ["g\\"] = fb_actions.goto_cwd,
                     ["c\\"] = fb_actions.change_cwd,
                     ["nf"] = fb_actions.create,
-                    ["/"] = function() vim.cmd "startinsert" end
+                    ["/"] = function() vim.cmd "startinsert" end,
+                    ["<BS>"] = fb_actions.toggle_hidden,
+                    ["<S-CR>"] = actions.select_tab,
+                    ["D"] = fb_actions.remove,
                     },
                 ["i"] = {
-                    ["<Esc>"] = function() vim.cmd "stopinsert" end
+                    ["<Esc>"] = function() vim.cmd "stopinsert" end,
+                    ["<Del>"] = fb_actions.remove,
+                },
+            },
+            layout_config = {
+                horizontal = {
+                    prompt_position = "bottom",
                 },
             },
         },
@@ -55,7 +62,13 @@ require("telescope").setup{
     pickers = {
         find_files = {
             follow = true,
-            find_command = { "fd", "-H", "-F" }
+            find_command = { "fd", "-H", "-F" },
+            mappings = {
+                ["i"] = {
+                    ["<S-CR>"] = actions.select_tab,
+                    ["<Del>"] = fb_actions.remove,
+                }
+            }
         }
     }
 

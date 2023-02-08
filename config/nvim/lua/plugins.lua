@@ -12,6 +12,7 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
 
+    "ggandor/leap.nvim",
     "Hoffs/omnisharp-extended-lsp.nvim",
     "folke/trouble.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
@@ -28,11 +29,10 @@ require("lazy").setup({
     "lambdalisue/suda.vim",
     "nvim-lualine/lualine.nvim",
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-    "jiangmiao/auto-pairs",
+    "windwp/nvim-autopairs",
     "KabbAmine/vCoolor.vim",
     { "ziontee113/color-picker.nvim"},
     "chrisbra/Colorizer",
-
     -- LSP
     "neovim/nvim-lspconfig" ,
     {
@@ -45,16 +45,21 @@ require("lazy").setup({
     "mfussenegger/nvim-lint",
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
-    { "lervag/vimtex", lazy=false },
+    { "lervag/vimtex"},
 
     -- NVIM-CMP
-    "hrsh7th/cmp-nvim-lsp" ,
-    "hrsh7th/cmp-buffer" ,
-    "hrsh7th/cmp-path" ,
-    "hrsh7th/cmp-cmdline" ,
-    "hrsh7th/nvim-cmp" ,
-    "hrsh7th/cmp-path",
-    "saadparwaiz1/cmp_luasnip",
+    {
+        "hrsh7th/nvim-cmp" ,
+        event = "InsertEnter",
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-cmdline" ,
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-omni" ,
+        },
+    },
 
     -- SNIPPETS
     { "L3MON4D3/LuaSnip", version = "<CurrentMajor>.*" },
@@ -76,10 +81,28 @@ require("lazy").setup({
     "EdenEast/Nightfox.nvim",
 
     -- 'junnplus/lsp-setup.nvim',
+},
+{
+    defaults = {
+    },
 })
 
-require('plugcfg.telescope')
-require('plugcfg.nvim-cmp')
+require('config.telescope')
+require('config.nvim-cmp')
+require('config.lsp')
+
+require("config.pairs")
+
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    update_in_insert = false,
+    underline = true,
+    severity_sort = false,
+    float = true,
+})
+
+local luasnip = require("luasnip")
 
 require("color-picker").setup {
     ["icons"] = { "ﱢ", "" },
@@ -90,41 +113,6 @@ require('lualine').setup {
 require("luasnip-latex-snippets").setup()
 require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-require("mason").setup()
-require("mason-lspconfig").setup()
-require("lspconfig")["pylsp"].setup {
-    capabilities = capabilities
-}
-require('lspconfig')['texlab'].setup {
-    capabilities = capabilities
-}
-local pid = vim.fn.getpid()
-local omnisharp_bin = "/home/zero/.local/share/nvim/mason/bin/omnisharp"
-require'lspconfig'.omnisharp.setup {
-    capabilities = capabilities,
-    handlers = {
-        ["textDocument/definition"] = require('omnisharp_extended').handler,
-    },
-    cmd = { omnisharp_bin, '--languageserver' , '--hostPID', tostring(pid) },
-}
-
-require('lint').linters_by_ft = {
-}
-
-
-vim.diagnostic.config({
-    virtual_text = true,
-    signs = true,
-    update_in_insert = false,
-    underline = true,
-    severity_sort = false,
-    float = true,
-})
-
-local luasnip = require("luasnip")
 
 luasnip.config.set_config({
   store_selection_keys = "<Tab>",

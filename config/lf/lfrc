@@ -5,7 +5,6 @@ set scrolloff 5
 set ratios 1:2:2
 set ifs "\n"
 
-
 # Mappings
 
 map <pgdn> half-down
@@ -15,7 +14,7 @@ map <backspace2> set hidden!
 map <insert> push $touch<space>
 map <f-7> push $mkdir<space>
 map R reload
-map ; :
+map ; push :
 
 map n
 map nf push $touch<space>
@@ -121,6 +120,8 @@ cmd follow_link %{{
 }}
 map gl follow_link
 map g/ cd /
-
+map E ${{
+    $EDITOR ./
+}}
 
 # vim: ft=go
