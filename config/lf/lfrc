@@ -16,15 +16,27 @@ map <f-7> push $mkdir<space>
 map R reload
 map ; push :
 
-map n
-map nf push $touch<space>
-map nd push $mkdir<space>
 
 map s
 map sa :{{set sortby atime; set info atime; set reverse; top; }}
 map st :{{set sortby time; set info time; set reverse; top; }}
 map sc :{{set sortby ctime; set info ctime; set reverse; top; }}
 map sn :{{set sortby natural; set info; set noreverse; top; }}
+
+cmd touch %{{
+    IFS=" "
+    touch -- "$*"
+    lf -remote "send $id select \"$*\""
+}}
+cmd mkdir %{{
+    IFS=" "
+    mkdir -p -- "$*"
+    lf -remote "send $id select \"$*\""
+}}
+
+map n
+map nf push :touch<space>
+map nd push :mkdir<space>
 
 map +x ${{
 chmod +x $fx
@@ -72,17 +84,18 @@ cmd open-with ${{
     printf '\e[?1049l'
 }}
 cmd open ${{
-    for i in $fx
-    do
-        mimetype=$(xdg-mime query filetype "$i")
-        prog=$(xdg-mime query default "$mimetype")
-        if grep -qs Terminal=true "/usr/share/applications/$prog"
-        then
-            xdg-open "$i"
-        else
-            xdg-open "$i" >/dev/null 2>/dev/null &
-        fi
-    done
+    jaro $fx
+    # for i in $fx
+    # do
+    #     mimetype=$(xdg-mime query filetype "$i")
+    #     prog=$(xdg-mime query default "$mimetype")
+    #     if grep -qs Terminal=true "/usr/share/applications/$prog"
+    #     then
+    #         xdg-open "$i"
+    #     else
+    #         xdg-open "$i" >/dev/null 2>/dev/null &
+    #     fi
+    # done
 }}
 map <enter> open
 
@@ -124,4 +137,4 @@ map E ${{
     $EDITOR ./
 }}
 
-# vim: ft=go
+# vim: ft=bash

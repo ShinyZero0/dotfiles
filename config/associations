@@ -1,0 +1,15 @@
+; vim: ft=scheme
+(assoc
+  #:pattern "image/.*"
+  #:program "nomacs %f")
+(assoc
+  #:pattern "^text/.*"
+  #:program "nvim %f"
+  #:term "kitty --class floatwin -- ")
+(assoc
+  #:pattern '("^https?://.*" "application/pdf")
+  #:program "firefox %f")
+(assoc
+  #:pattern "video/.*"
+  #:program "mpv --x11-name=floatwin %f &>/dev/null 2>&1 &"
+  )

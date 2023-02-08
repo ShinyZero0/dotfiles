@@ -35,7 +35,7 @@ exec_always --no-startup-id nitrogen --restore
 font pango: InconsolataLGC Nerd Font Mono Bold 12
 
 for_window [tiling] border pixel 2
-for_window [floating] border pixel 1
+for_window [floating] border pixel 1, move position center
 gaps inner 10
 
 focus_follows_mouse no
@@ -70,6 +70,8 @@ for_window [class="Alacarte"]     floating enable
 for_window [class="qt5ct"]        floating enable resize set 900 600
 for_window [class="Pavucontrol"]  floating enable resize set 640 480
 for_window [class="Font-manager"] floating enable resize set 900 600
+for_window [class="floatwin"]     floating enable resize set 900 600
+for_window [instance="floatwin"]     floating enable resize set 900 600
 
 
 set $mod Mod4
