@@ -48,8 +48,8 @@ lua << EOF
 
 require("config.mind")
 require("config.treesitter")
+require("config.pairs")
 
-require("nvim-autopairs").setup{}
 
 EOF
 
