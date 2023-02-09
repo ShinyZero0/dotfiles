@@ -17,3 +17,6 @@
   #:pattern '("inode/directory" "inode/mount-point")
   #:program "lf %f"
   #:term "kitty --class floatwin -- ")
+(assoc
+  #:pattern "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  #:program "desktopeditors %f")
