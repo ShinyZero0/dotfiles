@@ -13,3 +13,7 @@
   #:pattern "video/.*"
   #:program "mpv --x11-name=floatwin %f &>/dev/null 2>&1 &"
   )
+(assoc
+  #:pattern '("inode/directory" "inode/mount-point")
+  #:program "lf %f"
+  #:term "kitty --class floatwin -- ")
