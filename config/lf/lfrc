@@ -53,8 +53,8 @@ lf -remote "send $id reload"
 cmd yankfile ${{
     xclip -selection clipboard -t $(file --mime-type $f | sed -e 's/.*: //') -i $fx
 }}
-cmd yankpath ${{
-    echo -n $fx | xclip -selection clipboard 
+cmd yankpath &{{
+    echo -n $fx | termux-clipboard-set
 }}
 map y
 map yf yankfile
