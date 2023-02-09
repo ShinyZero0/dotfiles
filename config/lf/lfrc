@@ -79,12 +79,12 @@ cmd trash %trash-put $fx
 map D trash
 
 cmd open-with ${{
-    printf '\e[?1049h'
     mimeopen --ask $fx
-    printf '\e[?1049l'
 }}
 cmd open ${{
+    printf '\e[?1049h'
     jaro $fx
+    printf '\e[?1049l'
     # for i in $fx
     # do
     #     mimetype=$(xdg-mime query filetype "$i")
