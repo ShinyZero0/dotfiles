@@ -17,6 +17,7 @@ exec --no-startup-id "lxpolkit & sleep 1; dex-autostart --autostart --environmen
 exec --no-startup-id picom -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id ~/.scripts/wallpapers.sh 
 
 # AutoWorkspace
 
