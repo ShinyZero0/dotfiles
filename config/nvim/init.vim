@@ -54,11 +54,4 @@ require("config.pairs")
 
 EOF
 
-function! UnRemove()
-    if getline(".") =~ "^-"
-        exe "normal! r\<space>"
-    else
-        normal dd
-    endif
-endfunction
 command Reinit source $HOME/.config/nvim/init.vim
