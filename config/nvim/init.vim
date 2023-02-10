@@ -3,7 +3,6 @@ set number
 set ignorecase
 set smartcase
 set nocompatible
-set hidden
 set noswapfile
 set tabstop=4 shiftwidth=4 expandtab
 set termguicolors
@@ -54,7 +53,6 @@ require("config.pairs")
 local function on_attach(client)
   print('Attached to ' .. client.name)
 end
-require('nvim-autopairs').setup{}
 
 EOF
 
