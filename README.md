@@ -1,13 +1,13 @@
 # Installation
 
 Install:  
-* i3wm
-* polybar
-* picom
+*
+``````bash
+sudo dnf install i3wm polybar picom rofi kitty 
+``````
 * xkeysnail
-* kitty
-* lf
-* [ pistol ](https://github.com/doronbehar/pistol)
+* [lf](https://github.com/gokcehan/lf)
+* [pistol](https://github.com/doronbehar/pistol)
 * [jaro](https://github.com/isamert/jaro) 
 
 Set [Challenger Deep Palette](https://github.com/challenger-deep-theme/xresources) as xresources  
