@@ -12,6 +12,11 @@ require('lspconfig')['texlab'].setup {
     capabilities = capabilities
 }
 
+-- require("lspconfig")[""]
+require("lspconfig").sumneko_lua.setup {
+    capabilities = capabilities
+}
+
 local pid = vim.fn.getpid()
 local omnisharp_bin = "/home/zero/.local/share/nvim/mason/bin/omnisharp"
 require'lspconfig'.omnisharp.setup {

@@ -2,7 +2,7 @@ set shell sh
 set previewer ~/.config/lf/lf_kitty_preview
 set cleaner ~/.config/lf/lf_kitty_clean
 set scrolloff 5
-set ratios 1:2:2
+set ratios 1:2:3
 set ifs "\n"
 
 # Mappings
@@ -21,6 +21,8 @@ map s
 map sa :{{set sortby atime; set info atime; set reverse; top; }}
 map st :{{set sortby time; set info time; set reverse; top; }}
 map sc :{{set sortby ctime; set info ctime; set reverse; top; }}
+cmd sizesearch :{{calcdirsize; set sortby size; set info size; set reverse; top; }}
+map ss push v:sizesearch<enter>v
 map sn :{{set sortby natural; set info; set noreverse; top; }}
 
 cmd touch %{{
@@ -38,28 +40,28 @@ map n
 map nf push :touch<space>
 map nd push :mkdir<space>
 
-map +x ${{
+map +x &{{
 chmod +x $fx
 lf -remote "send $id reload"
 }}
-map +r ${{
+map +r &{{
 chmod +r $fx
 lf -remote "send $id reload"
 }}
-map +w ${{
+map +w &{{
 chmod +w $fx
 lf -remote "send $id reload"
 }}
 
-map -x ${{
+map -x &{{
 chmod -x $fx
 lf -remote "send $id reload"
 }}
-map -r ${{
+map -r &{{
 chmod -r $fx
 lf -remote "send $id reload"
 }}
-map -w ${{
+map -w &{{
 chmod -w $fx
 lf -remote "send $id reload"
 }}

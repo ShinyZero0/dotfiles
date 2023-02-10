@@ -12,7 +12,7 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
 
-    "ggandor/leap.nvim",
+    "easymotion/vim-easymotion",
     "Hoffs/omnisharp-extended-lsp.nvim",
     "folke/trouble.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
@@ -27,7 +27,7 @@ require("lazy").setup({
     "tpope/vim-commentary",
     "kyazdani42/nvim-web-devicons",
     "lambdalisue/suda.vim",
-    "nvim-lualine/lualine.nvim",
+    "itchyny/lightline.vim",
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     "windwp/nvim-autopairs",
     "KabbAmine/vCoolor.vim",
@@ -107,9 +107,10 @@ local luasnip = require("luasnip")
 require("color-picker").setup {
     ["icons"] = { "ﱢ", "" },
 }
-require('lualine').setup {
-    options = { theme = 'challenger_deep' }
-}
+
+-- require('lualine').setup {
+--     options = { theme = 'challenger_deep' }
+-- }
 require("luasnip-latex-snippets").setup()
 require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})

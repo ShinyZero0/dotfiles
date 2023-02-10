@@ -7,6 +7,8 @@ nnoremap <Esc> :noh<CR>
 imap <C-z> <Esc>ua
 imap <C-я> <C-z>
 
+vnoremap A <Esc>ggVG
+
 map g1 1gt
 map g2 2gt
 map g3 3gt
@@ -23,6 +25,7 @@ map <Leader>y "+y
 map <Leader>p "+p
 
 " TELESCOPE
+
 map <Leader>/ :Telescope<CR>
 map <Leader>f :Telescope find_files<CR>
 map <Leader>e :Telescope file_browser<CR>
@@ -30,14 +33,17 @@ map <Leader>b :Telescope buffers<CR>
 map <Leader>t :TroubleToggle<CR>
 map ? :Telescope current_buffer_fuzzy_find<CR>
 
-" LEAP
+" EASYMOTION
 
-map <Leader>s <Plug>(leap-forward-to)
+map <C-f> <Plug>(easymotion-s2)
 
-map <Leader>dd :Lspsaga show_line_diagnostics<CR>
-map <Leader>db :Lspsaga show_buf_diagnostics<CR>
-map <Leader>dn :Lspsaga diagnostic_jump_next<CR>
-map <Leader>dN :Lspsaga diagnostic_jump_prev<CR>
+" LSPSAGA
+
+map <Leader>ll :Lspsaga show_line_diagnostics<CR>
+map <Leader>lb :Lspsaga show_buf_diagnostics<CR>
+map <Leader>ln :Lspsaga diagnostic_jump_next<CR>
+map <Leader>lN :Lspsaga diagnostic_jump_prev<CR>
+map <Leader>lr :Lspsaga lsp_finder<CR>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
