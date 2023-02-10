@@ -13,6 +13,7 @@ set so=5
 set notimeout
 set title
 set breakindent
+let g:vim_json_conceal=0
 
 filetype plugin indent on
 
