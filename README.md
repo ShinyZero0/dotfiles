@@ -1,11 +1,14 @@
 # Installation
 
 Install:  
-*
-``````bash
-sudo dnf install i3wm polybar picom rofi kitty 
-``````
-* xkeysnail
+* packages:
+```bash
+sudo dnf install i3wm polybar picom rofi kitty python3-pip
+```
+* [xkeysnail](https://github.com/mooz/xkeysnail)
+```bash
+sudo pip3 install xkeysnail
+```
 * [lf](https://github.com/gokcehan/lf)
 * [pistol](https://github.com/doronbehar/pistol)
 * [jaro](https://github.com/isamert/jaro) 
