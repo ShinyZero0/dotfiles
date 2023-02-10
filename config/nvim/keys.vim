@@ -56,7 +56,7 @@ onoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 cnoremap <C-left>  <S-left>
 cnoremap <C-right> <S-right>
 cnoremap <C-BS> <C-w>
-cnoremap <C-v> <C-r>"
+cnoremap <C-v> <C-r>+
 
 " INSERT MODE 
 
@@ -67,6 +67,6 @@ inoremap <C-v> <Esc>pa
 " SPLITTER
 
 nnoremap gs <Nop>
+vnoremap <silent> gs ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<CR>:noh<CR>'l
 nnoremap <silent> gss ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<CR>:noh<CR>'l
 nnoremap <silent> gsip mlvip:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<CR>:noh<CR>'l
-vnoremap <silent> gs ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<CR>:noh<CR>'l
