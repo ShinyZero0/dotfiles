@@ -94,6 +94,7 @@ bindsym $mod+s move scratchpad
 bindsym $mod+Shift+s scratchpad show
 bindsym $mod+p exec --no-startup-id ~/.scripts/togglepavuctl.sh 
 bindsym $mod+g exec --no-startup-id ~/.scripts/togglepicom.sh
+bindsym $mod+i exec --no-startup-id ~/.scripts/viminsert.sh
 
 bindsym $mod+Tab   focus right
 bindsym $mod+grave focus down
