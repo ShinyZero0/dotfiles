@@ -65,34 +65,21 @@ require('nvim-autopairs').setup{}
 -- require('lspconfig').pylsp.setup{}
 require('trouble').setup{}
 require'nvim-treesitter.configs'.setup {
-ensure_installed = { "c", "lua", "vim", "help" },
-sync_install = false,
-auto_install = true,
+    ensure_installed = { "c", "lua", "vim", "help" },
+    sync_install = false,
+    auto_install = true,
+    highlight = {
+        enable = true,
+        disable = function(lang, buf)
+            local max_filesize = 100 * 1024 -- 100 KB
+            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+            if ok and stats and stats.size > max_filesize then
+                return true
+            end
+        end,
 
-highlight = {
-    enable = true,
-
-    disable = function(lang, buf)
-        local max_filesize = 100 * 1024 -- 100 KB
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-            return true
-        end
-    end,
-
-    additional_vim_regex_highlighting = false,
-  },
+        additional_vim_regex_highlighting = false,
+    },
 }
 EOF
-nnoremap <C-b> <cmd>TroubleToggle<cr>
-nnoremap <SPACE> <Nop>
-let mapleader = " "
-nnoremap <Leader>s <Plug>(leap-forward-to)
-nnoremap <C-left> g0
-nnoremap <C-right> g$
-nnoremap <C-up> gk
-nnoremap <C-down> gj
-nnoremap gs <Nop>
-nnoremap <silent> gss ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge<CR>'l
-nnoremap <silent> gsip mlvip:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge<CR>'l
-vnoremap <silent> gs ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge<CR>'l
+source $HOME/.config/nvim/keys.vim
