@@ -12,6 +12,8 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
 
+    "patstockwell/vim-monokai-tasty",
+    "junegunn/vim-peekaboo",
     "easymotion/vim-easymotion",
     "Hoffs/omnisharp-extended-lsp.nvim",
     "folke/trouble.nvim",
@@ -75,7 +77,10 @@ require("lazy").setup({
     "sjl/badwolf",
     "ray-x/aurora",
     "wuelnerdotexe/vim-enfocado",
-    "challenger-deep-theme/vim",
+    {
+        "challenger-deep-theme/vim",
+        pin = true
+    },
     "savq/melange",
     "nyoom-engineering/oxocarbon.nvim",
     "EdenEast/Nightfox.nvim",
@@ -92,6 +97,7 @@ require('config.nvim-cmp')
 require('config.lsp')
 
 require("config.pairs")
+require("config.lspsaga")
 
 vim.diagnostic.config({
     virtual_text = false,

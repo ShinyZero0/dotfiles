@@ -2,6 +2,7 @@ set termguicolors
 let g:lightline = { 'colorscheme': 'challenger_deep'}
 
 source $HOME/.config/nvim/keys.vim
+source $HOME/.config/nvim/functions.vim
 lua require("config.lazy")
 filetype plugin indent on
 
@@ -34,6 +35,7 @@ set title
 set notimeout
 set scrolloff=8
 set cursorline
+
 
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_quickfix_enabled = 0

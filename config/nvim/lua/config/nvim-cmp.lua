@@ -27,7 +27,6 @@ cmp.setup({
 		require('luasnip').lsp_expand(args.body)
         end,
     },
-
     window = {
         completion = cmp.config.window.bordered(),
     },
@@ -62,7 +61,7 @@ cmp.setup({
     }),
 
 })
-cmp.event:on('confirm_done',  
+cmp.event:on('confirm_done',
 cmp_autopairs.on_confirm_done({
     filetypes = {
         ["*"] = {

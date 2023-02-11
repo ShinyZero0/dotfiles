@@ -24,6 +24,10 @@ map <C-q> :q<CR>
 map <Leader>y "+y
 map <Leader>p "+p
 
+nnoremap <Leader>lt :FloatermToggle<CR>
+tmap <C-q> <C-\><C-n><C-q>
+
+
 " TELESCOPE
 
 map <Leader>/ :Telescope<CR>
@@ -44,6 +48,8 @@ map <Leader>lb :Lspsaga show_buf_diagnostics<CR>
 map <Leader>ln :Lspsaga diagnostic_jump_next<CR>
 map <Leader>lN :Lspsaga diagnostic_jump_prev<CR>
 map <Leader>lr :Lspsaga lsp_finder<CR>
+map <Leader>la :Lspsaga code_action<CR>
+map <Leader>ld :Lspsaga hover_doc<CR>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -71,6 +77,9 @@ cnoremap <C-BS> <C-w>
 
 inoremap <C-left>  <Esc>ba
 inoremap <C-right> <Esc>wa
+
+nnoremap <CR> o<Esc>
+nnoremap <S-CR> O<Esc>
 
 
 " SPLITTER

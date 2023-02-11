@@ -33,7 +33,7 @@ exec_always --no-startup-id nitrogen --restore
 
 # Style
 
-font pango: InconsolataLGC Nerd Font Mono Bold 12
+font pango: InconsolataLGC Nerd Font Mono Bold 2
 
 for_window [tiling] border pixel 2
 for_window [floating] border pixel 1, move position center
@@ -51,12 +51,12 @@ set_from_resource $bground  xrdb.background
 set_from_resource $alert    xrdb.color5
 set_from_resource $border   xrdb.color6
 
-# Class:                border    backgr.   text   indicator child_border
-client.focused          $active   $active   $btext $active  $border
-client.focused_inactive $inactive $inactive $wtext $bground $bground
-client.unfocused        $bground  $bground  $wtext $bground $bground
-client.urgent           $bground  $alert    $wtext $alert   $alert
-client.placeholder      $alert    $btext    $wtext $alert   $alert
+# Class:                border    backgr.   text     indicator child_border
+client.focused          $active   $active   $active  $active   $border
+client.focused_inactive $inactive $inactive $wtext   $bground  $bground
+client.unfocused        $bground  $bground  $bground $bground  $bground
+client.urgent           $bground  $alert    $wtext   $alert    $alert
+client.placeholder      $alert    $btext    $wtext   $alert    $alert
 
 for_window [class="Steam"] move container to workspace $ws5
 for_window [class="War Thunder \(Vulkan, 64bit\)"] move container to workspace $ws3

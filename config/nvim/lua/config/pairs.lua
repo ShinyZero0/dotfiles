@@ -4,3 +4,4 @@ local npairs = require('nvim-autopairs')
 
 npairs.add_rule(Rule("<",">","lua"))
 npairs.add_rule(Rule("<",">","vim"))
+npairs.add_rule(Rule("<",">","xml"))
