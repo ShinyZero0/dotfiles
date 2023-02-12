@@ -79,7 +79,7 @@ mkcd(){
 alias rezsh="source ~/.zshrc"
 alias edzsh="$EDITOR ~/.zshrc"
 # GIT ALIASES
-alias gallcom="git add --all && git commit"
+alias gcomall="git add --all && git commit"
 alias gmgnocom="git merge --no-commit --no-ff"
 
 alias xdgtype="xdg-mime query filetype"
