@@ -10,9 +10,9 @@ require("lspconfig")["pylsp"].setup {
 require('lspconfig')['texlab'].setup {
     capabilities = capabilities
 }
-require("lspconfig")['vimls'].setup {
-    capabilities = capabilities
-}
+-- require("lspconfig")['vimls'].setup {
+--     capabilities = capabilities
+-- }
 require("lspconfig").sumneko_lua.setup {
     settings = {
         Lua = {

@@ -1,0 +1,14 @@
+cmd trash %trash-put $fx
+map D trash
+map <pgdn> half-down
+map <pgup> half-up
+
+map <insert> push $touch<space>
+map <f-7> push $mkdir<space>
+
+cmd yankpath &{{
+    echo -n $fx | xsel -i -b
+}}
+map yp yankpath
+
+# vim: ft=bash

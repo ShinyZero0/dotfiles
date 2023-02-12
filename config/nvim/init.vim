@@ -1,4 +1,3 @@
-set clipboard-=unnamed
 set ignorecase
 set smartcase
 set nocompatible
@@ -8,7 +7,6 @@ set title
 
 set number
 set cursorline
-set cursorcolumn
 
 set tabstop=4 shiftwidth=4 expandtab
 set scrolloff=5
@@ -25,17 +23,5 @@ source $HOME/.config/nvim/desktop.vim
 
 colorscheme challenger_deep
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.axaml'
-
-lua << EOF
-
-require("config.mind")
-require("config.treesitter")
-require("config.pairs")
-
-local function on_attach(client)
-  print('Attached to ' .. client.name)
-end
-
-EOF
 
 command Reinit source $HOME/.config/nvim/init.vim

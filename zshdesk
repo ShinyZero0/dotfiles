@@ -1,0 +1,3 @@
+alias pkin="sudo dnf install"
+alias pkup="sudo dnf update -y"
+alias pkfd="dnf search"

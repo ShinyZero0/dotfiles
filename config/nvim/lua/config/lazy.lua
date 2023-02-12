@@ -94,9 +94,9 @@ require("lazy").setup({
     },
 })
 
-require('config.telescope')
-require('config.nvim-cmp')
-require('config.lsp')
+require("config.telescope")
+require("config.nvim-cmp")
+require("config.lsp")
 
 require("config.pairs")
 require("config.lspsaga")
