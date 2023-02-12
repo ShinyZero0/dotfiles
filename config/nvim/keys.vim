@@ -51,8 +51,8 @@ nnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 xnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 onoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 
-nnoremap vA ggVG
-nnoremap VA ggVG
+vnoremap A <Esc>ggVG
+
 " COMMAND LINE MODE 
 
 cnoremap <C-left>  <S-left>
@@ -65,6 +65,9 @@ cnoremap <C-v> <C-r>+
 inoremap <C-left>  <Esc>ba
 inoremap <C-right> <Esc>wa
 inoremap <C-v> <Esc>pa
+
+nnoremap <CR> o<Esc>
+nnoremap <S-CR> O<Esc>
 
 " SPLITTER
 
