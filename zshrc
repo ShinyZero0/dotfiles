@@ -9,6 +9,7 @@ fi
 zstyle ':completion:*' menu select completer _complete _ignored _approximate
 zstyle ':completion:*' max-errors 3
 zstyle :compinstall filename '/home/zero/.zshrc'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 autoload -Uz compinit
 compinit
@@ -60,7 +61,6 @@ zinit ice wait lucid
 zinit light hlissner/zsh-autopair
 zinit for \
     OMZL::git.zsh \
-    OMZP::sudo 
 
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
@@ -68,8 +68,14 @@ zle_highlight+=(paste:none)
 ### End of Zinit's installer chunk
 
 eval "$(zoxide init zsh)"
-alias pkup="pkg upgrade -y"
-alias pkfd="pkg search"
+
+export EDITOR=nvim
+export VISUAL=nvim
+export FZF_DEFAULT_OPTS="--color=dark,fg:#cbe3e7,bg:#1b182c,hl:#c991e1,fg+:#aaffe4,bg+:#565575,hl+:#c991e1,gutter:#1b182c,pointer:#aaffe4,prompt:#c991e1,info:#ffe9aa,header:#cbe3e7,spinner:#63f2f1 --cycle --bind=tab:down,btab:up --reverse"
+
+alias pkup="sudo dnf upgrade -y"
+alias pkfd="dnf search"
+alias pkin="sudo dnf install"
 alias rezsh="source ~/.zshrc"
 alias edzsh="$EDITOR ~/.zshrc"
 mkcd(){
@@ -86,13 +92,7 @@ merge-no-add(){
     echo "Commit now"
 }
 alias xdgtype="xdg-mime query filetype"
-
-path+=/home/zero/bin/ 
-path+=/home/zero/.local/bin/
-export PATH
-export EDITOR=nvim
-export VISUAL=nvim
-export FZF_DEFAULT_OPTS="--color=dark,fg:#cbe3e7,bg:#1b182c,hl:#c991e1,fg+:#aaffe4,bg+:#565575,hl+:#c991e1,gutter:#1b182c,pointer:#aaffe4,prompt:#c991e1,info:#ffe9aa,header:#cbe3e7,spinner:#63f2f1 --cycle --bind=tab:down,btab:up,ctrl-bs:backward-kill-word,ctrl-left:backward-word --reverse"
+alias camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' /home/zero/.steam/steam/steamapps/common/War\ Thunder/presets/РБ-танки.blk"
 
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS

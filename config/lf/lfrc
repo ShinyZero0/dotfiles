@@ -16,6 +16,7 @@ map <f-7> push $mkdir<space>
 map R reload
 map ; push :
 
+
 map s
 map sa :{{set sortby atime; set info atime; set reverse; top; }}
 map st :{{set sortby time; set info time; set reverse; top; }}
@@ -68,8 +69,8 @@ lf -remote "send $id reload"
 cmd yankfile ${{
     xclip -selection clipboard -t $(file --mime-type $f | sed -e 's/.*: //') -i $fx
 }}
-cmd yankpath &{{
-    echo -n $fx | termux-clipboard-set
+cmd yankpath ${{
+    echo -n $fx | xclip -selection clipboard 
 }}
 map y
 map yf yankfile
@@ -77,7 +78,7 @@ map yp yankpath
 map yy copy
 
 cmd trash %trash-put $fx
-map D delete
+map D trash
 
 cmd open-with ${{
     mimeopen --ask $fx
@@ -86,6 +87,17 @@ cmd open ${{
     printf '\e[?1049h'
     jaro $fx
     printf '\e[?1049l'
+    # for i in $fx
+    # do
+    #     mimetype=$(xdg-mime query filetype "$i")
+    #     prog=$(xdg-mime query default "$mimetype")
+    #     if grep -qs Terminal=true "/usr/share/applications/$prog"
+    #     then
+    #         xdg-open "$i"
+    #     else
+    #         xdg-open "$i" >/dev/null 2>/dev/null &
+    #     fi
+    # done
 }}
 map <enter> open
 
@@ -123,6 +135,8 @@ cmd follow_link %{{
 }}
 map gl follow_link
 map g/ cd /
-map E $$EDITOR ./
+map E ${{
+    $EDITOR ./
+}}
 
 # vim: ft=bash
