@@ -46,21 +46,22 @@ zinit for \
         zdharma-continuum/zinit-annex-rust \
         wfxr/forgit \
         djui/alias-tips \
+        zinit light romkatv/powerlevel10k \
+        zinit load zdharma-continuum/fast-syntax-highlighting \
+        zinit light jeffreytse/zsh-vi-mode \
+        zinit light MichaelAquilina/zsh-auto-notify
 
-zinit light romkatv/powerlevel10k
-zinit load zdharma-continuum/fast-syntax-highlighting
-zinit light jeffreytse/zsh-vi-mode
-zinit light MichaelAquilina/zsh-auto-notify
 zinit svn for \
     OMZP::gitfast \
+
+zinit for \
+    OMZL::git.zsh \
 
 # plugs with broken binds
 zinit ice wait lucid atload'bindkey "^[[A" history-substring-search-up' atload'bindkey "^[[B" history-substring-search-down'
 zinit light zsh-users/zsh-history-substring-search
 zinit ice wait lucid
 zinit light hlissner/zsh-autopair
-zinit for \
-    OMZL::git.zsh \
 
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
@@ -73,9 +74,8 @@ export EDITOR=nvim
 export VISUAL=nvim
 export FZF_DEFAULT_OPTS="--color=dark,fg:#cbe3e7,bg:#1b182c,hl:#c991e1,fg+:#aaffe4,bg+:#565575,hl+:#c991e1,gutter:#1b182c,pointer:#aaffe4,prompt:#c991e1,info:#ffe9aa,header:#cbe3e7,spinner:#63f2f1 --cycle --bind=tab:down,btab:up --reverse"
 
-alias pkup="sudo dnf upgrade -y"
-alias pkfd="dnf search"
-alias pkin="sudo dnf install"
+source .zshmob
+source .zshdesk
 alias rezsh="source ~/.zshrc"
 alias edzsh="$EDITOR ~/.zshrc"
 mkcd(){
