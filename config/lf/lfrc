@@ -1,8 +1,9 @@
 set shell sh
+set previewer ~/.config/lf/lf_kitty_preview
+set cleaner ~/.config/lf/lf_kitty_clean
 set scrolloff 5
-set ratios 1:2:2
+set ratios 1:2:3
 set ifs "\n"
-
 
 # Mappings
 
@@ -13,39 +14,54 @@ map <backspace2> set hidden!
 map <insert> push $touch<space>
 map <f-7> push $mkdir<space>
 map R reload
+map ; push :
 
-map n
-map nf push $touch<space>
-map nd push $mkdir<space>
 
 map s
 map sa :{{set sortby atime; set info atime; set reverse; top; }}
 map st :{{set sortby time; set info time; set reverse; top; }}
 map sc :{{set sortby ctime; set info ctime; set reverse; top; }}
+cmd sizesearch :{{calcdirsize; set sortby size; set info size; set reverse; top; }}
+map ss push v:sizesearch<enter>v
 map sn :{{set sortby natural; set info; set noreverse; top; }}
 
-map +x ${{
+cmd touch %{{
+    IFS=" "
+    touch -- "$*"
+    lf -remote "send $id select \"$*\""
+}}
+cmd mkdir %{{
+    IFS=" "
+    mkdir -p -- "$*"
+    lf -remote "send $id select \"$*\""
+}}
+
+map n
+map nf push :touch<space>
+map nd push :mkdir<space>
+
+map +x &{{
 chmod +x $fx
 lf -remote "send $id reload"
 }}
-map +r ${{
+map +r &{{
 chmod +r $fx
 lf -remote "send $id reload"
 }}
-map +w ${{
+map +w &{{
 chmod +w $fx
 lf -remote "send $id reload"
 }}
 
-map -x ${{
+map -x &{{
 chmod -x $fx
 lf -remote "send $id reload"
 }}
-map -r ${{
+map -r &{{
 chmod -r $fx
 lf -remote "send $id reload"
 }}
-map -w ${{
+map -w &{{
 chmod -w $fx
 lf -remote "send $id reload"
 }}
@@ -53,8 +69,8 @@ lf -remote "send $id reload"
 cmd yankfile ${{
     xclip -selection clipboard -t $(file --mime-type $f | sed -e 's/.*: //') -i $fx
 }}
-cmd yankpath &{{
-    echo -n $fx | termux-clipboard-set
+cmd yankpath ${{
+    echo -n $fx | xclip -selection clipboard 
 }}
 map y
 map yf yankfile
@@ -62,18 +78,32 @@ map yp yankpath
 map yy copy
 
 cmd trash %trash-put $fx
-map D delete
+map D trash
 
 cmd open-with ${{
-    printf '\e[?1049h'
     mimeopen --ask $fx
+}}
+cmd open ${{
+    printf '\e[?1049h'
+    jaro $fx
     printf '\e[?1049l'
+    # for i in $fx
+    # do
+    #     mimetype=$(xdg-mime query filetype "$i")
+    #     prog=$(xdg-mime query default "$mimetype")
+    #     if grep -qs Terminal=true "/usr/share/applications/$prog"
+    #     then
+    #         xdg-open "$i"
+    #     else
+    #         xdg-open "$i" >/dev/null 2>/dev/null &
+    #     fi
+    # done
 }}
 map <enter> open
 
 cmd fzf_jump ${{
     lf -remote "send $id set hidden"
-    res="$(find . -maxdepth 2 -printf "%d %p\n" | sort -n | perl -pe 's/^\d+\s//;' | fzf --cycle --bind=tab:down,btab:up --reverse --exact --header='Jump to location' --no-sort --color=dark,fg:#cbe3e7,bg:#1b182c,hl:#c991e1,fg+:#aaffe4,bg+:#565575,hl+:#c991e1,gutter:#1b182c,pointer:#aaffe4,prompt:#c991e1,info:#ffe9aa,header:#cbe3e7,spinner:#63f2f1  | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    res="$(find . -maxdepth 2 -printf "%d %p\n" | sort -n | perl -pe 's/^\d+\s//;' | fzf --cycle --bind=tab:down,btab:up --reverse --exact --header='Jump to location' --no-sort | sed 's/\\/\\\\/g;s/"/\\"/g')"
     if [ -d "$res" ] ; then
         cmd="cd"
     elif [ -f "$res" ] ; then
@@ -85,6 +115,7 @@ cmd fzf_jump ${{
 }} 
 
 map / fzf_jump
+map i fzf_jump
 
 cmd extract ${{
     set -f
@@ -104,6 +135,8 @@ cmd follow_link %{{
 }}
 map gl follow_link
 map g/ cd /
+map E ${{
+    $EDITOR ./
+}}
 
-
-# vim: ft=go
+# vim: ft=bash

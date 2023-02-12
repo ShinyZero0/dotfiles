@@ -1,0 +1,11 @@
+# clear system logs
+    sudo journalctl --vacuum-time=2d
+# get win class
+    xprop | grep CLASS
+# Set keys repeat delay and repeat pe second
+    xset r rate 200 15
+# fzf and cd with depth
+    find . -maxdepth 3 2> dev/null | fzf | read DIR && cd $DIR
+# fold all {{{}}} in vim
+    zm
+# vim: ft=sh
