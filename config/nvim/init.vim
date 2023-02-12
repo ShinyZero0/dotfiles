@@ -1,3 +1,10 @@
+let g:lightline = { 'colorscheme': 'challenger_deep'}
+
+filetype plugin indent on
+
+set completeopt=menu,menuone,noselect
+set background=dark
+
 set clipboard-=unnamed
 set ignorecase
 set smartcase
@@ -22,6 +29,7 @@ filetype plugin indent on
 source $HOME/.config/nvim/keys.vim
 source $HOME/.config/nvim/mobile.vim
 source $HOME/.config/nvim/desktop.vim
+source $HOME/.config/nvim/functions.vim
 
 colorscheme challenger_deep
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.axaml'
