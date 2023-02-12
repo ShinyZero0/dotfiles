@@ -25,7 +25,6 @@ SAVEHIST=1000
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
     command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
         print -P "%F{33} %F{34}Installation successful.%f%b" || \
@@ -50,7 +49,6 @@ zinit for \
 zinit light romkatv/powerlevel10k
 zinit load zdharma-continuum/fast-syntax-highlighting
 zinit light jeffreytse/zsh-vi-mode
-zinit light MichaelAquilina/zsh-auto-notify
 zinit svn for \
     OMZP::gitfast \
 
@@ -73,24 +71,32 @@ export EDITOR=nvim
 export VISUAL=nvim
 export FZF_DEFAULT_OPTS="--color=dark,fg:#cbe3e7,bg:#1b182c,hl:#c991e1,fg+:#aaffe4,bg+:#565575,hl+:#c991e1,gutter:#1b182c,pointer:#aaffe4,prompt:#c991e1,info:#ffe9aa,header:#cbe3e7,spinner:#63f2f1 --cycle --bind=tab:down,btab:up --reverse"
 
-alias pkup="sudo dnf upgrade -y"
-alias pkfd="dnf search"
-alias pkin="sudo dnf install"
+source ~/.zshmob
+source ~/.zshdesk
 alias rezsh="source ~/.zshrc"
 alias edzsh="$EDITOR ~/.zshrc"
 mkcd(){
     mkdir -p "$1"
     cd "$1"
 }
-merge-no-add(){
-    git merge --no-commit --no-ff "$1"
-    addedFiles=("${(@f)$(git status -s | grep ^A | perl -pe 's/^A *//')}")
-    for f in $addedFiles; do
-        echo "Removed: $f"
-        git restore --staged "$f"
-    done
-    echo "Commit now"
-}
+alias gmgnocom="git merge --no-commit --no-ff"
+# gnoadd(){
+#     git status -s | ack --output="$'" "^A.? *" | tee echo "$#" | xargs git restore --staged
+# }
+# gnodel(){
+#     git status -s | ack --output="$'" "^D.? *" | xargs git restore --staged
+# }
+# testfunc(){
+#     case "$1" in
+#         stage)
+#             echo "stage"
+#             ;;
+#         file)
+#             echo "file"
+#             ;;
+#     esac
+# }
+alias gallcom="git add --all && git commit"
 alias xdgtype="xdg-mime query filetype"
 alias camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' /home/zero/.steam/steam/steamapps/common/War\ Thunder/presets/РБ-танки.blk"
 
