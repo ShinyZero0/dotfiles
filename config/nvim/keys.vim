@@ -51,8 +51,8 @@ nnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 xnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 onoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 
-nnoremap vA ggVG
-nnoremap VA ggVG
+vnoremap A ggVG
+    
 " COMMAND LINE MODE 
 
 cnoremap <C-left>  <S-left>

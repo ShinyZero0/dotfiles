@@ -3,15 +3,11 @@ set scrolloff 5
 set ratios 1:2:2
 set ifs "\n"
 
+source ~/.config/lf/mobile
 
 # Mappings
 
-map <pgdn> half-down
-map <pgup> half-up
-
 map <backspace2> set hidden!
-map <insert> push $touch<space>
-map <f-7> push $mkdir<space>
 map R reload
 
 map n
@@ -50,18 +46,11 @@ chmod -w $fx
 lf -remote "send $id reload"
 }}
 
-cmd yankfile ${{
-    xclip -selection clipboard -t $(file --mime-type $f | sed -e 's/.*: //') -i $fx
-}}
-cmd yankpath &{{
-    echo -n $fx | termux-clipboard-set
-}}
 map y
 map yf yankfile
 map yp yankpath
 map yy copy
 
-cmd trash %trash-put $fx
 map D delete
 
 cmd open-with ${{
@@ -97,7 +86,6 @@ cmd on-cd &{{
     # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
     printf "\033]0; $(pwd | sed "s|$HOME|~|")\007" > /dev/tty
 }}
-on-cd
 
 cmd follow_link %{{
   lf -remote "send ${id} select '$(readlink $f)'"
@@ -105,5 +93,6 @@ cmd follow_link %{{
 map gl follow_link
 map g/ cd /
 
+on-cd
 
-# vim: ft=go
+# vim: ft=bash
