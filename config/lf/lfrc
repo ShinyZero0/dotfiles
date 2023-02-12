@@ -66,18 +66,11 @@ chmod -w $fx
 lf -remote "send $id reload"
 }}
 
-cmd yankfile ${{
-    xclip -selection clipboard -t $(file --mime-type $f | sed -e 's/.*: //') -i $fx
-}}
-cmd yankpath ${{
-    echo -n $fx | xclip -selection clipboard 
-}}
 map y
 map yf yankfile
-map yp yankpath
 map yy copy
 
-cmd trash %trash-put $fx
+cmd trash $mv $fx .trash/
 map D trash
 
 cmd open-with ${{
@@ -87,17 +80,6 @@ cmd open ${{
     printf '\e[?1049h'
     jaro $fx
     printf '\e[?1049l'
-    # for i in $fx
-    # do
-    #     mimetype=$(xdg-mime query filetype "$i")
-    #     prog=$(xdg-mime query default "$mimetype")
-    #     if grep -qs Terminal=true "/usr/share/applications/$prog"
-    #     then
-    #         xdg-open "$i"
-    #     else
-    #         xdg-open "$i" >/dev/null 2>/dev/null &
-    #     fi
-    # done
 }}
 map <enter> open
 
@@ -123,9 +105,6 @@ cmd extract ${{
 }}
 
 cmd on-cd &{{
-    # '&' commands run silently in background (which is what we want here),
-    # but are not connected to stdout.
-    # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
     printf "\033]0; $(pwd | sed "s|$HOME|~|")\007" > /dev/tty
 }}
 on-cd
@@ -138,5 +117,7 @@ map g/ cd /
 map E ${{
     $EDITOR ./
 }}
+source ~/.config/lf/desktop
+source ~/.config/lf/mobile
 
 # vim: ft=bash

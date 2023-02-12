@@ -1,0 +1,3 @@
+alias pkup="pkg upgrade -y"
+alias pkfd="pkg search"
+alias pkin="pkg install"

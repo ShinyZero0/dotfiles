@@ -1,62 +1,49 @@
-set termguicolors
 let g:lightline = { 'colorscheme': 'challenger_deep'}
 
-source $HOME/.config/nvim/keys.vim
-source $HOME/.config/nvim/functions.vim
-lua require("config.lazy")
 filetype plugin indent on
-
-source $HOME/.config/nvim/desktop.vim
-source $HOME/.config/nvim/mobile.vim
 
 set completeopt=menu,menuone,noselect
 set background=dark
 
-colorscheme challenger_deep
-hi link lualine_b_diagnostics_hint_normal   lualine_a_normal
-hi link lualine_b_diagnostics_info_terminal lualine_a_normal
-hi link lualine_b_diff_added_normal         lualine_a_normal
-hi link lualine_b_diff_added_command        lualine_a_normal
-
+set clipboard-=unnamed
 set ignorecase
 set smartcase
-
-let g:vim_json_conceal=0
-let g:markdown_syntax_conceal=0
-
-set tabstop=4
-set shiftwidth=4
-set expandtab
-
-set breakindent
+set nocompatible
+set noswapfile
+set termguicolors
+set title
 
 set number
-set noswapfile
-set clipboard=unnamed
-set title
-set notimeout
-set scrolloff=8
 set cursorline
+set cursorcolumn
 
+set tabstop=4 shiftwidth=4 expandtab
+set scrolloff=5
+set notimeout
+set breakindent
 
-let g:vimtex_view_method = 'zathura'
-let g:vimtex_quickfix_enabled = 0
-let g:vimtex_indent_enabled = 0
-let g:vimtex_syntax_conceal_disable = 1
+let g:vim_json_conceal=0
 
-let g:EasyMotion_smartcase = 1
-let g:EasyMotion_do_mapping = 0
-hi link EasyMotionTarget String
+filetype plugin indent on
 
-autocmd BufEnter *.axaml,*.xaml set ft=xml
+source $HOME/.config/nvim/keys.vim
+source $HOME/.config/nvim/mobile.vim
+source $HOME/.config/nvim/desktop.vim
+source $HOME/.config/nvim/functions.vim
 
-augroup vimtex
-  autocmd!
-  autocmd User VimtexEventView call b:vimtex.viewer.xdo_focus_vim()
-augroup END
-let g:vimtex_format_enabled = 1
+colorscheme challenger_deep
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.axaml'
 
-let g:colorizer_colornames = 0
-" autocmd BufEnter * :ColorHighlight
+lua << EOF
+
+require("config.mind")
+require("config.treesitter")
+require("config.pairs")
+
+local function on_attach(client)
+  print('Attached to ' .. client.name)
+end
+
+EOF
 
 command Reinit source $HOME/.config/nvim/init.vim
