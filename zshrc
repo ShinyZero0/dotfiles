@@ -99,6 +99,7 @@ alias gmgnocom="git merge --no-commit --no-ff"
 alias gallcom="git add --all && git commit"
 alias xdgtype="xdg-mime query filetype"
 alias camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' /home/zero/.steam/steam/steamapps/common/War\ Thunder/presets/РБ-танки.blk"
+alias gst="git status"
 
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
