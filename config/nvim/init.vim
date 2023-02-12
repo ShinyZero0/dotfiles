@@ -1,12 +1,20 @@
 set termguicolors
+let g:lightline = { 'colorscheme': 'challenger_deep'}
 
 source $HOME/.config/nvim/keys.vim
-lua require('plugins')
+source $HOME/.config/nvim/functions.vim
+lua require("config.lazy")
 filetype plugin indent on
 
 set completeopt=menu,menuone,noselect
 set background=dark
+
 colorscheme challenger_deep
+hi link lualine_b_diagnostics_hint_normal   lualine_a_normal
+hi link lualine_b_diagnostics_info_terminal lualine_a_normal
+hi link lualine_b_diff_added_normal         lualine_a_normal
+hi link lualine_b_diff_added_command        lualine_a_normal
+
 
 set ignorecase
 set smartcase
@@ -17,8 +25,6 @@ let g:markdown_syntax_conceal=0
 set tabstop=4
 set shiftwidth=4
 set expandtab
-" set softtabstop=4
-" set smarttab
 
 set breakindent
 
@@ -30,10 +36,15 @@ set notimeout
 set scrolloff=8
 set cursorline
 
+
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_quickfix_enabled = 0
 let g:vimtex_indent_enabled = 0
 let g:vimtex_syntax_conceal_disable = 1
+
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_do_mapping = 0
+hi link EasyMotionTarget String
 
 autocmd BufEnter *.axaml,*.xaml set ft=xml
 
@@ -46,28 +57,4 @@ let g:vimtex_format_enabled = 1
 let g:colorizer_colornames = 0
 " autocmd BufEnter * :ColorHighlight
 
-" Show relative numbers in visual mode only
-function ToggleNumbers()
-    set number!
-    set relativenumber!
-endfunction
-augroup VisualEvent
-  autocmd!
-  " on visual mode enter
-  autocmd ModeChanged *:[vV\x16]* call ToggleNumbers()
-  " on visual mode leave
-  autocmd Modechanged [vV\x16]*:* call ToggleNumbers()
-augroup END
-
-" Change keyboard layout on switching mode
-function Insert_Leave()
-    let $vimlayout=system('xkb-switch -p')
-    !xkb-switch -s us
-endfunction
-function Insert_Enter()
-    if $vimlayout != ""
-    !xkb-switch -s $vimlayout
-    endif
-endfunction
-autocmd InsertLeave * silent! call Insert_Leave()
-autocmd InsertEnter * silent! call Insert_Enter()
+command Reinit source $HOME/.config/nvim/init.vim

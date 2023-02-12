@@ -1,9 +1,9 @@
 ; vim: ft=scheme
 (assoc
   #:pattern "image/.*"
-  #:program "nomacs %f")
+  #:program "nomacs %f &>/dev/null 2>&1 &")
 (assoc
-  #:pattern "^text/.*"
+  #:pattern '("^text/.*" "application/x-shellscript")
   #:program "nvim %f"
   #:term "kitty --class floatwin -- ")
 (assoc
@@ -16,4 +16,13 @@
 (assoc
   #:pattern '("inode/directory" "inode/mount-point")
   #:program "lf %f"
+  #:term "kitty --class floatwin -- ")
+(assoc
+  #:pattern "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  #:program "libreoffice %f &>/dev/null &")
+; Archives
+
+(assoc
+  #:pattern '("application/x-compressed-tar", "application/x-bzip-compressed-tar", "application/zip")
+  #:program '"atool --extract %f"
   #:term "kitty --class floatwin -- ")

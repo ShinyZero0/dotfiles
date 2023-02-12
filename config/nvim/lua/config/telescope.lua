@@ -19,6 +19,8 @@ require("telescope").setup{
             },
             ["i"] = {
                 ["<Esc>"] = actions.close,
+                ["<C-Esc>"] = function() vim.cmd "stopinsert" end,
+
                 ["<Tab>"] = actions.move_selection_next,
                 ["<S-Tab>"] = actions.move_selection_previous,
                 ["<C-q>"] = actions.close,
