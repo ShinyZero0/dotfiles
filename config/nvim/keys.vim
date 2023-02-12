@@ -51,6 +51,8 @@ map <Leader>lr :Lspsaga lsp_finder<CR>
 map <Leader>la :Lspsaga code_action<CR>
 map <Leader>ld :Lspsaga hover_doc<CR>
 
+nnoremap <C-h> :HunkLineToggle<CR>
+
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 

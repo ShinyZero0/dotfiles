@@ -12,6 +12,8 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
 
+    "airblade/vim-gitgutter",
+    "neworld/vim-git-hunk-editor",
     "patstockwell/vim-monokai-tasty",
     "junegunn/vim-peekaboo",
     "easymotion/vim-easymotion",

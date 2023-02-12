@@ -31,40 +31,59 @@ if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
         print -P "%F{160} The clone has failed.%f%b"
 fi
 
-eval "$(zoxide init zsh)"
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust \
-    
-### End of Zinit's installer chunk
-# zinit light spaceship-prompt/spaceship-prompt
+zinit for \
+    light-mode \
+        zdharma-continuum/zinit-annex-as-monitor \
+        zdharma-continuum/zinit-annex-bin-gem-node \
+        zdharma-continuum/zinit-annex-patch-dl \
+        zdharma-continuum/zinit-annex-rust \
+        wfxr/forgit \
+        djui/alias-tips \
 
 zinit light romkatv/powerlevel10k
 zinit load zdharma-continuum/fast-syntax-highlighting
 zinit light jeffreytse/zsh-vi-mode
 zinit light MichaelAquilina/zsh-auto-notify
+zinit svn for \
+    OMZP::gitfast \
 
 # plugs with broken binds
 zinit ice wait lucid atload'bindkey "^[[A" history-substring-search-up' atload'bindkey "^[[B" history-substring-search-down'
 zinit light zsh-users/zsh-history-substring-search
 zinit ice wait lucid
 zinit light hlissner/zsh-autopair
+zinit for \
+    OMZL::git.zsh \
+    OMZP::sudo 
 
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 zle_highlight+=(paste:none)
+### End of Zinit's installer chunk
 
-mkcdir() {
-    mkdir $1
-    cd $1
+eval "$(zoxide init zsh)"
+alias pkup="pkg upgrade -y"
+alias pkfd="pkg search"
+alias rezsh="source ~/.zshrc"
+alias edzsh="$EDITOR ~/.zshrc"
+mkcd(){
+    mkdir -p "$1"
+    cd "$1"
+}
+merge-no-add(){
+    git merge --no-commit --no-ff "$1"
+    addedFiles=("${(@f)$(git status -s | grep ^A | perl -pe 's/^A *//')}")
+    for f in $addedFiles; do
+        echo "Removed: $f"
+        git restore --staged "$f"
+    done
+    echo "Commit now"
 }
 alias xdgtype="xdg-mime query filetype"
 
