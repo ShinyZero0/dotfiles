@@ -1,6 +1,6 @@
 EDITOR=nvim
 win=$(xdotool getactivewindow)
-alacritty --class floatwin -e bash -c "xsel -o | vipe | xsel -i -b"
+kitty --class floatwin -- bash -c "xsel -o | vipe | xsel -b -i"
 xdotool windowactivate $win
 xdotool key ctrl+v
 
