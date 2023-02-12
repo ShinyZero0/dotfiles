@@ -7,21 +7,16 @@ set ifs "\n"
 
 # Mappings
 
-map <pgdn> half-down
-map <pgup> half-up
-
-map <backspace2> set hidden!
-map <insert> push $touch<space>
-map <f-7> push $mkdir<space>
 map R reload
 map ; push :
+map <backspace2> set hidden!
 
+cmd sizesearch :{{calcdirsize; set sortby size; set info size; set reverse; top; }}
 
 map s
 map sa :{{set sortby atime; set info atime; set reverse; top; }}
 map st :{{set sortby time; set info time; set reverse; top; }}
 map sc :{{set sortby ctime; set info ctime; set reverse; top; }}
-cmd sizesearch :{{calcdirsize; set sortby size; set info size; set reverse; top; }}
 map ss push v:sizesearch<enter>v
 map sn :{{set sortby natural; set info; set noreverse; top; }}
 
@@ -70,9 +65,6 @@ map y
 map yf yankfile
 map yy copy
 
-cmd trash $mv $fx .trash/
-map D trash
-
 cmd open-with ${{
     mimeopen --ask $fx
 }}
@@ -85,7 +77,7 @@ map <enter> open
 
 cmd fzf_jump ${{
     lf -remote "send $id set hidden"
-    res="$(find . -maxdepth 2 -printf "%d %p\n" | sort -n | perl -pe 's/^\d+\s//;' | fzf --cycle --bind=tab:down,btab:up --reverse --exact --header='Jump to location' --no-sort | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    res="$(fd -d 2 -H -F | fzf --cycle --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
     if [ -d "$res" ] ; then
         cmd="cd"
     elif [ -f "$res" ] ; then
