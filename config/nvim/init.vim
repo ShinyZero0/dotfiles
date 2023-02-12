@@ -1,17 +1,20 @@
-set clipboard=unnamedplus
-set number
+set clipboard-=unnamed
 set ignorecase
 set smartcase
 set nocompatible
 set noswapfile
-set tabstop=4 shiftwidth=4 expandtab
 set termguicolors
+set title
+
+set number
 set cursorline
 set cursorcolumn
-set so=5
+
+set tabstop=4 shiftwidth=4 expandtab
+set scrolloff=5
 set notimeout
-set title
 set breakindent
+
 let g:vim_json_conceal=0
 
 filetype plugin indent on
