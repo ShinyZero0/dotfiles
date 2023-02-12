@@ -1,0 +1,5 @@
+cmd yankpath &{{
+    echo -n $fx | termux-clipboard-set
+}}
+
+# vim: ft=bash
