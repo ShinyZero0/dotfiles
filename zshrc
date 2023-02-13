@@ -25,6 +25,12 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 HISTSIZE=1000
 SAVEHIST=1000
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
 
 # ADDED BY ZINIT'S INSTALLER
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -38,8 +44,8 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-source ~/.zshmob
-source ~/.zshdesk
+source ~/.zsh-mobile
+source ~/.zsh-desktop
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
@@ -52,6 +58,8 @@ zinit light-mode for \
     zdharma-continuum/fast-syntax-highlighting \
     zsh-users/zsh-completions \
     ShinyZero0/z-git-filter \
+
+    # jeffreytse/zsh-vi-mode \
 
 zinit svn for \
     OMZP::gitfast \
@@ -83,12 +91,16 @@ mkcd(){
 # numbers=("${(@f)$(cmd)}")
 alias rezsh="source ~/.zshrc"
 alias edzsh="$EDITOR ~/.zshrc"
+
 # GIT ALIASES
 alias gcomall="git add --all && git commit"
 alias gmgnocom="git merge --no-commit --no-ff"
+alias gst="git status"
+alias gch="git checkout"
 
 alias xdgtype="xdg-mime query filetype"
 alias camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' /home/zero/.steam/steam/steamapps/common/War\ Thunder/presets/РБ-танки.blk"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k-mobile.zsh ]] || source ~/.p10k-mobile.zsh
+echo '\e[5 q'
