@@ -78,13 +78,15 @@ mkcd(){
 # numbers=("${(@f)$(cmd)}")
 alias rezsh="source ~/.zshrc"
 alias edzsh="$EDITOR ~/.zshrc"
+
 # GIT ALIASES
 alias gcomall="git add --all && git commit"
 alias gmgnocom="git merge --no-commit --no-ff"
+alias gst="git status"
+alias gch="git checkout"
 
 alias xdgtype="xdg-mime query filetype"
 alias camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' /home/zero/.steam/steam/steamapps/common/War\ Thunder/presets/РБ-танки.blk"
-alias gst="git status"
 
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
