@@ -1,8 +1,6 @@
 set shell sh
-set previewer ~/.config/lf/lf_kitty_preview
-set cleaner ~/.config/lf/lf_kitty_clean
 set scrolloff 5
-set ratios 1:2:3
+set ratios 1:2:2
 set ifs "\n"
 
 # Mappings
@@ -109,7 +107,7 @@ map g/ cd /
 map E ${{
     $EDITOR ./
 }}
-source ~/.config/lf/desktop
-source ~/.config/lf/mobile
+source ~/.config/lf/lfrc-desktop
+source ~/.config/lf/lfrc-mobile
 
 # vim: ft=bash
