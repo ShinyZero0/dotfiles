@@ -18,7 +18,7 @@ let g:vim_json_conceal=0
 filetype plugin indent on
 
 source $HOME/.config/nvim/init-mobile.vim
-source $HOME/.config/nvim/desktop.vim
+source $HOME/.config/nvim/init-desktop.vim
 source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/keys.vim
 

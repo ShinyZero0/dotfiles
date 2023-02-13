@@ -1,8 +1,7 @@
 require('nvim-treesitter.configs').setup {
     ensure_installed = { "c", "lua", "vim", "help" },
-    sync_install = false,
     auto_install = true,
-    ignore_install = { "diff" },
+    ignore_install = { "diff", "latex" },
 
     highlight = {
         enable = true,

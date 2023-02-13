@@ -1,6 +1,5 @@
 set shell sh
 set scrolloff 5
-set ratios 1:2:2
 set ifs "\n"
 
 # Mappings

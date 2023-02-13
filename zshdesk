@@ -1,4 +1,0 @@
-zinit light jeffreytse/zsh-vi-mode
-alias pkin="sudo dnf install"
-alias pkup="sudo dnf update -y"
-alias pkfd="dnf search"

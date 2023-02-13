@@ -30,6 +30,7 @@
   "oxocarbon.nvim": { "branch": "main", "commit": "f7b05feadc985f39639650067f1a333285cb4085" },
   "plenary.nvim": { "branch": "master", "commit": "9a0d3bf7b832818c042aaf30f692b081ddd58bd9" },
   "rasi.vim": { "branch": "main", "commit": "f5a1cbbdc6acdb420b3be0ef6d056cf8c587c8d4" },
+  "registers.nvim": { "branch": "main", "commit": "667ae447d2c7efb64461a2c58f5311d1248cdb5f" },
   "suda.vim": { "branch": "master", "commit": "08abd39dfe1cee681b8ce3e7321da5fa03e045c1" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "304508fb7bea78e3c0eeddd88c4837501e403ae8" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a1bd6866b539afdaa25305626c7aa6049b805d67" },
@@ -42,10 +43,8 @@
   "vim-enfocado": { "branch": "main", "commit": "e941a4491baf40c5a2ab4146ad38193c362097d7" },
   "vim-fish": { "branch": "master", "commit": "50b95cbbcd09c046121367d49039710e9dc9c15f" },
   "vim-floaterm": { "branch": "master", "commit": "06c73980682f61307e890fe652d1343be82e7ec7" },
-  "vim-git-hunk-editor": { "branch": "master", "commit": "3979ac4de8a1d0d4400aa752da0cdda820a583e9" },
   "vim-gitgutter": { "branch": "master", "commit": "00df1089b6267f47c7c0f13536789feb9db1e65b" },
   "vim-monokai-tasty": { "branch": "master", "commit": "55dcb855be754178967b860b0fa63621c319ce0a" },
-  "vim-peekaboo": { "branch": "master", "commit": "cc4469c204099c73dd7534531fa8ba271f704831" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "vimtex": { "branch": "master", "commit": "8ef5b0d9b85e7bb57b00b4571db4804aec0e10eb" }
 }

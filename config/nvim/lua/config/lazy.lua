@@ -13,9 +13,8 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
 
     "airblade/vim-gitgutter",
-    "neworld/vim-git-hunk-editor",
     "patstockwell/vim-monokai-tasty",
-    "junegunn/vim-peekaboo",
+    "tversteeg/registers.nvim",
     "easymotion/vim-easymotion",
     "Hoffs/omnisharp-extended-lsp.nvim",
     "folke/trouble.nvim",
@@ -100,6 +99,7 @@ require("config.lsp")
 
 require("config.pairs")
 require("config.lspsaga")
+require("config.registers")
 
 vim.diagnostic.config({
     virtual_text = false,
@@ -126,20 +126,3 @@ require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})
 luasnip.config.set_config({
   store_selection_keys = "<Tab>",
 })
-require("nvim-treesitter.configs").setup {
-    ensure_installed = { "c", "lua", "vim", "help" },
-    auto_install = true,
-    ignore_install = { "latex" },
-    highlight = {
-        enable = true,
-        disable = { "latex" },
-        disable = function(lang, buf)
-            local max_filesize = 100 * 1024 -- 100 KB
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-            if ok and stats and stats.size > max_filesize then
-                return true
-            end
-        end,
-        additional_vim_regex_highlighting = false,
-  },
-}
