@@ -12,14 +12,21 @@ Plug 'tpope/vim-commentary',
 Plug 'Yggdroot/indentLine',
 Plug 'kyazdani42/nvim-web-devicons',
 Plug 'nvim-lua/plenary.nvim',
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'windwp/nvim-autopairs',
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ervandew/supertab'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 " Themes
 Plug 'ray-x/aurora'
 Plug 'nanotech/jellybeans.vim'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
 call plug#end()
+lua << EOF
+require("config.pairs")
+require("config.telescope")
+require("config.treesitter")
+EOF

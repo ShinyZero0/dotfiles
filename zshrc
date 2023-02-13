@@ -19,6 +19,12 @@ zmodload zsh/complist
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
 
 # ADDED BY ZINIT'S INSTALLER
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -42,9 +48,10 @@ zinit light-mode for \
     djui/alias-tips \
     romkatv/powerlevel10k \
     zdharma-continuum/fast-syntax-highlighting \
-    jeffreytse/zsh-vi-mode \
     zsh-users/zsh-completions \
     ShinyZero0/z-git-filter \
+
+    # jeffreytse/zsh-vi-mode \
 
 zinit svn for \
     OMZP::gitfast \
@@ -69,8 +76,8 @@ export VISUAL=nvim
 export FZF_DEFAULT_OPTS="--color=dark,fg:#cbe3e7,bg:#1b182c,hl:#c991e1,fg+:#aaffe4,bg+:#565575,hl+:#c991e1,gutter:#1b182c,pointer:#aaffe4,prompt:#c991e1,info:#ffe9aa,header:#cbe3e7,spinner:#63f2f1 --cycle --bind=tab:down,btab:up --reverse"
 # unsetopt listambigious
 
-source ~/.zshmob
-source ~/.zshdesk
+source ~/.zsh-mobile
+source ~/.zsh-desktop
 mkcd(){
     mkdir -p "$1"
     cd "$1"
@@ -88,11 +95,7 @@ alias gch="git checkout"
 alias xdgtype="xdg-mime query filetype"
 alias camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' /home/zero/.steam/steam/steamapps/common/War\ Thunder/presets/РБ-танки.blk"
 
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_FIND_NO_DUPS
-setopt HIST_SAVE_NO_DUPS
+set previewer
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k-mobile.zsh ]] || source ~/.p10k-mobile.zsh
+echo '\e[5 q'

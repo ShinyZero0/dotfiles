@@ -1,6 +1,9 @@
 cmd yankpath &{{
     echo -n $fx | termux-clipboard-set
 }}
+cmd trash $mv $fx ~/.trash
 map yp yankpath
+map D trash
+
 
 # vim: ft=bash
