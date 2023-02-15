@@ -12,6 +12,8 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
 
+    "farmergreg/vim-lastplace",
+    "lukas-reineke/indent-blankline.nvim",
     "tversteeg/registers.nvim",
     "easymotion/vim-easymotion",
     "voldikss/vim-floaterm",
@@ -68,17 +70,6 @@ require("config.registers")
 require("config.treesitter")
 require("config.blankline")
 
-vim.diagnostic.config({
-    virtual_text = false,
-    signs = true,
-    update_in_insert = false,
-    underline = true,
-    severity_sort = false,
-    float = true,
-})
-
-local luasnip = require("luasnip")
-
 require("color-picker").setup {
     ["icons"] = { "ﱢ", "" },
 }
@@ -86,10 +77,7 @@ require("color-picker").setup {
 -- require('lualine').setup {
 --     options = { theme = 'challenger_deep' }
 -- }
-require("luasnip-latex-snippets").setup()
-require("luasnip.loaders.from_vscode").lazy_load()
-require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})
 
 luasnip.config.set_config({
-  store_selection_keys = "<Tab>",
+    store_selection_keys = "<Tab>",
 })

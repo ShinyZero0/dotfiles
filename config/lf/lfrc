@@ -2,24 +2,19 @@ set shell sh
 set scrolloff 5
 set ifs "\n"
 
-
-
 cmd sizesearch :{{calcdirsize; set sortby size; set info size; set reverse; top; }}
-
 
 cmd touch %{{
     IFS=" "
     touch -- "$*"
     lf -remote "send $id select \"$*\""
 }}
+
 cmd mkdir %{{
     IFS=" "
     mkdir -p -- "$*"
     lf -remote "send $id select \"$*\""
 }}
-
-
-
 
 cmd open-with ${{
     mimeopen --ask $fx
@@ -56,8 +51,6 @@ on-cd
 
 cmd follow_link %{{
   lf -remote "send ${id} select '$(readlink $f)'"
-}}
-    $EDITOR ./
 }}
 source ~/.config/lf/lfrc-desktop
 source ~/.config/lf/lfrc-mobile
