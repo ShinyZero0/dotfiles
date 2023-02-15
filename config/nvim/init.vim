@@ -22,6 +22,7 @@ source $HOME/.config/nvim/init-desktop.vim
 source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/keys.vim
 
+let g:lightline = {'colorscheme': 'challenger_deep'}
 colorscheme challenger_deep
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.axaml'
 

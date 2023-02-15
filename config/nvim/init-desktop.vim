@@ -6,6 +6,5 @@ let g:floaterm_height = 0.8
 set completeopt=menu,menuone,noselect
 autocmd BufEnter *.axaml,*.xaml set ft=xml
 
-let g:lightline = {'colorscheme': 'challenger_deep'}
 
 lua require("config.lazy-desktop")

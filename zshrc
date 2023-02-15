@@ -7,15 +7,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_FIND_NO_DUPS
-setopt HIST_SAVE_NO_DUPS
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+fpath+=~/.zsh/completions/
 
 # ADDED BY ZINIT'S INSTALLER
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -31,31 +23,31 @@ autoload -Uz _zinit
 
 source ~/.zsh-mobile
 source ~/.zsh-desktop
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust \
+
+# TURBO MODE
+zinit wait lucid for \
+    atload:'bindkey "^[[A" history-substring-search-up' atload:'bindkey "^[[B" \
+        history-substring-search-down' zsh-users/zsh-history-substring-search \
+    hlissner/zsh-autopair \
     djui/alias-tips \
-    romkatv/powerlevel10k \
     zdharma-continuum/fast-syntax-highlighting \
     zsh-users/zsh-completions \
     RobSis/zsh-completion-generator \
     ShinyZero0/z-git-filter \
 
-# zinit svn for \
-#     OMZP::gitfast \
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    romkatv/powerlevel10k \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust \
 
 zinit for \
     OMZL::git.zsh \
 
-# PLUGS WITH BROKEN BINDS
-zinit wait lucid for \
-    atload:'bindkey "^[[A" history-substring-search-up' atload:'bindkey "^[[B" \
-        history-substring-search-down' zsh-users/zsh-history-substring-search \
-    hlissner/zsh-autopair
+eval "$(zoxide init zsh)"
 
 zstyle ':completion:*' menu select completer _complete _ignored _approximate
 zstyle ':completion:*' max-errors 3
@@ -71,9 +63,17 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 zle_highlight+=(paste:none)
 
-eval "$(zoxide init zsh)"
-
 setopt autocd
+
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
 
 export EDITOR=nvim
 export VISUAL=nvim
@@ -97,5 +97,4 @@ alias gst="git status"
 alias gch="git checkout"
 
 alias xdgtype="xdg-mime query filetype"
-alias camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' /home/zero/.steam/steam/steamapps/common/War\ Thunder/presets/РБ-танки.blk"
 echo '\e[5 q'
