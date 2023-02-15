@@ -12,6 +12,7 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
 
+    "farmergreg/vim-lastplace",
     "lukas-reineke/indent-blankline.nvim",
     "tversteeg/registers.nvim",
     "easymotion/vim-easymotion",
