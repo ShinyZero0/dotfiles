@@ -12,8 +12,7 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
 
-    "airblade/vim-gitgutter",
-    "patstockwell/vim-monokai-tasty",
+    "lukas-reineke/indent-blankline.nvim",
     "tversteeg/registers.nvim",
     "easymotion/vim-easymotion",
     "Hoffs/omnisharp-extended-lsp.nvim",

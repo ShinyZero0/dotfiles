@@ -1,3 +1,4 @@
+[[ ! -f ~/.p10k-desktop.zsh ]] || source ~/.p10k-desktop.zsh
 zinit light-mode for \
     jeffreytse/zsh-vi-mode \
     peterhurford/git-it-on.zsh \
@@ -61,4 +62,3 @@ alias pkin="sudo dnf install"
 alias pkrm="sudo dnf remove"
 alias pkup="sudo dnf update -y"
 alias pkfd="dnf search"
-[[ ! -f ~/.p10k-desktop.zsh ]] || source ~/.p10k-desktop.zsh
