@@ -99,6 +99,7 @@ require("config.lsp")
 require("config.pairs")
 require("config.lspsaga")
 require("config.registers")
+require("config.treesitter")
 
 vim.diagnostic.config({
     virtual_text = false,
