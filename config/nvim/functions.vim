@@ -23,3 +23,4 @@ function Insert_Enter()
 endfunction
 autocmd InsertLeave * silent! call Insert_Leave()
 autocmd InsertEnter * silent! call Insert_Enter()
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
