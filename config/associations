@@ -1,0 +1,33 @@
+; vim: ft=scheme
+(assoc
+  #:pattern "image/.*"
+  #:program "nomacs %f &>/dev/null 2>&1 &")
+(assoc
+  #:pattern '("^text/.*" "application/x-shellscript")
+  #:program "nvim %f"
+  #:term "kitty --class floatwin -- ")
+; (assoc
+;   #:pattern '("^https?://.*" "application/pdf")
+;   #:program "firefox %f")
+(assoc
+  #:pattern "video/.*"
+  #:program "mpv --x11-name=floatwin %f &>/dev/null 2>&1 &"
+  )
+(assoc
+  #:pattern '("inode/directory" "inode/mount-point")
+  #:program "lf %f"
+  #:term "kitty --class floatwin -- ")
+(assoc
+  #:pattern "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  #:program "libreoffice %f &>/dev/null &")
+(assoc
+  #:pattern "application/pdf"
+  #:program "zathura -- %f &")
+
+; Archives
+(assoc
+  #:pattern '("application/x-compressed-tar", "application/x-bzip-compressed-tar", "application/zip")
+  #:program '"atool --extract %f"
+  #:term "kitty --class floatwin -- ")
+
+  

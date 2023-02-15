@@ -24,8 +24,9 @@ map <C-q> :q<CR>
 map <Leader>y "+y
 map <Leader>p "+p
 
-nnoremap <Leader>lt :FloatermToggle<CR>
+nnoremap <F5> :FloatermToggle<CR>
 tmap <C-q> <C-\><C-n><C-q>
+tmap <F5> <C-q> 
 
 
 " TELESCOPE
@@ -41,10 +42,10 @@ map ? :Telescope current_buffer_fuzzy_find<CR>
 
 map <C-f> <Plug>(easymotion-s2)
 
-" LSPSAGA
+" LSP
 
 map <Leader>ll :Lspsaga show_line_diagnostics<CR>
-map <Leader>lb :Lspsaga show_buf_diagnostics<CR>
+map <Leader>lb :Telescope diagnostics<CR>
 map <Leader>ln :Lspsaga diagnostic_jump_next<CR>
 map <Leader>lN :Lspsaga diagnostic_jump_prev<CR>
 map <Leader>lr :Lspsaga lsp_finder<CR>

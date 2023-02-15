@@ -1,22 +1,11 @@
 set shell sh
 set scrolloff 5
-set ratios 1:2:2
 set ifs "\n"
 
-# Mappings
 
-map R reload
-map ; push :
-map <backspace2> set hidden!
 
 cmd sizesearch :{{calcdirsize; set sortby size; set info size; set reverse; top; }}
 
-map s
-map sa :{{set sortby atime; set info atime; set reverse; top; }}
-map st :{{set sortby time; set info time; set reverse; top; }}
-map sc :{{set sortby ctime; set info ctime; set reverse; top; }}
-map ss push v:sizesearch<enter>v
-map sn :{{set sortby natural; set info; set noreverse; top; }}
 
 cmd touch %{{
     IFS=" "
@@ -29,39 +18,8 @@ cmd mkdir %{{
     lf -remote "send $id select \"$*\""
 }}
 
-map n
-map nf push :touch<space>
-map nd push :mkdir<space>
 
-map +x &{{
-chmod +x $fx
-lf -remote "send $id reload"
-}}
-map +r &{{
-chmod +r $fx
-lf -remote "send $id reload"
-}}
-map +w &{{
-chmod +w $fx
-lf -remote "send $id reload"
-}}
 
-map -x &{{
-chmod -x $fx
-lf -remote "send $id reload"
-}}
-map -r &{{
-chmod -r $fx
-lf -remote "send $id reload"
-}}
-map -w &{{
-chmod -w $fx
-lf -remote "send $id reload"
-}}
-
-map y
-map yf yankfile
-map yy copy
 
 cmd open-with ${{
     mimeopen --ask $fx
@@ -71,11 +29,10 @@ cmd open ${{
     jaro $fx
     printf '\e[?1049l'
 }}
-map <enter> open
 
 cmd fzf_jump ${{
     lf -remote "send $id set hidden"
-    res="$(fd -d 2 -H -F | fzf --cycle --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    res="$(fd -d 3 -H -F | fzf --cycle --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
     if [ -d "$res" ] ; then
         cmd="cd"
     elif [ -f "$res" ] ; then
@@ -86,8 +43,6 @@ cmd fzf_jump ${{
     lf -remote "send $id $cmd \"$res\""
 }} 
 
-map / fzf_jump
-map i fzf_jump
 
 cmd extract ${{
     set -f
@@ -102,12 +57,10 @@ on-cd
 cmd follow_link %{{
   lf -remote "send ${id} select '$(readlink $f)'"
 }}
-map gl follow_link
-map g/ cd /
-map E ${{
     $EDITOR ./
 }}
-source ~/.config/lf/desktop
+source ~/.config/lf/lfrc-desktop
 source ~/.config/lf/lfrc-mobile
+source ~/.config/lf/keys
 
 # vim: ft=bash

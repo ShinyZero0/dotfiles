@@ -42,7 +42,7 @@ require("telescope").setup{
                     ["<Left>"] = fb_actions.goto_parent_dir,
                     ["gh"] = fb_actions.goto_home_dir,
                     ["g\\"] = fb_actions.goto_cwd,
-                    ["c\\"] = fb_actions.change_cwd,
+                    ["n\\"] = fb_actions.change_cwd,
                     ["nf"] = fb_actions.create,
                     ["/"] = function() vim.cmd "startinsert" end,
                     ["<BS>"] = fb_actions.toggle_hidden,

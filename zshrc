@@ -1,6 +1,7 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -16,6 +17,12 @@ compinit
 zmodload zsh/complist
 
 # LINES CONFIGURED BY ZSH-NEWUSER-INSTALL
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -38,6 +45,8 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+source ~/.zsh-mobile
+source ~/.zsh-desktop
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
@@ -49,12 +58,11 @@ zinit light-mode for \
     romkatv/powerlevel10k \
     zdharma-continuum/fast-syntax-highlighting \
     zsh-users/zsh-completions \
+    RobSis/zsh-completion-generator \
     ShinyZero0/z-git-filter \
 
-    # jeffreytse/zsh-vi-mode \
-
-zinit svn for \
-    OMZP::gitfast \
+# zinit svn for \
+#     OMZP::gitfast \
 
 zinit for \
     OMZL::git.zsh \
@@ -65,37 +73,37 @@ zinit wait lucid for \
         history-substring-search-down' zsh-users/zsh-history-substring-search \
     hlissner/zsh-autopair
 
+zinit compinit > /dev/null
+
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 zle_highlight+=(paste:none)
 
 eval "$(zoxide init zsh)"
 
+setopt autocd
+
 export EDITOR=nvim
 export VISUAL=nvim
 export FZF_DEFAULT_OPTS="--color=dark,fg:#cbe3e7,bg:#1b182c,hl:#c991e1,fg+:#aaffe4,bg+:#565575,hl+:#c991e1,gutter:#1b182c,pointer:#aaffe4,prompt:#c991e1,info:#ffe9aa,header:#cbe3e7,spinner:#63f2f1 --cycle --bind=tab:down,btab:up --reverse"
-# unsetopt listambigious
 
-source ~/.zsh-mobile
-source ~/.zsh-desktop
 mkcd(){
     mkdir -p "$1"
     cd "$1"
 }
 # numbers=("${(@f)$(cmd)}")
+
+alias rcupv="rcup -v | rg -v 'identical' "
+
 alias rezsh="source ~/.zshrc"
 alias edzsh="$EDITOR ~/.zshrc"
 
 # GIT ALIASES
 alias gcomall="git add --all && git commit"
-alias gmgnocom="git merge --no-commit --no-ff"
+alias gmenocom="git merge --no-commit --no-ff"
 alias gst="git status"
 alias gch="git checkout"
 
 alias xdgtype="xdg-mime query filetype"
 alias camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' /home/zero/.steam/steam/steamapps/common/War\ Thunder/presets/РБ-танки.blk"
-
-set previewer
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k-mobile.zsh ]] || source ~/.p10k-mobile.zsh
 echo '\e[5 q'
