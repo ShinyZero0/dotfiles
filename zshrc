@@ -6,17 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# THE FOLLOWING LINES WERE ADDED BY COMPINSTALL
-zstyle ':completion:*' menu select completer _complete _ignored _approximate
-zstyle ':completion:*' max-errors 3
-zstyle :compinstall filename '/home/zero/.zshrc'
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-autoload -Uz compinit
-compinit
-zmodload zsh/complist
-
-# LINES CONFIGURED BY ZSH-NEWUSER-INSTALL
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -26,12 +16,6 @@ setopt HIST_SAVE_NO_DUPS
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_FIND_NO_DUPS
-setopt HIST_SAVE_NO_DUPS
 
 # ADDED BY ZINIT'S INSTALLER
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -73,7 +57,15 @@ zinit wait lucid for \
         history-substring-search-down' zsh-users/zsh-history-substring-search \
     hlissner/zsh-autopair
 
-zinit compinit > /dev/null
+zstyle ':completion:*' menu select completer _complete _ignored _approximate
+zstyle ':completion:*' max-errors 3
+zstyle :compinstall filename '/home/zero/.zshrc'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+autoload -Uz compinit
+compinit
+zmodload zsh/complist
+# zinit compinit > /dev/null
 
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
