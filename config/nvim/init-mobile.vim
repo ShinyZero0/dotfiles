@@ -15,7 +15,6 @@ set clipboard-=unnamed
 " Plug 'nvim-lua/plenary.nvim',
 " Plug 'windwp/nvim-autopairs',
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'ervandew/supertab'
 " Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 " Plug 'nvim-telescope/telescope-file-browser.nvim'
 
