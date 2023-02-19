@@ -1,1 +1,1 @@
-nnoremap gd :lua require('omnisharp_extended').lsp_definitions()<cr>
+nnoremap <buffer> gd :lua require('omnisharp_extended').lsp_definitions()<cr>

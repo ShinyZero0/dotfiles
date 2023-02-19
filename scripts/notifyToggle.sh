@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 isPaused=`dunstctl is-paused`
 if [ "$isPaused" = false ]; then
     echo ""
@@ -6,7 +7,7 @@ else
     echo "%{F#c991e1}"
 fi
 
-function toggleDunst()
+function ToggleDunst()
 {
     isPaused=`dunstctl is-paused`
     if [ "$isPaused" = true ]; then
@@ -18,7 +19,7 @@ function toggleDunst()
     fi
 }
 
-trap toggleDunst SIGUSR1
+trap ToggleDunst SIGUSR1
 
 while true
 do

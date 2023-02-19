@@ -1,5 +1,5 @@
-require('cmp_nvim_lsp').setup()
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- require('cmp_nvim_lsp').setup()
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("mason").setup()
 require("mason-lspconfig").setup()
@@ -10,9 +10,9 @@ require("lspconfig")["pylsp"].setup {
 require('lspconfig')['texlab'].setup {
     capabilities = capabilities
 }
--- require("lspconfig")['vimls'].setup {
---     capabilities = capabilities
--- }
+require("lspconfig")['vimls'].setup {
+    capabilities = capabilities
+}
 require("lspconfig").lua_ls.setup {
     settings = {
         Lua = {

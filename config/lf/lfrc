@@ -2,7 +2,6 @@ set shell sh
 set scrolloff 5
 set ifs "\n"
 
-cmd sizesearch :{{calcdirsize; set sortby size; set info size; set reverse; top; }}
 
 cmd touch %{{
     IFS=" "

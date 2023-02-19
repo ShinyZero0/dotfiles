@@ -43,6 +43,7 @@ focus_follows_mouse no
 
 include colors
 
+for_window [class="libreoffice.*"] move container to workspace $ws1
 for_window [class="Steam"] move container to workspace $ws5
 for_window [class="War Thunder \(Vulkan, 64bit\)"] move container to workspace $ws3
 for_window [class="corectrl"] move scratchpad
@@ -57,6 +58,7 @@ for_window [class="qt5ct"]        floating enable resize set 900 600
 for_window [class="Pavucontrol"]  floating enable resize set 640 480
 for_window [class="Font-manager"] floating enable resize set 900 600
 for_window [class="floatwin"]     floating enable resize set 900 600
-for_window [instance="floatwin"]     floating enable resize set 900 600
+for_window [instance="nomacs"]    floating enable resize set 900 600
+for_window [instance="floatwin"]  floating enable resize set 900 600
 
 include keys

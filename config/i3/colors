@@ -7,7 +7,7 @@ set $active   #aaffe4
 set $inactive #565575
 set $bground  #1e1c31
 set $alert    #c991e1
-set $border   $active
+set $border   #aaffe4
 
 # Class:                border    backgr.   text     indicator child_border
 client.focused          $active   $active   $active  $active   $border

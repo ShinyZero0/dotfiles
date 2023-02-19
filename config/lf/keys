@@ -8,7 +8,7 @@ map s
 map sa :{{set sortby atime; set info atime; set reverse; top; }}
 map st :{{set sortby time; set info time; set reverse; top; }}
 map sc :{{set sortby ctime; set info ctime; set reverse; top; }}
-map ss push v:sizesearch<enter>v
+map ss :{{set sortby size; set info size; set reverse; top; }}
 map sn :{{set sortby natural; set info; set noreverse; top; }}
 
 map n

@@ -10,7 +10,7 @@ map <pgup> half-up
 
 map <insert> push $touch<space>
 map <f-7> push $mkdir<space>
-
+cmd yankfile $xclip -selection clipboard -t $(file --mime-type $f | sed -e 's/.*: //') -i $fx
 cmd yankpath &{{
     echo -n $fx | xsel -i -b
 }}

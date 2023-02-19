@@ -23,6 +23,7 @@ autoload -Uz _zinit
 
 source ~/.zsh-mobile
 source ~/.zsh-desktop
+source ~/.zsh/lfcd.zsh
 
 # TURBO MODE
 zinit wait lucid for \
@@ -75,15 +76,14 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
-export EDITOR=nvim
-export VISUAL=nvim
-export FZF_DEFAULT_OPTS="--color=dark,fg:#cbe3e7,bg:#1b182c,hl:#c991e1,fg+:#aaffe4,bg+:#565575,hl+:#c991e1,gutter:#1b182c,pointer:#aaffe4,prompt:#c991e1,info:#ffe9aa,header:#cbe3e7,spinner:#63f2f1 --cycle --bind=tab:down,btab:up --reverse"
 
 mkcd(){
     mkdir -p "$1"
     cd "$1"
 }
 # numbers=("${(@f)$(cmd)}")
+
+alias lf="lfcd"
 
 alias rcupv="rcup -v | rg -v 'identical' "
 
