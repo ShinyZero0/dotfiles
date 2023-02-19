@@ -12,6 +12,8 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
 
+
+    "ervandew/supertab",
     "farmergreg/vim-lastplace",
     "lukas-reineke/indent-blankline.nvim",
     "tversteeg/registers.nvim",
@@ -70,13 +72,11 @@ require("config.registers")
 require("config.treesitter")
 require("config.blankline")
 
-require("color-picker").setup {
-    ["icons"] = { "ﱢ", "" },
-}
 
 -- require('lualine').setup {
 --     options = { theme = 'challenger_deep' }
 -- }
+local luasnip = require("luasnip")
 
 luasnip.config.set_config({
     store_selection_keys = "<Tab>",

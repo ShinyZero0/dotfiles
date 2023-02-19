@@ -16,6 +16,7 @@ set breakindent
 let g:vim_json_conceal=0
 
 filetype plugin indent on
+let g:lightline = {'colorscheme': 'challenger_deep'}
 
 source $HOME/.config/nvim/init-mobile.vim
 source $HOME/.config/nvim/init-desktop.vim
