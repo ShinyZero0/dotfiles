@@ -7,8 +7,6 @@ nnoremap <Esc> :noh<CR>
 imap <C-z> <Esc>ua
 imap <C-я> <C-z>
 
-vnoremap A <Esc>ggVG
-
 map g1 1gt
 map g2 2gt
 map g3 3gt
@@ -22,6 +20,7 @@ map g9 9gt
 map <C-s> :w<CR>
 map <C-q> :q<CR>
 map <Leader>y "+y
+vnoremap <Leader>y "+y
 map <Leader>p "+p
 
 nnoremap <F5> :FloatermToggle<CR>
@@ -35,7 +34,7 @@ map <Leader>/ :Telescope<CR>
 map <Leader>f :Telescope find_files<CR>
 map <Leader>e :Telescope file_browser<CR>
 map <Leader>b :Telescope buffers<CR>
-map <Leader>t :TroubleToggle<CR>
+map <Leader>t :NeoTreeFloatToggle<CR>
 map ? :Telescope current_buffer_fuzzy_find<CR>
 
 " EASYMOTION
@@ -44,13 +43,19 @@ map <C-f> <Plug>(easymotion-s2)
 
 " LSP
 
-map <Leader>ll :Lspsaga show_line_diagnostics<CR>
+nnoremap <leader>s <cmd>lua require('spectre').open()<CR>
+vnoremap <leader>s <esc>:lua require('spectre').open_visual()<CR>
+
 map <Leader>lb :Telescope diagnostics<CR>
+
+map <Leader>ll :Lspsaga show_line_diagnostics<CR>
 map <Leader>ln :Lspsaga diagnostic_jump_next<CR>
 map <Leader>lN :Lspsaga diagnostic_jump_prev<CR>
-map <Leader>lr :Lspsaga lsp_finder<CR>
+
+map <Leader>lf :Lspsaga lsp_finder<CR>
 map <Leader>la :Lspsaga code_action<CR>
 map <Leader>ld :Lspsaga hover_doc<CR>
+map <Leader>lr :Lspsaga rename<CR>
 
 nnoremap <C-h> :HunkLineToggle<CR>
 
@@ -69,8 +74,6 @@ nnoremap <C-down>  gj
 nnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 xnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 onoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
-
-vnoremap A <Esc>ggVG
 
 cnoremap <C-left>  <S-left>
 cnoremap <C-right> <S-right>
