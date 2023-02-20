@@ -16,30 +16,50 @@ map g9 9gt
 
 map <C-s> :w<CR>
 map <C-q> :q<CR>
+
 map <Leader>y "+y
-vnoremap <Leader>y "+y
 map <Leader>p "+p
+vnoremap <Leader>y "+y
 
+nnoremap <Leader>v 0v$h
 
-" Cycle
+nnoremap <CR>   o<Esc>
+nnoremap <S-CR> O<Esc>
 
-" TELESCOPE
+" CLI MOVEMENT
 
-map <Leader>/ :Telescope<CR>
-map <Leader>f :Telescope find_files<CR>
-map <Leader>e :Telescope file_browser<CR>
-map <Leader>b :Telescope buffers<CR>
-map <Leader>t :NeoTreeFloatToggle<CR>
-map ? :Telescope current_buffer_fuzzy_find<CR>
+cnoremap <C-left>  <S-left>
+cnoremap <C-right> <S-right>
 
-" EASYMOTION
+cnoremap <C-BS> <C-w>
+
+" INSERT MODE 
+
+inoremap <C-left>  <Esc>ba
+inoremap <C-right> <Esc>wa
+
+" MISC PLUGINS
+
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 map <C-f> <Plug>(easymotion-s2)
 
 nnoremap <C-h> :HunkLineToggle<CR>
 
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+" TELESCOPE
+
+map <Leader>// :Telescope<CR>
+map <Leader>/h :Telescope heading<CR>
+map <Leader>/g :Telescope live_grep<CR>
+map <Leader>/h :Telescope help_tags<CR>
+
+map <Leader>f :Telescope find_files<CR>
+map <Leader>e :Telescope file_browser<CR>
+map <Leader>b :Telescope buffers<CR>
+map <Leader>t :NeoTreeFloatToggle<CR>
+
+map ? :Telescope current_buffer_fuzzy_find<CR>
 
 " LITERAL NAVIGATION
 
@@ -53,21 +73,6 @@ nnoremap <C-down>  gj
 nnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 xnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 onoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
-
-cnoremap <C-left>  <S-left>
-cnoremap <C-right> <S-right>
-cnoremap <C-BS> <C-w>
-
-" INSERT MODE 
-
-inoremap <C-left>  <Esc>ba
-inoremap <C-right> <Esc>wa
-
-nnoremap <CR> o<Esc>
-nnoremap <S-CR> O<Esc>
-
-nnoremap <CR> o<Esc>
-nnoremap <S-CR> O<Esc>
 
 " SPLITTER
 

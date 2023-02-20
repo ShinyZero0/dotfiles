@@ -18,6 +18,7 @@ set notimeout
 set breakindent
 
 filetype plugin indent on
+let g:lightline = {'colorscheme': 'challenger_deep'}
 
 let g:vim_json_conceal=0
 let g:vim_markdown_conceal=0
