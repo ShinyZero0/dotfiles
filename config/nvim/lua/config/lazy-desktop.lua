@@ -66,6 +66,7 @@ require("lazy").setup({
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
 		dependencies = {
+			"crispgm/telescope-heading.nvim",
 			"nvim-telescope/telescope-file-browser.nvim",
 		},
 	},
