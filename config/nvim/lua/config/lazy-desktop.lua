@@ -36,6 +36,7 @@ require("lazy").setup({
 	-- FILETYPES
 
 	"lervag/vimtex",
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	-- "Fymyte/rasi.vim",
 
 	-- FORMATTING
@@ -44,11 +45,14 @@ require("lazy").setup({
 	"tpope/vim-commentary",
 	"tpope/vim-surround",
 	"junegunn/vim-easy-align",
+    "zef/vim-cycle",
+    -- "monaqa/dial.nvim",
 	-- "alvan/vim-closetag",
 
 	-- FILE MANAGING
 
 	"farmergreg/vim-lastplace",
+	"lambdalisue/suda.vim",
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
@@ -65,11 +69,9 @@ require("lazy").setup({
 			"nvim-telescope/telescope-file-browser.nvim",
 		},
 	},
-	"lambdalisue/suda.vim",
 
 	"easymotion/vim-easymotion",
 	"voldikss/vim-floaterm",
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
 	"KabbAmine/vCoolor.vim",
 	"ziontee113/color-picker.nvim",
@@ -106,37 +108,54 @@ require("lazy").setup({
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-omni",
-			{
-				"saadparwaiz1/cmp_luasnip",
-				dependencies = {
-					{
-						"L3MON4D3/LuaSnip",
-						version = "1.2.*",
-						build = "make install_jsregexp",
-						dependencies = {
-							"rafamadriz/friendly-snippets",
-							{
-								"iurimateus/luasnip-latex-snippets.nvim",
-								ft = "tex",
-								config = true,
-							},
-						},
-					},
-				},
-			},
+            {
+                "dcampos/cmp-snippy",
+                dependencies = {
+                    {
+                        "dcampos/nvim-snippy",
+                        dependencies = {
+                            "honza/vim-snippets",
+                        }
+                    },
+                }
+            },
 		},
 	},
 
 	-- THEMES
 
-	"folke/tokyonight.nvim",
-	"NLKNguyen/papercolor-theme",
-	"sjl/badwolf",
-	"ray-x/aurora",
-	"wuelnerdotexe/vim-enfocado",
-	"savq/melange",
-	"nyoom-engineering/oxocarbon.nvim",
-	"EdenEast/Nightfox.nvim",
+    {
+        "folke/tokyonight.nvim",
+        lazy = true,
+    },
+    {
+        "NLKNguyen/papercolor-theme",
+        lazy = true,
+    },
+    {
+        "sjl/badwolf",
+        lazy = true,
+    },
+    {
+        "ray-x/aurora",
+        lazy = true,
+    },
+    {
+        "wuelnerdotexe/vim-enfocado",
+        lazy = true,
+    },
+    {
+        "savq/melange",
+        lazy = true,
+    },
+    {
+        "nyoom-engineering/oxocarbon.nvim",
+        lazy = true,
+    },
+    {
+        "EdenEast/Nightfox.nvim",
+        lazy = true,
+    },
 }, {
 	defaults = {
 		-- lazy = false
@@ -161,17 +180,8 @@ vim.diagnostic.config({
 	float = true,
 })
 
+require('snippy').setup({})
+
 -- require("color-picker").setup({
 -- 	["icons"] = { "ﱢ", "" },
 -- })
-
-local luasnip = require("luasnip")
-luasnip.setup({})
-require("luasnip-latex-snippets").setup()
-require("luasnip.loaders.from_vscode").lazy_load()
-require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/LuaSnip/" })
-luasnip.config.set_config({
-	store_selection_keys = "<Tab>",
-	update_events = "TextChanged",
-	"TextChangedI",
-})

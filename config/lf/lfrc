@@ -2,7 +2,6 @@ set shell sh
 set scrolloff 5
 set ifs "\n"
 
-
 cmd touch %{{
     IFS=" "
     touch -- "$*"
@@ -16,12 +15,14 @@ cmd mkdir %{{
 }}
 
 cmd open-with ${{
+    tput smcup
     mimeopen --ask $fx
+    tput rmcup
 }}
 cmd open ${{
-    printf '\e[?1049h'
+    tput smcup
     jaro $fx
-    printf '\e[?1049l'
+    tput rmcup
 }}
 
 cmd fzf_jump ${{

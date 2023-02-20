@@ -27,6 +27,7 @@ nnoremap <F5> :FloatermToggle<CR>
 tmap <C-q> <C-\><C-n><C-q>
 tmap <F5> <C-q> 
 
+" Cycle
 
 " TELESCOPE
 

@@ -51,7 +51,7 @@ map g/ cd /
 map <enter> open
 map / fzf_jump
 map <c-o> jump-prev
-map <c-i> jump-next
+map <tab> jump-next
 
 map E ${{
     $EDITOR ./
