@@ -12,16 +12,16 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
 
-
+    "mzlogin/vim-markdown-toc",
     "ervandew/supertab",
     "farmergreg/vim-lastplace",
     "lukas-reineke/indent-blankline.nvim",
     "tversteeg/registers.nvim",
     "easymotion/vim-easymotion",
-    "voldikss/vim-floaterm",
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope.nvim", branch = "0.1.x" } ,
     "nvim-telescope/telescope-file-browser.nvim",
+    "crispgm/telescope-heading.nvim",
     "junegunn/vim-easy-align",
     "tpope/vim-surround" ,
     "tpope/vim-commentary",
@@ -30,23 +30,6 @@ require("lazy").setup({
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     "windwp/nvim-autopairs",
     "chrisbra/Colorizer",
-    -- LSP
-    -- "neovim/nvim-lspconfig" ,
-    -- {
-    --     "glepnir/lspsaga.nvim",
-    --     event = "BufRead",
-    --     config = function()
-    --         require("lspsaga").setup({})
-    --     end,
-    -- },
-    -- "mfussenegger/nvim-lint",
-    -- 'williamboman/mason.nvim',
-    -- 'williamboman/mason-lspconfig.nvim',
-    -- { "lervag/vimtex"},
-
-    -- SNIPPETS
-    { "L3MON4D3/LuaSnip", version = "<CurrentMajor>.*" },
-    "rafamadriz/friendly-snippets",
 
     -- THEMES
     "ray-x/aurora",
@@ -73,11 +56,4 @@ require("config.treesitter")
 require("config.blankline")
 
 
--- require('lualine').setup {
---     options = { theme = 'challenger_deep' }
--- }
-local luasnip = require("luasnip")
 
-luasnip.config.set_config({
-    store_selection_keys = "<Tab>",
-})
