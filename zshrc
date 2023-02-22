@@ -27,19 +27,22 @@ source ~/.zsh/lfcd.zsh
 
 # TURBO MODE
 zinit wait lucid for \
-    atload:'bindkey "^[[A" history-substring-search-up' atload:'bindkey "^[[B" \
-        history-substring-search-down' zsh-users/zsh-history-substring-search \
+    atload:'bindkey "^[[A" history-substring-search-up' \
+    atload:'bindkey "^[[B" history-substring-search-down' \
+        zsh-users/zsh-history-substring-search \
     hlissner/zsh-autopair \
     djui/alias-tips \
     zdharma-continuum/fast-syntax-highlighting \
-    zsh-users/zsh-completions \
     RobSis/zsh-completion-generator \
     ShinyZero0/z-git-filter \
+    blockf atpull'zinit creinstall -q .' \
+        zsh-users/zsh-completions \
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
-    romkatv/powerlevel10k \
+    depth"1" \
+        romkatv/powerlevel10k \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \

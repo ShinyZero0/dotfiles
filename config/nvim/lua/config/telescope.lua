@@ -2,16 +2,16 @@ local actions = require("telescope.actions")
 local fb_actions = require "telescope".extensions.file_browser.actions
 require("telescope").setup{
     defaults = {
+        sorting_strategy = "ascending",
+        layout_strategy = "horizontal",
         layout_config = {
             horizontal = {
                 prompt_position = "top",
             },
         },
-        sorting_strategy = "ascending",
-        layout_strategy = "horizontal",
         mappings = {
             ["n"] = {
-                ["<leader>"] = actions.toggle_selection + actions.move_selection_next,
+                -- ["<leader>"] = actions.toggle_selection + actions.move_selection_next,
                 ["<Tab>"] = actions.move_selection_next,
                 ["<S-Tab>"] = actions.move_selection_previous,
                 ["q"] = actions.close,
@@ -28,7 +28,18 @@ require("telescope").setup{
             }
         },
     },
-
+    pickers = {
+        find_files = {
+            follow = true,
+            find_command = { "fd", "-H", "-F", "-d", "3" },
+            mappings = {
+                ["i"] = {
+                    ["<S-CR>"] = actions.select_tab,
+                    ["<Del>"] = fb_actions.remove,
+                }
+            }
+        }
+    },
     extensions = {
         file_browser = {
             initial_mode = "normal",
@@ -61,18 +72,6 @@ require("telescope").setup{
             },
         },
     },
-    pickers = {
-        find_files = {
-            follow = true,
-            find_command = { "fd", "-H", "-F", "-d", "3" },
-            mappings = {
-                ["i"] = {
-                    ["<S-CR>"] = actions.select_tab,
-                    ["<Del>"] = fb_actions.remove,
-                }
-            }
-        }
-    }
 
 }
 require("telescope").load_extension "file_browser"

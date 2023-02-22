@@ -21,7 +21,7 @@ map <Leader>y "+y
 map <Leader>p "+p
 vnoremap <Leader>y "+y
 
-nnoremap <Leader>v 0v$h
+nnoremap <Leader>v ^v$h
 
 nnoremap <CR>   o<Esc>
 nnoremap <S-CR> O<Esc>
@@ -43,23 +43,24 @@ inoremap <C-right> <Esc>wa
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-map <C-f> <Plug>(easymotion-s2)
+map ? <cmd>HopPatternMW<CR>
+map <C-f> <cmd>HopWordMW<CR>
 
 nnoremap <C-h> :HunkLineToggle<CR>
 
 " TELESCOPE
 
-map <Leader>// :Telescope<CR>
-map <Leader>/h :Telescope heading<CR>
-map <Leader>/g :Telescope live_grep<CR>
-map <Leader>/h :Telescope help_tags<CR>
+" map <Leader>// :Telescope<CR>
+" map <Leader>/h :Telescope heading<CR>
+" map <Leader>/g :Telescope live_grep<CR>
+" map <Leader>/h :Telescope help_tags<CR>
 
-map <Leader>f :Telescope find_files<CR>
-map <Leader>e :Telescope file_browser<CR>
-map <Leader>b :Telescope buffers<CR>
-map <Leader>t :NeoTreeFloatToggle<CR>
+" map <Leader>f :Telescope find_files<CR>
+" map <Leader>e :Telescope file_browser<CR>
+" map <Leader>b :Telescope buffers<CR>
+" map <Leader>t :NeoTreeFloatToggle<CR>
 
-map ? :Telescope current_buffer_fuzzy_find<CR>
+" map ? :Telescope current_buffer_fuzzy_find<CR>
 
 " LITERAL NAVIGATION
 
