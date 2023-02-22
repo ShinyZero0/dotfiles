@@ -1,8 +1,6 @@
 set shell=/usr/bin/bash
 
 set ignorecase
-set smartcase
-set nocompatible
 set noswapfile
 set termguicolors
 set title
@@ -18,12 +16,11 @@ set notimeout
 set breakindent
 
 filetype plugin indent on
-let g:lightline = {'colorscheme': 'challenger_deep'}
 
-let g:vim_json_conceal=0
-let g:vim_markdown_conceal=0
-let g:vim_markdown_conceal_code_blocks=0
 set conceallevel=0
+let g:vim_json_conceal = 0
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 
 let g:EasyMotion_smartcase = 1
 
@@ -31,9 +28,8 @@ source $HOME/.config/nvim/init-mobile.vim
 source $HOME/.config/nvim/init-desktop.vim
 source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/keys.vim
+source $HOME/.config/nvim/colors.vim
 
-let g:lightline = {'colorscheme': 'challenger_deep'}
-colorscheme challenger_deep
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.axaml"
 let g:closetag_filetypes = "html,xhtml,phtml,xml"
 
