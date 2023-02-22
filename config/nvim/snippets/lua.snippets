@@ -1,3 +1,11 @@
 snippet lz "lazy plugin"
 	"${1:author/plugin}",${0}
-	
+snippet lazy "big lazy plugin"
+	{
+		"${1:author/plugin}",
+		config = true,
+		dependencies = {
+			${2}
+		}
+	},
+		
