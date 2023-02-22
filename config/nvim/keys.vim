@@ -1,18 +1,18 @@
-nnoremap <SPACE> <Nop>
+nnoremap <Space> <Nop>
 let mapleader = " "
 let maplocalleader = "\\"
 map ; :
 nnoremap <Esc> :noh<CR>
 
-map g1 1gt
-map g2 2gt
-map g3 3gt
-map g4 4gt
-map g5 5gt
-map g6 6gt
-map g7 7gt
-map g8 8gt
-map g9 9gt
+nnoremap g1 1gt
+nnoremap g2 2gt
+nnoremap g3 3gt
+nnoremap g4 4gt
+nnoremap g5 5gt
+nnoremap g6 6gt
+nnoremap g7 7gt
+nnoremap g8 8gt
+nnoremap g9 9gt
 
 map <C-s> :w<CR>
 map <C-q> :q<CR>
@@ -26,7 +26,11 @@ nnoremap <Leader>v 0v$h
 nnoremap <CR>   o<Esc>
 nnoremap <S-CR> O<Esc>
 
-" CLI MOVEMENT
+" Command Line
+
+"" set verymagic regex search
+nnoremap /  /\v
+cnoremap s/ s/\v
 
 cnoremap <C-left>  <S-left>
 cnoremap <C-right> <S-right>
@@ -49,17 +53,17 @@ nnoremap <C-h> :HunkLineToggle<CR>
 
 " TELESCOPE
 
-map <Leader>// :Telescope<CR>
-map <Leader>/h :Telescope heading<CR>
-map <Leader>/g :Telescope live_grep<CR>
-map <Leader>/h :Telescope help_tags<CR>
+nnoremap <Leader>t :NeoTreeFloatToggle<CR>
 
-map <Leader>f :Telescope find_files<CR>
-map <Leader>e :Telescope file_browser<CR>
-map <Leader>b :Telescope buffers<CR>
-map <Leader>t :NeoTreeFloatToggle<CR>
+nnoremap <Leader>// :Telescope<CR>
+nnoremap <Leader>/h :Telescope heading<CR>
+nnoremap <Leader>/g :Telescope live_grep<CR>
+nnoremap <Leader>/t :Telescope help_tags<CR>
 
-map ? :Telescope current_buffer_fuzzy_find<CR>
+nnoremap <Leader>f :Telescope find_files<CR>
+nnoremap <Leader>b :Telescope buffers<CR>
+
+nnoremap ? :Telescope current_buffer_fuzzy_find<CR>
 
 " LITERAL NAVIGATION
 

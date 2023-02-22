@@ -16,12 +16,19 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "snippy" },
 		-- { name = "omni" },
-		{ name = "buffer" },
+		{
+			name = "buffer",
+			option = {
+				get_bufnrs = function()
+					return vim.api.nvim_list_bufs()
+				end,
+			},
+		},
 		-- { name = "nvim_lua" },
 	}),
 	snippet = {
 		expand = function(args)
-			require("snippy").expand_snippet(args.body) 
+			require("snippy").expand_snippet(args.body)
 		end,
 	},
 	window = {
@@ -29,6 +36,9 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
+		["<C-Tab>"] = cmp.mapping(function(fallback)
+			snippy.next()
+		end, { "i", "s" }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -53,4 +63,4 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
 	}),
 })
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

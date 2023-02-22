@@ -10,4 +10,5 @@ set completeopt=noselect
 autocmd BufEnter *.axaml,*.xaml set ft=xml
 
 lua require("config.lazy-desktop")
-source ~/.config/nvim/keys-desktop.vim
+source $HOME/.config/nvim/keys-desktop.vim
+

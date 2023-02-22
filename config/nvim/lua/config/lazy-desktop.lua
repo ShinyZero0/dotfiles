@@ -27,10 +27,10 @@ require("lazy").setup({
 	{
 		"itchyny/lightline.vim",
 		dependencies = {
-			{
-				"challenger-deep-theme/vim",
-				pin = true,
-			},
+			-- {
+			-- 	"challenger-deep-theme/vim",
+			-- 	pin = true,
+			-- },
 		},
 	},
 	-- FILETYPES
@@ -85,12 +85,15 @@ require("lazy").setup({
 	{
 		"glepnir/lspsaga.nvim",
 		event = "BufRead",
-		config = true,
 	},
 	"sbdchd/neoformat",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
+    -- {
+    --     "ray-x/lsp_signature.nvim",
+    --     config = true,
+    -- },
 	-- 'junnplus/lsp-setup.nvim',
 	-- "jay-babu/mason-null-ls.nvim",
 	-- "jose-elias-alvarez/null-ls.nvim",
@@ -125,6 +128,7 @@ require("lazy").setup({
 
 	-- THEMES
 
+    "SethBarberee/challenger-deep.nvim",
     {
         "folke/tokyonight.nvim",
         lazy = true,
@@ -167,7 +171,7 @@ require("config.telescope")
 require("config.pairs")
 require("config.nvim-cmp")
 require("config.lsp")
-require("config.lspsaga")
+-- require("config.lspsaga")
 require("config.registers")
 require("config.treesitter")
 require("config.blankline")
