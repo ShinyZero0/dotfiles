@@ -44,7 +44,7 @@ require("telescope").setup{
         file_browser = {
             initial_mode = "normal",
             scroll_strategy = "limit",
-            hijack_netrw = true,
+            -- hijack_netrw = true,
             grouped = true,
             hide_parent_dir = true,
             mappings = {

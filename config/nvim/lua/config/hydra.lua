@@ -1,70 +1,89 @@
-local Hydra = require('hydra')
-local cmd = require('hydra.keymap-util').cmd
-local hints = require('config.hints')
+local Hydra = require("hydra")
+local cmd = require("hydra.keymap-util").cmd
+local hints = require("config.hints")
 vim.g.mapleader = " "
 
 Hydra({
-  name = 'Telescope',
-  hint = hints.TelescopeHint,
-  config = {
-    color = 'teal',
-    invoke_on_body = true,
-    hint = {
-      position = 'middle',
-      border = 'rounded',
-    },
-  },
-  mode = 'n',
-  body = '<Leader>/',
-  heads = {
-    { 'f', cmd 'Telescope find_files' },
-    { 'g', cmd 'Telescope live_grep' },
-    { 'm', cmd 'Telescope help_tags', { desc = 'vim help' } },
-    { '/', cmd 'Telescope current_buffer_fuzzy_find', { desc = 'search in file' } },
-    { 'o', cmd 'Telescope oldfiles', { desc = 'recently opened files' } },
-    { 'h', cmd 'Telescope heading', { desc = 'headings' } },
-    { 'k', cmd 'Telescope keymaps' },
-    { 'O', cmd 'Telescope vim_options' },
-    { 'b', cmd 'Telescope buffers' },
-    { 'p', cmd 'Telescope projects', { desc = 'projects' } },
-    { '?', cmd 'Telescope search_history',  { desc = 'search history' } },
-    { ';', cmd 'Telescope command_history', { desc = 'command-line history' } },
-    { 'c', cmd 'Telescope commands', { desc = 'execute command' } },
-    { 'u', cmd 'silent! %foldopen! | UndotreeToggle', { desc = 'undotree' }},
-    { '<Enter>', cmd 'Telescope', { exit = true, desc = 'list all pickers' } },
-    { '<Esc>', nil, { exit = true, nowait = true } },
-  }
+	name = "Telescope",
+	hint = hints.Telescope,
+	config = {
+		color = "teal",
+		invoke_on_body = true,
+		hint = {
+			type = "window",
+			position = "middle",
+			border = "rounded",
+		},
+	},
+	mode = "n",
+	body = "<Leader>/",
+	heads = {
+		{ "b", cmd("Telescope buffers") },
+		{ "c", cmd("Telescope commands"), { desc = "execute command" } },
+		{ "f", cmd("Telescope find_files") },
+		{ "g", cmd("Telescope live_grep") },
+		{ "h", cmd("Telescope heading"), { desc = "headings" } },
+		{ "k", cmd("Telescope keymaps") },
+		{ "l", cmd("Telescope highlights"), { desc = "highLights" } },
+		{ "m", cmd("Telescope help_tags"), { desc = "vim help" } },
+		{ "o", cmd("Telescope oldfiles"), { desc = "recently opened files" } },
+		{ "O", cmd("Telescope vim_options") },
+		{ "p", cmd("Telescope projects"), { desc = "projects" } },
+		{ "u", cmd("silent! %foldopen! | UndotreeToggle"), { desc = "undotree" } },
+		{ "?", cmd("Telescope search_history"), { desc = "search history" } },
+		{ ";", cmd("Telescope command_history"), { desc = "command-line history" } },
+		{ "/", cmd("Telescope current_buffer_fuzzy_find"), { desc = "search in file" } },
+		{ "<Enter>", cmd("Telescope"), { exit = true, desc = "list all pickers" } },
+		{ "<Esc>", nil, { exit = true, nowait = true } },
+	},
 })
 Hydra({
-  name = 'Options',
-  mode = 'n',
-  body = '<Leader>O',
-  hint = hints.OptionsHint,
-  config = {
-    color = 'teal',
-    invoke_on_body = true,
-    hint = {
-      position = 'middle',
-      border = 'rounded',
-      type = "window",
-    },
-    funcs = {
-      {
-        wrap = function()
-          vim.cmd("set wrap?")
-        end
-      },
-      {
-        linebreak = function()
-          vim.cmd("set linebreak?")
-        end
-      }
-    }
-  },
-  heads = {
-    { "w", cmd "set wrap!" },
-    { "b", cmd "set linebreak!" },
-    { '<Esc>', nil, { exit = true, nowait = true } },
-  }
+	name = "Options",
+	mode = "n",
+	body = "<Leader>O",
+	hint = hints.Options,
+	config = {
+		color = "teal",
+		invoke_on_body = true,
+		hint = {
+			position = "middle",
+			border = "rounded",
+			type = "window",
+		},
+		funcs = {
+			{
+				wrap = function()
+					vim.cmd("set wrap?")
+				end,
+			},
+			{
+				linebreak = function()
+					vim.cmd("set linebreak?")
+				end,
+			},
+		},
+	},
+	heads = {
+		{ "w", cmd("set wrap!") },
+		{ "b", cmd("set linebreak!") },
+    { "R", cmd("set readonly!") },
+		{ "<Esc>", nil, { exit = true, nowait = true } },
+	},
+})
+Hydra({
+	name = "Quick words",
+	config = {
+		color = "pink",
+		hint = { type = "cmdline" },
+	},
+	mode = { "n", "x", "o" },
+	body = ",",
+	heads = {
+		{ "w", "<Plug>(smartword-w)" },
+		{ "b", "<Plug>(smartword-b)" },
+		{ "e", "<Plug>(smartword-e)" },
+		{ "ge", "<Plug>(smartword-ge)" },
+		{ "<Esc>", nil, { exit = true, mode = "n" } },
+	},
 })
 -- vim:sw=2:ts=2

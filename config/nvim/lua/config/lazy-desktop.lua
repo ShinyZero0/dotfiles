@@ -16,6 +16,10 @@ require("lazy").setup({
 
   "anuvyklack/hydra.nvim",
   "anuvyklack/vim-smartword",
+  {
+    "phaazon/hop.nvim",
+    config = true,
+  },
 
 	-- VISUAL
 
@@ -72,7 +76,6 @@ require("lazy").setup({
 		},
 	},
 
-	"easymotion/vim-easymotion",
 	"voldikss/vim-floaterm",
 
 	"KabbAmine/vCoolor.vim",
@@ -173,10 +176,13 @@ require("lazy").setup({
 }
 )
 
-require("config.telescope")
+
 require("config.pairs")
 require("config.nvim-cmp")
 require("config.lsp")
+
+require("config.telescope")
+require('config.neotree')
 require("config.treesitter")
 require("config.blankline")
 require("config.lspsaga")

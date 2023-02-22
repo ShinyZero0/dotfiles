@@ -1,23 +1,25 @@
 return
 {
-    TelescopeHint = [[
+    Telescope = [[
 
-    _f_: files       _h_: headings
-    _o_: old files   _g_: live grep
-    _p_: projects    _/_: search in file
+    _f_: Files       _h_: Headings
+    _o_: Old files   _g_: live Grep
+    _p_: Projects    _/_: Search in file
+    _l_: highLights
 
-    _b_: buffers     _u_: undotree
-    _m_: manuals     _c_: execute command
-    _k_: keymaps     _;_: commands history  
-    _O_: options     _?_: search history
+    _b_: Buffers     _u_: undotree
+    _m_: Manuals     _c_: execute Command
+    _k_: Keymaps     _;_: Commands history    
+    _O_: Options     _?_: Search history
 
     _<Enter>_: Telescope           _<Esc>_
 
     ]],
-    OptionsHint = [[
+    Options = [[
 
-    _w_: wrap %{wrap}
-    _b_: linebreak 
+    _w_: wrap %{wrap}    
+    _b_: linebreak
+    _R_: readonly
     _<Esc>_
 
     ]]
