@@ -14,6 +14,8 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({  
 	"nvim-lua/plenary.nvim",
 
+  -- MOTIONS
+
   "anuvyklack/hydra.nvim",
   "anuvyklack/vim-smartword",
   "chaoren/vim-wordmotion",
@@ -31,11 +33,15 @@ require("lazy").setup({
     dependencies = {
     }
   },
-	{
-		"itchyny/lightline.vim",
-		dependencies = {
-		},
-	},
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require('config.lualine')
+    end,
+    dependencies = {
+      "ShinyZero0/challenger-deep.nvim"
+    }
+  },
 
 	-- FILETYPES
 
@@ -45,9 +51,16 @@ require("lazy").setup({
 
 	-- EDITING
 
-	"windwp/nvim-autopairs",
+  {
+    "windwp/nvim-autopairs",
+    config = function ()
+      require('config.pairs')
+    end,
+    dependencies = {
+    }
+  },
 	"tpope/vim-commentary",
-	"tpope/vim-surround",
+	"kylechui/nvim-surround",
 	"junegunn/vim-easy-align",
 	{
 		"nvim-pack/nvim-spectre",
@@ -138,7 +151,10 @@ require("lazy").setup({
 
 	-- THEMES
 
-  "ShinyZero0/challenger-deep.nvim",
+  {
+    "ShinyZero0/challenger-deep.nvim",
+    lazy = false,
+  },
 	{
 		"folke/tokyonight.nvim",
 		lazy = true,
@@ -183,7 +199,7 @@ require("lazy").setup({
 )
 
 
-require("config.pairs")
+-- require("config.pairs")
 require("config.nvim-cmp")
 require("config.lsp")
 require("config.lspsaga")
