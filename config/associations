@@ -3,7 +3,7 @@
   #:pattern "image/.*"
   #:program "nomacs %f &>/dev/null 2>&1 &")
 (assoc
-  #:pattern '("^text/.*" "application/x-shellscript")
+  #:pattern '("^text/.*" "application/x-shellscript" "application/x-desktop")
   #:program "nvim %f"
   #:term "kitty --class floatwin -- ")
 ; (assoc

@@ -54,7 +54,7 @@ nnoremap <C-h> :HunkLineToggle<CR>
 
 " TELESCOPE
 
-nnoremap <Leader>t :NeoTreeFloatToggle<CR>
+nnoremap <Leader>t <cmd>Neotree toggle float reveal<CR>
 
 " map <Leader>// :Telescope<CR>
 " map <Leader>/h :Telescope heading<CR>

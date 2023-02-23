@@ -56,20 +56,17 @@ Hydra({
 					vim.cmd("set wrap?")
 				end,
 			},
-			{
-				linebreak = function()
-					vim.cmd("set linebreak?")
-				end,
-			},
 		},
 	},
 	heads = {
 		{ "w", cmd("set wrap!") },
 		{ "b", cmd("set linebreak!") },
-    { "R", cmd("set readonly!") },
+		{ "R", cmd("set readonly!") },
+		{ "L", cmd("Lazy") },
 		{ "<Esc>", nil, { exit = true, nowait = true } },
 	},
 })
+
 Hydra({
 	name = "Quick words",
 	config = {
@@ -84,6 +81,30 @@ Hydra({
 		{ "e", "<Plug>(smartword-e)" },
 		{ "ge", "<Plug>(smartword-ge)" },
 		{ "<Esc>", nil, { exit = true, mode = "n" } },
+	},
+})
+
+Hydra({
+	name = "Lsp diagnostics",
+	body = "<Leader>l",
+	config = {
+		color = "pink",
+	},
+	mode = { "n" },
+	heads = {
+		{ "l", cmd("Lspsaga show_line_diagnostics") },
+		{
+			"n",
+			function()
+				require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+			end,
+		},
+		{
+			"N",
+			function()
+				require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+			end,
+		},
 	},
 })
 -- vim:sw=2:ts=2

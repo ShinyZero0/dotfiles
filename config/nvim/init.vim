@@ -12,7 +12,6 @@ set noshowmode
 
 set tabstop=4 shiftwidth=4 expandtab
 set scrolloff=5
-set notimeout
 set breakindent
 
 filetype plugin indent on

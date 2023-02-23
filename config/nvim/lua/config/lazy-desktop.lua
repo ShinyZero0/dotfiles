@@ -16,6 +16,7 @@ require("lazy").setup({
 
   "anuvyklack/hydra.nvim",
   "anuvyklack/vim-smartword",
+  "chaoren/vim-wordmotion",
   {
     "phaazon/hop.nvim",
     config = true,
@@ -25,6 +26,11 @@ require("lazy").setup({
 
 	"lukas-reineke/indent-blankline.nvim",
   "folke/which-key.nvim",
+  {
+    "folke/which-key.nvim",
+    dependencies = {
+    }
+  },
 	{
 		"itchyny/lightline.vim",
 		dependencies = {
@@ -180,12 +186,14 @@ require("lazy").setup({
 require("config.pairs")
 require("config.nvim-cmp")
 require("config.lsp")
+require("config.lspsaga")
 
 require("config.telescope")
 require('config.neotree')
+
 require("config.treesitter")
 require("config.blankline")
-require("config.lspsaga")
+
 require("config.hydra")
 
 vim.diagnostic.config({
@@ -198,6 +206,15 @@ vim.diagnostic.config({
 })
 
 require("snippy").setup({})
+require('which-key').setup({
+  window = {
+    border = "rounded"
+  },
+  triggers_blacklist = {
+    c = {"s/", "s"}
+  }
+
+})
 
 -- require("color-picker").setup({
 -- 	["icons"] = { "ﱢ", "" },

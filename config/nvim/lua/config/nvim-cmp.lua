@@ -37,7 +37,7 @@ cmp.setup({
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-Tab>"] = cmp.mapping(function(fallback)
-			snippy.next()
+			snippy.expand_or_advance()
 		end, { "i", "s" }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
