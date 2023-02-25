@@ -1,1 +1,9 @@
-/home/zero/.dotfiles/config/nvim/snippets/lua.snippets
+snippet lz "lazy plugin"
+	"${1}",
+snippet lazy "big lazy plugin"
+	{
+		"${1}",
+		config = true,
+		opts = {${2}},
+		dependencies = {${3}},
+	},

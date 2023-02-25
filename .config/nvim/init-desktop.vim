@@ -1,1 +1,1 @@
-/home/zero/.dotfiles/config/nvim/init-desktop.vim
+init-desktop.vim##a.x86_64

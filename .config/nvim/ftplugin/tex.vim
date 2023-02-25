@@ -1,1 +1,1 @@
-/home/zero/.dotfiles/config/nvim/ftplugin/tex.vim
+set linebreak

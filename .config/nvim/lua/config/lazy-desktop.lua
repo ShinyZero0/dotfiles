@@ -1,1 +1,0 @@
-/home/zero/.dotfiles/config/nvim/lua/config/lazy-desktop.lua

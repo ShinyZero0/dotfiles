@@ -1,1 +1,2 @@
-/home/zero/.dotfiles/config/nvim/ftplugin/cs.vim
+" let mapleader=" "
+nnoremap <buffer> gd :lua require('omnisharp_extended').lsp_definitions()<cr>

@@ -1,1 +1,3 @@
-/home/zero/.dotfiles/config/nvim/ftplugin/markdown.vim
+set linebreak
+" let g:indentLine_enabled=0
+" set conceallevel=0

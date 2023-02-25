@@ -1,1 +1,1 @@
-/home/zero/.dotfiles/config/nvim/keys-desktop.vim
+keys-desktop.vim##a.x86_64
