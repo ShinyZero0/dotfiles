@@ -30,7 +30,7 @@ nnoremap <S-CR> O<Esc>
 
 "" set verymagic regex search
 nnoremap /  /\v
-cnoremap s/ s/\v
+cnoremap <nowait> s/ s/\v
 
 cnoremap <C-left>  <S-left>
 cnoremap <C-right> <S-right>
@@ -55,13 +55,14 @@ nnoremap <C-h> :HunkLineToggle<CR>
 " TELESCOPE
 
 nnoremap <Leader>t <cmd>Neotree toggle float reveal<CR>
+nnoremap <Leader>. <cmd>Neoformat<CR>
 
 " map <Leader>// :Telescope<CR>
 " map <Leader>/h :Telescope heading<CR>
 " map <Leader>/g :Telescope live_grep<CR>
 " map <Leader>/h :Telescope help_tags<CR>
 
-" map <Leader>f :Telescope find_files<CR>
+nnoremap <Leader>f :Telescope find_files<CR>
 " map <Leader>e :Telescope file_browser<CR>
 " map <Leader>b :Telescope buffers<CR>
 " map <Leader>t :NeoTreeFloatToggle<CR>

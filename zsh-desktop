@@ -1,5 +1,5 @@
 [[ ! -f ~/.p10k-desktop.zsh ]] || source ~/.p10k-desktop.zsh
-zinit light-mode for \
+zinit wait lucid for \
     jeffreytse/zsh-vi-mode \
     peterhurford/git-it-on.zsh \
 
@@ -63,7 +63,7 @@ alias pkls="dnf list installed"
 alias pkin="sudo dnf install"
 alias pkrm="sudo dnf remove"
 alias pkup="sudo dnf update -y"
-alias pkfd="dnf search"
+alias pkfd="dnf search -C"
 
 alias camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' /home/zero/.steam/steam/steamapps/common/War\ Thunder/presets/РБ-танки.blk"
 alias getclass="xprop | rg -i class"

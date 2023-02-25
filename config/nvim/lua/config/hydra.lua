@@ -20,7 +20,9 @@ Hydra({
 	heads = {
 		{ "b", cmd("Telescope buffers") },
 		{ "c", cmd("Telescope commands"), { desc = "execute command" } },
-		{ "f", cmd("Telescope find_files") },
+		{ "f", function()
+      require("telescope.builtin").find_files({hidden=true, no_ignore=true})
+		end},
 		{ "g", cmd("Telescope live_grep") },
 		{ "h", cmd("Telescope heading"), { desc = "headings" } },
 		{ "k", cmd("Telescope keymaps") },
@@ -81,6 +83,7 @@ Hydra({
 		{ "e", "<Plug>(smartword-e)" },
 		{ "ge", "<Plug>(smartword-ge)" },
 		{ "<Esc>", nil, { exit = true, mode = "n" } },
+		{ ",", nil, { exit = true, nowait = true } },
 	},
 })
 
@@ -92,7 +95,9 @@ Hydra({
 	},
 	mode = { "n" },
 	heads = {
+    { "d", cmd("Lspsaga hover_doc")},
 		{ "l", cmd("Lspsaga show_line_diagnostics") },
+    {"a", cmd("Lspsaga code_action")},
 		{
 			"n",
 			function()

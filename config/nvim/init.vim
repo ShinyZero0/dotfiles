@@ -1,11 +1,11 @@
 set shell=/usr/bin/bash
 
 set ignorecase
-set noswapfile
-set termguicolors
 set title
+set noswapfile
 set undofile
 
+set termguicolors
 set number
 set cursorline
 set noshowmode
@@ -13,6 +13,8 @@ set noshowmode
 set tabstop=4 shiftwidth=4 expandtab
 set scrolloff=5
 set breakindent
+
+set timeoutlen=3000
 
 filetype plugin indent on
 
