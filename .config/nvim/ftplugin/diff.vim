@@ -1,0 +1,1 @@
+/home/zero/.dotfiles/config/nvim/ftplugin/diff.vim

@@ -1,0 +1,1 @@
+/home/zero/.dotfiles/config/nvim/autoload/neoformat/formatters/text.vim

@@ -1,0 +1,1 @@
+/home/zero/.dotfiles/config/nvim/lua/config/pairs.lua
