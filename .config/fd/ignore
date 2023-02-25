@@ -1,1 +1,4 @@
-/home/zero/.dotfiles/config/fd/ignore
+# vim: ft=gitignore
+
+.git*
+!.gitignore

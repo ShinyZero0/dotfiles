@@ -1,1 +1,17 @@
-/home/zero/.dotfiles/config/i3/colors
+# vim: ft=i3config
+# Colors:
+
+set $btext    #100e23
+set $wtext    #cbe3e7
+set $active   #aaffe4
+set $inactive #565575
+set $bground  #1e1c31
+set $alert    #c991e1
+set $border   #aaffe4
+
+# Class:                border    backgr.   text     indicator child_border
+client.focused          $active   $active   $active  $active   $border
+client.focused_inactive $inactive $inactive $wtext   $bground  $bground
+client.unfocused        $bground  $bground  $bground $bground  $bground
+client.urgent           $bground  $alert    $wtext   $alert    $alert
+client.placeholder      $alert    $btext    $wtext   $alert    $alert

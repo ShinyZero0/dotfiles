@@ -1,1 +1,65 @@
-/home/zero/.dotfiles/config/i3/config
+# i3 config file (v4)
+
+set $ws1  "1"
+set $ws2  "2"
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
+set $ws10 "10"
+
+# Autostart
+
+exec --no-startup-id "lxpolkit & sleep 1; dex-autostart --autostart --environment i3"
+exec --no-startup-id qlipper
+exec --no-startup-id picom -b
+exec --no-startup-id nm-applet
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id ~/.scripts/wallpapers.sh 
+
+# AutoWorkspace
+
+exec ~/.scripts/startup-ws.sh
+
+# AutoRestart
+
+exec_always --no-startup-id "pkill polybar ; polybar upperbar"
+exec_always --no-startup-id "pkill xkeysnail ; xkeysnail .scripts/xkeysnail.py & sleep 1 ; xset r rate 250 15"
+exec_always --no-startup-id pkill dunst
+exec_always --no-startup-id "pkill picom & sleep 1 ; picom -b"
+exec_always --no-startup-id nitrogen --restore
+
+# Style
+
+font pango: InconsolataLGC Nerd Font Mono Bold 2
+
+for_window [tiling] border pixel 2
+for_window [floating] border pixel 1, move position center
+gaps inner 10
+
+focus_follows_mouse no
+
+include colors
+
+for_window [class="libreoffice.*"] move container to workspace $ws4
+for_window [class="Steam"] move container to workspace $ws5
+for_window [class="War Thunder \(Vulkan, 64bit\)"] move container to workspace $ws3
+for_window [class="corectrl"] move scratchpad
+
+for_window [class="(?i)todo"]     floating enable
+for_window [class="Exaile"]       floating enable resize set 900 600
+for_window [class="(?i)avalonia"] floating enable
+for_window [class="Lxappearance"] floating enable
+for_window [class="Gpick"]        floating enable
+for_window [class="Alacarte"]     floating enable
+for_window [class="qt5ct"]        floating enable resize set 900 600
+for_window [class="Pavucontrol"]  floating enable resize set 640 480
+for_window [class="Font-manager"] floating enable resize set 900 600
+for_window [class="floatwin"]     floating enable resize set 900 600
+for_window [instance="nomacs"]    floating enable resize set 900 600
+for_window [instance="floatwin"]  floating enable resize set 900 600
+
+include keys

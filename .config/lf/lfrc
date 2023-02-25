@@ -1,1 +1,59 @@
-/home/zero/.dotfiles/config/lf/lfrc
+set shell sh
+set scrolloff 5
+set ifs "\n"
+
+cmd touch %{{
+    IFS=" "
+    touch -- "$*"
+    lf -remote "send $id select \"$*\""
+}}
+
+cmd mkdir %{{
+    IFS=" "
+    mkdir -p -- "$*"
+    lf -remote "send $id select \"$*\""
+}}
+
+cmd open-with ${{
+    tput smcup
+    mimeopen --ask $fx
+    tput rmcup
+}}
+cmd open ${{
+    tput smcup
+    jaro $fx
+    tput rmcup
+}}
+
+cmd fzf_jump ${{
+    lf -remote "send $id set hidden"
+    res="$(fd -d 3 -H -F | fzf --cycle --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    if [ -d "$res" ] ; then
+        cmd="cd"
+    elif [ -f "$res" ] ; then
+        cmd="select"
+    else
+        exit 0
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}} 
+
+
+cmd extract ${{
+    set -f
+    atool -x $f
+}}
+
+cmd on-cd &{{
+    printf "\033]0; $(pwd | sed "s|$HOME|~|")\007" > /dev/tty
+}}
+on-cd
+
+cmd follow_link %{{
+  lf -remote "send ${id} select '$(readlink $f)'"
+}}
+source ~/.config/lf/lfrc-desktop
+source ~/.config/lf/lfrc-mobile
+source ~/.config/lf/keys
+
+# vim: ft=bash
