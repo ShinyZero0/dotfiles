@@ -3,8 +3,6 @@ nnoremap <F5> :FloatermToggle<CR>
 tmap <C-q> <C-\><C-n><C-q>
 tmap <F5> <C-q> 
 
-" LSP
-
 nnoremap <leader>s <cmd>lua require('spectre').open()<CR>
 vnoremap <leader>s <esc>:lua require('spectre').open_visual()<CR>
 

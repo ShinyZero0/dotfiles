@@ -25,7 +25,10 @@ return {
 	"chaoren/vim-wordmotion",
   {
     "ThePrimeagen/harpoon",
-    config = true,
+    config = function ()
+			vim.keymap.set("n", "<leader>m", require("harpoon.mark").add_file, {})
+			vim.keymap.set("n", "<leader>'", require("harpoon.ui").toggle_quick_menu, {})
+    end,
     opts = {},
     dependencies = {
       "nvim-lua/plenary.nvim"
