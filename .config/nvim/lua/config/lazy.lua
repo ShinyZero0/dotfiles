@@ -72,8 +72,7 @@ require("lazy").setup({
 		dependencies = {},
 	},
 	{
-		"terrortylor/nvim-comment",
-		name = "nvim_comment",
+		"numToStr/Comment.nvim",
 		config = true,
 		keys = {
 			"gc",
@@ -107,7 +106,7 @@ require("lazy").setup({
 			require("config.neotree")
 		end,
 		branch = "v2.x",
-		cmd = "Neotree",
+		-- cmd = "Neotree",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
@@ -138,6 +137,7 @@ require("lazy").setup({
 		dependencies = {
 			"crispgm/telescope-heading.nvim",
 			"nvim-telescope/telescope-file-browser.nvim",
+      "natecraddock/telescope-zf-native.nvim",
 		},
 	},
 
@@ -183,6 +183,8 @@ require("lazy").setup({
 				dependencies = {
 					{
 						"dcampos/nvim-snippy",
+            name = "snippy",
+            config = true,
 						dependencies = {
 							"honza/vim-snippets",
 						},
@@ -254,7 +256,7 @@ vim.diagnostic.config({
 	float = true,
 })
 
-require("snippy").setup({})
+-- require("snippy").setup({})
 
 -- require("color-picker").setup({
 -- 	["icons"] = { "ﱢ", "" },

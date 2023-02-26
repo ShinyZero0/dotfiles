@@ -27,7 +27,7 @@ cmd open ${{
 
 cmd fzf_jump ${{
     lf -remote "send $id set hidden"
-    res="$(fd -d 3 -H -F | fzf --cycle --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    res="$(fd -d 3 -H -F | awk '{ print length, $0 }' | sort -n -s | cut -d ' ' -f 2- | fzf +s --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
     if [ -d "$res" ] ; then
         cmd="cd"
     elif [ -f "$res" ] ; then

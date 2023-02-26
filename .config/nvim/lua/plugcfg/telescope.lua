@@ -1,1 +1,0 @@
-/home/zero/.dotfiles/config/nvim/lua/plugcfg/telescope.lua
