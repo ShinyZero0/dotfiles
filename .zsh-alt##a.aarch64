@@ -1,1 +1,6 @@
-/data/data/com.termux/files/home/.dotfiles/zsh-mobile
+export EDITOR=nvim
+path+=$HOME/.local/bin
+alias pkup="pkg upgrade -y"
+alias pkfd="pkg search"
+alias pkin="pkg install"
+
