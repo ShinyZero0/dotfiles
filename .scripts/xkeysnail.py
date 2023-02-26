@@ -20,6 +20,8 @@ define_keymap(re.compile("firefox|librewolf-default"), {
     K("Alt-Tab"): K("C-tab"),
     K("Alt-grave"): K("C-Shift-tab"),
 
+    K("Alt-R"): K("C-Shift-L"),
+
     # Navigate history with Alt-F(orward)/B(ackward)
     K("Alt-B"): K("Alt-left"),
     K("Alt-F"): K("Alt-right"),

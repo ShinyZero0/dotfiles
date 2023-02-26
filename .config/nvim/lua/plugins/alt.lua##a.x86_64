@@ -1,0 +1,26 @@
+return {
+    -- DESKTOP-SPECIFIC PLUGINS
+
+	"KabbAmine/vCoolor.vim",
+	"lambdalisue/suda.vim",
+
+    -- Lsp
+	"Hoffs/omnisharp-extended-lsp.nvim",
+	"neovim/nvim-lspconfig",
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"WhoIsSethDaniel/mason-tool-installer.nvim",
+	{
+		"glepnir/lspsaga.nvim",
+		event = "BufRead",
+	},
+
+	{
+		"folke/which-key.nvim",
+		dependencies = {},
+		config = function()
+			require("config.which-key")
+		end,
+	},
+}
+-- vim:ts=2:sw=2

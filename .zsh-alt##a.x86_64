@@ -1,6 +1,6 @@
 zinit wait lucid for \
-    jeffreytse/zsh-vi-mode \
     peterhurford/git-it-on.zsh \
+    jeffreytse/zsh-vi-mode \
 
 cbyank(){
     xsel -i
@@ -67,8 +67,4 @@ alias pkinf="dnf info -C"
 
 alias camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' /home/zero/.steam/steam/steamapps/common/War\ Thunder/presets/РБ-танки.blk"
 alias getclass="xprop | rg -i class"
-
-
-
-
 

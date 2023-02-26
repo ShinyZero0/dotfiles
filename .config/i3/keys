@@ -16,9 +16,9 @@ bindsym Print exec --no-startup-id maim --format=png | tee "$HOME/Images/$(date)
 bindsym control+mod1+t exec --no-startup-id kitty
 bindsym $mod+s move scratchpad
 bindsym $mod+Shift+s scratchpad show
-bindsym $mod+p exec --no-startup-id ~/.scripts/togglepavuctl.sh 
-bindsym $mod+g exec --no-startup-id ~/.scripts/togglepicom.sh
-bindsym --release $mod+i exec --no-startup-id ~/.scripts/viminsert.sh
+bindsym $mod+p exec --no-startup-id ~/.scripts/TogglePavuCTL.sh
+bindsym $mod+g exec --no-startup-id ~/.scripts/TogglePicom.sh
+bindsym --release $mod+i exec --no-startup-id ~/.scripts/VimInsert.sh
 
 bindsym $mod+Tab   focus right
 bindsym $mod+grave focus down

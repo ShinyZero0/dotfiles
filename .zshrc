@@ -42,8 +42,7 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-[[ ! -f ~/.zsh-mobile ]] || source ~/.zsh-mobile
-[[ ! -f ~/.zsh-desktop ]] || source ~/.zsh-desktop
+source ~/.zsh-alt
 source ~/.zsh/lfcd.zsh
 
 # TURBO MODE
@@ -52,11 +51,11 @@ zinit wait lucid for \
     atload:'bindkey "^[[B" history-substring-search-down' \
         zsh-users/zsh-history-substring-search \
     hlissner/zsh-autopair \
-    djui/alias-tips \
     ShinyZero0/z-git-filter \
     RobSis/zsh-completion-generator \
-    blockf completions \
-        https://github.com/TheLocehiliosan/yadm/raw/master/completion/zsh/_yadm \
+    olets/zsh-abbr \
+
+    # djui/alias-tips \
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -76,6 +75,8 @@ zinit for \
 zinit wait lucid for \
     blockf atpull'zinit creinstall -q .' \
         zsh-users/zsh-completions \
+    blockf completions \
+        https://github.com/TheLocehiliosan/yadm/raw/master/completion/zsh/_yadm \
 
 eval "$(zoxide init zsh)"
 
