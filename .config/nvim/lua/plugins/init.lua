@@ -8,19 +8,48 @@ return {
 
 	"voldikss/vim-floaterm",
 
-	"ziontee113/color-picker.nvim",
-	"chrisbra/Colorizer",
+	{
+		"NvChad/nvim-colorizer.lua",
+		config = true,
+		opts = {
+			user_default_options = {
+				names = false,
+			},
+		},
+		dependencies = {},
+	},
 
 	-- MOTIONS
 
+	"anuvyklack/vim-smartword",
+	"chaoren/vim-wordmotion",
+  {
+    "ThePrimeagen/harpoon",
+    config = true,
+    opts = {},
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+  },
+	-- {
+	-- 	"cbochs/grapple.nvim",
+	-- 	dependencies = { "nvim-lua/plenary.nvim" },
+	-- },
+	{
+		"cbochs/portal.nvim",
+		config = function()
+			vim.keymap.set("n", "<leader>o", require("portal").jump_backward, {})
+			vim.keymap.set("n", "<leader>i", require("portal").jump_forward, {})
+		end,
+		opts = {},
+		dependencies = {},
+	},
 	{
 		"anuvyklack/hydra.nvim",
 		config = function()
 			require("config.hydra")
 		end,
 	},
-	"anuvyklack/vim-smartword",
-	"chaoren/vim-wordmotion",
 	{
 		"phaazon/hop.nvim",
 		config = true,
@@ -104,7 +133,7 @@ return {
 			require("config.neotree")
 		end,
 		branch = "v2.x",
-		cmd = "Neotree",
+		-- cmd = "Neotree",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",

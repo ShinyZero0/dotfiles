@@ -1,10 +1,19 @@
-require('lualine').setup {
+require("lualine").setup({
 	options = { theme = "challenger_deep" },
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "filename" },
+		-- lualine_c = {
+		-- 	{
+		-- 		function()
+		-- 			local key = require("grapple").key()
+		-- 			return "  [" .. key .. "]"
+		-- 		end,
+		-- 		cond = require("grapple").exists,
+		-- 	},
+		-- },
 		lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
 	},
-}
+})

@@ -29,10 +29,4 @@ vim.diagnostic.config({
 	float = true,
 })
 
--- require("snippy").setup({})
-
--- require("color-picker").setup({
--- 	["icons"] = { "ﱢ", "" },
--- })
-
 -- vim:ts=2:sw=2
