@@ -18,11 +18,11 @@ exec --no-startup-id qlipper
 exec --no-startup-id picom -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id ~/.scripts/wallpapers.sh 
+exec --no-startup-id ~/.scripts/Wallpapers.sh
 
 # AutoWorkspace
 
-exec ~/.scripts/startup-ws.sh
+exec ~/.scripts/startupWS.sh
 
 # AutoRestart
 
