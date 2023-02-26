@@ -52,8 +52,7 @@ on-cd
 cmd follow_link %{{
   lf -remote "send ${id} select '$(readlink $f)'"
 }}
-source ~/.config/lf/lfrc-desktop
-source ~/.config/lf/lfrc-mobile
+source ~/.config/lf/lfrc-alt
 source ~/.config/lf/keys
 
 # vim: ft=bash

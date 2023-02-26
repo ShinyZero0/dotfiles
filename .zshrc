@@ -28,6 +28,7 @@ alias gcomall="git add --all && git commit"
 alias gmenocom="git merge --no-commit --no-ff"
 alias gst="git status"
 alias yst="yadm status"
+alias yadd="yadm add"
 alias gch="git checkout"
 
 # ADDED BY ZINIT'S INSTALLER

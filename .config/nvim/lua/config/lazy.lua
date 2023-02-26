@@ -17,19 +17,8 @@ require("lazy").setup("plugins", {
 		border = "rounded",
 	},
 	defaults = {
-		-- lazy = false
 	},
 })
-
-require("config.lsp")
-require("config.lspsaga")
-
-require("config.telescope")
-
-require("config.treesitter")
-require("config.blankline")
-
-require("config.hydra")
 
 vim.diagnostic.config({
 	virtual_text = false,

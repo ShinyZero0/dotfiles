@@ -1,18 +1,32 @@
 return {
-    -- DESKTOP-SPECIFIC PLUGINS
+	-- DESKTOP-SPECIFIC PLUGINS
 
 	"KabbAmine/vCoolor.vim",
 	"lambdalisue/suda.vim",
 
-    -- Lsp
+	-- Lsp
 	"Hoffs/omnisharp-extended-lsp.nvim",
-	"neovim/nvim-lspconfig",
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("config.lsp")
+		end,
+	},
+	{
+		"williamboman/mason.nvim",
+		config = true,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		config = true,
+	},
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	{
 		"glepnir/lspsaga.nvim",
 		event = "BufRead",
+		config = function()
+			require("config.lspsaga")
+		end,
 	},
 
 	{

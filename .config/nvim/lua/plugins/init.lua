@@ -13,7 +13,12 @@ return {
 
 	-- MOTIONS
 
-	"anuvyklack/hydra.nvim",
+	{
+		"anuvyklack/hydra.nvim",
+		config = function()
+			require("config.hydra")
+		end,
+	},
 	"anuvyklack/vim-smartword",
 	"chaoren/vim-wordmotion",
 	{
@@ -23,7 +28,12 @@ return {
 
 	-- VISUAL
 
-	"lukas-reineke/indent-blankline.nvim",
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("config.blankline")
+		end,
+	},
 	{
 		"nvim-lualine/lualine.nvim",
 		config = function()
@@ -36,7 +46,13 @@ return {
 
 	-- FILETYPES
 
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("config.treesitter")
+		end,
+		build = ":TSUpdate",
+	},
 	-- "Fymyte/rasi.vim",
 	-- "lervag/vimtex",
 
@@ -56,7 +72,7 @@ return {
 		keys = {
 			"gc",
 		},
-    event = "ModeChanged *:[vV\x16]*"
+		event = "ModeChanged *:[vV\x16]*",
 	},
 	{
 		"kylechui/nvim-surround",
@@ -115,6 +131,9 @@ return {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
+		config = function()
+			require("config.telescope")
+		end,
 		branch = "0.1.x",
 		dependencies = {
 			"crispgm/telescope-heading.nvim",

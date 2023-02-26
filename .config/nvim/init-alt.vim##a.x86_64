@@ -5,9 +5,5 @@ let g:floaterm_shell = "/usr/bin/zsh"
 let g:neoformat_enabled_cs = ["csharpier"]
 
 " NEEDED FOR NVIM-CMP
-set completeopt=noselect
 " menu,menuone,
 autocmd BufEnter *.axaml,*.xaml set ft=xml
-
-source $HOME/.config/nvim/keys-desktop.vim
-

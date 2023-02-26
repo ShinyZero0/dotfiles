@@ -32,8 +32,9 @@ require("telescope").setup({
 	},
 	pickers = {
 		find_files = {
-			follow = true,
-			find_command = { "fd", "-H", "-F", "-d", "3" },
+			follow = false,
+			find_command = { "fd", "-H", "-d", "3" },
+-- "-F", 
 			mappings = {
 				["i"] = {
 					["<S-CR>"] = actions.select_tab,

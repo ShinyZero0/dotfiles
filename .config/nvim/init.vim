@@ -16,6 +16,8 @@ set breakindent
 
 set timeoutlen=3000
 
+set completeopt=noselect
+
 filetype plugin indent on
 
 set conceallevel=0
@@ -31,12 +33,11 @@ function! SourceIfExists(file)
    endif
 endfunction
 
-" call SourceIfExists("$HOME/.config/nvim/init-mobile.vim")
-" call SourceIfExists("$HOME/.config/nvim/init-desktop.vim")
 lua require("config.lazy")
 source $HOME/.config/nvim/init-alt.vim
 source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/keys.vim
+call SourceIfExists("$HOME/.config/nvim/keys-alt.vim")
 source $HOME/.config/nvim/colors.vim
 
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.axaml"
