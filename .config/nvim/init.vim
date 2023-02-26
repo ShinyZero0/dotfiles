@@ -31,9 +31,10 @@ function! SourceIfExists(file)
    endif
 endfunction
 
-call SourceIfExists("$HOME/.config/nvim/init-mobile.vim")
-call SourceIfExists("$HOME/.config/nvim/init-desktop.vim")
-" source $HOME/.config/nvim/init-desktop.vim
+" call SourceIfExists("$HOME/.config/nvim/init-mobile.vim")
+" call SourceIfExists("$HOME/.config/nvim/init-desktop.vim")
+lua require("config.lazy")
+source $HOME/.config/nvim/init-alt.vim
 source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/keys.vim
 source $HOME/.config/nvim/colors.vim

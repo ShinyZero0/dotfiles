@@ -1,0 +1,1 @@
+/data/data/com.termux/files/home/.dotfiles/config/nvim/lua/config/registers.lua

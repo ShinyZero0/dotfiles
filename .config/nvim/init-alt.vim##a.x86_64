@@ -9,6 +9,5 @@ set completeopt=noselect
 " menu,menuone,
 autocmd BufEnter *.axaml,*.xaml set ft=xml
 
-lua require("config.lazy")
 source $HOME/.config/nvim/keys-desktop.vim
 

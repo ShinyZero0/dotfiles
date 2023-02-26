@@ -1,1 +1,0 @@
-init-desktop.vim##a.x86_64

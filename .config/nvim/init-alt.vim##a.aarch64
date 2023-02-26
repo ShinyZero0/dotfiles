@@ -1,0 +1,5 @@
+set clipboard-=unnamed
+
+/* lua require("config.lazy-mobile") */
+/* source $HOME/.config/nvim/lightline-mobile.vim */
+let g:org_default_notes_file = "~/org/notes.org"
