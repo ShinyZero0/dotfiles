@@ -45,6 +45,10 @@ map y
 map yf yankfile
 map yy copy
 
+map d
+map dd cut
+map du %rip -u
+
 map gl follow_link
 map g/ cd /
 

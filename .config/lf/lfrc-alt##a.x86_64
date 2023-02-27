@@ -3,7 +3,7 @@ set ratios 1:2:2
 set previewer ~/.config/lf/lf_kitty_preview
 set cleaner ~/.config/lf/lf_kitty_clean
 
-cmd trash %trash-put $fx
+cmd trash %rip $fx
 map D trash
 map <pgdn> half-down
 map <pgup> half-up
