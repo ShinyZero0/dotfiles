@@ -1,5 +1,6 @@
-path+=$HOME/bin/ 
-path+=$HOME/.local/bin/
+path+=$HOME/bin
+path+=$HOME/.local/bin
+path+=$HOME/.cargo/bin
 
 # Fix Telegram File Picker
 export QT_QPA_PLATFORMTHEME=gtk3
