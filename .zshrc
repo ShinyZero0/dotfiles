@@ -56,8 +56,6 @@ zinit wait lucid for \
     RobSis/zsh-completion-generator \
     olets/zsh-abbr \
 
-    # djui/alias-tips \
-
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
