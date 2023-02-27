@@ -9,6 +9,27 @@ fi
 
 fpath+=~/.zsh/completions/
 
+mkcd(){
+    mkdir -p "$1"
+    cd "$1"
+}
+
+alias lf="lfcd"
+
+alias rcupv="rcup -v | rg -v 'identical' "
+
+alias rezsh="source ~/.zshrc"
+alias edzsh="$EDITOR ~/.zshrc"
+
+alias xdgtype="xdg-mime query filetype"
+
+# GIT ALIASES
+alias gcomall="git add --all && git commit"
+alias gmenocom="git merge --no-commit --no-ff"
+alias gst="git status"
+alias yst="yadm status"
+alias gch="git checkout"
+
 # ADDED BY ZINIT'S INSTALLER
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
@@ -32,11 +53,10 @@ zinit wait lucid for \
         zsh-users/zsh-history-substring-search \
     hlissner/zsh-autopair \
     djui/alias-tips \
-    zdharma-continuum/fast-syntax-highlighting \
     RobSis/zsh-completion-generator \
     ShinyZero0/z-git-filter \
-    blockf atpull'zinit creinstall -q .' \
-        zsh-users/zsh-completions \
+    completions \
+        https://github.com/TheLocehiliosan/yadm/raw/master/completion/zsh/_yadm \
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -51,6 +71,10 @@ zinit light-mode for \
 zinit for \
     OMZL::git.zsh \
 
+zinit wait lucid for \
+    blockf atpull'zinit creinstall -q .' \
+        zsh-users/zsh-completions \
+
 eval "$(zoxide init zsh)"
 
 zstyle ':completion:*' menu select completer _complete _ignored _approximate
@@ -58,8 +82,8 @@ zstyle ':completion:*' max-errors 3
 zstyle :compinstall filename '/home/zero/.zshrc'
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-autoload -Uz compinit
-compinit
+# autoload -Uz compinit
+# compinit
 zmodload zsh/complist
 # zinit compinit > /dev/null
 
@@ -80,24 +104,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 
-mkcd(){
-    mkdir -p "$1"
-    cd "$1"
-}
-# numbers=("${(@f)$(cmd)}")
-
-alias lf="lfcd"
-
-alias rcupv="rcup -v | rg -v 'identical' "
-
-alias rezsh="source ~/.zshrc"
-alias edzsh="$EDITOR ~/.zshrc"
-
-# GIT ALIASES
-alias gcomall="git add --all && git commit"
-alias gmenocom="git merge --no-commit --no-ff"
-alias gst="git status"
-alias gch="git checkout"
-
-alias xdgtype="xdg-mime query filetype"
-echo '\e[5 q'
+zinit wait lucid for \
+    atload"zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \

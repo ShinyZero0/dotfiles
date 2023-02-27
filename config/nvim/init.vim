@@ -25,8 +25,15 @@ let g:vim_markdown_conceal_code_blocks = 0
 
 let g:EasyMotion_smartcase = 1
 
-source $HOME/.config/nvim/init-mobile.vim
-source $HOME/.config/nvim/init-desktop.vim
+function! SourceIfExists(file)
+    if filereadable(expand(a:file))
+       exe "source " a:file
+   endif
+endfunction
+
+call SourceIfExists("$HOME/.config/nvim/init-mobile.vim")
+call SourceIfExists("$HOME/.config/nvim/init-desktop.vim")
+" source $HOME/.config/nvim/init-desktop.vim
 source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/keys.vim
 source $HOME/.config/nvim/colors.vim
