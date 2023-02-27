@@ -1,1 +1,1 @@
-init-alt.vim##a.x86_64
+init-alt.vim##a.aarch64

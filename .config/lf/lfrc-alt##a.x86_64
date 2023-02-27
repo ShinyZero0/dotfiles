@@ -5,6 +5,7 @@ set cleaner ~/.config/lf/lf_kitty_clean
 
 cmd trash %rip $fx
 map D trash
+map du %rip -u
 map <pgdn> half-down
 map <pgup> half-up
 
