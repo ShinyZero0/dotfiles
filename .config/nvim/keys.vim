@@ -52,9 +52,9 @@ map <C-f> <cmd>HopWordMW<CR>
 
 nnoremap <C-h> :HunkLineToggle<CR>
 
-" TELESCOPE
-
 nnoremap <Leader>t <cmd>Neotree toggle float reveal<CR>
+nnoremap <Leader>f :Telescope find_files<CR>
+nnoremap <Leader>r <cmd>Telescope resume<CR>
 nnoremap <Leader>. <cmd>Neoformat<CR>
 
 " map <Leader>// :Telescope<CR>
@@ -62,7 +62,6 @@ nnoremap <Leader>. <cmd>Neoformat<CR>
 " map <Leader>/g :Telescope live_grep<CR>
 " map <Leader>/h :Telescope help_tags<CR>
 
-nnoremap <Leader>f :Telescope find_files<CR>
 " map <Leader>e :Telescope file_browser<CR>
 " map <Leader>b :Telescope buffers<CR>
 " map <Leader>t :NeoTreeFloatToggle<CR>

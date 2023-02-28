@@ -23,17 +23,17 @@ return {
 
 	"anuvyklack/vim-smartword",
 	"chaoren/vim-wordmotion",
-  {
-    "ThePrimeagen/harpoon",
-    config = function ()
+	{
+		"ThePrimeagen/harpoon",
+		config = function()
 			vim.keymap.set("n", "<leader>m", require("harpoon.mark").add_file, {})
 			vim.keymap.set("n", "<leader>'", require("harpoon.ui").toggle_quick_menu, {})
-    end,
-    opts = {},
-    dependencies = {
-      "nvim-lua/plenary.nvim"
-    },
-  },
+		end,
+		opts = {},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
 	-- {
 	-- 	"cbochs/grapple.nvim",
 	-- 	dependencies = { "nvim-lua/plenary.nvim" },
@@ -41,10 +41,24 @@ return {
 	{
 		"cbochs/portal.nvim",
 		config = function()
+			require("portal").setup(opts)
 			vim.keymap.set("n", "<leader>o", require("portal").jump_backward, {})
 			vim.keymap.set("n", "<leader>i", require("portal").jump_forward, {})
 		end,
-		opts = {},
+		opts = {
+			portal = {
+				body = {
+					options = {
+						relative = "editor",
+					},
+				},
+				title = {
+					options = {
+						relative = "editor",
+					},
+				},
+			},
+		},
 		dependencies = {},
 	},
 	{
@@ -142,17 +156,16 @@ return {
 			"MunifTanjim/nui.nvim",
 			"nvim-lua/plenary.nvim",
 		},
-		init = function() -- init is called on startup. i.e. no lazy.
+		init = function() 
 			vim.g.neo_tree_remove_legacy_commands = 1
 			if vim.fn.argc() >= 1 then
 				vim.api.nvim_create_autocmd("UIEnter", {
 					once = true,
 					callback = function(_)
-						for i = 0, vim.fn.argc() - 1 do -- check for all command line arguments
+						for i = 0, vim.fn.argc() - 1 do 
 							local stat = vim.loop.fs_stat(vim.fn.argv(i))
-							if stat and stat.type == "directory" then -- only if any of them is a dir
-								require("neo-tree") -- require neo-tree, which asks lazy to load neo-tree which calls setup with `opts` and
-								-- since hijack_netrw_behavior is set there, neo-tree overwrites netrw on setup
+							if stat and stat.type == "directory" then 
+								require("neo-tree") 
 								return
 							end
 						end
@@ -166,17 +179,28 @@ return {
 		config = function()
 			require("config.telescope")
 		end,
+		cmd = {
+			"Telescope",
+		},
 		branch = "0.1.x",
 		dependencies = {
 			"crispgm/telescope-heading.nvim",
-			"nvim-telescope/telescope-file-browser.nvim",
+			-- "nvim-telescope/telescope-file-browser.nvim",
 			"natecraddock/telescope-zf-native.nvim",
 		},
 	},
 
 	-- LSP & CO
 
-	"sbdchd/neoformat",
+	{
+		"sbdchd/neoformat",
+		config = function() end,
+		cmd = {
+			"Neoformat",
+		},
+		opts = {},
+		dependencies = {},
+	},
 	-- {
 	--     "ray-x/lsp_signature.nvim",
 	--     config = true,

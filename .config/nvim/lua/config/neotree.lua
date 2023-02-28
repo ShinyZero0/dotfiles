@@ -1,4 +1,5 @@
 require("neo-tree").setup({
+
 	window = {
 		position = "float",
 		mappings = {
@@ -8,4 +9,5 @@ require("neo-tree").setup({
 	filesystem = {
 		hijack_netrw_behavior = "open_default",
 	},
+
 })

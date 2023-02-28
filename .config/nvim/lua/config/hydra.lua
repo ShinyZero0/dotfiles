@@ -20,9 +20,12 @@ Hydra({
 	heads = {
 		{ "b", cmd("Telescope buffers") },
 		{ "c", cmd("Telescope commands"), { desc = "execute command" } },
-		{ "f", function()
-      require("telescope.builtin").find_files({hidden=true, no_ignore=true})
-		end},
+		{
+			"f",
+			function()
+				require("telescope.builtin").find_files({ hidden = true, no_ignore = true })
+			end,
+		},
 		{ "g", cmd("Telescope live_grep") },
 		{ "h", cmd("Telescope heading"), { desc = "headings" } },
 		{ "k", cmd("Telescope keymaps") },
@@ -31,7 +34,7 @@ Hydra({
 		{ "o", cmd("Telescope oldfiles"), { desc = "recently opened files" } },
 		{ "O", cmd("Telescope vim_options") },
 		{ "p", cmd("Telescope projects"), { desc = "projects" } },
-		{ "u", cmd("silent! %foldopen! | UndotreeToggle"), { desc = "undotree" } },
+		-- { "u", cmd("silent! %foldopen! | UndotreeToggle"), { desc = "undotree" } },
 		{ "?", cmd("Telescope search_history"), { desc = "search history" } },
 		{ ";", cmd("Telescope command_history"), { desc = "command-line history" } },
 		{ "/", cmd("Telescope current_buffer_fuzzy_find"), { desc = "search in file" } },
@@ -45,26 +48,20 @@ Hydra({
 	body = "<Leader>O",
 	hint = hints.Options,
 	config = {
-		color = "teal",
+		color = "red",
 		invoke_on_body = true,
 		hint = {
 			position = "middle",
 			border = "rounded",
 			type = "window",
 		},
-		funcs = {
-			{
-				wrap = function()
-					vim.cmd("set wrap?")
-				end,
-			},
-		},
+		funcs = {},
 	},
 	heads = {
 		{ "w", cmd("set wrap!") },
 		{ "b", cmd("set linebreak!") },
 		{ "R", cmd("set readonly!") },
-		{ "L", cmd("Lazy") },
+		{ "L", cmd("Lazy"), { exit = true } },
 		{ "<Esc>", nil, { exit = true, nowait = true } },
 	},
 })
@@ -95,19 +92,19 @@ Hydra({
 	},
 	mode = { "n" },
 	heads = {
-    { "d", cmd("Lspsaga hover_doc")},
+		{ "d", cmd("Lspsaga hover_doc"), { nowait = true } },
 		{ "l", cmd("Lspsaga show_line_diagnostics") },
-    {"a", cmd("Lspsaga code_action")},
+		{ "a", cmd("Lspsaga code_action") },
 		{
 			"n",
 			function()
-				require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+				require("lspsaga.diagnostic"):goto_next()
 			end,
 		},
 		{
 			"N",
 			function()
-				require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+				require("lspsaga.diagnostic"):goto_prev()
 			end,
 		},
 	},

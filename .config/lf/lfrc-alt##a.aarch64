@@ -1,3 +1,5 @@
+set previewer ~/.config/lf/bat-prv.sh
+
 cmd yankpath &{{
     echo -n $fx | termux-clipboard-set
 }}
