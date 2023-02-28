@@ -22,8 +22,9 @@ exec --no-startup-id ~/.scripts/Wallpapers.sh
 
 # AutoWorkspace
 
-exec ~/.scripts/startupWS.sh
+# exec ~/.scripts/startupWS.sh
 
+include layout
 # AutoRestart
 
 exec_always --no-startup-id "pkill polybar ; polybar upperbar"

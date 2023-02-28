@@ -1,6 +1,7 @@
 path+=$HOME/bin
 path+=$HOME/.local/bin
 path+=$HOME/.cargo/bin
+path+=$HOME/.local/share/zinit/polaris/bin
 
 # Fix Telegram File Picker
 export QT_QPA_PLATFORMTHEME=gtk3

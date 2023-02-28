@@ -15,21 +15,21 @@ mkcd(){
 }
 
 alias lf="lfcd"
-
-alias rcupv="rcup -v | rg -v 'identical' "
-
-alias rezsh="source ~/.zshrc"
-alias edzsh="$EDITOR ~/.zshrc"
-
-alias xdgtype="xdg-mime query filetype"
-
-# GIT ALIASES
-alias gcomall="git add --all && git commit"
-alias gmenocom="git merge --no-commit --no-ff"
-alias gst="git status"
-alias yst="yadm status"
-alias yadd="yadm add"
-alias gch="git checkout"
+#
+# alias rcupv="rcup -v | rg -v 'identical' "
+#
+# alias rezsh="source ~/.zshrc"
+# alias edzsh="$EDITOR ~/.zshrc"
+#
+# alias xdgtype="xdg-mime query filetype"
+#
+# # GIT ALIASES
+# alias gcomall="git add --all && git commit"
+# alias gmenocom="git merge --no-commit --no-ff"
+# alias gst="git status"
+# alias yst="yadm status"
+# alias yadd="yadm add"
+# alias gch="git checkout"
 
 # ADDED BY ZINIT'S INSTALLER
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -65,6 +65,10 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust \
+
+zinit as"null" from"gh-r" for \
+    bpick"kitty-*-x86_64.txz" sbin"bin/kitty" sbin"bin/kitten" if"[[ $(uname -m) = x86_64 ]]" \
+        kovidgoyal/kitty
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
