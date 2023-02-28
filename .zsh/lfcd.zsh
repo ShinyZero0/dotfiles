@@ -18,6 +18,7 @@ lfcd () {
     tmp="$(mktemp)"
     # `command` is needed in case `lfcd` is aliased to `lf`
     command lf -last-dir-path="$tmp" "$@"
+    kitten icat --clear --transfer-mode=memory --stdin=no < /dev/null > /dev/tty
     if [ -f "$tmp" ]; then
         dir="$(cat "$tmp")"
         rm -f "$tmp"
