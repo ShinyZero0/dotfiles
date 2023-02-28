@@ -30,7 +30,6 @@ nnoremap <S-CR> O<Esc>
 
 "" set verymagic regex search
 nnoremap /  /\v
-cnoremap <nowait> s/ s/\v
 
 cnoremap <C-left>  <S-left>
 cnoremap <C-right> <S-right>

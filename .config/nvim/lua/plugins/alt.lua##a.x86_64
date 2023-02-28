@@ -23,7 +23,6 @@ return {
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	{
 		"glepnir/lspsaga.nvim",
-		event = "BufRead",
 		config = function()
 			require("config.lspsaga")
 		end,
