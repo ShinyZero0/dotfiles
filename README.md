@@ -4,16 +4,19 @@ Install:
 
 * packages:
 ```bash
-sudo dnf install i3wm polybar picom rofi kitty python3-pip -y
+sudo dnf install i3wm polybar picom rofi python3-pip -y
 ```
 * [xkeysnail](https://github.com/mooz/xkeysnail):
 ```bash
-sudo pip3 install xkeysnail
+sudo pip install xkeysnail
 sudo usermod -a -G input $USER
 ```
+
+These are installed automatically by zinit:
 * [lf](https://github.com/gokcehan/lf)
 * [pistol](https://github.com/doronbehar/pistol)
-* [jaro](https://github.com/isamert/jaro) 
+* [jaro](https://github.com/isamert/jaro)
+* [kitty](https://github.com/kovidgoyal/kitty)
 
 Set [Challenger Deep](https://github.com/challenger-deep-theme/xresources) as xresources  
 ```bash

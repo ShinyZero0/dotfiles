@@ -3,6 +3,14 @@ return {
 
 	"KabbAmine/vCoolor.vim",
 	"lambdalisue/suda.vim",
+  {
+    "karb94/neoscroll.nvim",
+    config = true,
+    dependencies = {},
+    opts = {
+      stop_eof = false,
+    }
+  },
 
 	-- Lsp
 	"Hoffs/omnisharp-extended-lsp.nvim",
