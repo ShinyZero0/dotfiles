@@ -1,1 +1,0 @@
-init-alt.vim##a.x86_64

@@ -8,6 +8,11 @@ return {
 
 	"voldikss/vim-floaterm",
 
+  {
+    "m00qek/baleia.nvim",
+    config = true,
+    dependencies = {}
+  },
 	{
 		"NvChad/nvim-colorizer.lua",
 		config = true,

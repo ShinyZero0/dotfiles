@@ -3,4 +3,8 @@ path+=$HOME/.local/bin
 alias pkup="pkg upgrade -y"
 alias pkfd="pkg search"
 alias pkin="pkg install"
+alias pkrm="pkg remove"
+
+alias yank="termux-clipboard-set"
+alias paste="termux-clipboard-get"
 

@@ -19,6 +19,7 @@ cmd open-with ${{
     mimeopen --ask $fx
     tput rmcup
 }}
+map o open-with
 cmd open ${{
     tput smcup
     jaro $fx
