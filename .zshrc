@@ -81,18 +81,20 @@ zinit if"[[ $(uname -m) = x86_64 ]]" as"null" from"gh-r" for \
     sbin"koreader* -> koreader" \
         koreader/koreader \
     sbin"wormhole-rs" magic-wormhole/magic-wormhole.rs
+    sbin"fd" completions @sharkdp/fd \
 
     # sbin"deno" denoland/deno \
+
 # Install binaries
 zinit as"null" depth"1" from"gh-r" for \
     sbin"lf" gokcehan/lf \
     sbin"glow" charmbracelet/glow \
     sbin"fzf" junegunn/fzf \
-    sbin"fd" completions @sharkdp/fd \
 
 # Install non-release binaries
 zinit as"null" depth"1" for \
     sbin"jaro" isamert/jaro \
+    atclone"cargo install --path=." atpull"%atclone" I60R/page
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
