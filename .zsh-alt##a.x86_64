@@ -1,4 +1,4 @@
-zinit wait lucid for \
+zinit wait lucid depth"1" for \
     peterhurford/git-it-on.zsh \
     jeffreytse/zsh-vi-mode \
 
@@ -59,14 +59,15 @@ zvm_after_lazy_keybindings() {
   zvm_bindkey vicmd  'p' my_zvm_vi_put_after
   zvm_bindkey vicmd  'P' my_zvm_vi_put_before
 }
-# alias pk="sudo dnf"
-# alias pkls="dnf list installed"
-# alias pkin="sudo dnf install"
-# alias pkrm="sudo dnf remove"
-# alias pkup="sudo dnf update -y"
-# alias pkfd="dnf search -C -y"
-# alias pkinf="dnf info -C -y"
+alias pk="sudo dnf"
+alias pkls="dnf list installed"
+alias pkin="sudo dnf install"
+alias pkrm="sudo dnf remove"
+alias pkup="sudo dnf update -y"
+alias pkfd="dnf search -C -y"
+alias pkinf="dnf info -C -y"
 
-# alias camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' /home/zero/.steam/steam/steamapps/common/War\ Thunder/presets/РБ-танки.blk"
-# alias getclass="xprop | rg -i class"
+alias camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' /home/zero/.steam/steam/steamapps/common/War\ Thunder/presets/РБ-танки.blk"
+alias getclass="xprop | rg -i class"
+alias dont="dotnet"
 

@@ -1,7 +1,7 @@
 set ratios 1:2:2
 
-set previewer ~/.config/lf/lf_kitty_preview
-set cleaner ~/.config/lf/lf_kitty_clean
+set previewer ~/.config/lf/lf-kitty
+set cleaner ~/.config/lf/lf-kitty-clean
 
 cmd trash %rip $fx
 map D trash

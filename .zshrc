@@ -1,10 +1,10 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 
 fpath+=~/.zsh/completions/
@@ -15,21 +15,25 @@ mkcd(){
 }
 
 alias lf="lfcd"
-#
-# alias rcupv="rcup -v | rg -v 'identical' "
-#
-# alias rezsh="source ~/.zshrc"
-# alias edzsh="$EDITOR ~/.zshrc"
-#
-# alias xdgtype="xdg-mime query filetype"
-#
-# # GIT ALIASES
-# alias gcomall="git add --all && git commit"
-# alias gmenocom="git merge --no-commit --no-ff"
-# alias gst="git status"
-# alias yst="yadm status"
-# alias yadd="yadm add"
-# alias gch="git checkout"
+
+alias rcupv="rcup -v | rg -v 'identical' "
+
+alias rez="source ~/.zshrc"
+alias edz="$EDITOR ~/.zshrc"
+
+alias whrs="wormhole-rs"
+
+alias xdgtype="xdg-mime query filetype"
+
+# GIT ALIASES
+alias gcomall="git add --all && git commit"
+alias gca="git commit -a"
+alias gmenocom="git merge --no-commit --no-ff"
+alias gst="git status"
+alias gch="git checkout"
+alias yst="yadm status"
+alias yadd="yadm add"
+alias yca="yadm commit -a"
 
 # ADDED BY ZINIT'S INSTALLER
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -47,7 +51,7 @@ source ~/.zsh-alt
 source ~/.zsh/lfcd.zsh
 
 # TURBO MODE
-zinit wait lucid for \
+zinit wait lucid depth"1" for \
     atload:'bindkey "^[[A" history-substring-search-up' \
     atload:'bindkey "^[[B" history-substring-search-down' \
         zsh-users/zsh-history-substring-search \
@@ -58,24 +62,44 @@ zinit wait lucid for \
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-zinit light-mode for \
-    depth"1" \
+zinit light-mode depth"1" for \
         romkatv/powerlevel10k \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust \
 
-zinit as"null" from"gh-r" for \
-    bpick"kitty-*-x86_64.txz" sbin"bin/kitty" sbin"bin/kitten" if"[[ $(uname -m) = x86_64 ]]" \
-        kovidgoyal/kitty
+
+# Install Desktop-only binaries
+zinit if"[[ $(uname -m) = x86_64 ]]" as"null" from"gh-r" for \
+    bpick"kitty-*-x86_64.txz" sbin"bin/kitty" sbin"bin/kitten" \
+        kovidgoyal/kitty \
+    sbin"pistol* -> pistol" \
+        doronbehar/pistol \
+    sbin"linux_czkawka_cli -> czkawka" bpick"linux_czkawka_cli" \
+        qarmin/czkawka \
+    sbin"koreader* -> koreader" \
+        koreader/koreader \
+    sbin"wormhole-rs" magic-wormhole/magic-wormhole.rs
+
+    # sbin"deno" denoland/deno \
+# Install binaries
+zinit as"null" depth"1" from"gh-r" for \
+    sbin"lf" gokcehan/lf \
+    sbin"glow" charmbracelet/glow \
+    sbin"fzf" junegunn/fzf \
+    sbin"fd" completions @sharkdp/fd \
+
+# Install non-release binaries
+zinit as"null" depth"1" for \
+    sbin"jaro" isamert/jaro \
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 zinit for \
     OMZL::git.zsh \
 
-zinit wait lucid for \
+zinit wait depth"1" lucid for \
     blockf atpull'zinit creinstall -q .' \
         zsh-users/zsh-completions \
     blockf completions \
