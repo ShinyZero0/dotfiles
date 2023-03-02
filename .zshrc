@@ -35,6 +35,8 @@ alias yst="yadm status"
 alias yadd="yadm add"
 alias yca="yadm commit -a"
 
+ddns="shinyzero.ddns.net"
+
 # ADDED BY ZINIT'S INSTALLER
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
@@ -71,7 +73,7 @@ zinit light-mode depth"1" for \
 
 
 # Install Desktop-only binaries
-zinit if"[[ $(uname -m) = x86_64 ]]" as"null" from"gh-r" for \
+zinit if"[[ $(uname -m) = x86_64 ]]" depth"1" as"null" from"gh-r" for \
     bpick"kitty-*-x86_64.txz" sbin"bin/kitty" sbin"bin/kitten" \
         kovidgoyal/kitty \
     sbin"pistol* -> pistol" \
@@ -80,8 +82,11 @@ zinit if"[[ $(uname -m) = x86_64 ]]" as"null" from"gh-r" for \
         qarmin/czkawka \
     sbin"koreader* -> koreader" \
         koreader/koreader \
-    sbin"wormhole-rs" magic-wormhole/magic-wormhole.rs
+    sbin"wormhole-rs" magic-wormhole/magic-wormhole.rs \
     sbin"fd" completions @sharkdp/fd \
+
+zinit if"[[ $(uname -m) = x86_64 ]]" depth"1" as"null" for \
+    atclone"cargo install --path=." atpull"%atclone" I60R/page
 
     # sbin"deno" denoland/deno \
 
@@ -94,7 +99,6 @@ zinit as"null" depth"1" from"gh-r" for \
 # Install non-release binaries
 zinit as"null" depth"1" for \
     sbin"jaro" isamert/jaro \
-    atclone"cargo install --path=." atpull"%atclone" I60R/page
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
