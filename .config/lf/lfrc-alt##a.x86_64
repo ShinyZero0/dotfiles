@@ -9,6 +9,19 @@ map du %rip -u
 map <pgdn> half-down
 map <pgup> half-up
 
+cmd fzf_jump ${{
+    lf -remote "send $id set hidden"
+    res="$(fd -d 4 -H | depth-sorter | sk --color=dark,fg:#cbe3e7,bg:#1b182c,hl:#c991e1,fg+:#aaffe4,bg+:#565575,hl+:#63f2f1,gutter:#1b182c,pointer:#aaffe4,prompt:#c991e1,info:#ffe9aa,header:#cbe3e7,spinner:#63f2f1 --cycle --reverse --exact --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    if [ -d "$res" ] ; then
+        cmd="cd"
+    elif [ -f "$res" ] ; then
+        cmd="select"
+    else
+        exit 0
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}} 
+
 map <insert> push $touch<space>
 map <f-7> push $mkdir<space>
 cmd yankfile $xclip -selection clipboard -t $(file --mime-type $f | sed -e 's/.*: //') -i $fx
