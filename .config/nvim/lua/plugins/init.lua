@@ -8,11 +8,11 @@ return {
 
 	"voldikss/vim-floaterm",
 
-  {
-    "m00qek/baleia.nvim",
-    config = true,
-    dependencies = {}
-  },
+	{
+		"m00qek/baleia.nvim",
+		config = true,
+		dependencies = {},
+	},
 	{
 		"NvChad/nvim-colorizer.lua",
 		config = true,
@@ -29,10 +29,18 @@ return {
 	"anuvyklack/vim-smartword",
 	"chaoren/vim-wordmotion",
 	{
+		"chrisgrieser/nvim-various-textobjs",
+		config = function()
+			require("various-textobjs").setup({ useDefaultKeymaps = true })
+		end,
+	},
+	{
 		"ThePrimeagen/harpoon",
 		config = function()
 			vim.keymap.set("n", "<leader>m", require("harpoon.mark").add_file, {})
 			vim.keymap.set("n", "<leader>'", require("harpoon.ui").toggle_quick_menu, {})
+			vim.keymap.set("n", "<leader>i", require("harpoon.ui").nav_next, {})
+			vim.keymap.set("n", "<leader>o", require("harpoon.ui").nav_prev, {})
 		end,
 		keys = {
 			{ "<leader>m" },
@@ -47,29 +55,29 @@ return {
 	-- 	"cbochs/grapple.nvim",
 	-- 	dependencies = { "nvim-lua/plenary.nvim" },
 	-- },
-	{
-		"cbochs/portal.nvim",
-		config = function()
-			require("portal").setup(opts)
-			vim.keymap.set("n", "<leader>o", require("portal").jump_backward, {})
-			vim.keymap.set("n", "<leader>i", require("portal").jump_forward, {})
-		end,
-		opts = {
-			portal = {
-				body = {
-					options = {
-						relative = "editor",
-					},
-				},
-				title = {
-					options = {
-						relative = "editor",
-					},
-				},
-			},
-		},
-		dependencies = {},
-	},
+	-- {
+	-- 	"cbochs/portal.nvim",
+	-- 	config = function()
+	-- 		require("portal").setup(opts)
+	-- 		vim.keymap.set("n", "<leader>o", require("portal").jump_backward, {})
+	-- 		vim.keymap.set("n", "<leader>i", require("portal").jump_forward, {})
+	-- 	end,
+	-- 	opts = {
+	-- 		portal = {
+	-- 			body = {
+	-- 				options = {
+	-- 					relative = "editor",
+	-- 				},
+	-- 			},
+	-- 			title = {
+	-- 				options = {
+	-- 					relative = "editor",
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- 	dependencies = {},
+	-- },
 	{
 		"anuvyklack/hydra.nvim",
 		config = function()

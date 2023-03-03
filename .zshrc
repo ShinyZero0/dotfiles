@@ -18,7 +18,7 @@ alias lf="lfcd"
 
 alias rcupv="rcup -v | rg -v 'identical' "
 
-alias rez="source ~/.zshrc"
+alias rez="exec zsh"
 alias edz="$EDITOR ~/.zshrc"
 
 alias whrs="wormhole-rs"

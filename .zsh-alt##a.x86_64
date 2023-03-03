@@ -1,9 +1,10 @@
+export MANPAGER=page
+export PAGER=page
+
 zinit wait lucid depth"1" for \
     peterhurford/git-it-on.zsh \
     jeffreytse/zsh-vi-mode \
 
-# zinit as"program" from"gh-r" \
-#     sbin 
 cbyank(){
     xsel -i
 }
