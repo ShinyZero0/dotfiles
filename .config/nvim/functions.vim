@@ -33,3 +33,5 @@ function SelectAll()
     endif
 endfunction
 vnoremap A <cmd>call SelectAll()<CR>
+
+autocmd FileType * set formatoptions-=cro

@@ -23,6 +23,9 @@
 (assoc
   #:pattern "application/pdf"
   #:program "zathura -- %f &")
+(assoc
+  #:pattern "font/*"
+  #:program "font-manager %f &")
 
 ; Archives
 (assoc
