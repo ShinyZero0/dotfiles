@@ -4,12 +4,12 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- require("lspconfig").pyright.setup({
 -- 	capabilities = capabilities,
 -- })
--- require("lspconfig")["pylsp"].setup {
---     capabilities = capabilities
--- }
-require'lspconfig'.ruff_lsp.setup{
+require("lspconfig")["pylsp"].setup {
     capabilities = capabilities
 }
+require("lspconfig").ruff_lsp.setup({
+	capabilities = capabilities,
+})
 -- require("lspconfig").jedi_language_server.setup({
 -- 	capabilities = capabilities,
 -- })
@@ -43,8 +43,8 @@ local pid = vim.fn.getpid()
 local omnisharp_bin = "/home/zero/.local/share/nvim/mason/bin/omnisharp"
 require("lspconfig").omnisharp.setup({
 	capabilities = capabilities,
-	handlers = {
-		["textDocument/definition"] = require("omnisharp_extended").handler,
-	},
+	-- handlers = {
+	-- 	["textDocument/definition"] = require("omnisharp_extended").handler,
+	-- },
 	cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
 })

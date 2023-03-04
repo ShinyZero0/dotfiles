@@ -59,8 +59,9 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-		["<C-e>"] = cmp.mapping.abort(),
+		["<C-c>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
 	}),
 })
--- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

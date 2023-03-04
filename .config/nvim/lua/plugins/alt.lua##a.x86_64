@@ -14,21 +14,29 @@ return {
 
 	-- Lsp
 	"Hoffs/omnisharp-extended-lsp.nvim",
+	"WhoIsSethDaniel/mason-tool-installer.nvim",
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   config = true,
+  --   dependencies = {},
+  -- },
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("config.lsp")
 		end,
 	},
-	{
-		"williamboman/mason.nvim",
-		config = true,
-	},
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("config.mason")
+    end,
+    dependencies = {},
+  },
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = true,
 	},
-	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	{
 		"glepnir/lspsaga.nvim",
 		config = function()

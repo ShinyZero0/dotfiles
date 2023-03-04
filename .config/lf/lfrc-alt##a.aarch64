@@ -6,7 +6,7 @@ cmd yankpath &{{
 }}
 map yp yankpath
 
-cmd fzf_jump ${{
+cmd fuzzy ${{
     lf -remote "send $id set hidden"
     res="$(fd -d 3 -H -F | awk '{ print length, $0 }' | sort -n -s | cut -d ' ' -f 2- | fzf +s --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
     if [ -d "$res" ] ; then

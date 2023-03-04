@@ -3,6 +3,7 @@
 map R reload
 map ; push :
 map <backspace2> set hidden!
+map <esc> push u
 
 map s
 map sa :{{set sortby atime; set info atime; set reverse; top; }}
@@ -48,16 +49,20 @@ map yy copy
 map d
 map dd cut
 
+map a
+map az push :zip<space>
+map ae extract
+
 map gl follow_link
 map g/ cd /
 
 map <enter> open
-map / fzf_jump
+map / fuzzy
 map <c-o> jump-prev
 map <tab> jump-next
 
 map E ${{
-    $EDITOR ./
+    $EDITOR
 }}
 
 # vim: ft=bash

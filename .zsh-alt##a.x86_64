@@ -3,7 +3,9 @@ export PAGER=page
 
 zinit wait lucid depth"1" for \
     peterhurford/git-it-on.zsh \
-    jeffreytse/zsh-vi-mode \
+    atload:'bindkey "^[[A" history-substring-search-up' \
+    atload:'bindkey "^[[B" history-substring-search-down' \
+        jeffreytse/zsh-vi-mode \
 
 cbyank(){
     xsel -i
