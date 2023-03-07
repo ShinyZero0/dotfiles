@@ -5,10 +5,14 @@ set title
 set noswapfile
 set undofile
 
+set splitbelow
+set splitright
+
 set termguicolors
 set number
 set cursorline
 set noshowmode
+set conceallevel=0
 
 set tabstop=4 shiftwidth=4 expandtab
 set scrolloff=5
@@ -20,7 +24,7 @@ set completeopt=noselect
 
 filetype plugin indent on
 
-set conceallevel=0
+
 let g:vim_json_conceal = 0
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0

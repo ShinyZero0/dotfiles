@@ -116,6 +116,7 @@ Hydra({
 		color = "pink",
 	},
 	mode = { "n" },
+
 	heads = {
 		{ "d", cmd("Lspsaga hover_doc"), { nowait = true } },
 		{ "l", cmd("Lspsaga show_line_diagnostics") },
@@ -139,9 +140,12 @@ Hydra({
 	name = "Formatting",
 	body = "<Leader>.",
 	hint = hints.Formatting,
+	mode = { "n" },
+
 	config = {
 		invoke_on_body = true,
 		color = "red",
+
 		hint = {
 			position = "middle",
 			border = "rounded",
@@ -157,7 +161,7 @@ Hydra({
 			},
 		},
 	},
-	mode = { "n" },
+
 	heads = {
 		{ "e", cmd("Neoformat ToEng") },
 		{ "r", cmd("Neoformat ToRus") },

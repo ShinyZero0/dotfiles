@@ -58,6 +58,7 @@ nnoremap <Leader>' <cmd>Telescope harpoon marks<CR>
 " nnoremap <Leader>. <cmd>Neoformat<CR>
 
 lua << EOF
+vim.keymap.set("n", '<leader>"', require("harpoon.ui").toggle_quick_menu, {})
 vim.keymap.set("n", "<leader>m", require("harpoon.mark").add_file, {})
 vim.keymap.set("n", "<leader>i", require("harpoon.ui").nav_next, {})
 vim.keymap.set("n", "<leader>o", require("harpoon.ui").nav_prev, {})

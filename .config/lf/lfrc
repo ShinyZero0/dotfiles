@@ -32,7 +32,7 @@ cmd extract ${{
 }}
 cmd zip ${{
     tput smcup
-    atool -a -F zip $* $fx
+    atool -a -F .zip $* $fx
     tput rmcup
 }}
 
