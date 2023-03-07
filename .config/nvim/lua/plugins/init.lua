@@ -7,7 +7,11 @@ return {
 	-- OTHERS
 
 	"voldikss/vim-floaterm",
-
+{
+  "dstein64/vim-startuptime",
+  config = false,
+  dependencies = {},
+},
 	{
 		"m00qek/baleia.nvim",
 		config = true,
