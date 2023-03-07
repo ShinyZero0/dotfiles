@@ -29,14 +29,14 @@ alias xdgtype="xdg-mime query filetype"
 
 # GIT ALIASES
 alias gcomall="git add --all && git commit"
-alias gca="git commit -a"
+alias gca="git commit -am"
 alias gmenocom="git merge --no-commit --no-ff"
 alias gst="git status"
 alias gch="git checkout"
 alias yst="yadm status"
 alias gadd="git add"
 alias yadd="yadm add"
-alias yca="yadm commit -a"
+alias yca="yadm commit -am"
 
 ddns="shinyzero.ddns.net"
 
@@ -88,7 +88,7 @@ zinit if"[[ $(uname -m) = x86_64 ]]" depth"1" as"null" from"gh-r" for \
     sbin"wormhole-rs" magic-wormhole/magic-wormhole.rs \
     sbin"fd" completions @sharkdp/fd \
 
-zinit if"[[ $(uname -m) = x86_64 ]]" depth"1" as"null" for \
+zinit if="[[ $(uname -m) = x86_64 ]]" depth"1" as"null" for \
     atclone"cargo install --path=." atpull"%atclone" I60R/page
 
     # sbin"deno" denoland/deno \

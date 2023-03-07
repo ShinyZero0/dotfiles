@@ -67,10 +67,6 @@ return {
       require("various-textobjs").setup({ useDefaultKeymaps = true })
     end,
   },
-  -- {
-  --  "cbochs/grapple.nvim",
-  --  dependencies = { "nvim-lua/plenary.nvim" },
-  -- },
   {
     "anuvyklack/hydra.nvim",
     config = function()
@@ -108,6 +104,13 @@ return {
       require("config.treesitter")
     end,
     build = ":TSUpdate",
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    config = false,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
   },
   -- "Fymyte/rasi.vim",
   -- "lervag/vimtex",
