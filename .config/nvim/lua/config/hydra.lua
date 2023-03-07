@@ -77,6 +77,7 @@ Hydra({
 		},
 	},
 	heads = {
+		{ "s", cmd("set spell!") },
 		{ "w", cmd("set wrap!") },
 		{ "b", cmd("set linebreak!") },
 		{ "R", cmd("set readonly!") },
@@ -167,7 +168,7 @@ Hydra({
 		{ "r", cmd("Neoformat ToRus") },
 		{ "s", cmd("Neoformat Split") },
 		{ "j", cmd("Neoformat Join") },
-		{ ".", cmd("Neoformat"), {exit = true} },
+		{ ".", cmd("Neoformat"), { exit = true } },
 	},
 })
 
@@ -199,7 +200,7 @@ Hydra({
 		{ "r", ":'<,'>Neoformat ToRus<CR>" },
 		{ "s", ":'<,'>Neoformat Split<CR>" },
 		{ "j", ":'<,'>Neoformat Join<CR>" },
-		{ ".", ":'<,'>Neoformat<CR>", { exit = true} },
+		{ ".", ":'<,'>Neoformat<CR>", { exit = true } },
 	},
 })
 -- vim:sw=2:ts=2
