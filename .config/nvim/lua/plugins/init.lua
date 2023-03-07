@@ -3,20 +3,45 @@ return {
 	-- LIBRARIES
 
 	"nvim-lua/plenary.nvim",
+	{
+		"nvim-tree/nvim-web-devicons",
+		config = false,
+		opts = {
+			override = {
+				["cs"] = {
+					icon = "",
+					color = "#95ffa4",
+					name = "cs",
+				},
+			},
+			override_by_extension = {
+				["axaml"] = {
+					icon = "謹",
+					color = "#ffb378",
+					name = "axaml",
+				},
+			},
+		},
+		dependencies = {},
+	},
 
 	-- OTHERS
 
 	"voldikss/vim-floaterm",
-{
-  "dstein64/vim-startuptime",
-  config = false,
-  dependencies = {},
-},
-	{
-		"m00qek/baleia.nvim",
-		config = true,
-		dependencies = {},
-	},
+  {
+    "voldikss/vim-floaterm",
+    config = false,
+    cmd = {
+      "FloatermToggle"
+    },
+    dependencies = {},
+  },
+
+	-- {
+	-- 	"m00qek/baleia.nvim",
+	-- 	config = false,
+	-- 	dependencies = {},
+	-- },
 	{
 		"NvChad/nvim-colorizer.lua",
 		config = true,
@@ -40,16 +65,11 @@ return {
 	},
 	{
 		"ThePrimeagen/harpoon",
-		config = function()
-			vim.keymap.set("n", "<leader>m", require("harpoon.mark").add_file, {})
-			vim.keymap.set("n", "<leader>'", require("harpoon.ui").toggle_quick_menu, {})
-			vim.keymap.set("n", "<leader>i", require("harpoon.ui").nav_next, {})
-			vim.keymap.set("n", "<leader>o", require("harpoon.ui").nav_prev, {})
-		end,
-		keys = {
-			{ "<leader>m" },
-			{ "<leader>'" },
-		},
+		config = function() end,
+		-- keys = {
+		-- 	{ "<leader>m" },
+		-- 	{ "<leader>'" },
+		-- },
 		opts = {},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -58,29 +78,6 @@ return {
 	-- {
 	-- 	"cbochs/grapple.nvim",
 	-- 	dependencies = { "nvim-lua/plenary.nvim" },
-	-- },
-	-- {
-	-- 	"cbochs/portal.nvim",
-	-- 	config = function()
-	-- 		require("portal").setup(opts)
-	-- 		vim.keymap.set("n", "<leader>o", require("portal").jump_backward, {})
-	-- 		vim.keymap.set("n", "<leader>i", require("portal").jump_forward, {})
-	-- 	end,
-	-- 	opts = {
-	-- 		portal = {
-	-- 			body = {
-	-- 				options = {
-	-- 					relative = "editor",
-	-- 				},
-	-- 			},
-	-- 			title = {
-	-- 				options = {
-	-- 					relative = "editor",
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 	},
-	-- 	dependencies = {},
 	-- },
 	{
 		"anuvyklack/hydra.nvim",
@@ -150,8 +147,8 @@ return {
 	"junegunn/vim-easy-align",
 	{
 		"nvim-pack/nvim-spectre",
-		keys = {
-			"<Leader>s",
+		cmd = {
+			"Spectre",
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -171,29 +168,29 @@ return {
 			require("config.neotree")
 		end,
 		branch = "v2.x",
-		-- cmd = "Neotree",
+		cmd = "Neotree",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 			"nvim-lua/plenary.nvim",
 		},
-		init = function()
-			vim.g.neo_tree_remove_legacy_commands = 1
-			if vim.fn.argc() >= 1 then
-				vim.api.nvim_create_autocmd("UIEnter", {
-					once = true,
-					callback = function(_)
-						for i = 0, vim.fn.argc() - 1 do
-							local stat = vim.loop.fs_stat(vim.fn.argv(i))
-							if stat and stat.type == "directory" then
-								require("neo-tree")
-								return
-							end
-						end
-					end,
-				})
-			end
-		end,
+		-- init = function()
+		-- 	vim.g.neo_tree_remove_legacy_commands = 1
+		-- 	if vim.fn.argc() >= 1 then
+		-- 		vim.api.nvim_create_autocmd("UIEnter", {
+		-- 			once = true,
+		-- 			callback = function(_)
+		-- 				for i = 0, vim.fn.argc() - 1 do
+		-- 					local stat = vim.loop.fs_stat(vim.fn.argv(i))
+		-- 					if stat and stat.type == "directory" then
+		-- 						require("neo-tree")
+		-- 						return
+		-- 					end
+		-- 				end
+		-- 			end,
+		-- 		})
+		-- 	end
+		-- end,
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -236,17 +233,32 @@ return {
 
 	{
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		event = { "InsertEnter", "CmdLineEnter" },
 		config = function()
 			require("config.nvim-cmp")
 		end,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-nvim-lua",
-			"hrsh7th/cmp-cmdline",
+      { 
+        "hrsh7th/cmp-nvim-lua",
+        cond = function()
+          if vim.bo.filetype == "lua" then
+            return true
+          else
+            return false
+          end
+        end
+      },
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-omni",
+			{
+				"hrsh7th/cmp-cmdline",
+				config = function()
+					require("config.nvim-cmp-cmd")
+				end,
+				dependencies = {},
+			},
 			{
 				"dcampos/cmp-snippy",
 				dependencies = {

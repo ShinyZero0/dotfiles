@@ -3,6 +3,7 @@ require("neo-tree").setup({
 	window = {
 		position = "float",
 		mappings = {
+            ["n"] = "add",
 			["<Esc>"] = "close_window",
 		},
 	},

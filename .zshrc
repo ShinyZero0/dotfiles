@@ -15,11 +15,13 @@ mkcd(){
 }
 
 alias lf="lfcd"
+alias vi="nvim"
 
 alias rcupv="rcup -v | rg -v 'identical' "
 
 alias rez="exec zsh"
 alias edz="$EDITOR ~/.zshrc"
+alias q="exit"
 
 alias whrs="wormhole-rs"
 
@@ -32,6 +34,7 @@ alias gmenocom="git merge --no-commit --no-ff"
 alias gst="git status"
 alias gch="git checkout"
 alias yst="yadm status"
+alias gadd="git add"
 alias yadd="yadm add"
 alias yca="yadm commit -a"
 

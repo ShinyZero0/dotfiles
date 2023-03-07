@@ -28,41 +28,66 @@ Hydra({
 		},
 		{ "g", cmd("Telescope live_grep") },
 		{ "h", cmd("Telescope heading"), { desc = "headings" } },
+		{ "j", cmd("Telescope jumplist") },
 		{ "k", cmd("Telescope keymaps") },
 		{ "l", cmd("Telescope highlights"), { desc = "highLights" } },
-		{ "m", cmd("Telescope help_tags"), { desc = "vim help" } },
+		{ "?", cmd("Telescope help_tags"), { desc = "vim help" } },
 		{ "o", cmd("Telescope oldfiles"), { desc = "recently opened files" } },
 		{ "O", cmd("Telescope vim_options") },
-		{ "p", cmd("Telescope projects"), { desc = "projects" } },
+		-- { "p", cmd("Telescope projects"), { desc = "projects" } },
 		-- { "u", cmd("silent! %foldopen! | UndotreeToggle"), { desc = "undotree" } },
-		{ "?", cmd("Telescope search_history"), { desc = "search history" } },
 		{ ";", cmd("Telescope command_history"), { desc = "command-line history" } },
 		{ "/", cmd("Telescope current_buffer_fuzzy_find"), { desc = "search in file" } },
 		{ "<Enter>", cmd("Telescope"), { exit = true, desc = "list all pickers" } },
 		{ "<Esc>", nil, { exit = true, nowait = true } },
 	},
 })
+
 Hydra({
 	name = "Options",
 	mode = "n",
 	body = "<Leader>O",
 	hint = hints.Options,
 	config = {
-		color = "red",
+		color = "amaranth",
 		invoke_on_body = true,
 		hint = {
 			position = "middle",
 			border = "rounded",
 			type = "window",
+			funcs = {
+				ro = function()
+					if vim.o.readonly then
+						return "[x]"
+					else
+						return "[ ]"
+					end
+				end,
+				lb = function()
+					if vim.o.linebreak then
+						return "[x]"
+					else
+						return "[ ]"
+					end
+				end,
+				ft = function()
+					return vim.o.filetype
+				end,
+			},
 		},
-		funcs = {},
 	},
 	heads = {
 		{ "w", cmd("set wrap!") },
 		{ "b", cmd("set linebreak!") },
 		{ "R", cmd("set readonly!") },
 		{ "L", cmd("Lazy"), { exit = true } },
+		{ "M", cmd("Mason"), { exit = true } },
+		{ "t", cmd("Telescope filetypes"), { exit = true } },
+		-- { "c", cmd("highlight Comment guifg=#a6b3cc")},
+		-- { "C", cmd("highlight Comment guifg=#C6C6C6")},
 		{ "<Esc>", nil, { exit = true, nowait = true } },
+		{ "q", nil, { exit = true, nowait = true } },
+		{ "<C-q>", nil, { exit = true, nowait = true } },
 	},
 })
 
@@ -107,6 +132,70 @@ Hydra({
 				require("lspsaga.diagnostic"):goto_prev()
 			end,
 		},
+	},
+})
+
+Hydra({
+	name = "Formatting",
+	body = "<Leader>.",
+	hint = hints.Formatting,
+	config = {
+		invoke_on_body = true,
+		color = "red",
+		hint = {
+			position = "middle",
+			border = "rounded",
+			type = "window",
+			funcs = {
+				ft = function()
+					if vim.o.filetype ~= "text" then
+						return "Wrong filetype!    "
+					else
+						return ""
+					end
+				end,
+			},
+		},
+	},
+	mode = { "n" },
+	heads = {
+		{ "e", cmd("Neoformat ToEng") },
+		{ "r", cmd("Neoformat ToRus") },
+		{ "s", cmd("Neoformat Split") },
+		{ "j", cmd("Neoformat Join") },
+		{ ".", cmd("Neoformat"), {exit = true} },
+	},
+})
+
+Hydra({
+	name = "Formatting visual",
+	body = "<Leader>.",
+	hint = hints.Formatting,
+	config = {
+		invoke_on_body = true,
+		color = "teal",
+		hint = {
+			position = "middle",
+			border = "rounded",
+			type = "window",
+			funcs = {
+				ft = function()
+					if vim.o.filetype ~= "text" then
+						return "Wrong filetype!    "
+					else
+						return ""
+					end
+				end,
+			},
+		},
+	},
+	mode = { "v" },
+	heads = {
+		{ "e", ":'<,'>Neoformat ToEng<CR>" },
+		{ "r", ":'<,'>Neoformat ToRus<CR>" },
+		{ "s", ":'<,'>Neoformat Split<CR>" },
+		{ "j", ":'<,'>Neoformat Join<CR>" },
+		{ ".", ":'<,'>Neoformat<CR>", { exit = true} },
 	},
 })
 -- vim:sw=2:ts=2

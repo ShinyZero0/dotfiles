@@ -26,11 +26,14 @@ cmd open ${{
     tput rmcup
 }}
 
-
-
 cmd extract ${{
     set -f
-    atool -x $f
+    atool -x $fx
+}}
+cmd zip ${{
+    tput smcup
+    atool -a -F zip $* $fx
+    tput rmcup
 }}
 
 cmd on-cd &{{

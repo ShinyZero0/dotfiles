@@ -29,7 +29,7 @@ nnoremap <S-CR> O<Esc>
 " Command Line
 
 "" set verymagic regex search
-nnoremap /  /\v
+" nnoremap /  /\v
 
 cnoremap <C-left>  <S-left>
 cnoremap <C-right> <S-right>
@@ -49,13 +49,19 @@ nmap ga <Plug>(EasyAlign)
 map ? <cmd>HopPatternMW<CR>
 map <C-f> <cmd>HopWordMW<CR>
 
-nnoremap <C-h> :HunkLineToggle<CR>
+" nnoremap <C-h> :HunkLineToggle<CR>
 
 nnoremap <Leader>t <cmd>Neotree toggle float reveal<CR>
 nnoremap <Leader>f :Telescope find_files<CR>
 nnoremap <Leader>r <cmd>Telescope resume<CR>
-nnoremap <Leader>. <cmd>Neoformat<CR>
+nnoremap <Leader>' <cmd>Telescope harpoon marks<CR>
+" nnoremap <Leader>. <cmd>Neoformat<CR>
 
+lua << EOF
+vim.keymap.set("n", "<leader>m", require("harpoon.mark").add_file, {})
+vim.keymap.set("n", "<leader>i", require("harpoon.ui").nav_next, {})
+vim.keymap.set("n", "<leader>o", require("harpoon.ui").nav_prev, {})
+EOF
 " map <Leader>// :Telescope<CR>
 " map <Leader>/h :Telescope heading<CR>
 " map <Leader>/g :Telescope live_grep<CR>
