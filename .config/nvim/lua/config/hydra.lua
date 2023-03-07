@@ -77,6 +77,7 @@ Hydra({
 		},
 	},
 	heads = {
+		{ "s", cmd("set spell!") },
 		{ "w", cmd("set wrap!") },
 		{ "b", cmd("set linebreak!") },
 		{ "R", cmd("set readonly!") },
@@ -116,6 +117,7 @@ Hydra({
 		color = "pink",
 	},
 	mode = { "n" },
+
 	heads = {
 		{ "d", cmd("Lspsaga hover_doc"), { nowait = true } },
 		{ "l", cmd("Lspsaga show_line_diagnostics") },
@@ -139,9 +141,12 @@ Hydra({
 	name = "Formatting",
 	body = "<Leader>.",
 	hint = hints.Formatting,
+	mode = { "n" },
+
 	config = {
 		invoke_on_body = true,
 		color = "red",
+
 		hint = {
 			position = "middle",
 			border = "rounded",
@@ -157,13 +162,13 @@ Hydra({
 			},
 		},
 	},
-	mode = { "n" },
+
 	heads = {
 		{ "e", cmd("Neoformat ToEng") },
 		{ "r", cmd("Neoformat ToRus") },
 		{ "s", cmd("Neoformat Split") },
 		{ "j", cmd("Neoformat Join") },
-		{ ".", cmd("Neoformat"), {exit = true} },
+		{ ".", cmd("Neoformat"), { exit = true } },
 	},
 })
 
@@ -195,7 +200,7 @@ Hydra({
 		{ "r", ":'<,'>Neoformat ToRus<CR>" },
 		{ "s", ":'<,'>Neoformat Split<CR>" },
 		{ "j", ":'<,'>Neoformat Join<CR>" },
-		{ ".", ":'<,'>Neoformat<CR>", { exit = true} },
+		{ ".", ":'<,'>Neoformat<CR>", { exit = true } },
 	},
 })
 -- vim:sw=2:ts=2

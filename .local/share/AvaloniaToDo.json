@@ -1,0 +1,17 @@
+{
+  "Items": [
+    {
+      "Name": "Если окажусь на windows",
+      "Content": "PowerToys\nActual Tools",
+      "IsDone": false,
+      "Priority": 0
+    },
+    {
+      "Name": "Настроить сортировку",
+      "Content": null,
+      "IsDone": false,
+      "Priority": 0
+    }
+  ],
+  "inTimeCnt": 0
+}
