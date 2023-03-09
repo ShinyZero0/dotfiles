@@ -1,4 +1,3 @@
-set shell=/usr/bin/bash
 
 set ignorecase
 set title
