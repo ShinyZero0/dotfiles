@@ -341,6 +341,7 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = true,
+
   },
   {
     "sjl/badwolf",
