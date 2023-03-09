@@ -10,7 +10,7 @@ return
 
     _?_: Help tags   _c_: execute Command
     _k_: Keymaps     _;_: Commands history    
-    _O_: Options    
+    _O_: Options     _m_: Marks
 
     _<Enter>_: Telescope           _<Esc>_
 
@@ -22,7 +22,7 @@ return
     _s_: spell     %{spell}
     _b_: linebreak %{lb}
     _R_: readonly  %{ro}
-
+    _S_: TrailBlazer Save    
     _t_: filetype: %{ft}    
     _L_: Lazy.nvim
     _M_: Mason.nvim

@@ -1,1 +1,1 @@
-lualine.lua##a.aarch64
+lualine.lua##a.x86_64

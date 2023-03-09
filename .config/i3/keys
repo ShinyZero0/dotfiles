@@ -19,6 +19,7 @@ bindsym $mod+Shift+s scratchpad show
 bindsym $mod+p exec --no-startup-id ~/.scripts/TogglePavuCTL.sh
 bindsym $mod+g exec --no-startup-id ~/.scripts/TogglePicom.sh
 bindsym --release $mod+i exec --no-startup-id ~/.scripts/VimInsert.sh
+# bindsym mod1+j exec --no-startup-id ~/.scripts/exitbattle.sh
 
 bindsym $mod+Tab   focus right
 bindsym $mod+grave focus down

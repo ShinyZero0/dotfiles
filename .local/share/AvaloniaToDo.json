@@ -1,17 +1,29 @@
 {
   "Items": [
     {
-      "Name": "Если окажусь на windows",
-      "Content": "PowerToys\nActual Tools",
+      "Name": "Если окажусь на шиндовс",
+      "Content": "1. PowerToys  \n2. ~~ **Actual** __Tools__ ~~  \n3. [это ссылка на гитхаб](https://github.com/whistyun/testcode-garage/blob/master/AvaloniaListBoxTemplate/AvaloniaListBoxTemplate/Views/MainWindow.axaml)  \n",
+      "IsDone": true,
+      "Priority": 0
+    },
+    {
+      "Name": "2",
+      "Content": "| 1 | 2 | 3 |\n|---|---|---|\n| 2 | 4 | 6 |\n| 3 | 6 | 9 |\n",
       "IsDone": false,
       "Priority": 0
     },
     {
-      "Name": "Настроить сортировку",
+      "Name": "MVP",
+      "Content": "Minimal Viable Product",
+      "IsDone": false,
+      "Priority": 0
+    },
+    {
+      "Name": "Scrollview editor",
       "Content": null,
       "IsDone": false,
       "Priority": 0
     }
   ],
-  "inTimeCnt": 0
+  "inTimeCnt": 1
 }

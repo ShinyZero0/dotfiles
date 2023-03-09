@@ -20,12 +20,6 @@ Hydra({
 	heads = {
 		{ "b", cmd("Telescope buffers") },
 		{ "c", cmd("Telescope commands"), { desc = "execute command" } },
-		{
-			"f",
-			function()
-				require("telescope.builtin").find_files({ hidden = true, no_ignore = true })
-			end,
-		},
 		{ "g", cmd("Telescope live_grep") },
 		{ "h", cmd("Telescope heading"), { desc = "headings" } },
 		{ "j", cmd("Telescope jumplist") },
@@ -34,11 +28,17 @@ Hydra({
 		{ "?", cmd("Telescope help_tags"), { desc = "vim help" } },
 		{ "o", cmd("Telescope oldfiles"), { desc = "recently opened files" } },
 		{ "O", cmd("Telescope vim_options") },
-		-- { "p", cmd("Telescope projects"), { desc = "projects" } },
+		{ "m", cmd("Telescope marks") },
 		-- { "u", cmd("silent! %foldopen! | UndotreeToggle"), { desc = "undotree" } },
 		{ ";", cmd("Telescope command_history"), { desc = "command-line history" } },
 		{ "/", cmd("Telescope current_buffer_fuzzy_find"), { desc = "search in file" } },
 		{ "<Enter>", cmd("Telescope"), { exit = true, desc = "list all pickers" } },
+		{
+			"f",
+			function()
+				require("telescope.builtin").find_files({ hidden = true, no_ignore = true })
+			end,
+		},
 		{ "<Esc>", nil, { exit = true, nowait = true } },
 	},
 })
@@ -48,6 +48,23 @@ Hydra({
 	mode = "n",
 	body = "<Leader>O",
 	hint = hints.Options,
+	heads = {
+		{ "s", cmd("set spell!") },
+		{ "w", cmd("set wrap!") },
+		{ "b", cmd("set linebreak!") },
+		-- { "V", cmd("set virtualedit!") },
+		{ "R", cmd("set readonly!") },
+
+		{ "t", cmd("Telescope filetypes"), { exit = true } },
+		{ "S", cmd("TrailBlazerSaveSession"), { exit = true } },
+		{ "L", cmd("Lazy"), { exit = true } },
+		{ "M", cmd("Mason"), { exit = true } },
+		-- { "c", cmd("highlight Comment guifg=#a6b3cc")},
+		-- { "C", cmd("highlight Comment guifg=#C6C6C6")},
+		{ "<Esc>", nil, { exit = true, nowait = true } },
+		{ "q", nil, { exit = true, nowait = true } },
+		{ "<C-q>", nil, { exit = true, nowait = true } },
+	},
 	config = {
 		color = "amaranth",
 		invoke_on_body = true,
@@ -76,20 +93,6 @@ Hydra({
 			},
 		},
 	},
-	heads = {
-		{ "s", cmd("set spell!") },
-		{ "w", cmd("set wrap!") },
-		{ "b", cmd("set linebreak!") },
-		{ "R", cmd("set readonly!") },
-		{ "L", cmd("Lazy"), { exit = true } },
-		{ "M", cmd("Mason"), { exit = true } },
-		{ "t", cmd("Telescope filetypes"), { exit = true } },
-		-- { "c", cmd("highlight Comment guifg=#a6b3cc")},
-		-- { "C", cmd("highlight Comment guifg=#C6C6C6")},
-		{ "<Esc>", nil, { exit = true, nowait = true } },
-		{ "q", nil, { exit = true, nowait = true } },
-		{ "<C-q>", nil, { exit = true, nowait = true } },
-	},
 })
 
 Hydra({
@@ -112,7 +115,7 @@ Hydra({
 
 Hydra({
 	name = "Lsp diagnostics",
-	body = "<Leader>l",
+	body = "<Leader>d",
 	config = {
 		color = "pink",
 	},

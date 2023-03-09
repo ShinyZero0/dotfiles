@@ -35,3 +35,5 @@ endfunction
 vnoremap A <cmd>call SelectAll()<CR>
 
 autocmd FileType * set formatoptions-=cro
+
+" autocmd BufEnter * lua require("CheckTrailBlazer")

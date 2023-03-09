@@ -27,6 +27,7 @@ require("telescope").setup({
 				["<S-Tab>"] = actions.move_selection_previous,
 				["<C-q>"] = actions.close,
 				["<S-CR>"] = actions.select_tab,
+                ["<C-BS>"] = { "<c-s-w>", type = "command" },
 			},
 		},
 	},
@@ -93,7 +94,7 @@ require("telescope").setup({
 			-- options for sorting all other items
 			generic = {
 				-- override default telescope generic item sorter
-				enable = true,
+				enable = false,
 
 				-- highlight matching text in results
 				highlight_results = true,
@@ -107,4 +108,4 @@ require("telescope").setup({
 -- require("telescope").load_extension("file_browser")
 require("telescope").load_extension("heading")
 require("telescope").load_extension("zf-native")
-require("telescope").load_extension("harpoon")
+-- require("telescope").load_extension("harpoon")

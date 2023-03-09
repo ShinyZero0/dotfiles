@@ -18,7 +18,7 @@
   #:program "lf %f"
   #:term "kitty --class floatwin -- ")
 (assoc
-  #:pattern "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  #:pattern '("application/vnd.openxmlformats-officedocument.wordprocessingml.document" "application/vnd.openxmlformats-officedocument.presentationml.presentation")
   #:program "libreoffice %f &>/dev/null &")
 (assoc
   #:pattern "application/pdf"

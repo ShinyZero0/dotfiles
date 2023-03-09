@@ -57,69 +57,70 @@ source ~/.zsh/lfcd.zsh
 
 # TURBO MODE
 zinit wait lucid depth"1" for \
-    atload:'bindkey "^[[A" history-substring-search-up' \
-    atload:'bindkey "^[[B" history-substring-search-down' \
-        zsh-users/zsh-history-substring-search \
+    zsh-users/zsh-history-substring-search \
     hlissner/zsh-autopair \
     ShinyZero0/z-git-filter \
     RobSis/zsh-completion-generator \
     olets/zsh-abbr \
 
-# Load a few important annexes, without Turbo
+    # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode depth"1" for \
-        romkatv/powerlevel10k \
+    romkatv/powerlevel10k \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust \
 
 
-# Install Desktop-only binaries
+    # Install Desktop-only binaries
 zinit if"[[ $(uname -m) = x86_64 ]]" depth"1" as"null" from"gh-r" for \
     bpick"kitty-*-x86_64.txz" sbin"bin/kitty" sbin"bin/kitten" \
-        kovidgoyal/kitty \
+    kovidgoyal/kitty \
     sbin"pistol* -> pistol" \
-        doronbehar/pistol \
+    doronbehar/pistol \
     sbin"linux_czkawka_cli -> czkawka" bpick"linux_czkawka_cli" \
-        qarmin/czkawka \
+    qarmin/czkawka \
     sbin"koreader* -> koreader" \
-        koreader/koreader \
+    koreader/koreader \
     sbin"wormhole-rs" magic-wormhole/magic-wormhole.rs \
     sbin"fd" completions @sharkdp/fd \
 
-zinit if="[[ $(uname -m) = x86_64 ]]" depth"1" as"null" for \
+    zinit if="[[ $(uname -m) = x86_64 ]]" depth"1" as"null" for \
     atclone"cargo install --path=." atpull"%atclone" I60R/page
 
-    # sbin"deno" denoland/deno \
+# sbin"deno" denoland/deno \
 
-# Install binaries
+    # Install binaries
 zinit as"null" depth"1" from"gh-r" for \
     sbin"lf" gokcehan/lf \
     sbin"glow" charmbracelet/glow \
     sbin"fzf" junegunn/fzf \
 
-# Install non-release binaries
+    # Install non-release binaries
 zinit as"null" depth"1" for \
     sbin"jaro" isamert/jaro \
 
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 zinit for \
     OMZL::git.zsh \
 
-zinit wait depth"1" lucid for \
+    zinit wait depth"1" lucid for \
     blockf atpull'zinit creinstall -q .' \
-        zsh-users/zsh-completions \
+    zsh-users/zsh-completions \
     blockf completions \
-        https://github.com/TheLocehiliosan/yadm/raw/master/completion/zsh/_yadm \
+    https://github.com/TheLocehiliosan/yadm/raw/master/completion/zsh/_yadm \
 
-eval "$(zoxide init zsh)"
+    eval "$(zoxide init zsh)"
 
-zstyle ':completion:*' menu select completer _complete _ignored _approximate
+zstyle ':completion:*' menu select completer _complete _ignored _approximate 
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
 zstyle ':completion:*' max-errors 3
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle :compinstall filename '/home/zero/.zshrc'
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # autoload -Uz compinit
 # compinit
@@ -131,6 +132,7 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 zle_highlight+=(paste:none)
 
 setopt autocd
+setopt menu_complete
 
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
@@ -145,6 +147,10 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
+# RUN LAST
+
 zinit wait lucid for \
     atload"zicompinit; zicdreplay" \
+    atload:'bindkey "^[[A" history-substring-search-up' \
+    atload:'bindkey "^[[B" history-substring-search-down' \
     zdharma-continuum/fast-syntax-highlighting \

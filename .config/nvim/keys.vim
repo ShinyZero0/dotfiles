@@ -49,19 +49,23 @@ nmap ga <Plug>(EasyAlign)
 map ? <cmd>HopPatternMW<CR>
 map <C-f> <cmd>HopWordMW<CR>
 
+map <Leader>l <cmd>GrappleCycle forward<CR>
+map <Leader>h <cmd>GrappleCycle backward<CR>
 " nnoremap <C-h> :HunkLineToggle<CR>
 
 nnoremap <Leader>t <cmd>Neotree toggle float reveal<CR>
 nnoremap <Leader>f :Telescope find_files<CR>
 nnoremap <Leader>r <cmd>Telescope resume<CR>
-nnoremap <Leader>' <cmd>Telescope harpoon marks<CR>
+" nnoremap <Leader>' <cmd>Telescope harpoon marks<CR>
 " nnoremap <Leader>. <cmd>Neoformat<CR>
 
 lua << EOF
-vim.keymap.set("n", '<leader>"', require("harpoon.ui").toggle_quick_menu, {})
-vim.keymap.set("n", "<leader>m", require("harpoon.mark").add_file, {})
-vim.keymap.set("n", "<leader>i", require("harpoon.ui").nav_next, {})
-vim.keymap.set("n", "<leader>o", require("harpoon.ui").nav_prev, {})
+
+-- vim.keymap.set("n", '<leader>"', require("harpoon.ui").toggle_quick_menu, {})
+-- vim.keymap.set("n", "<leader>M", require("harpoon.mark").add_file, {})
+-- vim.keymap.set("n", "<leader>l", require("harpoon.ui").nav_next, {})
+-- vim.keymap.set("n", "<leader>h", require("harpoon.ui").nav_prev, {})
+
 EOF
 " map <Leader>// :Telescope<CR>
 " map <Leader>/h :Telescope heading<CR>
