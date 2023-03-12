@@ -35,8 +35,11 @@ define_keymap(
         K("Alt-Q"): K("Ctrl-W"),
         K("Alt-Enter"): K("Alt-D"),
         K("C-Y"): [K("Alt-D"), K("Ctrl-C"), K("ESC")],
-        K("C-W"): K("PAGE_UP"),
         K("C-R"): K("C-Y"),
+        K("C-W"): K("PAGE_UP"),
+        K("C-U"): K("PAGE_UP"),
         K("C-S"): K("PAGE_DOWN"),
+        K("C-D"): K("PAGE_DOWN"),
+        K("C-M"): K("C-D"),
     },
 )

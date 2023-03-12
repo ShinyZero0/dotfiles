@@ -30,6 +30,7 @@ alias whrs="wormhole-rs"
 alias xdgtype="xdg-mime query filetype"
 
 # GIT ALIASES
+alias gcl="git clone"
 alias gca="git commit -am"
 alias gst="git status"
 alias gch="git checkout"
@@ -77,7 +78,6 @@ zinit light-mode depth"1" for \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust \
-
 
     # Install Desktop-only binaries
 zinit if"[[ $(uname -m) = x86_64 ]]" depth"1" as="null" from="gh-r" for \

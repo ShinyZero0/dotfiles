@@ -61,15 +61,15 @@ return {
 
 	"anuvyklack/vim-smartword",
 	"chaoren/vim-wordmotion",
-  {
-    "andymass/vim-matchup",
-    config = function ()
-      vim.g.matchup_matchparen_offscreen = { method = "popup" }
-      vim.g.matchup_transmute_enabled = 1
-      vim.cmd("let g:matchup_matchpref['xml'] = {'tagnameonly': 1}")
-    end,
-    dependencies = {},
-  },
+	{
+		"andymass/vim-matchup",
+		config = function()
+			vim.g.matchup_matchparen_offscreen = { method = "popup" }
+			vim.g.matchup_transmute_enabled = 1
+			vim.cmd("let g:matchup_matchpref['xml'] = {'tagnameonly': 1}")
+		end,
+		dependencies = {},
+	},
 	-- {
 	-- 	"chrisgrieser/nvim-various-textobjs",
 	-- 	config = function()
@@ -165,7 +165,7 @@ return {
 	},
 
 	{
-		"tpope/vim-surround", 
+		"tpope/vim-surround",
 		-- config = false,
 		-- opts = {},
 		-- dependencies = {},
@@ -179,7 +179,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-	}, 
+	},
 
 	-- "monaqa/dial.nvim",
 	-- "alvan/vim-closetag",
@@ -196,10 +196,10 @@ return {
 		config = function()
 			require("config.portal")
 		end,
-    keys = {
-      "<leader>i",
-      "<leader>o"
-    },
+		keys = {
+			"<leader>i",
+			"<leader>o",
+		},
 		dependencies = {},
 	},
 	{
@@ -214,11 +214,11 @@ return {
 			vim.keymap.set("n", "<leader>M", require("grapple").toggle)
 			vim.keymap.set("n", '<leader>"', require("grapple").popup_tags)
 		end,
-    cmd = {
-      "GrapplePopup",
-      "GrappleToggle",
-      "GrappleCycle"
-    },
+		cmd = {
+			"GrapplePopup",
+			"GrappleToggle",
+			"GrappleCycle",
+		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
@@ -401,6 +401,13 @@ return {
 		end,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-omni",
+      "dcampos/cmp-snippy",
+      "hrsh7th/cmp-cmdline",
+      "onsails/lspkind.nvim",
 			-- {
 			--   "hrsh7th/cmp-nvim-lua",
 			--   cond = function()
@@ -411,28 +418,17 @@ return {
 			--     end
 			--   end
 			-- },
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-omni",
+		},
+	},
+	{
+		"dcampos/cmp-snippy",
+		dependencies = {
 			{
-				"hrsh7th/cmp-cmdline",
-				config = function()
-					-- require("config.nvim-cmp-cmd")
-					-- require('cmp-cmdline').setup()
-				end,
-				dependencies = {},
-			},
-			{
-				"dcampos/cmp-snippy",
+				"dcampos/nvim-snippy",
+				name = "snippy",
+				config = true,
 				dependencies = {
-					{
-						"dcampos/nvim-snippy",
-						name = "snippy",
-						config = true,
-						dependencies = {
-							"honza/vim-snippets",
-						},
-					},
+					"honza/vim-snippets",
 				},
 			},
 		},
