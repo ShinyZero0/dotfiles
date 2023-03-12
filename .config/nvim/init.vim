@@ -1,4 +1,3 @@
-
 set ignorecase
 set title
 set noswapfile

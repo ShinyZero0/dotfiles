@@ -16,9 +16,11 @@ mkcd(){
 
 alias lf="lfcd"
 alias vi="nvim"
+alias py="python"
 
-alias rcupv="rcup -v | rg -v 'identical' "
+# alias rcupv="rcup -v | rg -v 'identical' "
 
+alias reabbr="rip $HOME/.config/zsh-abbr/user-abbreviations && abbr import-aliases"
 alias rez="exec zsh"
 alias edz="$EDITOR ~/.zshrc"
 alias q="exit"
@@ -28,15 +30,19 @@ alias whrs="wormhole-rs"
 alias xdgtype="xdg-mime query filetype"
 
 # GIT ALIASES
-alias gcomall="git add --all && git commit"
 alias gca="git commit -am"
-alias gmenocom="git merge --no-commit --no-ff"
 alias gst="git status"
 alias gch="git checkout"
-alias yst="yadm status"
+alias gdf="git diff | delta"
 alias gadd="git add"
-alias yadd="yadm add"
+alias gmenocom="git merge --no-commit --no-ff"
+alias gcomall="git add --all && git commit"
+
 alias yca="yadm commit -am"
+alias yst="yadm status"
+alias ych="yadm checkout"
+alias ydf="yadm diff | delta"
+alias yadd="yadm add"
 
 ddns="shinyzero.ddns.net"
 
@@ -74,32 +80,35 @@ zinit light-mode depth"1" for \
 
 
     # Install Desktop-only binaries
-zinit if"[[ $(uname -m) = x86_64 ]]" depth"1" as"null" from"gh-r" for \
-    bpick"kitty-*-x86_64.txz" sbin"bin/kitty" sbin"bin/kitten" \
+zinit if"[[ $(uname -m) = x86_64 ]]" depth"1" as="null" from="gh-r" for \
+    bpick="kitty-*-x86_64.txz" sbin="bin/kitty" sbin="bin/kitten" \
     kovidgoyal/kitty \
-    sbin"pistol* -> pistol" \
+    sbin="pistol* -> pistol" \
     doronbehar/pistol \
-    sbin"linux_czkawka_cli -> czkawka" bpick"linux_czkawka_cli" \
+    sbin="linux_czkawka_cli -> czkawka" bpick="linux_czkawka_cli" \
     qarmin/czkawka \
-    sbin"koreader* -> koreader" \
-    koreader/koreader \
-    sbin"wormhole-rs" magic-wormhole/magic-wormhole.rs \
-    sbin"fd" completions @sharkdp/fd \
+    sbin="wormhole-rs" magic-wormhole/magic-wormhole.rs \
+    sbin="fd" completions @sharkdp/fd \
 
-    zinit if="[[ $(uname -m) = x86_64 ]]" depth"1" as"null" for \
-    atclone"cargo install --path=." atpull"%atclone" I60R/page
+    # sbin="koreader* -> koreader" \
+    # koreader/koreader \
 
-# sbin"deno" denoland/deno \
+    zinit if="[[ $(uname -m) = x86_64 ]]" depth"1" as="null" for \
+    atclone="cargo install --path=." atpull"%atclone" I60R/page
+
+# sbin="deno" denoland/deno \
 
     # Install binaries
-zinit as"null" depth"1" from"gh-r" for \
-    sbin"lf" gokcehan/lf \
-    sbin"glow" charmbracelet/glow \
-    sbin"fzf" junegunn/fzf \
+zinit as="null" depth"1" from="gh-r" for \
+    sbin="lf" gokcehan/lf \
+    sbin="glow" charmbracelet/glow \
+    sbin="fzf" junegunn/fzf \
 
     # Install non-release binaries
-zinit as"null" depth"1" for \
-    sbin"jaro" isamert/jaro \
+zinit as="null" depth"1" for \
+    sbin="jaro" isamert/jaro \
+    atclone="npm i ./" sbin="bin/cli.js -> typograf-cli" typograf/typograf-cli \
+    # sbin="" \
 
     [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -128,6 +137,8 @@ zmodload zsh/complist
 # zinit compinit > /dev/null
 
 bindkey -M menuselect '^[[Z' reverse-menu-complete
+# zvm_bindkey viins '^H' 
+# zvm_bindkey "\C-H" backward-kill-word
 
 zle_highlight+=(paste:none)
 
@@ -150,7 +161,7 @@ SAVEHIST=1000
 # RUN LAST
 
 zinit wait lucid for \
-    atload"zicompinit; zicdreplay" \
+    atload="zicompinit; zicdreplay" \
     atload:'bindkey "^[[A" history-substring-search-up' \
     atload:'bindkey "^[[B" history-substring-search-down' \
     zdharma-continuum/fast-syntax-highlighting \

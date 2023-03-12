@@ -7,15 +7,15 @@ do
 
     if [ $? -eq 0 ]; then
         if [ "$connection" = false ]; then
-            echo "度"
             connection=true
+            echo "度"
             notify-send -t 5000 "Подключено"
         fi
         sleep 1
     else
         if [ "$connection" = true ]; then
-            echo "%{F#ff8080}ﴹ"
             connection=false
+            echo "%{F#ff8080}ﴹ"
             notify-send -t 5000 -u critical "Соединение потеряно"
         fi
     fi

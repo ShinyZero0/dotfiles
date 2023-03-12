@@ -54,6 +54,7 @@ Hydra({
 		{ "b", cmd("set linebreak!") },
 		-- { "V", cmd("set virtualedit!") },
 		{ "R", cmd("set readonly!") },
+    { "C", cmd("ColorizerToggle")},
 
 		{ "t", cmd("Telescope filetypes"), { exit = true } },
 		{ "S", cmd("TrailBlazerSaveSession"), { exit = true } },
@@ -98,8 +99,9 @@ Hydra({
 Hydra({
 	name = "Quick words",
 	config = {
+		invoke_on_body = true,
 		color = "pink",
-		hint = { type = "cmdline" },
+		hint = { type = "window" },
 	},
 	mode = { "n", "x", "o" },
 	body = ",",
@@ -117,7 +119,9 @@ Hydra({
 	name = "Lsp diagnostics",
 	body = "<Leader>d",
 	config = {
+		invoke_on_body = true,
 		color = "pink",
+		hint = { type = "window" },
 	},
 	mode = { "n" },
 
@@ -125,6 +129,8 @@ Hydra({
 		{ "d", cmd("Lspsaga hover_doc"), { nowait = true } },
 		{ "l", cmd("Lspsaga show_line_diagnostics") },
 		{ "a", cmd("Lspsaga code_action") },
+		{ "f", cmd("Lspsaga lsp_finder") },
+		{ "r", cmd("Lspsaga rename") },
 		{
 			"n",
 			function()

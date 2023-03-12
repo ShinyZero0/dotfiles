@@ -61,12 +61,21 @@ return {
 
 	"anuvyklack/vim-smartword",
 	"chaoren/vim-wordmotion",
-	{
-		"chrisgrieser/nvim-various-textobjs",
-		config = function()
-			require("various-textobjs").setup({ useDefaultKeymaps = true })
-		end,
-	},
+  {
+    "andymass/vim-matchup",
+    config = function ()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+      vim.g.matchup_transmute_enabled = 1
+      vim.cmd("let g:matchup_matchpref['xml'] = {'tagnameonly': 1}")
+    end,
+    dependencies = {},
+  },
+	-- {
+	-- 	"chrisgrieser/nvim-various-textobjs",
+	-- 	config = function()
+	-- 		require("various-textobjs").setup({ useDefaultKeymaps = true })
+	-- 	end,
+	-- },
 	{
 		"anuvyklack/hydra.nvim",
 		config = function()
@@ -119,9 +128,7 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		config = function ()
-		  
-		end,
+		config = function() end,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},
@@ -158,10 +165,10 @@ return {
 	},
 
 	{
-		"tpope/vim-surround",
-		config = false,
+		"tpope/vim-surround", 
+		-- config = false,
 		-- opts = {},
-		dependencies = {},
+		-- dependencies = {},
 	},
 
 	{
@@ -172,19 +179,27 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-	},
+	}, 
 
 	-- "monaqa/dial.nvim",
 	-- "alvan/vim-closetag",
 
 	-- NAVIGATION
 
-	"farmergreg/vim-lastplace",
+	-- "farmergreg/vim-lastplace",
+	{
+		"ethanholz/nvim-lastplace",
+		config = true,
+	},
 	{
 		"cbochs/portal.nvim",
 		config = function()
 			require("config.portal")
 		end,
+    keys = {
+      "<leader>i",
+      "<leader>o"
+    },
 		dependencies = {},
 	},
 	{
@@ -199,9 +214,11 @@ return {
 			vim.keymap.set("n", "<leader>M", require("grapple").toggle)
 			vim.keymap.set("n", '<leader>"', require("grapple").popup_tags)
 		end,
-		-- opts = {
-		--
-		-- },
+    cmd = {
+      "GrapplePopup",
+      "GrappleToggle",
+      "GrappleCycle"
+    },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
@@ -225,6 +242,7 @@ return {
 		branch = "v2.x",
 		cmd = "Neotree",
 		dependencies = {
+			"mrbjarksen/neo-tree-diagnostics.nvim",
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 			"nvim-lua/plenary.nvim",
@@ -303,12 +321,6 @@ return {
 	-- },
 	-- {
 	-- 	"ThePrimeagen/harpoon",
-	-- 	-- config = function() end,
-	-- 	-- keys = {
-	-- 	--  { "<leader>m" },
-	-- 	--  { "<leader>'" },
-	-- 	-- },
-	-- 	-- opts = {},
 	-- 	dependencies = {
 	-- 		"nvim-lua/plenary.nvim",
 	-- 	},
@@ -348,7 +360,7 @@ return {
 				wilder.branch(
 					wilder.cmdline_pipeline({
 						language = "python",
-						fuzzy = 1,
+						fuzzy = 0,
 					}),
 					wilder.python_search_pipeline({
 						pattern = wilder.python_fuzzy_pattern(),
@@ -357,6 +369,17 @@ return {
 					})
 				),
 			})
+			wilder.set_option(
+				"renderer",
+				wilder.renderer_mux({
+					[":"] = wilder.popupmenu_renderer({
+						highlighter = wilder.basic_highlighter(),
+					}),
+					["/"] = wilder.wildmenu_renderer({
+						highlighter = wilder.basic_highlighter(),
+					}),
+				})
+			)
 		end,
 		build = {
 			-- "pip install wheel && pip install pyre2"
@@ -391,13 +414,14 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-omni",
-			-- {
-			--  "hrsh7th/cmp-cmdline",
-			--  config = function()
-			--    require("config.nvim-cmp-cmd")
-			--  end,
-			--  dependencies = {},
-			-- },
+			{
+				"hrsh7th/cmp-cmdline",
+				config = function()
+					-- require("config.nvim-cmp-cmd")
+					-- require('cmp-cmdline').setup()
+				end,
+				dependencies = {},
+			},
 			{
 				"dcampos/cmp-snippy",
 				dependencies = {

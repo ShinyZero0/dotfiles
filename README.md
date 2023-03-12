@@ -4,7 +4,7 @@ Install:
 
 * packages:
 ```bash
-sudo dnf install i3wm polybar picom rofi python3-pip -y
+sudo dnf install -y i3wm polybar picom rofi python3-pip node-npm git yadm zsh
 ```
 * [xkeysnail](https://github.com/mooz/xkeysnail):
 ```bash

@@ -21,9 +21,45 @@
     {
       "Name": "Scrollview editor",
       "Content": null,
+      "IsDone": true,
+      "Priority": 0
+    },
+    {
+      "Name": "textobj",
+      "Content": null,
+      "IsDone": false,
+      "Priority": 0
+    },
+    {
+      "Name": "мапнуть поисковую строку здесь",
+      "Content": null,
+      "IsDone": false,
+      "Priority": 0
+    },
+    {
+      "Name": "fix autofocus",
+      "Content": null,
+      "IsDone": true,
+      "Priority": 0
+    },
+    {
+      "Name": "& visual mode",
+      "Content": null,
+      "IsDone": false,
+      "Priority": 0
+    },
+    {
+      "Name": "добавить тэги",
+      "Content": null,
+      "IsDone": false,
+      "Priority": 0
+    },
+    {
+      "Name": "добавить тире в сплиттер",
+      "Content": "U+2014",
       "IsDone": false,
       "Priority": 0
     }
   ],
-  "inTimeCnt": 1
+  "inTimeCnt": 3
 }

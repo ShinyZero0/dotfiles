@@ -16,6 +16,7 @@ nnoremap g9 9gt
 
 map <C-s> :w<CR>
 map <C-q> :q<CR>
+" nnoremap <C-q> :call feedkeys(":q\<lt>CR>")<CR>
 
 map <Leader>y "+y
 map <Leader>p "+p
@@ -28,7 +29,7 @@ nnoremap <S-CR> O<Esc>
 
 " Command Line
 
-"" set verymagic regex search
+" set verymagic regex search
 " nnoremap /  /\v
 
 cnoremap <C-left>  <S-left>
@@ -48,16 +49,45 @@ nmap ga <Plug>(EasyAlign)
 
 map ? <cmd>HopPatternMW<CR>
 map <C-f> <cmd>HopWordMW<CR>
+map t <cmd>HopChar1AC<CR>
+map T <cmd>HopChar1BC<CR>
 
 map <Leader>l <cmd>GrappleCycle forward<CR>
 map <Leader>h <cmd>GrappleCycle backward<CR>
+
 " nnoremap <C-h> :HunkLineToggle<CR>
 
 nnoremap <Leader>t <cmd>Neotree toggle float reveal<CR>
 nnoremap <Leader>f :Telescope find_files<CR>
 nnoremap <Leader>r <cmd>Telescope resume<CR>
+nnoremap <Leader>' <cmd>Telescope marks<CR>
+
+" LITERAL NAVIGATION
+
+nnoremap <C-left>  g0
+nnoremap <C-right> g$
+nnoremap <C-up>    gk
+nnoremap <C-down>  gj
+
+" 0 TO FIRST WORD
+
+nnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
+xnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
+onoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
+
+" I and A to right indent
+
+nnoremap <expr> I getline('.') =~ '^\s*$' ? 'S' : 'I'
+nnoremap <expr> A getline('.') =~ '^\s*$' ? 'S' : 'A'
+
+" SPLITTER
+
+nnoremap gs <Nop>
+nnoremap <silent> gss ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<CR>:noh<CR>'l
+nnoremap <silent> gsip mlvip:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<CR>:noh<CR>'l
+vnoremap <silent> gs ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<CR>:noh<CR>'l
+
 " nnoremap <Leader>' <cmd>Telescope harpoon marks<CR>
-" nnoremap <Leader>. <cmd>Neoformat<CR>
 
 lua << EOF
 
@@ -78,22 +108,3 @@ EOF
 
 " map ? :Telescope current_buffer_fuzzy_find<CR>
 
-" LITERAL NAVIGATION
-
-nnoremap <C-left>  g0
-nnoremap <C-right> g$
-nnoremap <C-up>    gk
-nnoremap <C-down>  gj
-
-" 0 TO FIRST WORD
-
-nnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
-xnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
-onoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
-
-" SPLITTER
-
-nnoremap gs <Nop>
-nnoremap <silent> gss ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<CR>:noh<CR>'l
-nnoremap <silent> gsip mlvip:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<CR>:noh<CR>'l
-vnoremap <silent> gs ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<CR>:noh<CR>'l

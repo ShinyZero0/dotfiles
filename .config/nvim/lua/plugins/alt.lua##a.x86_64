@@ -1,48 +1,64 @@
 return {
 	-- DESKTOP-SPECIFIC PLUGINS
 
-	"KabbAmine/vCoolor.vim",
+	-- "KabbAmine/vCoolor.vim",
 	"lambdalisue/suda.vim",
-  {
-    "karb94/neoscroll.nvim",
-    config = true,
-    dependencies = {},
-    opts = {
-      stop_eof = false,
-    }
-  },
+	{
+		"karb94/neoscroll.nvim",
+		config = true,
+		dependencies = {},
+		opts = {
+			stop_eof = false,
+		},
+	},
 
 	-- Lsp
+  -- {
+  --   "mfussenegger/nvim-lint",
+  --   config = function()
+  --     require("config.lint")
+  --   end,
+  --   -- cmd = {
+  --   --   "",
+  --   -- },
+  --   -- dependencies = {},
+  -- },
 	"Hoffs/omnisharp-extended-lsp.nvim",
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
-  -- {
-  --   "ray-x/lsp_signature.nvim",
-  --   config = true,
-  --   dependencies = {},
-  -- },
+	-- {
+	--   "ray-x/lsp_signature.nvim",
+	--   config = true,
+	--   dependencies = {},
+	-- },
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("config.lsp")
 		end,
 	},
-  {
-    "williamboman/mason.nvim",
-    config = function()
-      require("config.mason")
-    end,
-    dependencies = {},
-  },
+	{
+		"williamboman/mason.nvim",
+		config = function()
+			require("config.mason")
+		end,
+		dependencies = {},
+	},
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = true,
 	},
-	{
-		"glepnir/lspsaga.nvim",
-		config = function()
-			require("config.lspsaga")
-		end,
-	},
+	-- {
+	-- 	"glepnir/lspsaga.nvim",
+	-- 	event = "BufRead",
+	-- 	config = function()
+	-- 		require("config.lspsaga")
+	-- 	end,
+	-- 	dependencies = {
+	-- 		{ "nvim-tree/nvim-web-devicons" },
+	-- 		--Please make sure you install markdown and markdown_inline parser
+	-- 		{ "nvim-treesitter/nvim-treesitter" },
+	-- 	},
+	-- },
 
 	{
 		"folke/which-key.nvim",

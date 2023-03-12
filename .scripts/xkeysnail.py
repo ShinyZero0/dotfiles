@@ -8,7 +8,7 @@ from xkeysnail.transform import *
 #     },
 # )
 define_keymap(
-    re.compile("firefox|librewolf-default"),
+    re.compile("firefox|librewolf-default|Chromium-freeworld"),
     {
         # ALT IS FOR TABS
         K("Alt-T"): K("C-T"),

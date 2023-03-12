@@ -10,12 +10,29 @@ local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local snippy = require("snippy")
 
+cmp.setup.filetype({ "vim", "lua" }, {
+	sources = {
+		{ name = "cmdline" },
+		{ name = "nvim_lsp" },
+		{ name = "path" },
+		{ name = "snippy" },
+		{ name = "omni" },
+		{
+			name = "buffer",
+			option = {
+				get_bufnrs = function()
+					return vim.api.nvim_list_bufs()
+				end,
+			},
+		},
+	},
+})
 cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "path" },
 		{ name = "snippy" },
-		-- { name = "omni" },
+		{ name = "omni" },
 		{
 			name = "buffer",
 			option = {
