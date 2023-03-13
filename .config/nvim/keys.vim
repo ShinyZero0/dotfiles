@@ -47,6 +47,9 @@ inoremap <C-right> <Esc>wa
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+nmap <Tab> <Plug>(snippy-cut-text)
+xmap <Tab> <Plug>(snippy-cut-text)
+
 map ? <cmd>HopPatternMW<CR>
 map <C-f> <cmd>HopWordMW<CR>
 map t <cmd>HopChar1AC<CR>

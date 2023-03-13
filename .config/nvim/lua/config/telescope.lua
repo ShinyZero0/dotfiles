@@ -33,7 +33,7 @@ require("telescope").setup({
 	},
 	pickers = {
 		find_files = {
-			follow = false,
+			follow = true,
 			find_command = { "fd", "-H", "-d", "4"},
 			mappings = {
 				["i"] = {

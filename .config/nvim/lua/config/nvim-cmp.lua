@@ -7,7 +7,7 @@ local feedkey = function(key, mode)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 local cmp = require("cmp")
-local lspkind = require('lspkind')
+local lspkind = require("lspkind")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local snippy = require("snippy")
 
@@ -29,18 +29,19 @@ cmp.setup.filetype({ "vim", "lua" }, {
 	},
 })
 cmp.setup({
-    view = {
-        entries = {name = 'custom', selection_order = 'near_cursor' }
-    },
-    formatting = {
-        format = lspkind.cmp_format(),
-    },
+	view = {
+		entries = { name = "custom", selection_order = "near_cursor" },
+	},
+	experimental = {
+		ghost_text = true,
+		native_menu = false,
+	},
+	formatting = {
+		format = lspkind.cmp_format(),
+	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-        { name = 'nvim_lsp_signature_help' },
-		{ name = "path" },
 		{ name = "snippy" },
-		{ name = "omni" },
 		{
 			name = "buffer",
 			option = {
@@ -49,6 +50,9 @@ cmp.setup({
 				end,
 			},
 		},
+		{ name = "path" },
+		{ name = "omni" },
+		{ name = "nvim_lsp_signature_help" },
 		-- { name = "nvim_lua" },
 	}),
 	snippet = {
