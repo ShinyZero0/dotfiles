@@ -24,7 +24,7 @@ return {
   --   -- dependencies = {},
   -- },
 	"Hoffs/omnisharp-extended-lsp.nvim",
-	"WhoIsSethDaniel/mason-tool-installer.nvim",
+	-- "WhoIsSethDaniel/mason-tool-installer.nvim",
 	-- {
 	--   "ray-x/lsp_signature.nvim",
 	--   config = true,

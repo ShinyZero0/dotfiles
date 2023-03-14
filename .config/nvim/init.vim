@@ -75,6 +75,8 @@ let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
 let g:EasyMotion_smartcase = 1
+let g:neoformat_enabled_cs = ["csharpier"]
+let g:neoformat_enabled_python = ["black"]
 
 function! SourceIfExists(file)
     if filereadable(expand(a:file))

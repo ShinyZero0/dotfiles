@@ -61,15 +61,15 @@ return {
 
 	"anuvyklack/vim-smartword",
 	"chaoren/vim-wordmotion",
-  {
-    "andymass/vim-matchup",
-    config = function ()
-      vim.g.matchup_matchparen_offscreen = { method = "popup" }
-      vim.g.matchup_transmute_enabled = 1
-      vim.cmd("let g:matchup_matchpref['xml'] = {'tagnameonly': 1}")
-    end,
-    dependencies = {},
-  },
+	{
+		"andymass/vim-matchup",
+		config = function()
+			vim.g.matchup_matchparen_offscreen = { method = "popup" }
+			vim.g.matchup_transmute_enabled = 1
+			vim.cmd("let g:matchup_matchpref['xml'] = {'tagnameonly': 1}")
+		end,
+		dependencies = {},
+	},
 	-- {
 	-- 	"chrisgrieser/nvim-various-textobjs",
 	-- 	config = function()
@@ -165,7 +165,7 @@ return {
 	},
 
 	{
-		"tpope/vim-surround", 
+		"tpope/vim-surround",
 		-- config = false,
 		-- opts = {},
 		-- dependencies = {},
@@ -179,7 +179,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-	}, 
+	},
 
 	-- "monaqa/dial.nvim",
 	-- "alvan/vim-closetag",
@@ -196,10 +196,10 @@ return {
 		config = function()
 			require("config.portal")
 		end,
-    keys = {
-      "<leader>i",
-      "<leader>o"
-    },
+		keys = {
+			"<leader>i",
+			"<leader>o",
+		},
 		dependencies = {},
 	},
 	{
@@ -214,11 +214,11 @@ return {
 			vim.keymap.set("n", "<leader>M", require("grapple").toggle)
 			vim.keymap.set("n", '<leader>"', require("grapple").popup_tags)
 		end,
-    cmd = {
-      "GrapplePopup",
-      "GrappleToggle",
-      "GrappleCycle"
-    },
+		cmd = {
+			"GrapplePopup",
+			"GrappleToggle",
+			"GrappleCycle",
+		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
@@ -351,47 +351,16 @@ return {
 
 	{
 		"gelguy/wilder.nvim",
+		event = "CmdLineEnter",
 		config = function()
-			require("wilder").setup({
-				modes = { ":", "/" },
-			})
-			local wilder = require("wilder")
-			wilder.set_option("pipeline", {
-				wilder.branch(
-					wilder.cmdline_pipeline({
-						language = "python",
-						fuzzy = 0,
-					}),
-					wilder.python_search_pipeline({
-						pattern = wilder.python_fuzzy_pattern(),
-						sorter = wilder.python_difflib_sorter(),
-						engine = "re",
-					})
-				),
-			})
-			wilder.set_option(
-				"renderer",
-				wilder.renderer_mux({
-					[":"] = wilder.popupmenu_renderer({
-						highlighter = wilder.basic_highlighter(),
-					}),
-					["/"] = wilder.wildmenu_renderer({
-						highlighter = wilder.basic_highlighter(),
-					}),
-				})
-			)
+			require("config.wilder")
 		end,
-		build = {
-			-- "pip install wheel && pip install pyre2"
-			-- requires re2-devel
-		},
 		dependencies = {
 			{
 				"roxma/nvim-yarp",
 				build = { "pip install -r requirements.txt", ":UpdateRemotePlugins" },
 			},
 		},
-		-- event = { "CmdLineEnter" },
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -401,6 +370,13 @@ return {
 		end,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-omni",
+			"dcampos/cmp-snippy",
+			"hrsh7th/cmp-cmdline",
+			"onsails/lspkind.nvim",
 			-- {
 			--   "hrsh7th/cmp-nvim-lua",
 			--   cond = function()
@@ -411,28 +387,17 @@ return {
 			--     end
 			--   end
 			-- },
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-omni",
+		},
+	},
+	{
+		"dcampos/cmp-snippy",
+		dependencies = {
 			{
-				"hrsh7th/cmp-cmdline",
-				config = function()
-					-- require("config.nvim-cmp-cmd")
-					-- require('cmp-cmdline').setup()
-				end,
-				dependencies = {},
-			},
-			{
-				"dcampos/cmp-snippy",
+				"dcampos/nvim-snippy",
+				name = "snippy",
+				config = true,
 				dependencies = {
-					{
-						"dcampos/nvim-snippy",
-						name = "snippy",
-						config = true,
-						dependencies = {
-							"honza/vim-snippets",
-						},
-					},
+					"honza/vim-snippets",
 				},
 			},
 		},
