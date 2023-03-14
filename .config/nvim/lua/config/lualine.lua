@@ -1,1 +1,0 @@
-lualine.lua##a.aarch64

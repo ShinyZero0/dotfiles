@@ -7,7 +7,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- require("lspconfig")["pylsp"].setup({
 --  capabilities = capabilities,
 -- })
-require("lspconfig").ruff_lsp.setup({
+require("lspconfig")["ruff_lsp"].setup({
 	capabilities = capabilities,
 })
 -- require("lspconfig").jedi_language_server.setup({
@@ -20,7 +20,7 @@ require("lspconfig")["vimls"].setup({
 	capabilities = capabilities,
 })
 -- require("lspconfig").selene.setup()
-require("lspconfig").lua_ls.setup({
+require("lspconfig")["lua_ls"].setup({
 	settings = {
 		Lua = {
 			runtime = {
@@ -31,7 +31,7 @@ require("lspconfig").lua_ls.setup({
 			},
 			workspace = {
 				library = vim.api.nvim_get_runtime_file("", true),
-                checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
+				checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
 			},
 			telemetry = {
 				enable = false,
@@ -43,7 +43,7 @@ require("lspconfig").lua_ls.setup({
 
 local pid = vim.fn.getpid()
 local omnisharp_bin = "/home/zero/.local/share/nvim/mason/bin/omnisharp"
-require("lspconfig").omnisharp.setup({
+require("lspconfig")["omnisharp"].setup({
 	capabilities = capabilities,
 	-- handlers = {
 	--  ["textDocument/definition"] = require("omnisharp_extended").handler,

@@ -17,7 +17,10 @@ require("lazy").setup("plugins", {
 		border = "rounded",
 	},
 	defaults = {
-    lazy = false
+		lazy = false,
+	},
+	change_detection = {
+		notify = false, -- get a notification when changes are found
 	},
 })
 

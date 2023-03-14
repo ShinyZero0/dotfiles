@@ -101,8 +101,9 @@ zinit if"[[ $(uname -m) = x86_64 ]]" depth"1" as="null" from="gh-r" for \
     # Install binaries
 zinit as="null" depth"1" from="gh-r" for \
     sbin="lf" gokcehan/lf \
-    sbin="glow" charmbracelet/glow \
     sbin="fzf" junegunn/fzf \
+
+    # sbin="glow" charmbracelet/glow \
 
     # Install non-release binaries
 zinit as="null" depth"1" for \
@@ -137,6 +138,7 @@ zmodload zsh/complist
 # zinit compinit > /dev/null
 
 bindkey -M menuselect '^[[Z' reverse-menu-complete
+bindkey -M menuselect '\e' send-break
 # zvm_bindkey viins '^H' 
 # zvm_bindkey "\C-H" backward-kill-word
 
