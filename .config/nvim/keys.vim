@@ -15,7 +15,7 @@ nnoremap g8 8gt
 nnoremap g9 9gt
 
 map <C-s> :w<CR>
-map <C-q> :q<CR>
+
 " nnoremap <C-q> :call feedkeys(":q\<lt>CR>")<CR>
 
 map <Leader>y "+y
@@ -98,8 +98,24 @@ lua << EOF
 -- vim.keymap.set("n", "<leader>M", require("harpoon.mark").add_file, {})
 -- vim.keymap.set("n", "<leader>l", require("harpoon.ui").nav_next, {})
 -- vim.keymap.set("n", "<leader>h", require("harpoon.ui").nav_prev, {})
+function isAnyModified()
+for _, id in ipairs(vim.api.nvim_list_bufs()) do
+    -- if !vim.bo[0].modified then
+    --     vim.cmd("quit")
+        -- SaveOrExitOne:activate()
+    --     return
+    -- end
+    if vim.bo[id].buflisted and vim.bo[id].modified then
+        SaveOrExit:activate()
+        return
+    end
+end
+vim.cmd("quit")
+end
 
 EOF
+map <C-q> <cmd>lua isAnyModified()<CR>
+
 " map <Leader>// :Telescope<CR>
 " map <Leader>/h :Telescope heading<CR>
 " map <Leader>/g :Telescope live_grep<CR>

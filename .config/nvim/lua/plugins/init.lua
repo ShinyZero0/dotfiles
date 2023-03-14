@@ -351,10 +351,10 @@ return {
 
 	{
 		"gelguy/wilder.nvim",
-    event = "CmdLineEnter",
+		event = "CmdLineEnter",
 		config = function()
-      require('config.wilder')
-    end,
+			require("config.wilder")
+		end,
 		dependencies = {
 			{
 				"roxma/nvim-yarp",
@@ -374,9 +374,9 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-omni",
-      "dcampos/cmp-snippy",
-      "hrsh7th/cmp-cmdline",
-      "onsails/lspkind.nvim",
+			"dcampos/cmp-snippy",
+			"hrsh7th/cmp-cmdline",
+			"onsails/lspkind.nvim",
 			-- {
 			--   "hrsh7th/cmp-nvim-lua",
 			--   cond = function()

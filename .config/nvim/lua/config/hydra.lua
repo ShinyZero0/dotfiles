@@ -212,4 +212,37 @@ Hydra({
 		{ ".", ":'<,'>Neoformat<CR>", { exit = true } },
 	},
 })
+-- SaveOrExit = Hydra({
+--   name = "Are you sure?",
+-- 	config = {
+-- 		color = "blue",
+-- 		invoke_on_body = true,
+-- 		hint = {
+-- 			type = "window",
+-- 			position = "middle",
+-- 			border = "rounded",
+-- 		},
+-- 	},
+--   heads = {
+--     {"<C-q>", cmd("qall!"), { desc = "Quit without saving" }},
+--     {"<C-s>", cmd("wall|q"), { desc = "Save & quit" }}
+--   }
+-- })
+
+SaveOrExit = Hydra({
+  name = "Are you sure?",
+	config = {
+		color = "blue",
+		invoke_on_body = true,
+		hint = {
+			type = "window",
+			position = "middle",
+			border = "rounded",
+		},
+	},
+  heads = {
+    {"<C-q>", cmd("q!"), { desc = "Quit without saving" }},
+    {"<C-s>", cmd("wall|q"), { desc = "Save & quit" }}
+  }
+})
 -- vim:sw=2:ts=2
