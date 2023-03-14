@@ -1,5 +1,5 @@
 require("portal").setup({
-    labels = { "w", "a", "s", "d" },
+    labels = { "a", "s", "d", "f" },
 	window_options = {
 		relative = "editor",
 		width = 80,

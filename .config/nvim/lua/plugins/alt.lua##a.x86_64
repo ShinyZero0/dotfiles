@@ -24,7 +24,7 @@ return {
   --   -- dependencies = {},
   -- },
 	"Hoffs/omnisharp-extended-lsp.nvim",
-	"WhoIsSethDaniel/mason-tool-installer.nvim",
+	-- "WhoIsSethDaniel/mason-tool-installer.nvim",
 	-- {
 	--   "ray-x/lsp_signature.nvim",
 	--   config = true,
@@ -47,18 +47,18 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = true,
 	},
-	{
-		"glepnir/lspsaga.nvim",
-		event = "BufRead",
-		config = function()
-			require("config.lspsaga")
-		end,
-		dependencies = {
-			{ "nvim-tree/nvim-web-devicons" },
-			--Please make sure you install markdown and markdown_inline parser
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
-	},
+	-- {
+	-- 	"glepnir/lspsaga.nvim",
+	-- 	event = "BufRead",
+	-- 	config = function()
+	-- 		require("config.lspsaga")
+	-- 	end,
+	-- 	dependencies = {
+	-- 		{ "nvim-tree/nvim-web-devicons" },
+	-- 		--Please make sure you install markdown and markdown_inline parser
+	-- 		{ "nvim-treesitter/nvim-treesitter" },
+	-- 	},
+	-- },
 
 	{
 		"folke/which-key.nvim",
