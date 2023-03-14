@@ -1,7 +1,7 @@
-require("wilder").setup({
+local wilder = require("wilder")
+wilder.setup({
 	modes = { ":", "/" },
 })
-local wilder = require("wilder")
 wilder.set_option("pipeline", {
 	wilder.branch(
 		wilder.cmdline_pipeline({
@@ -20,9 +20,12 @@ wilder.set_option(
 	wilder.renderer_mux({
 		[":"] = wilder.popupmenu_renderer({
 			highlighter = wilder.basic_highlighter(),
+      reverse = true
 		}),
 		["/"] = wilder.wildmenu_renderer({
 			highlighter = wilder.basic_highlighter(),
 		}),
 	})
 )
+
+-- vim:ts=2:sw=2

@@ -242,7 +242,7 @@ SaveOrExit = Hydra({
 	},
   heads = {
     {"<C-q>", cmd("q!"), { desc = "Quit without saving" }},
-    {"<C-s>", cmd("wall|q"), { desc = "Save & quit" }}
+    {"<C-s>", cmd("wq"), { desc = "Save & quit" }}
   }
 })
 -- vim:sw=2:ts=2

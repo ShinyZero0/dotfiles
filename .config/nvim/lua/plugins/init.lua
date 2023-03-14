@@ -41,11 +41,6 @@ return {
 		dependencies = {},
 	},
 
-	-- {
-	--  "m00qek/baleia.nvim",
-	--  config = false,
-	--  dependencies = {},
-	-- },
 	{
 		"NvChad/nvim-colorizer.lua",
 		config = true,
@@ -56,6 +51,11 @@ return {
 		},
 		dependencies = {},
 	},
+	-- {
+	--  "m00qek/baleia.nvim",
+	--  config = false,
+	--  dependencies = {},
+	-- },
 
 	-- MOTIONS
 
@@ -70,17 +70,15 @@ return {
 		end,
 		dependencies = {},
 	},
-	-- {
-	-- 	"chrisgrieser/nvim-various-textobjs",
-	-- 	config = function()
-	-- 		require("various-textobjs").setup({ useDefaultKeymaps = true })
-	-- 	end,
-	-- },
 	{
 		"anuvyklack/hydra.nvim",
 		config = function()
 			require("config.hydra")
 		end,
+	},
+	{
+		"phaazon/hop.nvim",
+		config = true,
 	},
 	-- {
 	-- 	"mfussenegger/nvim-treehopper",
@@ -89,12 +87,14 @@ return {
 	-- 		"phaazon/hop.nvim",
 	-- 	},
 	-- },
-	{
-		"phaazon/hop.nvim",
-		config = true,
-	},
+	-- {
+	-- 	"chrisgrieser/nvim-various-textobjs",
+	-- 	config = function()
+	-- 		require("various-textobjs").setup({ useDefaultKeymaps = true })
+	-- 	end,
+	-- },
 
-	-- VISUAL
+	--============= VISUAL
 
 	{
 		"lukas-reineke/indent-blankline.nvim",

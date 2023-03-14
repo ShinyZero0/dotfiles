@@ -8,6 +8,6 @@ alias pkrm="pkg remove"
 alias yank="termux-clipboard-set"
 alias paste="termux-clipboard-get"
 
-alias rip="rip --graveyard ~/.trash"
+# alias rip="rip --graveyard ~/.trash"
 
 
