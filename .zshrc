@@ -9,44 +9,6 @@
 
 fpath+=~/.zsh/completions/
 
-mkcd(){
-    mkdir -p "$1"
-    cd "$1"
-}
-
-alias lf="lfcd"
-alias vi="nvim"
-alias py="python"
-
-# alias rcupv="rcup -v | rg -v 'identical' "
-
-alias reabbr="rip $HOME/.config/zsh-abbr/user-abbreviations && abbr import-aliases"
-alias rez="exec zsh"
-alias edz="$EDITOR ~/.zshrc"
-alias q="exit"
-
-alias whrs="wormhole-rs"
-
-alias xdgtype="xdg-mime query filetype"
-
-# GIT ALIASES
-alias gcl="git clone"
-alias gca="git commit -am"
-alias gst="git status"
-alias gch="git checkout"
-alias gdf="git diff | delta"
-alias gadd="git add"
-alias gmenocom="git merge --no-commit --no-ff"
-alias gcomall="git add --all && git commit"
-
-alias yca="yadm commit -am"
-alias yst="yadm status"
-alias ych="yadm checkout"
-alias ydf="yadm diff | delta"
-alias yadd="yadm add"
-
-ddns="shinyzero.ddns.net"
-
 # ADDED BY ZINIT'S INSTALLER
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
@@ -61,18 +23,20 @@ autoload -Uz _zinit
 
 source ~/.zsh-alt
 source ~/.zsh/lfcd.zsh
+source ~/.zsh/aliases.zsh
 
 # TURBO MODE
-zinit wait lucid depth"1" for \
+zinit wait lucid depth="1" for \
     zsh-users/zsh-history-substring-search \
     hlissner/zsh-autopair \
     ShinyZero0/z-git-filter \
     RobSis/zsh-completion-generator \
+    atload="unabbr rip which bc" \
     olets/zsh-abbr \
 
     # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-zinit light-mode depth"1" for \
+zinit light-mode depth="1" for \
     romkatv/powerlevel10k \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
@@ -80,7 +44,7 @@ zinit light-mode depth"1" for \
     zdharma-continuum/zinit-annex-rust \
 
     # Install Desktop-only binaries
-zinit if"[[ $(uname -m) = x86_64 ]]" depth"1" as="null" from="gh-r" for \
+zinit if="[[ $(uname -m) = x86_64 ]]" depth="1" as="null" from="gh-r" for \
     bpick="kitty-*-x86_64.txz" sbin="bin/kitty" sbin="bin/kitten" \
     kovidgoyal/kitty \
     sbin="pistol* -> pistol" \
@@ -93,8 +57,8 @@ zinit if"[[ $(uname -m) = x86_64 ]]" depth"1" as="null" from="gh-r" for \
     # sbin="koreader* -> koreader" \
     # koreader/koreader \
 
-    zinit if="[[ $(uname -m) = x86_64 ]]" depth"1" as="null" for \
-    atclone="cargo install --path=." atpull"%atclone" I60R/page
+    zinit if="[[ $(uname -m) = x86_64 ]]" depth="1" as="null" for \
+    atclone="cargo install --path=." atpull="%atclone" I60R/page
 
 # sbin="deno" denoland/deno \
 
@@ -116,7 +80,7 @@ zinit as="null" depth"1" for \
 zinit for \
     OMZL::git.zsh \
 
-    zinit wait depth"1" lucid for \
+    zinit wait depth="1" lucid for \
     blockf atpull'zinit creinstall -q .' \
     zsh-users/zsh-completions \
     blockf completions \
@@ -145,16 +109,10 @@ bindkey -M menuselect '\e' send-break
 zle_highlight+=(paste:none)
 
 setopt autocd
-setopt menu_complete
+setopt menu_complete correctall extendedglob
 
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_FIND_NO_DUPS
-setopt HIST_SAVE_NO_DUPS
-# setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST HIST_IGNORE_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_FIND_NO_DUPS HIST_SAVE_NO_DUPS SHARE_HISTORY
+# INC_APPEND_HISTORY
 
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -163,6 +121,7 @@ SAVEHIST=1000
 # RUN LAST
 
 zinit wait lucid for \
+    Aloxaf/fzf-tab \
     atload="zicompinit; zicdreplay" \
     atload:'bindkey "^[[A" history-substring-search-up' \
     atload:'bindkey "^[[B" history-substring-search-down' \

@@ -11,23 +11,6 @@ local lspkind = require("lspkind")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local snippy = require("snippy")
 
-cmp.setup.filetype({ "vim", "lua" }, {
-	sources = {
-		{ name = "cmdline" },
-		{ name = "nvim_lsp" },
-		{ name = "path" },
-		{ name = "snippy" },
-		{ name = "omni" },
-		{
-			name = "buffer",
-			option = {
-				get_bufnrs = function()
-					return vim.api.nvim_list_bufs()
-				end,
-			},
-		},
-	},
-})
 cmp.setup({
 	view = {
 		entries = { name = "custom", selection_order = "near_cursor" },
@@ -41,7 +24,6 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{ name = "snippy" },
 		{
 			name = "buffer",
 			option = {
@@ -50,9 +32,10 @@ cmp.setup({
 				end,
 			},
 		},
+		{ name = "snippy" },
 		{ name = "path" },
 		{ name = "omni" },
-		{ name = "nvim_lsp_signature_help" },
+		-- { name = "nvim_lsp_signature_help" },
 		-- { name = "nvim_lua" },
 	}),
 	snippet = {
@@ -91,6 +74,24 @@ cmp.setup({
 		["<C-c>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
 	}),
+})
+
+cmp.setup.filetype({ "vim", "lua" }, {
+	sources = {
+		{ name = "cmdline" },
+		{ name = "nvim_lsp" },
+		{ name = "path" },
+		{ name = "snippy" },
+		{ name = "omni" },
+		{
+			name = "buffer",
+			option = {
+				get_bufnrs = function()
+					return vim.api.nvim_list_bufs()
+				end,
+			},
+		},
+	},
 })
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

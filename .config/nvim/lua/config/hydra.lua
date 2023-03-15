@@ -54,7 +54,7 @@ Hydra({
 		{ "b", cmd("set linebreak!") },
 		-- { "V", cmd("set virtualedit!") },
 		{ "R", cmd("set readonly!") },
-    { "C", cmd("ColorizerToggle")},
+		{ "C", cmd("ColorizerToggle") },
 
 		{ "t", cmd("Telescope filetypes"), { exit = true } },
 		{ "S", cmd("TrailBlazerSaveSession"), { exit = true } },
@@ -126,23 +126,13 @@ Hydra({
 	mode = { "n" },
 
 	heads = {
-		{ "d", cmd("Lspsaga hover_doc"), { nowait = true } },
+		{ "d", require("hover").hover, { nowait = true } },
 		{ "l", cmd("Lspsaga show_line_diagnostics") },
-		{ "a", cmd("Lspsaga code_action") },
+		{ "a", vim.lsp.buf.code_action },
 		{ "f", cmd("Lspsaga lsp_finder") },
 		{ "r", cmd("Lspsaga rename") },
-		{
-			"n",
-			function()
-				require("lspsaga.diagnostic"):goto_next()
-			end,
-		},
-		{
-			"N",
-			function()
-				require("lspsaga.diagnostic"):goto_prev()
-			end,
-		},
+		{ "N", vim.diagnostic.goto_prev },
+		{ "n", vim.diagnostic.goto_next },
 	},
 })
 
@@ -230,7 +220,7 @@ Hydra({
 -- })
 
 SaveOrExit = Hydra({
-  name = "Are you sure?",
+	name = "Are you sure?",
 	config = {
 		color = "blue",
 		invoke_on_body = true,
@@ -240,9 +230,9 @@ SaveOrExit = Hydra({
 			border = "rounded",
 		},
 	},
-  heads = {
-    {"<C-q>", cmd("q!"), { desc = "Quit without saving" }},
-    {"<C-s>", cmd("wq"), { desc = "Save & quit" }}
-  }
+	heads = {
+		{ "<C-q>", cmd("q!"), { desc = "Quit without saving" } },
+		{ "<C-s>", cmd("wq"), { desc = "Save & quit" } },
+	},
 })
 -- vim:sw=2:ts=2

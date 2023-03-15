@@ -186,7 +186,6 @@ return {
 
 	-- NAVIGATION
 
-	-- "farmergreg/vim-lastplace",
 	{
 		"ethanholz/nvim-lastplace",
 		config = true,
@@ -263,70 +262,6 @@ return {
 			"natecraddock/telescope-zf-native.nvim",
 		},
 	},
-	-- {
-	-- 	"LeonHeidelbach/trailblazer.nvim",
-	-- 	config = true,
-	-- 	dependencies = {},
-	-- 	opts = {
-	-- 		auto_save_trailblazer_state_on_exit = true,
-	-- 		auto_load_trailblazer_state_on_enter = false,
-	-- 		trail_options = {
-	-- 			current_trail_mark_mode = "buffer_local_line_sorted",
-	-- 			mark_symbol = "", --  will only be used if trail_mark_symbol_line_indicators_enabled = true
-	-- 			newest_mark_symbol = "", -- disable this mark symbol by setting its value to ""
-	-- 			cursor_mark_symbol = "", -- disable this mark symbol by setting its value to ""
-	-- 			next_mark_symbol = "", -- disable this mark symbol by setting its value to ""
-	-- 			previous_mark_symbol = "", -- disable
-	-- 		},
-	-- 		force_mappings = { -- rename this to "force_mappings" to completely override default mappings and not merge with them
-	-- 			nv = { -- Mode union: normal & visual mode. Can be extended by adding i, x, ...
-	-- 				motions = {
-	-- 					new_trail_mark = "<Leader>m",
-	-- 					track_back = "<Leader>b",
-	-- 					peek_move_next_down = "<Leader>j",
-	-- 					peek_move_previous_up = "<Leader>k",
-	-- 					move_to_nearest = "<Leader>n",
-	-- 					toggle_trail_mark_list = "<Leader>'",
-	-- 				},
-	-- 				actions = {
-	-- 					-- delete_all_trail_marks = "<Leader>L",
-	-- 					-- paste_at_last_trail_mark = "<Leader>p",
-	-- 					-- paste_at_all_trail_marks = "<Leader>P",
-	-- 					-- set_trail_mark_select_mode = "<Leader>t",
-	-- 					-- switch_to_next_trail_mark_stack = "<Leader>.",
-	-- 					-- switch_to_previous_trail_mark_stack = "<Leader>,",
-	-- 					-- set_trail_mark_stack_sort_mode = "<Leader>s",
-	-- 				},
-	-- 			},
-	-- 			-- You can also add/move any motion or action to mode specific mappings i.e.:
-	-- 			-- i = {
-	-- 			--     motions = {
-	-- 			--         new_trail_mark = '<C-l>',
-	-- 			--         ...
-	-- 			--     },
-	-- 			--     ...
-	-- 			-- },
-	-- 		},
-	-- 	},
-	-- },
-	-- {
-	--   "stevearc/aerial.nvim",
-	--   config = true,
-	--   dependencies = {},
-	-- },
-	-- {
-	--   "chentoast/marks.nvim",
-	--   config = true,
-	--   dependencies = {},
-	-- },
-	-- {
-	-- 	"ThePrimeagen/harpoon",
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 	},
-	-- },
-
-	-- LSP & CO
 
 	{
 		"sbdchd/neoformat",
@@ -364,7 +299,7 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		event = { "InsertEnter" },
+		-- event = "InsertEnter",
 		config = function()
 			require("config.nvim-cmp")
 		end,

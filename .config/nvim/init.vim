@@ -96,6 +96,6 @@ let g:closetag_filetypes = "html,xhtml,phtml,xml"
 
 highlight IndentBlanklineIndent1 guifg=#906cff gui=nocombine
 highlight IndentBlanklineIndent2 guifg=#65b2ff gui=nocombine
-highlight IndentBlanklineIndent3 guifg=#62d196 gui=nocombine
+" highlight IndentBlanklineIndent3 guifg=#62d196 gui=nocombine
 
 command Reinit source $HOME/.config/nvim/init.vim

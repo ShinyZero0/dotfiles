@@ -35,6 +35,6 @@ endfunction
 vnoremap A <cmd>call SelectAll()<CR>
 
 autocmd FileType * set formatoptions-=cro
-autocmd BufWritePre *.lua,*.cs Neoformat
+autocmd BufWritePre *.lua Neoformat
 
 " autocmd BufEnter * lua require("CheckTrailBlazer")

@@ -100,11 +100,6 @@ lua << EOF
 -- vim.keymap.set("n", "<leader>h", require("harpoon.ui").nav_prev, {})
 function isAnyModified()
 for _, id in ipairs(vim.api.nvim_list_bufs()) do
-    -- if !vim.bo[0].modified then
-    --     vim.cmd("quit")
-        -- SaveOrExitOne:activate()
-    --     return
-    -- end
     if vim.bo[id].buflisted and vim.bo[id].modified then
         SaveOrExit:activate()
         return
