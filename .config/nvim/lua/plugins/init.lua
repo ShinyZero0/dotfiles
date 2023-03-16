@@ -62,6 +62,11 @@ return {
 	"anuvyklack/vim-smartword",
 	"chaoren/vim-wordmotion",
 	{
+		"utilyre/sentiment.nvim",
+		config = true,
+		dependencies = {},
+	},
+	{
 		"andymass/vim-matchup",
 		config = function()
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
