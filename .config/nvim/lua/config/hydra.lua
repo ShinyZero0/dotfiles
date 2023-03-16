@@ -116,27 +116,6 @@ Hydra({
 })
 
 Hydra({
-	name = "Lsp diagnostics",
-	body = "<Leader>d",
-	config = {
-		invoke_on_body = true,
-		color = "pink",
-		hint = { type = "window" },
-	},
-	mode = { "n" },
-
-	heads = {
-		{ "d", require("hover").hover, { nowait = true } },
-		{ "l", cmd("Lspsaga show_line_diagnostics") },
-		{ "a", vim.lsp.buf.code_action },
-		{ "f", cmd("Lspsaga lsp_finder") },
-		{ "r", cmd("Lspsaga rename") },
-		{ "N", vim.diagnostic.goto_prev },
-		{ "n", vim.diagnostic.goto_next },
-	},
-})
-
-Hydra({
 	name = "Formatting",
 	body = "<Leader>.",
 	hint = hints.Formatting,

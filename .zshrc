@@ -108,9 +108,7 @@ bindkey -M menuselect '\e' send-break
 
 zle_highlight+=(paste:none)
 
-setopt autocd
-setopt menu_complete correctall extendedglob
-
+setopt autocd menu_complete extendedglob
 setopt HIST_EXPIRE_DUPS_FIRST HIST_IGNORE_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_FIND_NO_DUPS HIST_SAVE_NO_DUPS SHARE_HISTORY
 # INC_APPEND_HISTORY
 

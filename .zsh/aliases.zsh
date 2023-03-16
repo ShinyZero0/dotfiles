@@ -19,7 +19,7 @@ alias bc='bc -q <(echo "scale=5")'
 alias whrs="wormhole-rs"
 alias mime="xdg-mime query filetype"
 
-alias reabbr="rip $HOME/.config/zsh-abbr/user-abbreviations && abbr import-aliases && abbr erase rip"
+alias reabbr="rip $HOME/.config/zsh-abbr/user-abbreviations && abbr import-aliases && unabbr rip bc which"
 
 # ZSH
 alias rez="exec zsh"
@@ -31,7 +31,7 @@ alias gcl="git clone"
 alias gca="git commit -am"
 alias gst="git status"
 alias gch="git checkout"
-alias gdf="git diff | delta"
+alias gdf="git diff"
 alias gadd="git add"
 alias gmenocom="git merge --no-commit --no-ff"
 alias gcomall="git add --all && git commit"
@@ -40,7 +40,7 @@ alias gcomall="git add --all && git commit"
 alias yca="yadm commit -am"
 alias yst="yadm status"
 alias ych="yadm checkout"
-alias ydf="yadm diff | delta"
+alias ydf="yadm diff"
 alias yadd="yadm add"
 
 ddns="shinyzero.ddns.net"

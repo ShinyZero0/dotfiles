@@ -35,5 +35,9 @@ cmd yankpath &{{
     echo -n $fx | xsel -i -b
 }}
 map yp yankpath
+cmd dragon &{{
+    dragon --all $fx
+}}
+map yd dragon
 
 # vim: ft=bash
