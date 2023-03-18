@@ -1,14 +1,20 @@
 ; vim: ft=scheme
 (assoc
   #:pattern "image/.*"
-  #:program "nomacs %f &>/dev/null 2>&1 &")
+  #:program "imv -- %f &>/dev/null &" 
+  #:edit "nomacs %f &>/dev/null 2>&1 &")
 (assoc
-  #:pattern '("^text/.*" "application/x-shellscript" "application/x-desktop" "application/json" "application/x-perl")
+  #:pattern '("^text/.*" "application/x-shellscript" "application/x-desktop" "application/json" "application/x-perl" "text/x-csrc
+")
   #:program "nvim %f"
   #:term "kitty --class floatwin -- ")
-; (assoc
-;   #:pattern '("^https?://.*" "application/pdf")
-;   #:program "firefox %f")
+(assoc
+  #:pattern "^http.*(png)|(jpg)|(webp)|(gif)"
+  #:program "curl %f | imv - "
+  )
+(assoc
+  #:pattern "^https?://.*"
+  #:program "firefox %f")
 (assoc
   #:pattern "video/.*"
   #:program "mpv --x11-name=floatwin %f &>/dev/null 2>&1 &"
