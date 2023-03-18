@@ -31,7 +31,6 @@ zinit wait lucid depth="1" for \
     hlissner/zsh-autopair \
     ShinyZero0/z-git-filter \
     RobSis/zsh-completion-generator \
-    atload="unabbr rip which bc" \
     olets/zsh-abbr \
 
     # Load a few important annexes, without Turbo
@@ -53,6 +52,7 @@ zinit if="[[ $(uname -m) = x86_64 ]]" depth="1" as="null" from="gh-r" for \
     qarmin/czkawka \
     sbin="wormhole-rs" magic-wormhole/magic-wormhole.rs \
     sbin="fd" completions @sharkdp/fd \
+    sbin="deno" denoland/deno \
 
     # sbin="koreader* -> koreader" \
     # koreader/koreader \
@@ -60,7 +60,6 @@ zinit if="[[ $(uname -m) = x86_64 ]]" depth="1" as="null" from="gh-r" for \
     zinit if="[[ $(uname -m) = x86_64 ]]" depth="1" as="null" for \
     atclone="cargo install --path=." atpull="%atclone" I60R/page
 
-# sbin="deno" denoland/deno \
 
     # Install binaries
 zinit as="null" depth"1" from="gh-r" for \
@@ -119,7 +118,6 @@ SAVEHIST=1000
 # RUN LAST
 
 zinit wait lucid for \
-    Aloxaf/fzf-tab \
     atload="zicompinit; zicdreplay" \
     atload:'bindkey "^[[A" history-substring-search-up' \
     atload:'bindkey "^[[B" history-substring-search-down' \
