@@ -52,6 +52,7 @@ map dd cut
 map a
 map az push :zip<space>
 map ae extract
+map as share
 
 map gl follow_link
 map g/ cd /
