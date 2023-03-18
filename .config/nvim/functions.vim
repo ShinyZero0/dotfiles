@@ -12,17 +12,17 @@ augroup VisualEvent
 augroup END
 
 " Change keyboard layout on switching mode
-function Insert_Leave()
+function SetEnglish()
     let $vimlayout = system('xkb-switch -p')
     !xkb-switch -s us
 endfunction
-function Insert_Enter()
+function SetOldLayout()
     if $vimlayout != ""
         !xkb-switch -s $vimlayout
     endif
 endfunction
-autocmd InsertLeave * silent! call Insert_Leave()
-autocmd InsertEnter * silent! call Insert_Enter()
+autocmd InsertLeave * silent! call SetEnglish()
+autocmd InsertEnter * silent! call SetOldLayout()
 
 function SelectAll()
     let curMode = mode()
@@ -38,4 +38,5 @@ autocmd FileType * set formatoptions-=cro
 autocmd BufWritePre *.lua Neoformat
 
 au BufNewFile,BufFilePre,BufRead *.md set syntax=markdown
+autocmd BufEnter *.axaml,*.xaml setlocal ft=xml ts=2 sw=2
 " autocmd BufEnter * lua require("CheckTrailBlazer")

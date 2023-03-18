@@ -1,6 +1,7 @@
 set linebreak
-silent! %s/  / /g
-silent! %s/—/--/g
+silent! %s/ | / /g
+silent! %s/ \+/ /g
+silent! %s/—/-/g
 " au BufWritePre * mark z | silent! %s/--/—/g | silent! %s/--/—/g
 " au BufWritePost * silent! undo | normal! 'z
 " nnoremap <Leader>. <Nop>

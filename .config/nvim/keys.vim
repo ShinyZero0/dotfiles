@@ -60,7 +60,8 @@ map <Leader>h <cmd>GrappleCycle backward<CR>
 
 " nnoremap <C-h> :HunkLineToggle<CR>
 
-nnoremap <Leader>t <cmd>Neotree toggle float reveal<CR>
+nnoremap <Leader>t <cmd>Neotree focus reveal<CR>
+" toggle float
 nnoremap <Leader>f :Telescope find_files<CR>
 nnoremap <Leader>r <cmd>Telescope resume<CR>
 nnoremap <Leader>' <cmd>Telescope marks<CR>
