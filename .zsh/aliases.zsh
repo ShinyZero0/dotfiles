@@ -38,21 +38,22 @@ alias gadd="git add"
 alias gmenocom="git merge --no-commit --no-ff"
 alias gcomall="git add --all && git commit"
 
-gitt()
-{
-    if [[ $PWD = $HOME ]] then
-        yadm $@
-    else
-        git $@
-    fi
-}
-alias git="gitt"
+# gitt()
+# {
+#     repos=($HOME/dev $HOME/sources $HOME/.local)
+#     if [[ $PWD = $HOME]] then
+#         yadm $@
+#     else
+#         git $@
+#     fi
+# }
+# alias git="gitt"
 
 # YADM
-# alias yca="yadm commit -am"
-# alias yst="yadm status"
-# alias ych="yadm checkout"
-# alias ydf="yadm diff"
-# alias yadd="yadm add"
+alias yca="yadm commit -am"
+alias yst="yadm status"
+alias ych="yadm checkout"
+alias ydf="yadm diff"
+alias yadd="yadm add"
 
 ddns="shinyzero.ddns.net"

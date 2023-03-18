@@ -7,15 +7,9 @@
       "Priority": 0
     },
     {
-      "Name": "2",
-      "Content": "| 1 | 2 | 3 |\n|---|---|---|\n| 2 | 4 | 6 |\n| 3 | 6 | 9 |\n",
-      "IsDone": false,
-      "Priority": 0
-    },
-    {
       "Name": "MVP",
       "Content": "Minimal Viable Product",
-      "IsDone": false,
+      "IsDone": true,
       "Priority": 0
     },
     {
@@ -32,12 +26,12 @@
     },
     {
       "Name": "мапнуть поисковую строку здесь",
-      "Content": null,
+      "Content": "не получилось:\n* реактивная команда в codebehind\n* void метод там же",
       "IsDone": false,
       "Priority": 0
     },
     {
-      "Name": "fix autofocus",
+      "Name": "fix autofocusing",
       "Content": null,
       "IsDone": true,
       "Priority": 0
@@ -57,9 +51,9 @@
     {
       "Name": "добавить тире в сплиттер",
       "Content": "U+2014",
-      "IsDone": false,
+      "IsDone": true,
       "Priority": 0
     }
   ],
-  "inTimeCnt": 3
+  "inTimeCnt": 5
 }

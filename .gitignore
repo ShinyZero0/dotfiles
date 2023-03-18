@@ -3,3 +3,5 @@ btop.conf
 .luarc.json
 sanity
 btop.log
+*alt*
+*##*
