@@ -1,9 +1,10 @@
 -- vim.g.neo_tree_remove_legacy_commands = 1
-vim.cmd("let g:neo_tree_remove_legacy_commands = 1")
-
+-- vim.cmd("let g:neo_tree_remove_legacy_commands = 1")
+-- vim.g.neo_tree_remove_legacy_commands = 1
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 require("neo-tree").setup({
 	window = {
-		position = "float",
+		position = "left",
 		mappings = {
 			["n"] = "add",
 			["<Esc>"] = "close_window",
