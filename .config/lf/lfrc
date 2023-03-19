@@ -21,7 +21,9 @@ cmd open-with ${{
     tput rmcup
 }}
 map o open-with
-map e $jaro --method=edit $fx
+map e ${{
+jaro --method=edit $fx || jaro $fx
+}}
 cmd open ${{
     tput smcup
     jaro $fx
