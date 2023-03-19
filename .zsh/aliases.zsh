@@ -25,11 +25,13 @@ alias mime="xdg-mime query filetype"
 # ZSH
 alias rez="exec zsh"
 alias edz="$EDITOR ~/.zshrc"
+alias eda="$EDITOR ~/.zsh/aliases.zsh"
 alias q="exit"
 
 # GIT
 alias gc="git commit -m"
 alias gca="git commit -am"
+alias gcd="git add . && git commit -m"
 alias gcl="git clone"
 alias gst="git status"
 alias gch="git checkout"
