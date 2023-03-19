@@ -1,1 +1,0 @@
-lualine.lua##a.x86_64
