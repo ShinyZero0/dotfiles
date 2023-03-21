@@ -78,7 +78,7 @@ cmp.setup({
 
 cmp.setup.filetype({ "vim", "lua" }, {
 	sources = {
-		{ name = "cmdline" },
+		-- { name = "cmdline" },
 		{ name = "nvim_lsp" },
 		{ name = "path" },
 		{ name = "snippy" },
