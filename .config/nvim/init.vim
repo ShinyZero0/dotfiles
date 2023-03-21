@@ -75,7 +75,11 @@ let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
 let g:EasyMotion_smartcase = 1
-let g:neoformat_enabled_cs = ["csharpier"]
+" let g:neoformat_enabled_cs = ["clang-format", "csharpier"]
+let g:neoformat_c_clangformat = {
+            \ 'exe': 'clang-format',
+            \ 'args': ['--style=Microsoft'],
+            \ }
 let g:neoformat_enabled_python = ["black", "autopep8", "yapf"]
 
 function! SourceIfExists(file)
