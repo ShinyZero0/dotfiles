@@ -1,22 +1,11 @@
 nnoremap <Space> <Nop>
 let mapleader = " "
 let maplocalleader = "\\"
+lua require("keys")
+
 map ; :
 nnoremap <Esc> :noh<CR>
-
-nnoremap g1 1gt
-nnoremap g2 2gt
-nnoremap g3 3gt
-nnoremap g4 4gt
-nnoremap g5 5gt
-nnoremap g6 6gt
-nnoremap g7 7gt
-nnoremap g8 8gt
-nnoremap g9 9gt
-
 map <C-s> :w<CR>
-
-" nnoremap <C-q> :call feedkeys(":q\<lt>CR>")<CR>
 
 map <Leader>y "+y
 map <Leader>p "+p
@@ -27,7 +16,7 @@ nnoremap <Leader>v ^v$h
 nnoremap <CR>   o<Esc>
 nnoremap <S-CR> O<Esc>
 
-" Command Line
+" COMMAND LINE
 
 " set verymagic regex search
 " nnoremap /  /\v
@@ -42,7 +31,21 @@ cnoremap <C-BS> <C-w>
 inoremap <C-left>  <Esc>ba
 inoremap <C-right> <Esc>wa
 
+" VISUAL MODE
+
+vnoremap p "_dP
+
 " MISC PLUGINS
+
+nnoremap <F5> <cmd>ToggleTerm<CR>
+nnoremap <Leader>x <cmd>ToggleTermSendCurrentLine<CR>
+vnoremap <Leader>x <cmd>ToggleTermSendVisualLines<CR>
+" nnoremap <F5> <cmd>FloatermToggle<CR>
+tmap <C-q> <C-\><C-n><C-q>
+tmap <F5> <C-q>
+
+nnoremap <leader>s <cmd>lua require('spectre').open()<CR>
+vnoremap <leader>s <esc>:lua require('spectre').open_visual()<CR>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -93,24 +96,17 @@ vnoremap <silent> gs ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<C
 
 " nnoremap <Leader>' <cmd>Telescope harpoon marks<CR>
 
-lua << EOF
-
--- vim.keymap.set("n", '<leader>"', require("harpoon.ui").toggle_quick_menu, {})
--- vim.keymap.set("n", "<leader>M", require("harpoon.mark").add_file, {})
--- vim.keymap.set("n", "<leader>l", require("harpoon.ui").nav_next, {})
--- vim.keymap.set("n", "<leader>h", require("harpoon.ui").nav_prev, {})
-function isAnyModified()
-for _, id in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.bo[id].buflisted and vim.bo[id].modified then
-        SaveOrExit:activate()
-        return
-    end
-end
-vim.cmd("quit")
-end
-
-EOF
 map <C-q> <cmd>lua isAnyModified()<CR>
+
+nnoremap g1 1gt
+nnoremap g2 2gt
+nnoremap g3 3gt
+nnoremap g4 4gt
+nnoremap g5 5gt
+nnoremap g6 6gt
+nnoremap g7 7gt
+nnoremap g8 8gt
+nnoremap g9 9gt
 
 " map <Leader>// :Telescope<CR>
 " map <Leader>/h :Telescope heading<CR>
