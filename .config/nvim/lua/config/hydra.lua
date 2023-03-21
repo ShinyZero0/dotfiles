@@ -210,7 +210,7 @@ SaveOrExit = Hydra({
 		},
 	},
 	heads = {
-		{ "<C-q>", cmd("q!"), { desc = "Quit without saving" } },
+		{ "<C-q>", cmd("qall!"), { desc = "Quit without saving" } },
 		{ "<C-s>", cmd("wq"), { desc = "Save & quit" } },
 	},
 })
