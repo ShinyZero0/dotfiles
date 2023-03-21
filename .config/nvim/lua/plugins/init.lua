@@ -32,12 +32,17 @@ return {
 
 	-- OTHERS
 
+	-- {
+	-- 	"voldikss/vim-floaterm",
+	-- 	config = false,
+	-- 	cmd = {
+	-- 		"FloatermToggle",
+	-- 	},
+	-- 	dependencies = {},
+	-- },
 	{
-		"voldikss/vim-floaterm",
-		config = false,
-		cmd = {
-			"FloatermToggle",
-		},
+		"akinsho/toggleterm.nvim",
+		config = true,
 		dependencies = {},
 	},
 
@@ -101,6 +106,11 @@ return {
 
 	--============= VISUAL
 
+	{
+		"anuvyklack/pretty-fold.nvim",
+		config = true,
+		dependencies = {},
+	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
@@ -168,13 +178,8 @@ return {
 		},
 		event = "ModeChanged *:[vV\x16]*",
 	},
-
-	{
-		"tpope/vim-surround",
-		-- config = false,
-		-- opts = {},
-		-- dependencies = {},
-	},
+	"tpope/vim-surround",
+	"tpope/vim-repeat",
 
 	{
 		"nvim-pack/nvim-spectre",
@@ -192,6 +197,11 @@ return {
 	-- NAVIGATION
 
 	{
+		"stevearc/oil.nvim",
+		config = true,
+		dependencies = {},
+	},
+	{
 		"ethanholz/nvim-lastplace",
 		config = true,
 	},
@@ -206,11 +216,11 @@ return {
 		},
 		dependencies = {},
 	},
-	{
-		"simrat39/symbols-outline.nvim",
-		config = true,
-		dependencies = {},
-	},
+	-- {
+	-- 	"simrat39/symbols-outline.nvim",
+	-- 	config = true,
+	-- 	dependencies = {},
+	-- },
 	{
 		"cbochs/grapple.nvim",
 		config = function()
