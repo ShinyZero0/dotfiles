@@ -8,9 +8,8 @@
   #:program "nvim %f"
   #:term "kitty --class floatwin -- ")
 (assoc
-  #:pattern "^http.*(png)|(jpg)|(webp)|(gif)"
-  #:program "curl %f | imv - "
-  )
+  #:pattern "^http.*(png)|(jpeg)|(jpg)|(webp)|(gif)"
+  #:program "~/.scripts/DiscordCache.sh %f")
 (assoc
   #:pattern "^https?://.*"
   #:program "firefox %f")
