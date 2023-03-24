@@ -6,8 +6,9 @@ Install:
 ```bash
 sudo dnf install -y \
 i3 polybar picom rofi \
-python3-pip node-npm cargo git yadm \
-zsh xsel xclip neovim
+python3-pip node-npm cargo \
+git yadm zsh \
+xsel xclip neovim
 ```
 * [xkeysnail](https://github.com/mooz/xkeysnail):
 ```bash

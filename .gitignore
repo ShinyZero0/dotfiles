@@ -4,5 +4,5 @@ btop.conf
 sanity
 btop.log
 *alt*
-*##*
+*\#\#* 
 lualine.lua
