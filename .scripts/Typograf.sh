@@ -11,8 +11,8 @@ xdotool keyup ctrl
 
 xdotool key ctrl+x
 
-xclip -selection clipboard -o > typograf.txt
-typograf-cli -l ru,en-US typograf.txt | xclip -selection clipboard -i
+xclip -selection clipboard -o > .typograf.txt
+typograf-cli -l ru,en-US .typograf.txt | xclip -selection clipboard -i
 
 xdotool windowactivate $win 
 xdotool keyup shift 
