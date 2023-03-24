@@ -44,15 +44,16 @@ zinit light-mode depth="1" for \
 
     # Install Desktop-only binaries
 zinit if="[[ $(uname -m) = x86_64 ]]" depth="1" as="null" from="gh-r" for \
-    bpick="kitty-*-x86_64.txz" sbin="bin/kitty" sbin="bin/kitten" \
-    kovidgoyal/kitty \
-    sbin="pistol* -> pistol" \
-    doronbehar/pistol \
-    sbin="linux_czkawka_cli -> czkawka" bpick="linux_czkawka_cli" \
-    qarmin/czkawka \
-    sbin="wormhole-rs" magic-wormhole/magic-wormhole.rs \
     sbin="fd" completions @sharkdp/fd \
     sbin="deno" denoland/deno \
+    sbin="btm" completions ClementTsang/bottom \
+    sbin="pistol* -> pistol" doronbehar/pistol \
+    sbin="choose* -> choose" theryangeary/choose \
+    sbin="wormhole-rs" magic-wormhole/magic-wormhole.rs \
+    bpick="kitty-*-x86_64.txz" sbin="bin/kitty" sbin="bin/kitten" \
+    kovidgoyal/kitty \
+    sbin="linux_czkawka_cli -> czkawka" bpick="linux_czkawka_cli" \
+    qarmin/czkawka \
 
     # sbin="koreader* -> koreader" \
     # koreader/koreader \
@@ -122,3 +123,4 @@ zinit wait lucid for \
     atload:'bindkey "^[[A" history-substring-search-up' \
     atload:'bindkey "^[[B" history-substring-search-down' \
     zdharma-continuum/fast-syntax-highlighting \
+

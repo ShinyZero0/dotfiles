@@ -32,7 +32,7 @@ alias q="exit"
 alias gc="git commit -m"
 alias gca="git commit -am"
 alias gcd="git add . && git commit -m"
-alias gcl="command git clone"
+alias gcl="git clone"
 alias gst="git status"
 alias gch="git checkout"
 alias gdf="git diff"
@@ -40,15 +40,16 @@ alias gadd="git add"
 alias gmenocom="git merge --no-commit --no-ff"
 alias gcomall="git add --all && git commit"
 
-gitt()
-{
-    if [[ $(exec git rev-parse --is-inside-work-tree 2>/dev/null) ]] then
-        git $@
-    else
-        yadm $@
-    fi
-}
-alias git="gitt"
+# gitt()
+# {
+#     if [[ $(exec git rev-parse --is-inside-work-tree 2>/dev/null) ]] then
+#         git $@
+#     else
+#         yadm $@
+#     fi
+# }
+alias gt="unalias git"
+alias yd="alias git='yadm'"
 
 # YADM
 # alias yca="yadm commit -am"
