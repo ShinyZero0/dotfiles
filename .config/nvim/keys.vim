@@ -53,6 +53,7 @@ xmap <Tab> <Plug>(snippy-cut-text)
 
 map ? <cmd>HopPatternMW<CR>
 map <C-f> <cmd>HopWordMW<CR>
+map L <cmd>HopLine<CR>
 map t <cmd>HopChar1AC<CR>
 map T <cmd>HopChar1BC<CR>
 

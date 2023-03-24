@@ -41,6 +41,10 @@ return {
 	--  dependencies = {},
 	-- },
 	{
+		"dinhhuy258/vim-local-history",
+		build = ":UpdateRemotePlugins",
+	},
+	{
 		"akinsho/toggleterm.nvim",
 		config = true,
 		dependencies = {},
@@ -129,6 +133,10 @@ return {
 	},
 
 	-- FILETYPES
+	{
+		"zdharma-continuum/zinit-vim-syntax",
+		ft = "zsh",
+	},
 	{
 		"sam4llis/nvim-lua-gf",
 		ft = { "lua" },
@@ -349,13 +357,12 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		-- event = "InsertEnter",
+		event = "InsertEnter",
 		config = function()
 			require("config.nvim-cmp")
 		end,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
-			-- "hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-omni",
@@ -382,7 +389,7 @@ return {
 				name = "snippy",
 				config = true,
 				dependencies = {
-					"honza/vim-snippets",
+					"ShinyZero0/vim-snippets",
 				},
 			},
 		},
