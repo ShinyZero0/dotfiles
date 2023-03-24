@@ -16,7 +16,7 @@ set tabstop=4 shiftwidth=4 expandtab
 set scrolloff=5
 set breakindent
 
-set timeoutlen=3000
+set timeoutlen=5000
 
 set completeopt=noselect
 set spelllang=en,ru
@@ -75,12 +75,18 @@ let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
 let g:EasyMotion_smartcase = 1
-" let g:neoformat_enabled_cs = ["clang-format", "csharpier"]
-let g:neoformat_c_clangformat = {
+let g:neoformat_cs_clangformat = {
             \ 'exe': 'clang-format',
-            \ 'args': ['--style=Microsoft'],
+            \ 'stdin': 1,
+            \ 'args': ['--style=Microsoft', '--assume-filename=.cs'],
+            \ }
+let g:neoformat_cpp_clangformat = {
+            \ 'exe': 'clang-format',
+            \ 'stdin': 1,
+            \ 'args': ['--style=Microsoft', '--assume-filename=.cpp'],
             \ }
 let g:neoformat_enabled_python = ["black", "autopep8", "yapf"]
+let g:neoformat_enabled_cs = ["csharpier", "clangformat"]
 
 function! SourceIfExists(file)
     if filereadable(expand(a:file))

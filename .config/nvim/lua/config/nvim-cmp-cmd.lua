@@ -2,6 +2,9 @@ local cmp = require("cmp")
 
 cmp.setup.cmdline("/", {
 	mapping = cmp.mapping.preset.cmdline(),
+	view = {
+		entries = { name = "wildmenu", separator = "  " },
+	},
 	sources = {
 		{ name = "buffer" },
 	},
