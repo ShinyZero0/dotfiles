@@ -87,12 +87,34 @@ return {
 		},
 	},
 	{
-		"folke/which-key.nvim",
-		dependencies = {},
-		config = function()
-			require("config.which-key")
-		end,
+		"tversteeg/registers.nvim",
+		name = "registers",
+		config = true,
+		opts = {
+			window = {
+				-- The window can't be wider than 100 characters
+				max_width = 100,
+				-- Show a small highlight in the sign column for the line the cursor is on
+				highlight_cursorline = true,
+				-- Don't draw a border around the registers window
+				border = "rounded",
+				-- Apply a tiny bit of transparency to the the window, letting some characters behind it bleed through
+				transparency = 10,
+			},
+		},
+		keys = {
+			{ '"', mode = { "n", "v" } },
+			{ "<C-R>", mode = "i" },
+		},
+		cmd = "Registers",
 	},
+	-- {
+	-- 	"folke/which-key.nvim",
+	-- 	dependencies = {},
+	-- 	config = function()
+	-- 		require("config.which-key")
+	-- 	end,
+	-- },
 	-- {
 	-- 	"glepnir/lspsaga.nvim",
 	-- 	event = "BufRead",

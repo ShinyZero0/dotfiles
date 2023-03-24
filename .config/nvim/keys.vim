@@ -18,9 +18,6 @@ nnoremap <S-CR> O<Esc>
 
 " COMMAND LINE
 
-" set verymagic regex search
-" nnoremap /  /\v
-
 cnoremap <C-left>  <S-left>
 cnoremap <C-right> <S-right>
 
@@ -34,6 +31,7 @@ inoremap <C-right> <Esc>wa
 " VISUAL MODE
 
 vnoremap p "_dP
+vnoremap & :'<,'>&<CR>
 
 " MISC PLUGINS
 
@@ -58,16 +56,20 @@ map <C-f> <cmd>HopWordMW<CR>
 map t <cmd>HopChar1AC<CR>
 map T <cmd>HopChar1BC<CR>
 
-map <Leader>l <cmd>GrappleCycle forward<CR>
-map <Leader>h <cmd>GrappleCycle backward<CR>
+" map <Leader>l <cmd>GrappleCycle forward<CR>
+" map <Leader>h <cmd>GrappleCycle backward<CR>
 
 " nnoremap <C-h> :HunkLineToggle<CR>
 
 nnoremap <Leader>t <cmd>Neotree focus reveal<CR>
-" toggle float
-nnoremap <Leader>f :Telescope find_files<CR>
+
+nnoremap <Leader>f <cmd>Telescope find_files<CR>
 nnoremap <Leader>r <cmd>Telescope resume<CR>
 nnoremap <Leader>' <cmd>Telescope marks<CR>
+
+nnoremap <Leader>b <cmd>ReachOpen buffers<CR>
+nnoremap gt <cmd>ReachOpen tabpages<CR>
+nnoremap ' <cmd>ReachOpen marks<CR>
 
 " LITERAL NAVIGATION
 
@@ -98,15 +100,15 @@ vnoremap <silent> gs ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<C
 
 map <C-q> <cmd>lua isAnyModified()<CR>
 
-nnoremap g1 1gt
-nnoremap g2 2gt
-nnoremap g3 3gt
-nnoremap g4 4gt
-nnoremap g5 5gt
-nnoremap g6 6gt
-nnoremap g7 7gt
-nnoremap g8 8gt
-nnoremap g9 9gt
+" nnoremap g1 1gt
+" nnoremap g2 2gt
+" nnoremap g3 3gt
+" nnoremap g4 4gt
+" nnoremap g5 5gt
+" nnoremap g6 6gt
+" nnoremap g7 7gt
+" nnoremap g8 8gt
+" nnoremap g9 9gt
 
 " map <Leader>// :Telescope<CR>
 " map <Leader>/h :Telescope heading<CR>

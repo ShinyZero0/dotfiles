@@ -4,13 +4,13 @@ require("lualine").setup({
 		lualine_a = { "mode" },
 		lualine_b = { "filename" },
 		lualine_c = {
-			{
-				function()
-					local key = require("grapple").key()
-					return " [" .. key .. "]"
-				end,
-				cond = require("grapple").exists,
-			},
+			-- {
+			-- 	function()
+			-- 		local key = require("grapple").key()
+			-- 		return " [" .. key .. "]"
+			-- 	end,
+			-- 	cond = require("grapple").exists,
+			-- },
 		},
 
 		lualine_x = { "filetype" },

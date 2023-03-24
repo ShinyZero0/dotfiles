@@ -33,12 +33,12 @@ return {
 	-- OTHERS
 
 	-- {
-	-- 	"voldikss/vim-floaterm",
-	-- 	config = false,
-	-- 	cmd = {
-	-- 		"FloatermToggle",
-	-- 	},
-	-- 	dependencies = {},
+	--  "voldikss/vim-floaterm",
+	--  config = false,
+	--  cmd = {
+	--    "FloatermToggle",
+	--  },
+	--  dependencies = {},
 	-- },
 	{
 		"akinsho/toggleterm.nvim",
@@ -54,6 +54,7 @@ return {
 				names = false,
 			},
 		},
+		cmd = "ColorizerToggle",
 		dependencies = {},
 	},
 	-- {
@@ -67,9 +68,9 @@ return {
 	"anuvyklack/vim-smartword",
 	"chaoren/vim-wordmotion",
 	-- {
-	-- 	"utilyre/sentiment.nvim",
-	-- 	config = true,
-	-- 	dependencies = {},
+	--  "utilyre/sentiment.nvim",
+	--  config = true,
+	--  dependencies = {},
 	-- },
 	{
 		"andymass/vim-matchup",
@@ -91,17 +92,17 @@ return {
 		config = true,
 	},
 	-- {
-	-- 	"mfussenegger/nvim-treehopper",
-	-- 	-- config = true,
-	-- 	dependencies = {
-	-- 		"phaazon/hop.nvim",
-	-- 	},
+	--  "mfussenegger/nvim-treehopper",
+	--  -- config = true,
+	--  dependencies = {
+	--    "phaazon/hop.nvim",
+	--  },
 	-- },
 	-- {
-	-- 	"chrisgrieser/nvim-various-textobjs",
-	-- 	config = function()
-	-- 		require("various-textobjs").setup({ useDefaultKeymaps = true })
-	-- 	end,
+	--  "chrisgrieser/nvim-various-textobjs",
+	--  config = function()
+	--    require("various-textobjs").setup({ useDefaultKeymaps = true })
+	--  end,
 	-- },
 
 	--============= VISUAL
@@ -128,9 +129,13 @@ return {
 	},
 
 	-- FILETYPES
-
+	{
+		"sam4llis/nvim-lua-gf",
+		ft = { "lua" },
+	},
 	{
 		"sukima/xmledit",
+		ft = "xml",
 		-- config = true,
 		dependencies = {},
 	},
@@ -157,9 +162,9 @@ return {
 	"junegunn/vim-easy-align",
 
 	-- {
-	-- 	"jbyuki/venn.nvim",
-	-- 	-- config = true,
-	-- 	dependencies = {},
+	--  "jbyuki/venn.nvim",
+	--  -- config = true,
+	--  dependencies = {},
 	-- },
 	{
 		"windwp/nvim-autopairs",
@@ -196,14 +201,20 @@ return {
 
 	-- NAVIGATION
 
-	{
-		"stevearc/oil.nvim",
-		config = true,
-		dependencies = {},
-	},
+	-- {
+	--  "stevearc/oil.nvim",
+	--  config = true,
+	--  dependencies = {},
+	-- },
 	{
 		"ethanholz/nvim-lastplace",
 		config = true,
+	},
+	{
+		"toppair/reach.nvim",
+		config = true,
+		cmd = "ReachOpen",
+		dependencies = {},
 	},
 	{
 		"cbochs/portal.nvim",
@@ -217,26 +228,31 @@ return {
 		dependencies = {},
 	},
 	-- {
-	-- 	"simrat39/symbols-outline.nvim",
+	--  "simrat39/symbols-outline.nvim",
+	--  config = true,
+	--  dependencies = {},
+	-- },
+	-- {
+	--  "cbochs/grapple.nvim",
+	--  config = function()
+	--    require("grapple").setup()
+	--    vim.keymap.set("n", "<leader>M", require("grapple").toggle)
+	--    vim.keymap.set("n", '<leader>"', require("grapple").popup_tags)
+	--  end,
+	--  cmd = {
+	--    "GrapplePopup",
+	--    "GrappleToggle",
+	--    "GrappleCycle",
+	--  },
+	--  dependencies = {
+	--    "nvim-lua/plenary.nvim",
+	--  },
+	-- },
+	-- {
+	-- 	"nyngwang/suave.lua",
 	-- 	config = true,
 	-- 	dependencies = {},
 	-- },
-	{
-		"cbochs/grapple.nvim",
-		config = function()
-			require("grapple").setup()
-			vim.keymap.set("n", "<leader>M", require("grapple").toggle)
-			vim.keymap.set("n", '<leader>"', require("grapple").popup_tags)
-		end,
-		cmd = {
-			"GrapplePopup",
-			"GrappleToggle",
-			"GrappleCycle",
-		},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-	},
 	{
 		"chentoast/marks.nvim",
 		config = true,
@@ -256,11 +272,23 @@ return {
 		branch = "v2.x",
 		cmd = "Neotree",
 		dependencies = {
+			"s1n7ax/nvim-window-picker",
 			"mrbjarksen/neo-tree-diagnostics.nvim",
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 			"nvim-lua/plenary.nvim",
 		},
+	},
+	{
+		"s1n7ax/nvim-window-picker",
+		config = true,
+		lazy = true,
+		opts = {
+			selection_chars = "ASDFQW",
+			fg_color = "#ffe9aa",
+			other_win_hl_color = "",
+		},
+		dependencies = {},
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -299,18 +327,25 @@ return {
 
 	-- COMPLETION and SNIPPETS
 
+	-- {
+	--  "gelguy/wilder.nvim",
+	--  config = function()
+	--    require("config.wilder")
+	--  end,
+	--  dependencies = {
+	--    {
+	--      "roxma/nvim-yarp",
+	--      build = { "pip install -r requirements.txt", ":UpdateRemotePlugins" },
+	--    },
+	--  },
+	-- },
 	{
-		"gelguy/wilder.nvim",
-		event = "CmdLineEnter",
+		"hrsh7th/cmp-cmdline",
 		config = function()
-			require("config.wilder")
+			require("config.nvim-cmp-cmd")
 		end,
-		dependencies = {
-			{
-				"roxma/nvim-yarp",
-				build = { "pip install -r requirements.txt", ":UpdateRemotePlugins" },
-			},
-		},
+		event = "CmdLineEnter",
+		dependencies = {},
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -325,7 +360,6 @@ return {
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-omni",
 			"dcampos/cmp-snippy",
-			"hrsh7th/cmp-cmdline",
 			"onsails/lspkind.nvim",
 			-- {
 			--   "hrsh7th/cmp-nvim-lua",
@@ -341,6 +375,7 @@ return {
 	},
 	{
 		"dcampos/cmp-snippy",
+		lazy = true,
 		dependencies = {
 			{
 				"dcampos/nvim-snippy",

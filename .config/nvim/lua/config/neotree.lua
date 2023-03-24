@@ -10,6 +10,8 @@ require("neo-tree").setup({
 		position = "left",
 		mappings = {
 			["n"] = "add",
+			["o"] = "open",
+			["`"] = "toggle_hidden",
 			["<Esc>"] = "close_window",
 			["H"] = hop_tree,
 		},
@@ -21,6 +23,6 @@ require("neo-tree").setup({
 		"diagnostics",
 	},
 	filesystem = {
-		hijack_netrw_behavior = "open_default",
+		-- hijack_netrw_behavior = "open_default",
 	},
 })
