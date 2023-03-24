@@ -97,6 +97,7 @@ endfunction
 lua require("config.lazy")
 source $HOME/.config/nvim/init-alt.vim
 source $HOME/.config/nvim/functions.vim
+lua require("functions")
 source $HOME/.config/nvim/keys.vim
 call SourceIfExists("$HOME/.config/nvim/keys-alt.vim")
 source $HOME/.config/nvim/colors.vim

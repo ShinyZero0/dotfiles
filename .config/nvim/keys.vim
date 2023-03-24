@@ -5,7 +5,7 @@ lua require("keys")
 
 map ; :
 nnoremap <Esc> :noh<CR>
-map <C-s> :w<CR>
+map <C-s> :silent w<CR>
 
 map <Leader>y "+y
 map <Leader>p "+p
@@ -98,7 +98,7 @@ vnoremap <silent> gs ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<C
 
 " nnoremap <Leader>' <cmd>Telescope harpoon marks<CR>
 
-map <C-q> <cmd>lua isAnyModified()<CR>
+map <C-q> <cmd>lua CoolExitFunc()<CR>
 
 " nnoremap g1 1gt
 " nnoremap g2 2gt

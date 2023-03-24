@@ -181,37 +181,44 @@ Hydra({
 		{ ".", ":'<,'>Neoformat<CR>", { exit = true } },
 	},
 })
--- SaveOrExit = Hydra({
---   name = "Are you sure?",
--- 	config = {
--- 		color = "blue",
--- 		invoke_on_body = true,
--- 		hint = {
--- 			type = "window",
--- 			position = "middle",
--- 			border = "rounded",
--- 		},
--- 	},
---   heads = {
---     {"<C-q>", cmd("qall!"), { desc = "Quit without saving" }},
---     {"<C-s>", cmd("wall|q"), { desc = "Save & quit" }}
---   }
--- })
 
 SaveOrExit = Hydra({
 	name = "Are you sure?",
+	hint = hints.SaveOrExit,
 	config = {
 		color = "blue",
 		invoke_on_body = true,
 		hint = {
 			type = "window",
-			position = "middle",
+			position = "bottom",
 			border = "rounded",
 		},
 	},
 	heads = {
-		{ "<C-q>", cmd("qall!"), { desc = "Quit without saving" } },
-		{ "<C-s>", cmd("wq"), { desc = "Save & quit" } },
+		{ "<C-q>", cmd("bd!|lua CoolerExitFunc()"), { desc = "Quit without saving" } },
+		{ "q", cmd("bd!|lua CoolerExitFunc()"), { desc = "Quit without saving" } },
+		{ "<C-s>", cmd("w|bd|lua CoolerExitFunc()"), { desc = "Save & quit" } },
+		{ "s", cmd("w|bd|lua CoolerExitFunc()"), { desc = "Save & quit" } },
+	},
+})
+
+SaveOrExitOne = Hydra({
+	name = "Are you sure?",
+	hint = hints.SaveOrExit,
+	config = {
+		color = "blue",
+		invoke_on_body = true,
+		hint = {
+			type = "window",
+			position = "bottom",
+			border = "rounded",
+		},
+	},
+	heads = {
+		{ "<C-q>", cmd("q!"), { desc = "Quit without saving" } },
+		{ "q", cmd("q!"), { desc = "Quit without saving" } },
+		{ "<C-s>", cmd("w|q"), { desc = "Save & quit" } },
+		{ "s", cmd("w|q"), { desc = "Save & quit" } },
 	},
 })
 -- vim:sw=2:ts=2

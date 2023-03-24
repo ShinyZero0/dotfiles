@@ -1,6 +1,5 @@
-return
-{
-    Telescope = [[
+return {
+	Telescope = [[
     Telescope:
 
     _f_: Files       _h_: Headings
@@ -15,7 +14,7 @@ return
     _<Enter>_: Telescope           _<Esc>_
 
     ]],
-    Options = [[
+	Options = [[
     Options:
 
     _w_: wrap      %{wrap}
@@ -29,7 +28,7 @@ return
 
     _q_, _<Esc>_, _<C-q>_    
     ]],
-    Formatting = [[
+	Formatting = [[
     Formatting
 
     _._: Default Formatter    
@@ -38,5 +37,8 @@ return
     _s_: Split %{ft}
     _j_: Join %{ft}
 
-    ]]
+    ]],
+	SaveOrExit = [[
+_<C-s>_,_s_: Save and quit
+_<C-q>_,_q_: Quit without saving]],
 }
