@@ -14,11 +14,14 @@ done
 
 alias reabbr="rip $HOME/.config/zsh-abbr/user-abbreviations && abbr import-aliases && unabbr rip bc which git"
 
+alias gt="unalias git"
+alias yd="alias git='yadm'"
+
 alias lf="lfcd"
 alias vi="nvim"
 alias py="python"
-alias bc='bc -q <(echo "scale=5")'
 alias whrs="wormhole-rs"
+alias bc='bc -q <(echo "scale=5")'
 alias mime="xdg-mime query filetype"
 
 
@@ -50,8 +53,6 @@ alias gcomall="git add --all && git commit"
 #         yadm $@
 #     fi
 # }
-alias gt="unalias git"
-alias yd="alias git='yadm'"
 
 # YADM
 # alias yca="yadm commit -am"
