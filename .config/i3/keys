@@ -1,61 +1,61 @@
 # vim: ft=i3config
 set $mod Mod4
 
-bindsym $mod+w kill
-bindsym $mod+q kill
+bindsym $mod+W kill
+bindsym $mod+Q kill
 
 # A more modern dmenu replacement is rofi:
 bindsym $mod+Return exec --no-startup-id "rofi  -show-icons -show combi -modes combi -combi-modes drun,run -display-run '' -display-drun ''"
 bindsym XF86PowerOff exec "rofi -show power-menu -theme ~/Personalization/powermenu.rasi -modi power-menu:rofi-power-menu"
-bindsym $mod+Shift+e exec "rofi -show power-menu -theme ~/Personalization/powermenu.rasi -modi power-menu:rofi-power-menu"
+bindsym $mod+Shift+E exec "rofi -show power-menu -theme ~/Personalization/powermenu.rasi -modi power-menu:rofi-power-menu"
 
 # Screenshots
 bindsym Print exec --no-startup-id maim --format=png | tee "$HOME/Images/$(date).png" | xclip -selection clipboard -t image/png
 
 # something
-bindsym control+mod1+t exec --no-startup-id kitty
-bindsym $mod+s move scratchpad
-bindsym $mod+Shift+s scratchpad show
-bindsym $mod+p exec --no-startup-id ~/.scripts/TogglePavuCTL.sh
-bindsym $mod+g exec --no-startup-id ~/.scripts/TogglePicom.sh
-bindsym --release $mod+i exec --no-startup-id ~/.scripts/VimInsert.sh
-bindsym --release $mod+Shift+t exec --no-startup-id ~/.scripts/Typograf.sh
-# bindsym mod1+j exec --no-startup-id ~/.scripts/exitbattle.sh
+bindsym control+mod1+T exec --no-startup-id kitty
+bindsym $mod+S move scratchpad
+bindsym $mod+Shift+S scratchpad show
+bindsym $mod+P exec --no-startup-id ~/.scripts/TogglePavuCTL.sh
+bindsym $mod+G exec --no-startup-id ~/.scripts/TogglePicom.sh
+bindsym --release $mod+I exec --no-startup-id ~/.scripts/VimInsert.sh
+bindsym --release $mod+Shift+T exec --no-startup-id ~/.scripts/Typograf.sh
+# bindsym mod1+J exec --no-startup-id ~/.scripts/exitbattle.sh
 
 bindsym $mod+Tab   focus right
 bindsym $mod+grave focus down
 bindsym $mod+Shift+Tab   focus left
 bindsym $mod+Shift+grave focus up
 
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+H focus left
+bindsym $mod+J focus down
+bindsym $mod+K focus up
+bindsym $mod+L focus right
 
 bindsym $mod+Left  focus left
 bindsym $mod+Down  focus down
 bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
-bindsym $mod+a     focus parent
-bindsym $mod+d     focus child
+bindsym $mod+A     focus parent
+bindsym $mod+D     focus child
 
-bindsym $mod+Shift+j     move left
-bindsym $mod+Shift+k     move down
-bindsym $mod+Shift+l     move up
-bindsym $mod+Shift+colon move right
+bindsym $mod+Shift+H move left
+bindsym $mod+Shift+J move down
+bindsym $mod+Shift+K move up
+bindsym $mod+Shift+L move right
 
 bindsym $mod+Shift+Left  move left
 bindsym $mod+Shift+Down  move down
 bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+h split h
-bindsym $mod+v split v
-bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+T layout tabbed
+bindsym $mod+Control+V split v
+bindsym $mod+Control+H split h
+bindsym $mod+Control+E layout toggle split
 
 bindsym $mod+Shift+space floating toggle
-bindsym $mod+f           fullscreen toggle
+bindsym $mod+F           fullscreen toggle
 bindsym $mod+space       focus mode_toggle
 
 # switch to workspace
@@ -83,8 +83,8 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+C reload
+bindsym $mod+Shift+R restart
 
 set $refresh_i3status killall -SIGUSR1 i3status
 floating_modifier $mod
@@ -98,12 +98,12 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 
-bindsym $mod+r mode "resize"
+bindsym $mod+R mode "resize"
 mode "resize" {
 
-    bindsym j         resize shrink width  10 px or 10 ppt
-    bindsym k         resize grow   height 10 px or 10 ppt
-    bindsym l         resize shrink height 10 px or 10 ppt
+    bindsym J         resize shrink width  10 px or 10 ppt
+    bindsym K         resize grow   height 10 px or 10 ppt
+    bindsym L         resize shrink height 10 px or 10 ppt
     bindsym semicolon resize grow   width  10 px or 10 ppt
 
     # same bindings, but for the arrow keys
@@ -115,5 +115,5 @@ mode "resize" {
     # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
     bindsym Escape mode "default"
-    bindsym $mod+r mode "default"
+    bindsym $mod+R mode "default"
 }
