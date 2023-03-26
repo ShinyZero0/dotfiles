@@ -3,23 +3,30 @@ set title
 set noswapfile
 set undofile
 
-set splitbelow
 set splitright
+set splitbelow
 
+" VISUAL
 set termguicolors
 set number
 set cursorline
 set noshowmode
+set cmdheight=0
+set showtabline=0
 set conceallevel=0
 
 set tabstop=4 shiftwidth=4 expandtab
 set scrolloff=5
 set breakindent
 
-set timeoutlen=5000
+set whichwrap+=h,l,<,>,[,]
 
 set completeopt=noselect
+" ,menuone
+set pumheight=10
+
 set spelllang=en,ru
+set timeoutlen=5000
 
 filetype plugin indent on
 
@@ -99,10 +106,10 @@ function! SourceIfExists(file)
    endif
 endfunction
 
-lua require("config.lazy")
-source $HOME/.config/nvim/init-alt.vim
 source $HOME/.config/nvim/functions.vim
 lua require("functions")
+lua require("config.lazy")
+source $HOME/.config/nvim/init-alt.vim
 source $HOME/.config/nvim/keys.vim
 call SourceIfExists("$HOME/.config/nvim/keys-alt.vim")
 source $HOME/.config/nvim/colors.vim

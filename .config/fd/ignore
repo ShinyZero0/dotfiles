@@ -3,3 +3,4 @@
 .git*
 !.gitignore
 !.gitconfig
+.local-history

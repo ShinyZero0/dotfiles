@@ -27,7 +27,6 @@ return {
 				},
 			},
 		},
-		dependencies = {},
 	},
 
 	-- OTHERS
@@ -38,12 +37,14 @@ return {
 	--  cmd = {
 	--    "FloatermToggle",
 	--  },
-	--  dependencies = {},
-	-- },
+	--  	-- },
+	{
+		"dinhhuy258/vim-local-history",
+		build = ":UpdateRemotePlugins",
+	},
 	{
 		"akinsho/toggleterm.nvim",
 		config = true,
-		dependencies = {},
 	},
 
 	{
@@ -55,23 +56,16 @@ return {
 			},
 		},
 		cmd = "ColorizerToggle",
-		dependencies = {},
 	},
 	-- {
 	--  "m00qek/baleia.nvim",
 	--  config = false,
-	--  dependencies = {},
-	-- },
+	--  	-- },
 
 	-- MOTIONS
 
 	"anuvyklack/vim-smartword",
 	"chaoren/vim-wordmotion",
-	-- {
-	--  "utilyre/sentiment.nvim",
-	--  config = true,
-	--  dependencies = {},
-	-- },
 	{
 		"andymass/vim-matchup",
 		config = function()
@@ -79,7 +73,6 @@ return {
 			vim.g.matchup_transmute_enabled = 1
 			vim.cmd("let g:matchup_matchpref['xml'] = {'tagnameonly': 1}")
 		end,
-		dependencies = {},
 	},
 	{
 		"anuvyklack/hydra.nvim",
@@ -110,7 +103,6 @@ return {
 	{
 		"anuvyklack/pretty-fold.nvim",
 		config = true,
-		dependencies = {},
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -130,14 +122,17 @@ return {
 
 	-- FILETYPES
 	{
+		"zdharma-continuum/zinit-vim-syntax",
+		ft = "zsh",
+	},
+	{
 		"sam4llis/nvim-lua-gf",
-		ft = { "lua" },
+		ft = "lua",
 	},
 	{
 		"sukima/xmledit",
 		ft = "xml",
 		-- config = true,
-		dependencies = {},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -158,33 +153,34 @@ return {
 
 	-- EDITING
 
+	"tpope/vim-surround",
+	"tpope/vim-repeat",
 	"zef/vim-cycle",
 	"junegunn/vim-easy-align",
 
 	-- {
 	--  "jbyuki/venn.nvim",
 	--  -- config = true,
-	--  dependencies = {},
-	-- },
+	--  	-- },
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = function()
 			require("config.pairs")
 		end,
-		dependencies = {},
 	},
 
+	-- "preservim/nerdcommenter",
 	{
 		"numToStr/Comment.nvim",
-		config = true,
+		config = function()
+			require("config.comment")
+		end,
 		keys = {
 			"gc",
 		},
 		event = "ModeChanged *:[vV\x16]*",
 	},
-	"tpope/vim-surround",
-	"tpope/vim-repeat",
 
 	{
 		"nvim-pack/nvim-spectre",
@@ -204,17 +200,17 @@ return {
 	-- {
 	--  "stevearc/oil.nvim",
 	--  config = true,
-	--  dependencies = {},
-	-- },
+	--  	-- },
 	{
 		"ethanholz/nvim-lastplace",
 		config = true,
 	},
 	{
-		"toppair/reach.nvim",
+		-- "toppair/reach.nvim",
+		"ShinyZero0/reach.nvim",
+		-- dir = "~/dev/vim/reach.nvim/",
 		config = true,
 		cmd = "ReachOpen",
-		dependencies = {},
 	},
 	{
 		"cbochs/portal.nvim",
@@ -225,13 +221,11 @@ return {
 			"<leader>i",
 			"<leader>o",
 		},
-		dependencies = {},
 	},
 	-- {
 	--  "simrat39/symbols-outline.nvim",
 	--  config = true,
-	--  dependencies = {},
-	-- },
+	--  	-- },
 	-- {
 	--  "cbochs/grapple.nvim",
 	--  config = function()
@@ -251,12 +245,10 @@ return {
 	-- {
 	-- 	"nyngwang/suave.lua",
 	-- 	config = true,
-	-- 	dependencies = {},
-	-- },
+	-- 		-- },
 	{
 		"chentoast/marks.nvim",
 		config = true,
-		dependencies = {},
 		opts = {
 			mappings = {
 				next = "<Leader>j",
@@ -288,7 +280,6 @@ return {
 			fg_color = "#ffe9aa",
 			other_win_hl_color = "",
 		},
-		dependencies = {},
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -313,7 +304,6 @@ return {
 			"Neoformat",
 		},
 		opts = {},
-		dependencies = {},
 	},
 	-- {
 	--     "ray-x/lsp_signature.nvim",
@@ -345,17 +335,15 @@ return {
 			require("config.nvim-cmp-cmd")
 		end,
 		event = "CmdLineEnter",
-		dependencies = {},
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		-- event = "InsertEnter",
+		event = "InsertEnter",
 		config = function()
 			require("config.nvim-cmp")
 		end,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
-			-- "hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-omni",
@@ -375,7 +363,7 @@ return {
 	},
 	{
 		"dcampos/cmp-snippy",
-		lazy = true,
+		event = "ModeChanged *:[vV\x16]*",
 		dependencies = {
 			{
 				"dcampos/nvim-snippy",

@@ -72,6 +72,6 @@ alias pkinf="dnf info -Cy"
 alias pkreq="dnf repoquery --requires"
 
 alias camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' /home/zero/.steam/steam/steamapps/common/War\ Thunder/presets/РБ-танки.blk"
-alias getclass="xprop | rg -i class"
+alias winclass="xprop WM_CLASS"
 alias dont="dotnet"
 

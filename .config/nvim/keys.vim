@@ -4,7 +4,8 @@ let maplocalleader = "\\"
 lua require("keys")
 
 map ; :
-nnoremap <Esc> :noh<CR>
+map Q q
+nnoremap <Esc> <cmd>noh<CR>
 map <C-s> :silent w<CR>
 
 map <Leader>y "+y
@@ -48,11 +49,12 @@ vnoremap <leader>s <esc>:lua require('spectre').open_visual()<CR>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-nmap <Tab> <Plug>(snippy-cut-text)
-xmap <Tab> <Plug>(snippy-cut-text)
+nmap <C-Tab> <Plug>(snippy-cut-text)
+xmap <C-Tab> <Plug>(snippy-cut-text)
 
 map ? <cmd>HopPatternMW<CR>
 map <C-f> <cmd>HopWordMW<CR>
+map L <cmd>HopVertical<CR>
 map t <cmd>HopChar1AC<CR>
 map T <cmd>HopChar1BC<CR>
 
@@ -66,10 +68,6 @@ nnoremap <Leader>t <cmd>Neotree focus reveal<CR>
 nnoremap <Leader>f <cmd>Telescope find_files<CR>
 nnoremap <Leader>r <cmd>Telescope resume<CR>
 nnoremap <Leader>' <cmd>Telescope marks<CR>
-
-nnoremap <Leader>b <cmd>ReachOpen buffers<CR>
-nnoremap gt <cmd>ReachOpen tabpages<CR>
-nnoremap ' <cmd>ReachOpen marks<CR>
 
 " LITERAL NAVIGATION
 
@@ -99,6 +97,7 @@ vnoremap <silent> gs ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<C
 " nnoremap <Leader>' <cmd>Telescope harpoon marks<CR>
 
 map <C-q> <cmd>lua CoolExitFunc()<CR>
+" xmap <leader>c <cmd>lua ToggleMostComments(vim.fn.visualmode())<CR>
 
 " nnoremap g1 1gt
 " nnoremap g2 2gt

@@ -1,16 +1,29 @@
-require("lualine").setup({
+local Lualine = require("lualine")
+Lualine.setup({
 	options = { theme = "challenger_deep" },
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "filename" },
 		lualine_c = {
-			-- {
-			-- 	function()
-			-- 		local key = require("grapple").key()
-			-- 		return " [" .. key .. "]"
-			-- 	end,
-			-- 	cond = require("grapple").exists,
-			-- },
+			{
+				"tabs",
+				tabs_color = {
+					active = "lualine_c_inactive",
+					inactive = "lualine_c_normal",
+				},
+			},
+			{
+				function()
+					local reg = vim.fn.reg_recording()
+					-- return reg
+					-- return f("recording at {reg}")
+					if reg ~= "" then
+						return string.format("recording @%s", reg)
+					else
+						return ""
+					end
+				end,
+			},
 		},
 
 		lualine_x = { "filetype" },
@@ -18,3 +31,14 @@ require("lualine").setup({
 		lualine_z = { "location" },
 	},
 })
+vim.api.nvim_create_autocmd({ "RecordingEnter", "RecordingLeave" }, {
+	callback = function()
+		Lualine.refresh()
+	end,
+})
+-- local function show_macro()
+--     if vim.fn.reg_recording() == " " then
+--         return " "
+--
+--     end
+-- end

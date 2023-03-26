@@ -18,7 +18,7 @@ Hydra({
 		{ "l", cmd("Lspsaga show_line_diagnostics") },
 		{ "a", vim.lsp.buf.code_action },
 		{ "f", cmd("Lspsaga lsp_finder") },
-		{ "r", cmd("Lspsaga rename") },
+		{ "r", vim.lsp.buf.rename },
 		{ "N", vim.diagnostic.goto_prev },
 		{ "n", vim.diagnostic.goto_next },
 	},

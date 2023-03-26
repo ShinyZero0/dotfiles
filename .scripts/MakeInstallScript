@@ -1,0 +1,19 @@
+#!/usr/bin/env dotnet-script
+#r "nuget: Mono.Posix.NETStandard, 1.0.0"
+
+using System.Text.RegularExpressions;
+using System.IO;
+using Mono.Unix;
+using static Mono.Unix.FileAccessPermissions;
+
+string data = File.ReadAllText(Path.Combine(Environment.GetEnvironmentVariable("HOME"), "README.md"));
+var matches = Regex.Matches(data, @"\n(.+)\n(\s?\n)*```(ba)?sh([^`]*)```");
+var script = Path.Combine(Environment.GetEnvironmentVariable("HOME"), "install.sh");
+File.WriteAllText(script, "#!/usr/bin/env bash\n");
+foreach (Match match in matches)
+{
+    File.AppendAllText(script, "\n# " + match.Groups[1].ToString());
+    File.AppendAllText(script, match.Groups[4].ToString());
+}
+
+(new UnixFileInfo(script)).FileAccessPermissions = UserExecute | UserRead | UserWrite;

@@ -6,3 +6,5 @@ btop.log
 *alt*
 *\#\#* 
 lualine.lua
+local-history*
+.zsh_history*

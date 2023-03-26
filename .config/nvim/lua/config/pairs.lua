@@ -6,6 +6,7 @@ pairs.setup({
 	ignored_next_char = "",
 })
 pairs.remove_rule("`")
+require("nvim-autopairs").get_rule("[").not_filetypes = { "markdown" }
 pairs.add_rules({
 	rule(" ", " "):with_pair(function(opts)
 		local pair = opts.line:sub(opts.col - 1, opts.col)
