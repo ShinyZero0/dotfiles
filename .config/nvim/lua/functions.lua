@@ -1,3 +1,4 @@
+local A = vim.api
 function f(str)
 	local outer_env = _ENV
 	return (
@@ -38,7 +39,7 @@ function CoolExitFunc()
 	end
 	if cnt == 1 then
 		-- CoolerExitFunc()
-		if vim.bo[0].modified then
+		if vim.bo[0].modified or vim.bo[0].buftype == "terminal" then
 			SaveOrExit:activate()
 			return
 		else
@@ -57,7 +58,7 @@ end
 
 function CoolerExitFunc()
 	for _, id in ipairs(vim.api.nvim_list_bufs()) do
-		if vim.bo[id].modified then
+		if vim.bo[id].modified or vim.bo[id].buftype == "terminal" then
 			vim.cmd(f("buffer {id}"))
 			SaveOrExit:activate()
 			return

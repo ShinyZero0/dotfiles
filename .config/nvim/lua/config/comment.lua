@@ -1,0 +1,55 @@
+require("Comment").setup({
+	sticky = false,
+})
+
+-- function ToggleMostComments(vmode)
+-- 	local s = vim.api.nvim_buf_get_mark(0, "[")
+-- 	local e = vim.api.nvim_buf_get_mark(0, "]")
+-- 	local range = { srow = s[1], scol = s[2], erow = e[1], ecol = e[2] }
+-- 	local ctx = {
+-- 		ctype = U.ctype.linewise,
+-- 		range = range,
+-- 	}
+-- 	local cstr = require("Comment.ft").calculate(ctx) or vim.bo.commentstring
+-- 	local ll, rr = U.unwrap_cstr(cstr)
+-- 	local padding = true
+-- 	local is_commented = U.is_commented(ll, rr, padding)
+--
+-- 	local rcom = {} -- ranges of commented lines
+-- 	local cl = s[1] -- current line
+-- 	local rs, re = nil, nil -- range start and end
+-- 	local lines = U.get_lines(range)
+--
+--
+-- 	local cntComment, cntNoComment = 0, 0
+--
+-- 	for _, line in ipairs(lines) do
+-- 		if U.is_commented(line) then
+-- 			cntComment = cntComment + 1
+-- 		else
+-- 			cntNoComment = cntNoComment + 1
+-- 		end
+-- 	end
+-- 	local toComment = false
+-- 	if cntNoComment == cntComment then
+-- 		if U.is_commented(lines[0]) then
+-- 			toComment = false
+-- 		else
+-- 			toComment = true
+-- 		end
+-- 	elseif cntNoComment > cntComment then
+-- 		toComment = true
+-- 	else
+-- 		toComment = false
+-- 	end
+-- 	if toComment then
+-- 		for i, line in ipairs(lines) do
+-- 			lines[i] = a.comment.linewise.current()
+-- 		end
+-- 	else
+-- 		for i, line in ipairs(lines) do
+-- 			lines[i] = U.uncomment_str(line, lcs, rcs, padding)
+-- 		end
+-- 	end
+-- 	A.nvim_buf_set_lines(0, scol, ecol, false, lines)
+-- end

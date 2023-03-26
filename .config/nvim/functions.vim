@@ -1,3 +1,6 @@
+
+cnoreabbrev pl lua print
+
 " Show relative numbers in visual mode only
 function ToggleNumbers()
     set number!
@@ -23,6 +26,9 @@ function SetOldLayout()
 endfunction
 autocmd InsertLeave * silent! call SetEnglish()
 autocmd InsertEnter * silent! call SetOldLayout()
+
+" autocmd RecordingEnter * set cmdheight=1
+" autocmd RecordingLeave * silent! set cmdheight=0
 
 function SelectAll()
     let curMode = mode()
