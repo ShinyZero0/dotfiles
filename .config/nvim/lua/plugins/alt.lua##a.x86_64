@@ -13,23 +13,10 @@ return {
 	},
 
 	-- Lsp
-	-- {
-	--   "mfussenegger/nvim-lint",
-	--   config = function()
-	--     require("config.lint")
-	--   end,
-	--   -- cmd = {
-	--   --   "",
-	--   -- },
-	--   -- dependencies = {},
-	-- },
-	"Hoffs/omnisharp-extended-lsp.nvim",
-	-- "WhoIsSethDaniel/mason-tool-installer.nvim",
-	-- {
-	--   "ray-x/lsp_signature.nvim",
-	--   config = true,
-	--   dependencies = {},
-	-- },
+	{
+		"Hoffs/omnisharp-extended-lsp.nvim",
+		ft = "cs",
+	},
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
@@ -92,13 +79,10 @@ return {
 		config = true,
 		opts = {
 			window = {
-				-- The window can't be wider than 100 characters
 				max_width = 100,
 				-- Show a small highlight in the sign column for the line the cursor is on
 				highlight_cursorline = true,
-				-- Don't draw a border around the registers window
 				border = "rounded",
-				-- Apply a tiny bit of transparency to the the window, letting some characters behind it bleed through
 				transparency = 10,
 			},
 		},
@@ -108,6 +92,23 @@ return {
 		},
 		cmd = "Registers",
 	},
+
+	-- {
+	--   "mfussenegger/nvim-lint",
+	--   config = function()
+	--     require("config.lint")
+	--   end,
+	--   -- cmd = {
+	--   --   "",
+	--   -- },
+	--   -- dependencies = {},
+	-- },
+	-- "WhoIsSethDaniel/mason-tool-installer.nvim",
+	-- {
+	--   "ray-x/lsp_signature.nvim",
+	--   config = true,
+	--   dependencies = {},
+	-- },
 	-- {
 	-- 	"folke/which-key.nvim",
 	-- 	dependencies = {},
