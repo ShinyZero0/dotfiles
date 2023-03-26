@@ -4,7 +4,7 @@
   #:program "imv -- %f &>/dev/null &" 
   #:edit "nomacs %f &>/dev/null 2>&1 &")
 (assoc
-  #:pattern '("^text/.*" "application/x-shellscript" "application/x-desktop" "application/json" "application/x-perl" "text/x-csrc" "empty" )
+  #:pattern '("^text/.*" "application/x-shellscript" "application/x-desktop" "application/json" "application/x-perl" "text/x-csrc" "empty" "application/toml")
   #:program "nvim %f"
   #:term "kitty --class floatwin -- ")
 (assoc
