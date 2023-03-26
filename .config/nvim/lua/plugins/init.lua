@@ -382,7 +382,7 @@ return {
 				name = "snippy",
 				config = true,
 				dependencies = {
-					"honza/vim-snippets",
+					"ShinyZero0/vim-snippets",
 				},
 			},
 		},
