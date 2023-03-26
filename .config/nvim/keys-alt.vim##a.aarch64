@@ -1,0 +1,2 @@
+nnoremap <Leader>t <cmd>Neotree float reveal<CR>
+

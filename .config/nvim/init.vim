@@ -82,6 +82,11 @@ let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
 let g:EasyMotion_smartcase = 1
+let g:neoformat_cs_uncrustify = {
+            \ 'exe': 'uncrustify',
+            \ 'stdin': 1,
+            \ 'args': [ '-l=CS', '-c', '~/.config/uncrustify' ],
+            \ }
 let g:neoformat_cs_clangformat = {
             \ 'exe': 'clang-format',
             \ 'stdin': 1,
@@ -93,7 +98,7 @@ let g:neoformat_cpp_clangformat = {
             \ 'args': ['--style=Microsoft', '--assume-filename=.cpp'],
             \ }
 let g:neoformat_enabled_python = ["black", "autopep8", "yapf"]
-let g:neoformat_enabled_cs = ["csharpier", "clangformat"]
+let g:neoformat_enabled_cs = ["csharpier", "uncrustify", "clangformat"]
 
 function! SourceIfExists(file)
     if filereadable(expand(a:file))
