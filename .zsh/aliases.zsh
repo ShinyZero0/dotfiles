@@ -30,13 +30,15 @@ alias q="exit"
 
 # GIT
 alias gc="git commit -m"
+alias ga="git add"
 alias gca="git commit -am"
 alias gcd="git add . && git commit -m"
 alias gcl="git clone"
 alias gst="git status"
 alias gch="git checkout"
 alias gdf="git diff"
-alias gadd="git add"
+alias grs="git restore --staged"
+alias grm="git rm --cached"
 alias gmenocom="git merge --no-commit --no-ff"
 alias gcomall="git add --all && git commit"
 

@@ -45,7 +45,6 @@ zinit light-mode depth="1" for \
     # Install Desktop-only binaries
 zinit if="[[ $(uname -m) = x86_64 ]]" depth="1" as="null" from="gh-r" for \
     sbin="fd" completions @sharkdp/fd \
-    sbin="deno" denoland/deno \
     sbin="btm" completions ClementTsang/bottom \
     sbin="pistol* -> pistol" doronbehar/pistol \
     sbin="choose* -> choose" theryangeary/choose \
