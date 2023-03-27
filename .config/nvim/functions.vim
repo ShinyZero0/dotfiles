@@ -62,7 +62,7 @@ vnoremap A <cmd>call SelectAll()<CR>
 autocmd FileType * set formatoptions-=cro
 autocmd BufWritePre *.lua Neoformat
 " autocmd User MainFile call MainFile()
-autocmd VimEnter * call MainFile()
+" autocmd VimEnter * call MainFile()
 
 au BufNewFile,BufFilePre,BufRead *.md set syntax=markdown
 autocmd BufEnter *.axaml,*.xaml setlocal ft=xml ts=2 sw=2
