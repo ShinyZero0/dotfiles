@@ -9,6 +9,7 @@ local reachOptions = {
 	},
 }
 
+-- REACH
 map("n", "<Leader>b", function()
 	require("reach").buffers(reachOptions)
 end, {})
@@ -32,6 +33,27 @@ map(
 	{ silent = true, desc = "Invert comments" }
 )
 
+-- SPECTRE
+map("n", "<leader>S", function()
+	require("spectre").open()
+end, {
+	desc = "Open Spectre",
+})
+map("n", "<leader>sw", function()
+	require("spectre").open_visual({ select_word = true })
+end, {
+	desc = "Search current word",
+})
+map("v", "<leader>sw", function()
+	require("spectre").open_visual()
+end, {
+	desc = "Search current word",
+})
+map("n", "<leader>sp", function()
+	require("spectre").open_file_search({ select_word = true })
+end, {
+	desc = "Search on current file",
+})
 -- map("n", '<leader>"', require("harpoon.ui").toggle_quick_menu, {})
 -- map("n", "<leader>M", require("harpoon.mark").add_file, {})
 -- map("n", "<leader>l", require("harpoon.ui").nav_next, {})
