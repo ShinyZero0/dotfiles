@@ -20,6 +20,7 @@ set scrolloff=5
 set breakindent
 
 set whichwrap+=h,l,<,>,[,]
+set formatoptions=1,j,tc
 
 set completeopt=noselect
 " ,menuone

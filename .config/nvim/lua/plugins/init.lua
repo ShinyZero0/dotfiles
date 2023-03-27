@@ -67,6 +67,25 @@ return {
 	"anuvyklack/vim-smartword",
 	"chaoren/vim-wordmotion",
 	{
+		"abecodes/tabout.nvim",
+		config = true,
+		opts = {
+			tabkey = "<C-Space>",
+			backwards_tabkey = "<C-`>",
+			act_as_tab = false,
+			tabouts = {
+				{ open = "'", close = "'" },
+				{ open = '"', close = '"' },
+				{ open = "`", close = "`" },
+				{ open = "(", close = ")" },
+				{ open = "[", close = "]" },
+				{ open = "{", close = "}" },
+				{ open = "<", close = ">" },
+			},
+		},
+		dependencies = {},
+	},
+	{
 		"andymass/vim-matchup",
 		config = function()
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
@@ -91,15 +110,20 @@ return {
 	--    "phaazon/hop.nvim",
 	--  },
 	-- },
-	-- {
-	--  "chrisgrieser/nvim-various-textobjs",
-	--  config = function()
-	--    require("various-textobjs").setup({ useDefaultKeymaps = true })
-	--  end,
-	-- },
+	{
+		"chrisgrieser/nvim-various-textobjs",
+		config = function()
+			require("various-textobjs").setup({ useDefaultKeymaps = true })
+		end,
+	},
 
 	--============= VISUAL
 
+	{
+		"lewis6991/gitsigns.nvim",
+		config = true,
+		dependencies = {},
+	},
 	{
 		"anuvyklack/pretty-fold.nvim",
 		config = true,
@@ -155,13 +179,20 @@ return {
 
 	"tpope/vim-surround",
 	"tpope/vim-repeat",
-	"zef/vim-cycle",
+	-- "zef/vim-cycle",
 	"junegunn/vim-easy-align",
+	"AndrewRadev/dsf.vim",
 
 	-- {
 	--  "jbyuki/venn.nvim",
 	--  -- config = true,
 	--  	-- },
+	{
+		"monaqa/dial.nvim",
+		config = function()
+			require("config.dial")
+		end,
+	},
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
@@ -192,7 +223,6 @@ return {
 		},
 	},
 
-	-- "monaqa/dial.nvim",
 	-- "alvan/vim-closetag",
 
 	-- NAVIGATION
@@ -201,6 +231,9 @@ return {
 	--  "stevearc/oil.nvim",
 	--  config = true,
 	--  	-- },
+	{
+		"mbbill/undotree",
+	},
 	{
 		"ethanholz/nvim-lastplace",
 		config = true,
