@@ -1240,7 +1240,7 @@ indent_func_def_force_col1      = false    # true/false
 
 # Whether to indent continued function call parameters one indent level,
 # rather than aligning parameters under the open parenthesis.
-indent_func_call_param          = false    # true/false
+indent_func_call_param          = true    # true/false
 
 # Whether to indent continued function definition parameters one indent level,
 # rather than aligning parameters under the open parenthesis.
@@ -1254,7 +1254,7 @@ indent_func_def_param_paren_pos_threshold = 0        # unsigned number
 
 # Whether to indent continued function call prototype one indent level,
 # rather than aligning parameters under the open parenthesis.
-indent_func_proto_param         = false    # true/false
+indent_func_proto_param         = true    # true/false
 
 # Whether to indent continued function call declaration one indent level,
 # rather than aligning parameters under the open parenthesis.
@@ -1403,11 +1403,11 @@ indent_paren_after_func_def     = false    # true/false
 
 # Whether to indent the open parenthesis of a function declaration,
 # if the parenthesis is on its own line.
-indent_paren_after_func_decl    = false    # true/false
+indent_paren_after_func_decl    = true    # true/false
 
 # Whether to indent the open parenthesis of a function call,
 # if the parenthesis is on its own line.
-indent_paren_after_func_call    = false    # true/false
+indent_paren_after_func_call    = true    # true/false
 
 # How to indent a comma when inside braces.
 #  0: Indent by one level (default)
@@ -1586,7 +1586,7 @@ donot_indent_func_def_close_paren = false    # true/false
 # Whether to collapse empty blocks between '{' and '}' except for functions.
 # Use nl_collapse_empty_body_functions to specify how empty function braces
 # should be formatted.
-nl_collapse_empty_body          = false    # true/false
+nl_collapse_empty_body          = true    # true/false
 
 # Whether to collapse empty blocks between '{' and '}' for functions only.
 # If true, overrides nl_inside_empty_func.
@@ -1602,10 +1602,10 @@ nl_class_leave_one_liners       = false    # true/false
 nl_enum_leave_one_liners        = false    # true/false
 
 # Don't split one-line get or set functions.
-nl_getset_leave_one_liners      = false    # true/false
+nl_getset_leave_one_liners      = true    # true/false
 
 # (C#) Don't split one-line property get or set functions.
-nl_cs_property_leave_one_liners = false    # true/false
+nl_cs_property_leave_one_liners = true    # true/false
 
 # Don't split one-line function definitions, as in 'int foo() { return 0; }'.
 # might modify nl_func_type_name
@@ -2536,7 +2536,7 @@ pos_shift                       = ignore   # ignore/break/force/lead/trail/join/
 #
 
 # Try to limit code width to N columns.
-code_width                      = 0        # unsigned number
+code_width                      = 80        # unsigned number
 
 # Whether to fully split long 'for' statements at semi-colons.
 ls_for_split_full               = false    # true/false
@@ -2800,7 +2800,7 @@ align_right_cmt_at_col          = 0        # unsigned number
 # The span for aligning function prototypes.
 #
 # 0: Don't align (default).
-align_func_proto_span           = 0        # unsigned number
+align_func_proto_span           = 4        # unsigned number
 
 # How to consider (or treat) the '*' in the alignment of function prototypes.
 #
@@ -3484,7 +3484,7 @@ use_indent_func_call_param      = true     # true/false
 # false: indent_continue will be used every time (default)
 #
 # Requires indent_ignore_first_continue=false.
-use_indent_continue_only_once   = false    # true/false
+use_indent_continue_only_once   = true    # true/false
 
 # The indentation can be:
 # - after the assignment, at the '[' character
