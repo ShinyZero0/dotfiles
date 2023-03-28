@@ -114,11 +114,16 @@ return {
 		"chrisgrieser/nvim-various-textobjs",
 		config = function()
 			require("various-textobjs").setup({ useDefaultKeymaps = true })
+			unmap("x", "%")
 		end,
 	},
 
-	--============= VISUAL
+	-- VISUAL
 
+	{
+		"stevearc/dressing.nvim",
+		config = true,
+	},
 	{
 		"lewis6991/gitsigns.nvim",
 		config = true,
@@ -127,6 +132,14 @@ return {
 	{
 		"anuvyklack/pretty-fold.nvim",
 		config = true,
+		opts = {
+			-- fill_char = "~",
+		},
+	},
+	{
+		"lukas-reineke/headlines.nvim",
+		config = true,
+		dependencies = {},
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -167,7 +180,9 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		config = function() end,
+		config = function()
+			require("config.ts-textobjects")
+		end,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},
@@ -207,10 +222,10 @@ return {
 		config = function()
 			require("config.comment")
 		end,
-		keys = {
-			"gc",
-		},
-		event = "ModeChanged *:[vV\x16]*",
+		-- keys = {
+		-- 	"gc",
+		-- },
+		-- event = { "ModeChanged *:[vV\x16]*", "ModeChanged n:o*" },
 	},
 
 	{
@@ -289,21 +304,27 @@ return {
 			},
 		},
 	},
+
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		config = function()
-			require("config.neotree")
-		end,
-		branch = "v2.x",
-		cmd = "Neotree",
-		dependencies = {
-			"s1n7ax/nvim-window-picker",
-			"mrbjarksen/neo-tree-diagnostics.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-		},
+		"nvim-tree/nvim-tree.lua",
+		config = true,
+		dependencies = {},
 	},
+	-- {
+	-- 	"nvim-neo-tree/neo-tree.nvim",
+	-- 	config = function()
+	-- 		require("config.neotree")
+	-- 	end,
+	-- 	branch = "v2.x",
+	-- 	cmd = "Neotree",
+	-- 	dependencies = {
+	-- 		"s1n7ax/nvim-window-picker",
+	-- 		"mrbjarksen/neo-tree-diagnostics.nvim",
+	-- 		"nvim-tree/nvim-web-devicons",
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"nvim-lua/plenary.nvim",
+	-- 	},
+	-- },
 	{
 		"s1n7ax/nvim-window-picker",
 		config = true,
