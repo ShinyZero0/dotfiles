@@ -55,6 +55,8 @@ zinit if="[[ $(uname -m) = x86_64 ]]" depth="1" as="null" from="gh-r" for \
         kovidgoyal/kitty \
     sbin="linux_czkawka_cli -> czkawka" bpick="linux_czkawka_cli" \
         qarmin/czkawka \
+    sbin="OmniSharp -> omnisharp" bpick="omnisharp-linux-x64-net6.0.tar.gz" \
+        OmniSharp/omnisharp-roslyn
 
     # sbin="koreader* -> koreader" \
     # koreader/koreader \
@@ -72,7 +74,7 @@ zinit as="null" depth"1" from="gh-r" for \
 
 
     # Install non-release binaries
-zinit as="null" depth"1" for \
+zinit as="null" depth="1" for \
     sbin="jaro" isamert/jaro \
     atclone="npm i ./" atpull="%atclone" sbin="bin/cli.js -> typograf-cli" typograf/typograf-cli \
     atclone="mkcd build && cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build . --config Release" sbin="build/uncrustify" \

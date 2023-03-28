@@ -21,6 +21,7 @@ Hydra({
 		{ "r", vim.lsp.buf.rename },
 		{ "N", vim.diagnostic.goto_prev },
 		{ "n", vim.diagnostic.goto_next },
+		{ "i", vim.lsp.buf.implementation },
 	},
 })
 -- vim:ft=lua
