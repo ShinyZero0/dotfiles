@@ -31,6 +31,7 @@ set pumheight=10
 set spelllang=en,ru
 
 filetype plugin indent on
+set shortmess+=s 
 
 let g:vim_json_conceal = 0
 let g:vim_markdown_conceal = 0
