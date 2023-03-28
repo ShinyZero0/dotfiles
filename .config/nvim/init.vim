@@ -30,6 +30,7 @@ set spelllang=en,ru
 set timeoutlen=5000
 
 filetype plugin indent on
+set shortmess+=s 
 
 " wrap num
 "

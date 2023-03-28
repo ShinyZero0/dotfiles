@@ -55,6 +55,8 @@ Hydra({
 		-- { "V", cmd("set virtualedit!") },
 		{ "R", cmd("set readonly!") },
 		{ "C", cmd("ColorizerToggle") },
+		{ "+", cmd("set cmdheight+=1") },
+		{ "-", cmd("set cmdheight-=1") },
 
 		{ "t", cmd("Telescope filetypes"), { exit = true } },
 		{ "S", cmd("TrailBlazerSaveSession"), { exit = true } },
