@@ -2,7 +2,12 @@ return {
 	-- DESKTOP-SPECIFIC PLUGINS
 
 	-- "KabbAmine/vCoolor.vim",
+	"sillyotter/t4-vim",
 	"lambdalisue/suda.vim",
+	{
+		"dinhhuy258/vim-local-history",
+		build = ":UpdateRemotePlugins",
+	},
 	{
 		"karb94/neoscroll.nvim",
 		config = true,
@@ -12,7 +17,12 @@ return {
 		},
 	},
 
-	-- Lsp
+	-- LSP
+	{
+		"DNLHC/glance.nvim",
+		config = true,
+		dependencies = {},
+	},
 	{
 		"Hoffs/omnisharp-extended-lsp.nvim",
 		ft = "cs",
@@ -34,35 +44,13 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = true,
 	},
-	-- {
-	-- 	"RishabhRD/nvim-lsputils",
-	-- 	config = function()
-	-- 		-- vim.lsp.handlers["textDocument/codeAction"] = require("lsputil.codeAction").code_action_handler
-	-- 		vim.lsp.handlers["textDocument/references"] = require("lsputil.locations").references_handler
-	-- 		vim.lsp.handlers["textDocument/definition"] = require("lsputil.locations").definition_handler
-	-- 		vim.lsp.handlers["textDocument/declaration"] = require("lsputil.locations").declaration_handler
-	-- 		vim.lsp.handlers["textDocument/typeDefinition"] = require("lsputil.locations").typeDefinition_handler
-	-- 		vim.lsp.handlers["textDocument/implementation"] = require("lsputil.locations").implementation_handler
-	-- 		vim.lsp.handlers["textDocument/documentSymbol"] = require("lsputil.symbols").document_handler
-	-- 		vim.lsp.handlers["workspace/symbol"] = require("lsputil.symbols").workspace_handler
-	-- 	end,
-	-- 	dependencies = {
-	-- 		"RishabhRD/popfix",
-	-- 	},
-	-- },
 	{
 		"lewis6991/hover.nvim",
 		config = true,
 		dependencies = {},
 		opts = {
 			init = function()
-				-- Require providers
 				require("hover.providers.lsp")
-				-- require('hover.providers.gh')
-				-- require('hover.providers.gh_user')
-				-- require('hover.providers.jira')
-				-- require('hover.providers.man')
-				-- require("hover.providers.dictionary")
 			end,
 			preview_opts = {
 				border = nil,
@@ -80,7 +68,6 @@ return {
 		opts = {
 			window = {
 				max_width = 100,
-				-- Show a small highlight in the sign column for the line the cursor is on
 				highlight_cursorline = true,
 				border = "rounded",
 				transparency = 10,
@@ -92,41 +79,9 @@ return {
 		},
 		cmd = "Registers",
 	},
-
 	-- {
-	--   "mfussenegger/nvim-lint",
-	--   config = function()
-	--     require("config.lint")
-	--   end,
-	--   -- cmd = {
-	--   --   "",
-	--   -- },
-	--   -- dependencies = {},
-	-- },
-	-- "WhoIsSethDaniel/mason-tool-installer.nvim",
-	-- {
-	--   "ray-x/lsp_signature.nvim",
-	--   config = true,
-	--   dependencies = {},
-	-- },
-	-- {
-	-- 	"folke/which-key.nvim",
-	-- 	dependencies = {},
-	-- 	config = function()
-	-- 		require("config.which-key")
-	-- 	end,
-	-- },
-	-- {
-	-- 	"glepnir/lspsaga.nvim",
-	-- 	event = "BufRead",
-	-- 	config = function()
-	-- 		require("config.lspsaga")
-	-- 	end,
-	-- 	dependencies = {
-	-- 		{ "nvim-tree/nvim-web-devicons" },
-	-- 		--Please make sure you install markdown and markdown_inline parser
-	-- 		{ "nvim-treesitter/nvim-treesitter" },
-	-- 	},
+	--     "ray-x/lsp_signature.nvim",
+	--     config = true,
 	-- },
 }
 -- vim:ts=2:sw=2
