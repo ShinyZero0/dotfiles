@@ -1111,7 +1111,7 @@ indent_param                    = 0        # unsigned number
 # 2: Indent and align with tabs, using spaces when not on a tabstop
 #
 # Default: 1
-indent_with_tabs                = 1        # unsigned number
+indent_with_tabs                = 0        # unsigned number
 
 # Whether to indent comments that are not at a brace level with tabs on a
 # tabstop. Requires indent_with_tabs=2. If false, will use spaces.
@@ -2536,7 +2536,7 @@ pos_shift                       = ignore   # ignore/break/force/lead/trail/join/
 #
 
 # Try to limit code width to N columns.
-code_width                      = 0        # unsigned number
+code_width                      = 80        # unsigned number
 
 # Whether to fully split long 'for' statements at semi-colons.
 ls_for_split_full               = false    # true/false
