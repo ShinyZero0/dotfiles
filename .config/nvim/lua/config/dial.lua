@@ -1,13 +1,6 @@
 -- INCREMENT PLUGIN
 
 local augend = require("dial.augend")
-local function StdConstant(elems)
-	return augend.constant.new({
-		elements = elems,
-		word = true,
-		cyclic = true,
-	})
-end
 require("dial.config").augends:register_group({
 	default = {
 		augend.constant.new({
@@ -15,12 +8,32 @@ require("dial.config").augends:register_group({
 			word = true,
 			cyclic = true,
 		}),
-		StdConstant({ "and", "or" }),
-		StdConstant({ "&&", "||" }),
-		StdConstant({ "==", "!=" }),
-		StdConstant({ "-=", "+=" }),
-		StdConstant({ "*=", "/=" }),
-		StdConstant({ "True", "False" }),
+		augend.constant.new({
+			elements = { "True", "False" },
+			word = true,
+			cyclic = true,
+		}),
+		augend.constant.new({
+			elements = { "*=", "/=" },
+			word = true,
+			cyclic = true,
+		}),
+		augend.constant.new({
+			elements = { "-=", "+=" },
+			word = true,
+			cyclic = true,
+		}),
+		augend.constant.new({
+			elements = { "==", "!=" },
+			word = true,
+			cyclic = true,
+		}),
+		augend.constant.new({
+			elements = { "&&", "||" },
+			word = true,
+			cyclic = true,
+		}),
+
 		augend.integer.alias.decimal,
 		augend.constant.alias.bool,
 	},
