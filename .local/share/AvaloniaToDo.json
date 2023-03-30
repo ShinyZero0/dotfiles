@@ -3,13 +3,13 @@
     {
       "Name": "Если окажусь на шиндовс",
       "Content": "1. PowerToys  \n2. ~~ **Actual** __Tools__ ~~  \n3. [это ссылка на гитхаб](https://github.com/whistyun/testcode-garage/blob/master/AvaloniaListBoxTemplate/AvaloniaListBoxTemplate/Views/MainWindow.axaml)  \n",
-      "IsDone": true,
+      "IsDone": false,
       "Priority": 0
     },
     {
       "Name": "MVP",
       "Content": "Minimal Viable Product",
-      "IsDone": true,
+      "IsDone": false,
       "Priority": 0
     },
     {
@@ -20,20 +20,20 @@
     },
     {
       "Name": "textobject",
-      "Content": null,
-      "IsDone": false,
+      "Content": "à",
+      "IsDone": true,
       "Priority": 0
     },
     {
       "Name": "мапнуть поисковую строку здесь",
       "Content": "не получилось:\n* реактивная команда в codebehind\n* void метод там же",
-      "IsDone": false,
+      "IsDone": true,
       "Priority": 0
     },
     {
       "Name": "fix autofocusing",
       "Content": null,
-      "IsDone": true,
+      "IsDone": false,
       "Priority": 0
     },
     {
@@ -45,7 +45,7 @@
     {
       "Name": "добавить тэги",
       "Content": null,
-      "IsDone": false,
+      "IsDone": true,
       "Priority": 0
     },
     {

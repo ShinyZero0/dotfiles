@@ -1,3 +1,6 @@
+map = vim.keymap.set
+unmap = vim.keymap.del
+
 local A = vim.api
 function f(str)
 	local outer_env = _ENV

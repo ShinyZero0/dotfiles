@@ -23,6 +23,8 @@ require("lazy").setup("plugins", {
 		notify = false, -- get a notification when changes are found
 	},
 })
+-- vim.api.nvim_create_autocmd({ "User MainFile" }, { callback = "g:MainFile" })
+-- vim.api.nvim_exec_autocmds({ "User MainFile" }, {})
 
 vim.diagnostic.config({
 	virtual_text = false,

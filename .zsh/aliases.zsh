@@ -1,8 +1,4 @@
-mkcd()
-{
-    mkdir -p "$1"
-    cd "$1"
-}
+# ======================================================== #
 
 unabbr()
 {
@@ -12,13 +8,20 @@ do
 done
 }
 
-alias reabbr="rip $HOME/.config/zsh-abbr/user-abbreviations && abbr import-aliases && unabbr rip bc which git"
+alias reabbr="\
+    rip $HOME/.config/zsh-abbr/user-abbreviations \
+    && abbr import-aliases \
+    && unabbr rip bc which git"
 
+alias gt="unalias git"
+alias yd="alias git='yadm'"
+
+alias zn="zinit"
 alias lf="lfcd"
 alias vi="nvim"
 alias py="python"
-alias bc='bc -q <(echo "scale=5")'
 alias whrs="wormhole-rs"
+alias bc='bc -q <(echo "scale=5")'
 alias mime="xdg-mime query filetype"
 
 
@@ -42,6 +45,14 @@ alias grm="git rm --cached"
 alias gmenocom="git merge --no-commit --no-ff"
 alias gcomall="git add --all && git commit"
 
+mkcd()
+{
+    mkdir -p "$1"
+    cd "$1"
+}
+
+ddns="shinyzero.ddns.net"
+
 # gitt()
 # {
 #     if [[ $(exec git rev-parse --is-inside-work-tree 2>/dev/null) ]] then
@@ -50,14 +61,5 @@ alias gcomall="git add --all && git commit"
 #         yadm $@
 #     fi
 # }
-alias gt="unalias git"
-alias yd="alias git='yadm'"
 
-# YADM
-# alias yca="yadm commit -am"
-# alias yst="yadm status"
-# alias ych="yadm checkout"
-# alias ydf="yadm diff"
-# alias yadd="yadm add"
 
-ddns="shinyzero.ddns.net"

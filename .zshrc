@@ -25,6 +25,8 @@ source ~/.zsh-alt
 source ~/.zsh/lfcd.zsh
 source ~/.zsh/aliases.zsh
 
+source ~/.p10k.zsh
+
 # TURBO MODE
 zinit wait lucid depth="1" for \
     zsh-users/zsh-history-substring-search \
@@ -50,9 +52,11 @@ zinit if="[[ $(uname -m) = x86_64 ]]" depth="1" as="null" from="gh-r" for \
     sbin="choose* -> choose" theryangeary/choose \
     sbin="wormhole-rs" magic-wormhole/magic-wormhole.rs \
     bpick="kitty-*-x86_64.txz" sbin="bin/kitty" sbin="bin/kitten" \
-    kovidgoyal/kitty \
+        kovidgoyal/kitty \
     sbin="linux_czkawka_cli -> czkawka" bpick="linux_czkawka_cli" \
-    qarmin/czkawka \
+        qarmin/czkawka \
+    sbin="OmniSharp -> omnisharp" bpick="omnisharp-linux-x64-net6.0.tar.gz" \
+        OmniSharp/omnisharp-roslyn
 
     # sbin="koreader* -> koreader" \
     # koreader/koreader \
@@ -65,21 +69,21 @@ zinit if="[[ $(uname -m) = x86_64 ]]" depth="1" as="null" from="gh-r" for \
 zinit as="null" depth"1" from="gh-r" for \
     sbin="lf" gokcehan/lf \
     sbin="fzf" junegunn/fzf \
+    atclone='mkdir -p ~/.local/share/fonts/Lilex; fd -gE "*Windows*" | grep "Mono" | xargs -I "{}" mv {} ~/.local/share/fonts/Lilex/' atpull="%atclone" \
+        bpick="Lilex.zip" ryanoasis/nerd-fonts \
 
-    # sbin="glow" charmbracelet/glow \
 
     # Install non-release binaries
-zinit as="null" depth"1" for \
+zinit as="null" depth="1" for \
     sbin="jaro" isamert/jaro \
-    atclone="npm i ./" sbin="bin/cli.js -> typograf-cli" typograf/typograf-cli \
-    # sbin="" \
-
-    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+    atclone="npm i ./" atpull="%atclone" sbin="bin/cli.js -> typograf-cli" typograf/typograf-cli \
+    atclone="mkcd build && cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build . --config Release" sbin="build/uncrustify" \
+        uncrustify/uncrustify \
 
 zinit for \
     OMZL::git.zsh \
 
-    zinit wait depth="1" lucid for \
+zinit wait depth="1" lucid for \
     blockf atpull'zinit creinstall -q .' \
     zsh-users/zsh-completions \
     blockf completions \

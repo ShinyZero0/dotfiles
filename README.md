@@ -6,7 +6,7 @@ Install:
 ```bash
 sudo dnf install -y \
 i3 polybar picom rofi \
-python3-pip nodejs-npm cargo \
+python3-pip nodejs-npm cargo cmake \
 git yadm zsh sd zoxide \
 xsel xclip neovim
 ```
@@ -32,9 +32,11 @@ These are installed automatically by zinit:
 * [page](https://github.com/I60R/page) neovim as pager
 * [czkawka](https://github.com/qarmin/czkawkahttps://github.com/qarmin/czkawka) cleaning utility
 * [wormhole-rs](https://github.com/magic-wormhole/magic-wormhole.rs) file transfer utility
-* [typograf](https://github.com/typograf/typograf-cli/) text formatter
 * [bottom](https://github.com/ClementTsang/bottom) system monitor
+* [typograf](https://github.com/typograf/typograf-cli/) text formatter
+* [uncrustify](https://github.com/uncrustify/uncrustify/) code formatter
 * [choose](https://github.com/theryangeary/choose/)
+* Lilex Nerd Font
 
 Use yadm for configs:
 ```bash

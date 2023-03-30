@@ -1,11 +1,29 @@
+" ==========================================================
+
+" FUNCTIONS AND AUTOCOMMANDS
 
 cnoreabbrev pl lua print
+
+" open main file for pwd
+function MainFile() abort
+    call SourceIfExists(".mainfile.vim")
+endfunction
+
+function AddMainFile() abort
+    let current = expand("%")
+    " let bufnr = bufadd(".mainfile.vim")
+    " call bufload(bufnr)
+    " call setbufline(bufnr, 1, [ "text" ])
+    call writefile([ printf("edit %s", current) ], ".mainfile.vim")
+    " buffer#
+endfunction
 
 " Show relative numbers in visual mode only
 function ToggleNumbers()
     set number!
     set relativenumber!
 endfunction
+
 augroup VisualEvent
     autocmd!
     " on visual mode enter
@@ -24,6 +42,7 @@ function SetOldLayout()
         !xkb-switch -s $vimlayout
     endif
 endfunction
+
 autocmd InsertLeave * silent! call SetEnglish()
 autocmd InsertEnter * silent! call SetOldLayout()
 
@@ -42,6 +61,8 @@ vnoremap A <cmd>call SelectAll()<CR>
 
 autocmd FileType * set formatoptions-=cro
 autocmd BufWritePre *.lua Neoformat
+" autocmd User MainFile call MainFile()
+" autocmd VimEnter * call MainFile()
 
 au BufNewFile,BufFilePre,BufRead *.md set syntax=markdown
 autocmd BufEnter *.axaml,*.xaml setlocal ft=xml ts=2 sw=2

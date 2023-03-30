@@ -2,7 +2,12 @@ return {
 	-- DESKTOP-SPECIFIC PLUGINS
 
 	-- "KabbAmine/vCoolor.vim",
+	"sillyotter/t4-vim",
 	"lambdalisue/suda.vim",
+	{
+		"dinhhuy258/vim-local-history",
+		build = ":UpdateRemotePlugins",
+	},
 	{
 		"karb94/neoscroll.nvim",
 		config = true,
@@ -12,24 +17,16 @@ return {
 		},
 	},
 
-	-- Lsp
-	-- {
-	--   "mfussenegger/nvim-lint",
-	--   config = function()
-	--     require("config.lint")
-	--   end,
-	--   -- cmd = {
-	--   --   "",
-	--   -- },
-	--   -- dependencies = {},
-	-- },
-	"Hoffs/omnisharp-extended-lsp.nvim",
-	-- "WhoIsSethDaniel/mason-tool-installer.nvim",
-	-- {
-	--   "ray-x/lsp_signature.nvim",
-	--   config = true,
-	--   dependencies = {},
-	-- },
+	-- LSP
+	{
+		"DNLHC/glance.nvim",
+		config = true,
+		dependencies = {},
+	},
+	{
+		"Hoffs/omnisharp-extended-lsp.nvim",
+		ft = "cs",
+	},
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
@@ -48,34 +45,12 @@ return {
 		config = true,
 	},
 	{
-		"RishabhRD/nvim-lsputils",
-		config = function()
-			-- vim.lsp.handlers["textDocument/codeAction"] = require("lsputil.codeAction").code_action_handler
-			vim.lsp.handlers["textDocument/references"] = require("lsputil.locations").references_handler
-			vim.lsp.handlers["textDocument/definition"] = require("lsputil.locations").definition_handler
-			vim.lsp.handlers["textDocument/declaration"] = require("lsputil.locations").declaration_handler
-			vim.lsp.handlers["textDocument/typeDefinition"] = require("lsputil.locations").typeDefinition_handler
-			vim.lsp.handlers["textDocument/implementation"] = require("lsputil.locations").implementation_handler
-			vim.lsp.handlers["textDocument/documentSymbol"] = require("lsputil.symbols").document_handler
-			vim.lsp.handlers["workspace/symbol"] = require("lsputil.symbols").workspace_handler
-		end,
-		dependencies = {
-			"RishabhRD/popfix",
-		},
-	},
-	{
 		"lewis6991/hover.nvim",
 		config = true,
 		dependencies = {},
 		opts = {
 			init = function()
-				-- Require providers
 				require("hover.providers.lsp")
-				-- require('hover.providers.gh')
-				-- require('hover.providers.gh_user')
-				-- require('hover.providers.jira')
-				-- require('hover.providers.man')
-				require("hover.providers.dictionary")
 			end,
 			preview_opts = {
 				border = nil,
@@ -92,13 +67,9 @@ return {
 		config = true,
 		opts = {
 			window = {
-				-- The window can't be wider than 100 characters
 				max_width = 100,
-				-- Show a small highlight in the sign column for the line the cursor is on
 				highlight_cursorline = true,
-				-- Don't draw a border around the registers window
 				border = "rounded",
-				-- Apply a tiny bit of transparency to the the window, letting some characters behind it bleed through
 				transparency = 10,
 			},
 		},
@@ -109,23 +80,8 @@ return {
 		cmd = "Registers",
 	},
 	-- {
-	-- 	"folke/which-key.nvim",
-	-- 	dependencies = {},
-	-- 	config = function()
-	-- 		require("config.which-key")
-	-- 	end,
-	-- },
-	-- {
-	-- 	"glepnir/lspsaga.nvim",
-	-- 	event = "BufRead",
-	-- 	config = function()
-	-- 		require("config.lspsaga")
-	-- 	end,
-	-- 	dependencies = {
-	-- 		{ "nvim-tree/nvim-web-devicons" },
-	-- 		--Please make sure you install markdown and markdown_inline parser
-	-- 		{ "nvim-treesitter/nvim-treesitter" },
-	-- 	},
+	--     "ray-x/lsp_signature.nvim",
+	--     config = true,
 	-- },
 }
 -- vim:ts=2:sw=2
