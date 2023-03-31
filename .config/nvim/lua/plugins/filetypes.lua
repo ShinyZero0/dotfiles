@@ -8,7 +8,7 @@ return {
 		ft = "lua",
 	},
 	{
-		"sukima/xmledit",
+		"ShinyZero0/xmledit",
 		ft = "xml",
 		-- config = true,
 	},

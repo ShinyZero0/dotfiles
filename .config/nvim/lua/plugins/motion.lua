@@ -1,25 +1,28 @@
 return {
 	"anuvyklack/vim-smartword",
 	"chaoren/vim-wordmotion",
-	{
-		"abecodes/tabout.nvim",
-		config = true,
-		opts = {
-			tabkey = "<C-Space>",
-			backwards_tabkey = "<C-`>",
-			act_as_tab = false,
-			tabouts = {
-				{ open = "'", close = "'" },
-				{ open = '"', close = '"' },
-				{ open = "`", close = "`" },
-				{ open = "(", close = ")" },
-				{ open = "[", close = "]" },
-				{ open = "{", close = "}" },
-				{ open = "<", close = ">" },
-			},
-		},
-		dependencies = {},
-	},
+	-- {
+	-- 	"abecodes/tabout.nvim",
+	-- 	config = true,
+	-- 	opts = {
+	-- 		tabkey = "<C-Space>",
+	-- 		backwards_tabkey = "<C-`>",
+	-- 		act_as_tab = false,
+	-- 		ignore_beginning = false,
+	-- 		tabouts = {
+	-- 			{ open = "'", close = "'" },
+	-- 			{ open = '"', close = '"' },
+	-- 			{ open = "`", close = "`" },
+	-- 			{ open = "(", close = ")" },
+	-- 			{ open = "[", close = "]" },
+	-- 			{ open = "{", close = "}" },
+	-- 			{ open = "<", close = ">" },
+	-- 		},
+	-- 	},
+	-- 	dependencies = {
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 	},
+	-- },
 	{
 		"andymass/vim-matchup",
 		config = function()

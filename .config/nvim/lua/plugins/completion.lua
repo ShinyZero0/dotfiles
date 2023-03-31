@@ -19,10 +19,6 @@ return {
 			"hrsh7th/cmp-omni",
 			"dcampos/cmp-snippy",
 			"onsails/lspkind.nvim",
-			-- {
-			-- 	"hrsh7th/cmp-nvim-lua",
-			-- 	ft = "lua",
-			-- },
 		},
 	},
 	{
