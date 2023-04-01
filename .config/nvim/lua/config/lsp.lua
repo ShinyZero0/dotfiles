@@ -11,6 +11,9 @@ require("lspconfig")["pyright"].setup({
 require("lspconfig")["vimls"].setup({
 	capabilities = capabilities,
 })
+require("lspconfig")["haxe_language_server"].setup({
+	cmd = { "haxe-language-server" },
+})
 
 local pid = vim.fn.getpid()
 -- local omnisharp_bin = "/home/zero/.local/share/nvim/mason/bin/omnisharp"

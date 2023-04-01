@@ -43,7 +43,7 @@ vmap  <C-x>  <Plug>(dial-decrement)
 vmap g<C-a> g<Plug>(dial-increment)
 vmap g<C-x> g<Plug>(dial-decrement)
 
-nnoremap <F5> <cmd>ToggleTerm<CR>
+nnoremap <F5> <cmd>ToggleTerm direction=vertical size=70<CR>
 nnoremap <Leader>x <cmd>ToggleTermSendCurrentLine<CR>
 vnoremap <Leader>x <cmd>ToggleTermSendVisualLines<CR>
 " nnoremap <F5> <cmd>FloatermToggle<CR>

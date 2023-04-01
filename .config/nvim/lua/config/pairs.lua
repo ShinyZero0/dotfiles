@@ -1,15 +1,17 @@
-local pairs = require("nvim-autopairs")
+local Pairs = require("nvim-autopairs")
 local rule = require("nvim-autopairs.rule")
 local cond = require("nvim-autopairs.conds")
 
-pairs.setup({
+Pairs.setup({
 	ignored_next_char = "",
+	map_cr = true,
 })
-pairs.remove_rule("`")
+Pairs.remove_rule("`")
 require("nvim-autopairs").get_rule("[").not_filetypes = { "markdown" }
-pairs.add_rules({
+Pairs.add_rules({
 	rule(" ", " "):with_pair(function(opts)
 		local pair = opts.line:sub(opts.col - 1, opts.col)
 		return vim.tbl_contains({ "()", "[]", "{}" }, pair)
 	end),
+	-- rule("<[^<>]*>", "</[^<>]*>", "xml"):use_regex(true),
 })

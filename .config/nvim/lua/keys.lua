@@ -18,10 +18,10 @@ map("n", "'", function()
 	require("reach").marks(reachOptions)
 end, {})
 
-map("n", "<M-h>", [[<Cmd>wincmd h<CR>]], {})
+map({ "n", "t" }, "<M-h>", [[<Cmd>wincmd h<CR>]], {})
 map({ "n", "t" }, "<M-j>", [[<Cmd>wincmd j<CR>]], {})
 map({ "n", "t" }, "<M-k>", [[<Cmd>wincmd k<CR>]], {})
-map("n", "<M-l>", [[<Cmd>wincmd l<CR>]], {})
+map({ "n", "t" }, "<M-l>", [[<Cmd>wincmd l<CR>]], {})
 map("t", "<C-w>", [[<C-\><C-n><C-w>]], {})
 map("t", "<C-`>", [[<C-\><C-n>]], {})
 map(
