@@ -1,5 +1,9 @@
 return {
 	{
+		"jdonaldson/vaxe",
+		ft = "haxe",
+	},
+	{
 		"zdharma-continuum/zinit-vim-syntax",
 		ft = "zsh",
 	},

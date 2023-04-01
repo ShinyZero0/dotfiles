@@ -12,6 +12,11 @@ return {
 	--  -- config = true,
 	--      -- },
 	{
+		"rktjmp/lush.nvim",
+		config = false,
+		dependencies = {},
+	},
+	{
 		"sbdchd/neoformat",
 		config = function() end,
 		cmd = {
