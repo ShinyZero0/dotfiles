@@ -187,11 +187,11 @@ Hydra({
 	},
 	mode = { "v" },
 	heads = {
-		{ "e", ":'<,'>Neoformat ToEng<CR>" },
-		{ "r", ":'<,'>Neoformat ToRus<CR>" },
-		{ "s", ":'<,'>Neoformat Split<CR>" },
-		{ "j", ":'<,'>Neoformat Join<CR>" },
-		{ ".", ":'<,'>Neoformat<CR>", { exit = true } },
+		{ "e", ":Neoformat ToEng<CR>" },
+		{ "r", ":Neoformat ToRus<CR>" },
+		{ "s", ":Neoformat Split<CR>" },
+		{ "j", ":Neoformat Join<CR>" },
+		{ ".", ":Neoformat<CR>", { exit = true } },
 	},
 })
 

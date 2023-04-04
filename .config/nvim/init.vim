@@ -8,10 +8,10 @@ set termguicolors
 set number
 set cursorline
 set noshowmode
-set cmdheight=0
 set showtabline=0
 set conceallevel=0
 set scrolloff=5
+" set cmdheight=0
 
 " FORMAT
 set tabstop=4 shiftwidth=4 expandtab

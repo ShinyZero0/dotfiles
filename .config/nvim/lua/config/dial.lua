@@ -47,6 +47,12 @@ require("dial.config").augends:register_group({
 			word = true,
 			cyclic = true,
 		}),
+		augend.constant.new({
+
+			elements = { "[ ]", "[x]" },
+			word = false,
+			cyclic = true,
+		}),
 		augend.hexcolor.new({
 
 			case = "lower",

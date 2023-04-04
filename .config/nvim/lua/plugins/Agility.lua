@@ -17,7 +17,9 @@ return {
 	},
 	{
 		"phaazon/hop.nvim",
-		config = true,
+		opts = {
+			uppercase_labels = true,
+		},
 	},
 
 	-- {
