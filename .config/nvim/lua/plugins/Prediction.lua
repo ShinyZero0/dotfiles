@@ -13,6 +13,7 @@ return {
 			require("config.nvim-cmp")
 		end,
 		dependencies = {
+
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
@@ -25,11 +26,13 @@ return {
 		"dcampos/cmp-snippy",
 		event = "ModeChanged *:[vV\x16]*",
 		dependencies = {
+
 			{
 				"dcampos/nvim-snippy",
 				name = "snippy",
 				config = true,
 				dependencies = {
+
 					"ShinyZero0/vim-snippets",
 				},
 			},

@@ -1,3 +1,7 @@
+--  ╭──────────────────────────────────────────────────────────╮
+--  │                    Filetypes support                     │
+--  ╰──────────────────────────────────────────────────────────╯
+
 return {
 	{
 		"jdonaldson/vaxe",
@@ -14,7 +18,6 @@ return {
 	{
 		"ShinyZero0/xmledit",
 		ft = "xml",
-		-- config = true,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -29,6 +32,7 @@ return {
 			require("config.ts-textobjects")
 		end,
 		dependencies = {
+
 			"nvim-treesitter/nvim-treesitter",
 		},
 	},

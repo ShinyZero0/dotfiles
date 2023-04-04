@@ -10,9 +10,8 @@ return {
 	},
 	{
 		"karb94/neoscroll.nvim",
-		config = true,
-		dependencies = {},
 		opts = {
+
 			stop_eof = false,
 		},
 	},
@@ -21,7 +20,6 @@ return {
 	{
 		"DNLHC/glance.nvim",
 		config = true,
-		dependencies = {},
 	},
 	{
 		"Hoffs/omnisharp-extended-lsp.nvim",
@@ -46,13 +44,13 @@ return {
 	},
 	{
 		"lewis6991/hover.nvim",
-		config = true,
-		dependencies = {},
 		opts = {
+
 			init = function()
 				require("hover.providers.lsp")
 			end,
 			preview_opts = {
+
 				border = nil,
 			},
 			-- Whether the contents of a currently open hover window should be moved
@@ -64,9 +62,10 @@ return {
 	{
 		"tversteeg/registers.nvim",
 		name = "registers",
-		config = true,
 		opts = {
+
 			window = {
+
 				max_width = 100,
 				highlight_cursorline = true,
 				border = "rounded",
@@ -74,6 +73,7 @@ return {
 			},
 		},
 		keys = {
+
 			{ '"', mode = { "n", "v" } },
 			{ "<C-R>", mode = "i" },
 		},

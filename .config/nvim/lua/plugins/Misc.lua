@@ -1,6 +1,12 @@
 return {
 	{
-		"akinsho/toggleterm.nvim",
+		"anuvyklack/hydra.nvim", -- keymap modes
+		config = function()
+			require("config.hydra")
+		end,
+	},
+	{
+		"akinsho/toggleterm.nvim", -- terminal emulator
 		config = true,
 	},
 	{
@@ -13,10 +19,11 @@ return {
 	},
 
 	{
-		"NvChad/nvim-colorizer.lua",
-		config = true,
+		"NvChad/nvim-colorizer.lua", -- highlight colors
 		opts = {
+
 			user_default_options = {
+
 				names = false,
 			},
 		},

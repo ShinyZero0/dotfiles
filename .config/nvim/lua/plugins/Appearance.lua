@@ -1,26 +1,23 @@
 return {
+
 	{
 		"stevearc/dressing.nvim",
 		config = true,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		config = true,
 		opts = {
+
 			yadm = { enable = true },
 		},
 	},
 	{
 		"anuvyklack/pretty-fold.nvim",
 		config = true,
-		opts = {
-			-- fill_char = "~",
-		},
 	},
 	{
 		"lukas-reineke/headlines.nvim",
 		config = true,
-		dependencies = {},
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -34,6 +31,7 @@ return {
 			require("config.lualine")
 		end,
 		dependencies = {
+
 			"ShinyZero0/challenger-deep.nvim",
 		},
 	},
