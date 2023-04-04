@@ -88,6 +88,4 @@ return {
 			"nvim-lua/plenary.nvim",
 		},
 	},
-
-	-- "alvan/vim-closetag",
 }
