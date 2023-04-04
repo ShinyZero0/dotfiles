@@ -1,6 +1,7 @@
-" ==========================================================
 
-" FUNCTIONS AND AUTOCOMMANDS
+" ╭──────────────────────────────────────────────────────────╮
+" │                FUNCTIONS AND AUTOCOMMANDS                │
+" ╰──────────────────────────────────────────────────────────╯
 
 cnoreabbrev pl lua print
 
@@ -46,9 +47,6 @@ endfunction
 autocmd InsertLeave * silent! call SetEnglish()
 autocmd InsertEnter * silent! call SetOldLayout()
 
-" autocmd RecordingEnter * set cmdheight=1
-" autocmd RecordingLeave * silent! set cmdheight=0
-
 function SelectAll()
     let curMode = mode()
     if curMode == "V"
@@ -59,11 +57,9 @@ function SelectAll()
 endfunction
 vnoremap A <cmd>call SelectAll()<CR>
 
-autocmd FileType * set formatoptions-=cro
-autocmd BufWritePre *.lua Neoformat
-" autocmd User MainFile call MainFile()
-" autocmd VimEnter * call MainFile()
+fun FoldUsings()
+    syn region foldUsings start=/^using.*$/ end=/using.*\n^$/ fold
+    syn sync fromstart
+    set foldmethod=syntax
+endf
 
-au BufNewFile,BufFilePre,BufRead *.md set syntax=markdown
-autocmd BufEnter *.axaml,*.xaml setlocal ft=xml ts=2 sw=2
-" autocmd BufEnter * lua require("CheckTrailBlazer")
