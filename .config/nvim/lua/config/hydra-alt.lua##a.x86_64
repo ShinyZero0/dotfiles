@@ -4,9 +4,11 @@ local hints = require("config.hints")
 vim.g.mapleader = " "
 
 Hydra({
+
 	name = "Lsp diagnostics",
 	body = "<Leader>d",
 	config = {
+
 		invoke_on_body = true,
 		color = "pink",
 		hint = { type = "window" },
@@ -14,6 +16,7 @@ Hydra({
 	mode = { "n" },
 
 	heads = {
+
 		{ "d", require("hover").hover, { nowait = true } },
 		{ "l", cmd("Lspsaga show_line_diagnostics") },
 		{ "a", vim.lsp.buf.code_action },

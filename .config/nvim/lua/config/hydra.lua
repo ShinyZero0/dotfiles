@@ -4,12 +4,15 @@ local hints = require("config.hints")
 vim.g.mapleader = " "
 
 Hydra({
+
 	name = "Telescope",
 	hint = hints.Telescope,
 	config = {
+
 		color = "teal",
 		invoke_on_body = true,
 		hint = {
+
 			type = "window",
 			position = "middle",
 			border = "rounded",
@@ -18,8 +21,9 @@ Hydra({
 	mode = "n",
 	body = "<Leader>/",
 	heads = {
+
 		{ "b", cmd("Telescope buffers") },
-		{ "c", cmd("Telescope commands"), { desc = "execute command" } },
+		{ "c", cmd("Telescope command_history"), { desc = "command-line history" } },
 		{ "g", cmd("Telescope live_grep") },
 		{ "h", cmd("Telescope heading"), { desc = "headings" } },
 		{ "j", cmd("Telescope jumplist") },
@@ -29,26 +33,30 @@ Hydra({
 		{ "o", cmd("Telescope oldfiles"), { desc = "recently opened files" } },
 		{ "O", cmd("Telescope vim_options") },
 		{ "m", cmd("Telescope marks") },
-		-- { "u", cmd("silent! %foldopen! | UndotreeToggle"), { desc = "undotree" } },
-		{ ";", cmd("Telescope command_history"), { desc = "command-line history" } },
+		{ '"', cmd("Telescope neoclip") },
 		{ "/", cmd("Telescope current_buffer_fuzzy_find"), { desc = "search in file" } },
-		{ "<Enter>", cmd("Telescope"), { exit = true, desc = "list all pickers" } },
+		{ ";", cmd("Telescope commands"), { desc = "execute command" } },
 		{
 			"f",
 			function()
 				require("telescope.builtin").find_files({ hidden = true, no_ignore = true })
 			end,
 		},
+
 		{ "<Esc>", nil, { exit = true, nowait = true } },
+		{ "<Enter>", cmd("Telescope"), { exit = true, desc = "list all pickers" } },
+		-- { "u", cmd("silent! %foldopen! | UndotreeToggle"), { desc = "undotree" } },
 	},
 })
 
 Hydra({
+
 	name = "Options",
 	mode = "n",
 	body = "<Leader>O",
 	hint = hints.Options,
 	heads = {
+
 		{ "s", cmd("set spell!") },
 		{ "w", cmd("set wrap!") },
 		{ "b", cmd("set linebreak!") },
@@ -69,13 +77,16 @@ Hydra({
 		{ "<C-q>", nil, { exit = true, nowait = true } },
 	},
 	config = {
+
 		color = "amaranth",
 		invoke_on_body = true,
 		hint = {
+
 			position = "middle",
 			border = "rounded",
 			type = "window",
 			funcs = {
+
 				ro = function()
 					if vim.o.readonly then
 						return "[x]"
@@ -185,6 +196,7 @@ Hydra({
 })
 
 SaveOrExit = Hydra({
+
 	name = "Are you sure?",
 	hint = hints.SaveOrExit,
 	config = {
@@ -205,22 +217,26 @@ SaveOrExit = Hydra({
 })
 
 SaveOrExitOne = Hydra({
+
 	name = "Are you sure?",
 	hint = hints.SaveOrExit,
 	config = {
+
 		color = "blue",
 		invoke_on_body = true,
 		hint = {
+
 			type = "window",
 			position = "bottom",
 			border = "rounded",
 		},
 	},
 	heads = {
+
 		{ "<C-q>", cmd("q!"), { desc = "Quit without saving" } },
 		{ "q", cmd("q!"), { desc = "Quit without saving" } },
-		{ "<C-s>", cmd("w|q"), { desc = "Save & quit" } },
-		{ "s", cmd("w|q"), { desc = "Save & quit" } },
+		{ "<C-s>", cmd("silent w|q"), { desc = "Save & quit" } },
+		{ "s", cmd("silent w|q"), { desc = "Save & quit" } },
 	},
 })
 -- vim:sw=2:ts=2

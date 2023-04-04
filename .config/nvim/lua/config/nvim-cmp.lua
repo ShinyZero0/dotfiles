@@ -12,21 +12,27 @@ local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local snippy = require("snippy")
 
 cmp.setup({
+
 	view = {
+
 		entries = { name = "custom", selection_order = "near_cursor" },
 	},
 	experimental = {
+
 		ghost_text = true,
 		native_menu = false,
 	},
 	formatting = {
+
 		format = lspkind.cmp_format(),
 	},
 	sources = cmp.config.sources({
+
 		{ name = "nvim_lsp" },
 		{
 			name = "buffer",
 			option = {
+
 				get_bufnrs = function()
 					return vim.api.nvim_list_bufs()
 				end,
@@ -39,15 +45,18 @@ cmp.setup({
 		-- { name = "nvim_lua" },
 	}),
 	snippet = {
+
 		expand = function(args)
 			require("snippy").expand_snippet(args.body)
 		end,
 	},
 	window = {
+
 		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
 	},
-	mapping = cmp.mapping.preset.insert({
+	mapping = {
+
 		["<C-Tab>"] = cmp.mapping(function(fallback)
 			if snippy.can_expand_or_advance() then
 				snippy.expand_or_advance()
@@ -77,11 +86,13 @@ cmp.setup({
 		end, { "i", "s" }),
 		["<C-c>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
-	}),
+	},
 })
 
 cmp.setup.filetype({ "vim", "lua" }, {
+
 	sources = {
+
 		-- { name = "cmdline" },
 		{ name = "nvim_lsp" },
 		{ name = "path" },
@@ -90,6 +101,7 @@ cmp.setup.filetype({ "vim", "lua" }, {
 		{
 			name = "buffer",
 			option = {
+
 				get_bufnrs = function()
 					return vim.api.nvim_list_bufs()
 				end,

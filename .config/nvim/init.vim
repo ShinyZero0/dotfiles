@@ -15,7 +15,6 @@ set scrolloff=5
 
 " FORMAT
 set tabstop=4 shiftwidth=4 expandtab
-set formatoptions=1jtc
 set breakindent
 
 " INPUT
@@ -44,7 +43,8 @@ function! SourceIfExists(file)
 endfunction
 
 source $HOME/.config/nvim/functions.vim
-lua require("functions")
+lua require("Skills")
+source $HOME/.config/nvim/autorun.vim
 lua require("config.lazy")
 source $HOME/.config/nvim/init-alt.vim
 source $HOME/.config/nvim/keys.vim

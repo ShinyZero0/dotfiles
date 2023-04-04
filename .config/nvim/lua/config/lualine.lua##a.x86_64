@@ -1,14 +1,18 @@
 local Lualine = require("lualine")
 Lualine.setup({
+
 	-- options = { theme = "tundra" },
 	options = { theme = "challenger_deep" },
 	sections = {
+
 		lualine_a = { "mode" },
 		lualine_b = { "filename" },
 		lualine_c = {
+
 			{
 				"tabs",
 				tabs_color = {
+
 					active = "lualine_c_inactive",
 					inactive = "lualine_c_normal",
 				},
@@ -33,6 +37,7 @@ Lualine.setup({
 	},
 })
 vim.api.nvim_create_autocmd({ "RecordingEnter", "RecordingLeave" }, {
+
 	callback = function()
 		Lualine.refresh()
 	end,

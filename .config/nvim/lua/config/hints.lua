@@ -2,17 +2,20 @@ return {
 	Telescope = [[
     Telescope:
 
-    _f_: Files       _h_: Headings
-    _o_: Old files   _g_: live Grep
-    _j_: Jumplist    _/_: Search in file
-    _l_: highLights  _b_: Buffers
+    _f_: Files       _o_: Old files
+    _g_: Grep all    _b_: Buffers
 
-    _?_: Help tags   _c_: execute Command
-    _k_: Keymaps     _;_: Commands history    
-    _O_: Options     _m_: Marks
+    _h_: Headings    _/_: Grep this
+    _m_: Marks
 
-    _<Enter>_: Telescope           _<Esc>_
+    _j_: Jumplist    _"_: Clipboard history
 
+    _l_: highLights  _O_: Options    
+    _?_: Help tags   _k_: Keymaps    
+    
+    _c_: Commands history _;_: execute Command    
+
+    _<Enter>_: Builtin           _<Esc>_
     ]],
 	Options = [[
     Options:
