@@ -1,2 +1,2 @@
 " let mapleader=" "
-nnoremap <buffer> gd :lua require('omnisharp_extended').lsp_definitions()<cr>
+nnoremap <buffer> gd :vsplit\|lua require('omnisharp_extended').lsp_definitions()<cr>
