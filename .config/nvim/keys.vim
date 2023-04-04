@@ -1,7 +1,7 @@
 nnoremap <Space> <Nop>
 let mapleader = " "
 let maplocalleader = "\\"
-lua require("keys")
+lua require("Keys")
 
 map ; :
 map Q q
@@ -21,17 +21,16 @@ nnoremap <S-CR> O<Esc>
 
 cnoremap <C-left>  <S-left>
 cnoremap <C-right> <S-right>
-
 cnoremap <C-BS> <C-w>
 
 " INSERT MODE 
 
-inoremap <C-left>  <Esc>ba
-inoremap <C-right> <Esc>wa
+" inoremap <C-left>  <cmd>normal bi<CR>
+" inoremap <C-right> <cmd>normal ea<CR>
 
 " VISUAL MODE
 
-vnoremap p "_dP
+" vnoremap p "_d "='v:register'P
 vnoremap & :'<,'>&<CR>
 
 " MISC PLUGINS
@@ -80,8 +79,8 @@ nnoremap <Leader>' <cmd>Telescope marks<CR>
 
 nnoremap <C-left>  g0
 nnoremap <C-right> g$
-nnoremap <C-up>    gk
-nnoremap <C-down>  gj
+nnoremap k  gk
+nnoremap j  gj
 
 " 0 TO FIRST WORD
 
