@@ -50,8 +50,8 @@ bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
 
 bindsym $mod+T layout tabbed
-bindsym $mod+Control+V split v
-bindsym $mod+Control+H split h
+bindsym $mod+Control+H split v # made as in vim so vertical
+bindsym $mod+Control+V split h # is splitting window by vertical line
 bindsym $mod+Control+E layout toggle split
 
 bindsym $mod+Shift+space floating toggle
@@ -59,6 +59,8 @@ bindsym $mod+F           fullscreen toggle
 bindsym $mod+space       focus mode_toggle
 
 # switch to workspace
+bindsym $mod+R exec --no-startup-id ~/.local/bin/I3Client LastWorkspace
+
 bindsym $mod+1 workspace number $ws1 
 bindsym $mod+2 workspace number $ws2 ; exec --no-startup-id picom -b
 bindsym $mod+3 workspace number $ws3 ; exec --no-startup-id pkill picom; 
@@ -98,7 +100,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 
-bindsym $mod+R mode "resize"
+# bindsym $mod+R mode "resize"
 mode "resize" {
 
     bindsym J         resize shrink width  10 px or 10 ppt

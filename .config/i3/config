@@ -31,6 +31,7 @@ exec_always --no-startup-id "pkill polybar ; polybar upperbar"
 exec_always --no-startup-id "pkill xkeysnail ; xkeysnail .scripts/xkeysnail.py & sleep 1 ; xset r rate 250 15"
 exec_always --no-startup-id pkill dunst
 exec_always --no-startup-id "pkill picom & sleep 1 ; picom -b"
+exec_always --no-startup-id "pkill I3IPC & sleep 1 ; ~/.local/bin/I3IPC"
 exec_always --no-startup-id nitrogen --restore
 
 # Style
@@ -45,12 +46,14 @@ focus_follows_mouse no
 
 include colors
 
-for_window [class="libreoffice.*"] move container to workspace $ws4
-for_window [class="Steam"] move container to workspace $ws5
-for_window [class="War Thunder \(Vulkan, 64bit\)"] move container to workspace $ws3
-for_window [class="corectrl"] move scratchpad
+for_window [instance="DesktopEditors"]             move container to workspace $ws4
+for_window [class="libreoffice.*"]                 move container to workspace $ws4
+for_window [class="Steam"]                         move container to workspace $ws5
+for_window [class=".*War Thunder.*"] move container to workspace $ws3
+for_window [class="corectrl"]                      move scratchpad
 
 for_window [class="(?i)todo"]     floating enable
+for_window [instance="(?i)SFML"]     floating enable
 for_window [class="(?i)avalonia"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Gpick"]        floating enable
@@ -65,3 +68,4 @@ for_window [instance="floatwin"]  floating enable resize set 900 600
 for_window [class="Pavucontrol"]  floating enable resize set 640 480
 
 include keys
+include generated
