@@ -32,7 +32,7 @@ Hydra({
 		{ "?", cmd("Telescope help_tags"), { desc = "vim help" } },
 		{ "o", cmd("Telescope oldfiles"), { desc = "recently opened files" } },
 		{ "O", cmd("Telescope vim_options") },
-		{ "m", cmd("Telescope marks") },
+		{ "'", cmd("Telescope marks") },
 		{ '"', cmd("Telescope neoclip") },
 		{ "/", cmd("Telescope current_buffer_fuzzy_find"), { desc = "search in file" } },
 		{ ";", cmd("Telescope commands"), { desc = "execute command" } },
@@ -235,8 +235,8 @@ SaveOrExitOne = Hydra({
 
 		{ "<C-q>", cmd("q!"), { desc = "Quit without saving" } },
 		{ "q", cmd("q!"), { desc = "Quit without saving" } },
-		{ "<C-s>", cmd("silent w|q"), { desc = "Save & quit" } },
-		{ "s", cmd("silent w|q"), { desc = "Save & quit" } },
+		{ "<C-s>", cmd("w|q"), { desc = "Save & quit" } },
+		{ "s", cmd("w|q"), { desc = "Save & quit" } },
 	},
 })
 -- vim:sw=2:ts=2

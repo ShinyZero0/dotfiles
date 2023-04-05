@@ -43,6 +43,15 @@ function f(str)
 	)
 end
 
+function All(tbl, check)
+	for _, entry in ipairs(tbl) do
+		if not check(entry) then
+			return false
+		end
+	end
+	return true
+end
+
 --  ╭──────────────────────────────────────────────────────────╮
 --  │    Recusively show and close all buffers when leaving    │
 --  │                     the last window                      │

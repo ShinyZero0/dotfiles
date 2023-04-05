@@ -45,7 +45,7 @@ require("neo-tree").setup({
 
 			hide_by_pattern = {
 
-				"*.*##*",
+				"*##*",
 			},
 		},
 		-- hijack_netrw_behavior = "open_default",

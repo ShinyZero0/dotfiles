@@ -6,7 +6,7 @@ return {
     _g_: Grep all    _b_: Buffers
 
     _h_: Headings    _/_: Grep this
-    _m_: Marks
+    _'_: Marks
 
     _j_: Jumplist    _"_: Clipboard history
 
