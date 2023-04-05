@@ -2,7 +2,7 @@
 
 map R reload
 map ; push :
-map <backspace2> set hidden!
+map ` set hidden!
 map <esc> push u
 
 map s

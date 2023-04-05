@@ -22,7 +22,7 @@ cmd open-with ${{
 }}
 map o open-with
 map e ${{
-jaro --method=edit $fx || jaro $fx
+jaro --method=edit "$fx" || jaro "$fx"
 }}
 cmd open ${{
     tput smcup
