@@ -59,10 +59,9 @@ nmap <C-Tab> <Plug>(snippy-cut-text)
 xmap <C-Tab> <Plug>(snippy-cut-text)
 
 map ? <cmd>HopPatternMW<CR>
-map <C-f> <cmd>HopWordMW<CR>
-map L <cmd>HopVertical<CR>
-map t <cmd>HopChar1AC<CR>
-map T <cmd>HopChar1BC<CR>
+map <C-w> <cmd>HopWordMW<CR>
+map K <cmd>HopVertical<CR>
+map <C-f> <cmd>HopChar1<CR>
 
 " map <Leader>l <cmd>GrappleCycle forward<CR>
 " map <Leader>h <cmd>GrappleCycle backward<CR>

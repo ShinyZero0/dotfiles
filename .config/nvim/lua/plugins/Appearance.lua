@@ -26,7 +26,15 @@ return {
 		end,
 	},
 	{
+		"rebelot/heirline.nvim",
+		enabled = falsea,
+		config = function(...)
+			require("config.heirline")
+		end,
+	},
+	{
 		"nvim-lualine/lualine.nvim",
+		enabled = true,
 		config = function()
 			require("config.lualine")
 		end,

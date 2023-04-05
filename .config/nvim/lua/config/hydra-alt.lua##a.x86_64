@@ -14,10 +14,9 @@ Hydra({
 		hint = { type = "window" },
 	},
 	mode = { "n" },
-
 	heads = {
 
-		{ "d", require("hover").hover, { nowait = true } },
+		{ "d", function() require("hover").hover() end, { nowait = true } },
 		{ "l", cmd("Lspsaga show_line_diagnostics") },
 		{ "a", vim.lsp.buf.code_action },
 		{ "f", cmd("Lspsaga lsp_finder") },
@@ -27,4 +26,5 @@ Hydra({
 		{ "i", vim.lsp.buf.implementation },
 	},
 })
+
 -- vim:ft=lua
