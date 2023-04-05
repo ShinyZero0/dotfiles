@@ -1,10 +1,12 @@
 # Mappings
+source ~/.config/lf/chmod
 
 map R reload
 map ; push :
 map ` set hidden!
 map <esc> push u
 
+# Sort
 map s
 map sa :{{set sortby atime; set info atime; set reverse; top; }}
 map st :{{set sortby time; set info time; set reverse; top; }}
@@ -12,36 +14,12 @@ map sc :{{set sortby ctime; set info ctime; set reverse; top; }}
 map ss :{{set sortby size; set info size; set reverse; top; }}
 map sn :{{set sortby natural; set info; set noreverse; top; }}
 
+# New
 map n
 map nf push :touch<space>
 map nd push :mkdir<space>
 
-map +r &{{
-chmod +r $fx
-lf -remote "send $id reload"
-}}
-map +w &{{
-chmod +w $fx
-lf -remote "send $id reload"
-}}
-map +x &{{
-chmod +x $fx
-lf -remote "send $id reload"
-}}
-
-map -r &{{
-chmod -r $fx
-lf -remote "send $id reload"
-}}
-map -w &{{
-chmod -w $fx
-lf -remote "send $id reload"
-}}
-map -x &{{
-chmod -x $fx
-lf -remote "send $id reload"
-}}
-
+# Yank
 map y
 map yf yankfile
 map yy copy
@@ -50,11 +28,13 @@ map yl xlinks
 map d
 map dd cut
 
+# Action
 map a
 map az push :zip<space>
 map ae extract
 map as share
 
+# Go to
 map gl follow_link
 map g/ cd /
 
