@@ -4,19 +4,31 @@
 
 return {
 
-	"tpope/vim-surround",
-	"tpope/vim-repeat",
-	-- "zef/vim-cycle",
-	"junegunn/vim-easy-align",
-	"AndrewRadev/dsf.vim",
+	"tpope/vim-surround", -- place brackets and tags
+	"tpope/vim-repeat", -- dot-repeat
+	"tpope/vim-eunuch", -- filesystem util
+	"junegunn/vim-easy-align", -- align columns
+	"AndrewRadev/dsf.vim", -- delete surrounding function
+	{
+		"Wansmer/sibling-swap.nvim",
+		opts = {
+			use_default_keymaps = false,
+			keymaps = {
+				["<leader>s"] = "swap_with_right",
+				["<leader>S"] = "swap_with_left",
+				-- ["<space>."] = "swap_with_right_with_opp",
+				-- ["<space>,"] = "swap_with_left_with_opp",
+			},
+		},
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
 	{
 		"AckslD/nvim-neoclip.lua",
 		config = function()
-			require("neoclip").setup()
+			require("config.neoclip")
 		end,
-		-- opts = {
-		-- 	filter = nil,
-		-- },
 	},
 	{
 		"gbprod/stay-in-place.nvim",
@@ -66,10 +78,6 @@ return {
 		config = function()
 			require("config.comment")
 		end,
-		-- keys = {
-		--     "gc",
-		-- },
-		-- event = { "ModeChanged *:[vV\x16]*", "ModeChanged n:o*" },
 	},
 
 	{
