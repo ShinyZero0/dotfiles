@@ -1,11 +1,13 @@
-# ======================================================== #
+#  ╭──────────────────────────────────────────────────────────╮
+#  │                         Aliases                          │
+#  ╰──────────────────────────────────────────────────────────╯
 
 unabbr()
 {
-for abbr in $@
-do
-    abbr e -q $abbr &> /dev/null
-done
+    for abbr in $@
+    do
+        abbr e -q $abbr &> /dev/null
+    done
 }
 
 alias reabbr="\
@@ -32,14 +34,15 @@ alias eda="$EDITOR ~/.zsh/aliases.zsh"
 alias q="exit"
 
 # GIT
-alias gc="git commit -m"
 alias ga="git add"
+alias gc="git commit -m"
+alias gd="git diff"
 alias gca="git commit -am"
 alias gcd="git add . && git commit -m"
 alias gcl="git clone"
 alias gst="git status"
 alias gch="git checkout"
-alias gdf="git diff"
+alias gds="git diff --staged"
 alias grs="git restore --staged"
 alias grm="git rm --cached"
 alias gmenocom="git merge --no-commit --no-ff"
