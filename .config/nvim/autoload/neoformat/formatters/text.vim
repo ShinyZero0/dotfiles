@@ -3,14 +3,14 @@ function! neoformat#formatters#text#enabled() abort
 endfunction
 function! neoformat#formatters#text#Split() abort
     return {
-                \ 'exe': 'sharpjoin',
+                \ 'exe': 'sentsplit',
                 \ 'args': ['--split'],
                 \ 'stdin': 0
                 \ }
 endfunction
 function! neoformat#formatters#text#Join() abort
     return {
-                \ 'exe': 'sharpjoin',
+                \ 'exe': 'sentsplit',
                 \ 'args': ['--join'],
                 \ 'stdin': 0
                 \ }
