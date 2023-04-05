@@ -7,7 +7,10 @@ return {
 	},
 	{
 		"akinsho/toggleterm.nvim", -- terminal emulator
-		config = true,
+		opts = {
+
+			persist_mode = false,
+		},
 	},
 	{
 		-- "ShinyZero0/haxe-mainfile.nvim",

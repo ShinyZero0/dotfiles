@@ -45,6 +45,7 @@ lf -remote "send $id reload"
 map y
 map yf yankfile
 map yy copy
+map yl xlinks
 
 map d
 map dd cut
@@ -64,6 +65,11 @@ map <tab> jump-next
 
 map E ${{
     $EDITOR
+}}
+
+map o open-with
+map e ${{
+jaro --method=edit "$fx" || jaro "$fx"
 }}
 
 # vim: ft=bash

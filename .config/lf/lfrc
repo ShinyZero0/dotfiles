@@ -20,10 +20,6 @@ cmd open-with ${{
     mimeopen --ask $fx
     tput rmcup
 }}
-map o open-with
-map e ${{
-jaro --method=edit "$fx" || jaro "$fx"
-}}
 cmd open ${{
     tput smcup
     jaro $fx
@@ -39,41 +35,20 @@ cmd zip ${{
     atool -a -F .zip $* $fx
     tput rmcup
 }}
+
 cmd share $curl -F"file=@$fx" https://0x0.st | xclip -selection c
 
-cmd on-cd &{{
-    printf "\033]0; $(pwd | sed "s|$HOME|~|")\007" > /dev/tty
-    case "$PWD" in
-        ~/Images*)
-            lf -remote "send $id set user_prev_sortby $lf_sortby"
-            # lf -remote "send $id set user_prev_reverse $lf_reverse"
-            lf -remote "send $id set sortby time"
-            lf -remote "send $id set reverse; top"
-            ;;
-        ~/Downloads*)
-            lf -remote "send $id set user_prev_sortby $lf_sortby"
-            # lf -remote "send $id set user_prev_reverse $lf_reverse"
-            lf -remote "send $id set sortby time"
-            lf -remote "send $id set reverse; top"
-            ;;
-        *)
-            # restore sorting on directory exit
-            if [[ "$lf_user_prev_sortby" != "" ]]; then
-                lf -remote "send $id set sortby $lf_user_prev_sortby"
-            # if [[ "$lf_user_prev_reverse" != "" ]]; then
-                # lf -remote "send $id set reverse $lf_user_prev_reverse"
-
-                lf -remote "send $id set user_prev_sortby ''"
-                # lf -remote "send $id set user_prev_reverse ''"
-            fi
-            ;;
-    esac
-}}
+source ~/.config/lf/on-cd
 on-cd
 
 cmd follow_link %{{
-  lf -remote "send ${id} select '$(readlink $f)'"
+    lf -remote "send ${id} select '$(readlink $f)'"
+}
+
+cmd xlinks !{{
+    ln -s -t . -- "$fs" 
 }}
+
 source ~/.config/lf/lfrc-alt
 source ~/.config/lf/keys
 
