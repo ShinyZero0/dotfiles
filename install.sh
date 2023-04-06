@@ -11,4 +11,4 @@ usermod -a -G input $USER
 
 cargo install skim
 
-wget -O ~/.Xresources https://raw.githubusercontent.com/challenger-deep-theme/xresources/master/challenger-deep.xdefaults
+cp ~/.util/Challenger-Deep.rasi /usr/share/rofi/themes/

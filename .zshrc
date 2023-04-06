@@ -24,7 +24,6 @@ autoload -Uz _zinit
 source ~/.config/zsh/alt.zsh
 source ~/.config/zsh/lfcd.zsh
 source ~/.config/zsh/aliases.zsh
-
 source ~/.config/zsh/.p10k.zsh
 
 # TURBO MODE
