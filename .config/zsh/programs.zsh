@@ -1,5 +1,5 @@
 #  ╭──────────────────────────────────────────────────────────╮
-#  │                Zinit installing programs                 │
+#  │                Zinit installing stuff                    │
 #  ╰──────────────────────────────────────────────────────────╯
 
 # Install desktop-only apps
@@ -29,6 +29,6 @@ zinit as="null" depth"1" from="gh-r" for \
     sbin="lf" gokcehan/lf \
     sbin="fzf" junegunn/fzf \
     atclone='mkdir -p ~/.local/share/fonts/Blex; fd -g "*Windows*" -x "rm \"{}\""; fd "Mono" | xargs -I "{}" mv {} ~/.local/share/fonts/Blex/' \
-        atpull="%atclone" bpick="IBMPlexMono.zip" ryanoasis/nerd-fonts \
+        atpull="%atclone" bpick="IBMPlexMono.zip" bpick="InconsolataLGC.zip" ryanoasis/nerd-fonts \
     sbin="stylua" JohnnyMorganz/StyLua \
 

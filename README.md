@@ -11,11 +11,12 @@ git yadm zsh sd zoxide \
 xsel xclip neovim
 ```
 
-* [xkeysnail](https://github.com/mooz/xkeysnail):
+* [xkeysnail](https://github.com/mooz/xkeysnail) key remapping tool:
 ```bash
 sudo pip install xkeysnail
 sudo usermod -a -G input $USER
 ```
+
 
 Skim fuzzy finder:
 ```bash
@@ -35,8 +36,10 @@ These are installed automatically by zinit:
 * [bottom](https://github.com/ClementTsang/bottom) system monitor
 * [typograf](https://github.com/typograf/typograf-cli/) text formatter
 * [uncrustify](https://github.com/uncrustify/uncrustify/) code formatter
+* [omnisharp](https://github.com/OmniSharp/omnisharp-roslyn) C# LSP
+* [stylua](https://github.com/JohnnyMorganz/StyLua) lua formatter
 * [choose](https://github.com/theryangeary/choose/)
-* Lilex Nerd Font
+* Plex Mono and InconsolataLGC Nerd Fonts
 
 Use yadm for configs:
 ```bash
