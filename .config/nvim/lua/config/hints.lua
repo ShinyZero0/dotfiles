@@ -2,7 +2,7 @@ return {
 	Telescope = [[
     Telescope:
 
-    _f_: Files       _o_: Old files
+    _f_: Files       _r_: Old files
     _g_: Grep all    _b_: Buffers
 
     _h_: Headings    _/_: Grep this

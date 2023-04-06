@@ -30,7 +30,7 @@ Hydra({
 		{ "k", cmd("Telescope keymaps") },
 		{ "l", cmd("Telescope highlights"), { desc = "highLights" } },
 		{ "?", cmd("Telescope help_tags"), { desc = "vim help" } },
-		{ "o", cmd("Telescope oldfiles"), { desc = "recently opened files" } },
+		{ "r", cmd("Telescope recent_files pick"), { desc = "recently opened files" } },
 		{ "O", cmd("Telescope vim_options") },
 		{ "'", cmd("Telescope marks") },
 		{ '"', cmd("Telescope neoclip") },
