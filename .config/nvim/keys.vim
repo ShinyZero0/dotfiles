@@ -6,7 +6,7 @@ lua require("Keys")
 map ; :
 map Q q
 nnoremap <Esc> <cmd>noh<CR>
-map <C-s> :silent w<CR>
+map <C-s> :w<CR>
 
 map <Leader>y "+y
 map <Leader>p "+p

@@ -16,6 +16,7 @@ set scrolloff=5
 " FORMAT
 set tabstop=4 shiftwidth=4 expandtab
 set breakindent
+set formatoptions=1jtc 
 
 " INPUT
 set whichwrap+=h,l,<,>,[,]
@@ -43,7 +44,6 @@ function! SourceIfExists(file)
 endfunction
 
 source $HOME/.config/nvim/functions.vim
-lua require("Skills")
 source $HOME/.config/nvim/autorun.vim
 lua require("config.lazy")
 source $HOME/.config/nvim/init-alt.vim

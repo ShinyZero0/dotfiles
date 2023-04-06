@@ -3,6 +3,7 @@
 " │                FUNCTIONS AND AUTOCOMMANDS                │
 " ╰──────────────────────────────────────────────────────────╯
 
+lua require("Skills") -- the lua functions module
 cnoreabbrev pl lua print
 
 " open main file for pwd

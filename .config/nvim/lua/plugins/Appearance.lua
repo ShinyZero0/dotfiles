@@ -2,10 +2,12 @@ return {
 
 	{
 		"stevearc/dressing.nvim",
+		event = "VeryLazy",
 		config = true,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "VeryLazy",
 		opts = {
 
 			yadm = { enable = true },
@@ -17,6 +19,7 @@ return {
 	},
 	{
 		"lukas-reineke/headlines.nvim",
+		event = "VeryLazy",
 		config = true,
 	},
 	{
@@ -27,7 +30,7 @@ return {
 	},
 	{
 		"rebelot/heirline.nvim",
-		enabled = falsea,
+		enabled = false,
 		config = function(...)
 			require("config.heirline")
 		end,

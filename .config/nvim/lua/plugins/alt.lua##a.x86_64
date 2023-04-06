@@ -1,15 +1,21 @@
-return {
-	-- DESKTOP-SPECIFIC PLUGINS
+--  ╭──────────────────────────────────────────────────────────╮
+--  │                 DESKTOP-SPECIFIC PLUGINS                 │
+--  ╰──────────────────────────────────────────────────────────╯
 
-	-- "KabbAmine/vCoolor.vim",
-	"sillyotter/t4-vim",
+return {
+
 	"lambdalisue/suda.vim",
+	{
+		"sillyotter/t4-vim",
+		ft = "t4",
+	},
 	{
 		"dinhhuy258/vim-local-history",
 		build = ":UpdateRemotePlugins",
 	},
 	{
 		"karb94/neoscroll.nvim",
+		event = "VeryLazy",
 		opts = {
 
 			stop_eof = false,
@@ -18,32 +24,32 @@ return {
 
 	-- LSP
 	{
-		"DNLHC/glance.nvim",
-		config = true,
-	},
-	{
 		"Hoffs/omnisharp-extended-lsp.nvim",
 		ft = "cs",
 	},
 	{
 		"neovim/nvim-lspconfig",
+		event = "VeryLazy",
 		config = function()
 			require("config.lsp")
 		end,
 	},
 	{
 		"williamboman/mason.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("config.mason")
 		end,
-		dependencies = {},
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		event = "VeryLazy",
 		config = true,
 	},
 	{
 		"lewis6991/hover.nvim",
+		-- event = "VeryLazy",
+		Lazy = true,
 		opts = {
 
 			init = function()
@@ -60,8 +66,8 @@ return {
 		},
 	},
 	{
-		"tversteeg/registers.nvim",
-		name = "registers",
+		"tversteeg/registers.nvim", -- on termux the clipboard is fucking slow
+		event = "VeryLazy",
 		opts = {
 
 			window = {

@@ -84,7 +84,7 @@ return {
 		"LudoPinelli/comment-box.nvim",
 		opts = {
 
-			outer_blank_lines = true,
+			line_blank_line_below = true,
 		},
 	},
 

@@ -42,7 +42,7 @@ require("telescope").setup({
 
 		find_files = {
 
-			follow = true,
+			follow = false,
 			find_command = { "fd", "-H", "-d", "4", "-t", "f" },
 			mappings = {
 
@@ -78,8 +78,7 @@ require("telescope").setup({
 		},
 	},
 })
--- require("telescope").load_extension("file_browser")
 require("telescope").load_extension("heading")
 require("telescope").load_extension("zf-native")
 require("telescope").load_extension("neoclip")
--- require("telescope").load_extension("harpoon")
+require("telescope").load_extension("recent_files")

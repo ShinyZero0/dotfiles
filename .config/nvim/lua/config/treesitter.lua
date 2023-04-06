@@ -1,4 +1,9 @@
+--  ╭──────────────────────────────────────────────────────────╮
+--  │                     Nvim-treesitter                      │
+--  ╰──────────────────────────────────────────────────────────╯
+
 require("nvim-treesitter.configs").setup({
+
 	ensure_installed = { "c", "lua", "vim", "help", "python", "c_sharp" },
 	auto_install = false,
 	ignore_install = { "diff", "latex" },
