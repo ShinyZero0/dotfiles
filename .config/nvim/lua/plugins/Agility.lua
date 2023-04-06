@@ -8,7 +8,6 @@ return {
 	"chaoren/vim-wordmotion",
 	{
 		"andymass/vim-matchup",
-		event = "VeryLazy",
 		config = function()
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 			vim.g.matchup_transmute_enabled = 1

@@ -14,8 +14,8 @@ return {
 		opts = {
 			use_default_keymaps = false,
 			keymaps = {
-				["<leader>s"] = "swap_with_right",
-				["<leader>S"] = "swap_with_left",
+				["<leader>w"] = "swap_with_right",
+				["<leader>W"] = "swap_with_left",
 				-- ["<space>."] = "swap_with_right_with_opp",
 				-- ["<space>,"] = "swap_with_left_with_opp",
 			},

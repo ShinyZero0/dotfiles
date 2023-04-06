@@ -59,7 +59,7 @@ endfunction
 vnoremap A <cmd>call SelectAll()<CR>
 
 fun FoldUsings()
-    syn region foldUsings start=/^using.*$/ end=/using.*\n^$/ fold
+    syn region FoldUsings start=/^using.*$/ end=/^$/ fold
     syn sync fromstart
     set foldmethod=syntax
 endf

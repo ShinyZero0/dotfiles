@@ -1,1 +1,1 @@
-alt.lua##a.x86_64
+Alt.lua##a.x86_64

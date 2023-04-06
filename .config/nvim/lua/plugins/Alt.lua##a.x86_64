@@ -15,9 +15,10 @@ return {
 	},
 	{
 		"karb94/neoscroll.nvim",
-		event = "VeryLazy",
+		-- event = "VeryLazy",
 		opts = {
 
+			mappings = { "<C-u>", "<C-d>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
 			stop_eof = false,
 		},
 	},
@@ -29,7 +30,6 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		event = "VeryLazy",
 		config = function()
 			require("config.lsp")
 		end,
