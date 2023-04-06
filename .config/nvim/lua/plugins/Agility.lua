@@ -17,7 +17,7 @@ return {
 	},
 	{
 		"phaazon/hop.nvim",
-		event = "VeryLazy",
+		-- event = "VeryLazy",
 		opts = {
 			uppercase_labels = true,
 		},

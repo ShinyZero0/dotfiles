@@ -15,7 +15,7 @@ return {
 	},
 	{
 		"karb94/neoscroll.nvim",
-		-- event = "VeryLazy",
+		event = "VeryLazy",
 		opts = {
 
 			mappings = { "<C-u>", "<C-d>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
@@ -48,7 +48,7 @@ return {
 	},
 	{
 		"lewis6991/hover.nvim",
-		-- event = "VeryLazy",
+		event = "VeryLazy",
 		Lazy = true,
 		opts = {
 
@@ -90,4 +90,4 @@ return {
 	--     config = true,
 	-- },
 }
--- vim:ts=2:sw=2
+-- vim:ts=2:sw=2:ft=lua

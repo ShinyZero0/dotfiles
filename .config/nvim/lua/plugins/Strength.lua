@@ -11,15 +11,16 @@ return {
 	"AndrewRadev/dsf.vim", -- delete surrounding function
 	{
 		"Wansmer/sibling-swap.nvim",
-		opts = {
-			use_default_keymaps = false,
-			keymaps = {
-				["<leader>w"] = "swap_with_right",
-				["<leader>W"] = "swap_with_left",
-				-- ["<space>."] = "swap_with_right_with_opp",
-				-- ["<space>,"] = "swap_with_left_with_opp",
-			},
-		},
+		config = function()
+			require("sibling-swap").setup({
+				keymaps = {
+					["<leader>w"] = "swap_with_right",
+					["<leader>W"] = "swap_with_left",
+				},
+				use_default_keymaps = true,
+			})
+		end,
+		-- opts = ,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},
