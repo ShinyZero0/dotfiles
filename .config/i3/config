@@ -25,19 +25,17 @@ exec --no-startup-id ~/.scripts/Wallpapers.sh
 # exec ~/.scripts/startupWS.sh
 
 include layout
-# AutoRestart
 
+# AutoRestart
 exec_always --no-startup-id "pkill polybar ; polybar upperbar"
 exec_always --no-startup-id "pkill xkeysnail ; xkeysnail .scripts/xkeysnail.py & sleep 1 ; xset r rate 250 15"
-exec_always --no-startup-id pkill dunst
+exec_always --no-startup-id "pkill dunst"
 exec_always --no-startup-id "pkill picom & sleep 1 ; picom -b"
 exec_always --no-startup-id "pkill I3IPC & sleep 1 ; ~/.local/bin/I3IPC"
-exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id "nitrogen --restore"
 
 # Style
-
 font pango: InconsolataLGC Nerd Font Mono Bold 2
-
 for_window [tiling] border pixel 4
 for_window [floating] border pixel 1, move position center
 gaps inner 10

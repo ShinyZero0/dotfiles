@@ -1,16 +1,16 @@
 # Colors:
-set $btext     #100e23
-set $wtext     #cbe3e7
-set $active    #aaffe4
-set $inactive  #565575
+set $black     #100e23
+set $white     #cbe3e7
+set $accent    #aaffe4
+set $grey  #565575
 set $bground   #1e1c31
 set $alert     #ff99e3
 set $border    #aaffe4
 set $indicator $border
 
 #Class:                 border    backgr.   text      indicator child_border
-client.focused          $active   $active   $active   $indicator $border
-client.focused_inactive $inactive $inactive $inactive $indicator $bground
+client.focused          $accent   $accent   $accent   $indicator $border
+client.focused_inactive $grey $grey $grey $indicator $bground
 client.unfocused        $bground  $bground  $bground  $indicator $bground
 client.urgent           $bground  $alert    $alert    $indicator $alert
 client.placeholder      $alert    $alert    $alert    $indicator $alert

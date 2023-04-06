@@ -13,6 +13,7 @@ bindsym $mod+Shift+E exec "rofi -show power-menu -theme ~/Personalization/powerm
 bindsym Print exec --no-startup-id maim --format=png | tee "$HOME/Images/$(date).png" | xclip -selection clipboard -t image/png
 
 # something
+
 bindsym control+mod1+T exec --no-startup-id kitty
 bindsym $mod+S move scratchpad
 bindsym $mod+Shift+S scratchpad show
