@@ -1,10 +1,7 @@
 ; vim: ft=scheme
+
 (assoc
-  #:pattern "image/.*"
-  #:program "imv -- %f &>/dev/null &" 
-  #:edit "nomacs %f &>/dev/null 2>&1 &")
-(assoc
-  #:pattern '("^text/.*" "application/x-shellscript" "application/x-desktop" "application/json" "application/x-perl" "text/x-csrc" "empty" "application/toml")
+  #:pattern '("^text/.*" "application/x-shellscript" "application/x-desktop" "application/json" "application/x-perl" "text/x-csrc" "empty" "application/toml" "application/x-wine-extension-ini" )
   #:program "nvim %f"
   #:term "kitty --class floatwin -- ")
 (assoc
@@ -15,26 +12,31 @@
   #:program "firefox %f")
 (assoc
   #:pattern "video/.*"
-  #:program "mpv --x11-name=floatwin %f &>/dev/null 2>&1 &"
-  )
+  #:program "mpv --x11-name=floatwin %f &>/dev/null 2>&1 &")
 (assoc
   #:pattern '("inode/directory" "inode/mount-point")
   #:program "lf %f"
   #:term "kitty --class floatwin -- ")
 (assoc
-  #:pattern '("application/vnd.openxmlformats-officedocument.wordprocessingml.document" "application/vnd.openxmlformats-officedocument.presentationml.presentation" "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+  #:pattern '("application/vnd.openxmlformats-officedocument.wordprocessingml.document" "application/vnd.openxmlformats-officedocument.presentationml.presentation" 
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
   #:program "libreoffice %f &>/dev/null &")
 (assoc
   #:pattern "application/pdf"
   #:program "zathura -- %f &")
 (assoc
-  #:pattern "font/*"
+  #:pattern '("font/*" "application/vnd.oasis.opendocument.formula-template")
   #:program "font-manager %f &")
+
+(assoc
+  #:pattern "image/.*"
+  #:program "imv -- %f &>/dev/null &" 
+  #:edit "nomacs %f &>/dev/null 2>&1 &")
+
+
 
 ; Archives
 (assoc
   #:pattern '("application/x-compressed-tar", "application/x-bzip-compressed-tar", "application/zip")
   #:program '"atool --extract %f"
   #:term "kitty --class floatwin -- ")
-
-  

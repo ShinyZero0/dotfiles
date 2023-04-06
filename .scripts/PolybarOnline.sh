@@ -1,6 +1,7 @@
 #!/bin/sh
 echo "%{F#ff8080}ﴹ"
 connection=false
+
 while [ true ]
 do
     wget -t 2 -T 1 -q --spider 1.1.1.1

@@ -2,7 +2,7 @@
   "Items": [
     {
       "Name": "Если окажусь на шиндовс",
-      "Content": "1. PowerToys  \n2. ~~ **Actual** __Tools__ ~~  \n3. [это ссылка на гитхаб](https://github.com/whistyun/testcode-garage/blob/master/AvaloniaListBoxTemplate/AvaloniaListBoxTemplate/Views/MainWindow.axaml)  \n",
+      "Content": "1. PowerToys \n2. Actual Tools\n3. [Everything поиск](https://www.voidtools.com/ru-ru/) \n",
       "IsDone": false,
       "Priority": 0
     },
@@ -28,12 +28,6 @@
       "Name": "мапнуть поисковую строку здесь",
       "Content": "не получилось:\n* реактивная команда в codebehind\n* void метод там же",
       "IsDone": true,
-      "Priority": 0
-    },
-    {
-      "Name": "fix autofocusing",
-      "Content": null,
-      "IsDone": false,
       "Priority": 0
     },
     {
