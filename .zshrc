@@ -21,7 +21,7 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-source ~/.zsh-alt
+source ~/.zsh/alt.zsh
 source ~/.zsh/lfcd.zsh
 source ~/.zsh/aliases.zsh
 
@@ -69,8 +69,9 @@ zinit if="[[ $(uname -m) = x86_64 ]]" depth="1" as="null" from="gh-r" for \
 zinit as="null" depth"1" from="gh-r" for \
     sbin="lf" gokcehan/lf \
     sbin="fzf" junegunn/fzf \
-    atclone='mkdir -p ~/.local/share/fonts/Lilex; fd -gE "*Windows*" | grep "Mono" | xargs -I "{}" mv {} ~/.local/share/fonts/Lilex/' atpull="%atclone" \
-        bpick="Lilex.zip" ryanoasis/nerd-fonts \
+    atclone='mkdir -p ~/.local/share/fonts/Blex; fd -g "*Windows*" -x "rm \"{}\""; fd "Mono" | xargs -I "{}" mv {} ~/.local/share/fonts/Blex/' atpull="%atclone" \
+        bpick="IBMPlexMono.zip" ryanoasis/nerd-fonts \
+    sbin="stylua" JohnnyMorganz/StyLua
 
 
     # Install non-release binaries
