@@ -21,11 +21,11 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-source ~/.zsh/alt.zsh
-source ~/.zsh/lfcd.zsh
-source ~/.zsh/aliases.zsh
+source ~/.config/zsh/alt.zsh
+source ~/.config/zsh/lfcd.zsh
+source ~/.config/zsh/aliases.zsh
 
-source ~/.p10k.zsh
+source ~/.config/zsh/.p10k.zsh
 
 # TURBO MODE
 zinit wait lucid depth="1" for \
@@ -34,8 +34,9 @@ zinit wait lucid depth="1" for \
     ShinyZero0/z-git-filter \
     RobSis/zsh-completion-generator \
     olets/zsh-abbr \
+    OMZL::git.zsh \
 
-    # Load a few important annexes, without Turbo
+# Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode depth="1" for \
     romkatv/powerlevel10k \
@@ -44,53 +45,15 @@ zinit light-mode depth="1" for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust \
 
-    # Install Desktop-only binaries
-zinit if="[[ $(uname -m) = x86_64 ]]" depth="1" as="null" from="gh-r" for \
-    sbin="fd" completions @sharkdp/fd \
-    sbin="btm" completions ClementTsang/bottom \
-    sbin="pistol* -> pistol" doronbehar/pistol \
-    sbin="choose* -> choose" theryangeary/choose \
-    sbin="wormhole-rs" magic-wormhole/magic-wormhole.rs \
-    bpick="kitty-*-x86_64.txz" sbin="bin/kitty" sbin="bin/kitten" \
-        kovidgoyal/kitty \
-    sbin="linux_czkawka_cli -> czkawka" bpick="linux_czkawka_cli" \
-        qarmin/czkawka \
-    sbin="OmniSharp -> omnisharp" bpick="omnisharp-linux-x64-net6.0.tar.gz" \
-        OmniSharp/omnisharp-roslyn
-
-    # sbin="koreader* -> koreader" \
-    # koreader/koreader \
-
-    zinit if="[[ $(uname -m) = x86_64 ]]" depth="1" as="null" for \
-    atclone="cargo install --path=." atpull="%atclone" I60R/page
-
-
-    # Install binaries
-zinit as="null" depth"1" from="gh-r" for \
-    sbin="lf" gokcehan/lf \
-    sbin="fzf" junegunn/fzf \
-    atclone='mkdir -p ~/.local/share/fonts/Blex; fd -g "*Windows*" -x "rm \"{}\""; fd "Mono" | xargs -I "{}" mv {} ~/.local/share/fonts/Blex/' atpull="%atclone" \
-        bpick="IBMPlexMono.zip" ryanoasis/nerd-fonts \
-    sbin="stylua" JohnnyMorganz/StyLua
-
-
-    # Install non-release binaries
-zinit as="null" depth="1" for \
-    sbin="jaro" isamert/jaro \
-    atclone="npm i ./" atpull="%atclone" sbin="bin/cli.js -> typograf-cli" typograf/typograf-cli \
-    atclone="mkcd build && cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build . --config Release" sbin="build/uncrustify" \
-        uncrustify/uncrustify \
-
-zinit for \
-    OMZL::git.zsh \
-
 zinit wait depth="1" lucid for \
     blockf atpull'zinit creinstall -q .' \
     zsh-users/zsh-completions \
     blockf completions \
     https://github.com/TheLocehiliosan/yadm/raw/master/completion/zsh/_yadm \
 
-    eval "$(zoxide init zsh)"
+source ~/.config/zsh/programs.zsh
+
+eval "$(zoxide init zsh)"
 
 zstyle ':completion:*' menu select completer _complete _ignored _approximate 
 zstyle ':completion:*' use-cache on
