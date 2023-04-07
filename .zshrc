@@ -7,7 +7,7 @@
 # fi
 
 
-fpath+=~/.zsh/completions/
+fpath+=~/.config/zsh/completions/
 
 # ADDED BY ZINIT'S INSTALLER
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
