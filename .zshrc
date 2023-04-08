@@ -27,13 +27,13 @@ source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/.p10k.zsh
 
 # TURBO MODE
-zinit wait lucid depth="1" for \
-    zsh-users/zsh-history-substring-search \
-    hlissner/zsh-autopair \
-    ShinyZero0/z-git-filter \
-    RobSis/zsh-completion-generator \
-    olets/zsh-abbr \
-    OMZL::git.zsh \
+# zinit wait lucid depth="1" for \
+#     zsh-users/zsh-history-substring-search \
+#     hlissner/zsh-autopair \
+#     ShinyZero0/z-git-filter \
+#     RobSis/zsh-completion-generator \
+#     olets/zsh-abbr \
+#     OMZL::git.zsh \
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -44,12 +44,12 @@ zinit light-mode depth="1" for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust \
 
-zinit wait depth="1" lucid for \
-    blockf atpull'zinit creinstall -q .' \
-    zsh-users/zsh-completions \
-    blockf completions \
-    https://github.com/TheLocehiliosan/yadm/raw/master/completion/zsh/_yadm \
-
+# zinit wait depth="1" lucid for \
+#     blockf atpull'zinit creinstall -q .' \
+#     zsh-users/zsh-completions \
+#     blockf completions \
+#     https://github.com/TheLocehiliosan/yadm/raw/master/completion/zsh/_yadm \
+#
 source ~/.config/zsh/programs.zsh
 
 eval "$(zoxide init zsh)"

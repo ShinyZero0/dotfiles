@@ -8,12 +8,13 @@ from xkeysnail.transform import *
 #     },
 # )
 define_keymap(
-    re.compile("firefox|librewolf-default|Chromium-freeworld"),
+    re.compile("Firefox|librewolf-default|Chromium-freeworld"),
     {
         # ALT IS FOR TABS
         K("Alt-T"): K("C-T"),
         # C for last Closed tab
         K("Alt-C"): K("C-Shift-T"),
+        K("Alt-d"): K("C-L"),
         # go to End
         K("Alt-E"): K("Alt-KEY_9"),
         # Switch tabs with Alt+Arrows
