@@ -11,8 +11,6 @@ lf ripgrep skim fzf duf \
 pip install xkeysnail
 usermod -a -G input zero
 
-# cargo install skim
-
 cp ~/.util/Challenger-Deep.rasi /usr/share/rofi/themes/
 mkdir -p ~/.local/share/fonts/
 cd ~/.local/share/fonts/

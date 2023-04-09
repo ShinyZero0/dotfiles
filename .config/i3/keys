@@ -6,11 +6,11 @@ bindsym $mod+Q kill
 
 # A more modern dmenu replacement is rofi:
 bindsym $mod+Return exec --no-startup-id "rofi  -show-icons -show combi -modes combi -combi-modes drun,run -display-run '' -display-drun ''"
-bindsym XF86PowerOff exec "rofi -show power-menu -theme ~/Personalization/powermenu.rasi -modi power-menu:rofi-power-menu"
-bindsym $mod+Shift+E exec "rofi -show power-menu -theme ~/Personalization/powermenu.rasi -modi power-menu:rofi-power-menu"
+bindsym XF86PowerOff exec "rofi -show power-menu -modi power-menu:rofi-power-menu"
+bindsym $mod+Shift+E exec "rofi -show power-menu -modi power-menu:rofi-power-menu"
 
 # Screenshots
-bindsym Print exec --no-startup-id maim --format=png | tee "$HOME/Images/$(date).png" | xclip -selection clipboard -t image/png
+bindsym Print exec --no-startup-id maim --format=png | tee "$HOME/Pictures/$(date).png" | xclip -selection clipboard -t image/png
 
 # something
 

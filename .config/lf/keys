@@ -48,8 +48,8 @@ map E ${{
 }}
 
 map o open-with
-map e ${{
-jaro --method=edit "$fx" || jaro "$fx"
-}}
+# map e ${{
+# jaro --method=edit "$fx" || jaro "$fx"
+# }}
 
 # vim: ft=bash

@@ -13,17 +13,15 @@ set $ws10 "10"
 
 # Autostart
 
-exec --no-startup-id "lxpolkit & sleep 1; dex-autostart --autostart --environment i3"
-exec --no-startup-id "setxkbmap -layout us,ru ; setxkbmap -option 'grp:alt_shift_toggle'"
-exec --no-startup-id qlipper
+exec --no-startup-id "dex --autostart --environment i3"
+# exec --no-startup-id "setxkbmap -model pc105 -layout us,ru -option 'grp:alt_shift_toggle'"
+# exec --no-startup-id fcitx5 -d
+# exec --no-startup-id qlipper
+exec --no-startup-id corectrl
 exec --no-startup-id picom -b
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id ~/.scripts/Wallpapers.sh
-
-# AutoWorkspace
-
-# exec ~/.scripts/startupWS.sh
 
 include layout
 
@@ -45,14 +43,14 @@ focus_follows_mouse no
 
 include colors
 
-for_window [instance="DesktopEditors"]             move container to workspace $ws4
-for_window [class="libreoffice.*"]                 move container to workspace $ws4
-for_window [class="Steam"]                         move container to workspace $ws5
-for_window [class=".*War Thunder.*"] move container to workspace $ws3
-for_window [class="corectrl"]                      move scratchpad
+for_window [instance="DesktopEditors"] move container to workspace $ws4
+for_window [class="libreoffice.*"]     move container to workspace $ws4
+for_window [class="Steam"]             move container to workspace $ws5
+for_window [class=".*War Thunder.*"]   move container to workspace $ws3
+for_window [class="corectrl"]          move scratchpad
 
 for_window [class="(?i)todo"]     floating enable
-for_window [instance="(?i)SFML"]     floating enable
+for_window [instance="(?i)SFML"]  floating enable
 for_window [class="(?i)avalonia"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Gpick"]        floating enable
@@ -62,7 +60,7 @@ for_window [class="qt5ct"]        floating enable resize set 900 600
 for_window [class="Font-manager"] floating enable resize set 900 600
 for_window [class="floatwin"]     floating enable resize set 900 600
 for_window [instance="nomacs"]    floating enable resize set 900 600
-for_window [class="imv"]          floating enable 
+for_window [class="imv"]          floating enable
 for_window [instance="floatwin"]  floating enable resize set 900 600
 for_window [class="Pavucontrol"]  floating enable resize set 640 480
 

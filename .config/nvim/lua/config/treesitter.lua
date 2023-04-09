@@ -4,7 +4,7 @@
 
 require("nvim-treesitter.configs").setup({
 
-	ensure_installed = { "c", "lua", "vim", "vimdoc", "python", "c_sharp", "json" },
+	ensure_installed = { "c", "lua", "vim", "vimdoc", "python", "c_sharp", "json", "nu" },
 	auto_install = false,
 	ignore_install = { "diff", "latex" },
 	matchup = {
