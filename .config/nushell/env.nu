@@ -85,6 +85,11 @@ let-env NU_PLUGIN_DIRS = [
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
+let-env SVDIR = '~/.config/sv/'
+let-env EDITOR = 'nvim'
+# let-env PAGER = 'page -t man' 
+# let-env MANPAGER = 'page -t man'
+
 let NU_FILES_DIR = ($env.HOME | path join '.local/share/nushell')
 mkdir $NU_FILES_DIR
 zoxide init nushell | save -f ( $NU_FILES_DIR | path join 'zoxide.nu' )
