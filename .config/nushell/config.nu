@@ -310,8 +310,16 @@ let-env config = {
     display_output: {||
       if (term size).columns >= 100 { table -e } else { table }
     }
-    command_not_found: {||
-      null  # replace with source code to return an error message when a command is not found
+    command_not_found: { |command| (
+            if not (which xlocate | is-empty) {
+
+                let pkgs = (xlocate $"bin/($command)$" | parse '{pkg} {bin}')
+                if not ($pkgs | is-empty) {
+
+                    ( $pkgs )
+                }
+            }
+        )
     }
   }
   menus: [
