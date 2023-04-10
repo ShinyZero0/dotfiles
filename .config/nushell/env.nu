@@ -3,9 +3,12 @@
 # version = 0.78.1
 
 def create_left_prompt [] {
+
     mut home = ""
     try {
+
         if $nu.os-info.name == "windows" {
+
             $home = $env.USERPROFILE
         } else {
             $home = $env.HOME
@@ -19,7 +22,11 @@ def create_left_prompt [] {
 
     let path_segment = if (is-admin) {
         $"(ansi red_bold)($dir)"
+    } else if ($env.PS1? | default "zero" | str contains "yadm") {
+
+        $"(ansi green_bold)($dir)(ansi red_bold) yadm"
     } else {
+
         $"(ansi green_bold)($dir)"
     }
 
@@ -27,12 +34,12 @@ def create_left_prompt [] {
 }
 
 def create_right_prompt [] {
+
     let time_segment = ([
         (ansi reset)
         (ansi magenta)
-        (date now | date format '%m/%d/%Y %r')
+        (date now | date format '%r')
     ] | str join)
-
     let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {([
         (ansi rb)
         ($env.LAST_EXIT_CODE)

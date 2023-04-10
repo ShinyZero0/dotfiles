@@ -547,3 +547,4 @@ let-env config = {
 
 source ~/.local/share/nushell/zoxide.nu
 source ~/.config/nushell/aliases.nu
+source ~/.config/nushell/xbps.nu

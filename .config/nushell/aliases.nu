@@ -19,3 +19,5 @@ alias grm = "git rm --cached"
 alias gcl1 = git clone --depth 1
 alias grss = git reset --staged
 alias yd = "yadm enter nu"
+
+alias q = exit
