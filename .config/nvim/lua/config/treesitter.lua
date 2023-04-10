@@ -16,6 +16,7 @@ require("nvim-treesitter.configs").setup({
 		"markdown",
 		"markdown_inline",
 		"bash",
+		"make",
 	},
 	auto_install = false,
 	ignore_install = { "diff", "latex" },

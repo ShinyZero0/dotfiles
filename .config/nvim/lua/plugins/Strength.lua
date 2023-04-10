@@ -9,21 +9,6 @@ return {
 	"tpope/vim-eunuch", -- filesystem util
 	"junegunn/vim-easy-align", -- align columns
 	"AndrewRadev/dsf.vim", -- delete surrounding function
-	-- {
-	-- 	"Wansmer/sibling-swap.nvim",
-	-- 	config = function()
-	-- 		require("sibling-swap").setup({
-	-- 			use_default_keymaps = true,
-	-- 			keymaps = {
-	-- 				["<leader>W"] = "swap_with_left",
-	-- 				["<leader>w"] = "swap_with_right",
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- 	dependencies = {
-	-- 		"nvim-treesitter/nvim-treesitter",
-	-- 	},
-	-- },
 	{
 		"AckslD/nvim-neoclip.lua",
 		config = function()
