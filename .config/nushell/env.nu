@@ -11,18 +11,21 @@ def create_left_prompt [] {
 
             $home = $env.USERPROFILE
         } else {
+
             $home = $env.HOME
         }
     }
 
     let dir = ([
+
         ($env.PWD | str substring 0..($home | str length) | str replace -s $home "~"),
         ($env.PWD | str substring ($home | str length)..)
     ] | str join)
 
     let path_segment = if (is-admin) {
+
         $"(ansi red_bold)($dir)"
-    } else if ($env.PS1? | default "zero" | str contains "yadm") {
+    } else if ($env.PROMPT? | default "zero" | str contains "yadm") {
 
         $"(ansi green_bold)($dir)(ansi red_bold) yadm"
     } else {
@@ -36,11 +39,13 @@ def create_left_prompt [] {
 def create_right_prompt [] {
 
     let time_segment = ([
+
         (ansi reset)
         (ansi magenta)
         (date now | date format '%r')
     ] | str join)
     let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {([
+
         (ansi rb)
         ($env.LAST_EXIT_CODE)
     ] | str join)
@@ -65,11 +70,14 @@ let-env PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 # - converted from a value back to a string when running external commands (to_string)
 # Note: The conversions happen *after* config.nu is loaded
 let-env ENV_CONVERSIONS = {
+
   "PATH": {
+
     from_string: { |s| $s | split row (char esep) | path expand -n }
     to_string: { |v| $v | path expand -n | str join (char esep) }
   }
   "Path": {
+
     from_string: { |s| $s | split row (char esep) | path expand -n }
     to_string: { |v| $v | path expand -n | str join (char esep) }
   }
@@ -79,14 +87,24 @@ let-env ENV_CONVERSIONS = {
 #
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIRS = [
+
     ($nu.config-path | path dirname | path join 'scripts')
+    ($nu.config-path | path dirname | path join 'completions')
+    ($env.HOME | path join '.local/share/nushell')
 ]
 
 # Directories to search for plugin binaries when calling register
 #
 # By default, <nushell-config-dir>/plugins is added
+
 let-env NU_PLUGIN_DIRS = [
+
     ($nu.config-path | path dirname | path join 'plugins')
+]
+
+let-env NU_CMP_DIRS = [
+
+    ($nu.config-path | path dirname | path join 'completions')
 ]
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
@@ -94,9 +112,10 @@ let-env NU_PLUGIN_DIRS = [
 
 let-env SVDIR = '~/.config/sv/'
 let-env EDITOR = 'nvim'
-# let-env PAGER = 'page -t man' 
-# let-env MANPAGER = 'page -t man'
 
 let NU_FILES_DIR = ($env.HOME | path join '.local/share/nushell')
 mkdir $NU_FILES_DIR
 zoxide init nushell | save -f ( $NU_FILES_DIR | path join 'zoxide.nu' )
+
+# let-env PAGER = 'page -t man' 
+# let-env MANPAGER = 'page -t man'
