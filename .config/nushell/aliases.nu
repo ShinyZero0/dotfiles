@@ -17,3 +17,5 @@ alias grss = git reset --staged
 
 alias yd = "alias git = yadm"
 alias gt = "alias yadm = git"
+
+alias q = exit
