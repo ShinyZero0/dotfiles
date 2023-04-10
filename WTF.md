@@ -17,6 +17,7 @@ With fcitx, but that doesn't work in some programs e.g. games:
 ```bash
 xbps-install fcitx5
 ```
+
 With setxkbmap:
 ```bash
 setxkbmap -layout us,ru -option 'grp:alt_shift_toggle'

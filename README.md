@@ -1,15 +1,14 @@
-# Installation
-
-Install:
+# Void linux dotfiles
 
 * packages are listed in [installation script](install.sh)
+* info on making shit work listed in [WTF](WTF.md)
 
-* [xkeysnail](https://github.com/mooz/xkeysnail) key remapping tool:
+* key remapping tool i use is [xkeysnail](https://github.com/mooz/xkeysnail):
 ```bash
 sudo pip install xkeysnail
-sudo usermod -a -G input $USER
+sudo usermod -a -G input $USER # otherwise it will require global install and sudo
 ```
-
+its config can be found [there](.config/xkeysnail.py)
 
 Skim fuzzy finder:
 ```bash
