@@ -14,12 +14,12 @@ set $ws10 "10"
 # Autostart
 
 exec --no-startup-id "dex --autostart --environment i3"
-# exec --no-startup-id "setxkbmap -model pc105 -layout us,ru -option 'grp:alt_shift_toggle'"
 # exec --no-startup-id fcitx5 -d
 # exec --no-startup-id qlipper
 exec --no-startup-id corectrl
 exec --no-startup-id picom -b
 # exec --no-startup-id nm-applet
+exec --no-startup-id ~/.cargo/bin/rofi-server
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id ~/.scripts/Wallpapers.sh
 
@@ -27,7 +27,7 @@ include layout
 
 # AutoRestart
 exec_always --no-startup-id "pkill polybar ; polybar upperbar"
-exec_always --no-startup-id "pkill xkeysnail ; xkeysnail .scripts/xkeysnail.py & sleep 1 ; xset r rate 250 15"
+exec_always --no-startup-id "pkill xkeysnail ; xkeysnail & sleep 1 ; xset r rate 250 15"
 exec_always --no-startup-id "pkill dunst"
 exec_always --no-startup-id "pkill picom & sleep 1 ; picom -b"
 exec_always --no-startup-id "pkill I3IPC & sleep 1 ; ~/.local/bin/I3IPC"
