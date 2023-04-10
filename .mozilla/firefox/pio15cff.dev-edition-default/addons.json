@@ -1,0 +1,308 @@
+{
+  "schema": 6,
+  "addons": [
+    {
+      "id": "uBlock0@raymondhill.net",
+      "icons": {
+        "32": "https://addons.mozilla.org/user-media/addon_icons/607/607454-32.png?modified=mcrushed",
+        "64": "https://addons.mozilla.org/user-media/addon_icons/607/607454-64.png?modified=mcrushed",
+        "128": "https://addons.mozilla.org/user-media/addon_icons/607/607454-128.png?modified=mcrushed"
+      },
+      "type": "extension",
+      "name": "uBlock Origin",
+      "version": "1.48.4",
+      "creator": {
+        "name": "Raymond Hill",
+        "url": "https://addons.mozilla.org/en-US/firefox/user/11423598/"
+      },
+      "developers": [],
+      "description": "Finally, an efficient wide-spectrum content blocker. Easy on CPU and memory.",
+      "fullDescription": "uBlock Origin is not an \"ad blocker\", it's a wide-spectrum content blocker with CPU and memory efficiency as a primary feature.\n\n***\n\nOut of the box, uBO blocks ads, trackers, coin miners, popups, etc. through the following lists of filters, enabled by default:\n\n- EasyList (ads)\n- EasyPrivacy (tracking)\n- Peter Lowe’s Ad server list (ads and tracking)\n- Online Malicious URL Blocklist\n- uBO's own lists\n\nMore lists are available for you to select if you wish:\n\n- EasyList Cookie\n- Fanboy Annoyances\n- AdGuard Annoyances\n- Dan Pollock’s hosts file\n- And many others\n\nAdditionally, you can point-and-click to block JavaScript locally or globally, create your own global or local rules to override entries from filter lists, and many more advanced features.\n\n***\n\nFree.\nOpen source with public license (GPLv3)\nFor users by users.\n\nIf ever you really do want to contribute something, think about the people working hard to maintain the filter lists you are using, which were made available to use by all for free.\n\n***\n\n    Documentation\n    Release notes\n    Community support @ Reddit\n    Contributors @ GitHub\n    Contributors @ Crowdin",
+      "screenshots": [
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/238/238546.png?modified=1622132421",
+          "width": 1011,
+          "height": 758,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/238/238546.jpg?modified=1622132421",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 400,
+          "caption": "The popup panel: default mode"
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/238/238548.png?modified=1622132423",
+          "width": 1011,
+          "height": 758,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/238/238548.jpg?modified=1622132423",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 400,
+          "caption": "The dashboard: stock filter lists"
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/238/238547.png?modified=1622132425",
+          "width": 1011,
+          "height": 758,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/238/238547.jpg?modified=1622132425",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 400,
+          "caption": "The popup panel: default-deny mode"
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/238/238549.png?modified=1622132426",
+          "width": 1011,
+          "height": 758,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/238/238549.jpg?modified=1622132426",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 400,
+          "caption": "The dashboard: settings"
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/238/238552.png?modified=1622132430",
+          "width": 970,
+          "height": 1800,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/238/238552.jpg?modified=1622132430",
+          "thumbnailWidth": 216,
+          "thumbnailHeight": 400,
+          "caption": "The popup panel in Firefox Preview: default mode with more blocking options revealed"
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/230/230370.png?modified=1622132432",
+          "width": 800,
+          "height": 600,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/230/230370.jpg?modified=1622132432",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 400,
+          "caption": "The unified logger tells you all that uBO is seeing and doing"
+        }
+      ],
+      "homepageURL": "https://github.com/gorhill/uBlock#ublock-origin",
+      "supportURL": "https://old.reddit.com/r/uBlockOrigin/",
+      "contributionURL": "",
+      "averageRating": 4.7803,
+      "reviewCount": 3958,
+      "reviewURL": "https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/reviews/",
+      "weeklyDownloads": 134749,
+      "sourceURI": "https://addons.mozilla.org/firefox/downloads/file/4092158/ublock_origin-1.48.4.xpi",
+      "updateDate": 1681080923000
+    },
+    {
+      "id": "{c2c003ee-bd69-42a2-b0e9-6f34222cb046}",
+      "icons": {
+        "32": "https://addons.mozilla.org/user-media/addon_icons/909/909373-32.png?modified=mcrushed",
+        "64": "https://addons.mozilla.org/user-media/addon_icons/909/909373-64.png?modified=mcrushed",
+        "128": "https://addons.mozilla.org/user-media/addon_icons/909/909373-128.png?modified=mcrushed"
+      },
+      "type": "extension",
+      "name": "Auto Tab Discard",
+      "version": "0.6.7",
+      "creator": {
+        "name": "tlintspr",
+        "url": "https://addons.mozilla.org/en-US/firefox/user/16948668/"
+      },
+      "developers": [],
+      "description": "Increase browser speed and reduce memory load and when you have numerous open tabs.",
+      "fullDescription": "\"Auto Tab Discard\" is a lightweight browser extension that automatically reduces the amount of memory used by open but inactive tabs, helping to conserve battery life on portable devices by disabling JavaScript code and DOM events on discarded tabs.\n\nPreview:\n\nhttps://www.youtube.com/watch?v=ityhxUPp3y8\n\nInstruction:\n\nThere are two options on the extension's interface to either discard tabs or release discarding (the \"x\" buttons)\n\n\nThe features of \"Auto Tab Discard\" are:\n\n* Improves browser performance and reduces memory usage by automatically or manually discarding inactive, idle, or forgotten tabs.\n* Includes a list of hostnames or regular expressions that can be excluded from auto-discarding.\n* Preserves the discarded state of tabs when the browser is closed and reopened.\n* Indicates the discarded state of a tab through the favicon or title.\n* Restores the state of a tab, including scroll position and text box content, after it is released from being discarded.\n* Allows for the forced discarding of specified hostnames.\n\n\nThe options for configuring whether tabs should be discarded or not include:\n\n* Pinned tabs\n* Tabs that are playing media\n* The presence of a power source\n* Unsaved content or user input in a tab\n\nThe available plugins for \"Auto Tab Discard\" are:\n\n* Release the discarded state of the next or previous tab.\n* Release the discarded state of all tabs in the active window.\n* Automatically discard all newly opened inactive tabs.\n* Store YouTube's timestamp before a tab is discarded.\n* Permanently delete (remove) old discarded tabs that are inactive.\n\nNotes:\n\n* Unlike the \"The Great Suspender\" extension, this extension uses the native method for discarding tabs, which means that even if the extension is removed or the browser crashes, your browser will automatically restore everything for you.\n\nPrivacy Policy:\n\nhttps://webextension.org/privacy-policy/extension/tab-discard.html",
+      "screenshots": [
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/201/201762.png?modified=1622132901",
+          "width": 1280,
+          "height": 800,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/201/201762.jpg?modified=1622132901",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 333
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/194/194635.png?modified=1622132902",
+          "width": 700,
+          "height": 438,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/194/194635.jpg?modified=1622132902",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 334
+        }
+      ],
+      "homepageURL": "https://webextension.org/listing/tab-discard.html",
+      "supportURL": "https://webextension.org/listing/tab-discard.html",
+      "contributionURL": "https://paypal.me/addondonation/10usd?utm_content=product-page-contribute&utm_medium=referral&utm_source=addons.mozilla.org",
+      "averageRating": 4.5094,
+      "reviewCount": 260,
+      "reviewURL": "https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/reviews/",
+      "weeklyDownloads": 1115,
+      "sourceURI": "https://addons.mozilla.org/firefox/downloads/file/4045009/auto_tab_discard-0.6.7.xpi",
+      "updateDate": 1671473087000
+    },
+    {
+      "id": "{f01b6ea5-5910-4359-afee-9f0de052c7a1}",
+      "icons": {
+        "32": "https://addons.mozilla.org/user-media/addon_icons/961/961473-32.png?modified=0585fc20",
+        "64": "https://addons.mozilla.org/user-media/addon_icons/961/961473-64.png?modified=0585fc20",
+        "128": "https://addons.mozilla.org/user-media/addon_icons/961/961473-128.png?modified=0585fc20"
+      },
+      "name": "Switch To Previous Active Tab & Reload All Tabs",
+      "version": "2.5",
+      "sourceURI": "https://addons.mozilla.org/firefox/downloads/file/4077747/switch_to_previous_active_tab-2.5.xpi",
+      "homepageURL": "https://github.com/jscher2000/switch-to-previous-active-tab",
+      "supportURL": "https://github.com/jscher2000/switch-to-previous-active-tab",
+      "description": "Activate the last accessed tab in the same window, or any window. Right-click the toolbar button for a most recent tabs list (MRU) and options. Restores \"Reload All Tabs\" to the tab right-click context menu.",
+      "fullDescription": "As you browse and switch tabs, this extension keeps track of the previous tab in each window so you can switch back to it with a single click. Right-click the toolbar button for more options.\n\nNote: You must click the toolbar button; extensions cannot change the left-click behavior of tabs.\n\nKeyboard shortcut: Alt+Shift+Left Arrow switches to the immediately previous tab in the same window; on Mac, Ctrl+Shift+Left Arrow. Users of Firefox 66 and later can modify the shortcut through the Add-ons page: Manage extension shortcuts in Firefox.\n\nVersion 2.1 adds optional \"Go to Tab\" shortcuts. You already have Ctrl+1, Ctrl+2, etc. (on Mac, Command+1, Command+2). If you want keyboard shortcuts that can skip pinned, hidden, and unloaded tabs, you can set those up on the Add-ons page (refer to the above article for where to do that).\n\nReload All Tabs: \"Reload All Tabs\" on the tab context menu reloads all tabs that are not currently playing media. To force a full reload bypassing the cache, hold down the Shift key while clicking the menu command. (Fifth screenshot.)\n\nYou can set the extension to always bypass cache, to reload tabs with currently playing media, or to skip the active tab, pinned tabs, or pending/discarded tabs, on the Reload All Tabs Options tab. To call that up, either Ctrl+click \"Reload All Tabs\" or right-click the extension's toolbar button. (Sixth screenshot.)\n\nPermissions: \"Access browser tabs\" allows the extension to read the URLs, titles and site icon addresses of pages in tabs. Up to 30 URLs are kept in memory to build the list of recently accessed tabs. See: Permission request messages for Firefox extensions (scroll way down or use Find to get to Access browser tabs.\n\nBackground: Could be useful to those who miss this feature from the legacy extensions FLST (Firefox 4+) by fabianswebworld, LastTab by Timothy Humphrey, or Tab Mix Plus by onemen, Gary Reyes. However, to repeat: it's not possible to connect this extension to a click on the current tab.",
+      "weeklyDownloads": 17,
+      "type": "extension",
+      "creator": {
+        "name": "jscher2000",
+        "url": "https://addons.mozilla.org/en-US/firefox/user/13029303/"
+      },
+      "developers": [],
+      "screenshots": [
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/212/212367.png?modified=1677653076",
+          "width": 340,
+          "height": 399,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/212/212367.jpg?modified=1677653076",
+          "thumbnailWidth": 340,
+          "thumbnailHeight": 399,
+          "caption": "Toolbar button right-click context menu provides access to recent tabs list and options."
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/244/244583.png?modified=1677653076",
+          "width": 690,
+          "height": 470,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/244/244583.jpg?modified=1677653076",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 363,
+          "caption": "Lists of recent tabs for the current window or all windows (global)."
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/279/279278.png?modified=1677653082",
+          "width": 700,
+          "height": 576,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/279/279278.jpg?modified=1677653082",
+          "thumbnailWidth": 486,
+          "thumbnailHeight": 400,
+          "caption": "Manage whether the buttons switches immediately or shows the list, and whether it operates within the same window or globally. Change the list behavior and some aspects of its appearance. You also can enable the extension in private windows (in addition to Firefox's option)."
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/244/244584.png?modified=1677653076",
+          "width": 690,
+          "height": 470,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/244/244584.jpg?modified=1677653076",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 363,
+          "caption": "Optional dark theme for the popup."
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/210/210952.png?modified=1677653076",
+          "width": 657,
+          "height": 387,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/210/210952.jpg?modified=1677653076",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 314,
+          "caption": "If Ctrl+Tab switches tabs in the order on the tab bar, you can enable this setting to switch in most recent order. Hold down Ctrl after releasing Tab to see a visual overlay of recent tabs."
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/212/212368.png?modified=1677653076",
+          "width": 632,
+          "height": 390,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/212/212368.jpg?modified=1677653076",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 329,
+          "caption": "For Firefox 64+, restores a Reload All Tabs command to the tab context menu."
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/229/229565.png?modified=1677653076",
+          "width": 862,
+          "height": 600,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/229/229565.jpg?modified=1677653076",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 371,
+          "caption": "For Firefox 64+, options for the Reload All Tabs command. When reloading tabs that were generated using a POST request (such as submitting a form), you need to confirm that Firefox should submit again. This option will take you to those tabs automatically."
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/273/273480.png?modified=1677653076",
+          "width": 720,
+          "height": 389,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/273/273480.jpg?modified=1677653076",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 288,
+          "caption": "You can customize keyboard shortcuts on the Add-ons page using the \"gear\" menu item \"Manage Extension Shortcuts\" (https://support.mozilla.org/kb/manage-extension-shortcuts-firefox)"
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/268/268597.png?modified=1677653076",
+          "width": 700,
+          "height": 574,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/268/268597.jpg?modified=1677653076",
+          "thumbnailWidth": 488,
+          "thumbnailHeight": 400,
+          "caption": "Version 2.2 adds Container names and icons for tabs in a container (contextual identities)."
+        }
+      ],
+      "contributionURL": "",
+      "averageRating": 4.875,
+      "reviewCount": 13,
+      "reviewURL": "https://addons.mozilla.org/en-US/firefox/addon/switch-to-previous-active-tab/reviews/",
+      "updateDate": 1677652557000
+    },
+    {
+      "id": "tabby@whatsyouridea.com",
+      "icons": {
+        "32": "https://addons.mozilla.org/user-media/addon_icons/964/964372-32.png?modified=39db5f39",
+        "64": "https://addons.mozilla.org/user-media/addon_icons/964/964372-64.png?modified=39db5f39",
+        "128": "https://addons.mozilla.org/user-media/addon_icons/964/964372-128.png?modified=39db5f39"
+      },
+      "name": "Tabby - Window & Tab Manager",
+      "version": "3.1",
+      "sourceURI": "https://addons.mozilla.org/firefox/downloads/file/4090907/tabby_window_tab_manager-3.1.xpi",
+      "homepageURL": "https://github.com/Bill13579/tabby",
+      "supportURL": "https://github.com/Bill13579/tabby",
+      "description": "Tabby helps you manage a lot of windows and tabs easily; it can help you open, close, move, pin, and do many other things on tabs and windows quickly. With Tabby, you can even save all you windows and tabs for later with just one click!",
+      "fullDescription": "Tabby is a Window and Tab Manager that helps you easily manage a lot of windows and tabs.\nIt can help you open, close, pin, and do many other things on tabs and windows quickly.\nYou can also drag around tabs to move it, open last used tab/window by using some simple keyboard shortcuts, and much more!\nYou can even save all you windows and tabs for later with just one click!\n\nIf you want to see more new features that have been added, go to the Release Notes section of this page.\n\nAlso, if you have some sweet ideas on how to improve Tabby, or if you found a bug in Tabby, go here to tell me about it:\nhttps://goo.gl/forms/hdEdjHo6RPwYCiJC2\n\nKeyboard shortcuts:\n--- Open last used tab: Ctrl+Shift+L\n--- Open last used window: Ctrl+Shift+0\n--- Open Tabby with focus on the search bar: Ctrl+Shift+Space\n--- Open Tabby with focus on the current tab: Ctrl+Shift+X\nWhen you are searching…\n--- `Enter` to select the first result\nWhen you have a tab selected…\n--- ▲ and ▼ arrows to select the tab above and below the selected one\n--- `Enter` to go to the tab\n--- `Delete` to close the tab\n--- `M` to mute\n--- `P` to pin\n--- `S` to search\n\nRight click on a window to rename it!\n\nPermissions Use:\n\"Access your data for all websites\": To display a preview of a tab\n\"Access browser tabs\": To manage tabs\n\"Store unlimited amount of client-side data\": Save-for-later\n\"Access browser activity during navigation\": Search indexing\n\nPrivacy:\nAll data used are either discarded when the browser is closed or, if saved (Save-for-Later), stored in the browser's built-in local storage or sync storage, depending on user choice.\nAs an open source addon, all builds are uploaded as is from the \"releases\" folder found on the GitHub repository.\n\nTabby will always be free and open-source! Check out it's GitHub page: https://github.com/Bill13579/tabby\n\nCheck out my website: https://www.IdeaAcademy.com",
+      "weeklyDownloads": 274,
+      "type": "extension",
+      "creator": {
+        "name": "BillK",
+        "url": "https://addons.mozilla.org/en-US/firefox/user/13953482/"
+      },
+      "developers": [],
+      "screenshots": [
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/240/240528.png?modified=1622133216",
+          "width": 1528,
+          "height": 936,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/240/240528.jpg?modified=1622133216",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 326,
+          "caption": "This is the Tabby popup, where you can use all the features that Tabby provides."
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/240/240529.png?modified=1622133220",
+          "width": 1526,
+          "height": 938,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/240/240529.jpg?modified=1622133220",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 328,
+          "caption": "You can take a look at a tab without going to it."
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/240/240530.png?modified=1622133223",
+          "width": 1530,
+          "height": 938,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/240/240530.jpg?modified=1622133223",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 327,
+          "caption": "You can also search through every opened tab in every window to find what you want."
+        },
+        {
+          "url": "https://addons.mozilla.org/user-media/previews/full/223/223970.png?modified=1622133228",
+          "width": 2240,
+          "height": 1382,
+          "thumbnailURL": "https://addons.mozilla.org/user-media/previews/thumbs/223/223970.jpg?modified=1622133228",
+          "thumbnailWidth": 533,
+          "thumbnailHeight": 329,
+          "caption": "Want to take a break from browsing? You can also save every tab and window and get back to it later."
+        }
+      ],
+      "contributionURL": "",
+      "averageRating": 4.2839,
+      "reviewCount": 66,
+      "reviewURL": "https://addons.mozilla.org/en-US/firefox/addon/tabby-window-tab-manager/reviews/",
+      "updateDate": 1680623821000
+    }
+  ]
+}
