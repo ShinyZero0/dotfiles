@@ -56,13 +56,5 @@ mkcd()
 
 ddns="shinyzero.ddns.net"
 
-# gitt()
-# {
-#     if [[ $(exec git rev-parse --is-inside-work-tree 2>/dev/null) ]] then
-#         git $@
-#     else
-#         yadm $@
-#     fi
-# }
 
 
