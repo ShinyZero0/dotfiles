@@ -26,7 +26,7 @@ define_keymap(
         # Switch tabs with Alt+Tab and Alt+Tilda
         K("Alt-Tab"): K("C-tab"),
         K("Alt-grave"): K("C-Shift-tab"),
-        K("Alt-R"): K("C-Shift-L"), # TODO: map it in firefox extension
+        # K("Alt-R"): K("C-Shift-L"), # TODO: map it in firefox extension
         # Navigate history with Alt-F(orward)/B(ackward)
         K("Alt-B"): K("Alt-left"),
         K("Alt-F"): K("Alt-right"),

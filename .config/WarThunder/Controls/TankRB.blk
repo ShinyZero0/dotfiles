@@ -50,7 +50,7 @@ controls{
     }
 
     ID_SELECT_GM_GUN_MACHINEGUN{
-      keyboardKey:i=207
+      keyboardKey:i=210
     }
 
     ID_SELECT_GM_GUN_RESET{
@@ -60,8 +60,20 @@ controls{
     ID_SENSOR_SWITCH_TANK{}
     ID_SHIP_WEAPON_DEPTH_CHARGE{}
     ID_SHIP_WEAPON_MINE{}
+    ID_SHOW_MOUSE_CURSOR{
+      keyboardKey:i=49
+    }
+
     ID_SQUAD_TARGET_DESIGNATION{
       keyboardKey:i=19
+    }
+
+    ID_TACTICAL_MAP{
+      keyboardKey:i=50
+    }
+
+    ID_TACTICAL_MAP{
+      keyboardKey:i=41
     }
 
     ID_TANK_NIGHT_VISION{
@@ -70,7 +82,7 @@ controls{
 
     ID_TARGETING_HOLD_GM{}
     ID_TOGGLE_GM_CROSSHAIR_LIGHTING{
-      keyboardKey:i=210
+      keyboardKey:i=207
     }
 
     ID_ZOOM_TOGGLE{
@@ -122,7 +134,7 @@ controls{
     USEROPT_INVERTY_TANK:b=no
     USEROPT_JOYFX:b=no
     USEROPT_MOUSE_AIM_SENSE:i=16
-    USEROPT_MOUSE_SENSE:i=8
+    USEROPT_MOUSE_SENSE:i=5
     USEROPT_MOUSE_SMOOTH:b=no
     USEROPT_MOUSE_USAGE:i=1
     USEROPT_MOUSE_USAGE_NO_AIM:i=1
@@ -168,7 +180,7 @@ settings{
   freeCameraInertia:r=1
   replayCameraWiggle:r=1
   zoomSens:r=0
-  mouseSens:r=0.16
+  mouseSens:r=0.1
   mouseAimSens:r=0.32
   gunnerViewSens:r=0.5
   gunnerViewZoomSens:r=1
@@ -199,7 +211,7 @@ settings{
   aimTimeNonlinearitySubmarine:r=0
   aimAccelerationDelayAir:r=0.5
   aimAccelerationDelayHelicopter:r=0.5
-  aimAccelerationDelayTank:r=0.5
+  aimAccelerationDelayTank:r=0
   aimAccelerationDelayWalker:r=0.5
   aimAccelerationDelayShip:r=0.5
   aimAccelerationDelaySubmarine:r=0.5
@@ -211,7 +223,7 @@ settings{
   gamepadMinVibration:r=0.05
   cameraSmooth:r=0
   cameraSpeed:r=1.13
-  cameraMouseSpeed:r=1.7
+  cameraMouseSpeed:r=1.4
   cameraFpsPhysMult:r=0.5
   vrCameraFpsPhysMult:r=0
   invertY:b=no

@@ -112,12 +112,12 @@ let-env NU_CMP_DIRS = [
 
 let-env SVDIR = '~/.config/sv/'
 let-env EDITOR = 'nvim'
-let-env NQDIR = ~/.stuff/nq/
+let-env NQDIR = '~/.stuff/nq/'
 mkdir $env.NQDIR
 
-let NU_FILES_DIR = ($env.HOME | path join '.local/share/nushell')
-mkdir $NU_FILES_DIR
-zoxide init nushell | save -f ( $NU_FILES_DIR | path join 'zoxide.nu' )
+let NU_APPDATA_DIR = ($env.HOME | path join '.local/share/nushell')
+mkdir $NU_APPDATA_DIR
+zoxide init nushell | save -f ( $NU_APPDATA_DIR | path join 'zoxide.nu' )
 
 # let-env PAGER = 'page -t man' 
 # let-env MANPAGER = 'page -t man'

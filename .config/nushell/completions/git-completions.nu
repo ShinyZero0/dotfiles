@@ -1,3 +1,8 @@
+def "nu-cmp git-any" [] {
+
+    git ls-tree void --name-only | lines 
+    | prepend (ls | get name) | uniq
+}
 
 def "nu-complete git available upstream" [] {
   ^git branch -a | lines | each { |line| $line | str replace '\* ' "" | str trim }
@@ -44,36 +49,36 @@ def "nu-complete git remote branches nonlocal without prefix" [] {
 }
 
 def "nu-complete git switch" [] {
-  (nu-complete git local branches)
-  | parse "{value}"
-  | insert description "local branch"
-  | append (nu-complete git remote branches nonlocal without prefix
-            | parse "{value}"
-            | insert description "remote branch")
+    (nu-complete git local branches)
+        | parse "{value}"
+        | insert description "local branch"
+        | append (nu-complete git remote branches nonlocal without prefix
+                | parse "{value}"
+                | insert description "remote branch")
 }
 
 def "nu-complete git checkout" [] {
-  (nu-complete git local branches)
-  | parse "{value}"
-  | insert description "local branch"
-  | append (nu-complete git remote branches nonlocal without prefix
-            | parse "{value}"
-            | insert description "remote branch")
-  | append (nu-complete git remote branches with prefix
-            | parse "{value}"
-            | insert description "remote branch")
-  | append (nu-complete git commits all)
+    (nu-complete git local branches)
+        | parse "{value}"
+        | insert description "local branch"
+        | append (nu-complete git remote branches nonlocal without prefix
+                | parse "{value}"
+                | insert description "remote branch")
+        | append (nu-complete git remote branches with prefix
+                | parse "{value}"
+                | insert description "remote branch")
+        | append (nu-complete git commits all)
 }
 
 # Arguments to `git rebase --onto <arg1> <arg2>`
 def "nu-complete git rebase" [] {
-  (nu-complete git local branches)
-  | parse "{value}"
-  | insert description "local branch"
-  | append (nu-complete git remote branches with prefix
-            | parse "{value}"
-            | insert description "remote branch")
-  | append (nu-complete git commits all)
+    (nu-complete git local branches)
+        | parse "{value}"
+        | insert description "local branch"
+        | append (nu-complete git remote branches with prefix
+                | parse "{value}"
+                | insert description "remote branch")
+        | append (nu-complete git commits all)
 }
 
 def "nu-complete git stash-list" [] {
@@ -345,12 +350,14 @@ export extern "git reflog" [
 
 # Stage files
 export extern "git add" [
+  ...targets: string@"nu-cmp git-any"
   --patch(-p)                                         # interactively choose hunks to stage
   --update(-u) # update tracked files
 ]
 
 # Delete file from the working tree and the index
 export extern "git rm" [
+  ...targets: string@"nu-cmp git-any"
   -r                                                   # recursive
 ]
 
