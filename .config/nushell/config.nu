@@ -614,6 +614,10 @@ let-env config = {
 
 source zoxide.nu
 source aliases.nu
+if ("alt.nu" | path exists) {
+
+    source alt.nu
+} 
 
 # Completions
 # *-cmp are mine ones, and others were copied from https://github.com/nushell/nu_scripts and slightly modified

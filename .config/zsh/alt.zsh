@@ -1,1 +1,1 @@
-alt.zsh##a.x86_64
+alt.zsh##a.aarch64
