@@ -19,3 +19,6 @@ export extern "pkg remove" [
 
     ...targets: string@"nu-cmp termux pkg installed"
 ]
+export extern "pkg search" [
+
+]

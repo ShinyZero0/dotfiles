@@ -614,6 +614,10 @@ let-env config = {
 
 source zoxide.nu
 source aliases.nu
+if ("alt.nu" | path exists) {
+
+    source alt.nu
+} 
 
 # Completions (*-cmp are mine ones, and others may be slightly modified)
 use git-completions.nu *

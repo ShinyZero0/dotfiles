@@ -17,18 +17,22 @@
 #         OmniSharp/omnisharp-roslyn
 
 # Install non-release apps
-# zinit as="null" depth="1" for \
-#     sbin="jaro" isamert/jaro \
-#     atclone="npm i ./" atpull="%atclone" sbin="bin/cli.js -> typograf-cli" typograf/typograf-cli \
-#     atclone="mkcd build && cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build . --config Release" sbin="build/uncrustify" \
-#         uncrustify/uncrustify \
+
+zinit as="null" depth="1" for \
+    sbin="jaro" isamert/jaro \
+    atclone="mkcd build && cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build . --config Release" sbin="build/uncrustify" \
+        uncrustify/uncrustify \
+    sbin="nq" sbin="fq" atclone="make" \
+        atpull="%atclone" \
+        leahneukirchen/nq
+
 #     if="[[ $(uname -m) = x86_64 ]]" atclone="cargo install --path=." atpull="%atclone" I60R/page \
+#     atclone="npm i ./" atpull="%atclone" sbin="bin/cli.js -> typograf-cli" typograf/typograf-cli \
 
 # Install apps
-zinit as="null" depth"1" from="gh-r" for \
-    atclone='mkdir -p ~/.local/share/fonts/Blex; fd -g "*Windows*" -x "rm \"{}\""; fd "Mono" | xargs -I "{}" mv {} ~/.local/share/fonts/Blex/; fc-cache -rf' \
-        atpull="%atclone" bpick="IBMPlexMono.zip" bpick="InconsolataLGC.zip" ryanoasis/nerd-fonts \
-    # sbin="stylua" JohnnyMorganz/StyLua \
+zinit as="null" depth"1" from="gh-r" \
+    for \
+    sbin="stylua" JohnnyMorganz/StyLua \
     # sbin="lf" gokcehan/lf \
     # sbin="fzf" junegunn/fzf \
 
