@@ -26,8 +26,11 @@ exec --no-startup-id ~/.scripts/Wallpapers.sh
 include layout
 
 # AutoRestart
+# exec_always "setxkbmap us,ru -option 'grp:alt_shift_toggle'"
 exec_always --no-startup-id "pkill polybar ; polybar upperbar"
-exec_always --no-startup-id "pkill xkeysnail ; xkeysnail & sleep 1 ; xset r rate 250 15"
+# exec_always --no-startup-id "pkill keyszer ; keyszer & sleep 1; setxkbmap us,ru -option 'grp:alt_shift_toggle'; xset r rate 250 15"
+exec_always --no-startup-id "pkill xkeysnail ; xkeysnail & sleep 1; setxkbmap us,ru -option 'grp:alt_shift_toggle'; xset r rate 250 15"
+# exec_always --no-startup-id xset r rate 250 15
 exec_always --no-startup-id "pkill dunst"
 exec_always --no-startup-id "pkill picom & sleep 1 ; picom -b"
 exec_always --no-startup-id "pkill I3IPC & sleep 1 ; ~/.local/bin/I3IPC"

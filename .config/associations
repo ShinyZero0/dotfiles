@@ -9,7 +9,7 @@
   #:program "~/.scripts/DiscordCache.sh %f")
 (assoc
   #:pattern "^https?://.*"
-  #:program "firefox %f")
+  #:program "firefox-devedition %f")
 (assoc
   #:pattern "video/.*"
   #:program "mpv --x11-name=floatwin %f &>/dev/null 2>&1 &")
