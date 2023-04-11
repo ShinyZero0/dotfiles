@@ -620,3 +620,6 @@ use git-completions.nu *
 use nix-completions.nu *
 use xbps-cmp.nu *
 use man-cmp.nu *
+use termux-pkg-cmp.nu *
+
+# source /data/data/com.termux/files/home/.config/broot/launcher/nushell/br

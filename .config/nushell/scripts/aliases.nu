@@ -19,6 +19,7 @@ alias gcl1 = git clone --depth 1
 alias grss = git reset --staged
 
 alias yd = yadm enter nu
+alias vi = nvim
 
 alias q = exit
 alias r = exec nu
