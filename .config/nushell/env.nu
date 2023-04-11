@@ -112,6 +112,8 @@ let-env NU_CMP_DIRS = [
 
 let-env SVDIR = '~/.config/sv/'
 let-env EDITOR = 'nvim'
+let-env NQDIR = ~/.stuff/nq/
+mkdir $env.NQDIR
 
 let NU_FILES_DIR = ($env.HOME | path join '.local/share/nushell')
 mkdir $NU_FILES_DIR

@@ -8,7 +8,6 @@ mkdir $FontDir
 cd $FontDir
 mut $fonts = [
 
-    "https://fonts.google.com/download?family=Roboto"
     "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/InconsolataLGC.zip"
     "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/IBMPlexMono.zip"
 ]

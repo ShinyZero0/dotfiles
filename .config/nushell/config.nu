@@ -615,11 +615,13 @@ let-env config = {
 source zoxide.nu
 source aliases.nu
 
-# Completions (*-cmp are mine ones, and others may be slightly modified)
+# Completions
+# *-cmp are mine ones, and others were copied from https://github.com/nushell/nu_scripts and slightly modified
 use git-completions.nu *
 use nix-completions.nu *
 use xbps-cmp.nu *
 use man-cmp.nu *
 use termux-pkg-cmp.nu *
+use dotnet-cmp.nu *
 
 # source /data/data/com.termux/files/home/.config/broot/launcher/nushell/br
