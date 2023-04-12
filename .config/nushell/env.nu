@@ -110,10 +110,11 @@ let-env NU_CMP_DIRS = [
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
-let-env SVDIR = '~/.config/sv/'
 let-env EDITOR = 'nvim'
-let-env NQDIR = '~/.stuff/nq/'
+let-env SVDIR = ( $env.HOME | path join '.config/sv/' )
+let-env NQDIR = ( $env.HOME | path join '.stuff/nq/' )
 mkdir $env.NQDIR
+mkdir $env.SVDIR
 
 let NU_APPDATA_DIR = ($env.HOME | path join '.local/share/nushell')
 mkdir $NU_APPDATA_DIR

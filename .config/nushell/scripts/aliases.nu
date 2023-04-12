@@ -16,7 +16,7 @@ alias gca = git commit -am
 alias gch = git checkout
 alias grm = git rm --cached
 alias gcl1 = git clone --depth 1
-alias grss = git reset --staged
+alias grss = git restore --staged
 
 alias yd = yadm enter nu
 alias vi = nvim
