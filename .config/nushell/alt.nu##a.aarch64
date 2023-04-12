@@ -1,0 +1,4 @@
+#!/usr/bin/env nu
+# vim: ft=nu
+
+$env.config.rm.always_trash = false

@@ -1369,10 +1369,11 @@ export extern "nix-env" [
     --delete-generations(-G)
     --switch-profile(-S)     # switch the ~/.nix-profile
     --rollback               # switch to the previous generation
-    --attr(-A): string@"nu-cmp nix channels" # install by attribute path
+    --attr(-A)
     --file(-f) 
     --uninstall(-e)
 
+    channel?: string@"nu-cmp nix channels" # install by attribute path
     ...args: any
 ]
 

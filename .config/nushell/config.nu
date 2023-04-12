@@ -15,16 +15,16 @@ let dark_theme = {
     empty: blue
     # Closures can be used to choose colors for specific values.
     # The value (in this case, a bool) is piped into the closure.
-    bool: {|| if $in { 'light_cyan' } else { 'light_gray' } }
+    bool: { || if $in { 'light_cyan' } else { 'light_gray' } }
     int: white
-    filesize: {|e|
+    filesize: { |e|
         if $e == 0b {
-
             'white'
         } else if $e < 1mb {
-
-        'cyan'
-        } else { 'blue' }
+            'cyan'
+        } else {
+            'blue' 
+        }
     }
     duration: white
     date: {|| (date now) - $in |
@@ -615,8 +615,7 @@ let-env config = {
 source zoxide.nu
 source aliases.nu
 if ("alt.nu" | path exists) {
-
-    source alt.nu
+    # source alt.nu
 } 
 
 # Completions
