@@ -39,10 +39,11 @@ source ~/.config/zsh/.p10k.zsh
 # (this is currently required for annexes)
 zinit light-mode depth="1" for \
     romkatv/powerlevel10k \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust \
+
+    # zdharma-continuum/zinit-annex-as-monitor \
+    # zdharma-continuum/zinit-annex-bin-gem-node \
+    # zdharma-continuum/zinit-annex-patch-dl \
+    # zdharma-continuum/zinit-annex-rust \
 
 # zinit wait depth="1" lucid for \
 #     blockf atpull'zinit creinstall -q .' \
@@ -50,7 +51,7 @@ zinit light-mode depth="1" for \
 #     blockf completions \
 #     https://github.com/TheLocehiliosan/yadm/raw/master/completion/zsh/_yadm \
 #
-source ~/.config/zsh/programs.zsh
+# source ~/.config/zsh/programs.zsh
 
 eval "$(zoxide init zsh)"
 
@@ -85,8 +86,9 @@ SAVEHIST=1000
 # RUN LAST
 
 zinit wait lucid for \
-    atload="zicompinit; zicdreplay" \
-    atload:'bindkey "^[[A" history-substring-search-up' \
-    atload:'bindkey "^[[B" history-substring-search-down' \
     zdharma-continuum/fast-syntax-highlighting \
 
+    # atload="zicompinit; zicdreplay" \
+    # atload:'bindkey "^[[A" history-substring-search-up' \
+    # atload:'bindkey "^[[B" history-substring-search-down' \
+    #
