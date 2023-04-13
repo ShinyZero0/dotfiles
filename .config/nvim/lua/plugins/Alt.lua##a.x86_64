@@ -67,7 +67,6 @@ return {
 	},
 	{
 		"tversteeg/registers.nvim", -- on termux the clipboard is fucking slow
-		event = "VeryLazy",
 		opts = {
 
 			window = {
