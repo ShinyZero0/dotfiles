@@ -6,5 +6,4 @@ xbps-query -m
         |pkg| $pkg.capture0
         | to text 
     } 
-    | save -f ~/.stuff/install/packages.json
-    # | str join " "
+    | save -f ~/.install/packages.json

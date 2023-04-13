@@ -618,8 +618,11 @@ source alt.nu
 
 # Completions
 # *-cmp are mine ones, and others were copied from https://github.com/nushell/nu_scripts and slightly modified
+
 use git-completions.nu *
 use nix-completions.nu *
+# use make-completions.nu *
+
 use xbps-cmp.nu *
 use man-cmp.nu *
 use termux-pkg-cmp.nu *
