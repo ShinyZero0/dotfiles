@@ -23,7 +23,7 @@ let dark_theme = {
         } else if $e < 1mb {
             'cyan'
         } else {
-            'blue' 
+            'blue'
         }
     }
     duration: white
@@ -50,7 +50,7 @@ let dark_theme = {
 
         'deepskyblue3b'
         } else { 'dark_gray' }
-    }    
+    }
     range: white
     float: white
     string: white
@@ -92,7 +92,7 @@ let dark_theme = {
     shape_record: cyan_bold
     shape_redirection: purple_bold
     shape_signature: green_bold
-    shape_string: green
+    shape_string: yellow
     shape_string_interpolation: cyan_bold
     shape_table: blue_bold
     shape_variable: purple
@@ -354,15 +354,12 @@ let-env config = {
 
                 let pkgs = (xlocate $"bin/($command)$" | each {|x| $x | parse '{pkg} {bin}' | get pkg | to text } | to text  )
                 if not ($pkgs | is-empty) {
-
                     ( "This executable can be found in the following packages:\n" + $pkgs)
                 } else {
-
-                "Xlocate failed to find this executable"
+                    "Xlocate failed to find this executable"
                 }
             }
-            )
-        }
+        ) }
     }
     menus: [
 
@@ -614,17 +611,19 @@ let-env config = {
 
 source zoxide.nu
 source aliases.nu
-source alt.nu 
+source alt.nu
+source nq.nu
 
 # Completions
 # *-cmp are mine ones, and others were copied from https://github.com/nushell/nu_scripts and slightly modified
 
 use git-completions.nu *
 use nix-completions.nu *
-# use make-completions.nu *
+use make-completions.nu *
 
 use xbps-cmp.nu *
 use man-cmp.nu *
+# use help-cmp.nu *
 use termux-pkg-cmp.nu *
 use dotnet-cmp.nu *
 
