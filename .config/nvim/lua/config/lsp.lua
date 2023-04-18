@@ -23,8 +23,7 @@ require("lspconfig")["haxe_language_server"].setup({
 })
 
 local pid = vim.fn.getpid()
--- local omnisharp_bin = "/home/zero/.local/share/nvim/mason/bin/omnisharp"
-local omnisharp_bin = "omnisharp"
+local omnisharp_bin = "OmniSharp"
 require("lspconfig")["omnisharp"].setup({
 
 	capabilities = capabilities,

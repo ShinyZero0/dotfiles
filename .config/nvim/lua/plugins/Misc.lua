@@ -11,7 +11,7 @@ return {
 	{
 		"akinsho/toggleterm.nvim", -- terminal emulator
 		opts = {
-
+			shell = "nu",
 			persist_mode = false,
 		},
 	},

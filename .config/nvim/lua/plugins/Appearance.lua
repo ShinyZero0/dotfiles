@@ -19,7 +19,6 @@ return {
 	},
 	{
 		"lukas-reineke/headlines.nvim",
-		event = "VeryLazy",
 		config = true,
 	},
 	{
