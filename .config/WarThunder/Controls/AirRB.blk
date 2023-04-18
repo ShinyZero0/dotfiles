@@ -145,6 +145,10 @@ controls{
     ID_SHIP_WEAPON_MINE{}
     ID_SHIP_WEAPON_MORTAR{}
     ID_SHIP_WEAPON_ROCKETS{}
+    ID_SHOW_MOUSE_CURSOR{
+      keyboardKey:i=49
+    }
+
     ID_SQUAD_TARGET_DESIGNATION{
       keyboardKey:i=19
     }
