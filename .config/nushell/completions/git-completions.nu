@@ -350,7 +350,7 @@ export extern "git reflog" [
 
 # Stage files
 export extern "git add" [
-  ...targets: string@"nu-cmp git-any"
+  ...targets: any
   --patch(-p)                                         # interactively choose hunks to stage
   --update(-u) # update tracked files
 ]

@@ -8,50 +8,72 @@ def create_left_prompt [] {
     try {
 
         if $nu.os-info.name == "windows" {
-
             $home = $env.USERPROFILE
         } else {
-
             $home = $env.HOME
         }
     }
 
-    let dir = ([
+    let dir = (
+        [
+            ($env.PWD | str substring 0..($home | str length) | str replace -s $home "~"),
+            ($env.PWD | str substring ($home | str length)..)
 
-        ($env.PWD | str substring 0..($home | str length) | str replace -s $home "~"),
-        ($env.PWD | str substring ($home | str length)..)
-    ] | str join)
+        ] 
+        | str join
+    )
 
-    let path_segment = if (is-admin) {
+    let path_segment = $"(ansi green_bold)($dir)"
+    let yadm_segment = if ($env.PROMPT? | default "zero" | str contains "yadm") {
+        $"(ansi red_bold) @yadm"
+    } 
+    let nix_segment = if ($env.PATH | any {|| str contains "/nix/store"}) {
+        $"(ansi blue) "
+    } 
 
-        $"(ansi red_bold)($dir)"
-    } else if ($env.PROMPT? | default "zero" | str contains "yadm") {
+    let left_prompt = ( 
 
-        $"(ansi green_bold)($dir)(ansi red_bold) yadm"
-    } else {
+        [
+            $path_segment,
+            $nix_segment,
+            $yadm_segment 
+        ] 
+        | str join
+    )
 
-        $"(ansi green_bold)($dir)"
-    }
-
-    $path_segment
+    $left_prompt
 }
 
 def create_right_prompt [] {
 
-    let time_segment = ([
+    let time_segment = (
 
-        (ansi reset)
-        (ansi magenta)
-        (date now | date format '%r')
-    ] | str join)
-    let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {([
+        [
+            (ansi reset)
+            (ansi magenta)
+            (date now | date format '%r')
+        ] 
+        | str join
+    )
+    let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {(
 
-        (ansi rb)
-        ($env.LAST_EXIT_CODE)
-    ] | str join)
+        [
+            (ansi rb)
+            ($env.LAST_EXIT_CODE)
+        ] 
+        | str join
+    )
     } else { "" }
 
-    ([$last_exit_code, (char space), $time_segment] | str join)
+    let right_prompt = (
+
+        [
+            $last_exit_code, (char space), $time_segment
+        ] 
+        | str join
+    )
+
+    $right_prompt
 }
 
 # Use nushell functions to define your right and left prompt
@@ -93,18 +115,9 @@ let-env NU_LIB_DIRS = [
     ($env.HOME | path join '.local/share/nushell')
 ]
 
-# Directories to search for plugin binaries when calling register
-#
-# By default, <nushell-config-dir>/plugins is added
-
 let-env NU_PLUGIN_DIRS = [
 
     ($nu.config-path | path dirname | path join 'plugins')
-]
-
-let-env NU_CMP_DIRS = [
-
-    ($nu.config-path | path dirname | path join 'completions')
 ]
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
@@ -120,5 +133,5 @@ let NU_APPDATA_DIR = ($env.HOME | path join '.local/share/nushell')
 mkdir $NU_APPDATA_DIR
 zoxide init nushell | save -f ( $NU_APPDATA_DIR | path join 'zoxide.nu' )
 
-# let-env PAGER = 'page -t man' 
-# let-env MANPAGER = 'page -t man'
+let-env PAGER = moar
+let-env MANPAGER = moar
