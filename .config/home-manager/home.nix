@@ -23,13 +23,18 @@
 
     # Language stuff
     pkgs.lua-language-server
-    pkgs.pyright
     pkgs.stylua
-    pkgs.clang
-    pkgs.nixfmt
-    pkgs.dotnet-sdk_7
+
+    pkgs.pyright
+    pkgs.black
+
     pkgs.omnisharp-roslyn
+    pkgs.dotnet-sdk_7
+    pkgs.clang
+    pkgs.zlib
     pkgs.uncrustify
+
+    pkgs.nixfmt
 
     # CLI stuff
     pkgs.pistol
@@ -39,15 +44,14 @@
     pkgs.sd
     pkgs.skim
     pkgs.fzf
+    pkgs.moar
+    pkgs.chroma
+    pkgs.translate-shell
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
     (pkgs.nerdfonts.override { fonts = [ "InconsolataLGC" "IBMPlexMono" ]; })
 
     # # You can also create simple shell scripts directly inside your
@@ -84,7 +88,7 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    DOTNET_ROOT = "${pkgs.dotnet-sdk_7}";
   };
 
   # Let Home Manager install and manage itself.
