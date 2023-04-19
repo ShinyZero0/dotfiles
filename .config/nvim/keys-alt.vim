@@ -1,1 +1,1 @@
-keys-alt.vim##a.aarch64
+keys-alt.vim##a.x86_64
