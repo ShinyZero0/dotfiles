@@ -3,9 +3,9 @@ return {
 		"anuvyklack/hydra.nvim", -- keymap modes
 		config = function()
 			require("config.hydra")
-			if vim.fn.filereadable("~/.config/nvim/lua/config/hydra-alt.lua") then
+			pcall(function()
 				require("config.hydra-alt")
-			end
+			end)
 		end,
 	},
 	{

@@ -84,6 +84,7 @@ return {
 			"crispgm/telescope-heading.nvim",
 			-- "nvim-telescope/telescope-file-browser.nvim",
 			"natecraddock/telescope-zf-native.nvim",
+            "nvim-telescope/telescope-symbols.nvim"
 		},
 	},
 }
