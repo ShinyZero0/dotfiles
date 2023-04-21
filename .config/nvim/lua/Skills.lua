@@ -3,6 +3,12 @@
 --  ╰──────────────────────────────────────────────────────────╯
 map = vim.keymap.set
 unmap = vim.keymap.del
+mapcmd = function(modes, lhs, cmd, opts)
+	map(modes, lhs, f("<CMD>{cmd}<CR>"), opts)
+end
+mapColon = function(modes, lhs, cmd, opts)
+	map(modes, lhs, f(":{cmd}<CR>"), opts)
+end
 
 local A = vim.api
 

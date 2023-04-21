@@ -1,15 +1,20 @@
-map({ "n", "t" }, "<M-h>", [[<Cmd>wincmd h<CR>]], {})
-map({ "n", "t" }, "<M-j>", [[<Cmd>wincmd j<CR>]], {})
-map({ "n", "t" }, "<M-k>", [[<Cmd>wincmd k<CR>]], {})
-map({ "n", "t" }, "<M-l>", [[<Cmd>wincmd l<CR>]], {})
+mapcmd({ "n", "t" }, "<M-h>", "wincmd h", {})
+mapcmd({ "n", "t" }, "<M-j>", "wincmd j", {})
+mapcmd({ "n", "t" }, "<M-k>", "wincmd k", {})
+mapcmd({ "n", "t" }, "<M-l>", "wincmd l", {})
 map("t", "<C-w>", [[<C-\><C-n><C-w>]], {})
 map("t", "<C-`>", [[<C-\><C-n>]], {})
-map(
-	{ "n", "x" },
-	"gC",
-	"<cmd>set operatorfunc=v:lua.__flip_flop_comment<cr>g@",
-	{ silent = true, desc = "Invert comments" }
-)
+
+mapcmd("n", "<C-j>", "MoveLine(1)", {})
+mapcmd("n", "<C-k>", "MoveLine(-1)", {})
+mapcmd("n", "<C-h>", "MoveHChar(-1)", {})
+mapcmd("n", "<C-l>", "MoveHChar(1)", {})
+
+-- Visual-mode commands
+mapColon("v", "<C-j>", "MoveBlock(1)", {})
+mapColon("v", "<C-k>", "MoveBlock(-1)", {})
+mapColon("v", "<C-h>", "MoveHBlock(-1)", {})
+mapColon("v", "<C-l>", "MoveHBlock(1)", {})
 
 -- Reach.nvim
 local reachOptions = {
@@ -23,31 +28,30 @@ local reachOptions = {
 	},
 }
 
+local Reach = require("reach")
+
 map("n", "<Leader>b", function()
-	require("reach").buffers(reachOptions)
+	Reach.buffers(reachOptions)
 end, {})
 map("n", "gt", function()
-	require("reach").tabpages(reachOptions)
+	Reach.tabpages(reachOptions)
 end, {})
 map("n", "'", function()
-	require("reach").marks(reachOptions)
+	Reach.marks(reachOptions)
 end, {})
 
 -- SPECTRE
+local Spectre = require("spectre")
+
 map("n", "<leader>S", function()
-	require("spectre").open()
+	Spectre.open()
 end, {})
 map("n", "<leader>sw", function()
-	require("spectre").open_visual({ select_word = true })
+	Spectre.open_visual({ select_word = true })
 end, {})
 map("v", "<leader>s", function()
-	require("spectre").open_visual()
+	Spectre.open_visual()
 end, {})
 map("n", "<leader>sp", function()
-	require("spectre").open_file_search({ select_word = true })
+	Spectre.open_file_search({ select_word = true })
 end, {})
-
--- map("n", '<leader>"', require("harpoon.ui").toggle_quick_menu, {})
--- map("n", "<leader>M", require("harpoon.mark").add_file, {})
--- map("n", "<leader>l", require("harpoon.ui").nav_next, {})
--- map("n", "<leader>h", require("harpoon.ui").nav_prev, {})

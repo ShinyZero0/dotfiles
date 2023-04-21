@@ -1,1 +1,1 @@
-set linebreak
+setlocal linebreak
