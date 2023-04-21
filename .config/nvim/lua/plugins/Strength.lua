@@ -8,7 +8,8 @@ return {
 	"tpope/vim-repeat", -- dot-repeat
 	"tpope/vim-eunuch", -- filesystem util
 	"junegunn/vim-easy-align", -- align columns
-	"AndrewRadev/dsf.vim", -- delete surrounding function
+	"AndrewRadev/dsf.vim", -- interact with surrounding function
+	"fedepujol/move.nvim",
 	{
 		"AckslD/nvim-neoclip.lua",
 		config = function()
