@@ -11,8 +11,8 @@ require("nvim-treesitter.configs").setup({
 			enable = true,
 			keymaps = {
 
-				["ia"] = "@parameter.inner",
-				["aa"] = "@parameter.outer",
+				["ip"] = "@parameter.inner",
+				["ap"] = "@parameter.outer",
 				["is"] = "@scope.inner",
 				["as"] = "@scope.outer",
 				["ib"] = "@block.inner",
@@ -27,7 +27,7 @@ require("nvim-treesitter.configs").setup({
 
 				["]m"] = "@function.outer",
 				["]]"] = "@class.outer",
-				["]a"] = "@parameter.inner",
+				["]p"] = "@parameter.inner",
 				["]l"] = "@loop.*",
 				["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
 				["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
@@ -40,7 +40,7 @@ require("nvim-treesitter.configs").setup({
 
 				["[m"] = "@function.outer",
 				["[["] = "@class.outer",
-				["[a"] = "@parameter.inner",
+				["[p"] = "@parameter.inner",
 				["[s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
 			},
 			goto_previous_end = {

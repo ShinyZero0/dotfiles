@@ -11,10 +11,9 @@ set noshowmode
 set showtabline=0
 set conceallevel=0
 set scrolloff=5
-" set cmdheight=0
 
 " FORMAT
-set tabstop=4 shiftwidth=4 expandtab
+set tabstop=4 shiftwidth=4 
 set breakindent
 set formatoptions=1jtc 
 
