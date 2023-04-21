@@ -1,24 +1,18 @@
 # Void linux dotfiles
 
-* packages are listed in [installation script](install.sh)
-* info on making shit work listed in [WTF](WTF.md)
+My configuration files for:
+* i3wm
+* lf file manager
+* nushell
+* neovim
+* ... and some other stuff
 
-* key remapping tool i use is [xkeysnail](https://github.com/mooz/xkeysnail):
-```bash
-sudo pip install xkeysnail
-sudo usermod -a -G input $USER # otherwise it will require global install and sudo
-```
-its config can be found [there](.config/xkeysnail.py)
+XBPS packages are listed in [packages.json](.install/packages.json) which is automatically generated, more interesting ones which play well with nix are installed by nix home-manager
 
-Skim fuzzy finder:
-```bash
-cargo install skim
-```
-
-These are installed automatically by zinit:
-* Plex Mono and InconsolataLGC Nerd Fonts
+Instructions for myself about making shit work are in [WTF](WTF.md)
 
 Use yadm for configs:
 ```bash
 yadm clone git@github.com:ShinyZero0/dotfiles.git
 ```
+Then look at installation script and install stuff, maybe even run the script and hope it's ready.
