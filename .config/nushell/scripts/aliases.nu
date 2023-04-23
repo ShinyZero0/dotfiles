@@ -29,9 +29,10 @@ alias vi = nvim
 
 alias q = exit
 alias r = exec nu
-alias fii = find -i
 alias fi = find
+alias fii = find -i
 alias g = get
+
 def yankfile [] {
 
 	let input = $in
@@ -45,11 +46,9 @@ def yankfile [] {
 	xclip -t $type -sel clip $file
 }
 
-
-def _describe [] {
+def desc [] {
 	describe | descfmt
 }
-alias desc = _describe
 
 def share [ file: string ] {
 	curl -F $"file=@($file)" https://0x0.st
@@ -63,10 +62,9 @@ alias xtr = atool -x
 alias ru = trans :ru
 alias en = trans :en
 
-def _ungitb [] {
+def ungitb [] {
 	xsel -ob | parse 'https://github.com/{match}'
 	| get match | to text | xsel -ib
 }
-alias ungitb = _ungitb
 
 

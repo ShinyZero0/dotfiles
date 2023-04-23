@@ -27,27 +27,22 @@ let _focusHydraKeys = [
 def-env hydra [
 	keydefs: list<record>
 ] {
-	tput smcup
 	let hint = ( _makeHint $keydefs | to text )
 	print $hint
 	while true {
 		let key = ( readkey -b )
-		clear
-		print $hint
+		# print $hint
 		let matchedKeys = ( $keydefs | where lhs == $key )
 		mut matchedKey = {}
 		if ( $matchedKeys | is-empty ) {
 			let warn = $"(ansi lrb)Undefined key: ($key)(ansi reset)"
-			print ( _centerLine $warn )
+			print ( $warn )
 		} else {
 			$matchedKey = $matchedKeys.0
-			tput rmcup
 			do $matchedKey.rhs 
-			tput smcup
 			if $matchedKey.exit { break }
 		}
 	} 
-	tput rmcup
 }
 def-env _focusHydra [] {
 	hydra $_focusHydraKeys
@@ -66,12 +61,13 @@ def _makeHint [
 		)
 		let str = $"(ansi $keyColor)($keydef.lhs): (ansi g)($keydef.desc)"
 		$hintStrings = (
-			$hintStrings | append ( _centerLine $str )
+			$hintStrings | append ( $str )
 		)
 	} 
 	$hintStrings | append (ansi reset)
 }
 
+# unused
 def _centerLine [
 	line: string
 ] {
