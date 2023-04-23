@@ -29,8 +29,8 @@ alias vi = nvim
 
 alias q = exit
 alias r = exec nu
-alias fi = find -i
-alias f = find
+alias fii = find -i
+alias fi = find
 alias g = get
 def yankfile [ file: string ] {
 

@@ -1,4 +1,4 @@
-alias t = _focus # cd to file's basedir and open
+alias f = _focus # cd to file's basedir and open
 alias o = _open # don't cd and just open
 alias s = _select # don't cd and just open
 
@@ -53,7 +53,8 @@ def-env _confirmOpener [
 	let hand = ( opener -q $file ) # get the program name
 	let exit = ( gum confirm $'Open with default handler: "($hand)"?' | complete | get exit_code )
 	if $exit == 0 {
-		opener $file # my custom opener
+		# my custom opener
+		opener $file
 	} else {
 		# paste the path into prompt. full path if not focused and basename if focused, see line 41
 		# sadly can't move the cursor to line start so at least add space

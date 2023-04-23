@@ -1,17 +1,17 @@
 let _focusHydraKeys = [ 
 	{
 		lhs: "o"
-		rhs: {|| _open; $env }
+		rhs: {|| exec nu -e _open}
 		exit: true
 	},
 	{
 		lhs: "s"
-		rhs: {|| _select; $env }
+		rhs: {|| exec nu -e _select}
 		exit: true
 	},
 	{
 		lhs: "f"
-		rhs: {|| _focus; $env }
+		rhs: {|| exec nu -e _focus}
 		exit: true
 	},
 	{
@@ -33,7 +33,9 @@ def-env hydra [
 			print $"Undefined key: ($key)"
 		} else {
 			$matchedKey = $matchedKeys.0
-			do $matchedKey.rhs | load-env
+			tput rmcup
+			do $matchedKey.rhs 
+			tput smcup
 			if $matchedKey.exit { break }
 		}
 	} 
