@@ -7,5 +7,5 @@ def "nu-cmp dotnet" [context: string] {
 
 export extern "dotnet" [ 
 
-    ...args: any@"nu-cmp dotnet"
+    ...args: string@"nu-cmp dotnet"
 ]

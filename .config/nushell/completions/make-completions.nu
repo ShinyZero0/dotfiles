@@ -1,17 +1,26 @@
 def "nu-complete make" [] {
-    open ./Makefile|lines|find ':'|where ($it|str starts-with '.') == false|split column ' '|get column1|find ':'|str replace ':' ''
+    ls | find -i "makefile"
+    | get 0.name | open | lines
+    | find ':'
+    | where (
+        $it | str starts-with '.'
+    ) == false
+    | split column ' '
+    | get column1
+    | find ':'
+    | str replace ':' ''
 }
 
 def "nu-complete make jobs" [] {
-    seq 1 (sys|get cpu|length)
+    seq 1 (sys | get cpu | length)
 }
 
 def "nu-complete make files" [] {
-    ls **/*|where type == file|get name
+    ls **/* | where type == file | get name
 }
 
 def "nu-complete make dirs" [] {
-    ls **/*|where type == dir|get name
+    ls **/* | where type == dir | get name
 }
 
 export extern "make" [
