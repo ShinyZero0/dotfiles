@@ -1,4 +1,4 @@
-# How to make shit work on Void linux
+# How to make shit work on Void linux and some other guides
 
 ## Make Steam work 
 
@@ -13,7 +13,7 @@ xbps-install -S libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mesa-dr
 ```
 ## Add keyboard layouts
 
-With fcitx, but that doesn't work in some programs e.g. games:
+With fcitx, but that doesn't work in some programs and games:
 ```bash
 xbps-install fcitx5
 ```
@@ -31,7 +31,6 @@ nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 nix-channel --update 
 ```
 
-### Disable firefox alt menu through `about:config`
 set `ui.key.menuAccessKeyFocuses` to false
 
 ## Readline bindings
@@ -40,3 +39,5 @@ Undo: <C-/>
 To line start: <C-a>
 To line end: <C-e>
 
+## See pipe progress
+xbps-install pv

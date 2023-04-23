@@ -52,11 +52,15 @@ return {
 		end,
 	},
 	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
+		"altermo/npairs-integrate-upair",
+		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
 			require("config.pairs")
 		end,
+		dependencies = {
+			"windwp/nvim-autopairs",
+			"altermo/ultimate-autopair.nvim",
+		},
 	},
 	{
 		"numToStr/Comment.nvim",

@@ -293,9 +293,9 @@ let-env config = {
 
     history: {
 
-        max_size: 10000 # Session has to be reloaded for this to take effect
+        max_size: 1000000 # Session has to be reloaded for this to take effect
         sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
-        file_format: "plaintext" # "sqlite" or "plaintext"
+        file_format: "sqlite" # "sqlite" or "plaintext"
     }
     completions: {
 
@@ -341,7 +341,7 @@ let-env config = {
         }]
         env_change: {
 
-            PWD: [{|before, after|
+            PWD: [{ |before, after|
                 null  # replace with source code to run if the PWD environment is different since the last repl input
             }]
         }
@@ -352,7 +352,7 @@ let-env config = {
 
             if not (which xlocate | is-empty) {
 
-                let pkgs = (xlocate $"bin/($command)$" | each {|x| $x | parse '{pkg} {bin}' | get pkg | to text } | to text  )
+                let pkgs = (xlocate $"bin/($command)$" | lines | each {|x| $x | parse '{pkg} {bin}' | get pkg | to text } | to text  )
                 if not ($pkgs | is-empty) {
                     ( "This executable can be found in the following packages:\n" + $pkgs)
                 } else {
@@ -390,7 +390,7 @@ let-env config = {
             type: {
 
                 layout: list
-                page_size: 10
+                page_size: 20
             }
             style: {
 
@@ -611,8 +611,10 @@ let-env config = {
 
 source zoxide.nu
 source aliases.nu
+source help.nu
 source alt.nu
 source nq.nu
+source langTools.nu
 
 # Completions
 # *-cmp are mine ones, and others were copied from https://github.com/nushell/nu_scripts and slightly modified
@@ -623,7 +625,6 @@ use make-completions.nu *
 
 use xbps-cmp.nu *
 use man-cmp.nu *
-# use help-cmp.nu *
 use termux-pkg-cmp.nu *
 use dotnet-cmp.nu *
 

@@ -129,9 +129,8 @@ let-env NQDIR = ( $env.HOME | path join '.stuff/nq/' )
 mkdir $env.NQDIR
 mkdir $env.SVDIR
 
-let NU_APPDATA_DIR = ($env.HOME | path join '.local/share/nushell')
-mkdir $NU_APPDATA_DIR
-zoxide init nushell | save -f ( $NU_APPDATA_DIR | path join 'zoxide.nu' )
+mkdir $env.NU_LIB_DIRS.2
+zoxide init nushell | save -f ( $env.NU_LIB_DIRS.2 | path join 'zoxide.nu' )
 
 let-env PAGER = moar
 let-env MANPAGER = moar

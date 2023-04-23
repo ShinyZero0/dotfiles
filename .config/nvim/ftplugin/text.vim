@@ -1,4 +1,4 @@
-set linebreak
+setlocal linebreak
 silent! %s/ | / /g
 silent! %s/ \+/ /g
 silent! %s/—/-/g

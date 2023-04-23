@@ -10,10 +10,6 @@ return {
 		ft = "t4",
 	},
 	{
-		"dinhhuy258/vim-local-history",
-		build = ":UpdateRemotePlugins",
-	},
-	{
 		"karb94/neoscroll.nvim",
 		event = "VeryLazy",
 		opts = {
@@ -33,18 +29,6 @@ return {
 		config = function()
 			require("config.lsp")
 		end,
-	},
-	{
-		"williamboman/mason.nvim",
-		-- event = "VeryLazy",
-		config = function()
-			require("config.mason")
-		end,
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		-- event = "VeryLazy",
-		config = true,
 	},
 	{
 		"lewis6991/hover.nvim",
