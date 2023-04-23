@@ -38,11 +38,7 @@ def-env hydra [
 		mut matchedKey = {}
 		if ( $matchedKeys | is-empty ) {
 			let warn = $"(ansi lrb)Undefined key: ($key)(ansi reset)"
-			print ( $warn | fill -a center -c " " -w (
-					(
-						(term size | get columns) / 2 | into int
-					) + ($warn | str length)
-				) )
+			print ( _centerLine $warn )
 		} else {
 			$matchedKey = $matchedKeys.0
 			tput rmcup
@@ -70,14 +66,18 @@ def _makeHint [
 		)
 		let str = $"(ansi $keyColor)($keydef.lhs): (ansi g)($keydef.desc)"
 		$hintStrings = (
-			$hintStrings | append (
-				$str | fill -a center -c " " -w (
-					(
-						(term size | get columns) / 2 | into int
-					) + ($str | str length)
-				)
-			)
+			$hintStrings | append ( _centerLine $str )
 		)
 	} 
 	$hintStrings | append (ansi reset)
+}
+
+def _centerLine [
+	line: string
+] {
+	$line | fill -a m -c " " -w (
+		(
+			(term size | get columns) / 2 | into int
+		) + ($line | str length)
+	)
 }
