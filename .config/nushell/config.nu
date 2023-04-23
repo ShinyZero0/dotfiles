@@ -611,13 +611,17 @@ let-env config = {
 			modifier: control
 			keycode: char_f
 			mode: [emacs, vi_normal, vi_insert]
-			event: { 
-				send: executehostcommand 
-				cmd: "_focus" 
-		}
+			event: [
+				{ 
+					send: executehostcommand 
+					cmd: "_focusHydra" 
+				}
+				{
+					edit: MoveToStart
+				}
+			]
 
 		}
-
 	]
 }
 
@@ -627,6 +631,8 @@ source help.nu
 source alt.nu
 source nq.nu
 source langTools.nu
+source focus.nu
+source hydra.nu
 
 # Completions
 # *-cmp are mine ones, and others were copied from https://github.com/nushell/nu_scripts and slightly modified
@@ -639,6 +645,5 @@ use xbps-cmp.nu *
 use man-cmp.nu *
 use termux-pkg-cmp.nu *
 use dotnet-cmp.nu *
-use autopairs.nu *
 
 # source /data/data/com.termux/files/home/.config/broot/launcher/nushell/br

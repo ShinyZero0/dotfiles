@@ -32,19 +32,20 @@ alias r = exec nu
 alias fi = find -i
 alias f = find
 alias g = get
+def yankfile [ file: string ] {
 
-def-env _focus [] {
-
-	let obj = ( fd -Hd 5 | fzf --height 50% )
-	if ($obj | path type) == dir {
-		cd $obj
-	} else {
-		cd ( $obj | path dirname )
-		# let-env _focusedFile = ( $obj | path basename )
-		commandline ($obj | path basename)
+	if not ( $in | is-empty ) {
+		let file = $in
 	}
+	let type = ( file --mime-type $file | split row " " | last )
+	xclip -t $type -sel clip $file
 }
-alias t = _focus
+
+# def _openWith [ file: string ] {
+# 	let handlers = [ "nvim" "nomacs" "paste" ]
+# 	let hand = ( $handlers | to text | fzf --exact --height 50% --cycle --bind=tab:down,btab:up --reverse )
+# 	nu -c $"($hand) ($file)"
+# }
 
 def _describe [] {
 	describe | descfmt

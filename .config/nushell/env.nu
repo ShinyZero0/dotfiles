@@ -123,6 +123,7 @@ let-env NU_PLUGIN_DIRS = [
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
+let-env XDG_DATA_DIRS = ($env.HOME | path join .nix-profile/share)
 let-env EDITOR = 'nvim'
 let-env SVDIR = ( $env.HOME | path join '.config/sv/' )
 let-env NQDIR = ( $env.HOME | path join '.stuff/nq/' )
