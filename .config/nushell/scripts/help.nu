@@ -32,11 +32,8 @@ def _try_builtin [command: string] {
 }
 
 def _help [
-	--find(-f): bool
 	command: string
 ] {
-	mut f = ""
-	if $find { $f = "--find" }
     let builtin = if not ($command | str starts-with "^") {
         _try_builtin $command
     }
@@ -49,7 +46,7 @@ def _help [
             # tldr $command
         }
     } else {
-        help ([ $f $command ] | str join ' ')
+        help $command
     }
 }
 alias help = _help

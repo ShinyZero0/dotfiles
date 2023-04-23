@@ -35,14 +35,13 @@ alias g = get
 
 def-env _focus [] {
 
-	let out = ( fd -Hd 5 | fzf | complete )
-	if out.exit_code != 0 { return }
-	let obj = out.stdout
+	let obj = ( fd -Hd 5 | fzf --height 50% )
 	if ($obj | path type) == dir {
-		z $obj
+		cd $obj
 	} else {
-		z ( $obj | path dirname )
-		ls ( $obj | path basename )
+		cd ( $obj | path dirname )
+		# let-env _focusedFile = ( $obj | path basename )
+		commandline ($obj | path basename)
 	}
 }
 alias t = _focus
