@@ -8,23 +8,16 @@ alias pkls = xbps-query -m
 old-alias dn = dotnet
 
 # list runit services
-alias svls = ls /var/service/
-# and available ones
-alias svlsav = ls /etc/sv/
+def svls [
+	--all(-a)
+] {
+	if $all {
+		ls /etc/sv/
+	} else {
+		ls /var/service/
+	}
+}
 
-alias ga = git add
-alias gc = git commit -m
-alias gd = git diff
-alias gds = git diff --staged
-alias gst = git status
-alias gcl = git clone
-alias gca = git commit -am
-old-alias gch = git checkout
-alias grm = git rm --cached
-alias gcl1 = git clone --depth 1
-alias grss = git restore --staged
-
-alias yd = yadm enter nu
 alias vi = nvim
 
 alias q = exit
@@ -45,6 +38,7 @@ def yankfile [] {
 	let type = ( file --mime-type $file | split row " " | last )
 	xclip -t $type -sel clip $file
 }
+alias yf = yankfile
 
 def desc [] {
 	describe | descfmt

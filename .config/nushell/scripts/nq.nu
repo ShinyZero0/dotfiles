@@ -39,7 +39,7 @@ def nq [
 	if ($now) {
 		let nqdir = ($env.NQDIR | str join (random integer | into string) )
 		NQDIR=$nqdir ^nq nu -c $"( $args | str join ' ' )"
-		print($nqdir)
+		print $nqdir
 	} else {
 		^nq nu -c $"( $args | str join ' ' )"
 	}

@@ -27,7 +27,10 @@ let _focusHydraKeys = [
 def-env hydra [
 	keydefs: list<record>
 ] {
-	let hint = ( _makeHint $keydefs | to text )
+	# let hint = ( _makeHint $keydefs | to text )
+	$env.config.table.index_mode = never
+	$env.config.table.mode = none
+	let hint = ( $keydefs | select lhs desc )
 	print $hint
 	while true {
 		let key = ( readkey -b )
@@ -47,33 +50,33 @@ def-env hydra [
 def-env _focusHydra [] {
 	hydra $_focusHydraKeys
 }
-def _makeHint [
-	keydefs: list<record>
-] {
-	mut hintStrings = []
-	for keydef in $keydefs {
-		let keyColor = (
-			if $keydef.exit {
-				"ub"
-			} else {
-				"pb"
-			}
-		)
-		let str = $"(ansi $keyColor)($keydef.lhs): (ansi g)($keydef.desc)"
-		$hintStrings = (
-			$hintStrings | append ( $str )
-		)
-	} 
-	$hintStrings | append (ansi reset)
-}
+# def _makeHint [
+# 	keydefs: list<record>
+# ] {
+# 	mut hintStrings = []
+# 	for keydef in $keydefs {
+# 		let keyColor = (
+# 			if $keydef.exit {
+# 				"ub"
+# 			} else {
+# 				"pb"
+# 			}
+# 		)
+# 		let str = $"(ansi $keyColor)($keydef.lhs): (ansi g)($keydef.desc)"
+# 		$hintStrings = (
+# 			$hintStrings | append ( $str )
+# 		)
+# 	} 
+# 	$hintStrings | append (ansi reset)
+# }
 
 # unused
-def _centerLine [
-	line: string
-] {
-	$line | fill -a m -c " " -w (
-		(
-			(term size | get columns) / 2 | into int
-		) + ($line | str length)
-	)
-}
+# def _centerLine [
+# 	line: string
+# ] {
+# 	$line | fill -a m -c " " -w (
+# 		(
+# 			(term size | get columns) / 2 | into int
+# 		) + ($line | str length)
+# 	)
+# }
