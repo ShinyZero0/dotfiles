@@ -1,3 +1,5 @@
+map({ "n", "i" }, "<C-;>", ToggleEndingStuff)
+
 mapcmd({ "n", "t" }, "<M-h>", "wincmd h", {})
 mapcmd({ "n", "t" }, "<M-j>", "wincmd j", {})
 mapcmd({ "n", "t" }, "<M-k>", "wincmd k", {})

@@ -10,6 +10,8 @@ return {
 	"junegunn/vim-easy-align", -- align columns
 	"AndrewRadev/dsf.vim", -- interact with surrounding function
 	"fedepujol/move.nvim",
+	-- "AndrewRadev/splitjoin.vim",
+	"FooSoft/vim-argwrap",
 	{
 		"AckslD/nvim-neoclip.lua",
 		config = function()
@@ -28,14 +30,6 @@ return {
 			map("x", "%", "<Plug>(matchup-%)")
 			unmap("x", "r")
 		end,
-	},
-	{
-		"lfilho/cosco.vim",
-		config = function()
-			map("i", "<C-;>", "<C-o><Plug>(cosco-commaOrSemiColon)")
-			map("n", "<C-;>", "<Plug>(cosco-commaOrSemiColon)")
-		end,
-		ft = { "cs", "c", "cpp" },
 	},
 
 	{

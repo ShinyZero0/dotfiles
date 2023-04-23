@@ -97,3 +97,23 @@ function CoolerExitFunc()
 		end
 	end
 end
+
+--  ╭──────────────────────────────────────────────────────────╮
+--  │                   Append delimiters                      │
+--  ╰──────────────────────────────────────────────────────────╯
+function ToggleEndingStuff()
+	local char
+	local ft = vim.bo[0].filetype
+	if ft == "cs" or "nix" then
+		char = ";"
+	elseif ft == "lua" then
+		char = ","
+	end
+	local line = vim.fn.getline(".")
+	if string.sub(line, -1) == char then
+		line = string.sub(line, 0, -2)
+	else
+		line = f("{line}{char}")
+	end
+	vim.fn.setline(".", line)
+end
