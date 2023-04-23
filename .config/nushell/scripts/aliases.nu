@@ -32,30 +32,32 @@ alias r = exec nu
 alias fii = find -i
 alias fi = find
 alias g = get
-def yankfile [ file: string ] {
+def yankfile [] {
 
-	if not ( $in | is-empty ) {
-		let file = $in
+	let input = $in
+	mut file = ""
+	if ($input | describe | str starts-with "record<") {
+		$file = $input.name
+	} else { 
+		$file = $input
 	}
 	let type = ( file --mime-type $file | split row " " | last )
 	xclip -t $type -sel clip $file
 }
 
-# def _openWith [ file: string ] {
-# 	let handlers = [ "nvim" "nomacs" "paste" ]
-# 	let hand = ( $handlers | to text | fzf --exact --height 50% --cycle --bind=tab:down,btab:up --reverse )
-# 	nu -c $"($hand) ($file)"
-# }
 
 def _describe [] {
 	describe | descfmt
 }
-alias describe = _describe
+alias desc = _describe
 
 def share [ file: string ] {
 	curl -F $"file=@($file)" https://0x0.st
 }
 
+alias dwn = ls ~/Downloads/
+alias pic = ls ~/Pictures/
+alias latest = sort-by modified
 alias xtr = atool -x
 
 alias ru = trans :ru

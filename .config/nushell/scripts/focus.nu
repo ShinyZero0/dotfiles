@@ -26,9 +26,9 @@ def _getFocusChoice [
 ] {
 	mut obj = ""
 	if ($dir | is-empty) {
-		$obj = ( fd --no-ignore-vcs -Hd 5 . | zf )
+		$obj = ( fd --no-ignore-vcs -Hd 4 . | zf )
 	} else {
-		$obj = ( fd --no-ignore-vcs -Hd 5 . ( $dir | path expand ) | zf )
+		$obj = ( fd --no-ignore-vcs -Hd 4 . ( $dir | path expand ) | zf )
 	}
 	return $obj
 }
@@ -56,8 +56,7 @@ def-env _confirmOpener [
 		# my custom opener
 		opener $file
 	} else {
-		# paste the path into prompt. full path if not focused and basename if focused, see line 41
-		# sadly can't move the cursor to line start so at least add space
-		commandline $" `($file)`" 
+		# paste the path into clipboard. full path if not focused and basename if focused, see line 41
+		$file | xsel -ib
 	}
 }
