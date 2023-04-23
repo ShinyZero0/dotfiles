@@ -13,7 +13,7 @@ require("nvim-treesitter.configs").setup({
 		"python",
 		"c_sharp",
 		"json",
-		"nu",
+		-- "nu",
 		"markdown",
 		"markdown_inline",
 		"bash",
