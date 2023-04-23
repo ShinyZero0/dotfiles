@@ -15,44 +15,54 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
 
     # Stuff
-    pkgs.firefox-devedition-bin
-    pkgs.xkeysnail
+    firefox-devedition-bin
+    xkeysnail
+    keynav
 
     # Language stuff
-    pkgs.lua-language-server
-    pkgs.stylua
+    lua-language-server
+    stylua
 
-    pkgs.pyright
-    pkgs.black
+    pyright
+    black
 
-    pkgs.omnisharp-roslyn
-    pkgs.dotnet-sdk_7
-    pkgs.clang
-    pkgs.zlib
-    pkgs.uncrustify
+    omnisharp-roslyn
+    dotnet-sdk_7
+    clang
+    zlib
+    uncrustify
 
-    pkgs.nixfmt
+    nixfmt
 
     # CLI stuff
-    pkgs.pistol
-    pkgs.lf
-    pkgs.du-dust
-    pkgs.ripgrep
-    pkgs.sd
-    pkgs.skim
-    pkgs.fzf
-    pkgs.moar
-    pkgs.chroma
-    pkgs.translate-shell
+		delta
+		gum
+    vivid
+    pistol
+    lf
 
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
+		duf
+    du-dust
 
-    (pkgs.nerdfonts.override { fonts = [ "InconsolataLGC" "IBMPlexMono" ]; })
+		gibo
+		fd
+    ripgrep
+    sd
+    skim
+    fzf
+    moar
+    chroma
+    translate-shell
+    python310Packages.grip
+
+    # Fonts
+    ibm-plex
+    (nerdfonts.override {
+      fonts = ["InconsolataLGC" "NerdFontsSymbolsOnly"];
+    })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -87,9 +97,7 @@
   #  /etc/profiles/per-user/zero/etc/profile.d/hm-session-vars.sh
   #
   # if you don't want to manage your shell through Home Manager.
-  home.sessionVariables = {
-    DOTNET_ROOT = "${pkgs.dotnet-sdk_7}";
-  };
+  home.sessionVariables = { DOTNET_ROOT = "${pkgs.dotnet-sdk_7}"; };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
