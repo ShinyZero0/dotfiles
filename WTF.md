@@ -31,13 +31,7 @@ nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 nix-channel --update 
 ```
 
-## Install Firefox developer edition
-
-```bash
-nix-env -i firefox-devedition-bin
-```
-
-### Disable alt menu through [config](about:config)
+### Disable firefox alt menu through `about:config`
 set `ui.key.menuAccessKeyFocuses` to false
 
 ## Readline bindings
