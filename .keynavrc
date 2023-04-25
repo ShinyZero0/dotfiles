@@ -15,7 +15,7 @@ shift+k move-up
 shift+l move-right
 space warp,click 1,end
 Return warp,click 1,end
-semicolon warp,end
+semicolon warp
 w warp
 t windowzoom
 c cursorzoom 300 300
@@ -39,3 +39,5 @@ ctrl+y cut-left,cut-up
 ctrl+u cut-right,cut-up
 ctrl+b cut-left,cut-down
 ctrl+n cut-right,cut-down
+u click 4
+d click 5
