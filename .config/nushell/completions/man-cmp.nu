@@ -1,4 +1,4 @@
-def "nu-cmp manpages" [] { 
+def "manpages" [] { 
     ^man -w 
     | split row ":" 
     | each { |d| 
@@ -13,5 +13,5 @@ def "nu-cmp manpages" [] {
 }
 
 export extern "man" [
-    ...targets: string@"nu-cmp manpages"
+    ...targets: string@"manpages"
 ]

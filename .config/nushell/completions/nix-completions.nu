@@ -2,7 +2,7 @@ def "nu-complete nix log-format" [] {
     ['raw', 'internal-json', 'bar', 'bar-with-logs']
 }
 
-def "nu-cmp nix channels" [] {
+def "nix channels" [] {
 
     ^nix-channel --list 
     | each { ||
@@ -608,7 +608,7 @@ export extern "nix search" [
     --derivation          #Operate on the store derivation rather than its outputs.
     --expr                #Interpret installables as attribute paths relative to the Nix expression expr.
     --file(-f)            #file
-    channel?:             string@"nu-cmp nix channels"
+    channel?:             string@"nix channels"
     ...args: any                              # Arguments to be passed to your program
 ]
 
@@ -1373,7 +1373,7 @@ export extern "nix-env" [
     --file(-f) 
     --uninstall(-e)
 
-    channel?: string@"nu-cmp nix channels" # install by attribute path
+    channel?: string@"nix channels" # install by attribute path
     ...args: any
 ]
 
@@ -1386,7 +1386,7 @@ export extern "nix-env --install" [
     --rollback               # switch to the previous generation
     --attr(-A) # install by attribute path
     --file(-f) 
-    channel?: string@"nu-cmp nix channels"
+    channel?: string@"nix channels"
 
     ...args: any
 ]

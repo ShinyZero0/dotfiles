@@ -1,7 +1,7 @@
-def "nu-cmp pkill" [] {
+def "pkill" [] {
 	ps | get name
 }
 export extern pkill [
 
-	...args: string@"nu-cmp pkill"
+	...args: string@"pkill"
 ]

@@ -1,8 +1,8 @@
-def "nu-cmp termux pkg installed" [] {
+def "termux pkg installed" [] {
 
     open ~/.cache/pkg-installed.json
 }
-def "nu-cmp termux pkg all" [] {
+def "termux pkg all" [] {
 
     open ~/.cache/pkg-all.json
 }
@@ -12,12 +12,12 @@ export extern "pkg upgrade" [
 ]
 export extern "pkg install" [
 
-    ...targets: string@"nu-cmp termux pkg all" 
+    ...targets: string@"termux pkg all" 
     -y
 ]
 export extern "pkg remove" [
 
-    ...targets: string@"nu-cmp termux pkg installed"
+    ...targets: string@"termux pkg installed"
 ]
 export extern "pkg search" [
 
