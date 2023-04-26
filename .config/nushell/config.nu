@@ -344,7 +344,9 @@ let-env config = {
 		env_change: {
 
 			PWD: [{ |before, after|
-				null  # replace with source code to run if the PWD environment is different since the last repl input
+				if ( './zellij.kdl' | path exists ) and ( $env.ZELLIJ? | is-empty ) {
+					~/.scripts/zellij-env.nu
+				}
 			}]
 		}
 		display_output: {||
@@ -637,6 +639,7 @@ source nq.nu
 source langTools.nu
 source focus.nu
 source hydra.nu
+source utils.nu
 
 use git-completions.nu *
 use nix-completions.nu *
@@ -646,6 +649,7 @@ use man-cmp.nu *
 use termux-pkg-cmp.nu *
 use dotnet-cmp.nu *
 use zellij-cmp.nu *
+use proc-cmp.nu *
 
 source aliases/aliases-post.nu
 

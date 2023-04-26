@@ -16,18 +16,33 @@ def create_left_prompt [] {
 
     let dir = (
         [
-            ($env.PWD | str substring 0..($home | str length) | str replace -s $home "~"),
-            ($env.PWD | str substring ($home | str length)..)
+            (
+				$env.PWD | str substring 0..(
+					$home | str length
+				) | str replace -s $home "~"
+            ),
+            (
+				$env.PWD | str substring (
+					$home | str length
+				)..
+            )
 
         ] 
         | str join
     )
 
     let path_segment = $"(ansi green_bold)($dir)"
-    let yadm_segment = if ($env.PROMPT? | default "zero" | str contains "yadm") {
+    let yadm_segment = if (
+		$env.PROMPT? | default "zero" 
+		| str contains "yadm"
+    ) {
         $"(ansi red_bold) @yadm"
     } 
-    let nix_segment = if ($env.PATH | any {|| str contains "/nix/store"}) {
+    let nix_segment = if (
+		$env.PATH | any { ||
+			str contains "/nix/store"
+		}
+    ) {
         $"(ansi blue) "
     } 
 
@@ -105,6 +120,10 @@ let-env ENV_CONVERSIONS = {
   }
 }
 
+def _home [ path: string ] {
+	
+	$env.HOME | path join $path
+}
 # Directories to search for scripts when calling source or use
 #
 # By default, <nushell-config-dir>/scripts is added
@@ -112,7 +131,7 @@ let-env NU_LIB_DIRS = [
 
     ($nu.config-path | path dirname | path join 'scripts')
     ($nu.config-path | path dirname | path join 'completions')
-    ($env.HOME | path join '.local/share/nushell')
+	(_home '.local/share/nushell')
 ]
 
 let-env NU_PLUGIN_DIRS = [
@@ -125,9 +144,9 @@ let-env NU_PLUGIN_DIRS = [
 
 let-env XDG_DATA_DIRS = ($env.HOME | path join .nix-profile/share)
 let-env EDITOR = 'nvim'
-let-env SVDIR = ( $env.HOME | path join '.config/sv' )
-let-env NQDIR = ( $env.HOME | path join '.stuff/nq' )
-let-env PLATES_DIR = ( $env.HOME | path join '.stuff/plates' )
+let-env SVDIR = ( _home '.config/sv' )
+let-env NQDIR = ( _home '.stuff/nq' )
+let-env PLATES_DIR = ( _home '.stuff/plates' )
 mkdir $env.NQDIR
 mkdir $env.SVDIR
 
