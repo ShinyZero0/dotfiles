@@ -125,8 +125,9 @@ let-env NU_PLUGIN_DIRS = [
 
 let-env XDG_DATA_DIRS = ($env.HOME | path join .nix-profile/share)
 let-env EDITOR = 'nvim'
-let-env SVDIR = ( $env.HOME | path join '.config/sv/' )
-let-env NQDIR = ( $env.HOME | path join '.stuff/nq/' )
+let-env SVDIR = ( $env.HOME | path join '.config/sv' )
+let-env NQDIR = ( $env.HOME | path join '.stuff/nq' )
+let-env PLATES_DIR = ( $env.HOME | path join '.stuff/plates' )
 mkdir $env.NQDIR
 mkdir $env.SVDIR
 

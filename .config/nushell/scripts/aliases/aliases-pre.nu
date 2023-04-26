@@ -40,10 +40,6 @@ def yankfile [] {
 }
 alias yf = yankfile
 
-def desc [] {
-	describe | descfmt
-}
-
 def share [ file: string ] {
 	curl -F $"file=@($file)" https://0x0.st
 }
@@ -57,8 +53,25 @@ alias ru = trans :ru
 alias en = trans :en
 
 def ungitb [] {
+
 	xsel -ob | parse 'https://github.com/{match}'
-	| get match | to text | xsel -ib
+	| get match 
+	| to text 
+	| xsel -ib
 }
 
+def __platesComplete [] {
+
+	let PlatesDir = ( $env.PLATES_DIR? | default $env.HOME )
+	ls -a $PlatesDir
+	| get name 
+	| path relative-to $PlatesDir
+}
+def plate [ ...args: string@__platesComplete ] {
+	
+	let PlatesDir = ( $env.PLATES_DIR? | default $env.HOME )
+	for file in $args {
+		cp ( $PlatesDir | path join $file ) $env.PWD
+	}
+}
 

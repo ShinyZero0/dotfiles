@@ -5,9 +5,14 @@ export extern zellij [
 	--config(-c): any
 	--config-dir: any
 	--layout(-l): any
+	--help(-h)
 	...args: any
 ]
 export extern "zellij attach" [
 	session: string@"zellij-sessions"
 ]
-alias "zellij a" = zellij attach
+export extern "zellij setup" [
+	--check
+	...args: any
+]
+export old-alias "zellij a" = zellij attach

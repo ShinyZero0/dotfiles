@@ -38,12 +38,20 @@ def-env _confirmOpener [
 	--nocd(-n)
 	--rlynocd(-N)
 ] {
-	if ($path | path expand | path type) == dir and ( not $rlynocd ) {
-		cd $path
-		return
-	} else if not $nocd {
-		cd ( $path | path dirname )
+	if $path == "" { return }
+	if ($path | path expand | path type) == dir {
+
+		if ( not $rlynocd ) {
+			cd $path
+			return
+		} else if not $nocd {
+			cd ( $path | path dirname )
+		} else if $rlynocd {
+			_select ( $path | path expand )
+			return
+		}
 	}
+
 	mut file = ""
 	if $nocd {
 		$file = ($path | path expand)

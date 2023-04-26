@@ -333,8 +333,10 @@ let-env config = {
 
 	hooks: {
 
-		pre_prompt: [{||
-			null  # replace with source code to run before the prompt is shown
+		pre_prompt: [{ ||
+			let direnv = (direnv export json | from json)
+			let direnv = if ($direnv | length) == 1 { $direnv } else { {} }
+			$direnv | load-env
 		}]
 		pre_execution: [{||
 			null  # replace with source code to run before the repl input is run
@@ -625,8 +627,10 @@ let-env config = {
 	]
 }
 
+
 source zoxide.nu
-source aliases.nu
+source aliases/git.nu
+source aliases/aliases-pre.nu
 source help.nu
 source alt.nu
 source nq.nu
@@ -634,16 +638,18 @@ source langTools.nu
 source focus.nu
 source hydra.nu
 
-# Completions
-# *-cmp are mine ones, and others were copied from https://github.com/nushell/nu_scripts and slightly modified
-
 use git-completions.nu *
 use nix-completions.nu *
 use make-completions.nu *
-
 use xbps-cmp.nu *
 use man-cmp.nu *
 use termux-pkg-cmp.nu *
 use dotnet-cmp.nu *
+use zellij-cmp.nu *
+
+source aliases/aliases-post.nu
+
+# Completions
+# *-cmp are mine ones, and others were copied from https://github.com/nushell/nu_scripts and slightly modified
 
 # source /data/data/com.termux/files/home/.config/broot/launcher/nushell/br
