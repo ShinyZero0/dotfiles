@@ -29,39 +29,40 @@
     pyright
     black
 
-    omnisharp-roslyn
-    dotnet-sdk_7
+    # omnisharp-roslyn
+    # dotnet-sdk_7
     clang
-    zlib
-    uncrustify
+    # zlib
+    # uncrustify
 
     nixfmt
 
     # CLI stuff
-		delta
-		gum
+    magic-wormhole-rs
+    delta
+    gum
     vivid
     pistol
     lf
 
-		duf
+    duf
     du-dust
 
-		gibo
-		fd
+    gibo # boilerplate
+    fd
     ripgrep
-    sd
+    sd # sed
     skim
     fzf
     moar
     chroma
     translate-shell
-    python310Packages.grip
+    python310Packages.grip # markdown previewer
 
     # Fonts
     ibm-plex
     (nerdfonts.override {
-      fonts = ["InconsolataLGC" "NerdFontsSymbolsOnly"];
+      fonts = [ "InconsolataLGC" "IBMPlexMono" "NerdFontsSymbolsOnly" ];
     })
 
     # # You can also create simple shell scripts directly inside your
@@ -72,8 +73,6 @@
     # '')
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
@@ -97,7 +96,7 @@
   #  /etc/profiles/per-user/zero/etc/profile.d/hm-session-vars.sh
   #
   # if you don't want to manage your shell through Home Manager.
-  home.sessionVariables = { DOTNET_ROOT = "${pkgs.dotnet-sdk_7}"; };
+  # home.sessionVariables = { DOTNET_ROOT = "${pkgs.dotnet-sdk_7}"; };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -109,6 +108,13 @@
   };
   programs.zoxide = {
     enable = true;
+    enableNushellIntegration = false;
+  };
+  # ...other config, other config...
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
     enableNushellIntegration = false;
   };
 }

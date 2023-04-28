@@ -24,7 +24,7 @@ cmd open-with ${{
 cmd open ${{
 
     tput smcup
-    jaro $fx
+    opener $fx
     tput rmcup
 }}
 cmd extract ${{

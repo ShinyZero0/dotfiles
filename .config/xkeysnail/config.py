@@ -11,7 +11,6 @@ define_keymap(
     re.compile("Firefox|firefox|firefox-aurora|librewolf-default|Chromium-freeworld"),
     {
         # ALT IS FOR TABS
-
         K("Alt-T"): K("C-T"),
         # C for last Closed tab
         K("Alt-C"): K("C-Shift-T"),
@@ -30,7 +29,6 @@ define_keymap(
         # Navigate history with Alt-F(orward)/B(ackward)
         K("Alt-B"): K("Alt-left"),
         K("Alt-F"): K("Alt-right"),
-
         # Open bookmarks with F1
         K("F1"): K("C-b"),
         # Open history sidebar
@@ -43,10 +41,22 @@ define_keymap(
         K("Alt-Q"): K("Ctrl-W"),
         K("C-Y"): [K("Alt-D"), K("Ctrl-C"), K("ESC")],
         K("C-R"): K("C-Y"),
-        K("C-W"): K("PAGE_UP"),
-        K("C-U"): K("PAGE_UP"),
-        K("C-S"): K("PAGE_DOWN"),
-        K("C-D"): K("PAGE_DOWN"),
+        # Tridactyl does it
+        # K("C-W"): K("PAGE_UP"),
+        # K("C-U"): K("PAGE_UP"),
+        # K("C-S"): K("PAGE_DOWN"),
+        # K("C-D"): K("PAGE_DOWN"),
         K("C-M"): K("C-D"),
+    },
+)
+define_keymap(
+    re.compile("TelegramDesktop"),
+    {
+        # Switch tabs with Alt+Arrows
+        K("Alt-up"): K("C-Shift-Tab"),
+        K("Alt-down"): K("C-Tab"),
+        # Switch tabs with Alt+Tab and Alt+Tilda
+        K("Alt-Tab"): K("C-tab"),
+        K("Alt-grave"): K("C-Shift-tab"),
     },
 )
