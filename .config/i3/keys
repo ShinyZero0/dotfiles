@@ -16,13 +16,15 @@ bindsym Print exec --no-startup-id maim --format=png | tee "$HOME/Pictures/$(dat
 
 # something
 
-bindsym control+mod1+T exec --no-startup-id kitty
+bindsym control+mod1+T exec --no-startup-id alacritty
 bindsym $mod+S move scratchpad
 bindsym $mod+Shift+S scratchpad show
 bindsym $mod+P exec --no-startup-id ~/.scripts/TogglePavuCTL.sh
 bindsym $mod+G exec --no-startup-id ~/.scripts/TogglePicom.sh
-bindsym --release $mod+I exec --no-startup-id ~/.scripts/VimInsert.sh
+bindsym --release $mod+I exec --no-startup-id ~/.scripts/VimInsert.nu
 bindsym --release $mod+Shift+T exec --no-startup-id ~/.scripts/Typograf.sh
+# bindsym Prior exec --no-startup-id "~/.scripts/HalfPage.nu up"
+# bindsym Next exec --no-startup-id "~/.scripts/HalfPage.nu down"
 # bindsym mod1+J exec --no-startup-id ~/.scripts/exitbattle.sh
 
 bindsym $mod+Tab   focus right
@@ -103,7 +105,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 
-# bindsym $mod+R mode "resize"
+bindsym $mod+control+R mode "resize"
 mode "resize" {
 
     bindsym J         resize shrink width  10 px or 10 ppt

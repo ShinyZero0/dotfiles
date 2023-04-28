@@ -17,12 +17,13 @@ exec --no-startup-id "dex --autostart --environment i3"
 # exec --no-startup-id fcitx5 -d
 # exec --no-startup-id qlipper
 exec --no-startup-id corectrl
-exec --no-startup-id "pipewire & sleep 1; wireplumber"
+exec --no-startup-id "pipewire & sleep 1; wireplumber & sleep 1; pipewire-pulse"
 exec --no-startup-id picom -b
 # exec --no-startup-id nm-applet
 exec --no-startup-id ~/.cargo/bin/rofi-server
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id ~/.scripts/Wallpapers.sh
+exec --no-startup-id keynav
 
 include layout
 
@@ -44,10 +45,13 @@ focus_follows_mouse no
 
 include colors
 
+smart_borders on
 for_window [instance="DesktopEditors"] move container to workspace $ws4
 for_window [class="libreoffice.*"]     move container to workspace $ws4
 for_window [class="Steam"]             move container to workspace $ws5
+
 for_window [class=".*War Thunder.*"]   move container to workspace $ws3
+for_window [class=".*doometernalx64vk.*"]   move container to workspace $ws3
 for_window [class="corectrl"]          move scratchpad
 
 for_window [class="(?i)todo"]     floating enable
