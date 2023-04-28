@@ -41,3 +41,8 @@ To line end: <C-e>
 
 ## See pipe progress
 xbps-install pv
+
+## Clear nuget cache
+```bash
+dotnet nuget locals all --clear
+```
