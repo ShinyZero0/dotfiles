@@ -192,9 +192,14 @@ let light_theme = {
 	shape_vardecl: purple
 }
 
-# External completer example
-let carapace_completer = {|spans|
-	carapace $spans.0 nushell $spans | from json
+let external_completer = { |spans|
+	{
+		dotnet: { || 
+			dotnet complete (
+				$spans | skip 1 | str join " "
+			) | lines
+		}
+	} | get $spans.0 | each { || do $in }
 }
 
 
@@ -307,7 +312,7 @@ let-env config = {
 
 			enable: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up my be very slow
 			max_results: 50 # setting it lower can improve completion performance at the cost of omitting some options
-			completer: null # check 'carapace_completer' above as an example
+			completer: $external_completer # check 'carapace_completer' above as an example
 		}
 	}
 	filesize: {
@@ -344,9 +349,9 @@ let-env config = {
 		env_change: {
 
 			PWD: [{ |before, after|
-				if ( './zellij.kdl' | path exists ) and ( $env.ZELLIJ? | is-empty ) {
-					~/.scripts/zellij-env.nu
-				}
+				# if ( './zellij.kdl' | path exists ) {
+				# 	~/.scripts/zellij-env.nu
+				# }
 			}]
 		}
 		display_output: {||
@@ -629,10 +634,10 @@ let-env config = {
 	]
 }
 
-
-source zoxide.nu
 source aliases/git.nu
 source aliases/aliases-pre.nu
+
+source zoxide.nu
 source help.nu
 source alt.nu
 source nq.nu
@@ -647,13 +652,7 @@ use make-completions.nu *
 use xbps-cmp.nu *
 use man-cmp.nu *
 use termux-pkg-cmp.nu *
-use dotnet-cmp.nu *
 use zellij-cmp.nu *
 use proc-cmp.nu *
 
 source aliases/aliases-post.nu
-
-# Completions
-# *-cmp are mine ones, and others were copied from https://github.com/nushell/nu_scripts and slightly modified
-
-# source /data/data/com.termux/files/home/.config/broot/launcher/nushell/br

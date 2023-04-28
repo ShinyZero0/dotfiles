@@ -1,4 +1,4 @@
-if ((uname -m) == "aarch64") {
+if (uname -m) == "aarch64" {
 
     $env.config.rm.always_trash = false
     $env.PATH = ( $env.PATH 
@@ -11,4 +11,5 @@ if ((uname -m) == "aarch64") {
             | path join ".local/share/zinit/polaris/bin" 
         )
     )
+	$env.PAGER = less
 }
