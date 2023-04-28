@@ -6,10 +6,6 @@ return {
 
 	"lambdalisue/suda.vim",
 	{
-		"sillyotter/t4-vim",
-		ft = "t4",
-	},
-	{
 		"karb94/neoscroll.nvim",
 		event = "VeryLazy",
 		opts = {

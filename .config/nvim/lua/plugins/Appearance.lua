@@ -6,12 +6,12 @@ return {
 		config = true,
 	},
 	{
+		"akinsho/git-conflict.nvim",
+		config = true,
+	},
+	{
 		"lewis6991/gitsigns.nvim",
 		event = "VeryLazy",
-		opts = {
-
-			yadm = { enable = true },
-		},
 	},
 	{
 		"anuvyklack/pretty-fold.nvim",

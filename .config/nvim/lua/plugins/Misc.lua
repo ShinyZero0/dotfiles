@@ -8,13 +8,13 @@ return {
 			end)
 		end,
 	},
-	{
-		"akinsho/toggleterm.nvim", -- terminal emulator
-		opts = {
-			shell = "nu",
-			persist_mode = false,
-		},
-	},
+	-- {
+	-- 	"akinsho/toggleterm.nvim", -- terminal emulator
+	-- 	opts = {
+	-- 		shell = "nu",
+	-- 		persist_mode = false,
+	-- 	},
+	-- },
 	{
 		-- "ShinyZero0/haxe-mainfile.nvim",
 		dir = "~/dev/vim/haxe-mainfile.nvim/",
