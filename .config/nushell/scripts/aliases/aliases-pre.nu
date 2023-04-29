@@ -30,18 +30,23 @@ def yankfile [] {
 
 	let input = $in
 	mut file = ""
-	if ($input | describe | str starts-with "record<") {
+	if (
+		$input | describe | str starts-with "record<"
+	) {
 		$file = $input.name
 	} else { 
 		$file = $input
 	}
-	let type = ( file --mime-type $file | split row " " | last )
+	let type = (
+		file --mime-type $file | split row " " | last
+	)
 	xclip -t $type -sel clip $file
 }
 alias yf = yankfile
 
 def share [ file: string ] {
-	curl -F $"file=@($file)" https://0x0.st
+	curl -F $"file=@($file)" https://0x0.st | xsel -ib
+	print "Link copied to clipboard!"
 }
 
 alias dwn = ls ~/Downloads/

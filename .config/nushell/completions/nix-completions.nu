@@ -1390,3 +1390,5 @@ export extern "nix-env --install" [
 
     ...args: any
 ]
+
+export extern "home-manager switch" []

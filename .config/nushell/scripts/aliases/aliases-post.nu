@@ -6,5 +6,7 @@ def _describe [] {
 	describe | descfmt
 }
 
-alias desc_ = describe
+alias describe_ = describe
 alias describe = _describe
+
+alias hm = home-manager
