@@ -3,6 +3,7 @@ local function is_whitespace(line)
 end
 
 require("neoclip").setup({
+	default_register = "*",
 	filter = function(data)
 		return not All(data.event.regcontents, is_whitespace)
 	end,

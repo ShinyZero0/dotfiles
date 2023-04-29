@@ -1,4 +1,6 @@
 map("i", "<C-a>", ToggleEndingStuff)
+map("n", "<leader>a", ToggleEndingStuff)
+mapcmd("n", "<Leader>w", "ArgWrap")
 
 mapcmd({ "n", "t" }, "<M-h>", "wincmd h", {})
 mapcmd({ "n", "t" }, "<M-j>", "wincmd j", {})
@@ -7,6 +9,7 @@ mapcmd({ "n", "t" }, "<M-l>", "wincmd l", {})
 map("t", "<C-w>", [[<C-\><C-n><C-w>]], {})
 map("t", "<C-`>", [[<C-\><C-n>]], {})
 
+-- MoveLine
 mapcmd("n", "<C-j>", "MoveLine(1)", {})
 mapcmd("n", "<C-k>", "MoveLine(-1)", {})
 mapcmd("n", "<C-h>", "MoveHChar(-1)", {})
