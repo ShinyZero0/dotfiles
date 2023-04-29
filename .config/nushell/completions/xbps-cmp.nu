@@ -11,6 +11,7 @@ def "xbps all packages" [] {
 }
 export extern "sudo xbps-remove" [ 
 
+	...args: string@"xbps local packages"
 	--config(-C)	# Path to confdir (xbps.d)
 	--cachedir(-c)	# Path to cachedir
 	--debug(-d)	# Debug mode shown to stderr
