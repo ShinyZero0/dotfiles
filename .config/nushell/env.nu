@@ -70,7 +70,7 @@ def create_right_prompt [] {
         ] 
         | str join
     )
-    let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {(
+    let last_exit_code = if ($env.LAST_EXIT_CODE != 0) { (
 
         [
             (ansi rb)
@@ -92,15 +92,15 @@ def create_right_prompt [] {
 }
 
 # Use nushell functions to define your right and left prompt
-let-env PROMPT_COMMAND = {|| create_left_prompt }
-let-env PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
+let-env PROMPT_COMMAND = { || create_left_prompt }
+let-env PROMPT_COMMAND_RIGHT = { || create_right_prompt }
 
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
-let-env PROMPT_INDICATOR = {|| "> " }
-let-env PROMPT_INDICATOR_VI_INSERT = {|| ": " }
-let-env PROMPT_INDICATOR_VI_NORMAL = {|| "> " }
-let-env PROMPT_MULTILINE_INDICATOR = {|| "::: " }
+let-env PROMPT_INDICATOR = { || "> " }
+let-env PROMPT_INDICATOR_VI_INSERT = { || ": " }
+let-env PROMPT_INDICATOR_VI_NORMAL = { || "> " }
+let-env PROMPT_MULTILINE_INDICATOR = { || "::: " }
 
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
@@ -114,6 +114,11 @@ let-env ENV_CONVERSIONS = {
     to_string: { |v| $v | path expand -n | str join (char esep) }
   }
   "Path": {
+
+    from_string: { |s| $s | split row (char esep) | path expand -n }
+    to_string: { |v| $v | path expand -n | str join (char esep) }
+  }
+  "XDG_DATA_DIRS": {
 
     from_string: { |s| $s | split row (char esep) | path expand -n }
     to_string: { |v| $v | path expand -n | str join (char esep) }
@@ -142,7 +147,12 @@ let-env NU_PLUGIN_DIRS = [
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
-let-env XDG_DATA_DIRS = ($env.HOME | path join .nix-profile/share)
+let-env XDG_DATA_DIRS = (
+	$env.XDG_DATA_DIRS? | default [] 
+		| prepend ( _home .nix-profile/share ) 
+		| prepend /usr/local/share 
+		| prepend /usr/share/
+)
 let-env EDITOR = 'nvim'
 let-env SVDIR = ( _home '.config/sv' )
 let-env NQDIR = ( _home '.stuff/nq' )

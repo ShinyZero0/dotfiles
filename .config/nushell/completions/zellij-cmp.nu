@@ -1,5 +1,5 @@
 def "zellij-sessions" [] {
-	zellij list-sessions | lines | each {||split row " " | get 0 } 
+	zellij list-sessions | lines | each { ||split row " " | get 0 } 
 }
 export extern zellij [
 	--config(-c): any

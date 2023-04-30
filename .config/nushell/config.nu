@@ -27,7 +27,7 @@ let dark_theme = {
 		}
 	}
 	duration: white
-	date: {|| (date now) - $in |
+	date: { || (date now) - $in |
 		if $in < 1hr {
 
 			'red3b'
@@ -76,7 +76,7 @@ let dark_theme = {
 	shape_flag: blue_bold
 	shape_float: purple_bold
 	# shapes are used to change the cli syntax highlighting
-	shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b}
+	shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b }
 	shape_globpattern: cyan_bold
 	shape_int: purple_bold
 	shape_internalcall: cyan_bold
@@ -108,9 +108,9 @@ let light_theme = {
 	empty: blue
 	# Closures can be used to choose colors for specific values.
 	# The value (in this case, a bool) is piped into the closure.
-	bool: {|| if $in { 'dark_cyan' } else { 'dark_gray' } }
+	bool: { || if $in { 'dark_cyan' } else { 'dark_gray' } }
 	int: dark_gray
-	filesize: {|e|
+	filesize: { |e|
 		if $e == 0b {
 
 			'dark_gray'
@@ -120,7 +120,7 @@ let light_theme = {
 		} else { 'blue_bold' }
 	}
 	duration: dark_gray
-	date: {|| (date now) - $in |
+	date: { || (date now) - $in |
 		if $in < 1hr {
 
 			'red3b'
@@ -169,7 +169,7 @@ let light_theme = {
 	shape_flag: blue_bold
 	shape_float: purple_bold
 	# shapes are used to change the cli syntax highlighting
-	shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b}
+	shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b }
 	shape_globpattern: cyan_bold
 	shape_int: purple_bold
 	shape_internalcall: cyan_bold
@@ -240,18 +240,18 @@ let-env config = {
 		exit_esc: true
 
 		command_bar_text: '#C4C9C6'
-		# command_bar: {fg: '#C4C9C6' bg: '#223311' }
+		# command_bar: { fg: '#C4C9C6' bg: '#223311' }
 
-		status_bar_background: {fg: '#1D1F21' bg: '#C4C9C6' }
-		# status_bar_text: {fg: '#C4C9C6' bg: '#223311' }
+		status_bar_background: { fg: '#1D1F21' bg: '#C4C9C6' }
+		# status_bar_text: { fg: '#C4C9C6' bg: '#223311' }
 
-		highlight: {bg: 'yellow' fg: 'black' }
+		highlight: { bg: 'yellow' fg: 'black' }
 
 		status: {
 
-			# warn: {bg: 'yellow', fg: 'blue'}
-			# error: {bg: 'yellow', fg: 'blue'}
-			# info: {bg: 'yellow', fg: 'blue'}
+			# warn: { bg: 'yellow', fg: 'blue' }
+			# error: { bg: 'yellow', fg: 'blue' }
+			# info: { bg: 'yellow', fg: 'blue' }
 		}
 
 		try: {
@@ -276,8 +276,8 @@ let-env config = {
 			show_head: true
 			show_index: true
 
-			# selected_cell: {fg: 'white', bg: '#777777'}
-			# selected_row: {fg: 'yellow', bg: '#C1C2A3'}
+			# selected_cell: { fg: 'white', bg: '#777777' }
+			# selected_row: { fg: 'yellow', bg: '#C1C2A3' }
 			# selected_column: blue
 
 			# padding_column_right: 2
@@ -289,7 +289,7 @@ let-env config = {
 
 		config: {
 
-			cursor_color: {bg: 'yellow' fg: 'black' }
+			cursor_color: { bg: 'yellow' fg: 'black' }
 
 			# border_color: white
 			# list_color: green
@@ -340,10 +340,10 @@ let-env config = {
 
 		pre_prompt: [{ ||
 			let direnv = (direnv export json | from json)
-			let direnv = if ($direnv | length) == 1 { $direnv } else { {} }
+			let direnv = if ($direnv | length) == 1 { $direnv } else { { } }
 			$direnv | load-env
 		}]
-		pre_execution: [{||
+		pre_execution: [{ ||
 			null  # replace with source code to run before the repl input is run
 		}]
 		env_change: {
@@ -354,14 +354,14 @@ let-env config = {
 				# }
 			}]
 		}
-		display_output: {||
+		display_output: { ||
 			if (term size).columns >= 100 { table -e } else { table }
 		}
 		command_not_found: { |command| (
 
 			if not (which xlocate | is-empty) {
 
-				let pkgs = (xlocate $"bin/($command)$" | lines | each {|x| $x | parse '{pkg} {bin}' | get pkg | to text } | to text  )
+				let pkgs = (xlocate $"bin/($command)$" | lines | each { |x| $x | parse '{pkg} {bin}' | get pkg | to text } | to text  )
 				if not ($pkgs | is-empty) {
 					( "This executable can be found in the following packages:\n" + $pkgs)
 				} else {
@@ -451,7 +451,7 @@ let-env config = {
 			source: { |buffer, position|
 				$nu.scope.commands
 				| where name =~ $buffer
-				| each { |it| {value: $it.name description: $it.usage} }
+				| each { |it| { value: $it.name description: $it.usage } }
 			}
 		}
 		{
@@ -473,7 +473,7 @@ let-env config = {
 				$nu.scope.vars
 				| where name =~ $buffer
 				| sort-by name
-				| each { |it| {value: $it.name description: $it.type} }
+				| each { |it| { value: $it.name description: $it.type } }
 			}
 		}
 		{
@@ -498,7 +498,7 @@ let-env config = {
 			source: { |buffer, position|
 				$nu.scope.commands
 				| where name =~ $buffer
-				| each { |it| {value: $it.name description: $it.usage} }
+				| each { |it| { value: $it.name description: $it.usage } }
 			}
 		}
 	]
@@ -531,10 +531,8 @@ let-env config = {
 			keycode: char_u
 			mode: [emacs, vi_normal, vi_insert]
 			event: {
-
 				until: [
-
-					{edit: cutfromlinestart}
+					{ edit: cutfromlinestart }
 				]
 			}
 		}
@@ -584,9 +582,6 @@ let-env config = {
 					send: executehostcommand 
 					cmd: "_finderHydra" 
 				}
-				{
-					edit: MoveToStart
-				}
 			]
 
 		}
@@ -596,6 +591,8 @@ let-env config = {
 source aliases/git.nu
 source aliases/aliases-pre.nu
 
+use utils.nu *
+
 source zoxide.nu
 source help.nu
 source alt.nu
@@ -603,7 +600,8 @@ source nq.nu
 source langTools.nu
 source focus.nu
 source hydra.nu
-use utils.nu *
+
+use move-and-replace.nu *
 
 use git-completions.nu *
 use nix-completions.nu *
@@ -615,3 +613,5 @@ use zellij-cmp.nu *
 use proc-cmp.nu *
 
 source aliases/aliases-post.nu
+
+source init.nu

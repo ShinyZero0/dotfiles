@@ -2,25 +2,25 @@ let _finderHydraKeys = [
 
 	{
 		lhs: "o"
-		rhs: {|| exec nu -e _open}
+		rhs: { || exec nu -e _open }
 		exit: true
 		desc: "open file without focusing"
 	},
 	{
 		lhs: "s"
-		rhs: {|| exec nu -e _select}
+		rhs: { || exec nu -e _select }
 		exit: true
 		desc: "open file or copy dir to clipboard"
 	},
 	{
 		lhs: "f"
-		rhs: {|| exec nu -e _focus}
+		rhs: { || exec nu -e _focus }
 		exit: true
 		desc: "focus and open file"
 	},
 	{
 		lhs: "q"
-		rhs: {|| }
+		rhs: { || }
 		exit: true
 		desc: "quit"
 	}
@@ -38,7 +38,7 @@ def-env hydra [
 		let key = ( readkey -b )
 		# print $hint
 		let matchedKeys = ( $keydefs | where lhs == $key )
-		mut matchedKey = {}
+		mut matchedKey = { }
 		if ( $matchedKeys | is-empty ) {
 			let warn = $"(ansi lrb)Undefined key: ($key)(ansi reset)"
 			print ( $warn )

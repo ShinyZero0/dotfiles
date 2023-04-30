@@ -80,3 +80,9 @@ def plate [ ...args: string@__platesComplete ] {
 	}
 }
 
+def lns [
+	source: string 
+	dest: string
+] {
+	ln -s ( $source | path expand ) ( $dest | path expand )
+}
