@@ -28,10 +28,6 @@ controls{
     }
 
     ID_RANGEFINDER{
-      keyboardKey:i=19
-    }
-
-    ID_RANGEFINDER{
       keyboardKey:i=56
       keyboardKey:i=19
     }
@@ -58,6 +54,16 @@ controls{
     }
 
     ID_SENSOR_SWITCH_TANK{}
+    ID_SENSOR_TARGET_LOCK_TANK{
+      keyboardKey:i=56
+      keyboardKey:i=45
+    }
+
+    ID_SENSOR_TARGET_SWITCH_TANK{
+      keyboardKey:i=56
+      keyboardKey:i=30
+    }
+
     ID_SHIP_WEAPON_DEPTH_CHARGE{}
     ID_SHIP_WEAPON_MINE{}
     ID_SHOW_MOUSE_CURSOR{
@@ -85,6 +91,7 @@ controls{
       keyboardKey:i=207
     }
 
+    ID_WEAPON_LOCK_TANK{}
     ID_ZOOM_TOGGLE{
       keyboardKey:i=29
     }
@@ -222,7 +229,7 @@ settings{
   mouseZMultSubmarine:r=0.5
   gamepadMinVibration:r=0.05
   cameraSmooth:r=0
-  cameraSpeed:r=1.13
+  cameraSpeed:r=1.1
   cameraMouseSpeed:r=1.4
   cameraFpsPhysMult:r=0.5
   vrCameraFpsPhysMult:r=0

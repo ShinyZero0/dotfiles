@@ -10,6 +10,7 @@ controls{
       keyboardKey:i=197
     }
 
+    ID_AEROBATICS_SMOKE{}
     ID_AGM{
       keyboardKey:i=197
     }
@@ -35,6 +36,7 @@ controls{
       keyboardKey:i=197
     }
 
+    ID_CAMERA_FOLLOW_OBJECT{}
     ID_CAMERA_NEUTRAL{
       keyboardKey:i=46
     }
@@ -43,17 +45,22 @@ controls{
       keyboardKey:i=42
     }
 
+    ID_CAMERA_VIEW_BACK{
+      keyboardKey:i=48
+    }
+
+    ID_CAMERA_VIEW_DOWN{}
     ID_CAMERA_VIRTUAL_FPS{}
     ID_CONTINUE{
       keyboardKey:i=57
     }
 
     ID_FIRE_ADDITIONAL_GUNS{
-      mouseButton:i=0
+      keyboardKey:i=34
     }
 
     ID_FIRE_CANNONS{
-      mouseButton:i=0
+      keyboardKey:i=34
     }
 
     ID_FIRE_GM_SPECIAL_GUN{
@@ -62,24 +69,20 @@ controls{
 
     ID_FIRE_HUMAN_SPECIAL_GUN{}
     ID_FIRE_MGUNS{
-      mouseButton:i=0
-    }
-
-    ID_FIRE_MGUNS{
-      mouseButton:i=4
+      keyboardKey:i=34
     }
 
     ID_FIRE_SECONDARY{
-      mouseButton:i=1
+      keyboardKey:i=21
     }
 
     ID_FLAPS{}
     ID_FLAPS_DOWN{
-      keyboardKey:i=33
+      keyboardKey:i=22
     }
 
     ID_FLAPS_UP{
-      keyboardKey:i=47
+      keyboardKey:i=23
     }
 
     ID_FLARES{
@@ -92,6 +95,11 @@ controls{
 
     ID_FUEL_TANKS{
       keyboardKey:i=12
+    }
+
+    ID_GAME_PAUSE{}
+    ID_GEAR{
+      keyboardKey:i=27
     }
 
     ID_GUIDED_BOMBS{
@@ -130,7 +138,7 @@ controls{
     }
 
     ID_SENSOR_ACM_SWITCH{
-      mouseButton:i=2
+      keyboardKey:i=44
     }
 
     ID_SENSOR_MODE_SWITCH{
@@ -146,6 +154,10 @@ controls{
       keyboardKey:i=2
     }
 
+    ID_SENSOR_TARGET_LOCK{
+      keyboardKey:i=17
+    }
+
     ID_SENSOR_TARGET_SWITCH{
       keyboardKey:i=3
     }
@@ -154,10 +166,12 @@ controls{
     ID_SHIP_WEAPON_MINE{}
     ID_SHIP_WEAPON_MORTAR{}
     ID_SHIP_WEAPON_ROCKETS{}
+    ID_SHOW_HERO_MODULES{}
     ID_SHOW_MOUSE_CURSOR{
       keyboardKey:i=49
     }
 
+    ID_SHOW_MULTIFUNC_WHEEL_MENU{}
     ID_SHOW_VOICE_MESSAGE_LIST_SQUAD{}
     ID_SQUAD_TARGET_DESIGNATION{
       keyboardKey:i=19
@@ -186,6 +200,7 @@ controls{
       keyboardKey:i=2
     }
 
+    ID_TOGGLE_ENGINE{}
     ID_TOGGLE_LASER_DESIGNATOR{
       keyboardKey:i=10
     }
@@ -207,6 +222,46 @@ controls{
       keyboardKey:i=29
     }
 
+    ailerons_rangeMax{
+      keyboardKey:i=33
+    }
+
+    ailerons_rangeMin{
+      keyboardKey:i=30
+    }
+
+    camx_rangeSet{
+      keyboardKey:i=43
+    }
+
+    camy_rangeSet{
+      keyboardKey:i=43
+    }
+
+    elevator_rangeMax{
+      keyboardKey:i=32
+    }
+
+    elevator_rangeMin{
+      keyboardKey:i=31
+    }
+
+    mouse_aim_x_rangeMax{
+      keyboardKey:i=38
+    }
+
+    mouse_aim_x_rangeMin{
+      keyboardKey:i=35
+    }
+
+    mouse_aim_y_rangeMax{
+      keyboardKey:i=37
+    }
+
+    mouse_aim_y_rangeMin{
+      keyboardKey:i=36
+    }
+
     sweep_rangeMax{
       keyboardKey:i=5
     }
@@ -215,14 +270,12 @@ controls{
       keyboardKey:i=6
     }
 
-    throttle_rangeMax{}
     throttle_rangeMax{
-      keyboardKey:i=37
+      keyboardKey:i=24
     }
 
-    throttle_rangeMin{}
     throttle_rangeMin{
-      keyboardKey:i=36
+      keyboardKey:i=25
     }
 
     vtol_rangeMax{
@@ -235,12 +288,24 @@ controls{
   }
 
   axes{
+    camx{
+      innerDeadzone:r=0
+      relSens:r=1
+      relStep:r=0
+    }
+
+    camy{
+      innerDeadzone:r=0
+      relSens:r=1
+      relStep:r=0
+    }
+
     sweep{
       relative:b=yes
     }
 
     throttle{
-      innerDeadzone:r=0.05
+      innerDeadzone:r=0
       kMul:r=2
     }
   }
@@ -368,7 +433,7 @@ settings{
   gamepadMinVibration:r=0.05
   cameraSmooth:r=0
   cameraSpeed:r=1.325
-  cameraMouseSpeed:r=2.375
+  cameraMouseSpeed:r=2.3
   cameraFpsPhysMult:r=0.09
   vrCameraFpsPhysMult:r=0
   invertY:b=no

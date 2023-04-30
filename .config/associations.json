@@ -1,0 +1,44 @@
+{
+  "Term": "kitty --class floatwin --",
+  "Handlers": [
+    {
+      "GlobPatterns": [
+        "*"
+      ],
+      "Exec": "nvim",
+      "Term": true
+    },
+    {
+      "GlobPatterns": [
+        "*.tar*",
+        "*.gz",
+        "*.zip"
+      ],
+      "Exec": "atool -x",
+      "Term": true
+    },
+    {
+      "RegexPatterns": [
+        "^https?://.*"
+      ],
+      "Exec": "firefox-devedition",
+      "Term": false
+    },
+    {
+      "GlobPatterns": [
+        "*.png",
+        "*.jp?g",
+        "*.webm",
+        "*.gif"
+      ],
+      "Exec": "nomacs"
+    },
+    {
+			"GlobPatterns": [
+				"*.mp4",
+				"*.mkv"
+			],
+      "Exec": "mpv"
+    }
+  ]
+}
