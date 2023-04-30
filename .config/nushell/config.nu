@@ -526,47 +526,6 @@ let-env config = {
 			event: { send: menuprevious }
 		}
 		{
-			name: history_menu
-			modifier: control
-			keycode: char_r
-			mode: emacs
-			event: { send: menu name: history_menu }
-		}
-		{
-			name: next_page
-			modifier: control
-			keycode: char_x
-			mode: emacs
-			event: { send: menupagenext }
-		}
-		{
-			name: undo_or_previous_page
-			modifier: control
-			keycode: char_z
-			mode: emacs
-			event: {
-
-				until: [
-
-					{ send: menupageprevious }
-					{ edit: undo }
-				]
-			}
-		}
-		{
-			name: yank
-			modifier: control
-			keycode: char_y
-			mode: emacs
-			event: {
-
-				until: [
-
-					{edit: pastecutbufferafter}
-				]
-			}
-		}
-		{
 			name: unix-line-discard
 			modifier: control
 			keycode: char_u
@@ -588,7 +547,7 @@ let-env config = {
 
 				until: [
 
-					{edit: cuttolineend}
+					{ edit: CutToLineEnd }
 				]
 			}
 		}
@@ -616,14 +575,14 @@ let-env config = {
 			event: { send: menu name: commands_with_description }
 		}
 		{
-			name: focus_file
+			name: find_file
 			modifier: control
 			keycode: char_f
 			mode: [emacs, vi_normal, vi_insert]
 			event: [
 				{ 
 					send: executehostcommand 
-					cmd: "_focusHydra" 
+					cmd: "_finderHydra" 
 				}
 				{
 					edit: MoveToStart
@@ -644,7 +603,7 @@ source nq.nu
 source langTools.nu
 source focus.nu
 source hydra.nu
-source utils.nu
+use utils.nu *
 
 use git-completions.nu *
 use nix-completions.nu *

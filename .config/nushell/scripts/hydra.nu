@@ -1,4 +1,5 @@
-let _focusHydraKeys = [ 
+let _finderHydraKeys = [ 
+
 	{
 		lhs: "o"
 		rhs: {|| exec nu -e _open}
@@ -27,6 +28,7 @@ let _focusHydraKeys = [
 def-env hydra [
 	keydefs: list<record>
 ] {
+
 	# let hint = ( _makeHint $keydefs | to text )
 	$env.config.table.index_mode = never
 	$env.config.table.mode = none
@@ -47,9 +49,13 @@ def-env hydra [
 		}
 	} 
 }
-def-env _focusHydra [] {
-	hydra $_focusHydraKeys
+
+def-env _finderHydra [] {
+	hydra $_finderHydraKeys
 }
+
+# unused
+
 # def _makeHint [
 # 	keydefs: list<record>
 # ] {
@@ -70,7 +76,6 @@ def-env _focusHydra [] {
 # 	$hintStrings | append (ansi reset)
 # }
 
-# unused
 # def _centerLine [
 # 	line: string
 # ] {
