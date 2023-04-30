@@ -1,2 +1,2 @@
-.local-history*
+.direnv/
 .mainfile.vim

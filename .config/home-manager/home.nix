@@ -18,26 +18,25 @@
   home.packages = with pkgs; [
 
     # Stuff
+
     firefox-devedition-bin
     xkeysnail
     keynav
 
     # Language stuff
+
     lua-language-server
     stylua
 
     pyright
     black
 
-    # omnisharp-roslyn
-    # dotnet-sdk_7
     clang
-    # zlib
-    # uncrustify
 
     nixfmt
 
     # CLI stuff
+
     magic-wormhole-rs
     delta
     gum
@@ -48,6 +47,7 @@
     duf
     du-dust
 
+    entr # run commands on file changes
     gibo # boilerplate
     fd
     ripgrep

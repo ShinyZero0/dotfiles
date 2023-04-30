@@ -12,7 +12,7 @@ xsel -ob | save -f .viminsertoldclip.txt
 # xdotool keyup alt
 # xdotool keyup ctrl
 
-# xdotool key ctrl+x
+xdotool key ctrl+c
 # sleep 100ms
 
 # xsel -ob | save -f .viminsert.txt

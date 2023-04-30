@@ -1,5 +1,4 @@
-#!/bin/sh
-
+#!/bin/bash
 
 win=$(xdotool getactivewindow)
 xdotool windowactivate $win
@@ -12,7 +11,7 @@ xdotool keyup ctrl
 xdotool key ctrl+x
 
 xclip -selection clipboard -o > .typograf.txt
-typograf-cli -l ru,en-US .typograf.txt | xclip -selection clipboard -i
+npx typograf-cli -l ru,en-US .typograf.txt | xclip -selection clipboard -i
 
 xdotool windowactivate $win 
 xdotool keyup shift 
