@@ -39,17 +39,12 @@ export def mvnrp [
 			sd $"\(source|use) ($old | path basename)" $'$1 ($new | path basename)' $file
 		}
 
-		open $file
+		open --raw $file
 		| str replace $env.oldFull $env.newFull 
-		| str replace (
-			sameAction { || relpath $env.PWD } $old $new 
-		)
-		| str replace (
-			sameAction { || str replace $env.HOME '$HOME' } $old $new 
-		)
-		| str replace (
-			sameAction { || str replace $env.HOME '~' } $old $new
-		)
+		| sameReplace { || relpath $env.PWD } $old $new 
+		| sameReplace { || str replace $env.HOME '$HOME' } $old $new 
+		| sameReplace { || str replace $env.HOME '~' } $old $new
+		| save -f $file
 
 	}
 }
@@ -116,4 +111,9 @@ def sameAction [
 		$list = ( $list | append ( $entry | do $func ) )
 	}
 	$list | to text
+}
+def sameReplace [
+	func: closure old: string new: string
+] {
+	$in | str replace -a ($old | do $func) ($new | do $func)
 }
