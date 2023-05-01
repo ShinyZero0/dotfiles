@@ -3,18 +3,7 @@
 --  ╰──────────────────────────────────────────────────────────╯
 
 return {
-	-- {
-	-- 	"LhKipp/nvim-nu",
-	-- 	-- ft = "nu",
-	-- 	opts = {
-	--
-	-- 		use_lsp_features = false,
-	-- 	},
-	-- },
-	{
-		"jdonaldson/vaxe",
-		ft = "haxe",
-	},
+
 	{
 		"zdharma-continuum/zinit-vim-syntax",
 		ft = "zsh",
@@ -44,6 +33,4 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 	},
-	-- "Fymyte/rasi.vim",
-	-- "lervag/vimtex",
 }

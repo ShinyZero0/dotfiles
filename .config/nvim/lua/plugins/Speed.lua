@@ -63,7 +63,7 @@ return {
 		lazy = true,
 		opts = {
 
-			selection_chars = "ASDFQW",
+			selection_chars = "ASDFQWEHJKL",
 			fg_color = "#ffe9aa",
 			other_win_hl_color = "",
 		},
@@ -84,7 +84,7 @@ return {
 			"crispgm/telescope-heading.nvim",
 			-- "nvim-telescope/telescope-file-browser.nvim",
 			"natecraddock/telescope-zf-native.nvim",
-            "nvim-telescope/telescope-symbols.nvim"
+			"nvim-telescope/telescope-symbols.nvim",
 		},
 	},
 }

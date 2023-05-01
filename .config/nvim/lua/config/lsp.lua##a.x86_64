@@ -28,13 +28,7 @@ require("lspconfig")["omnisharp"].setup({
 
 	capabilities = capabilities,
 	cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
-	-- handlers = {
-	--  ["textDocument/definition"] = require("omnisharp_extended").handler,
-	-- },
 })
--- require("lspconfig")["csharp_ls"].setup({
--- 	capabilities = capabilities,
--- })
 
 require("lspconfig")["lua_ls"].setup({
 
@@ -43,11 +37,13 @@ require("lspconfig")["lua_ls"].setup({
 		Lua = {
 
 			runtime = {
-
 				version = "LuaJIT",
 			},
 			diagnostics = {
 
+				disable = {
+					"lowercase-global",
+				},
 				globals = { "vim" },
 			},
 			workspace = {
@@ -60,22 +56,9 @@ require("lspconfig")["lua_ls"].setup({
 				checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
 			},
 			telemetry = {
-
 				enable = false,
 			},
 		},
 	},
 	capabilities = capabilities,
 })
--- require("lspconfig")["pylsp"].setup({
---  capabilities = capabilities,
--- })
--- require("lspconfig")["ruff_lsp"].setup({
--- 	capabilities = capabilities,
--- })
--- require("lspconfig").jedi_language_server.setup({
---  capabilities = capabilities,
--- })
--- require("lspconfig")["texlab"].setup({
---  capabilities = capabilities,
--- })
