@@ -7,17 +7,6 @@ alias pkls = xbps-query -m
 
 old-alias dn = dotnet
 
-# list runit services
-def svls [
-	--all(-a)
-] {
-	if $all {
-		ls /etc/sv/
-	} else {
-		ls /var/service/
-	}
-}
-
 alias vi = nvim
 
 alias q = exit

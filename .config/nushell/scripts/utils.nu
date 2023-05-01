@@ -30,3 +30,19 @@ export def _currentfile [] {
 	| get 5
 	| path expand
 }
+export def "_clip o" [] {
+
+	if not ( which xsel | is-empty ) {
+		xsel -ob
+	} else {
+		termux-clipboard-get
+	}
+}
+export def "_clip i" [] {
+
+	if not ( which xsel | is-empty ) {
+		$in | xsel -ib
+	} else {
+		termux-clipboard-set
+	}
+}

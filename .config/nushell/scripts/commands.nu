@@ -2,6 +2,17 @@ export def indexate [] {
 	$in | enumerate | flatten
 }
 
+# list runit services
+export def svls [
+	--all(-a)
+] {
+	if $all {
+		ls /etc/sv/
+	} else {
+		ls /var/service/
+	}
+}
+
 export def fnr_files [
 	find: string 
 	replace: string 
