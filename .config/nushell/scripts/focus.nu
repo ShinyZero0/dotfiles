@@ -55,7 +55,7 @@ def-env _confirmOpener [
 
 	mut file = ""
 	if $nocd {
-		$file = ($path | path expand)
+		$file = ($path | path expand -n) # don't resolve symlinks
 	} else {
 		$file = ($path | path basename)
 	}

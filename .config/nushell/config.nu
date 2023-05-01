@@ -224,7 +224,7 @@ let-env config = {
 	table: {
 
 		mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
-		index_mode: always # "always" show indexes, "never" show indexes, "auto" = show indexes when a table has "index" column
+		index_mode: auto # "always" show indexes, "never" show indexes, "auto" = show indexes when a table has "index" column
 		show_empty: true # show 'empty list' and 'empty record' placeholders for command output
 		trim: {
 
@@ -311,7 +311,7 @@ let-env config = {
 		external: {
 
 			enable: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up my be very slow
-			max_results: 50 # setting it lower can improve completion performance at the cost of omitting some options
+			max_results: 100500 # setting it lower can improve completion performance at the cost of omitting some options
 			completer: $external_completer # check 'carapace_completer' above as an example
 		}
 	}
@@ -588,10 +588,11 @@ let-env config = {
 	]
 }
 
-source aliases/git.nu
 source aliases/aliases-pre.nu
+source aliases/git.nu
 
-use utils.nu *
+# use utils.nu *
+use commands.nu *
 
 source zoxide.nu
 source help.nu
@@ -611,6 +612,7 @@ use man-cmp.nu *
 use termux-pkg-cmp.nu *
 use zellij-cmp.nu *
 use proc-cmp.nu *
+use udevil-cmp.nu *
 
 source aliases/aliases-post.nu
 

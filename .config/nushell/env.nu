@@ -7,7 +7,7 @@
 # By default, <nushell-config-dir>/scripts is added
 use ~/.config/nushell/scripts/utils.nu [
 	_home,
-	ansi-tmp
+	_ansiTmp
 ] 
 
 let-env NU_LIB_DIRS = [
@@ -57,15 +57,15 @@ def create_left_prompt [] {
         $env.PWD | str replace $home '~'
     )
 
-    let path_segment = ( ansi-tmp $dir gb )
+    let path_segment = ( _ansiTmp $dir gb )
     let yadm_segment = if (
 		$env.PROMPT? 
 		| default "" 
 		| str contains "yadm"
     ) {
 		[
-			( ansi-tmp "@" light_cyan_bold )
-			( ansi-tmp "yadm" red_bold )
+			( _ansiTmp "@" light_cyan_bold )
+			( _ansiTmp "yadm" red_bold )
 		]
 		| str join
     } 
@@ -74,7 +74,7 @@ def create_left_prompt [] {
 			str contains "/nix/store"
 		}
     ) {
-		ansi-tmp "  " blue
+		_ansiTmp "  " blue
     } 
 
     let left_prompt = ( 
@@ -93,13 +93,13 @@ def create_right_prompt [] {
 
     let time_segment = (
         [ (
-			ansi-tmp (date now | date format '%r') magenta
+			_ansiTmp (date now | date format '%r') magenta
 		) ] 
         | str join
     )
     let last_exit_code = if ( $env.LAST_EXIT_CODE != 0 ) { 
 		[
-            ( ansi-tmp $env.LAST_EXIT_CODE r )
+            ( _ansiTmp $env.LAST_EXIT_CODE r )
         ] 
         | str join
 	} else { "" }
