@@ -11,8 +11,8 @@ require("nvim-treesitter.configs").setup({
 			enable = true,
 			keymaps = {
 
-				["ip"] = "@parameter.inner",
-				["ap"] = "@parameter.outer",
+				["ia"] = "@parameter.inner",
+				["aa"] = "@parameter.outer",
 				["is"] = "@scope.inner",
 				["as"] = "@scope.outer",
 				["ib"] = "@block.inner",
@@ -27,7 +27,7 @@ require("nvim-treesitter.configs").setup({
 
 				["]m"] = "@function.outer",
 				["]]"] = "@class.outer",
-				["]p"] = "@parameter.inner",
+				["]a"] = "@parameter.inner",
 				["]l"] = "@loop.*",
 				["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
 				["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
@@ -40,7 +40,7 @@ require("nvim-treesitter.configs").setup({
 
 				["[m"] = "@function.outer",
 				["[["] = "@class.outer",
-				["[p"] = "@parameter.inner",
+				["[a"] = "@parameter.inner",
 				["[s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
 			},
 			goto_previous_end = {
@@ -49,11 +49,11 @@ require("nvim-treesitter.configs").setup({
 			},
 			goto_next = {
 
-				["]d"] = "@conditional.outer",
+				-- ["]d"] = "@conditional.outer",
 			},
 			goto_previous = {
 
-				["[d"] = "@conditional.outer",
+				-- ["[d"] = "@conditional.outer",
 			},
 		},
 		swap = {
@@ -61,11 +61,11 @@ require("nvim-treesitter.configs").setup({
 			enable = true,
 			swap_next = {
 
-				[">p"] = "@parameter.inner",
+				[">a"] = "@parameter.inner",
 			},
 			swap_previous = {
 
-				["<p"] = "@parameter.inner",
+				["<a"] = "@parameter.inner",
 			},
 		},
 	},

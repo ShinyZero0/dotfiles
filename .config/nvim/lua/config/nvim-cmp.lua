@@ -42,7 +42,6 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "omni" },
 		-- { name = "nvim_lsp_signature_help" },
-		-- { name = "nvim_lua" },
 	}),
 	snippet = {
 
@@ -93,7 +92,7 @@ cmp.setup.filetype({ "vim", "lua" }, {
 
 	sources = {
 
-		-- { name = "cmdline" },
+		{ name = "nvim_lua" },
 		{ name = "nvim_lsp" },
 		{ name = "path" },
 		{ name = "snippy" },

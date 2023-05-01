@@ -44,6 +44,7 @@ def yankfile [] {
 }
 alias yf = yankfile
 
+# TODO: universal clipboard 
 def share [ file: string ] {
 	curl -F $"file=@($file)" https://0x0.st | xsel -ib
 	print "Link copied to clipboard!"

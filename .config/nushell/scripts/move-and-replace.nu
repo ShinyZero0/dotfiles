@@ -8,7 +8,7 @@ export def mvnrp [
 	mv $old $new
 	let-env oldFull = ( $old | path expand )
 	let-env newFull = ( $new | path expand )
-	if ( $new | getext ) == "lua" and (
+	if ( $new | _getExt ) == "lua" and (
 		$new | is-child-of $env.NvimConfig
 	) {
 		let files = ( fd -t f . $env.NvimConfig | lines)
@@ -19,7 +19,7 @@ export def mvnrp [
 
 	let files = ( fd -t f | lines  )
 	for file in $files {
-		let ext = ( $file | getext )
+		let ext = ( $file | _getExt )
 		if $ext == "nu" and (
 
 			$env.NU_LIB_DIRS | any { ||
@@ -35,7 +35,7 @@ export def mvnrp [
 
 		open --raw $file
 			| str replace $env.oldFull $env.newFull 
-			| _sameReplace { || relpath $env.PWD } $old $new 
+			| _sameReplace { || _relpath $env.PWD } $old $new 
 			| _sameReplace { || str replace $env.HOME '$HOME' } $old $new 
 			| _sameReplace { || str replace $env.HOME '~' } $old $new
 			| save -f $file
@@ -51,7 +51,7 @@ def _replaceLuaRequires [
 	let oldModule = (
 
 		$env.oldFull
-			| relpath $env.NvimConfig
+			| _relpath $env.NvimConfig
 			| path parse
 			| reject extension
 			| transpose k v | get v
@@ -60,7 +60,7 @@ def _replaceLuaRequires [
 	let newModule = (
 
 		$env.newFull
-			| relpath $env.NvimConfig
+			| _relpath $env.NvimConfig
 			| path parse
 			| reject extension
 			| transpose k v | get v
