@@ -1,7 +1,9 @@
 btop.conf
 ~/.scripts/sanity/
+.local/
 btop.log
 .zsh_history*
+sources/
 
 ## compiled dynamic langauages
 *.pyc
