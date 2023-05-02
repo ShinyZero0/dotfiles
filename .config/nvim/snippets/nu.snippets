@@ -1,2 +1,8 @@
 snippet #! "shebang"
 	#!/usr/bin/env nu
+snippet for '"for" invocation'
+	for ${1:variable} in ${2:list} {
+		${3:block}
+	}
+snippet if '"if" invocation'
+	if (${1:true}) { ${2:print hi} }

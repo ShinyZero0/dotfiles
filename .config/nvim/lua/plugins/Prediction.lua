@@ -32,6 +32,7 @@ return {
 				"dcampos/nvim-snippy",
 				name = "snippy",
 				config = true,
+				ft = "snippets",
 				dependencies = {
 
 					"ShinyZero0/vim-snippets",
