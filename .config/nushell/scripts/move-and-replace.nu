@@ -1,3 +1,5 @@
+use utils *
+
 export def mvnrp [
 
 	old: string 
@@ -9,7 +11,7 @@ export def mvnrp [
 	let-env oldFull = ( $old | path expand )
 	let-env newFull = ( $new | path expand )
 	if ( $new | _getExt ) == "lua" and (
-		$new | is-child-of $env.NvimConfig
+		$new | _isChildOf $env.NvimConfig
 	) {
 		let files = ( fd -t f . $env.NvimConfig | lines)
 		for file in $files {
@@ -19,14 +21,17 @@ export def mvnrp [
 
 	let files = ( fd -t f | lines  )
 	for file in $files {
+		if ( file --mime $file | str contains "charset=binary" ) {
+			continue
+		}
 		let ext = ( $file | _getExt )
 		if $ext == "nu" and (
 
 			$env.NU_LIB_DIRS | any { ||
 				(
-					$old | is-child-of $in
+					$old | _isChildOf $in
 				) and (
-					$new | is-child-of $in
+					$new | _isChildOf $in
 				)
 			}
 		) {

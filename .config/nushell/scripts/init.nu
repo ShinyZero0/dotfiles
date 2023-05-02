@@ -15,4 +15,10 @@ def _treeSitterNu [] {
 	http get $remote | save $local 
 }
 
+def-env _autorun [] {
+	tabs 4
+}
+
 _treeSitterNu
+_autorun
+

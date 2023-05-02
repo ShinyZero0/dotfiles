@@ -66,6 +66,6 @@ def-env _confirmOpener [
 		opener $file
 	} else {
 		# paste the path into clipboard. full path if not focused and basename if focused, see line 41
-		$file | xsel -ib
+		$file | _clip i
 	}
 }
