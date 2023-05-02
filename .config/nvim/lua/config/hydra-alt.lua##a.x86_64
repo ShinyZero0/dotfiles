@@ -16,14 +16,29 @@ Hydra({
 	mode = { "n" },
 	heads = {
 
-		{ "d", function() require("hover").hover() end, { nowait = true } },
-		{ "l", cmd("Lspsaga show_line_diagnostics") },
+		{
+			"d",
+			function()
+				require("hover").hover()
+			end,
+			{ nowait = true },
+		},
 		{ "a", vim.lsp.buf.code_action },
-		{ "f", cmd("Lspsaga lsp_finder") },
 		{ "r", vim.lsp.buf.rename },
+		{
+			"R",
+			function()
+				require("telescope.builtin").lsp_references()
+			end,
+		},
 		{ "N", vim.diagnostic.goto_prev },
 		{ "n", vim.diagnostic.goto_next },
-		{ "i", vim.lsp.buf.implementation },
+		{
+			"i",
+			function()
+				require("telescope.builtin").lsp_implementations()
+			end,
+		},
 	},
 })
 

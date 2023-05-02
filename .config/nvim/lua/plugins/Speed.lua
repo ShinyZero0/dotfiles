@@ -73,16 +73,12 @@ return {
 		config = function()
 			require("config.telescope")
 		end,
-		cmd = {
-
-			"Telescope",
-		},
+		cmd = "Telescope",
 		branch = "0.1.x",
 		dependencies = {
 
 			"smartpde/telescope-recent-files",
 			"crispgm/telescope-heading.nvim",
-			-- "nvim-telescope/telescope-file-browser.nvim",
 			"natecraddock/telescope-zf-native.nvim",
 			"nvim-telescope/telescope-symbols.nvim",
 		},

@@ -29,7 +29,7 @@ return {
 	{
 		"lewis6991/hover.nvim",
 		event = "VeryLazy",
-		Lazy = true,
+		-- Lazy = true,
 		opts = {
 
 			init = function()

@@ -25,14 +25,18 @@ return {
 	},
 
 	{
-		"NvChad/nvim-colorizer.lua", -- highlight colors
+		"NvChad/nvim-colorizer.lua",
+		cmd = "ColorizerToggle",
 		opts = {
 
 			user_default_options = {
 
 				names = false,
+				always_update = false,
+			},
+			filetypes = {
+				cmp_docs = { always_update = true },
 			},
 		},
-		cmd = "ColorizerToggle",
 	},
 }

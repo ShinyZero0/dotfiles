@@ -1,7 +1,18 @@
+-- TODO: make window resize hydra
 local Hydra = require("hydra")
 local cmd = require("hydra.keymap-util").cmd
 local hints = require("config.hints")
 vim.g.mapleader = " "
+local function boolHint(option)
+	local func = function()
+		if vim.o[option] then
+			return "[x]"
+		else
+			return "[ ]"
+		end
+	end
+	return func
+end
 
 Hydra({
 
@@ -87,20 +98,8 @@ Hydra({
 			type = "window",
 			funcs = {
 
-				ro = function()
-					if vim.o.readonly then
-						return "[x]"
-					else
-						return "[ ]"
-					end
-				end,
-				lb = function()
-					if vim.o.linebreak then
-						return "[x]"
-					else
-						return "[ ]"
-					end
-				end,
+				ro = boolHint("readonly"),
+				lb = boolHint("linebreak"),
 				ft = function()
 					return vim.o.filetype
 				end,

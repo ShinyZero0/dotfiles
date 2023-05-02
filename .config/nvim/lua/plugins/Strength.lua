@@ -47,11 +47,16 @@ return {
 	},
 	{
 		"altermo/npairs-integrate-upair",
-		event = { "InsertEnter", "CmdlineEnter" },
+		event = {
+
+			"InsertEnter",
+			"CmdlineEnter",
+		},
 		config = function()
 			require("config.pairs")
 		end,
 		dependencies = {
+
 			"windwp/nvim-autopairs",
 			"altermo/ultimate-autopair.nvim",
 		},

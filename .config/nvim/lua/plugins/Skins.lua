@@ -3,8 +3,10 @@
 --  ╰──────────────────────────────────────────────────────────╯
 
 return {
+
 	{
-		"ShinyZero0/challenger-deep.nvim",
+		-- "ShinyZero0/challenger-deep.nvim",
+		dir = "~/dev/vim/challenger-deep.nvim/",
 		lazy = false,
 	},
 	{

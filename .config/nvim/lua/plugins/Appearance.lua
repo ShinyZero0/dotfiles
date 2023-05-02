@@ -1,5 +1,9 @@
 return {
 
+	-- {
+	-- 	"jghauser/fold-cycle.nvim",
+	-- 	config = true,
+	-- },
 	{
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
@@ -11,6 +15,7 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
+		config = true,
 		event = "VeryLazy",
 	},
 	{

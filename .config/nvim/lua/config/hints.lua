@@ -1,4 +1,5 @@
 return {
+
 	Telescope = [[
     Telescope:
 
