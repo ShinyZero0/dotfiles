@@ -1,6 +1,10 @@
 return {
 
 	{
+		"jghauser/fold-cycle.nvim",
+		config = true,
+	},
+	{
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
 		config = true,
