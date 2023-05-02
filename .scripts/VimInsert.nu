@@ -15,11 +15,11 @@ xsel -ob | save -f .viminsertoldclip.txt
 xdotool key ctrl+c
 # sleep 100ms
 
-# xsel -ob | save -f .viminsert.txt
-# cat .viminsertoldclip.txt | xsel -ib
+xsel -ob | save -f .viminsert.md
+ # .viminsertoldclip.txt | xsel -ib
 
-kitty --class floatwin -- nu -c "nvim -c 'set et' .viminsert.txt " 
-open .viminsert.txt | xsel -ib
+kitty --class floatwin -- nu -c "nvim -c 'set et' .viminsert.md " 
+open .viminsert.md | xsel -ib
 xdotool windowactivate $win
 xdotool key ctrl+v 
 # sleep 100ms

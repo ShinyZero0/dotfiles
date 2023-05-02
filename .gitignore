@@ -1,8 +1,7 @@
 btop.conf
-~/.scripts/sanity/
 .local/
+.scripts/sanity/
 btop.log
-.zsh_history*
 sources/
 
 ## compiled dynamic langauages
