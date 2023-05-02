@@ -36,3 +36,7 @@ export def-env root [ num: int ] {
 		cd ..
 	}
 }
+
+export def json2snip [] {
+	$in | format "snippet {prefix} '{description}'\n\t{body}"
+}
