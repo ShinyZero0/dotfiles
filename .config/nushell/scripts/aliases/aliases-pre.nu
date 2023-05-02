@@ -1,22 +1,12 @@
 # old alias for competion
 old-alias pkin = sudo xbps-install
 old-alias pkrm = sudo xbps-remove
+use utils.nu [ "_clip o" "_clip i" ]
 alias pkup = sudo xbps-install -SAu
 alias pkfd = xbps-query -Rs
 alias pkls = xbps-query -m
 
 old-alias dn = dotnet
-
-# list runit services
-def svls [
-	--all(-a)
-] {
-	if $all {
-		ls /etc/sv/
-	} else {
-		ls /var/service/
-	}
-}
 
 alias vi = nvim
 
@@ -44,9 +34,8 @@ def yankfile [] {
 }
 alias yf = yankfile
 
-# TODO: universal clipboard 
 def share [ file: string ] {
-	curl -F $"file=@($file)" https://0x0.st | xsel -ib
+	curl -F $"file=@($file)" https://0x0.st | _clip i
 	print "Link copied to clipboard!"
 }
 
@@ -57,29 +46,6 @@ alias xtr = atool -x
 
 alias ru = trans :ru
 alias en = trans :en
-
-def ungitb [] {
-
-	xsel -ob | parse 'https://github.com/{match}'
-	| get match 
-	| to text 
-	| xsel -ib
-}
-
-def __platesComplete [] {
-
-	let PlatesDir = ( $env.PLATES_DIR? | default $env.HOME )
-	ls -a $PlatesDir
-	| get name 
-	| path relative-to $PlatesDir
-}
-def plate [ ...args: string@__platesComplete ] {
-	
-	let PlatesDir = ( $env.PLATES_DIR? | default $env.HOME )
-	for file in $args {
-		cp ( $PlatesDir | path join $file ) $env.PWD
-	}
-}
 
 def lns [
 	source: string 

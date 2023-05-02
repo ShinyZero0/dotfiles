@@ -7,7 +7,6 @@ export def _ansiTmp [ text: string color: string  ] {
 	| str join
 }
 export def _home [ path: string ] {
-	
 	$env.HOME | path join $path
 }
 export def _getExt [] {
@@ -22,11 +21,28 @@ export def _isChildOf [ parent: string ] {
 
 export def _currentfile [] {
 
-	^ps $nu.pid | lines 
-	| skip 1 | split row " " 
-	| where { ||
-		not ($in | is-empty)
-	} 
-	| get 5
-	| path expand
+	^ps $nu.pid 
+		| lines 
+		| skip 1 | split row " " 
+		| where { ||
+			not ($in | is-empty)
+		} 
+		| get 5
+		| path expand
+}
+export def "_clip o" [] {
+
+	if not ( which xsel | is-empty ) {
+		xsel -ob
+	} else {
+		termux-clipboard-get
+	}
+}
+export def "_clip i" [] {
+
+	if not ( which xsel | is-empty ) {
+		$in | xsel -ib
+	} else {
+		termux-clipboard-set
+	}
 }

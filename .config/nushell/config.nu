@@ -6,56 +6,81 @@
 # https://www.nushell.sh/book/coloring_and_theming.html
 # And here is the theme collection
 # https://github.com/nushell/nu_scripts/tree/main/themes
+
+let white = '#FAFAFA'
+let black = '#100e23'
+let grayDark = '#565575'
+
+let red = '#ff8080'
+let redDark = '#ff5458'
+
+let green = '#62d196'
+let greenBright = '#95ffa4'
+
+let yellowDark = '#ffb378'
+let yellow = '#ffe9aa'
+
+let blueDark = '#65b2ff'
+let blue = '#91ddff'
+
+let purpleDark = '#906cff'
+let purple = '#ff99e3'
+
+let cyanDark = '#63f2f1'
+let cyan = '#aaffe4'
+
+let grayDark = '#a6b3cc'
+let gray = '#cbe3e7'
+
 let dark_theme = {
 
 	# color for nushell primitives
-	separator: white
+	separator: $white
 	leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
-	header: green_bold
-	empty: blue
+	header: $greenBright
+	empty: $blue
 	# Closures can be used to choose colors for specific values.
 	# The value (in this case, a bool) is piped into the closure.
-	bool: { || if $in { 'light_cyan' } else { 'light_gray' } }
-	int: white
+	bool: { || if $in { $cyan } else { $redDark } }
+	int: $yellowDark
 	filesize: { |e|
 		if $e == 0b {
-			'white'
+			$white
 		} else if $e < 1mb {
-			'cyan'
+			$cyan
+		} else if $e < 100mb {
+			$yellow
+		} else if $e < 500mb {
+			$yellowDark
+		} else if $e < 2gb {
+			$redDark
 		} else {
-			'blue'
+			$red
 		}
 	}
 	duration: white
 	date: { || (date now) - $in |
 		if $in < 1hr {
-
-			'red3b'
+			$red
 		} else if $in < 6hr {
-
-		'orange3'
+			$redDark
 		} else if $in < 1day {
-
-		'yellow3b'
+			$yellowDark
 		} else if $in < 3day {
-
-		'chartreuse2b'
+			$yellow
 		} else if $in < 1wk {
-
-		'green3b'
+			$greenBright
 		} else if $in < 6wk {
-
-		'darkturquoise'
+			$green
 		} else if $in < 52wk {
-
-		'deepskyblue3b'
-		} else { 'dark_gray' }
+			$cyan
+		} else { $cyanDark }
 	}
-	range: white
-	float: white
-	string: white
-	nothing: white
-	binary: white
+	range: $yellowDark
+	float: $yellowDark
+	string: $yellow
+	nothing: $grayDark
+	binary: $yellowDark
 	cellpath: white
 	row_index: green_bold
 	record: white
@@ -63,133 +88,40 @@ let dark_theme = {
 	block: white
 	hints: dark_gray
 
-	shape_and: purple_bold
+	shape_and: $red
 	shape_binary: purple_bold
-	shape_block: blue_bold
-	shape_bool: light_cyan
-	shape_custom: green
-	shape_datetime: cyan_bold
-	shape_directory: cyan
-	shape_external: cyan
-	shape_externalarg: green_bold
-	shape_filepath: cyan
+	shape_block: $cyanDark
+	shape_bool: $cyanDark
+	shape_custom: $cyan
+	shape_datetime: $cyanDark
+	shape_directory: $cyan
+	shape_external: $cyan
+	shape_externalarg: $cyanDark
+	shape_filepath: $cyan
 	shape_flag: blue_bold
-	shape_float: purple_bold
+	shape_float: $yellowDark
 	# shapes are used to change the cli syntax highlighting
 	shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b }
 	shape_globpattern: cyan_bold
-	shape_int: purple_bold
+	shape_int: $yellowDark
 	shape_internalcall: cyan_bold
 	shape_list: cyan_bold
 	shape_literal: blue
 	shape_match_pattern: green
 	shape_matching_brackets: { attr: u }
 	shape_nothing: light_cyan
-	shape_operator: yellow
-	shape_or: purple_bold
-	shape_pipe: purple_bold
-	shape_range: yellow_bold
-	shape_record: cyan_bold
-	shape_redirection: purple_bold
-	shape_signature: green_bold
-	shape_string: yellow
+	shape_operator: $red
+	shape_or: $red
+	shape_pipe: $purple
+	shape_range: $yellowDark
+	shape_record: $cyanDark
+	shape_redirection: $purple
+	shape_signature: $purpleDark
+	shape_string: $yellow
 	shape_string_interpolation: cyan_bold
 	shape_table: blue_bold
-	shape_variable: purple
-	shape_vardecl: purple
-}
-
-let light_theme = {
-
-	# color for nushell primitives
-	separator: dark_gray
-	leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
-	header: green_bold
-	empty: blue
-	# Closures can be used to choose colors for specific values.
-	# The value (in this case, a bool) is piped into the closure.
-	bool: { || if $in { 'dark_cyan' } else { 'dark_gray' } }
-	int: dark_gray
-	filesize: { |e|
-		if $e == 0b {
-
-			'dark_gray'
-		} else if $e < 1mb {
-
-		'cyan_bold'
-		} else { 'blue_bold' }
-	}
-	duration: dark_gray
-	date: { || (date now) - $in |
-		if $in < 1hr {
-
-			'red3b'
-		} else if $in < 6hr {
-
-		'orange3'
-		} else if $in < 1day {
-
-		'yellow3b'
-		} else if $in < 3day {
-
-		'chartreuse2b'
-		} else if $in < 1wk {
-
-		'green3b'
-		} else if $in < 6wk {
-
-		'darkturquoise'
-		} else if $in < 52wk {
-
-		'deepskyblue3b'
-		} else { 'dark_gray' }
-	}
-	range: dark_gray
-	float: dark_gray
-	string: dark_gray
-	nothing: dark_gray
-	binary: dark_gray
-	cellpath: dark_gray
-	row_index: green_bold
-	record: white
-	list: white
-	block: white
-	hints: dark_gray
-
-	shape_and: purple_bold
-	shape_binary: purple_bold
-	shape_block: blue_bold
-	shape_bool: light_cyan
-	shape_custom: green
-	shape_datetime: cyan_bold
-	shape_directory: cyan
-	shape_external: cyan
-	shape_externalarg: green_bold
-	shape_filepath: cyan
-	shape_flag: blue_bold
-	shape_float: purple_bold
-	# shapes are used to change the cli syntax highlighting
-	shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b }
-	shape_globpattern: cyan_bold
-	shape_int: purple_bold
-	shape_internalcall: cyan_bold
-	shape_list: cyan_bold
-	shape_literal: blue
-	shape_match_pattern: green
-	shape_matching_brackets: { attr: u }
-	shape_nothing: light_cyan
-	shape_operator: yellow
-	shape_or: purple_bold
-	shape_pipe: purple_bold
-	shape_range: yellow_bold
-	shape_record: cyan_bold
-	shape_redirection: purple_bold
-	shape_signature: green_bold
-	shape_string: green
-	shape_string_interpolation: cyan_bold
-	shape_table: blue_bold
-	shape_variable: purple
-	shape_vardecl: purple
+	shape_variable: $purple
+	shape_vardecl: $purple
 }
 
 let external_completer = { |spans|
@@ -336,6 +268,7 @@ let-env config = {
 	shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
 	render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
 
+	# TODO: dump packages after installing/deleting
 	hooks: {
 
 		pre_prompt: [{ ||
@@ -591,11 +524,9 @@ let-env config = {
 source aliases/aliases-pre.nu
 source aliases/git.nu
 
-# use utils.nu *
 use commands.nu *
 
 source zoxide.nu
-source help.nu
 source alt.nu
 source nq.nu
 source langTools.nu
@@ -613,6 +544,8 @@ use termux-pkg-cmp.nu *
 use zellij-cmp.nu *
 use proc-cmp.nu *
 use udevil-cmp.nu *
+use gh-cmp.nu *
+use nx.nu *
 
 source aliases/aliases-post.nu
 
