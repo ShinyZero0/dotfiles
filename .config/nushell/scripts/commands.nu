@@ -30,3 +30,9 @@ export def parse-help [] {
     $in 
 	| parse -r '\s\s+(?:-(?P<short>\w)[,\s]+)?(?:--(?P<long>[\w-]+))\s*(?:<(?P<format>.*)>)?\s*(?P<description>.*)?'
 }
+
+export def-env root [ num: int ] {
+	for i in 1..$num {
+		cd ..
+	}
+}

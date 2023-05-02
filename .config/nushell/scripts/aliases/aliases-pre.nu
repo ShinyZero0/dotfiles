@@ -1,6 +1,7 @@
 # old alias for competion
 old-alias pkin = sudo xbps-install
 old-alias pkrm = sudo xbps-remove
+use utils.nu [ "_clip o" "_clip i" ]
 alias pkup = sudo xbps-install -SAu
 alias pkfd = xbps-query -Rs
 alias pkls = xbps-query -m
@@ -49,10 +50,10 @@ alias en = trans :en
 
 def ungitb [] {
 
-	xsel -ob | parse 'https://github.com/{match}'
+	_clip o | parse 'https://github.com/{match}'
 	| get match 
 	| to text 
-	| xsel -ib
+	| _clip i
 }
 
 def __platesComplete [] {

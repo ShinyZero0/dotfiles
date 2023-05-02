@@ -36,7 +36,9 @@ mkdir $env.NQDIR
 mkdir $env.SVDIR
 
 mkdir $env.NU_LIB_DIRS.2
-zoxide init nushell | save -f ( $env.NU_LIB_DIRS.2 | path join 'zoxide.nu' )
+if ( $env.NU_LIB_DIRS.2 | path join 'zoxide.nu' | path exists ) {} else {
+	zoxide init nushell | save ( $env.NU_LIB_DIRS.2 | path join 'zoxide.nu' )
+}
 
 let-env PAGER = moar
 let-env MANPAGER = moar
