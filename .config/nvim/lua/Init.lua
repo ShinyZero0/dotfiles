@@ -6,3 +6,4 @@ vim.filetype.add({
 		axaml = "xml",
 	},
 })
+vim.opt.fillchars:append({ diff = "╱" })

@@ -5,6 +5,16 @@ return {
 	-- 	config = true,
 	-- },
 	{
+		"sindrets/winshift.nvim",
+		config = true,
+	},
+	{
+		"kwkarlwang/bufresize.nvim",
+	},
+	{
+		"mrjones2014/smart-splits.nvim",
+	},
+	{
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
 		config = true,

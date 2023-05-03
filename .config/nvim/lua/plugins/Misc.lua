@@ -3,9 +3,6 @@ return {
 		"anuvyklack/hydra.nvim", -- keymap modes
 		config = function()
 			require("config.hydra")
-			pcall(function()
-				require("config.hydra-alt")
-			end)
 		end,
 	},
 	-- {

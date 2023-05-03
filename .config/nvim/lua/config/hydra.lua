@@ -1,8 +1,16 @@
--- TODO: make window resize hydra
+-- call lsp hydra
+pcall(function()
+	require("config.hydra-alt")
+end)
+-- call gitsigns hydra
+require("hydras.gitsigns")
+
 local Hydra = require("hydra")
 local cmd = require("hydra.keymap-util").cmd
 local hints = require("config.hints")
+local Splits = require("smart-splits")
 vim.g.mapleader = " "
+
 local function boolHint(option)
 	local func = function()
 		if vim.o[option] then
@@ -34,19 +42,20 @@ Hydra({
 	heads = {
 
 		{ "b", cmd("Telescope buffers") },
-		{ "c", cmd("Telescope command_history"), { desc = "command-line history" } },
+		{ "c", cmd("Telescope command_history") },
 		{ "g", cmd("Telescope live_grep") },
-		{ "h", cmd("Telescope heading"), { desc = "headings" } },
+		{ "h", cmd("Telescope heading") },
 		{ "j", cmd("Telescope jumplist") },
 		{ "k", cmd("Telescope keymaps") },
-		{ "l", cmd("Telescope highlights"), { desc = "highLights" } },
-		{ "?", cmd("Telescope help_tags"), { desc = "vim help" } },
-		{ "r", cmd("Telescope recent_files pick"), { desc = "recently opened files" } },
+		{ "l", cmd("Telescope highlights") },
+		{ "q", cmd("Telescope quickfix") },
+		{ "?", cmd("Telescope help_tags") },
+		{ "r", cmd("Telescope recent_files pick") },
 		{ "O", cmd("Telescope vim_options") },
 		{ "'", cmd("Telescope marks") },
 		{ '"', cmd("Telescope neoclip") },
-		{ "/", cmd("Telescope current_buffer_fuzzy_find"), { desc = "search in file" } },
-		{ ";", cmd("Telescope commands"), { desc = "execute command" } },
+		{ "/", cmd("Telescope current_buffer_fuzzy_find") },
+		{ ";", cmd("Telescope commands") },
 		{
 			"f",
 			function()
@@ -55,8 +64,7 @@ Hydra({
 		},
 
 		{ "<Esc>", nil, { exit = true, nowait = true } },
-		{ "<Enter>", cmd("Telescope"), { exit = true, desc = "list all pickers" } },
-		-- { "u", cmd("silent! %foldopen! | UndotreeToggle"), { desc = "undotree" } },
+		{ "<Enter>", cmd("Telescope") },
 	},
 })
 
@@ -71,18 +79,14 @@ Hydra({
 		{ "s", cmd("set spell!") },
 		{ "w", cmd("set wrap!") },
 		{ "b", cmd("set linebreak!") },
-		-- { "V", cmd("set virtualedit!") },
+		{ "V", cmd("set virtualedit!") },
 		{ "R", cmd("set readonly!") },
 		{ "C", cmd("ColorizerToggle") },
 		{ "+", cmd("set cmdheight+=1") },
 		{ "-", cmd("set cmdheight-=1") },
 
 		{ "t", cmd("Telescope filetypes"), { exit = true } },
-		{ "S", cmd("TrailBlazerSaveSession"), { exit = true } },
 		{ "L", cmd("Lazy"), { exit = true } },
-		{ "M", cmd("Mason"), { exit = true } },
-		-- { "c", cmd("highlight Comment guifg=#a6b3cc")},
-		-- { "C", cmd("highlight Comment guifg=#C6C6C6")},
 		{ "<Esc>", nil, { exit = true, nowait = true } },
 		{ "q", nil, { exit = true, nowait = true } },
 		{ "<C-q>", nil, { exit = true, nowait = true } },
@@ -104,6 +108,54 @@ Hydra({
 					return vim.o.filetype
 				end,
 			},
+		},
+	},
+})
+
+Hydra({
+
+	name = "Windows",
+	config = {
+
+		color = "amaranth",
+		invoke_on_body = true,
+		hint = {
+
+			position = "middle",
+			border = "rounded",
+			type = "window",
+		},
+	},
+	body = "<leader>W",
+	heads = {
+
+		{ "H", cmd("WinShift left") },
+		{ "J", cmd("WinShift down") },
+		{ "K", cmd("WinShift up") },
+		{ "L", cmd("WinShift right") },
+		{
+			"h",
+			function()
+				Splits.resize_left(2)
+			end,
+		},
+		{
+			"j",
+			function()
+				Splits.resize_down(2)
+			end,
+		},
+		{
+			"k",
+			function()
+				Splits.resize_up(2)
+			end,
+		},
+		{
+			"l",
+			function()
+				Splits.resize_right(2)
+			end,
 		},
 	},
 })
