@@ -7,7 +7,7 @@ return {
     _g_: Grep all    _b_: Buffers
 
     _h_: Headings    _/_: Grep this
-    _'_: Marks
+    _'_: Marks       _q_: Quickfix
 
     _j_: Jumplist    _"_: Clipboard history
 
@@ -27,13 +27,12 @@ return {
     _R_: readonly  %{ro}
     _C_: Colorizer
     _+_, _-_: cmdheight +-1
-    _S_: TrailBlazer Save    
     _t_: filetype: %{ft}    
     _L_: Lazy.nvim
-    _M_: Mason.nvim
 
     _q_, _<Esc>_, _<C-q>_    
     ]],
+
 	Formatting = [[
     Formatting
 
@@ -44,6 +43,7 @@ return {
     _j_: Join %{ft}
 
     ]],
+
 	SaveOrExit = [[
 _<C-s>_,_s_: Save and quit
 _<C-q>_,_q_: Quit without saving]],

@@ -13,6 +13,18 @@ require("dial.config").augends:register_group({
 		}),
 		augend.constant.new({
 
+			elements = { "Enable", "Disable" },
+			word = false,
+			cyclic = true,
+		}),
+		augend.constant.new({
+
+			elements = { "enable", "disable" },
+			word = false,
+			cyclic = true,
+		}),
+		augend.constant.new({
+
 			elements = { "public", "private" },
 			word = true,
 			cyclic = true,

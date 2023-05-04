@@ -9,7 +9,6 @@ require("telescope").setup({
 		layout_config = {
 
 			horizontal = {
-
 				prompt_position = "top",
 			},
 		},
@@ -24,7 +23,8 @@ require("telescope").setup({
 				["<C-q>"] = actions.close,
 			},
 			["i"] = {
-				["<C-w>"] = function(prompt_bufnr)
+
+				["<C-g>"] = function(prompt_bufnr)
 					-- Use nvim-window-picker to choose the window by dynamically attaching a function
 					local action_set = require("telescope.actions.set")
 					local action_state = require("telescope.actions.state")
@@ -58,13 +58,20 @@ require("telescope").setup({
 		find_files = {
 
 			follow = false,
-			find_command = { "fd", "-H", "-d", "4", "-t", "f" },
+			find_command = {
+				"fd",
+				"-H",
+				"-d",
+				"4",
+				"-t",
+				"f",
+				"-t",
+				"l",
+			},
 			mappings = {
 
 				["i"] = {
-
 					["<S-CR>"] = actions.select_tab,
-					-- ["<Del>"] = fb_actions.remove,
 				},
 			},
 		},
@@ -76,18 +83,14 @@ require("telescope").setup({
 			file = {
 
 				enable = true,
-
 				highlight_results = true,
-
 				match_filename = true,
 			},
 
 			generic = {
 
 				enable = false,
-
 				highlight_results = true,
-
 				match_filename = false,
 			},
 		},

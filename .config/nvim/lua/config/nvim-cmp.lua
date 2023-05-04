@@ -14,7 +14,6 @@ local snippy = require("snippy")
 cmp.setup({
 
 	view = {
-
 		entries = { name = "custom", selection_order = "near_cursor" },
 	},
 	experimental = {
@@ -23,7 +22,6 @@ cmp.setup({
 		native_menu = false,
 	},
 	formatting = {
-
 		format = lspkind.cmp_format(),
 	},
 	sources = cmp.config.sources({

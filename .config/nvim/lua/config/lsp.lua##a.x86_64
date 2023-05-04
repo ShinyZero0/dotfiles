@@ -1,33 +1,19 @@
 require("cmp_nvim_lsp").setup()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
--- TODO: make a servers list and function to setup all
 
--- require("lspconfig")["marksman"].setup({
---
--- 	capabilities = capabilities,
--- })
-require("lspconfig")["clangd"].setup({
-
+local stdopts = {
 	capabilities = capabilities,
-})
-require("lspconfig")["pyright"].setup({
-
-	capabilities = capabilities,
-})
-require("lspconfig")["vimls"].setup({
-
-	capabilities = capabilities,
-})
+}
 
 local pid = vim.fn.getpid()
 local omnisharp_bin = "OmniSharp"
-require("lspconfig")["omnisharp"].setup({
+local omnisharpOpts = {
 
 	capabilities = capabilities,
 	cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
-})
+}
 
-require("lspconfig")["lua_ls"].setup({
+local lualsOpts = {
 
 	settings = {
 
@@ -58,6 +44,15 @@ require("lspconfig")["lua_ls"].setup({
 		},
 	},
 	capabilities = capabilities,
-})
+}
+local servers = {
 
--- vim: ft=lua
+	clangd = stdopts,
+	pyright = stdopts,
+	omnisharp = omnisharpOpts,
+	lua_ls = lualsOpts,
+}
+
+for server, opts in pairs(servers) do
+	require("lspconfig")[server].setup(opts)
+end

@@ -7,11 +7,25 @@ return {
 	"tpope/vim-surround", -- place brackets and tags
 	"tpope/vim-repeat", -- dot-repeat
 	"tpope/vim-eunuch", -- filesystem util
-	"junegunn/vim-easy-align", -- align columns
+	"junegunn/vim-easy-align", -- align text
 	"AndrewRadev/dsf.vim", -- interact with surrounding function
 	"fedepujol/move.nvim",
 	-- "AndrewRadev/splitjoin.vim",
 	"FooSoft/vim-argwrap",
+	{
+		"sindrets/diffview.nvim",
+		config = true,
+		cmd = {
+
+			"DiffviewFileHistory",
+			"DiffviewOpen",
+		},
+		dependencies = {
+
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
 	{
 		"AckslD/nvim-neoclip.lua",
 		config = function()
@@ -34,10 +48,7 @@ return {
 
 	{
 		"sbdchd/neoformat",
-		cmd = {
-
-			"Neoformat",
-		},
+		cmd = "Neoformat",
 	},
 	{
 		"monaqa/dial.nvim",
@@ -71,7 +82,6 @@ return {
 	{
 		"LudoPinelli/comment-box.nvim",
 		opts = {
-
 			line_blank_line_below = true,
 		},
 	},
@@ -80,7 +90,6 @@ return {
 		"nvim-pack/nvim-spectre",
 		cmd = "Spectre",
 		dependencies = {
-
 			"nvim-lua/plenary.nvim",
 		},
 	},

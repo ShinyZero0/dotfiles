@@ -16,6 +16,8 @@ set scrolloff=5
 set tabstop=4 shiftwidth=4 
 set breakindent
 set formatoptions=1jtc 
+set fdm=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 " INPUT
 set whichwrap+=h,l,<,>,[,]

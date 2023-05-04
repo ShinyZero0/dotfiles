@@ -1,10 +1,5 @@
 # old alias for competion
-old-alias pkin = sudo xbps-install
-old-alias pkrm = sudo xbps-remove
 use utils.nu [ "_clip o" "_clip i" ]
-alias pkup = sudo xbps-install -SAu
-alias pkfd = xbps-query -Rs
-alias pkls = xbps-query -m
 
 old-alias dn = dotnet
 
