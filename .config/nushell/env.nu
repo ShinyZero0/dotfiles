@@ -40,7 +40,7 @@ mkdir $dataDir
 if ( $dataDir | path join 'zoxide.nu' | path exists ) {} else {
 	zoxide init nushell | save ( $dataDir | path join 'zoxide.nu' )
 }
-let-env LS_COLORS = ( $dataDir | path join 'vivid.txt' | open )
+let-env LS_COLORS = ( vivid generate snazzy )
 
 let-env PAGER = moar
 let-env MANPAGER = moar
