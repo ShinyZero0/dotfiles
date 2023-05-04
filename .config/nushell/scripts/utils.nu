@@ -47,3 +47,8 @@ export def "_clip i" [] {
 		termux-clipboard-set
 	}
 }
+export def invert [] {
+
+	let value = $in
+	if $value { false } else { true }
+}

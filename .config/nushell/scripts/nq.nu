@@ -45,5 +45,11 @@ def nq [
 	}
 }
 def "nq clean" [] {
-	lsq | 
+
+	let active = ( lsq -a )
+	lsq 
+	| filter { || 
+		not $in in $active
+	} 
+	| each { || rm $in }
 }
