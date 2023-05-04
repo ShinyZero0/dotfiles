@@ -1,4 +1,4 @@
-export def _ansiTmp [ text: string color: string  ] {
+export def _ansiTmp [ text: string color: any  ] {
 	[
 		( ansi $color )
 		$text

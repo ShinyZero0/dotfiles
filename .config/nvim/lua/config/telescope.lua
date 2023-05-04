@@ -96,7 +96,3 @@ require("telescope").setup({
 		},
 	},
 })
-require("telescope").load_extension("heading")
-require("telescope").load_extension("zf-native")
-require("telescope").load_extension("neoclip")
-require("telescope").load_extension("recent_files")
