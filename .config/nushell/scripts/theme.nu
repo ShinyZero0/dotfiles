@@ -1,15 +1,19 @@
 
 def _getColors [] {
-	{
-		white: '#FAFAFA'
+
+	return {
+
 		black: '#100e23'
-		grayDark: '#565575'
+	    grayDark: '#565575'
+		gray: '#a6b3cc'
+		grayLight: '#cbe3e7'
+		white: '#FAFAFA'
 		
-		red: '#ff8080'
 		redDark: '#ff5458'
+		red: '#ff8080'
 		
-		green: '#62d196'
-		greenBright: '#95ffa4'
+		greenDark: '#62d196'
+		green: '#95ffa4'
 		
 		yellowDark: '#ffb378'
 		yellow: '#ffe9aa'
@@ -23,13 +27,12 @@ def _getColors [] {
 		cyanDark: '#63f2f1'
 		cyan: '#aaffe4'
 		
-		gray: '#a6b3cc'
-		grayLight: '#cbe3e7'
 	}
 }
 
 export def create_left_prompt [] {
 
+	let colors = (_getColors)
     mut home = ""
     try {
 
@@ -44,15 +47,15 @@ export def create_left_prompt [] {
         $env.PWD | str replace $home '~'
     )
 
-    let path_segment = ( _ansiTmp $dir gb )
+    let path_segment = ( _ansiTmp $dir { fg: $colors.green  } )
     let yadm_segment = if (
 		$env.PROMPT? 
 		| default "" 
 		| str contains "yadm"
     ) {
 		[
-			( _ansiTmp "@" light_cyan_bold )
-			( _ansiTmp "yadm" red_bold )
+			( _ansiTmp "@" { fg: $colors.cyanDark bg: none attr: b } )
+			( _ansiTmp "yadm" { fg: $colors.red bg: none attr: b } )
 		]
 		| str join
     } 
@@ -61,14 +64,14 @@ export def create_left_prompt [] {
 			str contains "/nix/store"
 		}
     ) {
-		_ansiTmp "  " blue
+		_ansiTmp "  " { fg: $colors.blue bg: none attr: b }
     } 
 
     let left_prompt = ( 
         [
             $path_segment,
-            $nix_segment,
             $yadm_segment 
+            $nix_segment,
         ] 
         | str join
     )
@@ -78,15 +81,16 @@ export def create_left_prompt [] {
 
 export def create_right_prompt [] {
 
+	let colors = (_getColors)
     let time_segment = (
         [ (
-			_ansiTmp (date now | date format '%r') '#ff99e3'
+			_ansiTmp (date now | date format '%r') $colors.purple
 		) ] 
         | str join
     )
     let last_exit_code = if ( $env.LAST_EXIT_CODE != 0 ) { 
 		[
-            ( _ansiTmp $env.LAST_EXIT_CODE r )
+            ( _ansiTmp $env.LAST_EXIT_CODE $colors.redDark )
         ] 
         | str join
 	} else { "" }
@@ -102,13 +106,13 @@ export def create_right_prompt [] {
 }
 
 export def GetDarkTheme [] {
+
 	let colors = (_getColors)
 	return {
-
 		# color for nushell primitives
 		separator: $colors.white
 		leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
-		header: $colors.greenBright
+		header: $colors.green
 		empty: $colors.blue
 		# Closures can be used to choose colors for specific values.
 		# The value (in this case, a bool) is piped into the closure.
@@ -125,14 +129,13 @@ export def GetDarkTheme [] {
 			} else if $e < 500mb {
 				$colors.yellowDark
 			} else if $e < 2gb {
-				$colors.redDark
-			} else {
 				$colors.red
+			} else {
+				$colors.redDark
 			}
 		}
-		duration: white
+		duration: $colors.white
 		date: { || (date now) - $in |
-
 			if $in < 1hr {
 				$colors.red
 			} else if $in < 6hr {
@@ -142,7 +145,7 @@ export def GetDarkTheme [] {
 			} else if $in < 3day {
 				$colors.yellow
 			} else if $in < 1wk {
-				$colors.greenBright
+				$colors.green
 			} else if $in < 6wk {
 				$colors.green
 			} else if $in < 52wk {

@@ -9,11 +9,13 @@
 let external_completer = { |spans|
 	{
 		dotnet: { || 
+
 			dotnet complete (
 				$spans | skip 1 | str join " "
 			) | lines
 		}
-	} | get $spans.0 | each { || do $in }
+	} 
+	| get $spans.0 | each { || do $in }
 }
 
 
