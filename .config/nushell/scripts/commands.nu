@@ -97,3 +97,23 @@ export def plate [ ...args: string@_platesComplete ] {
 		cp ( $PlatesDir | path join $file ) $env.PWD
 	}
 }
+
+export def gcf [] {
+	
+	let file = (
+		git rev-parse --show-toplevel 
+		| str trim 
+		| path join .commit-msg.txt
+	)
+	git commit -F $file
+	"" | save -f $file
+}
+export def gcfe [] {
+	
+	let file = (
+		git rev-parse --show-toplevel 
+		| str trim 
+		| path join .commit-msg.txt
+	)
+	run-external $env.EDITOR $file
+}

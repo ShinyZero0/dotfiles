@@ -7,7 +7,7 @@ return {
 	"tpope/vim-surround", -- place brackets and tags
 	"tpope/vim-repeat", -- dot-repeat
 	"tpope/vim-eunuch", -- filesystem util
-	"junegunn/vim-easy-align", -- align columns
+	"junegunn/vim-easy-align", -- align text
 	"AndrewRadev/dsf.vim", -- interact with surrounding function
 	"fedepujol/move.nvim",
 	-- "AndrewRadev/splitjoin.vim",

@@ -1,4 +1,5 @@
 return {
+
 	{
 		"anuvyklack/hydra.nvim", -- keymap modes
 		config = function()

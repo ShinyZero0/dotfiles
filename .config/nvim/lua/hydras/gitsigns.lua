@@ -21,6 +21,7 @@ Hydra({
 		{ "p", cmd("Gitsigns preview_hunk_inline") },
 		{ "n", cmd("Gitsigns next_hunk") },
 		{ "N", cmd("Gitsigns prev_hunk") },
+		{ "r", cmd("Gitsigns reset_hunk") },
 	},
 })
 
