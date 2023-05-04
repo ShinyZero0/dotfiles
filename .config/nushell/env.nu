@@ -97,7 +97,7 @@ def create_right_prompt [] {
 
     let time_segment = (
         [ (
-			_ansiTmp (date now | date format '%r') magenta
+			_ansiTmp (date now | date format '%r') '#ff99e3'
 		) ] 
         | str join
     )

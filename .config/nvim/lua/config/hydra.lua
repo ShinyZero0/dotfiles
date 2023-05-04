@@ -4,6 +4,7 @@ pcall(function()
 end)
 -- call gitsigns hydra
 require("hydras.gitsigns")
+require("hydras.folds")
 
 local Hydra = require("hydra")
 local cmd = require("hydra.keymap-util").cmd
