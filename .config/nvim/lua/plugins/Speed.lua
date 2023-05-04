@@ -77,10 +77,30 @@ return {
 		branch = "0.1.x",
 		dependencies = {
 
-			"smartpde/telescope-recent-files",
-			"crispgm/telescope-heading.nvim",
-			"natecraddock/telescope-zf-native.nvim",
-			"nvim-telescope/telescope-symbols.nvim",
+			{
+				"smartpde/telescope-recent-files",
+				config = function()
+					require("telescope").load_extension("recent_files")
+				end,
+			},
+			{
+				"crispgm/telescope-heading.nvim",
+				config = function()
+					require("telescope").load_extension("heading")
+				end,
+			},
+			{
+				"natecraddock/telescope-zf-native.nvim",
+				config = function()
+					require("telescope").load_extension("zf-native")
+				end,
+			},
+			{
+				"nvim-telescope/telescope-symbols.nvim",
+				config = function()
+					require("telescope").load_extension("neoclip")
+				end,
+			},
 		},
 	},
 }

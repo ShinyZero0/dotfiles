@@ -129,6 +129,7 @@ Hydra({
 	body = "<leader>W",
 	heads = {
 
+		{ "o", vim.cmd.only, { exit = true } },
 		{ "H", cmd("WinShift left") },
 		{ "J", cmd("WinShift down") },
 		{ "K", cmd("WinShift up") },
@@ -290,4 +291,5 @@ SaveOrExitOne = Hydra({
 		{ "s", cmd("w|q"), { desc = "Save & quit" } },
 	},
 })
+
 -- vim:sw=2:ts=2
