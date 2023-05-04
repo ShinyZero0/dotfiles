@@ -123,7 +123,7 @@ function f(str)
 end
 function FoldByNames()
 	local map = {
-		[2] = { "*/.config/nvim/lua/plugins/*" },
+		[2] = { "*/.config/nvim/lua/plugins/*", "*" },
 		[1] = { "*/.config/nvim/lua/config/*" },
 	}
 	for value, patterns in pairs(map) do

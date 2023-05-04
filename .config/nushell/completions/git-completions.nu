@@ -105,6 +105,11 @@ def "nu-complete git subcommands" [] {
 	^git help -a | lines | where $it starts-with "   " | parse -r '\s*(?P<value>[^ ]+) \s*(?P<description>\w.*)'
 }
 
+export extern "git merge" [
+	
+	--abort
+	...args: any
+]
 # Check out git branches and files
 export extern "git checkout" [
 	...targets: string@"nu-complete git checkout"   # name of the branch or files to checkout

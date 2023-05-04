@@ -3,6 +3,7 @@ btop.conf
 .scripts/sanity/
 btop.log
 sources/
+.config/gh/hosts.yml
 
 ## compiled dynamic langauages
 *.pyc
