@@ -2,19 +2,11 @@ require("cmp_nvim_lsp").setup()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- TODO: make a servers list and function to setup all
 
--- require("lspconfig")["marksman"].setup({
---
--- 	capabilities = capabilities,
--- })
 require("lspconfig")["clangd"].setup({
 
 	capabilities = capabilities,
 })
 require("lspconfig")["pyright"].setup({
-
-	capabilities = capabilities,
-})
-require("lspconfig")["vimls"].setup({
 
 	capabilities = capabilities,
 })
