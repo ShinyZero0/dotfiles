@@ -6,124 +6,6 @@
 # https://www.nushell.sh/book/coloring_and_theming.html
 # And here is the theme collection
 # https://github.com/nushell/nu_scripts/tree/main/themes
-
-let white = '#FAFAFA'
-let black = '#100e23'
-let grayDark = '#565575'
-
-let red = '#ff8080'
-let redDark = '#ff5458'
-
-let green = '#62d196'
-let greenBright = '#95ffa4'
-
-let yellowDark = '#ffb378'
-let yellow = '#ffe9aa'
-
-let blueDark = '#65b2ff'
-let blue = '#91ddff'
-
-let purpleDark = '#906cff'
-let purple = '#ff99e3'
-
-let cyanDark = '#63f2f1'
-let cyan = '#aaffe4'
-
-let grayDark = '#a6b3cc'
-let gray = '#cbe3e7'
-
-let dark_theme = {
-
-	# color for nushell primitives
-	separator: $white
-	leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
-	header: $greenBright
-	empty: $blue
-	# Closures can be used to choose colors for specific values.
-	# The value (in this case, a bool) is piped into the closure.
-	bool: { || if $in { $cyan } else { $redDark } }
-	int: $yellowDark
-	filesize: { |e|
-		if $e == 0b {
-			$white
-		} else if $e < 1mb {
-			$cyan
-		} else if $e < 100mb {
-			$yellow
-		} else if $e < 500mb {
-			$yellowDark
-		} else if $e < 2gb {
-			$redDark
-		} else {
-			$red
-		}
-	}
-	duration: white
-	date: { || (date now) - $in |
-		if $in < 1hr {
-			$red
-		} else if $in < 6hr {
-			$redDark
-		} else if $in < 1day {
-			$yellowDark
-		} else if $in < 3day {
-			$yellow
-		} else if $in < 1wk {
-			$greenBright
-		} else if $in < 6wk {
-			$green
-		} else if $in < 52wk {
-			$cyan
-		} else { $cyanDark }
-	}
-	range: $yellowDark
-	float: $yellowDark
-	string: $yellow
-	nothing: $grayDark
-	binary: $yellowDark
-	cellpath: white
-	row_index: green_bold
-	record: white
-	list: white
-	block: white
-	hints: dark_gray
-
-	shape_and: $red
-	shape_binary: purple_bold
-	shape_block: $cyanDark
-	shape_bool: $cyanDark
-	shape_custom: $cyan
-	shape_datetime: $cyanDark
-	shape_directory: $cyan
-	shape_external: $cyan
-	shape_externalarg: $cyanDark
-	shape_filepath: $cyan
-	shape_flag: blue_bold
-	shape_float: $yellowDark
-	# shapes are used to change the cli syntax highlighting
-	shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b }
-	shape_globpattern: cyan_bold
-	shape_int: $yellowDark
-	shape_internalcall: cyan_bold
-	shape_list: cyan_bold
-	shape_literal: blue
-	shape_match_pattern: green
-	shape_matching_brackets: { attr: u }
-	shape_nothing: light_cyan
-	shape_operator: $red
-	shape_or: $red
-	shape_pipe: $purple
-	shape_range: $yellowDark
-	shape_record: $cyanDark
-	shape_redirection: $purple
-	shape_signature: $purpleDark
-	shape_string: $yellow
-	shape_string_interpolation: cyan_bold
-	shape_table: blue_bold
-	shape_variable: $purple
-	shape_vardecl: $purple
-}
-
 let external_completer = { |spans|
 	{
 		dotnet: { || 
@@ -258,7 +140,6 @@ let-env config = {
 		vi_insert: line # block, underscore, line (block is the default)
 		vi_normal: block # block, underscore, line  (underscore is the default)
 	}
-	color_config: $dark_theme   # if you want a light theme, replace `$dark_theme` to `$light_theme`
 	use_grid_icons: true
 	footer_mode: "25" # always, never, number_of_rows, auto
 	float_precision: 2 # the precision for displaying floats in tables
@@ -520,6 +401,12 @@ let-env config = {
 		}
 	]
 }
+
+use theme.nu *
+# Use nushell functions to define your right and left prompt
+let-env PROMPT_COMMAND = { || create_left_prompt }
+let-env PROMPT_COMMAND_RIGHT = { || create_right_prompt }
+$env.config.color_config = ( GetDarkTheme )
 
 source aliases/aliases-pre.nu
 source aliases/git.nu
