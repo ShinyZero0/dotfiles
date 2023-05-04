@@ -418,11 +418,11 @@ use commands.nu *
 
 source zoxide.nu
 source alt.nu
-source nq.nu
 source langTools.nu
 source focus.nu
 source hydra.nu
 
+use nq-utils.nu *
 use move-and-replace.nu *
 
 use git-completions.nu *

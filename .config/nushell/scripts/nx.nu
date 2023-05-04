@@ -1,4 +1,6 @@
-use utils _home
+use utils [
+	_home
+]
 
 export def nx-init [ name?: string ] {
 
@@ -20,7 +22,7 @@ export def nx-sync [ dir?: any ] {
 	let directory = ( $dir | default ( _home dev ) )
 	open $LockFile
 		| from json
-		| update nodes.nixpkgs (
+		| upsert nodes.nixpkgs (
 			open ~/.config/home-manager/flake.lock
 			| from json
 		).nodes.nixpkgs

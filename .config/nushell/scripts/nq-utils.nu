@@ -8,9 +8,21 @@ export def lsq [
 ] {
 
     if $all {
-		( fd -t f . $env.NQDIR | lines )
+		(
+			fd -t f . $env.NQDIR | lines
+			| each { || ls $in } 
+			| flatten 
+			| reject type size
+			| latest
+		)
 	} else {
-		( fd -t x . $env.NQDIR | lines )
+		(
+			fd -t x . $env.NQDIR | lines 
+			| each { || ls $in } 
+			| flatten 
+			| reject type size
+			| latest
+		)
 	}
 }
 
@@ -47,7 +59,7 @@ export def nq [
 ] {
 
 	if ($now) {
-		let nqdir = ($env.NQDIR | path join ( "q" + (random chars | into string) ) )
+		let nqdir = ($env.NQDIR | path join ( "q" + (random uuid | str substring 0..8) ) )
 		NQDIR=$nqdir ^nq nu -c $"( $args | str join ' ' )"
 		print $nqdir
 	} else {
@@ -57,12 +69,23 @@ export def nq [
 
 export def "nq clean" [] {
 
-	let active = ( lsq -a )
-	lsq 
+	let active = ( lsq | get name )
+	lsq -a
+	| get name
 	| filter { || 
 		not $in in $active
 	} 
+	| each { || rm $in } 
+	| ignore
+
+	ls $env.NQDIR 
+	| get name
+	| where { || 
+		ls $in | is-empty
+	}
 	| each { || rm $in }
+	| ignore
+
 }
 export def "nq kill" [
 
@@ -72,7 +95,7 @@ export def "nq kill" [
 }
 
 def _nqProcesses [] {
-	let procs = (lsq)
+	let procs = (lsq | get name)
 	$procs
 	| each { || _relpath $env.NQDIR }
 	| wrap value 
@@ -83,7 +106,7 @@ def _nqProcesses [] {
 				| lines 
 				| get 0
 				| parse "exec nq nu -c '{foo}'" 
-				| get foo 
+				| get foo
 				| get 0
 		} 
 		| wrap description
@@ -91,6 +114,7 @@ def _nqProcesses [] {
 }
 
 def _nqThreads [] {
+
 	ls $env.NQDIR 
 	| get name 
 	| each {|| _relpath $env.NQDIR }
