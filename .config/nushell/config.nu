@@ -523,6 +523,7 @@ let-env config = {
 
 source aliases/aliases-pre.nu
 source aliases/git.nu
+use aliases/xbps.nu *
 
 use commands.nu *
 

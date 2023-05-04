@@ -117,3 +117,18 @@ export def gcfe [] {
 	)
 	run-external $env.EDITOR $file
 }
+
+export def "cat <<" [ eof ] {
+
+	mut out = []
+	while true {
+
+		let line = (input)
+			if ($line == $eof) {
+				break
+			} else {
+				$out = ( $out | append $line )
+			}
+	}
+	return $out
+}

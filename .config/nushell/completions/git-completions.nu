@@ -369,6 +369,7 @@ export extern "git rm" [
 
 export extern "git restore" [
 	--staged
+	--patch(-p)
 
 	...targets: any
 ]

@@ -1,6 +1,6 @@
-old-alias pkin = sudo xbps-install
-old-alias pkrm = sudo xbps-remove
-alias pkup = sudo xbps-install -SAu
-alias pkfd = xbps-query -Rs
-alias pkinf = xbps-query -RS
-alias pkls = xbps-query -m
+export old-alias pkin = sudo xbps-install
+export old-alias pkrm = sudo xbps-remove
+export alias pkup = sudo xbps-install -SAu
+export alias pkfd = xbps-query -Rs
+export alias pkinf = xbps-query -RS
+export alias pkls = xbps-query -m
