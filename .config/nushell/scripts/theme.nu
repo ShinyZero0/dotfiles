@@ -47,7 +47,7 @@ export def create_left_prompt [] {
         $env.PWD | str replace $home '~'
     )
 
-    let path_segment = ( _ansiTmp $dir { fg: $colors.green  } )
+    let path_segment = ( _ansiTmp $dir { fg: $colors.green attr: b } )
     let yadm_segment = if (
 		$env.PROMPT? 
 		| default "" 
@@ -84,7 +84,7 @@ export def create_right_prompt [] {
 	let colors = (_getColors)
     let time_segment = (
         [ (
-			_ansiTmp (date now | date format '%r') $colors.purple
+			_ansiTmp (date now | date format '%r') { fg: $colors.purple attr: b }
 		) ] 
         | str join
     )

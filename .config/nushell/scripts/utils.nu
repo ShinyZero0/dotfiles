@@ -1,5 +1,6 @@
 export def _ansiTmp [ text: string color: any  ] {
 	[
+		( ansi reset )
 		( ansi $color )
 		$text
 		( ansi reset )
