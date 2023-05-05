@@ -29,6 +29,7 @@ export extern "sudo xbps-remove" [
 ]
 export extern "sudo xbps-install" [
 
+	...targets: string@"xbps all packages"
 	--automatic(-A)
 	--config(-C)
 	--cachedir(-c)
@@ -48,10 +49,10 @@ export extern "sudo xbps-install" [
 	--verbose(-v)
 	--yes(-y)
 	--version(-V)
-	...targets: string@"xbps all packages"
 ]
 export extern "xbps-query" [
 
+	...targets: string@"xbps all packages"
 	--config(-C)	# Path to confdir (xbps.d)
 	--cachedir(-c)	# Path to cachedir
 	--debug(-d)	# Debug mode shown to stderr

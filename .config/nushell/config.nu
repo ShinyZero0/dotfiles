@@ -2,10 +2,6 @@
 #
 # version = 0.78.1
 
-# For more information on defining custom themes, see
-# https://www.nushell.sh/book/coloring_and_theming.html
-# And here is the theme collection
-# https://github.com/nushell/nu_scripts/tree/main/themes
 let external_completer = { |spans|
 	{
 		dotnet: { || 
@@ -22,7 +18,6 @@ let external_completer = { |spans|
 # The default config record. This is where much of your global configuration is setup.
 let-env config = {
 
-	# true or false to enable or disable the welcome banner at startup
 	show_banner: false
 	ls: {
 
@@ -171,7 +166,7 @@ let-env config = {
 			}]
 		}
 		display_output: { ||
-			if (term size).columns >= 100 { table -e } else { table }
+			if (term size).columns >= 50 { table -e } else { table }
 		}
 		command_not_found: { |command| (
 

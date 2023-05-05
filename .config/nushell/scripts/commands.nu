@@ -132,3 +132,12 @@ export def "cat <<" [ eof ] {
 	}
 	return $out
 }
+
+export def First [ func: closure default?: any ] {
+
+	$in
+	| where {|| do $func }
+	| get 0
+	| default $default
+	| default null
+}
