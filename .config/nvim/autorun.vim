@@ -15,7 +15,7 @@ fun! RetabSoft()
 	set et
 	retab!
 endf
-autocmd BufEnter,BufWritePre *.md,*.txt call RetabSoft()
+autocmd BufEnter,BufWritePre *.md call RetabSoft()
 
 au LspAttach * call RemapGotoDefinition()
 

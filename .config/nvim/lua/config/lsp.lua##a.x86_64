@@ -49,6 +49,7 @@ local servers = {
 
 	clangd = stdopts,
 	pyright = stdopts,
+	marksman = stdopts,
 	omnisharp = omnisharpOpts,
 	lua_ls = lualsOpts,
 }

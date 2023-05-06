@@ -21,7 +21,7 @@ Hydra({
 		{ "x", "zx" },
 		{ "o", "zo" },
 		{ "O", "zO" },
-		{ "c", "zc" },
+		{ "c", "zc", { nowait = true } },
 		{ "r", "zr" },
 		{ "m", "zm" },
 	},

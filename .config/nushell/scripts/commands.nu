@@ -43,12 +43,6 @@ export def parse-help [] {
 	| parse -r '\s\s+(?:-(?P<short>\w)[,\s]+)?(?:--(?P<long>[\w-]+))\s*(?:<(?P<format>.*)>)?\s*(?P<description>.*)?' | format "--{long}(-{short})\t# {description}" | to text 
 }
 
-export def-env root [ num: int ] {
-	for i in 1..$num {
-		cd ..
-	}
-}
-
 export def json2snip [] {
 	$in | format "snippet {prefix} '{description}'\n\t{body}"
 }

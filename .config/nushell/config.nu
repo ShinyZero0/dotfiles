@@ -25,8 +25,7 @@ let-env config = {
 		clickable_links: true # enable or disable clickable links. Your terminal has to support links.
 	}
 	rm: {
-
-		always_trash: true # always act as if -t was given. Can be overridden with -p
+		always_trash: true 
 	}
 	cd: {
 

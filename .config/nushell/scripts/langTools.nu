@@ -7,7 +7,7 @@ def lang-tools [
     open $toolsFile
     | where { ||
         get languages | any { || 
-            str contains -i $lang
+            str contains -i ( $lang | default "" )
         }
     } 
 }

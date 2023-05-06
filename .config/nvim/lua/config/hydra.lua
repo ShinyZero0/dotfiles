@@ -2,7 +2,7 @@
 pcall(function()
 	require("config.hydra-alt")
 end)
--- call gitsigns hydra
+-- call hydras
 require("hydras.gitsigns")
 require("hydras.folds")
 
@@ -130,6 +130,7 @@ Hydra({
 	body = "<leader>W",
 	heads = {
 
+		{ "<Esc>", nil, { exit = true, nowait = true } },
 		{ "o", vim.cmd.only, { exit = true } },
 		{ "H", cmd("WinShift left") },
 		{ "J", cmd("WinShift down") },

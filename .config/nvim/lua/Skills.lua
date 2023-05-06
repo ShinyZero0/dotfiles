@@ -121,17 +121,38 @@ function f(str)
 		end)
 	)
 end
-function FoldByNames()
+function FoldLevelByNames()
 	local map = {
-		[2] = { "*/.config/nvim/lua/plugins/*", "*" },
-		[1] = { "*/.config/nvim/lua/config/*" },
+
+		[2] = { "*/.config/nvim/lua/plugins/*" },
+		[0] = { "*.nu" },
+		[1] = { "*/.config/nvim/lua/config/*", "*" },
+	}
+	for value, patterns in pairs(map) do
+		for _, pattern in ipairs(patterns) do
+			A.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
+
+				pattern = pattern,
+				callback = function()
+					vim.o.foldlevel = value
+					vim.cmd.normal("zx")
+				end,
+			})
+		end
+	end
+end
+function FoldMethodByNames()
+	local map = {
+
+		["indent"] = { "*.nu" },
+		-- ["expr"] = { "*" },
 	}
 	for value, patterns in pairs(map) do
 		for _, pattern in ipairs(patterns) do
 			A.nvim_create_autocmd({ "BufEnter" }, {
 				pattern = pattern,
 				callback = function()
-					vim.o.foldlevel = value
+					vim.o.foldmethod = value
 					vim.cmd.normal("zx")
 				end,
 			})

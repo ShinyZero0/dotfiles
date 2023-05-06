@@ -10,4 +10,5 @@ vim.filetype.add({
 	},
 })
 vim.opt.fillchars:append({ diff = "╱" })
-FoldByNames()
+-- FoldLevelByNames()
+-- FoldMethodByNames()

@@ -51,6 +51,7 @@ require("neo-tree").setup({
 	},
 	filesystem = {
 
+		follow_current_file = true,
 		filtered_items = {
 
 			hide_by_pattern = {
@@ -58,6 +59,5 @@ require("neo-tree").setup({
 				"*##*",
 			},
 		},
-		-- hijack_netrw_behavior = "open_default",
 	},
 })

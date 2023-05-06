@@ -29,7 +29,7 @@ let-env XDG_DATA_DIRS = (
 		| prepend /usr/share/
 )
 let-env EDITOR = 'nvim'
-let-env SVDIR = ( _home '.config/sv' )
+let-env SVDIR = ( _home '.local/share/service' )
 let-env NQDIR = ( _home '.stuff/nq' )
 let-env PLATES_DIR = ( _home '.stuff/plates' )
 mkdir $env.NQDIR
