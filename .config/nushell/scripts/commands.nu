@@ -16,11 +16,20 @@ export def indexate [] {
 # list runit services
 export def svls [
 	--all(-a)
+	--root(-r)
 ] {
 	if $all {
-		ls /etc/sv/
+		if $root {
+			ls /etc/sv/
+		} else {
+			ls ~/.config/sv/
+		}
 	} else {
-		ls /var/service/
+		if $root {
+			ls /var/service/
+		} else {
+			ls $env.SVDIR
+		}
 	}
 }
 

@@ -416,6 +416,7 @@ source langTools.nu
 source focus.nu
 source hydra.nu
 
+use gh.nu *
 use nq-utils.nu *
 use move-and-replace.nu *
 
@@ -429,6 +430,8 @@ use zellij-cmp.nu *
 use proc-cmp.nu *
 use udevil-cmp.nu *
 use gh-cmp.nu *
+use runit-cmp.nu *
+
 use nx.nu *
 
 source aliases/aliases-post.nu
