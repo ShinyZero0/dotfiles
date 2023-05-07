@@ -13,7 +13,7 @@ export def mvnrp [
 	if ( $new | _getExt ) == "lua" and (
 		$new | _isChildOf $env.NvimConfig
 	) {
-		let files = ( fd -t f . $env.NvimConfig | lines)
+		let files = ( fd -t f -e lua -e vim . $env.NvimConfig | lines)
 		for file in $files {
 			_replaceLuaRequires $file
 		}
@@ -72,7 +72,7 @@ def _replaceLuaRequires [
 			| str join "."
 	)
 	if $ft == "file" {
-		open $file | str replace -as $"require\(\"($oldModule)\"\)" $"require\(\"($newModule)\"\)" | save -f $file
+		open --raw $file | str replace -as $"require\(\"($oldModule)\"\)" $"require\(\"($newModule)\"\)" | save -f $file
 	} else if $ft == "dir" {
 		fnrfiles ( 'require\("' + $oldModule + '(.*)"\)' ) ( 'require("' + $newModule + '$1")' ) $file
 

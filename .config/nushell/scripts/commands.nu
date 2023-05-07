@@ -72,6 +72,7 @@ export def to-do [] {
 }
 
 export def ghraw-b [] {
+
 	ungit-b;
 	[
 		"https://raw.githubusercontent.com",
@@ -137,10 +138,14 @@ export def "cat <<" [ eof ] {
 }
 
 export def First [ func: closure default?: any ] {
-
+	# TODO: the "default" doesn't work actually
 	$in
 	| where {|| do $func }
 	| get 0
 	| default $default
 	| default null
+}
+
+export def "to qr" [] {
+	qrencode -t utf8 ( $in | to text )
 }
