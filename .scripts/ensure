@@ -1,6 +1,0 @@
-#!/bin/sh
-
-for arg in $@ ; do
-    mkdir -p $(basename "$arg")
-    touch "$arg"
-done

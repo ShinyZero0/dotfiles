@@ -4,7 +4,7 @@ use utils [
 
 export def nx-init [ name?: string ] {
 
-	cp ~/.stuff/nix/dotnet/flake.lock ./
+	cp ~/.stuff/nix/flake.lock ./
 	cp ~/.stuff/plates/.envrc ./
 	direnv allow
 
@@ -17,7 +17,8 @@ export def nx-init [ name?: string ] {
 }
 
 export def nx-sync [ dir?: any ] {
-	let LockFile = ( "~/.stuff/nix/dotnet/flake.lock" | path expand ) 
+
+	let LockFile = ( "~/.stuff/nix/flake.lock" | path expand ) 
 
 	let directory = ( $dir | default ( _home dev ) )
 	open $LockFile
@@ -45,6 +46,6 @@ export def nx-sync [ dir?: any ] {
 
 export def nx-update [ ...args ] {
 
-	nix flake update ~/.config/home-manager/
+	nix flake update ~/.stuff/nix/
 	nx-sync
 }
