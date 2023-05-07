@@ -35,11 +35,13 @@
 
     nixfmt
 
+    marksman
+
     # CLI stuff
 
     magic-wormhole-rs
     delta
-		bat
+    bat
     gum
     vivid
     pistol
@@ -59,7 +61,8 @@
     chroma
     translate-shell
     python310Packages.grip # markdown previewer
-		github-cli
+    github-cli
+    empty
 
     # Fonts
     ibm-plex

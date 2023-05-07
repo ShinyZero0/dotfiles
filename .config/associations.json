@@ -1,5 +1,5 @@
 {
-  "Term": "kitty --class floatwin --",
+  "Term": "alacritty --class floatwin -e",
   "Handlers": [
     {
       "GlobPatterns": [
@@ -17,21 +17,21 @@
       "Exec": "atool -x",
       "Term": true
     },
+		{
+			"GlobPatterns": [
+				"*.png",
+				"*.jp?g",
+				"*.webm",
+				"*.gif"
+			],
+			"Exec": "nomacs"
+		},
     {
       "RegexPatterns": [
         "^https?://.*"
       ],
       "Exec": "firefox-devedition",
       "Term": false
-    },
-    {
-      "GlobPatterns": [
-        "*.png",
-        "*.jp?g",
-        "*.webm",
-        "*.gif"
-      ],
-      "Exec": "nomacs"
     },
     {
 			"GlobPatterns": [
