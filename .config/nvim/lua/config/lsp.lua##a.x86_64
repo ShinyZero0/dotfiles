@@ -2,7 +2,7 @@ local A = vim.api
 require("cmp_nvim_lsp").setup()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local stdopts = {
+local stdOpts = {
 	capabilities = capabilities,
 }
 
@@ -46,9 +46,10 @@ local lualsOpts = {
 }
 local servers = {
 
-	clangd = stdopts,
-	pyright = stdopts,
-	marksman = stdopts,
+	nil_ls = stdOpts,
+	clangd = stdOpts,
+	pyright = stdOpts,
+	marksman = stdOpts,
 	omnisharp = omnisharpOpts,
 	lua_ls = lualsOpts,
 }

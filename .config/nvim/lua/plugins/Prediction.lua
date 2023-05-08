@@ -1,7 +1,7 @@
 return {
 	{
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		event = { "VeryLazy", "InsertEnter", "CmdLineEnter" },
 		config = function()
 			require("config.nvim-cmp")
 		end,
@@ -14,6 +14,7 @@ return {
 			"hrsh7th/cmp-omni",
 			"dcampos/cmp-snippy",
 			"onsails/lspkind.nvim",
+			"hrsh7th/cmp-cmdline",
 		},
 	},
 	{
@@ -21,13 +22,12 @@ return {
 		config = function()
 			require("config.nvim-cmp-cmd")
 		end,
-		event = "CmdLineEnter",
+		lazy = true,
 	},
 	{
 		"dcampos/cmp-snippy",
 		event = "ModeChanged *:[vV\x16]*",
 		dependencies = {
-
 			{
 				"dcampos/nvim-snippy",
 				name = "snippy",

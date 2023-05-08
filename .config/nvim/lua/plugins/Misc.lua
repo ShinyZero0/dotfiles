@@ -5,6 +5,17 @@ return {
 		config = function()
 			require("config.hydra")
 		end,
+		dependencies = {
+
+			{
+				"sindrets/winshift.nvim",
+				config = true,
+			},
+			{
+				"mrjones2014/smart-splits.nvim",
+				lazy = true,
+			},
+		},
 	},
 	-- {
 	-- 	"akinsho/toggleterm.nvim", -- terminal emulator
