@@ -4,21 +4,20 @@
 " ╰──────────────────────────────────────────────────────────╯
 
 lua require("Skills") -- the lua functions module
-cnoreabbrev pl lua print
 
 " open main file for pwd
-function MainFile() abort
-    call SourceIfExists(".mainfile.vim")
-endfunction
+" function MainFile() abort
+"     call SourceIfExists(".mainfile.vim")
+" endfunction
 
-function AddMainFile() abort
-    let current = expand("%")
-    " let bufnr = bufadd(".mainfile.vim")
-    " call bufload(bufnr)
-    " call setbufline(bufnr, 1, [ "text" ])
-    call writefile([ printf("edit %s", current) ], ".mainfile.vim")
-    " buffer#
-endfunction
+" function AddMainFile() abort
+"     let current = expand("%")
+"     " let bufnr = bufadd(".mainfile.vim")
+"     " call bufload(bufnr)
+"     " call setbufline(bufnr, 1, [ "text" ])
+"     call writefile([ printf("edit %s", current) ], ".mainfile.vim")
+"     " buffer#
+" endfunction
 
 " Show relative numbers in visual mode only
 function ToggleNumbers()
@@ -33,6 +32,13 @@ augroup VisualEvent
     " on visual mode leave
     autocmd Modechanged [vV\x16]*:* call ToggleNumbers()
 augroup END
+
+function! SourceIfExists(file)
+	if filereadable(expand(a:file))
+		exe "source " a:file
+	endif
+endfunction
+
 
 " Change keyboard layout on switching mode
 function SetEnglish()
@@ -57,12 +63,6 @@ function SelectAll()
     endif
 endfunction
 vnoremap A <cmd>call SelectAll()<CR>
-
-fun FoldUsings()
-    syn region FoldUsings start=/^using.*$/ end=/^$/ fold
-    syn sync fromstart
-    set foldmethod=syntax
-endf
 
 function RemapGotoDefinition() abort
     if &ft =~ 'cs'

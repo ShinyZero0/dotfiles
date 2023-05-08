@@ -9,6 +9,6 @@ vim.filetype.add({
 		["flake.lock"] = "json",
 	},
 })
-vim.opt.fillchars:append({ diff = "╱" })
--- FoldLevelByNames()
--- FoldMethodByNames()
+require("Options")
+require("Autorun")
+require("config.lazy")

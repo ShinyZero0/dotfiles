@@ -1,5 +1,11 @@
 autocmd BufEnter * set formatoptions=1jtc
 
+fun FoldUsings()
+    syn region FoldUsings start=/^using.*$/ end=/^$/ fold
+    syn sync fromstart
+    set foldmethod=syntax
+endf
+
 autocmd BufEnter *.cs call FoldUsings()
 autocmd BufEnter *.axaml,*.xaml setlocal ft=xml ts=2 sw=2
 
@@ -16,8 +22,6 @@ fun! RetabSoft()
 	retab!
 endf
 autocmd BufEnter,BufWritePre *.md call RetabSoft()
-
-au LspAttach * call RemapGotoDefinition()
 
 au BufNewFile,BufFilePre,BufRead *.md set syntax=markdown
 
