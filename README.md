@@ -16,3 +16,5 @@ Use yadm for configs:
 yadm clone git@github.com:ShinyZero0/dotfiles.git
 ```
 Then look at installation script and install stuff, maybe even run the script and hope it's ready.
+# TODO
+- [ ] change(?) purple to #cf18fe everywhere

@@ -1,4 +1,5 @@
 # old alias for competion
+# TODO: turn into module
 use utils.nu [ "_clip o" "_clip i" ]
 
 old-alias dn = dotnet
@@ -36,7 +37,10 @@ def share [ file: string ] {
 
 alias dwn = ls ~/Downloads/
 alias pic = ls ~/Pictures/
-alias latest = sort-by modified
+alias recent = sort-by modified
+def latest [ ...args ] {
+	$in | recent | last
+}
 alias xtr = atool -x
 
 alias ru = trans :ru
