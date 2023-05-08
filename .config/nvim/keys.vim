@@ -19,6 +19,7 @@ nnoremap <S-CR> O<Esc>
 
 " COMMAND LINE
 
+cnoreabbrev pl lua print
 cnoremap <C-left>  <S-left>
 cnoremap <C-right> <S-right>
 cnoremap <C-BS> <C-w>
@@ -34,13 +35,6 @@ cnoremap <C-BS> <C-w>
 vnoremap & :'<,'>&<CR>
 
 " MISC PLUGINS
-
-nmap  <C-a>  <Plug>(dial-increment)
-nmap  <C-x>  <Plug>(dial-decrement)
-vmap  <C-a>  <Plug>(dial-increment)
-vmap  <C-x>  <Plug>(dial-decrement)
-vmap g<C-a> g<Plug>(dial-increment)
-vmap g<C-x> g<Plug>(dial-decrement)
 
 " nnoremap <F5> <cmd>ToggleTerm direction=vertical size=70<CR>
 " nnoremap <Leader>x <cmd>ToggleTermSendCurrentLine<CR>

@@ -1,16 +1,15 @@
+local A = vim.api
 require("cmp_nvim_lsp").setup()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local stdopts = {
+local stdOpts = {
 	capabilities = capabilities,
 }
 
-local pid = vim.fn.getpid()
-local omnisharp_bin = "OmniSharp"
 local omnisharpOpts = {
 
 	capabilities = capabilities,
-	cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
+	cmd = { "OmniSharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
 }
 
 local lualsOpts = {
@@ -47,8 +46,10 @@ local lualsOpts = {
 }
 local servers = {
 
-	clangd = stdopts,
-	pyright = stdopts,
+	nil_ls = stdOpts,
+	clangd = stdOpts,
+	pyright = stdOpts,
+	marksman = stdOpts,
 	omnisharp = omnisharpOpts,
 	lua_ls = lualsOpts,
 }
@@ -56,3 +57,20 @@ local servers = {
 for server, opts in pairs(servers) do
 	require("lspconfig")[server].setup(opts)
 end
+local function onAttach()
+	vim.call("RemapGotoDefinition")
+	require("hydras.lsp")
+end
+A.nvim_create_autocmd("LspAttach", {
+	callback = onAttach,
+})
+
+vim.diagnostic.config({
+
+	virtual_text = false,
+	signs = true,
+	update_in_insert = false,
+	underline = true,
+	severity_sort = false,
+	float = true,
+})

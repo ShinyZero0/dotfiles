@@ -35,10 +35,13 @@
 
     nixfmt
 
+    marksman
+
     # CLI stuff
 
     magic-wormhole-rs
     delta
+    bat
     gum
     vivid
     pistol
@@ -48,7 +51,7 @@
     du-dust
 
     entr # run commands on file changes
-    gibo # boilerplate
+    # gibo # boilerplate
     fd
     ripgrep
     sd # sed
@@ -58,6 +61,8 @@
     chroma
     translate-shell
     python310Packages.grip # markdown previewer
+    github-cli
+    empty
 
     # Fonts
     ibm-plex

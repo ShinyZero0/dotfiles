@@ -1,6 +1,6 @@
 local Hydra = require("hydra")
 local cmd = require("hydra.keymap-util").cmd
-local hints = require("config.hints")
+local hints = require("hydras.hints")
 vim.g.mapleader = " "
 
 Hydra({
@@ -21,7 +21,7 @@ Hydra({
 		{ "x", "zx" },
 		{ "o", "zo" },
 		{ "O", "zO" },
-		{ "c", "zc" },
+		{ "c", "zc", { nowait = true } },
 		{ "r", "zr" },
 		{ "m", "zm" },
 	},

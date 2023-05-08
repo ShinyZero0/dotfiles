@@ -2,6 +2,7 @@
 keybinds clear-defaults=true {
 
     normal {
+
         bind "Alt 1" { GoToTab 1; SwitchToMode "Normal"; }
         bind "Alt 2" { GoToTab 2; SwitchToMode "Normal"; }
         bind "Alt 3" { GoToTab 3; SwitchToMode "Normal"; }
@@ -35,7 +36,7 @@ keybinds clear-defaults=true {
     }
     pane {
 
-        bind "Ctrl p" { SwitchToMode "Normal"; }
+        bind "Alt p" { SwitchToMode "Normal"; }
         bind "h" "Left" { MoveFocus "Left"; }
         bind "l" "Right" { MoveFocus "Right"; }
         bind "j" "Down" { MoveFocus "Down"; }
@@ -53,7 +54,7 @@ keybinds clear-defaults=true {
     }
     move {
 
-        bind "Ctrl h" { SwitchToMode "Normal"; }
+        bind "Alt m" { SwitchToMode "Normal"; }
         bind "n" "Tab" { MovePane; }
         bind "p" { MovePaneBackwards; }
         bind "h" "Left" { MovePane "Left"; }
@@ -98,7 +99,7 @@ keybinds clear-defaults=true {
     }
     search {
 
-        bind "Ctrl s" { SwitchToMode "Normal"; }
+        bind "Alt s" { SwitchToMode "Normal"; }
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "G" { ScrollToBottom;  }
         bind "g" { ScrollToTop;  }

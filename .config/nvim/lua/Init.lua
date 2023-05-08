@@ -5,6 +5,10 @@ vim.filetype.add({
 		xaml = "xml",
 		axaml = "xml",
 	},
+	filename = {
+		["flake.lock"] = "json",
+	},
 })
-vim.opt.fillchars:append({ diff = "╱" })
-FoldByNames()
+require("Options")
+require("Autorun")
+require("config.lazy")

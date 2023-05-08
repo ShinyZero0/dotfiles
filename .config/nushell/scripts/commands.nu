@@ -16,11 +16,20 @@ export def indexate [] {
 # list runit services
 export def svls [
 	--all(-a)
+	--root(-r)
 ] {
 	if $all {
-		ls /etc/sv/
+		if $root {
+			ls /etc/sv/
+		} else {
+			ls ~/.config/sv/
+		}
 	} else {
-		ls /var/service/
+		if $root {
+			ls /var/service/
+		} else {
+			ls $env.SVDIR
+		}
 	}
 }
 
@@ -43,12 +52,6 @@ export def parse-help [] {
 	| parse -r '\s\s+(?:-(?P<short>\w)[,\s]+)?(?:--(?P<long>[\w-]+))\s*(?:<(?P<format>.*)>)?\s*(?P<description>.*)?' | format "--{long}(-{short})\t# {description}" | to text 
 }
 
-export def-env root [ num: int ] {
-	for i in 1..$num {
-		cd ..
-	}
-}
-
 export def json2snip [] {
 	$in | format "snippet {prefix} '{description}'\n\t{body}"
 }
@@ -69,6 +72,7 @@ export def to-do [] {
 }
 
 export def ghraw-b [] {
+
 	ungit-b;
 	[
 		"https://raw.githubusercontent.com",
@@ -131,4 +135,17 @@ export def "cat <<" [ eof ] {
 			}
 	}
 	return $out
+}
+
+export def First [ func: closure default?: any ] {
+	# TODO: the "default" doesn't work actually
+	$in
+	| where {|| do $func }
+	| get 0
+	| default $default
+	| default null
+}
+
+export def "to qr" [] {
+	qrencode -t utf8 ( $in | to text )
 }

@@ -47,5 +47,5 @@ def main [] {
 [alias]
 	wdiff = diff --word-diff=color --unified=1`
 	'
-	$gitconfig | save ~/.gitconfig
+	$gitconfig | save -f ~/.gitconfig
 }

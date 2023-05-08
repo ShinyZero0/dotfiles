@@ -30,15 +30,3 @@ require("lazy").setup("plugins", {
 })
 -- vim.api.nvim_create_autocmd({ "User MainFile" }, { callback = "g:MainFile" })
 -- vim.api.nvim_exec_autocmds({ "User MainFile" }, {})
-
-vim.diagnostic.config({
-
-	virtual_text = false,
-	signs = true,
-	update_in_insert = false,
-	underline = true,
-	severity_sort = false,
-	float = true,
-})
-
--- vim:ts=2:sw=2

@@ -13,7 +13,7 @@ colors:
     blue:    '#91ddff'
     magenta: '#ff99e3'
     cyan:    '#aaffe4'
-    white:   '#cbe3e7'
+    white:   '#FAFAFA'
 
   # Bright colors
   bright:
@@ -25,3 +25,21 @@ colors:
     magenta: '#906cff'
     cyan:    '#63f2f1'
     white:   '#a6b3cc'
+
+  hints:
+    # First character in the hint label
+    #
+    # Allowed values are CellForeground/CellBackground, which reference the
+    # affected cell, or hexadecimal colors like #ff00ff.
+    start:
+      foreground: '#ffe9aa'
+      background: '#000000'
+    # All characters after the first one in the hint label
+    #
+    # Allowed values are CellForeground/CellBackground, which reference the
+    # affected cell, or hexadecimal colors like #ff00ff.
+    end:
+      foreground: '#aaffe4'
+      background: '#000000'
+
+

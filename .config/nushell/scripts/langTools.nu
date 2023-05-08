@@ -1,13 +1,13 @@
 #!/usr/bin/env nu
 
-def langtools [
+def lang-tools [
     --lang(-l): string
 ] {
-    let toolsFile = ~/.scripts/langTools/langTools.json
+    let toolsFile = ~/.stuff/langTools.json
     open $toolsFile
     | where { ||
         get languages | any { || 
-            str contains -i $lang
+            str contains -i ( $lang | default "" )
         }
     } 
 }

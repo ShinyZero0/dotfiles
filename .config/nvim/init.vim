@@ -1,81 +1,10 @@
-set ignorecase
-set noswapfile
-set undofile
-
-" VISUAL
-set title
-set termguicolors
-set number
-set cursorline
-set noshowmode
-set showtabline=0
-set conceallevel=0
-set scrolloff=5
-
-" FORMAT
-set tabstop=4 shiftwidth=4 
-set breakindent
-set formatoptions=1jtc 
-set fdm=expr
-set foldexpr=nvim_treesitter#foldexpr()
-
-" INPUT
-set whichwrap+=h,l,<,>,[,]
-set timeoutlen=5000
-set splitright
-set splitbelow
-
-" COMPLETION
-set completeopt=noselect ",menuone
-set pumheight=10
-
-set spelllang=en,ru
-
-filetype plugin indent on
-set shortmess+=s 
-
-let g:vim_json_conceal = 0
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
-
-function! SourceIfExists(file)
-    if filereadable(expand(a:file))
-       exe "source " a:file
-   endif
-endfunction
-
 source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/autorun.vim
-lua require("config.lazy")
 lua require("Init")
 source $HOME/.config/nvim/init-alt.vim
 source $HOME/.config/nvim/keys.vim
 call SourceIfExists("$HOME/.config/nvim/keys-alt.vim")
 source $HOME/.config/nvim/colors.vim
-
-
-" NEOFORMAT
-let g:neoformat_cs_uncrustify = {
-            \ 'exe': 'uncrustify',
-            \ 'stdin': 1,
-            \ 'args': [ '-l=CS', '-c', '~/.config/uncrustify' ],
-\ }
-let g:neoformat_cs_clangformat = {
-            \ 'exe': 'clang-format',
-            \ 'stdin': 1,
-            \ 'args': ['--style=Microsoft', '--assume-filename=.cs'],
-\ }
-let g:neoformat_cpp_clangformat = {
-            \ 'exe': 'clang-format',
-            \ 'stdin': 1,
-            \ 'args': ['--style=Microsoft', '--assume-filename=.cpp'],
-\ }
-let g:neoformat_enabled_python = ["black", "autopep8", "yapf"]
-let g:neoformat_enabled_cs = ["csharpier", "uncrustify", "clangformat"]
-
-" doautocmd User MainFile
-command Reinit source $HOME/.config/nvim/init.vim
-
 
 " wrap num
 "

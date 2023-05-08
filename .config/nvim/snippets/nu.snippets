@@ -8,16 +8,24 @@ snippet if '"if" invocation'
 	if (${1:true}) {
 		${2:print hi}
 	}
-snippet xn '"export def" invocation'
-	export def ${1:name} [] {
+snippet xd '"export def" invocation'
+	export def "${1:name}" [] {
 		$0
 	}
-snippet xd '"export def" invocation'
-	export def ${1:name} [ ...args ] {
+snippet xda '"export def" invocation'
+	export def "${1:name}" [ ...args ] {
+		$0
+	}
+snippet d '"export def" invocation'
+	def "${1:name}" [] {
+		$0
+	}
+snippet da '"export def" invocation'
+	def "${1:name}" [ ...args ] {
 		$0
 	}
 snippet xx "export extern"
-	export extern ${1:cmd} [
+	export extern "${1:cmd}" [
 		$0
 		...args: any
 	]
