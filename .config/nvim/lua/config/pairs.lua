@@ -1,6 +1,7 @@
 local Npairs = require("nvim-autopairs")
 local rule = require("nvim-autopairs.rule")
 local cond = require("nvim-autopairs.conds")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 require("npairs-int-upair").setup({
 	map = "n", --which of them should be the insert mode autopair
@@ -20,6 +21,8 @@ require("npairs-int-upair").setup({
 Npairs.remove_rule("`")
 require("nvim-autopairs").get_rule("[").not_filetypes = { "markdown" }
 require("nvim-autopairs").get_rule("'")[1].not_filetypes = { "scheme", "lisp" }
+require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
 -- Pairs.add_rules({
 --
 -- 	rule(" ", " "):with_pair(function(opts)

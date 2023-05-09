@@ -8,7 +8,6 @@ local feedkey = function(key, mode)
 end
 local cmp = require("cmp")
 local lspkind = require("lspkind")
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local snippy = require("snippy")
 
 cmp.setup({
@@ -106,5 +105,3 @@ cmp.setup.filetype({ "vim", "lua" }, {
 		},
 	},
 })
-
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

@@ -38,7 +38,7 @@ def share [ file: string ] {
 alias dwn = ls ~/Downloads/
 alias pic = ls ~/Pictures/
 alias recent = sort-by modified
-def latest [ ...args ] {
+def latest [] {
 	$in | recent | last
 }
 alias xtr = atool -x
