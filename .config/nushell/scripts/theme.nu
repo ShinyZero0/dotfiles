@@ -43,8 +43,21 @@ export def create_left_prompt [] {
         }
     }
 
+		let termuxPrefix = (
+			try {
+
+				$env.PREFIX 
+					| path split 
+					| drop 1 
+					| path join
+			} catch {
+				"4efbf0c9-8eaa-4d0f-a60e-fb95441f7481"
+			}
+		)
     let dir = (
-        $env.PWD | str replace $home '~'
+        $env.PWD 
+				| str replace $home '~'
+				| str replace $termuxPrefix '/'
     )
 
     let path_segment = ( _ansiTmp $dir { fg: $colors.green attr: b } )
@@ -55,7 +68,7 @@ export def create_left_prompt [] {
     ) {
 		[
 			( _ansiTmp "@" { fg: $colors.cyanDark bg: none attr: b } )
-			( _ansiTmp "yadm" { fg: $colors.red bg: none attr: b } )
+			( _ansiTmp "yadm" { fg: $colors.redDark bg: none attr: b } )
 		]
 		| str join
     } 

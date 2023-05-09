@@ -13,4 +13,5 @@ if (uname -m) == "aarch64" {
 	)
 	$env.PAGER = less
 	$env.MANPAGER = less
+	hide-env SVDIR
 }

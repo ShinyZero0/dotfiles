@@ -1,6 +1,7 @@
 # Void linux dotfiles
 
 My configuration files for:
+
 * i3wm
 * lf file manager
 * nushell
@@ -12,7 +13,11 @@ XBPS packages are listed in [packages.json](.install/packages.json) which is aut
 Instructions for myself about making shit work are in [WTF](WTF.md)
 
 Use yadm for configs:
+
 ```bash
 yadm clone git@github.com:ShinyZero0/dotfiles.git
 ```
+
 Then look at installation script and install stuff, maybe even run the script and hope it's ready for usage.
+# TODO
+- [ ] change(?) purple to #cf18fe everywhere

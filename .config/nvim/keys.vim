@@ -8,9 +8,6 @@ map Q q
 nnoremap <Esc> <cmd>noh<CR>
 map <C-s> :w<CR>
 
-nnoremap <CR>   o<Esc>
-nnoremap <S-CR> O<Esc>
-
 " COMMAND LINE
 
 cnoreabbrev pl lua print

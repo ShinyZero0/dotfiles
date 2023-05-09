@@ -94,7 +94,8 @@ def _runCommandFromList [ parts: list<string> ] {
 def _getAuthHeader [] {
 
 	[
-		Authorization $"Bearer (
+		Authorization 
+		$"Bearer (
 			$env.GH_TOKEN?
 			| default (
 				open ~/.config/gh/hosts.yml | get "github.com".oauth_token

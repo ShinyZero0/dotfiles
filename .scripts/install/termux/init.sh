@@ -1,4 +1,4 @@
 #!/bin/bash
 
 pkg install nushell
-~/.scripts/install/termux/packages.nu
+exec ~/.scripts/install/termux/packages.nu

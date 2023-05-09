@@ -6,6 +6,9 @@ map("n", "<LEADER>s", "i<CR><ESC>^")
 map("i", "<C-a>", ToggleEndingStuff)
 map("n", "<leader>a", ToggleEndingStuff)
 mapcmd("n", "<Leader>w", "ArgWrap")
+map("n", "<CR>", function(...)
+	vim.fn.append(".", "")
+end)
 
 -- Map system clipboard
 map({ "n", "v" }, "<Leader>y", '"+y')

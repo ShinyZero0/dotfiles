@@ -13,7 +13,7 @@ export def lsq [
 			| each { || ls $in } 
 			| flatten 
 			| reject type size
-			| latest
+			| recent
 		)
 	} else {
 		(
@@ -21,7 +21,7 @@ export def lsq [
 			| each { || ls $in } 
 			| flatten 
 			| reject type size
-			| latest
+			| recent
 		)
 	}
 }
