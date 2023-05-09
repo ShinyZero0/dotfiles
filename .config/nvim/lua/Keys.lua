@@ -2,6 +2,9 @@ map("n", "<LEADER>s", "i<CR><ESC>^")
 map("i", "<C-a>", ToggleEndingStuff)
 map("n", "<leader>a", ToggleEndingStuff)
 mapcmd("n", "<Leader>w", "ArgWrap")
+map("n", "<CR>", function(...)
+	vim.fn.append(".", "")
+end)
 
 -- Switch windows on alt_hjkl
 mapcmd({ "n", "t" }, "<M-h>", "wincmd h", {})

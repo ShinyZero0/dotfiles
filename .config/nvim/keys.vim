@@ -14,9 +14,6 @@ vnoremap <Leader>y "+y
 
 nnoremap <Leader>v ^v$h
 
-nnoremap <CR>   o<Esc>
-nnoremap <S-CR> O<Esc>
-
 " COMMAND LINE
 
 cnoreabbrev pl lua print
