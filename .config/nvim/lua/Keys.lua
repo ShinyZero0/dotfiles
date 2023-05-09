@@ -1,7 +1,16 @@
+--  ╭──────────────────────────────────────────────────────────╮
+--  │                       Keymappings                        │
+--  ╰──────────────────────────────────────────────────────────╯
+
 map("n", "<LEADER>s", "i<CR><ESC>^")
 map("i", "<C-a>", ToggleEndingStuff)
 map("n", "<leader>a", ToggleEndingStuff)
 mapcmd("n", "<Leader>w", "ArgWrap")
+
+-- Map system clipboard
+map({ "n", "v" }, "<Leader>y", '"+y')
+map({ "n", "v" }, "<Leader>p", '"+p')
+map({ "n", "v" }, "<Leader>P", '"+P')
 
 -- Switch windows on alt_hjkl
 mapcmd({ "n", "t" }, "<M-h>", "wincmd h", {})
@@ -29,30 +38,6 @@ map("v", "<C-a>", "<Plug>(dial-increment)")
 map("v", "<C-x>", "<Plug>(dial-decrement)")
 map("v", "g<C-a>", "g<Plug>(dial-increment)")
 map("v", "g<C-x>", "g<Plug>(dial-decrement)")
-
--- Reach.nvim
-local reachOptions = {
-
-	actions = {
-
-		split = "<C-h>",
-		vertsplit = "<C-v>",
-		tabsplit = "<C-t>",
-		delete = "<Space>",
-	},
-}
-
-local Reach = require("reach")
-
-map("n", "<Leader>b", function()
-	Reach.buffers(reachOptions)
-end, {})
-map("n", "gt", function()
-	Reach.tabpages(reachOptions)
-end, {})
-map("n", "'", function()
-	Reach.marks(reachOptions)
-end, {})
 
 -- SPECTRE
 local Spectre = require("spectre")

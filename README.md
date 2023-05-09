@@ -15,4 +15,4 @@ Use yadm for configs:
 ```bash
 yadm clone git@github.com:ShinyZero0/dotfiles.git
 ```
-Then look at installation script and install stuff, maybe even run the script and hope it's ready.
+Then look at installation script and install stuff, maybe even run the script and hope it's ready for usage.

@@ -21,7 +21,7 @@ fun! RetabSoft()
 	set et
 	retab!
 endf
-autocmd BufEnter,BufWritePre *.md call RetabSoft()
+autocmd BufWritePre *.md call RetabSoft()
 
 au BufNewFile,BufFilePre,BufRead *.md set syntax=markdown
 

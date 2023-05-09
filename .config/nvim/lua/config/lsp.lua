@@ -1,4 +1,5 @@
 local A = vim.api
+local Lsp = require("lspconfig")
 require("cmp_nvim_lsp").setup()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -44,6 +45,7 @@ local lualsOpts = {
 	},
 	capabilities = capabilities,
 }
+
 local servers = {
 
 	nil_ls = stdOpts,
@@ -55,7 +57,7 @@ local servers = {
 }
 
 for server, opts in pairs(servers) do
-	require("lspconfig")[server].setup(opts)
+	Lsp[server].setup(opts)
 end
 local function onAttach()
 	vim.call("RemapGotoDefinition")

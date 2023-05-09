@@ -28,6 +28,7 @@ let-env XDG_DATA_DIRS = (
 		| prepend /usr/local/share 
 		| prepend /usr/share/
 )
+let-env GH_USER = "ShinyZero0"
 let-env EDITOR = 'nvim'
 let-env SVDIR = ( _home '.local/share/service' )
 let-env NQDIR = ( _home '.stuff/nq' )
