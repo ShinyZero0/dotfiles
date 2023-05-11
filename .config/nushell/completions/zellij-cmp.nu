@@ -15,4 +15,4 @@ export extern "zellij setup" [
 	--check
 	...args: any
 ]
-export old-alias "zellij a" = zellij attach
+export alias "zellij a" = zellij attach

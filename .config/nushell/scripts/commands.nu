@@ -1,5 +1,27 @@
 use utils.nu *
+use std "assert error"
 
+export def "edpipe" [] {
+
+	let input = $in
+
+	try {
+		$input 
+		| check-string | vipe
+	} catch {
+		$input | to nuon -t 1
+		| vipe --suffix=nu 
+		| from nuon
+	}
+	| str trim
+
+}
+export def check-string [] {
+
+	let obj = $in
+	assert error { || $obj | columns }
+	$obj
+}
 export def clip [ arg? ] {
 
 	let input = ( $in | default $arg )
@@ -139,11 +161,8 @@ export def "cat <<" [ eof ] {
 
 export def First [ func: closure default?: any ] {
 	# TODO: the "default" doesn't work actually
-	$in
-	| where {|| do $func }
-	| get 0
-	| default $default
-	| default null
+	where {|| do $func }
+	| first
 }
 
 export def "to qr" [] {
