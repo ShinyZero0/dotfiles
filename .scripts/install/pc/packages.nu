@@ -1,14 +1,14 @@
 #!/usr/bin/env nu
 
 def main [] {
-	let pkgs = (open ( _pc packages.json ))
+	let pkgs = (open ( _this ./assets/packages.json ))
 	
 	$pkgs 
-		| find "void-repo"
-		| each { |pkg| sudo xbps-install $pkg }
+		| where {|| "void-repo" in $in}
+		| sudo xbps-install $in
 	
-	$pkgs 
-		| find -v "void-repo"
-		| each { |pkg| sudo xbps-install $pkg }
+	$pkgs
+		| where not {|| "void-repo" not-in $in}
+		| sudo xbps-install $in
 	nq home-manager switch
 }
