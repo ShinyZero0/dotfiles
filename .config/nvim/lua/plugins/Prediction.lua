@@ -13,6 +13,7 @@ return {
 			"hrsh7th/cmp-omni",
 			"dcampos/cmp-snippy",
 			"onsails/lspkind.nvim",
+			"lukas-reineke/cmp-rg",
 			"hrsh7th/cmp-cmdline",
 		},
 	},
@@ -26,7 +27,10 @@ return {
 	{
 		"hrsh7th/cmp-nvim-lua",
 		config = false,
-		ft = "lua",
+		dependencies = {
+			"hrsh7th/nvim-cmp",
+		},
+		ft = { "lua", "vim" },
 	},
 	{
 		"dcampos/cmp-snippy",

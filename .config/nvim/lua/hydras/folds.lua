@@ -9,21 +9,25 @@ Hydra({
 	body = "z",
 	config = {
 
-		invoke_on_body = false,
+		invoke_on_body = true,
 		color = "pink",
 		hint = { type = "window" },
 	},
 	mode = { "n", "v" },
 	heads = {
 
-		{ "j", "zj" },
-		{ "k", "zk" },
+		{ "n", "zj" },
+		{ "N", "zk" },
 		{ "x", "zx" },
+		{ "X", "zX" },
 		{ "o", "zo" },
 		{ "O", "zO" },
 		{ "c", "zc", { nowait = true } },
-		{ "r", "zr" },
+		{ "C", "zC", { nowait = true } },
 		{ "m", "zm" },
+		{ "M", "zM" },
+		{ "r", "zr" },
+		{ "R", "zR" },
 	},
 })
 

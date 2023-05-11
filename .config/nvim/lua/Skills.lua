@@ -69,9 +69,11 @@ end
 function ToggleEndingStuff()
 	local charsMap = {
 		cs = ";",
+		zig = ";",
 		nix = ";",
 		lua = ",",
 		nu = ",",
+		markdown = "  ",
 	}
 	local char
 	local ft = vim.bo[0].filetype
