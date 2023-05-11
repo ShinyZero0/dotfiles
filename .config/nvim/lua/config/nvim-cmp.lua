@@ -25,11 +25,17 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 
+		{ name = "nvim_lua" },
 		{ name = "nvim_lsp" },
+		{
+			name = "rg",
+			keyword_length = 3,
+		},
 		{
 			name = "buffer",
 			option = {
 
+				keyword_pattern = [[\k\+]],
 				get_bufnrs = function()
 					return vim.api.nvim_list_bufs()
 				end,
@@ -82,26 +88,5 @@ cmp.setup({
 		end, { "i", "s" }),
 		["<C-c>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
-	},
-})
-
-cmp.setup.filetype({ "vim", "lua" }, {
-
-	sources = {
-
-		{ name = "nvim_lua" },
-		{ name = "nvim_lsp" },
-		{ name = "path" },
-		{ name = "snippy" },
-		{ name = "omni" },
-		{
-			name = "buffer",
-			option = {
-
-				get_bufnrs = function()
-					return vim.api.nvim_list_bufs()
-				end,
-			},
-		},
 	},
 })

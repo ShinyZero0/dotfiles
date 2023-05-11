@@ -1,8 +1,7 @@
 # old alias for competion
 # TODO: turn into module
 use utils.nu [ "_clip o" "_clip i" ]
-
-old-alias dn = dotnet
+alias dn = dotnet
 
 alias vi = nvim
 
