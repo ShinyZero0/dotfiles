@@ -34,7 +34,7 @@
     clang
 
     nixfmt
-		nil
+    nil
 
     marksman
 
@@ -50,6 +50,7 @@
     du-dust
 
     entr # run commands on file changes
+    moreutils
     fd
     ripgrep
     sd # sed
