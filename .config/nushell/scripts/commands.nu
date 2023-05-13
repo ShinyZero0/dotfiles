@@ -1,4 +1,5 @@
 use utils.nu *
+use nq-utils.nu *
 use std "assert error"
 
 export def "edpipe" [] {
@@ -31,6 +32,12 @@ export def clip [ arg? ] {
 		$input | _clip i
 	}
 }
+
+export def "tempclip" [] {
+	_clip i 
+	nq -t tempclip "use utils.nu *; sleep 1min; '' | _clip i"
+}
+
 export def indexate [] {
 	$in | enumerate | flatten
 }
@@ -41,12 +48,14 @@ export def svls [
 	--root(-r)
 ] {
 	if $all {
+
 		if $root {
 			ls /etc/sv/
 		} else {
 			ls ~/.config/sv/
 		}
 	} else {
+
 		if $root {
 			ls /var/service/
 		} else {
@@ -70,7 +79,7 @@ export def fnr_files [
 
 export def parse-help [] {
 
-    $in 
+	$in 
 	| parse -r '\s\s+(?:-(?P<short>\w)[,\s]+)?(?:--(?P<long>[\w-]+))\s*(?:<(?P<format>.*)>)?\s*(?P<description>.*)?' | format "--{long}(-{short})\t# {description}" | to text 
 }
 
