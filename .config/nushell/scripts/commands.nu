@@ -108,22 +108,6 @@ export def ghraw-b [] {
 	| path join
 }
 
-def _platesComplete [] {
-
-	let PlatesDir = ( $env.PLATES_DIR? | default $env.HOME )
-	ls -a $PlatesDir
-	| get name 
-	| path relative-to $PlatesDir
-}
-
-export def plate [ ...args: string@_platesComplete ] {
-	
-	let PlatesDir = ( $env.PLATES_DIR? | default $env.HOME )
-	for file in $args {
-		cp ( $PlatesDir | path join $file ) $env.PWD
-	}
-}
-
 export def gcf [] {
 	
 	let file = (
