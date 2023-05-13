@@ -55,8 +55,10 @@ bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
 
 bindsym $mod+T layout tabbed
-bindsym $mod+Control+H split v # made as in vim so vertical
-bindsym $mod+Control+V split h # is splitting window by vertical line
+# made as in vim so vertical
+bindsym $mod+Control+H split v 
+# is splitting window by vertical line
+bindsym $mod+Control+V split h 
 bindsym $mod+Control+E layout toggle split
 
 bindsym $mod+Shift+space floating toggle
