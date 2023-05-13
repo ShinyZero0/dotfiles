@@ -22,12 +22,14 @@ let-env NU_PLUGIN_DIRS = [
     ($nu.config-path | path dirname | path join 'plugins')
 ]
 
-let-env XDG_DATA_DIRS = (
-	$env.XDG_DATA_DIRS? | default [] 
-		| prepend ( _home .nix-profile/share ) 
-		| prepend /usr/local/share 
-		| prepend /usr/share/
-)
+# let-env XDG_DATA_DIRS = (
+# 	$env.XDG_DATA_DIRS? | default [] 
+# 		| prepend /usr/local/share 
+# 		| prepend /usr/share/
+# 		| prepend ( _home .nix-profile/share ) 
+# 		| uniq
+# )
+let-env GH_USER = "ShinyZero0"
 let-env EDITOR = 'nvim'
 let-env SVDIR = ( _home '.local/share/service' )
 let-env NQDIR = ( _home '.stuff/nq' )

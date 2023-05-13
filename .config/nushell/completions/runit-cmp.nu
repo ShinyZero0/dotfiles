@@ -1,3 +1,10 @@
+def _activeUserServices [] {
+	ls $env.SVDIR | get name
+}
+def _activeRootServices [] {
+	ls /var/service/ | get name
+}
+
 export extern sv [
 
 	...args: any
@@ -12,10 +19,3 @@ export extern "sudo sv status" [
 
 	...args: string@_activeRootServices
 ]
-
-def _activeUserServices [] {
-	ls $env.SVDIR | get name
-}
-def _activeRootServices [] {
-	ls /var/service/ | get name
-}

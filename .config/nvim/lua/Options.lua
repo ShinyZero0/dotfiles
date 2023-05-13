@@ -12,6 +12,7 @@ local opts = {
 	splitright = true,
 	splitbelow = true,
 	termguicolors = true,
+	list = true,
 
 	-- Format
 	tabstop = tabWidth,
@@ -27,9 +28,7 @@ local opts = {
 	foldexpr = "nvim_treesitter#foldexpr()",
 
 	-- Input
-	completeopt = {
-		"noselect",
-	},
+	completeopt = { "noselect" },
 	pumheight = 10,
 	whichwrap = vim.opt.whichwrap:append("<,>,[,],h,l"),
 	timeoutlen = 5000,

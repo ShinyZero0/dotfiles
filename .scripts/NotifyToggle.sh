@@ -2,9 +2,9 @@
 
 isPaused=`dunstctl is-paused`
 if [ "$isPaused" = false ]; then
-    echo ""
+    echo "󰂚"
 else
-    echo "%{F#c991e1}"
+    echo "%{F#c991e1}󱏧"
 fi
 
 function ToggleDunst()
@@ -12,10 +12,10 @@ function ToggleDunst()
     isPaused=`dunstctl is-paused`
     if [ "$isPaused" = true ]; then
         dunstctl set-paused false
-        echo ""
+        echo "󰂚"
     else
         dunstctl set-paused true
-        echo "%{F#c991e1}"
+        echo "%{F#c991e1}󱏧"
     fi
 }
 

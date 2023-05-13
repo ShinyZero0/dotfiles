@@ -34,6 +34,7 @@
     clang
 
     nixfmt
+    nil
 
     marksman
 
@@ -44,14 +45,12 @@
     bat
     gum
     vivid
-    pistol
-    lf
 
     duf
     du-dust
 
     entr # run commands on file changes
-    # gibo # boilerplate
+    moreutils
     fd
     ripgrep
     sd # sed
@@ -62,7 +61,7 @@
     translate-shell
     python310Packages.grip # markdown previewer
     github-cli
-    empty
+    empty # needed for rofi-connman
 
     # Fonts
     ibm-plex

@@ -5,4 +5,7 @@
 	| each { |line|
 		$line |  parse -r '\[-\]\s+(?P<value>\S+)-\S+\s+(?P<description>.+)' | into record
 	} 
-	| to json | save -f ~/.cache/xbps-cache.json
+	| to json 
+	| save -f ~/.cache/xbps-cache.json
+
+~/.scripts/packages/xbps/packages.nu

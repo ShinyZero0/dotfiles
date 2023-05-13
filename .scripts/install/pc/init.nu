@@ -2,12 +2,12 @@
 
 use ~/.config/nushell/scripts/utils.nu _currentfile
 
-export def _pc [ file: string ] {
-	_currentfile | path dirname | path join ( $file | path basename )
+export def _this [ file: string ] {
+	_currentfile | path dirname | path join ( $file | str replace '^./' '' )
 }
-export def _pcdo [ file: string ] {
-	nu ( _pc $file )
+export def _thisdo [ file: string ] {
+	nu ( _this $file )
 }
 
-_pcdo ./packages.nu
-_pcdo ./root.nu
+_thisdo ./packages.nu
+_thisdo ./root.nu

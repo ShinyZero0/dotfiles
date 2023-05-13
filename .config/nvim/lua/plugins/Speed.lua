@@ -16,7 +16,37 @@ return {
 		"ShinyZero0/reach.nvim",
 		-- dir = "~/dev/vim/reach.nvim/",
 		cmd = "ReachOpen",
-		config = true,
+		config = function()
+			local reachOptions = {
+
+				actions = {
+
+					split = "<C-h>",
+					vertsplit = "<C-v>",
+					tabsplit = "<C-t>",
+					delete = "<Space>",
+				},
+			}
+
+			local Reach = require("reach")
+			Reach.setup()
+
+			map("n", "<Leader>b", function()
+				Reach.buffers(reachOptions)
+			end, {})
+			map("n", "gt", function()
+				Reach.tabpages(reachOptions)
+			end, {})
+			map({ "n", "v" }, "'", function()
+				Reach.marks(reachOptions)
+			end, {})
+		end,
+		keys = {
+
+			"<Leader>b",
+			"'",
+			"gt",
+		},
 	},
 	{
 		"cbochs/portal.nvim",

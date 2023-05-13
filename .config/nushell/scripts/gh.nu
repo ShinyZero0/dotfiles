@@ -29,10 +29,11 @@ export def "clone" [
 	)
 	let outputArg = (
 		if $full {
-			null
-		} else {
+
 			[ $repo.owner $repo.repo ]
 			| str join "---"
+		} else {
+			null
 		}
 	)
 	_runCommandFromList [

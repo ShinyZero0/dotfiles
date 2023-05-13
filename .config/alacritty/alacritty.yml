@@ -26,8 +26,8 @@ scrolling:
 font:
 
   normal:
-    family: BlexMono Nerd Font
-    style: Medium
+    family: BlexMonoMedm Nerd Font Propo
+    style: Regular
 
   bold:
     family: BlexMono Nerd Font

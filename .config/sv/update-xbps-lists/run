@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export USER=zero
+export HOME=/home/$USER
+export PATH=$HOME/.nix-profile/bin:$PATH
+exec entr -np ~/.scripts/packages/xbps/cache.nu < <(echo "/var/db/xbps/pkgdb-0.38.plist")

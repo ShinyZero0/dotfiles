@@ -431,6 +431,7 @@ use proc-cmp.nu *
 use udevil-cmp.nu *
 use gh-cmp.nu *
 use runit-cmp.nu *
+use pass-cmp.nu *
 
 use nx.nu *
 

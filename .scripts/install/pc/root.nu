@@ -1,1 +1,1 @@
-sudo cp ( _pc ./root/* ) /*
+sudo cp ( _this ./root/* ) /*
