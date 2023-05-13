@@ -2,17 +2,22 @@ use utils [
 	_home
 ]
 
-export def nx-init [ name?: string ] {
+export def nx-init [
+	lang: any
+	--name(-n): any
+	--version(-v): any
+] {
 
 	cp ~/.stuff/nix/flake.lock ./
 	cp ~/.stuff/plates/.envrc ./
 	direnv allow
 
 	let name = ( $name | default ( $env.PWD | path basename ) )
+	let version = ( $version | default "0.0.1" )
 
-	open ~/.stuff/nix/dotnet/flake.nix 
+	open $"~/.stuff/nix/($lang)/flake.nix" 
 		| str replace -as "<name>" $name
-		| str replace -as "<version>" "0.0.1"
+		| str replace -as "<version>" $version
 		| save flake.nix
 }
 
@@ -24,7 +29,7 @@ export def nx-sync [ dir?: any ] {
 	open $LockFile
 		| from json
 		| upsert nodes.nixpkgs (
-			open ~/.config/home-manager/flake.lock
+			open ~/.stuff/nix/flake.lock
 			| from json
 		).nodes.nixpkgs
 		| to json
