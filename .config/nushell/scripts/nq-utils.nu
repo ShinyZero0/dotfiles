@@ -1,58 +1,55 @@
 use utils.nu [
-	_relpath
+	"_relpath"
 ]
 
 use pipes.nu [
-	invert
+	"invert"
 ]
 
-export def lsq [
-	--all(-a): bool
-] {
+export def "nq ls" [] {
+	
+	fd -t x . $env.NQDIR
+		| lines
+		| wrap name
+		| merge ($in.name | _nqProcessesCommands)
+		| merge ($in.name | _nqProcessesModtime)
+		| recent
+}
+# input: process lockfiles list
+# output: their modified time list
+def _nqProcessesModtime [] {
 
-    if $all {
-		(
-			fd -t f . $env.NQDIR | lines
-			| each { || ls $in } 
-			| flatten 
-			| reject type size
-			| recent
-		)
-	} else {
-		(
-			fd -t x . $env.NQDIR | lines 
-			| each { || ls $in } 
-			| flatten 
-			| reject type size
-			| recent
-		)
-	}
+	each { ls $in }
+		| flatten
+		| select modified
 }
 
 export def fq [
-	
+
 	--thread(-t): any@_nqThreads
-	proc?: string@_nqProcesses
+	proc?: string@_nqActiveProcessesCompletion
 ] {
 	if ( $proc | is-empty ) {
-		let shownThread = ( 
+		let shownThread = (
 			(
-				$thread 
+				$thread
 				| default (
-					_nqThreads 
+					_nqThreads
 					| get 0
 				)
 				| into string
 			)
 			| _expandNQ
-		)	
-		with-env [ NQDIR $shownThread ] { || ^fq }
+		)
+		with-env [ NQDIR $shownThread ] { ^fq }
 	} else {
 		let shown = (
-			$proc 
-			| parse '{thread}/{process}' 
+			$proc
+			| parse '{thread}/{process}'
 		)
-		with-env [ NQDIR ( $shown.thread.0 | _expandNQ ) ] { || ^fq ($shown.process.0) }
+		with-env [
+			NQDIR ( $shown.thread.0 | _expandNQ )
+		] { ^fq ($shown.process.0) }
 	}
 }
 
@@ -64,13 +61,16 @@ export def nq [
 
 	if ($now) {
 
-		let nqdir = ($env.NQDIR | path join ( "q" + (random uuid | str substring 0..8) ) )
+		let nqdir = (_getFreeThread)
 		NQDIR=$nqdir ^nq nu -c $"( $args | str join ' ' )"
 		print $nqdir
 	} else if not ($thread | is-empty) {
+
 		let nqdir = ($env.NQDIR | path join $thread)
 		NQDIR=$nqdir ^nq nu -c $"( $args | str join ' ' )"
 	} else {
+
+		let nqdir = ($env.NQDIR | path join "Main")
 		^nq nu -c $"( $args | str join ' ' )"
 	}
 }
@@ -79,64 +79,84 @@ export def "nq clean" [] {
 
 	let active = ( lsq | get name )
 	lsq -a
-	| get name
-	| filter { || 
-		not $in in $active
-	} 
-	| each { || rm $in } 
-	| ignore
+		| get name
+		| filter { 
+			not $in in $active
+		}
+		| each { rm $in }
+		| ignore
 
-	ls $env.NQDIR 
-	| get name
-	| where { || 
-		ls $in | is-empty
-	}
-	| each { || rm $in }
-	| ignore
+	ls $env.NQDIR
+		| get name
+		| where { 
+			ls $in | is-empty
+		}
+		| each { rm $in }
+		| ignore
 
 }
 export def "nq kill" [
-
-	...args: string@_nqProcesses
+	...args: string@_nqActiveProcessesCompletion
 ] {
 
 }
 
-def _nqProcesses [] {
-	let procs = (lsq | get name)
-	$procs
-	| each { || _relpath $env.NQDIR }
-	| wrap value 
-	| merge (
-		$procs
-		| each { || 
-			open $in 
-				| lines 
-				| get 0
-				| parse "exec nq nu -c '{foo}'" 
-				| get foo
-				| get 0
-		} 
+# input: process lockfiles list
+# output: list of commands executed in each process
+def "_nqProcessesCommands" [] {
+
+	$in
+		| each {
+			open $in
+			| lines
+			| get 0
+			| parse "exec nq nu -c '{foo}'"
+			| get foo.0
+		}
 		| wrap description
-	)
+}
+
+def _nqActiveProcessesCompletion [] {
+
+	fd -t x . $env.NQDIR
+		| _nqProcessesCommands
 }
 
 def _nqThreads [] {
 
-	ls $env.NQDIR 
-	| get name 
-	| each {|| _relpath $env.NQDIR }
-	| where { || 
-		let thread = $in
-		fd -d 1 -t x . ( $env.NQDIR | path join $thread  ) 
+	fd -d 1 -t d . $env.NQDIR
 		| lines
-		| is-empty
-		| invert
-	}
+		| where { |it|
+			fd -d 1 -t x . $it
+				| is-empty
+				| invert
+		}
+		| each { _relpath $env.NQDIR }
 }
 
 def _expandNQ [] {
-	
-	let short = $in
-	$env.NQDIR | path join $short 
+
+	let child = $in
+	$env.NQDIR | path join $child
+}
+
+def _getFreeThread [] {
+
+	let freeThreads = (
+
+		fd -d 1 -t d . $env.NQDIR
+			| lines
+			| where { |it|
+				fd -d 1 -t x . $it | is-empty
+			}
+	)
+	if ($freeThreads | length) > 0 {
+		$freeThreads.0
+	} else {
+		$env.NQDIR
+			| path join (
+				"q" + (random uuid | str substring 0..8)
+			)
+
+	}
 }
