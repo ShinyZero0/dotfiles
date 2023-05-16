@@ -1,5 +1,8 @@
 use utils.nu [
 	_relpath
+]
+
+use pipes.nu [
 	invert
 ]
 
@@ -55,13 +58,18 @@ export def fq [
 
 export def nq [
 	--now(-n): bool
+	--thread(-t): any
 	...args: any
 ] {
 
 	if ($now) {
+
 		let nqdir = ($env.NQDIR | path join ( "q" + (random uuid | str substring 0..8) ) )
 		NQDIR=$nqdir ^nq nu -c $"( $args | str join ' ' )"
 		print $nqdir
+	} else if not ($thread | is-empty) {
+		let nqdir = ($env.NQDIR | path join $thread)
+		NQDIR=$nqdir ^nq nu -c $"( $args | str join ' ' )"
 	} else {
 		^nq nu -c $"( $args | str join ' ' )"
 	}

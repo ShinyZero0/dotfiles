@@ -408,6 +408,7 @@ source aliases/aliases-pre.nu
 source aliases/git.nu
 use aliases/xbps.nu *
 
+use pipes.nu *
 use commands.nu *
 
 source zoxide.nu

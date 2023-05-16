@@ -212,3 +212,5 @@ caches/
 .config/FontBase/
 .config/Code - OSS/
 .config/Bitwarden/
+.gnupg/
+.password-store/
