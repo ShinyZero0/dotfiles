@@ -50,6 +50,7 @@
     du-dust
 
     entr # run commands on file changes
+    zellij
     moreutils
     fd
     ripgrep

@@ -12,12 +12,21 @@ export def nx-init [
 	cp ~/.stuff/plates/.envrc ./
 	direnv allow
 
+	try { git rev-parse HEAD } catch {
+
+		git init
+		git add .
+		git commit -m "init"
+	}
+
 	let name = ( $name | default ( $env.PWD | path basename ) )
 	let version = ( $version | default "0.0.1" )
+	let revision = ( git rev-parse HEAD | str trim )
 
 	open $"~/.stuff/nix/($lang)/flake.nix" 
 		| str replace -as "<name>" $name
 		| str replace -as "<version>" $version
+		| str replace -as "<rev>" $revision
 		| save flake.nix
 }
 

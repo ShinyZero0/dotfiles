@@ -23,18 +23,18 @@
         src = pkgs.fetchFromGitHub {
           owner = "ShinyZero0";
           repo = "<name>";
-          rev = "<version>";
+          rev = "<rev>";
           sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
         };
         nativeBuildInputs = with pkgs; [ zlib ];
-        buildInputs = with pkgs; [ icu ];
+        buildInputs = with pkgs; [ icu71 ];
         buildPhase = ''
           					HOME=$PWD/home
-          					PATH=${pkgs.dotnet-sdk_7}/bin:$PATH
-          					DOTNET_ROOT=${pkgs.dotnet-sdk_7}
+          					PATH=${dotnetPkgs}/bin:$PATH
+          					DOTNET_ROOT=${dotnetPkgs}
 
           					mkdir -p $HOME
-                    dotnet publish -o ./out/
+                    dotnet publish -c Release -o ./out/
         '';
 
         installPhase = ''
