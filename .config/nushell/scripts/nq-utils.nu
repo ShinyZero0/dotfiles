@@ -61,39 +61,31 @@ export def nq [
 
 	if ($now) {
 
-		let nqdir = (_getFreeThread)
-		NQDIR=$nqdir ^nq nu -c $"( $args | str join ' ' )"
-		print $nqdir
+		let-env NQDIR = (_getFreeThread)
+		^nq nu -c $"( $args | str join ' ' )"
+		print $env.NQDIR
 	} else if not ($thread | is-empty) {
 
-		let nqdir = ($env.NQDIR | path join $thread)
-		NQDIR=$nqdir ^nq nu -c $"( $args | str join ' ' )"
+		let-env NQDIR = ($env.NQDIR | path join $thread)
+		^nq nu -c $"( $args | str join ' ' )"
 	} else {
 
-		let nqdir = ($env.NQDIR | path join "Main")
+		let-env NQDIR = ($env.NQDIR | path join "Main")
 		^nq nu -c $"( $args | str join ' ' )"
 	}
 }
 
 export def "nq clean" [] {
 
-	let active = ( lsq | get name )
-	lsq -a
-		| get name
-		| filter { 
+	let active = ( fd -t x . $env.NQDIR )
+
+	fd -t f . $env.NQDIR
+		| lines
+		| filter {
 			not $in in $active
 		}
-		| each { rm $in }
+		| each { |f| rm -r ( $f | path dirname ) }
 		| ignore
-
-	ls $env.NQDIR
-		| get name
-		| where { 
-			ls $in | is-empty
-		}
-		| each { rm $in }
-		| ignore
-
 }
 export def "nq kill" [
 	...args: string@_nqActiveProcessesCompletion
