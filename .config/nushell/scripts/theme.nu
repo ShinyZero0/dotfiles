@@ -1,4 +1,9 @@
 
+def "_at" [] {
+	
+	let colors = (_getColors)
+	( _ansiTmp "@" { fg: $colors.cyanDark bg: none attr: b } )
+}
 def _getColors [] {
 
 	return {
@@ -36,11 +41,11 @@ export def create_left_prompt [] {
     mut home = ""
     try {
 
-        if $nu.os-info.name == "windows" {
-            $home = $env.USERPROFILE
-        } else {
-            $home = $env.HOME
-        }
+	if $nu.os-info.name == "windows" {
+	    $home = $env.USERPROFILE
+	} else {
+	    $home = $env.HOME
+	}
     }
 
 		let termuxPrefix = (
@@ -55,38 +60,59 @@ export def create_left_prompt [] {
 			}
 		)
     let dir = (
-        $env.PWD 
-				| str replace $home '~'
-				| str replace $termuxPrefix '/'
+
+	$env.PWD 
+			| str replace $home '~'
+			| str replace $termuxPrefix '/'
     )
 
-    let path_segment = ( _ansiTmp $dir { fg: $colors.green attr: b } )
-    let yadm_segment = if (
+    let pathSegment = ( _ansiTmp $dir { fg: $colors.green attr: b } )
+    let yadmSegment = if (
 		$env.PROMPT? 
 		| default "" 
 		| str contains "yadm"
     ) {
 		[
-			( _ansiTmp "@" { fg: $colors.cyanDark bg: none attr: b } )
-			( _ansiTmp "yadm" { fg: $colors.redDark bg: none attr: b } )
+			(_at)
+			( _ansiTmp "Y" { fg: $colors.redDark bg: none attr: b } )
 		]
 		| str join
     } 
-    let nix_segment = if (
-		$env.PATH | any { ||
+    let nixSegment = if (
+
+		$env.PATH 
+		| any {
 			str contains "/nix/store"
 		}
     ) {
-		_ansiTmp "  " { fg: $colors.blue bg: none attr: b }
+		[
+			(_at)
+			( _ansiTmp "N" { fg: $colors.blue bg: none attr: b } )
+		]
+		| str join
     } 
+	let sshSegment = if (
+		$env.SSH_CLIENT? | is-empty
+	) {
+		null
+	} else {
+		[
+			(_at)
+			(_ansiTmp 'S(' { fg: $colors.purple bg: none attr: b })
+			(_ansiTmp ( uname -n ) { fg: $colors.blueDark bg: none attr: b } ) 
+			(_ansiTmp ')' { fg: $colors.purple bg: none attr: b })
+		]
+		| str join
+	}
 
-    let left_prompt = ( 
-        [
-            $path_segment,
-            $yadm_segment 
-            $nix_segment,
-        ] 
-        | str join
+    let left_prompt = (
+	[
+	    $pathSegment,
+	    $yadmSegment 
+	    $nixSegment,
+		$sshSegment,
+	] 
+	| str join
     )
 
     $left_prompt
@@ -95,24 +121,24 @@ export def create_left_prompt [] {
 export def create_right_prompt [] {
 
 	let colors = (_getColors)
-    let time_segment = (
-        [ (
+    let timeSegment = (
+	[ (
 			_ansiTmp (date now | date format '%r') { fg: $colors.purple attr: b }
 		) ] 
-        | str join
+	| str join
     )
     let last_exit_code = if ( $env.LAST_EXIT_CODE != 0 ) { 
 		[
-            ( _ansiTmp $env.LAST_EXIT_CODE $colors.redDark )
-        ] 
-        | str join
+	    ( _ansiTmp $env.LAST_EXIT_CODE $colors.redDark )
+	] 
+	| str join
 	} else { "" }
 
     let right_prompt = (
-        [
-            $last_exit_code, (char space), $time_segment
-        ] 
-        | str join
+	[
+	    $last_exit_code, (char space), $timeSegment
+	] 
+	| str join
     )
 
     $right_prompt
@@ -129,7 +155,7 @@ export def GetDarkTheme [] {
 		empty: $colors.blue
 		# Closures can be used to choose colors for specific values.
 		# The value (in this case, a bool) is piped into the closure.
-		bool: { || if $in { $colors.cyan } else { $colors.redDark } }
+		bool: { if $in { $colors.cyan } else { $colors.redDark } }
 		int: $colors.yellowDark
 		filesize: { |e|
 
@@ -148,7 +174,7 @@ export def GetDarkTheme [] {
 			}
 		}
 		duration: $colors.white
-		date: { || (date now) - $in |
+		date: { (date now) - $in |
 			if $in < 1hr {
 				$colors.red
 			} else if $in < 6hr {

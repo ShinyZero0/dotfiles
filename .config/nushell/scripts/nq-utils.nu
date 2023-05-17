@@ -6,6 +6,7 @@ use pipes.nu [
 	"invert"
 ]
 
+# list enqueued processes
 export def "nq ls" [] {
 	
 	fd -t x . $env.NQDIR
@@ -24,6 +25,7 @@ def _nqProcessesModtime [] {
 		| select modified
 }
 
+# see the enqueued process output
 export def fq [
 
 	--thread(-t): any@_nqThreads
@@ -53,12 +55,14 @@ export def fq [
 	}
 }
 
+# Enqueue
 export def nq [
 	--now(-n): bool
 	--thread(-t): any
 	...args: any
 ] {
 
+# TODO: make a sudo flag to prompt for password
 	if ($now) {
 
 		let-env NQDIR = (_getFreeThread)
