@@ -1,34 +1,50 @@
 snippet #! "shebang"
 	#!/usr/bin/env nu
+
 snippet for '"for" invocation'
 	for ${1:entry} in ${2:list} {
 		$0
 	}
+
 snippet if '"if" invocation'
 	if (${1:true}) {
 		${2:print hi}
 	}
+
 snippet xd '"export def" invocation'
 	export def "${1:name}" [] {
 		$0
 	}
+
 snippet xda '"export def" invocation'
 	export def "${1:name}" [ ...args ] {
 		$0
 	}
+
 snippet d '"export def" invocation'
 	def "${1:name}" [] {
 		$0
 	}
+
 snippet da '"export def" invocation'
 	def "${1:name}" [ ...args ] {
 		$0
 	}
+
 snippet xx "export extern"
 	export extern "${1:cmd}" [
 		$0
 		...args: any
 	]
+
+snippet u "use module"
+	use ${1}.nu [
+		${2}
+	]
+	$0
+
+snippet ua "use all exports from module"
+	use ${1}.nu *
 
 snippet clr "color"
 	{ fg: ${1} bg: ${2:none} attr: ${3:b} }
