@@ -6,6 +6,9 @@ local f = require("Utils").Interpolate
 --  ╰──────────────────────────────────────────────────────────╯
 map = vim.keymap.set
 unmap = vim.keymap.del
+noremap = function(modes, lhs, rhs)
+	map(modes, lhs, rhs, { noremap = true })
+end
 mapcmd = function(modes, lhs, cmd, opts)
 	map(modes, lhs, f("<CMD>{cmd}<CR>"), opts)
 end
