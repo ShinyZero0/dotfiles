@@ -1,12 +1,12 @@
-def l [] {
+export def l [] {
 	ls | sort-by type modified
 }
 
-def _describe [] {
-	describe | descfmt
+
+export alias describe_ = describe
+export def _describe [] {
+	describe_ | descfmt
 }
+export alias describe = _describe
 
-alias describe_ = describe
-alias describe = _describe
-
-alias hm = home-manager
+export alias hm = home-manager
