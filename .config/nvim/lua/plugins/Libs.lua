@@ -9,7 +9,7 @@ return {
 
 				["cs"] = {
 
-					icon = "",
+					icon = "󰌛",
 					color = "#95ffa4",
 					name = "cs",
 				},
