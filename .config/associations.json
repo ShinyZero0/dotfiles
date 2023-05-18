@@ -20,7 +20,8 @@
 		{
 			"GlobPatterns": [
 				"*.png",
-				"*.jp?g",
+				"*.jpg",
+				"*.jpeg",
 				"*.webm",
 				"*.gif"
 			],
@@ -39,6 +40,12 @@
 				"*.mkv"
 			],
       "Exec": "mpv"
-    }
+    },
+		{
+			"GlobPatterns": [
+				"*.pdf"
+			],
+			"Exec": "zathura"
+		}
   ]
 }
