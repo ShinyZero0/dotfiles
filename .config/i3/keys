@@ -66,7 +66,7 @@ bindsym $mod+F           fullscreen toggle
 bindsym $mod+space       focus mode_toggle
 
 # switch to workspace
-bindsym $mod+R exec --no-startup-id ~/.local/bin/I3Client LastWorkspace
+bindsym $mod+R exec --no-startup-id bash -c 'curl -X POST http://localhost:13131/lastworkspace'
 
 bindsym $mod+1 workspace number $ws1 
 bindsym $mod+2 workspace number $ws2 ; exec --no-startup-id picom -b

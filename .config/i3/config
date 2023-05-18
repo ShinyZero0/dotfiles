@@ -32,7 +32,7 @@ exec_always --no-startup-id "pkill polybar ; polybar upperbar"
 exec_always --no-startup-id "pkill xkeysnail ; xkeysnail & sleep 1; setxkbmap us,ru -option 'grp:alt_shift_toggle'; xset r rate 250 15"
 exec_always --no-startup-id "pkill dunst"
 exec_always --no-startup-id "pkill picom & sleep 1 ; picom -b"
-exec_always --no-startup-id "pkill I3IPC & sleep 1 ; ~/.local/bin/I3IPC"
+exec_always --no-startup-id "pkill I3Helper & sleep 1 ; ~/.local/bin/I3Helper 13131"
 exec_always --no-startup-id "nitrogen --restore"
 
 # Style
