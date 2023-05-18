@@ -420,6 +420,7 @@ source hydra.nu
 use gh.nu *
 use nq-utils.nu *
 use move-and-replace.nu *
+use plates.nu *
 
 use git-completions.nu *
 use nix-completions.nu *
@@ -435,6 +436,7 @@ use runit-cmp.nu *
 use pass-cmp.nu *
 
 use nx.nu *
+use rename.nu *
 
 source aliases/aliases-post.nu
 
