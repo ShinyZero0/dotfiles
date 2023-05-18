@@ -60,6 +60,6 @@ export def "_clip i" [] {
 	if not ( which xsel | is-empty ) {
 		$in | xsel -ib
 	} else {
-		termux-clipboard-set
+		$in | termux-clipboard-set
 	}
 }
