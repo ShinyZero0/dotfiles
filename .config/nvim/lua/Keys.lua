@@ -2,6 +2,9 @@
 --  │                       Keymappings                        │
 --  ╰──────────────────────────────────────────────────────────╯
 
+noremap("n", "p", "gp")
+noremap("n", "gp", "p")
+noremap("v", "gy", "y']")
 map("n", "<LEADER>s", "i<CR><ESC>^")
 map("i", "<C-a>", ToggleEndingStuff)
 map("n", "<leader>a", ToggleEndingStuff)

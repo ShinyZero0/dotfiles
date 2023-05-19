@@ -8,16 +8,32 @@ export def _ansiTmp [ text: string color: any  ] {
 	| str join
 }
 export def _home [ path: string ] {
-	$env.HOME | path join $path
+
+	$env.HOME 
+	| path join $path
 }
 export def _getExt [] {
-	$in | path parse | get extension
+
+	path parse 
+	| get extension
+}
+export def "_unExt" [] {
+	
+	path parse 
+	| reject extension
+	| path join
 }
 export def _relpath [ parent: string ] {
-	$in | path expand | path relative-to ( $parent | path expand )
+
+	$in 
+	| path expand 
+	| path relative-to ( $parent | path expand )
 }
 export def _isChildOf [ parent: string ] {
-	$in | path expand | str starts-with ( $parent | path expand )
+
+	$in 
+	| path expand 
+	| str starts-with ( $parent | path expand )
 }
 
 export def _currentfile [] {
@@ -44,6 +60,6 @@ export def "_clip i" [] {
 	if not ( which xsel | is-empty ) {
 		$in | xsel -ib
 	} else {
-		termux-clipboard-set
+		$in | termux-clipboard-set
 	}
 }
