@@ -43,6 +43,7 @@
   "nvim-lua-gf": { "branch": "main", "commit": "ca712497b2bab6351518917be219e9bfd8d63e4f" },
   "nvim-neoclip.lua": { "branch": "main", "commit": "591f1b62343efe3e369e4831cd91e1875f3a08f4" },
   "nvim-spectre": { "branch": "master", "commit": "1abe23ec9b7bc3082164f4cb842d521ef70e080e" },
+  "nvim-spider": { "branch": "main", "commit": "1136f0d7ff55be9568e1190eee663d5f0c64f66c" },
   "nvim-treesitter": { "branch": "master", "commit": "4d0520ee0903eb04c218447b48fa30ffbd4682cc" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "5632f926833493bf44de3d0c214169a062b068df" },
   "nvim-tundra": { "branch": "main", "commit": "9b32f7aa841d3ffe1bd51929068ac2a75a852a5c" },
@@ -76,7 +77,6 @@
   "vim-smartword": { "branch": "master", "commit": "d171f92a545fa92ed983aef7d3862d2b59261f59" },
   "vim-snippets": { "branch": "master", "commit": "32cf6e0a3088fc0f5601a2168213d9df18f3cd1a" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
-  "vim-wordmotion": { "branch": "master", "commit": "81d9bd298376ab0dc465c85d55afa4cb8d5f47a1" },
   "winshift.nvim": { "branch": "main", "commit": "37468ed6f385dfb50402368669766504c0e15583" },
   "xmledit": { "branch": "master", "commit": "21d402dd4aaced7e8b2b0aac3f665d6a4d4e3f28" },
   "zinit-vim-syntax": { "branch": "main", "commit": "109eea5ff87dc046b2bc9f5e9a765941936f30e0" }

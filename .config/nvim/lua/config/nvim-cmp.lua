@@ -25,12 +25,10 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 
-		{ name = "nvim_lua" },
 		{ name = "nvim_lsp" },
-		{
-			name = "rg",
-			keyword_length = 3,
-		},
+		{ name = "nvim_lua" },
+		{ name = "snippy" },
+		{ name = "path" },
 		{
 			name = "buffer",
 			option = {
@@ -41,8 +39,10 @@ cmp.setup({
 				end,
 			},
 		},
-		{ name = "snippy" },
-		{ name = "path" },
+		{
+			name = "rg",
+			keyword_length = 3,
+		},
 		{ name = "omni" },
 		-- { name = "nvim_lsp_signature_help" },
 	}),
