@@ -4,14 +4,25 @@
 
 let external_completer = { |spans|
 	{
-		dotnet: { || 
+		dotnet: {
 
 			dotnet complete (
 				$spans | skip 1 | str join " "
 			) | lines
+		},
+		nix: {
+
+			let index = (( $spans | length ) - 1)
+			with-env { NIX_GET_COMPLETIONS: $index } {
+				sh -c ( $spans | str join " " )
+			}
+			| lines
+			| skip 1
+			| str trim
+			| parse -r '(?P<value>\S*)\s*(?P<description>.*)'
 		}
 	} 
-	| get $spans.0 | each { || do $in }
+	| get $spans.0 | each { do $in }
 }
 
 
@@ -426,7 +437,7 @@ use security.nu *
 use pathring.nu *
 
 use git-completions.nu *
-use nix-completions.nu *
+# use nix-completions.nu *
 use make-completions.nu *
 use xbps-cmp.nu *
 use man-cmp.nu *
