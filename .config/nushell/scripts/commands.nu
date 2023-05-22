@@ -97,9 +97,17 @@ export def ungit-b [ --short(-s): bool ] {
 	| to text
 	| _clip i
 }
+export def "peacemaker" [] {
+
+	git diff --name-only --diff-filter=U
+	| lines
+	| each { |f|
+		ignore; nvim $f
+	}
+}
 
 export def to-do [] {
-	rg -C 1 '^[-/*# \t]*TODO' ~/.config/ ~/dev ~/.scripts/ ~ --ignore-file ~/.gitignore 
+	rg -C 1 '^[-/*# \t]*TODO' ~/.config/ ~/dev ~/.scripts/ --ignore-file ~/.gitignore 
 }
 
 export def ghraw-b [] {
