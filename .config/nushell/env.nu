@@ -34,6 +34,32 @@ let-env EDITOR = 'nvim'
 let-env SVDIR = ( _home '.local/share/service' )
 let-env NQDIR = ( _home '.stuff/nq' )
 let-env PLATES_DIR = ( _home '.stuff/plates' )
+
+# User options
+
+# used in some places e.g. focus.nu
+let-env FUZZY_FINDER = "zf" 
+# used for multiple selection
+let-env FZF_DEFAULT_OPTS = (
+	[ '--reverse',
+		' --cycle',
+		' --color=dark',
+		',fg:#cbe3e7',
+		',bg:#1b182c',
+		',hl:#ff99e3',
+		',fg+:#aaffe4',
+		',bg+:#565575',
+		',hl+:#63f2f1',
+		',gutter:#1b182c',
+		',pointer:#aaffe4',
+		',prompt:#ff99e3',
+		',info:#ffe9aa',
+		',header:#cbe3e7',
+		',spinner:#63f2f1',
+	]
+	| str join
+)
+
 mkdir $env.NQDIR
 mkdir $env.SVDIR
 

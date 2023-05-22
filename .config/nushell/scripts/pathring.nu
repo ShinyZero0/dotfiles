@@ -1,14 +1,28 @@
 # add paths to ring
-export def "ring add" [ ...args: any ] {
+export def "ring add" [
+	--fuzzy(-f): bool
+	...args: any
+] {
 
 	let input = $in
+	let fuzzyChoice = ( 
+
+		if $fuzzy {
+
+			fd --no-ignore-vcs -Hd 4 . 
+			| fzf --scheme path --multi
+			| lines
+		}
+	)
 	let data = (
+
 		try {
 			$input | get name
 		} catch {
 			$input
 		}
 		| append $args
+		| append $fuzzyChoice
 	)
 
 	let ringPath = (_getRingPath)
@@ -16,6 +30,7 @@ export def "ring add" [ ...args: any ] {
 		| append ( $data | path expand )
 		| save -f $ringPath
 
+	open $ringPath
 }
 
 export def "ring cp" [
@@ -56,8 +71,28 @@ export def "ring mv" [
 
 }
 
-export def "ring clean" [] {
-	rm (_getRingPath)
+export def "ring clean" [
+	--fuzzy(-f): bool
+] {
+	let ringPath = (_getRingPath)
+	if $fuzzy {
+
+		let toRemove = (
+
+			open $ringPath
+				| to text
+				| fzf --scheme path --multi
+				| lines
+		)
+		open $ringPath 
+			| where {not $in in $toRemove}
+			| save -f $ringPath
+
+		open $ringPath
+
+	} else {
+		rm $ringPath
+	}
 }
 
 export def "ring ls" [] {
@@ -66,7 +101,7 @@ export def "ring ls" [] {
 
 def "_getRingPath" [] {
 
-	let ringPath = ("~/.local/share/nushell/ring.json" | path expand)
+	let ringPath = ("~/.local/share/nushell/ring.nuon" | path expand)
 	if not ($ringPath | path exists) {
 		touch $ringPath
 	}
