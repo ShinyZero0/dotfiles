@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+pipewire & 
+sleep 1
+wireplumber & 
+sleep 1
+exec pipewire-pulse

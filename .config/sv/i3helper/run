@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec ~/.local/bin/I3Helper 13131

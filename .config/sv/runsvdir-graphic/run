@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export USER=zero
+export HOME=/home/zero
+export DISPLAY=:0
+export PATH=$HOME/.nix-profile/bin:$PATH
+
+# groups="$(id -Gn "$USER" | tr ' ' ':')"
+svdir="$HOME/.local/share/service-graphic"
+
+exec runsvdir "$svdir"
