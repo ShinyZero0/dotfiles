@@ -10,7 +10,6 @@ export def nx-init [
 
 	cp ~/.stuff/nix/flake.lock ./
 	cp ~/.stuff/plates/.envrc ./
-	direnv allow
 
 	try { git rev-parse HEAD } catch {
 
@@ -21,13 +20,17 @@ export def nx-init [
 
 	let name = ( $name | default ( $env.PWD | path basename ) )
 	let version = ( $version | default "0.0.1" )
-	let revision = ( git rev-parse HEAD | str trim )
+	# let revision = ( git rev-parse HEAD | str trim )
+	let username = $env.GH_USER
 
 	open $"~/.stuff/nix/($lang)/flake.nix" 
+		| str replace -as "<username>" $username
 		| str replace -as "<name>" $name
 		| str replace -as "<version>" $version
-		| str replace -as "<rev>" $revision
 		| save flake.nix
+
+	git add flake.nix
+	direnv allow
 }
 
 export def nx-sync [ dir?: any ] {

@@ -11,7 +11,7 @@
     in {
       devShells.x86_64-linux.default = pkgs.mkShell {
         name = "<name>";
-        buildInputs = with pkgs; [ dotnetPkgs clang zlib omnisharp-roslyn ];
+        buildInputs = with pkgs; [ dotnetPkgs omnisharp-roslyn ];
         shellHook = ''
           export DOTNET_ROOT=${dotnetPkgs}
         '';
@@ -19,15 +19,14 @@
       packages.${system}.default = pkgs.stdenv.mkDerivation {
         pname = "<name>";
         version = "<version>";
-        # unpackPhase = ":";
         src = pkgs.fetchFromGitHub {
-          owner = "ShinyZero0";
+          owner = "<username>";
           repo = "<name>";
-          rev = "<rev>";
+          rev = "master";
           sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
         };
-        nativeBuildInputs = with pkgs; [ zlib ];
-        buildInputs = with pkgs; [ icu71 ];
+        nativeBuildInputs = with pkgs; [ dotnetPkgs ];
+        buildInputs = with pkgs; [ ];
         buildPhase = ''
           					HOME=$PWD/home
           					PATH=${dotnetPkgs}/bin:$PATH
