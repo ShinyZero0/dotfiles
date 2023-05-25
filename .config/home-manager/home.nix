@@ -23,20 +23,24 @@
     xkeysnail
     keynav
 
-    # Language stuff
-
-    lua-language-server
-    stylua
+    # Language tooling
 
     pyright
     black
 
-    clang
-
+    # Nix
     nixfmt
     nil
 
     marksman
+
+		shellcheck
+
+    # Required in flakes:
+    # lua-language-server
+    # stylua
+    # omnisharp-roslyn 
+
 
     # CLI stuff
 
@@ -101,7 +105,10 @@
   #  /etc/profiles/per-user/zero/etc/profile.d/hm-session-vars.sh
   #
   # if you don't want to manage your shell through Home Manager.
-  # home.sessionVariables = { DOTNET_ROOT = "${pkgs.dotnet-sdk_7}"; };
+  home.sessionVariables = {
+		# DOTNET_ROOT = "${pkgs.dotnet-sdk_7}";
+		NIXPKGS = "${pkgs.path}";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
