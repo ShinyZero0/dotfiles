@@ -1,2 +1,7 @@
 .luarc.json
-lualine.lua
+init-alt.vim
+keys-alt.vim
+lua/config/lualine.lua
+lua/config/hydra-alt.lua
+lua/config/lsp.lua
+lua/plugins/Alt.lua

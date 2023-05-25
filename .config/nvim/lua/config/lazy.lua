@@ -16,16 +16,19 @@ vim.g.mapleader = " "
 require("lazy").setup("plugins", {
 
 	ui = {
-
 		border = "rounded",
 	},
 	defaults = {
-
 		lazy = false,
 	},
 	change_detection = {
-
 		notify = false, -- get a notification when changes are found
+	},
+	git = {
+		timeout = 300,
+	},
+	install = {
+		colorscheme = { "challenger_deep" },
 	},
 })
 -- vim.api.nvim_create_autocmd({ "User MainFile" }, { callback = "g:MainFile" })
