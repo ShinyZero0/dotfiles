@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-isPaused=`dunstctl is-paused`
+isPaused=$(dunstctl is-paused)
 if [ "$isPaused" = false ]; then
     echo "󰂚"
 else
@@ -9,7 +9,7 @@ fi
 
 function ToggleDunst()
 {
-    isPaused=`dunstctl is-paused`
+    isPaused=$(dunstctl is-paused)
     if [ "$isPaused" = true ]; then
         dunstctl set-paused false
         echo "󰂚"

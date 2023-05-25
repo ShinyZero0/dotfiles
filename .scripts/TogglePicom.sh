@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 if [[ $(pgrep picom) ]]; then
-	pkill picom
+	sv down ~/.local/share/service-graphic/picom/
 else
-	picom -b
+	sv up ~/.local/share/service-graphic/picom/
 fi
 

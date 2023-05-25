@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 win=$(xdotool getactivewindow)
 xdotool windowactivate $win

@@ -1,6 +1,0 @@
-#!/bin/sh
-
-while [[ true ]]; do
-	nitrogen --set-zoom-fill --random /mnt/Hard320/reserve1/oboi/ --save 
-	sleep 100
-done

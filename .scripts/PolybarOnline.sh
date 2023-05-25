@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 echo "%{F#ff8080}󰯡"
 connection=false
 
