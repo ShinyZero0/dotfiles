@@ -8,7 +8,6 @@ let services = [
 	"~/.config/sv/pipewire",
 	"~/.config/sv/picom",
 	"~/.config/sv/polybar",
-	"~/.config/sv/dex-autostart",
 	"~/.config/sv/wallpapers",
 	"~/.config/sv/i3lock",
 	"~/.config/sv/i3helper",
