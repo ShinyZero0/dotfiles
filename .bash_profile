@@ -8,6 +8,7 @@ export PATH=$HOME/.local/bin:$HOME/.dotnet/tools:$HOME/.cargo/bin:$PATH
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.nix-profile/share:/usr/share
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export POWERSHELL_TELEMETRY_OPTOUT=1
 # export GTK_IM_MODULE=fcitx
 # export XIM_PROGRAM=fcitx
 # export XIM=fcitx
