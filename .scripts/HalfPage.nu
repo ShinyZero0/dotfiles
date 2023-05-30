@@ -4,12 +4,15 @@ def _dirs [] {
 	[ up down ]
 }
 
-def main [ direction: string@_dirs ] {
-	mut click = 0
-	if $direction == "up" {
-		$click = 4
-	} else {
-		$click = 5
-	}
-	xdotool click --repeat 4 --delay 50 $click
+def main [ direction: string@_dirs, amount: int ] {
+
+	let click = (
+
+		if $direction == "up" {
+			4
+		} else {
+			5
+		}
+	)
+	xdotool click --repeat $amount --delay 50 $click
 }
