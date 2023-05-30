@@ -11,6 +11,10 @@ local omnisharpOpts = {
 
 	capabilities = capabilities,
 	cmd = { "OmniSharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+
+	on_attach = function(client, bufnr)
+		client.server_capabilities.semanticTokensProvider = nil
+	end,
 }
 
 local lualsOpts = {

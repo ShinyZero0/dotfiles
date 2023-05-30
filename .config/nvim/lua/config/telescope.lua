@@ -59,6 +59,7 @@ require("telescope").setup({
 
 			follow = false,
 			find_command = {
+
 				"fd",
 				"-H",
 				"-d",

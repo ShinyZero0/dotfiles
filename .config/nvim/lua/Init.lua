@@ -7,6 +7,7 @@ vim.filetype.add({
 	},
 	filename = {
 		["flake.lock"] = "json",
+		["run"] = "sh",
 	},
 })
 require("Options")

@@ -140,17 +140,19 @@ Hydra({
 	mode = { "n" },
 
 	config = {
+
 		invoke_on_body = true,
 		color = "red",
 
 		hint = {
+
 			position = "middle",
 			border = "rounded",
 			type = "window",
 			funcs = {
 				ft = function()
 					if vim.o.filetype ~= "text" then
-						return "Wrong filetype!    "
+						return "< Wrong filetype! >  "
 					else
 						return ""
 					end
@@ -160,26 +162,31 @@ Hydra({
 	},
 
 	heads = {
-		{ "e", cmd("Neoformat ToEng") },
-		{ "r", cmd("Neoformat ToRus") },
-		{ "s", cmd("Neoformat Split") },
-		{ "j", cmd("Neoformat Join") },
+
+		{ "e", cmd("Neoformat! markdown ToEng") },
+		{ "r", cmd("Neoformat! markdown ToRus") },
+		{ "s", cmd("Neoformat! markdown Split") },
+		{ "j", cmd("Neoformat! markdown Join") },
 		{ ".", cmd("Neoformat"), { exit = true } },
 	},
 })
 
 Hydra({
+
 	name = "Formatting visual",
 	body = "<Leader>.",
 	hint = hints.Formatting,
 	config = {
+
 		invoke_on_body = true,
 		color = "teal",
 		hint = {
+
 			position = "middle",
 			border = "rounded",
 			type = "window",
 			funcs = {
+
 				ft = function()
 					if vim.o.filetype ~= "text" then
 						return "Wrong filetype!    "
@@ -192,10 +199,11 @@ Hydra({
 	},
 	mode = { "v" },
 	heads = {
-		{ "e", ":Neoformat ToEng<CR>" },
-		{ "r", ":Neoformat ToRus<CR>" },
-		{ "s", ":Neoformat Split<CR>" },
-		{ "j", ":Neoformat Join<CR>" },
+
+		{ "e", ":Neoformat! markdown ToEng<CR>" },
+		{ "r", ":Neoformat! markdown ToRus<CR>" },
+		{ "s", ":Neoformat! markdown Split<CR>" },
+		{ "j", ":Neoformat! markdown Join<CR>" },
 		{ ".", ":Neoformat<CR>", { exit = true } },
 	},
 })
@@ -205,15 +213,18 @@ SaveOrExit = Hydra({
 	name = "Are you sure?",
 	hint = hints.SaveOrExit,
 	config = {
+
 		color = "blue",
 		invoke_on_body = true,
 		hint = {
+
 			type = "window",
 			position = "bottom",
 			border = "rounded",
 		},
 	},
 	heads = {
+
 		{ "<C-q>", cmd("bd!|lua CoolerExitFunc()"), { desc = "Quit without saving" } },
 		{ "q", cmd("bd!|lua CoolerExitFunc()"), { desc = "Quit without saving" } },
 		{ "<C-s>", cmd("w|bd|lua CoolerExitFunc()"), { desc = "Save & quit" } },

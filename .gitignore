@@ -1,9 +1,3 @@
-.config/nvim/init-alt.vim
-.config/nvim/keys-alt.vim
-.config/nvim/lua/config/hydra-alt.lua
-.config/nvim/lua/config/lsp.lua
-.config/nvim/lua/config/lualine.lua
-.config/nvim/lua/plugins/Alt.lua
 btop.conf
 .local/
 .scripts/sanity/
