@@ -30,6 +30,17 @@ let-env NU_PLUGIN_DIRS = [
 # )
 let-env GH_USER = "ShinyZero0"
 let-env EDITOR = 'nvim'
+# for neovim
+let-env COLORSCHEME = if (
+		$env.PROMPT?
+		| default ""
+		| str contains "yadm"
+) {
+	"cold"
+} else {
+	"warm"
+}
+
 let-env SVDIR = ( _home '.local/share/service' )
 let-env NQDIR = ( _home '.stuff/nq' )
 let-env PLATES_DIR = ( _home '.stuff/plates' )
