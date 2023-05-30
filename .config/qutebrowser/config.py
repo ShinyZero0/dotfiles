@@ -189,3 +189,4 @@ c.fonts.web.size.minimum_logical = 6
 
 # Bindings for normal mode
 config.bind('gM', 'tab-move -1')
+config.bind('<alt-r>', 'fake-key -g <ctrl-tab>')
