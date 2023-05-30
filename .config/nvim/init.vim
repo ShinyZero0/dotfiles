@@ -23,7 +23,7 @@ source $HOME/.config/nvim/colors.vim
 " augroup showbreak
 "     autocmd!
 "     autocmd VimEnter * call <SID>ShowBreakInit()
-    " autocmd CursorMoved,CursorMovedI,CursorHold * call <SID>ShowBreak()
+	" autocmd CursorMoved,CursorMovedI,CursorHold * call <SID>ShowBreak()
 " augroup END
 "
 "
