@@ -32,6 +32,7 @@
     nixfmt
     nil
 
+    comrak
     marksman
 
 		shellcheck
@@ -53,6 +54,9 @@
     duf
     du-dust
 
+    btop
+    bottom
+    qrencode
     entr # run commands on file changes
     zellij
     moreutils
@@ -67,6 +71,7 @@
     python310Packages.grip # markdown previewer
     github-cli
     empty # needed for rofi-connman
+    powershell
 
     # Fonts
     ibm-plex

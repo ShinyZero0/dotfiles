@@ -9,7 +9,7 @@
       dotnetPkgs = with pkgs;
         (with dotnetCorePackages; combinePackages [ sdk_7_0 sdk_6_0 ]);
     in {
-      devShells.x86_64-linux.default = pkgs.mkShell {
+      devShells.${system}.default = pkgs.mkShell {
         name = "<name>";
         buildInputs = with pkgs; [ dotnetPkgs omnisharp-roslyn ];
         shellHook = ''
