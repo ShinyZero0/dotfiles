@@ -1,5 +1,5 @@
 -- call hydras
-require("hydras.gitsigns")
+require("hydras.git")
 require("hydras.folds")
 require("hydras.telescope")
 
