@@ -127,7 +127,7 @@ def _nqThreads [] {
 				| is-empty
 				| invert
 		}
-		| each { _relpath $env.NQDIR }
+		| each { path relative-to $env.NQDIR }
 }
 
 def _expandNQ [] {

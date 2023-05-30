@@ -41,7 +41,7 @@ export def mvnrp [
 
 		open --raw $file
 			| str replace $env.oldFull $env.newFull
-			| _sameReplace { _relpath $env.PWD } $old $new
+			| _sameReplace { path relative-to $env.PWD } $old $new
 			| _sameReplace { str replace $env.HOME '$HOME' } $old $new
 			| _sameReplace { str replace $env.HOME '~' } $old $new
 			| save -f $file
@@ -57,19 +57,17 @@ def _replaceLuaRequires [
 	let oldModule = (
 
 		$env.oldFull
-			| _relpath $env.NvimConfig
-			| path parse
-			| reject extension
-			| transpose k v | get v
+			| path relative-to $env.NvimConfig
+			| _unExt
+			| path split
 			| str join "."
 	)
 	let newModule = (
 
 		$env.newFull
-			| _relpath $env.NvimConfig
-			| path parse
-			| reject extension
-			| transpose k v | get v
+			| path relative-to $env.NvimConfig
+			| _unExt
+			| path split
 			| str join "."
 	)
 	if $ft == "file" {
