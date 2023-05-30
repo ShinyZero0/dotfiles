@@ -45,12 +45,14 @@ export def "clone" [
 				(
 					$repo.owner | str downcase
 				) == (
-					$env.GH_USER? | default "" | str downcase
+					$env.GH_USER?
+						| default ""
+						| str downcase
 				)
 			) {
-				$in | get ssh_url
+				get ssh_url
 			} else {
-				$in | get clone_url
+				get clone_url
 			}
 		),
 		$outputArg
@@ -68,7 +70,7 @@ export def "clone" [
 # 		tag_name: $version
 # 		target_commitish: (
 #
-# 			$branch 
+# 			$branch
 # 			| default (
 # 				git branch --show-current | str trim
 # 			)
@@ -83,24 +85,26 @@ export def "clone" [
 # 	| _postToApi $"repos/($repo.owner)/($repo.repo)/releases"
 # }
 def _runCommandFromList [ parts: list<string> ] {
-	
+
 	nu -c (
 		$parts
-		| where { || $in != null }
+		| where { $in != null }
 		| str join " "
 	)
 }
 
 def _getAuthHeader [] {
 
+	let token = (
+
+		$env.GH_TOKEN?
+		| default (
+			open ~/.config/gh/hosts.yml | get "github.com".oauth_token
+		)
+	)
 	[
-		Authorization 
-		$"Bearer (
-			$env.GH_TOKEN?
-			| default (
-				open ~/.config/gh/hosts.yml | get "github.com".oauth_token
-			)
-		)"
+		Authorization
+		$"Bearer ($token)"
 	]
 }
 def _getFromApi [ endpoint: string ] {
@@ -112,19 +116,17 @@ def _postToApi [ endpoint: string ] {
 	http post -H (_getAuthHeader) $"https://api.github.com/($endpoint)" ( $in | to json )
 }
 def _parseRepoName [] {
-	
+
 	let repo = $in
 	let split = ( $repo | path split )
 	let length = ( $split | length )
 	if ( $length == 1 ) {
-		return {
-
+		{
 			owner: $env.GH_USER
 			repo: $repo
 		}
 	} else if ( $length == 2 ) {
-		return {
-
+		{
 			owner: $split.0
 			repo: $split.1
 		}
@@ -154,7 +156,7 @@ def _parseRepoName [] {
 # 			q: (
 # 				$query
 # 				| where {|it| $it.1 != null}
-# 				| each { || str join "%3A"  }
+# 				| each { str join "%3A"  }
 # 				| str join "+"
 # 			)
 # 		}

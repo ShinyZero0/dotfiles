@@ -12,7 +12,7 @@ export extern "pkg upgrade" [
 ]
 export extern "pkg install" [
 
-    ...targets: string@"termux pkg all" 
+    ...targets: string@"termux pkg all"
     -y
 ]
 export extern "pkg remove" [

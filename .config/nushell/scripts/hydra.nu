@@ -1,26 +1,26 @@
-let _finderHydraKeys = [ 
+let _finderHydraKeys = [
 
 	{
 		lhs: "o"
-		rhs: { || exec nu -e _open }
+		rhs: { exec nu -e _open }
 		exit: true
 		desc: "open file without focusing"
 	},
 	{
 		lhs: "s"
-		rhs: { || exec nu -e _select }
+		rhs: { exec nu -e _select }
 		exit: true
 		desc: "open file or copy dir to clipboard"
 	},
 	{
 		lhs: "f"
-		rhs: { || exec nu -e _focus }
+		rhs: { exec nu -e _focus }
 		exit: true
 		desc: "focus and open file"
 	},
 	{
 		lhs: "q"
-		rhs: { || }
+		rhs: { }
 		exit: true
 		desc: "quit"
 	}
@@ -30,11 +30,10 @@ def-env hydra [
 ] {
 
 	# let hint = ( _makeHint $keydefs | to text )
-	$env.config.table.index_mode = never
-	$env.config.table.mode = none
 	let hint = ( $keydefs | select lhs desc )
 	print $hint
 	while true {
+
 		let key = ( readkey -b )
 		# print $hint
 		let matchedKeys = ( $keydefs | where lhs == $key )
@@ -44,10 +43,10 @@ def-env hydra [
 			print ( $warn )
 		} else {
 			$matchedKey = $matchedKeys.0
-			do $matchedKey.rhs 
+			do $matchedKey.rhs
 			if $matchedKey.exit { break }
 		}
-	} 
+	}
 }
 
 def-env _finderHydra [] {
@@ -72,7 +71,7 @@ def-env _finderHydra [] {
 # 		$hintStrings = (
 # 			$hintStrings | append ( $str )
 # 		)
-# 	} 
+# 	}
 # 	$hintStrings | append (ansi reset)
 # }
 

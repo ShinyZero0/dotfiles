@@ -7,8 +7,7 @@
 # By default, <nushell-config-dir>/scripts is added
 use ~/.config/nushell/scripts/utils.nu [
 	_home,
-	_ansiTmp
-] 
+]
 
 let-env NU_LIB_DIRS = [
 
@@ -38,7 +37,7 @@ let-env PLATES_DIR = ( _home '.stuff/plates' )
 # User options
 
 # used in some places e.g. focus.nu
-let-env FUZZY_FINDER = "zf" 
+let-env FUZZY_FINDER = "zf"
 # used for multiple selection
 let-env FZF_DEFAULT_OPTS = (
 	[ '--reverse',

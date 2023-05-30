@@ -8,7 +8,7 @@ use pipes.nu [
 
 # list enqueued processes
 export def "nq ls" [] {
-	
+
 	fd -t x . $env.NQDIR
 		| lines
 		| wrap name

@@ -1,6 +1,6 @@
 def "git-any" [] {
 
-    git ls-tree -r --name-only HEAD | lines 
+    ^git ls-tree -r --name-only HEAD | lines
     | prepend (fd --no-ignore-vcs -H | get name) | uniq
 }
 

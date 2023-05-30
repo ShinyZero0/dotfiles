@@ -1,5 +1,5 @@
 export def "rnm" [ file: any ] {
-	
+
 	let output = (
 		gum input --value $file --header "Rename"
 		| complete

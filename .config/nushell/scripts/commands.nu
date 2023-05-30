@@ -66,21 +66,22 @@ export def svls [
 
 export def fnr_files [
 
-	find: string 
-	replace: string 
+	find: string
+	replace: string
 	...files: string
 ] {
 	for file in $files {
-		open $file 
-		| str replace -a $find $replace 
+		open $file
+		| str replace -a $find $replace
 		| save -f $file
 	}
 }
 
 export def parse-help [] {
 
-	$in 
-	| parse -r '\s\s+(?:-(?P<short>\w)[,\s]+)?(?:--(?P<long>[\w-]+))\s*(?:<(?P<format>.*)>)?\s*(?P<description>.*)?' | format "--{long}(-{short})\t# {description}" | to text 
+	parse -r '\s\s+(?:-(?P<short>\w)[,\s]+)?(?:--(?P<long>[\w-]+))\s*(?:<(?P<format>.*)>)?\s*(?P<description>.*)?'
+		| format "--{long}(-{short})\t# {description}"
+		| to text
 }
 
 export def json2snip [] {
@@ -107,7 +108,7 @@ export def "peacemaker" [] {
 }
 
 export def to-do [] {
-	rg -C 1 '^[-/*# \t]*TODO' ~/.config/ ~/dev ~/.scripts/ --ignore-file ~/.gitignore 
+	rg -C 1 '^[-/*# \t]*TODO' ~/.config/ ~/dev ~/.scripts/ --ignore-file ~/.gitignore
 }
 
 export def ghraw-b [] {
@@ -116,30 +117,34 @@ export def ghraw-b [] {
 	[
 		"https://raw.githubusercontent.com",
 		(
-			_clip o 
-			| path split 
-			| where { || $in != "blob"  }
+			_clip o
+			| path split
+			| where { $in != "blob"  }
 		)
-	] 
-	| flatten 
+	]
+	| flatten
 	| path join
 }
 
+# commit with a message from file
 export def gcf [] {
-	
+
 	let file = (
-		git rev-parse --show-toplevel 
-		| str trim 
-		| path join .commit-msg.txt
+		git rev-parse --show-toplevel
+			| str trim
+			| path join .commit-msg.txt
 	)
 	git commit -F $file
+
 	"" | save -f $file
 }
+
+# edit the commit message file
 export def gcfe [] {
-	
+
 	let file = (
-		git rev-parse --show-toplevel 
-		| str trim 
+		git rev-parse --show-toplevel
+		| str trim
 		| path join .commit-msg.txt
 	)
 	run-external $env.EDITOR $file
@@ -160,10 +165,10 @@ export def "cat <<" [ eof ] {
 	return $out
 }
 
+# take first element to match the closure condition
 export def First [ func: closure default?: any ] {
 	# TODO: the "default" doesn't work actually
-	where {|| do $func }
-	| first
+	where {do $func } | first
 }
 
 export def "to qr" [] {
