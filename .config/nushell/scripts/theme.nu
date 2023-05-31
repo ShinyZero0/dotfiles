@@ -176,9 +176,9 @@ export def GetDarkTheme [] {
 		duration: $colors.white
 		date: { (date now) - $in |
 			if $in < 1hr {
-				$colors.red
-			} else if $in < 6hr {
 				$colors.redDark
+			} else if $in < 6hr {
+				$colors.red
 			} else if $in < 1day {
 				$colors.yellowDark
 			} else if $in < 3day {
@@ -186,7 +186,7 @@ export def GetDarkTheme [] {
 			} else if $in < 1wk {
 				$colors.green
 			} else if $in < 6wk {
-				$colors.green
+				$colors.greenDark
 			} else if $in < 52wk {
 				$colors.cyan
 			} else { $colors.cyanDark }
