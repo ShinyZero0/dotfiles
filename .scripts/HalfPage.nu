@@ -1,4 +1,4 @@
-#!/usr/bin/env nu
+#!/usr/bin/env -S nu --no-std-lib
 
 def _dirs [] {
 	[ up down ]
