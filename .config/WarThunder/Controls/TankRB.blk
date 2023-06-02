@@ -28,6 +28,10 @@ controls{
     }
 
     ID_RANGEFINDER{
+      keyboardKey:i=19
+    }
+
+    ID_RANGEFINDER{
       keyboardKey:i=56
       keyboardKey:i=19
     }
