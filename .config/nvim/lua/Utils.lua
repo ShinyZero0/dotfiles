@@ -1,8 +1,6 @@
 local This = {}
 
---  ╭──────────────────────────────────────────────────────────╮
---  │                   String interpolation                   │
---  ╰──────────────────────────────────────────────────────────╯
+-- String interpolation
 function This.Interpolate(str)
 	local outer_env = _ENV
 	return (

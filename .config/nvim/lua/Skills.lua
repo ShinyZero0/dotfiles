@@ -1,9 +1,8 @@
 local A = vim.api
 local f = require("Utils").Interpolate
 
---  ╭──────────────────────────────────────────────────────────╮
---  │                         Aliases                          │
---  ╰──────────────────────────────────────────────────────────╯
+-- Aliases
+
 map = vim.keymap.set
 unmap = vim.keymap.del
 noremap = function(modes, lhs, rhs)
@@ -26,10 +25,8 @@ function All(tbl, check)
 	return true
 end
 
---  ╭──────────────────────────────────────────────────────────╮
---  │    Recusively show and close all buffers when leaving    │
---  │                     the last window                      │
---  ╰──────────────────────────────────────────────────────────╯
+-- Recusively show and close all buffers when leaving the last window
+
 function CoolExitFunc()
 	local cnt = 0
 	for _ in pairs(vim.api.nvim_list_wins()) do
@@ -66,9 +63,7 @@ function CoolerExitFunc()
 	end
 end
 
---  ╭──────────────────────────────────────────────────────────╮
---  │                   Append delimiters                      │
---  ╰──────────────────────────────────────────────────────────╯
+-- Append delimiters
 function ToggleEndingStuff()
 	local charsMap = {
 		cs = ";",

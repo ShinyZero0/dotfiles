@@ -1,6 +1,4 @@
---  ╭──────────────────────────────────────────────────────────╮
---  │                     Nvim-treesitter                      │
---  ╰──────────────────────────────────────────────────────────╯
+-- Nvim-treesitter
 
 -- require("nvim-treesitter.install").compilers = { "clang", "clang++", "zig" }
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
