@@ -22,3 +22,7 @@ export extern "pkg remove" [
 export extern "pkg search" [
 
 ]
+export extern "pkg info" [
+	
+	...args: string@"termux pkg all"
+]
