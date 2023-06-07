@@ -72,6 +72,7 @@ function ToggleEndingStuff()
 		lua = ",",
 		nu = ",",
 		markdown = "  ",
+		python = ":",
 	}
 	local char
 	local ft = vim.bo[0].filetype

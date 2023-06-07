@@ -2,6 +2,7 @@
 
 -- noremap("n", "p", "gp")
 -- noremap("n", "gp", "p")
+noremap("n", "dD", "ddk")
 noremap("v", "gy", "y']")
 map("n", "<LEADER>s", "i<CR><ESC>^")
 map("i", "<C-a>", ToggleEndingStuff)

@@ -75,13 +75,6 @@ return {
 	},
 
 	{
-		"LudoPinelli/comment-box.nvim",
-		opts = {
-			line_blank_line_below = true,
-		},
-	},
-
-	{
 		"nvim-pack/nvim-spectre",
 		cmd = "Spectre",
 		dependencies = {
