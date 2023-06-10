@@ -1,8 +1,9 @@
 
+use utils.nu _ansiTmp
 def "_at" [] {
-	
+
 	let colors = (_getColors)
-	( _ansiTmp "@" { fg: $colors.cyanDark bg: none attr: b } )
+	( _ansiTmp "@" { fg: $colors.cyanDark attr: b } )
 }
 def _getColors [] {
 
@@ -74,7 +75,7 @@ export def create_left_prompt [] {
     ) {
 		[
 			(_at)
-			( _ansiTmp "Y" { fg: $colors.redDark bg: none attr: b } )
+			( _ansiTmp "Y" { fg: $colors.redDark attr: b } )
 		]
 		| str join
     }
@@ -87,7 +88,7 @@ export def create_left_prompt [] {
     ) {
 		[
 			(_at)
-			( _ansiTmp "N" { fg: $colors.blue bg: none attr: b } )
+			( _ansiTmp "N" { fg: $colors.blue attr: b } )
 		]
 		| str join
     }
@@ -98,9 +99,9 @@ export def create_left_prompt [] {
 	} else {
 		[
 			(_at)
-			(_ansiTmp 'S(' { fg: $colors.purple bg: none attr: b })
-			(_ansiTmp ( uname -n ) { fg: $colors.blueDark bg: none attr: b } )
-			(_ansiTmp ')' { fg: $colors.purple bg: none attr: b })
+			(_ansiTmp 'S(' { fg: $colors.purple attr: b })
+			(_ansiTmp ( uname -n ) { fg: $colors.blueDark attr: b } )
+			(_ansiTmp ')' { fg: $colors.purple attr: b })
 		]
 		| str join
 	}

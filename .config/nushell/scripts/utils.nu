@@ -1,5 +1,5 @@
 # get a string with styling applied and resetted ansi
-export def _ansiTmp [ text: string color: any  ] {
+export def _ansiTmp [ text: string color: any ] {
 	[
 		( ansi reset )
 		( ansi $color )
