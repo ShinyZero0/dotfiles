@@ -61,13 +61,7 @@ EOF
 ```bash
 sudo
 xbps-install udevil
-mkdir /etc/sv/devmon/
-cat << EOF > /etc/sv/devmon/run
-#!/bin/bash
-
-exec devmon
-EOF
-chmod +x /etc/sv/devmon/run
+# copy the service from ~/.config/sv/devmon
 ln -s /etc/sv/devmon/run /var/service/
 ```
 

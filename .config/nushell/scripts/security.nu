@@ -1,5 +1,5 @@
 export def "sec check" [
-	
+
 	--file(-f): any
 	--strict: bool = false
 ] {
@@ -9,7 +9,7 @@ export def "sec check" [
 	} else {
 		open $file
 	}
-	$data 
+	$data
 	| nu -c (
 		[ "rg --pretty -e" (_getPatternsArgs) ]
 		| str join " "
@@ -18,7 +18,7 @@ export def "sec check" [
 
 export def "sec trust" [] {
 
-	
+
 }
 
 def "_getPatternsArgs" [] {

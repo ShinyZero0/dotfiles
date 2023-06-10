@@ -7,8 +7,7 @@
 # By default, <nushell-config-dir>/scripts is added
 use ~/.config/nushell/scripts/utils.nu [
 	_home,
-	_ansiTmp
-] 
+]
 
 let-env NU_LIB_DIRS = [
 
@@ -31,6 +30,17 @@ let-env NU_PLUGIN_DIRS = [
 # )
 let-env GH_USER = "ShinyZero0"
 let-env EDITOR = 'nvim'
+# for neovim
+let-env COLORSCHEME = if (
+		$env.PROMPT?
+		| default ""
+		| str contains "yadm"
+) {
+	"cold"
+} else {
+	"warm"
+}
+
 let-env SVDIR = ( _home '.local/share/service' )
 let-env NQDIR = ( _home '.stuff/nq' )
 let-env PLATES_DIR = ( _home '.stuff/plates' )
@@ -38,7 +48,7 @@ let-env PLATES_DIR = ( _home '.stuff/plates' )
 # User options
 
 # used in some places e.g. focus.nu
-let-env FUZZY_FINDER = "zf" 
+let-env FUZZY_FINDER = "zf"
 # used for multiple selection
 let-env FZF_DEFAULT_OPTS = (
 	[ '--reverse',

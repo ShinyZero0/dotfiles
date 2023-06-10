@@ -8,7 +8,7 @@ use pipes.nu [
 
 # list enqueued processes
 export def "nq ls" [] {
-	
+
 	fd -t x . $env.NQDIR
 		| lines
 		| wrap name
@@ -127,7 +127,7 @@ def _nqThreads [] {
 				| is-empty
 				| invert
 		}
-		| each { _relpath $env.NQDIR }
+		| each { path relative-to $env.NQDIR }
 }
 
 def _expandNQ [] {

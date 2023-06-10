@@ -1,8 +1,9 @@
 
+use utils.nu _ansiTmp
 def "_at" [] {
-	
+
 	let colors = (_getColors)
-	( _ansiTmp "@" { fg: $colors.cyanDark bg: none attr: b } )
+	( _ansiTmp "@" { fg: $colors.cyanDark attr: b } )
 }
 def _getColors [] {
 
@@ -13,25 +14,25 @@ def _getColors [] {
 		gray: '#a6b3cc'
 		grayLight: '#cbe3e7'
 		white: '#FAFAFA'
-		
+	
 		redDark: '#ff5458'
 		red: '#ff8080'
-		
+	
 		greenDark: '#62d196'
 		green: '#95ffa4'
-		
+	
 		yellowDark: '#ffb378'
 		yellow: '#ffe9aa'
-		
+	
 		blueDark: '#65b2ff'
 		blue: '#91ddff'
-		
+	
 		purpleDark: '#906cff'
 		purple: '#ff99e3'
-		
+	
 		cyanDark: '#63f2f1'
 		cyan: '#aaffe4'
-		
+	
 	}
 }
 
@@ -51,9 +52,9 @@ export def create_left_prompt [] {
 		let termuxPrefix = (
 			try {
 
-				$env.PREFIX 
-					| path split 
-					| drop 1 
+				$env.PREFIX
+					| path split
+					| drop 1
 					| path join
 			} catch {
 				"4efbf0c9-8eaa-4d0f-a60e-fb95441f7481"
@@ -61,36 +62,36 @@ export def create_left_prompt [] {
 		)
     let dir = (
 
-	$env.PWD 
+	$env.PWD
 			| str replace $home '~'
 			| str replace $termuxPrefix '/'
     )
 
     let pathSegment = ( _ansiTmp $dir { fg: $colors.green attr: b } )
     let yadmSegment = if (
-		$env.PROMPT? 
-		| default "" 
+		$env.PROMPT?
+		| default ""
 		| str contains "yadm"
     ) {
 		[
 			(_at)
-			( _ansiTmp "Y" { fg: $colors.redDark bg: none attr: b } )
+			( _ansiTmp "Y" { fg: $colors.redDark attr: b } )
 		]
 		| str join
-    } 
+    }
     let nixSegment = if (
 
-		$env.PATH 
+		$env.PATH
 		| any {
 			str contains "/nix/store"
 		}
     ) {
 		[
 			(_at)
-			( _ansiTmp "N" { fg: $colors.blue bg: none attr: b } )
+			( _ansiTmp "N" { fg: $colors.blue attr: b } )
 		]
 		| str join
-    } 
+    }
 	let sshSegment = if (
 		$env.SSH_CLIENT? | is-empty
 	) {
@@ -98,9 +99,9 @@ export def create_left_prompt [] {
 	} else {
 		[
 			(_at)
-			(_ansiTmp 'S(' { fg: $colors.purple bg: none attr: b })
-			(_ansiTmp ( uname -n ) { fg: $colors.blueDark bg: none attr: b } ) 
-			(_ansiTmp ')' { fg: $colors.purple bg: none attr: b })
+			(_ansiTmp 'S(' { fg: $colors.purple attr: b })
+			(_ansiTmp ( uname -n ) { fg: $colors.blueDark attr: b } )
+			(_ansiTmp ')' { fg: $colors.purple attr: b })
 		]
 		| str join
 	}
@@ -108,10 +109,10 @@ export def create_left_prompt [] {
     let left_prompt = (
 	[
 	    $pathSegment,
-	    $yadmSegment 
+	    $yadmSegment
 	    $nixSegment,
 		$sshSegment,
-	] 
+	]
 	| str join
     )
 
@@ -124,20 +125,20 @@ export def create_right_prompt [] {
     let timeSegment = (
 	[ (
 			_ansiTmp (date now | date format '%r') { fg: $colors.purple attr: b }
-		) ] 
+		) ]
 	| str join
     )
-    let last_exit_code = if ( $env.LAST_EXIT_CODE != 0 ) { 
+    let last_exit_code = if ( $env.LAST_EXIT_CODE != 0 ) {
 		[
 	    ( _ansiTmp $env.LAST_EXIT_CODE $colors.redDark )
-	] 
+	]
 	| str join
 	} else { "" }
 
     let right_prompt = (
 	[
 	    $last_exit_code, (char space), $timeSegment
-	] 
+	]
 	| str join
     )
 
@@ -176,9 +177,9 @@ export def GetDarkTheme [] {
 		duration: $colors.white
 		date: { (date now) - $in |
 			if $in < 1hr {
-				$colors.red
-			} else if $in < 6hr {
 				$colors.redDark
+			} else if $in < 6hr {
+				$colors.red
 			} else if $in < 1day {
 				$colors.yellowDark
 			} else if $in < 3day {
@@ -186,7 +187,7 @@ export def GetDarkTheme [] {
 			} else if $in < 1wk {
 				$colors.green
 			} else if $in < 6wk {
-				$colors.green
+				$colors.greenDark
 			} else if $in < 52wk {
 				$colors.cyan
 			} else { $colors.cyanDark }
@@ -202,7 +203,7 @@ export def GetDarkTheme [] {
 		list: white
 		block: white
 		hints: dark_gray
-	
+
 		shape_and: $colors.red
 		shape_binary: purple_bold
 		shape_block: $colors.cyanDark

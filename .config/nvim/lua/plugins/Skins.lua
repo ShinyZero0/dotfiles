@@ -5,6 +5,14 @@
 return {
 
 	{
+		"loctvl842/monokai-pro.nvim",
+		opts = {
+
+			transparent_background = false,
+			filter = "octagon",
+		},
+	},
+	{
 		"ShinyZero0/challenger-deep.nvim",
 		-- dir = "~/dev/vim/challenger-deep.nvim/",
 		lazy = false,
@@ -19,20 +27,8 @@ return {
 		lazy = true,
 	},
 	{
-		"sjl/badwolf",
-		lazy = true,
-	},
-	{
-		"ray-x/aurora",
-		lazy = true,
-	},
-	{
-		"wuelnerdotexe/vim-enfocado",
-		lazy = true,
-	},
-	{
 		"savq/melange",
-		lazy = true,
+		lazy = false,
 	},
 	{
 		"nyoom-engineering/oxocarbon.nvim",

@@ -12,6 +12,6 @@ export alias grm = git rm --cached
 export alias gcl1 = git clone --depth 1
 export alias grss = git restore --staged
 export def gls [] {
-	
+
 	git ls-tree --full-tree --name-only -r HEAD | lines
 }

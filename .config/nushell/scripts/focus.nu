@@ -3,13 +3,13 @@ alias o = _open # don't cd and just open
 alias s = _select # don't cd and just open
 
 def-env _select [
-	dir?: string 
+	dir?: string
 ] {
 	let obj = ( _getFocusChoice $dir )
 	_confirmOpener -nN $obj
 }
 def-env _open [
-	dir?: string 
+	dir?: string
 ] {
 	let obj = ( _getFocusChoice $dir )
 	_confirmOpener -n $obj
@@ -26,9 +26,13 @@ def _getFocusChoice [
 ] {
 	mut obj = ""
 	if ($dir | is-empty) {
-		$obj = ( fd --no-ignore-vcs -Hd 4 . | zf )
+
+		$obj = ( fd --no-ignore-vcs -Hd 4 .
+		| ^$env.FUZZY_FINDER )
 	} else {
-		$obj = ( fd --no-ignore-vcs -Hd 4 . ( $dir | path expand ) | zf )
+
+		$obj = ( fd --no-ignore-vcs -Hd 4 . ( $dir | path expand )
+		| ^$env.FUZZY_FINDER )
 	}
 	return $obj
 }

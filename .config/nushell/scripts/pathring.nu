@@ -5,11 +5,11 @@ export def "ring add" [
 ] {
 
 	let input = $in
-	let fuzzyChoice = ( 
+	let fuzzyChoice = (
 
 		if $fuzzy {
 
-			fd --no-ignore-vcs -Hd 4 . 
+			fd --no-ignore-vcs -Hd 4 .
 			| fzf --scheme path --multi
 			| lines
 		}
@@ -84,7 +84,7 @@ export def "ring clean" [
 				| fzf --scheme path --multi
 				| lines
 		)
-		open $ringPath 
+		open $ringPath
 			| where {not $in in $toRemove}
 			| save -f $ringPath
 

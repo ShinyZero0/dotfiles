@@ -21,7 +21,7 @@ let external_completer = { |spans|
 			| str trim
 			| parse -r '(?P<value>\S*)\s*(?P<description>.*)'
 		}
-	} 
+	}
 	| get $spans.0 | each { do $in }
 }
 
@@ -36,7 +36,7 @@ let-env config = {
 		clickable_links: true # enable or disable clickable links. Your terminal has to support links.
 	}
 	rm: {
-		always_trash: true 
+		always_trash: true
 	}
 	cd: {
 
@@ -159,12 +159,12 @@ let-env config = {
 	# TODO: dump packages after installing/deleting
 	hooks: {
 
-		pre_prompt: [{ ||
+		pre_prompt: [{
 			let direnv = (direnv export json | from json)
 			let direnv = if ($direnv | length) == 1 { $direnv } else { { } }
 			$direnv | load-env
 		}]
-		pre_execution: [{ ||
+		pre_execution: [{
 			null  # replace with source code to run before the repl input is run
 		}]
 		env_change: {
@@ -175,7 +175,7 @@ let-env config = {
 				# }
 			}]
 		}
-		display_output: { ||
+		display_output: {
 			if (term size).columns >= 50 { table -e } else { table }
 		}
 		command_not_found: { |command| (
@@ -399,9 +399,9 @@ let-env config = {
 			keycode: char_f
 			mode: [emacs, vi_normal, vi_insert]
 			event: [
-				{ 
-					send: executehostcommand 
-					cmd: "_finderHydra" 
+				{
+					send: executehostcommand
+					cmd: "_finderHydra"
 				}
 			]
 
@@ -411,8 +411,8 @@ let-env config = {
 
 use theme.nu *
 # Use nushell functions to define your right and left prompt
-let-env PROMPT_COMMAND = { || create_left_prompt }
-let-env PROMPT_COMMAND_RIGHT = { || create_right_prompt }
+let-env PROMPT_COMMAND = { create_left_prompt }
+let-env PROMPT_COMMAND_RIGHT = { create_right_prompt }
 $env.config.color_config = ( GetDarkTheme )
 
 source aliases/aliases-pre.nu

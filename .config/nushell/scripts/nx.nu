@@ -23,7 +23,7 @@ export def nx-init [
 	# let revision = ( git rev-parse HEAD | str trim )
 	let username = $env.GH_USER
 
-	open $"~/.stuff/nix/($lang)/flake.nix" 
+	open $"~/.stuff/nix/($lang)/flake.nix"
 		| str replace -as "<username>" $username
 		| str replace -as "<name>" $name
 		| str replace -as "<version>" $version
@@ -35,7 +35,7 @@ export def nx-init [
 
 export def nx-sync [ dir?: any ] {
 
-	let LockFile = ( "~/.stuff/nix/flake.lock" | path expand ) 
+	let LockFile = ( "~/.stuff/nix/flake.lock" | path expand )
 
 	let directory = ( $dir | default ( _home dev ) )
 	open $LockFile
@@ -50,8 +50,8 @@ export def nx-sync [ dir?: any ] {
 	let list = ( fd flake.lock $directory | lines )
 	for entry in $list {
 		cd ( $entry | path dirname )
-		open flake.lock 
-			| from json 
+		open flake.lock
+			| from json
 			| update nodes.nixpkgs (
 				open $LockFile
 				| from json

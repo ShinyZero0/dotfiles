@@ -3,7 +3,7 @@ def "xbps local packages" [] {
     ^xbps-query -l | lines
     | each {
 
-        parse -r 'ii\s+(?P<value>\S+)-\S+\s+(?P<description>.+) ' 
+        parse -r 'ii\s+(?P<value>\S+)-\S+\s+(?P<description>.+) '
 		| into record
     }
 }
@@ -11,7 +11,7 @@ def "xbps all packages" [] {
 
     open ~/.cache/xbps-cache.json  # see ~/.scripts/packages/xbps/cache.nu
 }
-export extern "sudo xbps-remove" [ 
+export extern "sudo xbps-remove" [
 
 	...args: string@"xbps local packages"
 	--config(-C)	# Path to confdir (xbps.d)
@@ -97,7 +97,7 @@ export extern "sudo xbps-alternatives" [
 	--set(-s)	# Set alternatives for PKG
 ]
 export extern "sudo xbps-pkgdb" [
-	
+
 	--all(-a)	# Process all packages
 	--config(-C)	# Path to confdir (xbps.d)
 	--debug(-d)	# Debug mode shown to stderr

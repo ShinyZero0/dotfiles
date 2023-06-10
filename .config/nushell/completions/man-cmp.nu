@@ -1,13 +1,13 @@
-def "manpages" [] { 
-    ^man -w 
-    | split row ":" 
-    | each { |d| 
-        ls ($d | to text | str trim ) 
+def "manpages" [] {
+    ^man -w
+    | split row ":"
+    | each { |d|
+        ls ($d | to text | str trim )
     }
-    | flatten 
-    | each { |d| 
-        ls $d.name | get name 
-        | path basename | str replace '\..*' "" 
+    | flatten
+    | each { |d|
+        ls $d.name | get name
+        | path basename | str replace '\..*' ""
     }
     | flatten
 }

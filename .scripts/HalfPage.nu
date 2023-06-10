@@ -1,4 +1,4 @@
-#!/usr/bin/env nu
+#!/usr/bin/env -S nu --no-std-lib
 
 def _dirs [] {
 	[ up down ]
@@ -14,5 +14,5 @@ def main [ direction: string@_dirs, amount: int ] {
 			5
 		}
 	)
-	xdotool click --repeat $amount --delay 50 $click
+	xdotool click --clearmodifiers --repeat $amount --delay 50 $click
 }

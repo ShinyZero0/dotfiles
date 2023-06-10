@@ -2,7 +2,7 @@ use utils *
 
 export def mvnrp [
 
-	old: string 
+	old: string
 	new: string
 ] {
 	let-env NvimConfig = ( "~/.config/nvim" | path expand )
@@ -21,13 +21,14 @@ export def mvnrp [
 
 	let files = ( fd -t f | lines  )
 	for file in $files {
+
 		if ( file --mime $file | str contains "charset=binary" ) {
 			continue
 		}
 		let ext = ( $file | _getExt )
 		if $ext == "nu" and (
 
-			$env.NU_LIB_DIRS | any { ||
+			$env.NU_LIB_DIRS | any {
 				(
 					$old | _isChildOf $in
 				) and (
@@ -39,10 +40,10 @@ export def mvnrp [
 		}
 
 		open --raw $file
-			| str replace $env.oldFull $env.newFull 
-			| _sameReplace { || _relpath $env.PWD } $old $new 
-			| _sameReplace { || str replace $env.HOME '$HOME' } $old $new 
-			| _sameReplace { || str replace $env.HOME '~' } $old $new
+			| str replace $env.oldFull $env.newFull
+			| _sameReplace { path relative-to $env.PWD } $old $new
+			| _sameReplace { str replace $env.HOME '$HOME' } $old $new
+			| _sameReplace { str replace $env.HOME '~' } $old $new
 			| save -f $file
 
 	}
@@ -56,19 +57,17 @@ def _replaceLuaRequires [
 	let oldModule = (
 
 		$env.oldFull
-			| _relpath $env.NvimConfig
-			| path parse
-			| reject extension
-			| transpose k v | get v
+			| path relative-to $env.NvimConfig
+			| _unExt
+			| path split
 			| str join "."
 	)
 	let newModule = (
 
 		$env.newFull
-			| _relpath $env.NvimConfig
-			| path parse
-			| reject extension
-			| transpose k v | get v
+			| path relative-to $env.NvimConfig
+			| _unExt
+			| path split
 			| str join "."
 	)
 	if $ft == "file" {

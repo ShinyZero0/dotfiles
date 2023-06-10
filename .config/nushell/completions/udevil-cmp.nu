@@ -1,8 +1,8 @@
 def _unmountedDisks [] {
 
 	lsblk -fyJ -o PATH,MOUNTPOINT,TYPE
-	| from json 
-	| get blockdevices 
+	| from json
+	| get blockdevices
 	| where type == part
 	| where mountpoint == $nothing
 	| get path

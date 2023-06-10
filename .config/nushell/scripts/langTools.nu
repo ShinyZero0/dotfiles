@@ -5,9 +5,9 @@ def lang-tools [
 ] {
 	let toolsFile = ~/.stuff/langTools.json
 	open $toolsFile
-	| where { ||
-		get languages | any { || 
+	| where {
+		get languages | any {
 			str contains -i ( $lang | default "" )
 		}
-	} 
+	}
 }

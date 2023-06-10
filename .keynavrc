@@ -15,11 +15,11 @@ shift+k move-up
 shift+l move-right
 space warp,click 1,end
 Return warp,click 1,end
+backslash warp,click 3,end
 semicolon warp
 w warp
 t windowzoom
 c cursorzoom 300 300
-e end
 1 click 1
 2 click 2
 3 click 3

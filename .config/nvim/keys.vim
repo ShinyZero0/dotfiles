@@ -11,6 +11,8 @@ map <C-s> :w<CR>
 " COMMAND LINE
 
 cnoreabbrev pl lua print
+cnoreabbrev m +1mark z \| move
+
 cnoremap <C-left>  <S-left>
 cnoremap <C-right> <S-right>
 cnoremap <C-BS> <C-w>
