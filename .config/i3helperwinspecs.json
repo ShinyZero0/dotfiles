@@ -1,0 +1,14 @@
+{
+	"\\s*War\\s*Thunder.*": {
+		"KeyBindings": {
+			"Prior": null,
+			"Next": null
+		}
+	},
+	"TelegramDesktop": {
+		"KeyBindings": {
+			"Control+D": "exec --no-startup-id \"nu --no-std-lib ~/.scripts/HalfPage.nu down 5\"",
+			"Control+U": "exec --no-startup-id \"nu --no-std-lib ~/.scripts/HalfPage.nu up 5\""
+		}
+	}
+}
