@@ -11,7 +11,9 @@ return {
 	},
 	{
 		"akinsho/git-conflict.nvim",
-		config = true,
+		opts = {
+			default_mappings = false,
+		},
 	},
 	{
 		"lewis6991/gitsigns.nvim",

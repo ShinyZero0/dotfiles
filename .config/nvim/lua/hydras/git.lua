@@ -22,6 +22,11 @@ Hydra({
 		{ "n", cmd("Gitsigns next_hunk") },
 		{ "N", cmd("Gitsigns prev_hunk") },
 		{ "r", cmd("Gitsigns reset_hunk") },
+
+		{ "co", "<Plug>(git-conflict-ours)" },
+		{ "ct", "<Plug>(git-conflict-theirs)" },
+		{ "cb", "<Plug>(git-conflict-both)" },
+		{ "c0", "<Plug>(git-conflict-none)" },
 	},
 })
 
