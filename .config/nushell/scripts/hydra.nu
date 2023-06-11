@@ -2,25 +2,25 @@ let _finderHydraKeys = [
 
 	{
 		lhs: "o"
-		rhs: { || exec nu -e _open }
+		rhs: { || _open }
 		exit: true
 		desc: "open file without focusing"
 	},
 	{
 		lhs: "s"
-		rhs: { || exec nu -e _select }
+		rhs: { || _select }
 		exit: true
 		desc: "open file or copy dir to clipboard"
 	},
 	{
 		lhs: "f"
-		rhs: { || exec nu -e _focus }
+		rhs: { || _focus }
 		exit: true
 		desc: "focus and open file"
 	},
 	{
 		lhs: "q"
-		rhs: { || }
+		rhs: { }
 		exit: true
 		desc: "quit"
 	}
@@ -44,7 +44,7 @@ def-env hydra [
 			print ( $warn )
 		} else {
 			$matchedKey = $matchedKeys.0
-			do $matchedKey.rhs 
+			export-env $matchedKey.rhs 
 			if $matchedKey.exit { break }
 		}
 	} 
