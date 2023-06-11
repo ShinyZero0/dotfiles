@@ -72,6 +72,11 @@ def _getAuthHeader [] {
 	]
 }
 
+# get data from github api endpoint
+export def "get-gh" [ endpoint: string ] {
+	_getFromApi $endpoint
+}
+
 def _getFromApi [ endpoint: string ] {
 
 	http get -H (_getAuthHeader) $"https://api.github.com/($endpoint)"

@@ -10,6 +10,12 @@ let external_completer = { |spans|
 				$spans | skip 1 | str join " "
 			) | lines
 		},
+		dn: {
+
+			dotnet complete (
+				$spans | skip 1 | str join " "
+			) | lines
+		},
 		nix: {
 
 			let index = (( $spans | length ) - 1)
@@ -404,7 +410,6 @@ let-env config = {
 					cmd: "_finderHydra"
 				}
 			]
-
 		}
 	]
 }
@@ -435,14 +440,14 @@ use plates.nu *
 use nx.nu *
 use security.nu *
 use pathring.nu *
+use rename.nu *
 
 use git-completions.nu *
-# use nix-completions.nu *
 use make-completions.nu *
 use xbps-cmp.nu *
 use man-cmp.nu *
 use termux-pkg-cmp.nu *
-use zellij-cmp.nu *
+use zellij-completions.nu *
 use proc-cmp.nu *
 use udevil-cmp.nu *
 use gh-cmp.nu *

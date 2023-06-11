@@ -42,12 +42,8 @@ def latest [] {
 }
 alias xtr = atool -x
 
-alias ru = trans :ru
-alias en = trans :en
-
-def lns [
-	source: string 
-	dest: string
-] {
-	ln -s ( $source | path expand ) ( $dest | path expand )
-}
+alias ru = trans en:ru
+alias англ = trans ru:en
+alias mnt = udevil mount
+alias umnt = udevil umount
+alias mntmobile = udevil mount ssh://u0_a217@192.168.0.32:8022/data/data/com.termux/files/home

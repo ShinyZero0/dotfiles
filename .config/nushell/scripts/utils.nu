@@ -8,59 +8,53 @@ export def _ansiTmp [ text: string color: any ] {
 	]
 	| str join
 }
+
+# get full path relative to homedir
 export def _home [ path: string ] {
 
-	$env.HOME 
-	| path join $path
+	$env.HOME
+		| path join $path
 }
+
+# get file extension
 export def _getExt [] {
 
-	path parse 
-	| get extension
+	path parse
+		| get extension
 }
-export def "_unExt" [] {
-	
-	path parse 
-	| reject extension
-	| path join
-}
-export def _relpath [ parent: string ] {
 
-	$in 
-	| path expand 
-	| path relative-to ( $parent | path expand )
+# get file without extension
+export def _unExt [] {
+
+	path parse
+		| reject extension
+		| path join
 }
+
 export def _isChildOf [ parent: string ] {
 
-	$in 
-	| path expand 
-	| str starts-with ( $parent | path expand )
+	path expand
+		| str starts-with ( $parent | path expand )
 }
 
-export def _currentfile [] {
-
-	^ps $nu.pid 
-		| lines 
-		| skip 1 | split row " " 
-		| where { ||
-			not ($in | is-empty)
-		} 
-		| get 5
-		| path expand
-}
+# print clipboard
 export def "_clip o" [] {
 
-	if not ( which xsel | is-empty ) {
+	to text
+	| if not ( which xsel | is-empty ) {
 		xsel -ob
 	} else {
 		termux-clipboard-get
 	}
 }
+
+# yank to clipboard
 export def "_clip i" [] {
 
-	if not ( which xsel | is-empty ) {
-		$in | xsel -ib
+	to text
+	| if not ( which xsel | is-empty ) {
+		xsel -ib
 	} else {
-		$in | termux-clipboard-set
+		termux-clipboard-set
 	}
 }

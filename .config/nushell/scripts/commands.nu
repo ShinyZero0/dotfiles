@@ -1,18 +1,25 @@
 use utils.nu *
 use nq-utils.nu *
-use std "assert error"
+use std "assert"
 
+export def "clipped" [ ft: any ] {
+	_clip o | vipe --suffix $ft | _clip i
+}
 export def "edpipe" [] {
 
 	let input = $in
 
 	try {
-		$input 
-		| check-string | vipe
+
+		$input
+			| assert-string
+			| vipe
 	} catch {
-		$input | to nuon -t 1
-		| vipe --suffix=nu 
-		| from nuon
+
+		$input
+			| to nuon -t 1
+			| vipe --suffix=nu
+			| from nuon
 	}
 	| str trim
 
@@ -20,9 +27,10 @@ export def "edpipe" [] {
 export def check-string [] {
 
 	let obj = $in
-	assert error { || $obj | columns }
+	assert ($obj | describe | str starts-with "string")
 	$obj
 }
+
 export def clip [ arg? ] {
 
 	let input = ( $in | default $arg )
@@ -34,12 +42,12 @@ export def clip [ arg? ] {
 }
 
 export def "tempclip" [] {
-	_clip i 
+	_clip i
 	nq -t tempclip "use utils.nu *; sleep 1min; '' | _clip i"
 }
 
 export def indexate [] {
-	$in | enumerate | flatten
+	enumerate | flatten
 }
 
 # list runit services
@@ -92,19 +100,19 @@ export def ungit-b [ --short(-s): bool ] {
 
 	if ( not ( _clip o | str contains 'https://github.com/' ) ) { return }
 
-	_clip o 
-	| parse 'https://github.com/{match}'
-	| get match 
-	| to text
-	| _clip i
+	_clip o
+		| parse 'https://github.com/{match}'
+		| get match
+		| to text
+		| _clip i
 }
 export def "peacemaker" [] {
 
 	git diff --name-only --diff-filter=U
-	| lines
-	| each { |f|
-		ignore; nvim $f
-	}
+		| lines
+		| each { |f|
+			ignore; nvim $f
+		}
 }
 
 export def to-do [] {
@@ -173,4 +181,21 @@ export def First [ func: closure default?: any ] {
 
 export def "to qr" [] {
 	qrencode -t utf8 ( $in | to text )
+}
+
+# link full path
+export def lns [
+	source: string
+	dest: string
+] {
+	ln -s ( $source | path expand ) ( $dest | path expand )
+}
+
+export def-env "mkcd" [ dir ] {
+	
+	let dir = (
+		$dir | into string
+	)
+	mkdir $dir
+	cd $dir
 }
