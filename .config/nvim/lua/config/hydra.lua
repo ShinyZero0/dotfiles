@@ -9,7 +9,7 @@ local hints = require("hydras.hints")
 local Splits = require("smart-splits")
 vim.g.mapleader = " "
 
-local function boolHint(option)
+local function _boolHint(option)
 	local func = function()
 		if vim.o[option] then
 			return "[x]"
@@ -20,6 +20,16 @@ local function boolHint(option)
 	return func
 end
 
+local function _reduceTabwidth()
+	if vim.o.tabstop > 1 then
+		vim.o.tabstop = vim.o.tabstop / 2
+		vim.o.shiftwidth = vim.o.tabstop
+	end
+end
+local function _increaseTabwidth()
+	vim.o.tabstop = vim.o.tabstop * 2
+	vim.o.shiftwidth = vim.o.tabstop
+end
 Hydra({
 
 	name = "Options",
@@ -31,12 +41,10 @@ Hydra({
 		{ "s", cmd("set spell!") },
 		{ "w", cmd("set wrap!") },
 		{ "b", cmd("set linebreak!") },
-		{ "V", cmd("set virtualedit!") },
 		{ "R", cmd("set readonly!") },
 		{ "C", cmd("ColorizerToggle") },
-		{ "+", cmd("set cmdheight+=1") },
-		{ "-", cmd("set cmdheight-=1") },
-
+		{ "+", _increaseTabwidth },
+		{ "-", _reduceTabwidth },
 		{ "t", cmd("Telescope filetypes"), { exit = true } },
 		{ "L", cmd("Lazy"), { exit = true } },
 		{ "<Esc>", nil, { exit = true, nowait = true } },
@@ -54,8 +62,8 @@ Hydra({
 			type = "window",
 			funcs = {
 
-				ro = boolHint("readonly"),
-				lb = boolHint("linebreak"),
+				ro = _boolHint("readonly"),
+				lb = _boolHint("linebreak"),
 				ft = function()
 					return vim.o.filetype
 				end,
@@ -168,6 +176,7 @@ Hydra({
 		{ "s", cmd("Neoformat! markdown Split") },
 		{ "j", cmd("Neoformat! markdown Join") },
 		{ ".", cmd("Neoformat"), { exit = true } },
+		{ "<Esc>", nil, { exit = true } },
 	},
 })
 
@@ -205,6 +214,7 @@ Hydra({
 		{ "s", ":Neoformat! markdown Split<CR>" },
 		{ "j", ":Neoformat! markdown Join<CR>" },
 		{ ".", ":Neoformat<CR>", { exit = true } },
+		{ "<Esc>", nil, { exit = true } },
 	},
 })
 
@@ -255,5 +265,3 @@ SaveOrExitOne = Hydra({
 		{ "s", cmd("w|q"), { desc = "Save & quit" } },
 	},
 })
-
--- vim:sw=2:ts=2

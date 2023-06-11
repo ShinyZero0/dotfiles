@@ -16,6 +16,7 @@ cnoreabbrev m +1mark z \| move
 cnoremap <C-left>  <S-left>
 cnoremap <C-right> <S-right>
 cnoremap <C-BS> <C-w>
+cnoreabbrev m +1mark z \| move
 
 " INSERT MODE 
 
@@ -35,9 +36,6 @@ vnoremap & :'<,'>&<CR>
 " nnoremap <F5> <cmd>FloatermToggle<CR>
 tmap <C-q> <C-\><C-n><C-q>
 tmap <F5> <C-q>
-
-" nnoremap <leader>s <cmd>lua require('spectre').open()<CR>
-" vnoremap <leader>s <esc>:lua require('spectre').open_visual()<CR>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)

@@ -25,8 +25,8 @@ return {
     _s_: spell     %{spell}
     _b_: linebreak %{lb}
     _R_: readonly  %{ro}
+	_+_, _-_: tabstop +-1
     _C_: Colorizer
-    _+_, _-_: cmdheight +-1
     _t_: filetype: %{ft}    
     _L_: Lazy.nvim
 
