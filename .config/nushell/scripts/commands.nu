@@ -46,6 +46,26 @@ export def "tempclip" [] {
 	nq -t tempclip "use utils.nu *; sleep 1min; '' | _clip i"
 }
 
+export def yankfile [] {
+
+	let input = $in
+	let file = (
+
+		try {
+			$input.name
+		} catch {
+			$input
+		}
+	)
+	let type = (
+
+		file --mime-type $file
+			| split row " "
+			| last
+	)
+	xclip -t $type -sel clip $file
+}
+
 export def indexate [] {
 	enumerate | flatten
 }

@@ -106,7 +106,7 @@ def "nu-complete git subcommands" [] {
 }
 
 export extern "git merge" [
-	
+
 	--abort
 	...args: any
 ]
@@ -376,7 +376,7 @@ export extern "git restore" [
 
 # Show the working tree status
 export extern "git status" [
-	--verbose(-v)                                       # be verbose 
+	--verbose(-v)                                       # be verbose
 	--short(-s) # short output
 
 ]

@@ -8,6 +8,6 @@ export alias describe_ = describe
 export def _describe [] {
 	describe_ | descfmt
 }
-export alias describe = _describe
 
-export alias hm = home-manager
+export alias describe = _describe
+export alias yf = yankfile

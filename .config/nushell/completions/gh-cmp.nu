@@ -12,10 +12,10 @@ export extern "gh repo" [
 	...args: any
 ]
 export extern "gh extension" [
-	
+
 	...args: any
 ]
 export extern "gh extension browse" [
-	
+
 	...args: any
 ]
