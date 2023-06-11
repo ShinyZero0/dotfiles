@@ -1,24 +1,20 @@
---  ╭──────────────────────────────────────────────────────────╮
---  │                       Keymappings                        │
---  ╰──────────────────────────────────────────────────────────╯
+-- Keymappings
 
--- noremap("n", "p", "gp")
--- noremap("n", "gp", "p")
 noremap("v", "gy", "y']")
-map("n", "<LEADER>s", "i<CR><ESC>^")
+noremap("n", "<LEADER>s", SplitAtCursor)
 map("i", "<C-a>", ToggleEndingStuff)
 map("n", "<leader>a", ToggleEndingStuff)
 mapcmd("n", "<Leader>w", "ArgWrap")
-map("n", "<CR>", function(...)
+map("n", "<CR>", function()
 	vim.fn.append(".", "")
 end)
 
 -- Map system clipboard
-map({ "n", "v" }, "<Leader>y", '"+y')
-map({ "n", "v" }, "<Leader>p", '"+p')
-map({ "n", "v" }, "<Leader>P", '"+P')
+noremap({ "n", "v" }, "<Leader>y", '"+y')
+noremap({ "n", "v" }, "<Leader>p", '"+p')
+noremap({ "n", "v" }, "<Leader>P", '"+P')
 
--- Switch windows on alt_hjkl
+-- Switch windows with alt_hjkl
 mapcmd({ "n", "t" }, "<M-h>", "wincmd h", {})
 mapcmd({ "n", "t" }, "<M-j>", "wincmd j", {})
 mapcmd({ "n", "t" }, "<M-k>", "wincmd k", {})
@@ -45,7 +41,7 @@ map("v", "<C-x>", "<Plug>(dial-decrement)")
 map("v", "g<C-a>", "g<Plug>(dial-increment)")
 map("v", "g<C-x>", "g<Plug>(dial-decrement)")
 
--- SPECTRE
+-- Spectre
 local Spectre = require("spectre")
 
 map("n", "<leader>SS", function()

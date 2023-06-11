@@ -1,4 +1,5 @@
 local A = vim.api
+local F = vim.fn
 local f = require("Utils").Interpolate
 
 --  ╭──────────────────────────────────────────────────────────╮
@@ -24,6 +25,13 @@ function All(tbl, check)
 		end
 	end
 	return true
+end
+
+function SplitAtCursor()
+	vim.cmd([[exe "normal i\<CR>\<ESC>^"]])
+	local lineAboveNum = F.line(".") - 1
+	local lineAbove = F.trim(F.getline(lineAboveNum), " ", 2)
+	F.setline(lineAboveNum, lineAbove)
 end
 
 --  ╭──────────────────────────────────────────────────────────╮
@@ -76,7 +84,8 @@ function ToggleEndingStuff()
 		nix = ";",
 		lua = ",",
 		nu = ",",
-		markdown = "  ",
+		markdown = "\\",
+		json = ",",
 	}
 	local char
 	local ft = vim.bo[0].filetype
