@@ -9,7 +9,7 @@ export def "ring add" [
 
 		if $fuzzy {
 
-			fd --no-ignore-vcs -Hd 4 . 
+			fd --no-ignore-vcs -Hd 1 . 
 			| fzf --scheme path --multi
 			| lines
 		}
@@ -27,8 +27,8 @@ export def "ring add" [
 
 	let ringPath = (_getRingPath)
 	open $ringPath
-		| append ( $data | path expand )
-		| save -f $ringPath
+		| append $data
+		| _writeToRing
 
 	open $ringPath
 }
@@ -106,4 +106,10 @@ def "_getRingPath" [] {
 		touch $ringPath
 	}
 	$ringPath
+}
+def _writeToRing [] {
+	
+	path expand 
+	| uniq 
+	| save -f (_getRingPath)
 }
