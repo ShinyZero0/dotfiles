@@ -156,7 +156,6 @@ let-env config = {
 	shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
 	render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
 
-	# TODO: dump packages after installing/deleting
 	hooks: {
 
 		pre_prompt: [{ ||
@@ -415,8 +414,8 @@ let-env PROMPT_COMMAND = { || create_left_prompt }
 let-env PROMPT_COMMAND_RIGHT = { || create_right_prompt }
 $env.config.color_config = ( GetDarkTheme )
 
-source aliases/aliases-pre.nu
-source aliases/git.nu
+use aliases/aliases-pre.nu *
+use aliases/git.nu *
 use aliases/xbps.nu *
 
 use pipes.nu *
