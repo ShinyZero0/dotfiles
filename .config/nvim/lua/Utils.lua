@@ -1,9 +1,9 @@
-local This = {}
+local Module = {}
 
 --  ╭──────────────────────────────────────────────────────────╮
 --  │                   String interpolation                   │
 --  ╰──────────────────────────────────────────────────────────╯
-function This.Interpolate(str)
+function Module.Interpolate(str)
 	local outer_env = _ENV
 	return (
 		str:gsub("%b{}", function(block)
@@ -37,4 +37,4 @@ function This.Interpolate(str)
 	)
 end
 
-return This
+return Module

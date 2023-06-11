@@ -1,5 +1,4 @@
 local actions = require("telescope.actions")
--- local fb_actions = require("telescope").extensions.file_browser.actions
 require("telescope").setup({
 
 	defaults = {
@@ -16,7 +15,6 @@ require("telescope").setup({
 
 			["n"] = {
 
-				-- ["<leader>"] = actions.toggle_selection + actions.move_selection_next,
 				["<Tab>"] = actions.move_selection_next,
 				["<S-Tab>"] = actions.move_selection_previous,
 				["q"] = actions.close,
@@ -28,7 +26,6 @@ require("telescope").setup({
 					-- Use nvim-window-picker to choose the window by dynamically attaching a function
 					local action_set = require("telescope.actions.set")
 					local action_state = require("telescope.actions.state")
-
 					local picker = action_state.get_current_picker(prompt_bufnr)
 					picker.get_selection_window = function(picker, entry)
 						local picked_window_id = require("window-picker").pick_window()
@@ -44,7 +41,6 @@ require("telescope").setup({
 				["<C-Esc>"] = function()
 					vim.cmd("stopinsert")
 				end,
-
 				["<Tab>"] = actions.move_selection_next,
 				["<S-Tab>"] = actions.move_selection_previous,
 				["<C-q>"] = actions.close,

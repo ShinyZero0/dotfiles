@@ -2,7 +2,7 @@ local Lualine = require("lualine")
 Lualine.setup({
 
 	-- options = { theme = "tundra" },
-	options = { theme = "challenger_deep" },
+	options = { theme = "auto" },
 	sections = {
 
 		lualine_a = { "mode" },
