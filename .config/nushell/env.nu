@@ -25,9 +25,10 @@ let-env GH_USER = "ShinyZero0"
 let-env EDITOR = 'nvim'
 # for neovim
 let-env COLORSCHEME = if (
-		$env.PROMPT?
-		| default ""
-		| str contains "yadm"
+
+	$env.PROMPT?
+	| default ""
+	| str contains "yadm"
 ) {
 	"cold"
 } else {

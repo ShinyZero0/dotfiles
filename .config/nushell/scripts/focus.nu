@@ -1,7 +1,3 @@
-alias f = _focus # cd to file's basedir and open
-alias o = _open # don't cd and just open
-alias s = _select # don't cd and just open
-
 def-env _select [
 	dir?: string
 ] {
@@ -73,3 +69,7 @@ def-env _confirmOpener [
 		$file | _clip i
 	}
 }
+
+export alias f = _focus # cd to file's basedir and open
+export alias o = _open # don't cd and just open
+export alias s = _select # don't cd and just open

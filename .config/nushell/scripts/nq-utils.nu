@@ -1,7 +1,3 @@
-use utils.nu [
-	"_relpath"
-]
-
 use pipes.nu [
 	"invert"
 ]
