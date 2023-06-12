@@ -1,20 +1,22 @@
+use choose.nu funcs
+overlay use funcs
 let _finderHydraKeys = [
 
 	{
 		lhs: "o"
-		rhs: { exec nu -e _open }
+		rhs: { _open }
 		exit: true
 		desc: "open file without focusing"
 	},
 	{
 		lhs: "s"
-		rhs: { exec nu -e _select }
+		rhs: { _select }
 		exit: true
 		desc: "open file or copy dir to clipboard"
 	},
 	{
 		lhs: "f"
-		rhs: { exec nu -e _focus }
+		rhs: { _focus }
 		exit: true
 		desc: "focus and open file"
 	},
@@ -39,11 +41,13 @@ def-env hydra [
 		let matchedKeys = ( $keydefs | where lhs == $key )
 		mut matchedKey = { }
 		if ( $matchedKeys | is-empty ) {
+
 			let warn = $"(ansi lrb)Undefined key: ($key)(ansi reset)"
 			print ( $warn )
 		} else {
+
 			$matchedKey = $matchedKeys.0
-			do $matchedKey.rhs
+			export-env $matchedKey.rhs 
 			if $matchedKey.exit { break }
 		}
 	}

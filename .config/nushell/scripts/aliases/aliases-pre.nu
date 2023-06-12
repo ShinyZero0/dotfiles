@@ -8,6 +8,10 @@ alias visu = nvim +SudaRead
 
 alias q = exit
 alias r = exec nu
+
+export alias ll = ls --long
+export alias la = ls --all
+
 alias fi = find
 alias fii = find -i
 alias g = get

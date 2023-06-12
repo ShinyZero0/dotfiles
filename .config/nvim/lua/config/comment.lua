@@ -2,9 +2,7 @@ require("Comment").setup({
 	sticky = true,
 })
 
---  ╭──────────────────────────────────────────────────────────╮
---  │        Textobject for adjacent commented lines           │
---  ╰──────────────────────────────────────────────────────────╯
+-- Textobject for adjacent commented lines
 
 local function commented_lines_textobject()
 	local U = require("Comment.utils")

@@ -1,12 +1,11 @@
---  ╭──────────────────────────────────────────────────────────╮
---  │                 DESKTOP-SPECIFIC PLUGINS                 │
---  ╰──────────────────────────────────────────────────────────╯
+-- DESKTOP-SPECIFIC PLUGINS
 
 return {
 
 	"lambdalisue/suda.vim",
 	{
 		"karb94/neoscroll.nvim",
+		enabled = false,
 		event = "VeryLazy",
 		opts = {
 

@@ -1,5 +1,6 @@
 -- Keymappings
 
+noremap("n", "dD", "ddk")
 noremap("v", "gy", "y']")
 noremap("n", "<LEADER>s", SplitAtCursor)
 map("i", "<C-a>", ToggleEndingStuff)

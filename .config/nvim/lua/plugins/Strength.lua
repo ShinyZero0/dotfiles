@@ -1,6 +1,4 @@
---  ╭──────────────────────────────────────────────────────────╮
---  │                    Editing assistance                    │
---  ╰──────────────────────────────────────────────────────────╯
+-- Editing assistance
 
 return {
 
@@ -39,10 +37,7 @@ return {
 	{
 		"chrisgrieser/nvim-various-textobjs",
 		config = function()
-			require("various-textobjs").setup({ useDefaultKeymaps = true })
-			unmap("x", "%")
-			map("x", "%", "<Plug>(matchup-%)")
-			unmap("x", "r")
+			require("config.various-textobjs")
 		end,
 	},
 
@@ -77,13 +72,6 @@ return {
 		config = function()
 			require("config.comment")
 		end,
-	},
-
-	{
-		"LudoPinelli/comment-box.nvim",
-		opts = {
-			line_blank_line_below = true,
-		},
 	},
 
 	{

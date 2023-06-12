@@ -430,8 +430,10 @@ use commands.nu *
 source zoxide.nu
 source alt.nu
 source langTools.nu
-source focus.nu
 source hydra.nu
+
+use choose.nu aliases
+overlay use aliases
 
 use gh.nu *
 use nq-utils.nu *

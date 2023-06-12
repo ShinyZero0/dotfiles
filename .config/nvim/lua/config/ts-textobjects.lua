@@ -1,6 +1,4 @@
---  ╭──────────────────────────────────────────────────────────╮
---  │                  Treesitter Textobjects                  │
---  ╰──────────────────────────────────────────────────────────╯
+-- Treesitter Textobjects
 
 require("nvim-treesitter.configs").setup({
 
