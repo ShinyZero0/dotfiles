@@ -13,6 +13,7 @@ bindsym control+$mod+Shift+F4 exec --no-startup-id "rofi -show tabs -modi tabs:'
 
 # Screenshots
 bindsym Print exec --no-startup-id maim --format=png | tee "$HOME/Pictures/$(date).png" | xclip -selection clipboard -t image/png
+bindsym Control+Print exec --no-startup-id maim --select --format=png | tee "$HOME/Pictures/$(date).png" | xclip -selection clipboard -t image/png
 
 # something
 
