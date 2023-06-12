@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
 
-# export USER=zero
-# export HOME=/home/$USER
-# export PATH=$HOME/.nix-profile/bin:$PATH
-# export DISPLAY=:0
 sleep 5
-~/.scripts/xsettings.bash
-exec entr -np ~/.scripts/xsettings.bash < <(echo "${HOME}/.local/share/service-graphic/xkeysnail/supervise/status")
+exec entr -n ~/.scripts/xsettings.bash < <(echo "${HOME}/.local/share/service-graphic/xkeysnail/supervise/status")

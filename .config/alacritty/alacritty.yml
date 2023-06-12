@@ -26,23 +26,24 @@ scrolling:
 font:
 
   normal:
-    family: BlexMonoMedm Nerd Font Propo
+    family: CaskaydiaCove Nerd Font Propo
+    # family: BlexMono Nerd Font
     style: Regular
 
   bold:
-    family: BlexMono Nerd Font
+    family: CaskaydiaCove Nerd Font Propo
     style: Bold
 
   italic:
-    family: BlexMono Nerd Font
+    family: CaskaydiaCove Nerd Font Propo
     style: Italic
 
   bold_italic:
-    family: BlexMono Nerd Font
+    family: CaskaydiaCove Nerd Font Propo
     style: Bold Italic
 
   # Point size
-  size: 11.0
+  size: 12.0
 
   builtin_box_drawing: true
 
