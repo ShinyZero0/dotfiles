@@ -1,27 +1,26 @@
-export alias f = _focus # cd to file's basedir and open
-export alias o = _open # don't cd and just open
-export alias s = _select # don't cd even if directory and just open
+export module funcs {
 
-def-env _select [
-	dir?: string 
-] {
-	let-env FOCUS = false
-	let-env NOCD = true
-	_confirmOpener $dir
-}
-def-env _open [
-	dir?: string 
-] {
-	let-env FOCUS = false
-	let-env NOCD = false
-	_confirmOpener $dir
-}
-def-env _focus [
-	dir?: string
-] {
-	let-env FOCUS = true
-	let-env NOCD = false
-	_confirmOpener $dir
+	export def-env _select [
+		dir?: string 
+	] {
+		let-env FOCUS = false
+		let-env NOCD = true
+		_confirmOpener $dir
+	}
+	export def-env _open [
+		dir?: string 
+	] {
+		let-env FOCUS = false
+		let-env NOCD = false
+		_confirmOpener $dir
+	}
+	export def-env _focus [
+		dir?: string
+	] {
+		let-env FOCUS = true
+		let-env NOCD = false
+		_confirmOpener $dir
+	}
 }
 
 def _shortenPaths [] {
@@ -78,4 +77,12 @@ def-env _confirmOpener [ dir ] {
 		# paste the path into clipboard. full path if not focused and basename if focused, see line 41
 		$file | _clip i
 	}
+}
+
+export module aliases {
+
+	use funcs *
+	export alias f = _focus # cd to file's basedir and open
+	export alias o = _open # don't cd and just open
+	export alias s = _select # don't cd even if directory and just open
 }

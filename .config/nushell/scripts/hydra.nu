@@ -1,3 +1,5 @@
+use choose.nu funcs
+overlay use funcs
 let _finderHydraKeys = [
 
 	{

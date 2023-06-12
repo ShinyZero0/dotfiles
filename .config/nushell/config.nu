@@ -432,7 +432,9 @@ source alt.nu
 source langTools.nu
 source hydra.nu
 
-use choose.nu *
+use choose.nu aliases
+overlay use aliases
+
 use gh.nu *
 use nq-utils.nu *
 use move-and-replace.nu *
