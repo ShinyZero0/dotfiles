@@ -129,7 +129,11 @@ export def ungit-b [ --short(-s): bool ] {
 export def "peacemaker" [] {
 
 	nvim (
-		git diff --name-only --diff-filter=U | lines
+		git diff --name-only --diff-filter=U
+		| lines
+		| each { |it|
+			$env.HOME | path join $it
+		}
 	)
 }
 
