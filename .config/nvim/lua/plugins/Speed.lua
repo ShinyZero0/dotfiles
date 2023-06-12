@@ -1,6 +1,4 @@
---  ╭──────────────────────────────────────────────────────────╮
---  │             Filesystem navigation assistance             │
---  ╰──────────────────────────────────────────────────────────╯
+-- Filesystem navigation assistance
 
 return {
 

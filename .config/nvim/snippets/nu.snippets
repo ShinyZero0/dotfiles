@@ -16,17 +16,20 @@ snippet xd '"export def" invocation'
 		$0
 	}
 
+snippet xa "export alias"
+	export alias $1 = $0
+
 snippet xda '"export def" invocation'
 	export def "${1:name}" [ ...args ] {
 		$0
 	}
 
-snippet d '"export def" invocation'
+snippet d '"def" invocation'
 	def "${1:name}" [] {
 		$0
 	}
 
-snippet da '"export def" invocation'
+snippet da '"def" invocation'
 	def "${1:name}" [ ...args ] {
 		$0
 	}

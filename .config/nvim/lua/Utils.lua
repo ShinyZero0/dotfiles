@@ -1,8 +1,6 @@
 local Module = {}
 
---  ╭──────────────────────────────────────────────────────────╮
---  │                   String interpolation                   │
---  ╰──────────────────────────────────────────────────────────╯
+-- String interpolation
 function Module.Interpolate(str)
 	local outer_env = _ENV
 	return (

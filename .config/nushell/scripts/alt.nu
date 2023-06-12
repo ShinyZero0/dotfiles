@@ -15,3 +15,17 @@ if (uname -m) == "aarch64" {
 	$env.MANPAGER = less
 	hide-env SVDIR
 }
+export def "pkg browse" [ pkg: string@"termux pkg all" ] {
+
+	pkg info $pkg
+		| lines
+		| get 4
+		| parse 'Homepage: {url}'
+		| get url
+		| xdg-open $in
+}
+
+def "termux pkg all" [] {
+
+    open ~/.cache/pkg-all.json
+}
