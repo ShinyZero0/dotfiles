@@ -35,13 +35,12 @@
     comrak
     marksman
 
-		shellcheck
+    shellcheck
 
     # Required in flakes:
     # lua-language-server
     # stylua
     # omnisharp-roslyn 
-
 
     # CLI stuff
 
@@ -71,12 +70,16 @@
     python310Packages.grip # markdown previewer
     github-cli
     empty # needed for rofi-connman
-    powershell
 
     # Fonts
     ibm-plex
     (nerdfonts.override {
-      fonts = [ "InconsolataLGC" "IBMPlexMono" "NerdFontsSymbolsOnly" ];
+      fonts = [
+        "InconsolataLGC"
+        "IBMPlexMono"
+        "NerdFontsSymbolsOnly"
+        "CascadiaCode"
+      ];
     })
 
     # # You can also create simple shell scripts directly inside your
@@ -111,8 +114,8 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-		# DOTNET_ROOT = "${pkgs.dotnet-sdk_7}";
-		NIXPKGS = "${pkgs.path}";
+    # DOTNET_ROOT = "${pkgs.dotnet-sdk_7}";
+    NIXPKGS = "${pkgs.path}";
   };
 
   # Let Home Manager install and manage itself.
