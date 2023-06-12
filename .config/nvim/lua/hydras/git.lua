@@ -26,8 +26,8 @@ Hydra({
 		{ "ct", "<Plug>(git-conflict-theirs)" },
 		{ "cb", "<Plug>(git-conflict-both)" },
 		{ "c0", "<Plug>(git-conflict-none)" },
-		{ "[", cmd("GitConflictPrevConflict") },
-		{ "]", cmd("GitConflictNextConflict") },
+		{ "[", cmd("GitConflictPrevConflict"), { nowait = true } },
+		{ "]", cmd("GitConflictNextConflict"), { nowait = true } },
 	},
 })
 
