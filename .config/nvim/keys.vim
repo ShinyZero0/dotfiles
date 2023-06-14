@@ -77,15 +77,6 @@ onoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 nnoremap <expr> I getline('.') =~ '^\s*$' ? 'S' : 'I'
 nnoremap <expr> A getline('.') =~ '^\s*$' ? 'S' : 'A'
 
-" SPLITTER
-
-nnoremap gs <Nop>
-nnoremap <silent> gss ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<CR>:noh<CR>'l
-nnoremap <silent> gsip mlvip:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<CR>:noh<CR>'l
-vnoremap <silent> gs ml:s/\([\.?!]\) \([А-ЯA-Z]\)/\1\r\2/ge\|:'[,']normal ==<CR>:noh<CR>'l
-
-" nnoremap <Leader>' <cmd>Telescope harpoon marks<CR>
-
 map <C-q> <cmd>lua CoolExitFunc()<CR>
 " xmap <leader>c <cmd>lua ToggleMostComments(vim.fn.visualmode())<CR>
 

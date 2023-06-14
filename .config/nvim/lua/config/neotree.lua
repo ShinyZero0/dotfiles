@@ -22,7 +22,7 @@ require("neo-tree").setup({
 		mappings = {
 
 			["n"] = "add",
-			["o"] = "open",
+			["o"] = "add",
 			["`"] = "toggle_hidden",
 			["<Esc>"] = "close_window",
 			["K"] = hopTree,

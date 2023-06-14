@@ -28,7 +28,7 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "snippy" },
-		{ name = "path" },
+		{ name = "async_path" },
 		{
 			name = "buffer",
 			option = {

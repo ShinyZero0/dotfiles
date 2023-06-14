@@ -6,10 +6,16 @@ return {
 	"tpope/vim-repeat", -- dot-repeat
 	"tpope/vim-eunuch", -- filesystem util
 	"junegunn/vim-easy-align", -- align text
-	"AndrewRadev/dsf.vim", -- interact with surrounding function
+	"AndrewRadev/dsf.vim", -- surrounding function textobj
 	"fedepujol/move.nvim",
 	-- "AndrewRadev/splitjoin.vim",
-	"FooSoft/vim-argwrap",
+	-- "FooSoft/vim-argwrap",
+	{
+		"echasnovski/mini.splitjoin",
+		opts = {
+			mappings = { toggle = "<leader>w" },
+		},
+	},
 	{
 		"sindrets/diffview.nvim",
 		config = true,

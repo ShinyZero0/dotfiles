@@ -5,7 +5,7 @@ return {
 	-- {
 	--  "stevearc/oil.nvim",
 	--  config = true,
-	--      -- },
+	-- },
 	{
 		"ethanholz/nvim-lastplace",
 		config = true,
