@@ -4,10 +4,9 @@ export def l [] {
 }
 
 
-export alias describe_ = describe
-export def _describe [] {
-	describe_ | descfmt
+def _describe [] {
+	describe | descfmt
 }
 
-export alias describe = _describe
+export alias dscr = _describe
 export alias yf = yankfile
