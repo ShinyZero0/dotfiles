@@ -74,10 +74,10 @@ mkdir $env.SVDIR
 
 let dataDir = $env.NU_LIB_DIRS.2
 mkdir $dataDir
-if ( $dataDir | path join 'zoxide.nu' | path exists ) {} else {
-	zoxide init nushell | save ( $dataDir | path join 'zoxide.nu' )
-}
-let-env LS_COLORS = ( vivid generate snazzy )
+# if ( $dataDir | path join 'zoxide.nu' | path exists ) {} else {
+# 	zoxide init nushell | save ( $dataDir | path join 'zoxide.nu' )
+# }
+let-env LS_COLORS = ( open ~/.local/share/nushell/lscolors.txt )
 
 let-env PAGER = moar
 let-env MANPAGER = moar
