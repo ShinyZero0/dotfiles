@@ -164,11 +164,7 @@ let-env config = {
 
 	hooks: {
 
-		pre_prompt: [{
-			let direnv = (direnv export json | from json)
-			let direnv = if ($direnv | length) == 1 { $direnv } else { { } }
-			$direnv | load-env
-		}]
+		pre_prompt: []
 		pre_execution: [{
 			null  # replace with source code to run before the repl input is run
 		}]
@@ -411,6 +407,15 @@ let-env config = {
 			]
 		}
 	]
+}
+if not (which direnv | is-empty) {
+	$env.config.hooks.pre_prompt = (
+			$env.config.hooks.pre_prompt | append {
+				let direnv = (direnv export json | from json)
+				let direnv = if ($direnv | length) == 1 { $direnv } else { { } }
+				$direnv | load-env
+			}
+		)
 }
 
 use theme.nu *
