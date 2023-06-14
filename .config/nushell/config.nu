@@ -407,7 +407,7 @@ let-env config = {
 			event: [
 				{
 					send: executehostcommand
-					cmd: "_finderHydra"
+					cmd: "ChoooserHydra"
 				}
 			]
 		}

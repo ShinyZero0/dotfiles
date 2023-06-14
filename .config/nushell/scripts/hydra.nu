@@ -1,28 +1,42 @@
 use choose.nu funcs
 overlay use funcs
-let _finderHydraKeys = [
+
+# get command usage
+def "get-usage" [ command ] {
+	use pipes.nu First
+	$nu.scope.commands
+		| First {$in.name == $command}
+		| get usage
+}
+let ChoooserHydraKeys = [
 
 	{
 		lhs: "o"
 		rhs: { _open }
 		exit: true
-		desc: "open file without focusing"
+		desc: (get-usage _open)
 	},
 	{
 		lhs: "s"
 		rhs: { _select }
 		exit: true
-		desc: "open file or copy dir to clipboard"
+		desc: (get-usage _select)
 	},
 	{
 		lhs: "f"
 		rhs: { _focus }
 		exit: true
-		desc: "focus and open file"
+		desc: (get-usage _focus)
 	},
 	{
 		lhs: "q"
-		rhs: { }
+		rhs: { || }
+		exit: true
+		desc: "quit"
+	},
+	{
+		lhs: "ESC"
+		rhs: { || }
 		exit: true
 		desc: "quit"
 	}
@@ -53,8 +67,8 @@ def-env hydra [
 	}
 }
 
-def-env _finderHydra [] {
-	hydra $_finderHydraKeys
+def-env ChoooserHydra [] {
+	hydra $ChoooserHydraKeys
 }
 
 # unused
