@@ -7,6 +7,18 @@ require("dial.config").augends:register_group({
 
 		augend.constant.new({
 
+			elements = { "Yes", "No" },
+			word = true,
+			cyclic = true,
+		}),
+		augend.constant.new({
+
+			elements = { "yes", "no" },
+			word = true,
+			cyclic = true,
+		}),
+		augend.constant.new({
+
 			elements = { "True", "False" },
 			word = true,
 			cyclic = true,
