@@ -1,15 +1,12 @@
 # vim: ft=i3config
 set $mod Mod4
 
-bindsym $mod+W kill
 bindsym $mod+Q kill
 
 # A more modern dmenu replacement is rofi:
-bindsym $mod+Return exec --no-startup-id "rofi  -show-icons -show combi -modes combi -combi-modes drun,run -display-run '' -display-drun ''"
+bindsym $mod+Return exec --no-startup-id "rofi -show-icons -show combi -modes combi -combi-modes drun,run -display-run '' -display-drun ''"
 bindsym XF86PowerOff exec "rofi -show power-menu -modi power-menu:rofi-power-menu"
 bindsym $mod+Shift+E exec "rofi -show power-menu -modi power-menu:rofi-power-menu"
-# Firefox tab switcher (a dummy, it will be remapped in xkeysnail)
-bindsym control+$mod+Shift+F4 exec --no-startup-id "rofi -show tabs -modi tabs:'python /home/zero/sources/rofi-firefox-tabs/script/tabs.py'"
 
 # Screenshots
 bindsym Print exec --no-startup-id maim --format=png | tee "$HOME/Pictures/$(date).png" | xclip -selection clipboard -t image/png
@@ -18,9 +15,11 @@ bindsym Control+Print exec --no-startup-id maim --select --format=png | tee "$HO
 # something
 
 bindsym control+mod1+T exec --no-startup-id alacritty
+bindsym control+mod1+F exec --no-startup-id alacritty --class floatwin
 bindsym $mod+S move scratchpad
 bindsym $mod+Shift+S scratchpad show
-bindsym $mod+P exec --no-startup-id ~/.scripts/TogglePavuCTL.sh
+bindsym $mod+P sticky toggle
+bindsym $mod+Shift+P exec --no-startup-id ~/.scripts/TogglePavuCTL.sh
 bindsym $mod+G exec --no-startup-id ~/.scripts/TogglePicom.sh
 bindsym --release $mod+I exec --no-startup-id ~/.scripts/VimInsert.nu
 bindsym --release $mod+Shift+T exec --no-startup-id ~/.scripts/Typograf.sh
@@ -45,15 +44,15 @@ bindsym $mod+Right focus right
 bindsym $mod+A     focus parent
 bindsym $mod+D     focus child
 
-bindsym $mod+Shift+H move left
-bindsym $mod+Shift+J move down
-bindsym $mod+Shift+K move up
-bindsym $mod+Shift+L move right
+bindsym $mod+Shift+H move left 100
+bindsym $mod+Shift+J move down 100
+bindsym $mod+Shift+K move up 100
+bindsym $mod+Shift+L move right 100
 
-bindsym $mod+Shift+Left  move left
-bindsym $mod+Shift+Down  move down
-bindsym $mod+Shift+Up    move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Left  move left 100
+bindsym $mod+Shift+Down  move down 100
+bindsym $mod+Shift+Up    move up 100
+bindsym $mod+Shift+Right move right 100
 
 bindsym $mod+T layout tabbed
 # made as in vim so vertical
@@ -67,14 +66,13 @@ bindsym $mod+F           fullscreen toggle
 bindsym $mod+space       focus mode_toggle
 
 # switch to workspace
-bindsym $mod+R exec --no-startup-id bash -c 'curl -X POST http://localhost:13131/lastusedworkspace'
+bindsym $mod+R workspace back_and_forth
 bindsym $mod+E exec --no-startup-id bash -c 'curl -X POST http://localhost:13131/lastworkspace'
 
-bindsym $mod+1 workspace number $ws1 
-bindsym $mod+2 workspace number $ws2 ; exec --no-startup-id picom -b
-bindsym $mod+3 workspace number $ws3 ; exec --no-startup-id pkill picom; 
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace number $ws2 ; exec --no-startup-id sv up ~/.local/share/service-graphic/picom
+bindsym $mod+3 workspace number $ws3 ; exec --no-startup-id sv down ~/.local/share/service-graphic/picom
 bindsym $mod+4 workspace number $ws4
-# ; exec --no-startup-id picom -b
 bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7

@@ -20,6 +20,7 @@
     # Stuff
 
     firefox-devedition-bin
+    onlyoffice-bin
     xkeysnail
     keynav
 
@@ -64,7 +65,9 @@
     sd # sed
     skim
     fzf
+    # pagers
     moar
+    ov
     chroma
     translate-shell
     python310Packages.grip # markdown previewer
