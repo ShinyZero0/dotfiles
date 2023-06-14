@@ -6,4 +6,5 @@ snippet rsic "Reactive Property"
 		set => this.RaiseAndSetIfChanged(ref ${2:_name}, value);
 	}
 snippet ls "List"
-	var ${1:name} = new List<${2:type}>();
+	List<${2}>() ${1} = new();
+	$0

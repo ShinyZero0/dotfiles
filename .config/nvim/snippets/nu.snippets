@@ -24,6 +24,11 @@ snippet xda '"export def" invocation'
 		$0
 	}
 
+snippet xm "export module"
+	export module $1 {
+		$0
+	}
+
 snippet d '"def" invocation'
 	def "${1:name}" [] {
 		$0
@@ -48,6 +53,9 @@ snippet u "use module"
 
 snippet ua "use all exports from module"
 	use ${1}.nu *
+
+snippet xu "export use module"
+	export use $0
 
 snippet clr "color"
 	{ fg: ${1} bg: ${2:none} attr: ${3:b} }
