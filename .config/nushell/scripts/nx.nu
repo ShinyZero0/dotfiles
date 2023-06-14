@@ -1,5 +1,5 @@
 use utils [
-	_home
+	Home
 ]
 
 export def nx-init [
@@ -37,7 +37,7 @@ export def nx-sync [ dir?: any ] {
 
 	let LockFile = ( "~/.stuff/nix/flake.lock" | path expand )
 
-	let directory = ( $dir | default ( _home dev ) )
+	let directory = ( $dir | default ( Home dev ) )
 	open $LockFile
 		| from json
 		| upsert nodes.nixpkgs (

@@ -16,27 +16,6 @@ export def Home [ path: string ] {
 		| path join $path
 }
 
-# get file extension
-export def _getExt [] {
-
-	path parse
-		| get extension
-}
-
-# get file without extension
-export def _unExt [] {
-
-	path parse
-		| reject extension
-		| path join
-}
-
-export def _isChildOf [ parent: string ] {
-
-	path expand
-		| str starts-with ( $parent | path expand )
-}
-
 # print clipboard
 export def "Clip o" [] {
 

@@ -66,10 +66,6 @@ export def yankfile [] {
 	xclip -t $type -sel clip $file
 }
 
-export def indexate [] {
-	enumerate | flatten
-}
-
 # list runit services
 export def svls [
 	--all(-a)
@@ -200,12 +196,6 @@ export def "cat <<" [ eof ] {
 			}
 	}
 	return $out
-}
-
-# take first element to match the closure condition
-export def First [ func: closure default?: any ] {
-	# TODO: the "default" doesn't work actually
-	where {do $func } | first
 }
 
 export def "to qr" [] {

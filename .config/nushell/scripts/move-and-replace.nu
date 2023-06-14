@@ -1,4 +1,5 @@
-use utils *
+use utils.nu *
+use pipes.nu [un-ext get-ext is-child-of]
 
 export def mvnrp [
 
@@ -10,8 +11,8 @@ export def mvnrp [
 	mv $old $new
 	let-env oldFull = ( $old | path expand )
 	let-env newFull = ( $new | path expand )
-	if ( $new | _getExt ) == "lua" and (
-		$new | _isChildOf $env.NvimConfig
+	if ( $new | get-ext ) == "lua" and (
+		$new | is-child-of $env.NvimConfig
 	) {
 		let files = ( fd -t f -e lua -e vim . $env.NvimConfig | lines)
 		for file in $files {
@@ -25,14 +26,14 @@ export def mvnrp [
 		if ( file --mime $file | str contains "charset=binary" ) {
 			continue
 		}
-		let ext = ( $file | _getExt )
+		let ext = ( $file | get-ext )
 		if $ext == "nu" and (
 
 			$env.NU_LIB_DIRS | any {
 				(
-					$old | _isChildOf $in
+					$old | is-child-of $in
 				) and (
-					$new | _isChildOf $in
+					$new | is-child-of $in
 				)
 			}
 		) {
@@ -58,7 +59,7 @@ def _replaceLuaRequires [
 
 		$env.oldFull
 			| path relative-to $env.NvimConfig
-			| _unExt
+			| un-ext
 			| path split
 			| str join "."
 	)
@@ -66,7 +67,7 @@ def _replaceLuaRequires [
 
 		$env.newFull
 			| path relative-to $env.NvimConfig
-			| _unExt
+			| un-ext
 			| path split
 			| str join "."
 	)
