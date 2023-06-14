@@ -1,35 +1,35 @@
 # old alias for competion
 # TODO: turn into module
 use utils.nu [ "Clip o" "Clip i" ]
-alias dn = dotnet
+export alias visu = nvim +SudaRead
+export alias dn = dotnet
 
-alias vi = nvim
-alias visu = nvim +SudaRead
+export alias vi = nvim
 
-alias q = exit
-alias r = exec nu
+export alias q = exit
+export alias r = exec nu
 
 export alias ll = ls --long
 export alias la = ls --all
 
-alias fi = find
-alias fii = find -i
-alias g = get
+export alias fi = find
+export alias fii = find -i
+# export alias g = get
 
-alias dwn = ls ~/Downloads/
-alias pic = ls ~/Pictures/
-alias recent = sort-by modified
-def latest [] {
+export alias dwn = ls ~/Downloads/
+export alias pic = ls ~/Pictures/
+export alias recent = sort-by modified
+export def latest [] {
 	$in | recent | last
 }
-alias xtr = atool -x
+export alias xtr = atool -x
 
-alias ru = trans en:ru
-alias англ = trans ru:en
-alias mnt = udevil mount
-alias umnt = udevil umount
-alias mntmobile = udevil mount ssh://u0_a217@192.168.0.32:8022/data/data/com.termux/files/home
+export alias mnt = udevil mount
+export alias umnt = udevil umount
+export alias mntmobile = udevil mount ssh://u0_a217@192.168.0.32:8022/data/data/com.termux/files/home
 
 export alias hm = home-manager
 # HER MAJESTY'S SHIP
 export alias hms = home-manager switch
+export alias ru = trans :ru
+export alias en = trans :en
