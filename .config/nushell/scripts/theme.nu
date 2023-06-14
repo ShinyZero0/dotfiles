@@ -1,9 +1,9 @@
 
-use utils.nu _ansiTmp
+use utils.nu ansi-temp
 def "_at" [] {
 
 	let colors = (_getColors)
-	( _ansiTmp "@" { fg: $colors.cyanDark attr: b } )
+	( ansi-temp "@" { fg: $colors.cyanDark attr: b } )
 }
 def _getColors [] {
 
@@ -67,15 +67,11 @@ export def create_left_prompt [] {
 			| str replace $termuxPrefix '/'
     )
 
-    let pathSegment = ( _ansiTmp $dir { fg: $colors.green attr: b } )
-    let yadmSegment = if (
-		$env.PROMPT?
-		| default ""
-		| str contains "yadm"
-    ) {
+    let pathSegment = ( ansi-temp $dir { fg: $colors.green attr: b } )
+    let yadmSegment = if $env.IS_YADM {
 		[
 			(_at)
-			( _ansiTmp "Y" { fg: $colors.redDark attr: b } )
+			( ansi-temp "Y" { fg: $colors.redDark attr: b } )
 		]
 		| str join
     }
@@ -88,7 +84,7 @@ export def create_left_prompt [] {
     ) {
 		[
 			(_at)
-			( _ansiTmp "N" { fg: $colors.blue attr: b } )
+			( ansi-temp "N" { fg: $colors.blue attr: b } )
 		]
 		| str join
     }
@@ -99,9 +95,9 @@ export def create_left_prompt [] {
 	} else {
 		[
 			(_at)
-			(_ansiTmp 'S(' { fg: $colors.purple attr: b })
-			(_ansiTmp ( uname -n ) { fg: $colors.blueDark attr: b } )
-			(_ansiTmp ')' { fg: $colors.purple attr: b })
+			(ansi-temp 'S(' { fg: $colors.purple attr: b })
+			(ansi-temp ( uname -n ) { fg: $colors.blueDark attr: b } )
+			(ansi-temp ')' { fg: $colors.purple attr: b })
 		]
 		| str join
 	}
@@ -124,13 +120,13 @@ export def create_right_prompt [] {
 	let colors = (_getColors)
     let timeSegment = (
 	[ (
-			_ansiTmp (date now | date format '%r') { fg: $colors.purple attr: b }
+			ansi-temp (date now | date format '%r') { fg: $colors.purple attr: b }
 		) ]
 	| str join
     )
     let last_exit_code = if ( $env.LAST_EXIT_CODE != 0 ) {
 		[
-	    ( _ansiTmp $env.LAST_EXIT_CODE $colors.redDark )
+	    ( ansi-temp $env.LAST_EXIT_CODE $colors.redDark )
 	]
 	| str join
 	} else { "" }

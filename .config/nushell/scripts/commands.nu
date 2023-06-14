@@ -3,7 +3,7 @@ use nq-utils.nu *
 use std "assert"
 
 export def "clipped" [ ft: any ] {
-	_clip o | vipe --suffix $ft | _clip i
+	Clip o | vipe --suffix $ft | Clip i
 }
 export def "edpipe" [] {
 
@@ -12,7 +12,7 @@ export def "edpipe" [] {
 	try {
 
 		$input
-			| assert-string
+			| assert string
 			| vipe
 	} catch {
 
@@ -24,7 +24,7 @@ export def "edpipe" [] {
 	| str trim
 
 }
-export def check-string [] {
+export def "assert string" [] {
 
 	let obj = $in
 	assert ($obj | describe | str starts-with "string")
@@ -35,15 +35,15 @@ export def clip [ arg? ] {
 
 	let input = ( $in | default $arg )
 	if ( $input | is-empty ) {
-		_clip o
+		Clip o
 	} else {
-		$input | _clip i
+		$input | Clip i
 	}
 }
 
-export def "tempclip" [] {
-	_clip i
-	nq -t tempclip "use utils.nu *; sleep 1min; '' | _clip i"
+export def "clip-temp" [] {
+	Clip i
+	nq -t clip-temp "use utils.nu *; sleep 1min; '' | Clip i"
 }
 
 export def yankfile [] {
@@ -116,23 +116,30 @@ export def json2snip [] {
 	$in | format "snippet {prefix} '{description}'\n\t{body}"
 }
 
-export def ungit-b [ --short(-s): bool ] {
+# get user/repo from github url
+export def ungit-cb [ --short(-s): bool ] {
 
-	if ( not ( _clip o | str contains 'https://github.com/' ) ) { return }
+	if ( not ( Clip o | str contains 'https://github.com/' ) ) { return }
 
-	_clip o
-		| parse 'https://github.com/{match}'
-		| get match
+	Clip o
+		| $"($in)/"
+		| parse '{rest}github.com/{user}/{repo}/{rest}'
+		| into record
+		| get user repo
+		| path join
 		| to text
-		| _clip i
+		| Clip i
 }
+# resolve conflicts
 export def "peacemaker" [] {
 
 	nvim (
 		git diff --name-only --diff-filter=U
 		| lines
-		| each { |it|
-			$env.HOME | path join $it
+		| if $env.IS_YADM {
+			each { |it|
+				$env.HOME | path join $it
+			}
 		}
 	)
 }
@@ -143,11 +150,11 @@ export def to-do [] {
 
 export def ghraw-b [] {
 
-	ungit-b;
+	ungit-cb;
 	[
 		"https://raw.githubusercontent.com",
 		(
-			_clip o
+			Clip o
 			| path split
 			| where { $in != "blob"  }
 		)
@@ -221,3 +228,12 @@ export def-env "mkcd" [ dir ] {
 	mkdir $dir
 	cd $dir
 }
+export def share [ file: string ] {
+
+	let link = (
+		curl -F $"file=@($file)" https://0x0.st
+	)
+	$link | Clip i
+	print $"Link ($link) copied to clipboard!"
+}
+

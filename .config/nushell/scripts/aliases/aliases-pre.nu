@@ -1,6 +1,6 @@
 # old alias for competion
 # TODO: turn into module
-use utils.nu [ "_clip o" "_clip i" ]
+use utils.nu [ "Clip o" "Clip i" ]
 alias dn = dotnet
 
 alias vi = nvim
@@ -15,11 +15,6 @@ export alias la = ls --all
 alias fi = find
 alias fii = find -i
 alias g = get
-
-def share [ file: string ] {
-	curl -F $"file=@($file)" https://0x0.st | _clip i
-	print "Link copied to clipboard!"
-}
 
 alias dwn = ls ~/Downloads/
 alias pic = ls ~/Pictures/

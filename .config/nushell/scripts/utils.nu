@@ -1,5 +1,5 @@
 # get a string with styling applied and resetted ansi
-export def _ansiTmp [ text: string color: any ] {
+export def ansi-temp [ text: string color: any ] {
 	[
 		( ansi reset )
 		( ansi $color )
@@ -10,7 +10,7 @@ export def _ansiTmp [ text: string color: any ] {
 }
 
 # get full path relative to homedir
-export def _home [ path: string ] {
+export def Home [ path: string ] {
 
 	$env.HOME
 		| path join $path
@@ -38,7 +38,7 @@ export def _isChildOf [ parent: string ] {
 }
 
 # print clipboard
-export def "_clip o" [] {
+export def "Clip o" [] {
 
 	to text
 	| if not ( which xsel | is-empty ) {
@@ -49,7 +49,7 @@ export def "_clip o" [] {
 }
 
 # yank to clipboard
-export def "_clip i" [] {
+export def "Clip i" [] {
 
 	to text
 	| if not ( which xsel | is-empty ) {

@@ -6,14 +6,14 @@
 #
 # By default, <nushell-config-dir>/scripts is added
 use ~/.config/nushell/scripts/utils.nu [
-	_home,
+	Home,
 ]
 
 let-env NU_LIB_DIRS = [
 
     ($nu.config-path | path dirname | path join 'scripts')
     ($nu.config-path | path dirname | path join 'completions')
-	(_home '.local/share/nushell')
+	(Home '.local/share/nushell')
 ]
 
 let-env NU_PLUGIN_DIRS = [
@@ -23,6 +23,11 @@ let-env NU_PLUGIN_DIRS = [
 
 let-env GH_USER = "ShinyZero0"
 let-env EDITOR = 'nvim'
+let-env IS_YADM = (
+	$env.PROMPT?
+		| default ""
+		| str contains "yadm"
+)
 # for neovim
 let-env COLORSCHEME = if (
 
@@ -35,9 +40,9 @@ let-env COLORSCHEME = if (
 	"warm"
 }
 
-let-env SVDIR = ( _home '.local/share/service' )
-let-env NQDIR = ( _home '.stuff/nq' )
-let-env PLATES_DIR = ( _home '.stuff/plates' )
+let-env SVDIR = ( Home '.local/share/service' )
+let-env NQDIR = ( Home '.stuff/nq' )
+let-env PLATES_DIR = ( Home '.stuff/plates' )
 
 # User options
 
