@@ -1,5 +1,3 @@
-export alias yd = yadm enter nu
-
 export alias ga = git add
 export alias gc = git commit -m
 export alias gd = git diff

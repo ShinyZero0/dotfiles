@@ -4,6 +4,8 @@ use utils.nu [ "Clip o" "Clip i" ]
 export alias visu = nvim +SudaRead
 export alias dn = dotnet
 
+export alias yd = yadm enter exec nu
+
 export alias vi = nvim
 
 export alias q = exit

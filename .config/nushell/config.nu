@@ -432,12 +432,14 @@ use pipes.nu *
 use commands.nu *
 
 source zoxide.nu
-source alt.nu
+use alt.nu  *
+if not (which AltEnv | is-empty) {
+	load-env (AltEnv)
+}
 source langTools.nu
 source hydra.nu
 
-use choose.nu aliases
-overlay use aliases
+use choose.nu aliases *
 
 use gh.nu *
 use nq-utils.nu *
