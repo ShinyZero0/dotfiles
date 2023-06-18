@@ -1,5 +1,5 @@
 export module funcs {
-
+	use utils.nu [ "Clip o" "Clip i"]
 	# open file or dir
 	export def-env _select [
 		dir?: string 
