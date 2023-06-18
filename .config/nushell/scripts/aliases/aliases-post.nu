@@ -1,6 +1,5 @@
 export def l [] {
-	ls
-	| sort-by type modified
+	ls | sort-by type modified
 }
 
 

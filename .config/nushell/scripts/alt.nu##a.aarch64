@@ -1,0 +1,31 @@
+export def AltEnv [] {
+	config.rm.always_trash : false
+	PATH : ( $env.PATH
+		| prepend (
+			$env.HOME
+			| path join ".local/bin"
+		)
+		| prepend (
+			$env.HOME
+			| path join ".local/share/zinit/polaris/bin"
+		)
+	)
+	PAGER : less
+	MANPAGER : less
+	SVDIR: ""
+}
+
+export def "pkg browse" [ pkg: string@"termux pkg all" ] {
+
+	pkg info $pkg
+		| lines
+		| get 4
+		| parse 'Homepage: {url}'
+		| get url
+		| xdg-open $in
+}
+
+def "termux pkg all" [] {
+
+    open ~/.cache/pkg-all.json
+}

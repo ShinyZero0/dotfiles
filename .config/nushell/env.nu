@@ -50,7 +50,9 @@ let-env PLATES_DIR = ( Home '.stuff/plates' )
 let-env FUZZY_FINDER = "zf"
 # used for multiple selection
 let-env FZF_DEFAULT_OPTS = (
-	[ '--reverse',
+	[ 
+		'--reverse',
+		' --scheme=path',
 		' --cycle',
 		' --color=dark',
 		',fg:#cbe3e7',

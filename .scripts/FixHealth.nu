@@ -1,6 +1,6 @@
 #!/usr/bin/env nu
 
-use utils.nu _ansiTmp
+use ~/.config/nushell/scripts/utils.nu ansi-temp
 
 def main [ --update(-u): bool ] {
 
@@ -11,9 +11,9 @@ def main [ --update(-u): bool ] {
 		let okMessage = (
 
 			if $update {
-				echo $"(_ansiTmp "UPDATING:\n" magenta)\t($entry.file) exists"
+				echo $"(ansi-temp "UPDATING:\n" magenta)\t($entry.file) exists"
 			} else {
-				echo $"(_ansiTmp "OK:\n" green)\t($entry.file) exists"
+				echo $"(ansi-temp "OK:\n" green)\t($entry.file) exists"
 			}
 		)
 		if ($entry.file | path exists) {
@@ -23,11 +23,14 @@ def main [ --update(-u): bool ] {
 				http get $entry.remote | save -f ( $entry.file | path expand )
 			}
 		} else {
-
-			print $"(_ansiTmp "FIXING:\n" yellow)\t($entry.file) not exists"
+			ensure $entry.file 
+			print $"(ansi-temp "FIXING:\n" yellow)\t($entry.file) not exists"
 			http get $entry.remote | save ( $entry.file | path expand )
 		}
 	}
+}
+def "ensure" [file] {
+	mkdir ($file | path expand | path dirname)
 }
 
 def "main bins" [] {
@@ -50,9 +53,9 @@ def "main bins" [] {
 	for entry in $Entries {
 
 		if (which $"^($entry)" | is-empty) {
-			print $"(_ansiTmp "FAIL:" red)\t($entry) doesn't exist"
+			print $"(ansi-temp "FAIL:" red)\t($entry) doesn't exist"
 		} else {
-			print $"(_ansiTmp "OK:" green)\t($entry) exists"
+			print $"(ansi-temp "OK:" green)\t($entry) exists"
 		}
 	}
 }

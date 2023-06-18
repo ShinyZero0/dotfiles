@@ -164,11 +164,7 @@ let-env config = {
 
 	hooks: {
 
-		pre_prompt: [{
-			let direnv = (direnv export json | from json)
-			let direnv = if ($direnv | length) == 1 { $direnv } else { { } }
-			$direnv | load-env
-		}]
+		pre_prompt: []
 		pre_execution: [{
 			null  # replace with source code to run before the repl input is run
 		}]
@@ -412,6 +408,15 @@ let-env config = {
 		}
 	]
 }
+if not (which direnv | is-empty) {
+	$env.config.hooks.pre_prompt = (
+			$env.config.hooks.pre_prompt | append {
+				let direnv = (direnv export json | from json)
+				let direnv = if ($direnv | length) == 1 { $direnv } else { { } }
+				$direnv | load-env
+			}
+		)
+}
 
 use theme.nu *
 # Use nushell functions to define your right and left prompt
@@ -427,12 +432,14 @@ use pipes.nu *
 use commands.nu *
 
 source zoxide.nu
-source alt.nu
+use alt.nu  *
+if not (which AltEnv | is-empty) {
+	load-env (AltEnv)
+}
 source langTools.nu
 source hydra.nu
 
-use choose.nu aliases
-overlay use aliases
+use choose.nu aliases *
 
 use gh.nu *
 use nq-utils.nu *
