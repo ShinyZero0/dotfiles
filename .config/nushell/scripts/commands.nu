@@ -1,4 +1,5 @@
 use utils.nu *
+use pipes.nu *
 use nq-utils.nu *
 use std "assert"
 
@@ -24,6 +25,7 @@ export def "edpipe" [] {
 	| str trim
 
 }
+
 export def "assert string" [] {
 
 	let obj = $in
@@ -201,7 +203,6 @@ export def "cat <<" [ eof ] {
 export def "to qr" [] {
 	qrencode -t utf8 ( $in | to text )
 }
-
 # link full path
 export def lns [
 	source: string
@@ -218,6 +219,7 @@ export def-env "mkcd" [ dir ] {
 	mkdir $dir
 	cd $dir
 }
+
 export def share [ file: string ] {
 
 	let link = (
@@ -227,3 +229,54 @@ export def share [ file: string ] {
 	print $"Link ($link) copied to clipboard!"
 }
 
+export def "save-temp" [ extension? ] {
+	
+	let input = $in
+	let file = (mktemp $"nu-tempXXXXXX(
+		$".($extension)"
+		| match $in {
+			"." => "",
+			_ => $in
+		}
+	)" --tmpdir)
+	$input | save -f $file
+	print $file
+}
+export def "get-pics" [ url: string out?: string = "." ] {
+	
+	wget --accept jpg,jpeg,png --recursive --no-directories -P $out $url
+}
+export def "order-files" [ dir? = ".", by? = modified ] {
+	
+	cd $dir
+	ls
+	| where type == file
+	| get name
+	| indexate
+	| each { |it|
+		mv -f $it.item $"(
+			sha256sum $it.item | split row -r '\s+' | get 0
+		)(
+			$".($it.item | get-ext)"
+			| match $in {
+				"." => "",
+				_ => $in
+			}
+		)"
+	}
+
+	ls
+	| where type == file
+	| sort-by $by
+	| get name
+	| indexate
+	| each { |it|
+		mv $it.item $"($it.index)(
+			$".($it.item | get-ext)"
+			| match $in {
+				"." => "",
+				_ => $in
+			}
+		)"
+	}
+}
