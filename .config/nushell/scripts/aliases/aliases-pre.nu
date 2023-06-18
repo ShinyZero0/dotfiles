@@ -8,6 +8,7 @@ export alias vi = nvim
 
 export alias q = exit
 export alias r = exec nu
+export alias nue = yadm enter exec nvim ~/.config/nushell/
 
 export alias ll = ls --long
 export alias la = ls --all
@@ -23,13 +24,14 @@ export def latest [] {
 	$in | recent | last
 }
 export alias xtr = atool -x
+export alias ar = atool -a
 
 export alias mnt = udevil mount
 export alias umnt = udevil umount
-export alias mntmobile = udevil mount ssh://u0_a217@192.168.0.32:8022/data/data/com.termux/files/home
 
 export alias hm = home-manager
 # HER MAJESTY'S SHIP
 export alias hms = home-manager switch
+export alias hme = yadm enter exec home-manager edit
 export alias ru = trans :ru
-export alias en = trans :en
+export alias англ = trans :en
