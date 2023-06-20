@@ -1,6 +1,6 @@
 #!/usr/bin/env nu
 
-def lang-tools [
+export def lang-tools [
 	--lang(-l): string
 ] {
 	let toolsFile = ~/.stuff/langTools.json

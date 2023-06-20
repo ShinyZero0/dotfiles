@@ -431,13 +431,12 @@ use aliases/xbps.nu *
 use pipes.nu *
 use commands.nu *
 
-source zoxide.nu
 use alt.nu  *
 if not (which AltEnv | is-empty) {
 	load-env (AltEnv)
 }
-source langTools.nu
-source hydra.nu
+
+use langTools.nu *
 
 use choose.nu aliases *
 
@@ -464,4 +463,6 @@ use pass-cmp.nu *
 
 use aliases/aliases-post.nu *
 
-source init.nu
+source zoxide.nu
+source hydra.nu
+
