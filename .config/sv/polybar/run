@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
 
-(pgrep xkeysnail && pgrep -x pipewire-pulse) || exit 1
-sleep 3
 exec polybar

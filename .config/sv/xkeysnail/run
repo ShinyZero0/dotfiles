@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
+nq bash -c "sleep 3; ~/.scripts/xsettings.bash"
 exec xkeysnail

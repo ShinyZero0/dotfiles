@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-sleep 5
-exec entr -n ~/.scripts/xsettings.bash < <(echo "${HOME}/.local/share/service-graphic/xkeysnail/supervise/status")

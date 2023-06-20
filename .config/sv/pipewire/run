@@ -4,4 +4,5 @@ pipewire &
 sleep 1
 wireplumber & 
 sleep 1
+nq bash -c "sleep 3; ~/.scripts/xsettings.bash"
 exec pipewire-pulse
