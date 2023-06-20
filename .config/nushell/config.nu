@@ -433,7 +433,7 @@ use commands.nu *
 
 use alt.nu  *
 if not (which AltEnv | is-empty) {
-	load-env (AltEnv)
+	export-env { AltEnv }
 }
 
 use langTools.nu *

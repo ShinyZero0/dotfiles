@@ -1,6 +1,6 @@
-export def AltEnv [] {
-	config.rm.always_trash : false
-	PATH : ( $env.PATH
+export def-env AltEnv [] {
+	$env.config.rm.always_trash = false
+	$env.PATH = ( $env.PATH
 		| prepend (
 			$env.HOME
 			| path join ".local/bin"
@@ -10,9 +10,9 @@ export def AltEnv [] {
 			| path join ".local/share/zinit/polaris/bin"
 		)
 	)
-	PAGER : less
-	MANPAGER : less
-	SVDIR: ""
+	$env.PAGER = less
+	$env.MANPAGER = less
+	$env.SVDIR = ""
 }
 
 export def "pkg browse" [ pkg: string@"termux pkg all" ] {
