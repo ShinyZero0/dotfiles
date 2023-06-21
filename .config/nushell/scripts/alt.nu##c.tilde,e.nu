@@ -1,7 +1,3 @@
-export def "AltEnv" [] {
-	{
-		PAGER: less
-		MANPAGER: less
-		FUZZY_FINDER: fzf
-	}
+export def-env "AltEnv" [] {
+	let-env FUZZY_FINDER = fzf
 }

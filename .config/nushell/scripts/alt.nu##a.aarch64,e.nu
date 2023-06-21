@@ -1,18 +1,16 @@
+use utils.nu Home
+export use termux-pkg-cmp.nu *
 export def-env AltEnv [] {
 	$env.config.rm.always_trash = false
-	$env.PATH = ( $env.PATH
+	$env.PATH = (
+		$env.PATH
 		| prepend (
-			$env.HOME
-			| path join ".local/bin"
+			Home ".local/bin"
 		)
 		| prepend (
-			$env.HOME
-			| path join ".local/share/zinit/polaris/bin"
+			Home ".local/share/zinit/polaris/bin"
 		)
 	)
-	$env.PAGER = less
-	$env.MANPAGER = less
-	$env.SVDIR = ""
 }
 
 export def "pkg browse" [ pkg: string@"termux pkg all" ] {

@@ -426,7 +426,7 @@ $env.config.color_config = ( GetDarkTheme )
 
 use aliases/aliases-pre.nu *
 use aliases/git.nu *
-use aliases/xbps.nu *
+use aliases/packages.nu *
 
 use pipes.nu *
 use commands.nu *
@@ -451,9 +451,7 @@ use rename.nu *
 
 use git-completions.nu *
 use make-completions.nu *
-use xbps-cmp.nu *
 use man-cmp.nu *
-use termux-pkg-cmp.nu *
 use zellij-completions.nu *
 use proc-cmp.nu *
 use udevil-cmp.nu *

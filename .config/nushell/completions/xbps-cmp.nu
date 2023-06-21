@@ -108,3 +108,11 @@ export extern "sudo xbps-pkgdb" [
 	--verbose(-v)	# Verbose messages
 	--version(-V)	# Show Xversion
 ]
+export extern "xls" [
+	
+	...targets: string@"xbps all packages"
+]
+export extern "xmandoc" [
+	
+	...targets: string@"xbps all packages"
+]

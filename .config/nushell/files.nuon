@@ -1,0 +1,14 @@
+[
+	{
+		file: "~/.local/share/nvim/lazy/nvim-treesitter/queries/nu/highlights.scm",
+		remote: "https://raw.githubusercontent.com/nushell/tree-sitter-nu/main/queries/highlights.scm"
+	},
+	{
+		file: "~/.local/share/nushell/zellij-completions.nu",
+		remote: "https://raw.githubusercontent.com/nushell/nu_scripts/main/custom-completions/zellij/zellij-completions.nu",
+	},
+	{
+		file: "~/.local/share/nushell/make-completions.nu",
+		remote: "https://raw.githubusercontent.com/nushell/nu_scripts/main/custom-completions/make/make-completions.nu",
+	}
+]

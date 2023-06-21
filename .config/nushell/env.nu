@@ -29,18 +29,17 @@ let-env IS_YADM = (
 		| str contains "yadm"
 )
 # for neovim
-let-env COLORSCHEME = if (
+# let-env COLORSCHEME = if (
+#
+# 	$env.PROMPT?
+# 	| default ""
+# 	| str contains "yadm"
+# ) {
+# 	"cold"
+# } else {
+# 	"warm"
+# }
 
-	$env.PROMPT?
-	| default ""
-	| str contains "yadm"
-) {
-	"cold"
-} else {
-	"warm"
-}
-
-let-env SVDIR = ( Home '.local/share/service' )
 let-env NQDIR = ( Home '.stuff/nq' )
 let-env PLATES_DIR = ( Home '.stuff/plates' )
 
@@ -80,9 +79,6 @@ mkdir $dataDir
 # 	zoxide init nushell | save ( $dataDir | path join 'zoxide.nu' )
 # }
 let-env LS_COLORS = ( open ~/.local/share/nushell/lscolors.txt )
-
-let-env PAGER = moar
-let-env MANPAGER = moar
 
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
