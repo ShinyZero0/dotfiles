@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-while true; do
-	detox ~/Pictures
-	sleep 2h
-done
