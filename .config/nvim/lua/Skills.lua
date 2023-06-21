@@ -81,13 +81,15 @@ function ToggleEndingStuff()
 		markdown = "\\",
 		json = ",",
 		python = ":",
+		css = ";",
+		javascript = ";",
+		typescript = ";",
 	}
 	local char
-	local ft = vim.bo[0].filetype
-	if charsMap[ft] == nil then
+	char = charsMap[vim.bo[0].filetype]
+	if char == nil then
 		return
 	end
-	char = charsMap[ft]
 	local line = vim.fn.getline(".")
 	if string.sub(line, -#char) == char then
 		line = string.sub(line, 0, -1 - #char)
