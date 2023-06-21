@@ -22,6 +22,12 @@ return {
 			},
 			override_by_extension = {
 
+				["xaml"] = {
+
+					icon = "",
+					color = "#FFC3E1",
+					name = "axaml",
+				},
 				["axaml"] = {
 
 					icon = "",

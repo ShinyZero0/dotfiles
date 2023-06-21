@@ -1,10 +1,11 @@
 return {
 	{
 		"hrsh7th/nvim-cmp",
-		event = { "VeryLazy", "InsertEnter", "CmdLineEnter" },
+		event = { "InsertEnter", "CmdLineEnter" },
 		config = function()
 			require("config.nvim-cmp")
 		end,
+		keys = { ":", ";" },
 		dependencies = {
 
 			"hrsh7th/cmp-nvim-lsp",
@@ -27,10 +28,7 @@ return {
 	{
 		"hrsh7th/cmp-nvim-lua",
 		config = false,
-		dependencies = {
-			"hrsh7th/nvim-cmp",
-		},
-		ft = { "lua", "vim" },
+		ft = { "lua" },
 	},
 	{
 		"dcampos/cmp-snippy",
