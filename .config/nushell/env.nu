@@ -9,11 +9,13 @@ use ~/.config/nushell/scripts/utils.nu [
 	Home,
 ]
 
+let dataDir = (Home '.local/share/nushell')
+mkdir $dataDir
 let-env NU_LIB_DIRS = [
 
     ($nu.config-path | path dirname | path join 'scripts')
     ($nu.config-path | path dirname | path join 'completions')
-	(Home '.local/share/nushell')
+	$dataDir
 ]
 
 let-env NU_PLUGIN_DIRS = [
@@ -71,10 +73,7 @@ let-env FZF_DEFAULT_OPTS = (
 )
 
 mkdir $env.NQDIR
-mkdir $env.SVDIR
 
-let dataDir = $env.NU_LIB_DIRS.2
-mkdir $dataDir
 # if ( $dataDir | path join 'zoxide.nu' | path exists ) {} else {
 # 	zoxide init nushell | save ( $dataDir | path join 'zoxide.nu' )
 # }
