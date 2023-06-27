@@ -452,7 +452,7 @@ use rename.nu *
 
 use git-completions.nu *
 use make-completions.nu *
-use man-cmp.nu *
+use man-completions.nu *
 use zellij-completions.nu *
 use proc-cmp.nu *
 use udevil-cmp.nu *
