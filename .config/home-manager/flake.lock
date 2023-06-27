@@ -36,10 +36,44 @@
         "type": "github"
       }
     },
+    "nuScripts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1687693193,
+        "narHash": "sha256-HAsJHUjZcjzfqpBcDcXpX2hCPDvMkPgAPuslVJwlex0=",
+        "owner": "nushell",
+        "repo": "nu_scripts",
+        "rev": "a2f82bd987e5f3f1a118281b290a753306acf4a1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nushell",
+        "repo": "nu_scripts",
+        "type": "github"
+      }
+    },
+    "nuTreeSitter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1687333793,
+        "narHash": "sha256-Lk6ur6zP+MJZ3txVoux4a9Fuef1cO57JbPl4Kb+RXOQ=",
+        "owner": "nushell",
+        "repo": "tree-sitter-nu",
+        "rev": "f46cfcef705097ec81cb8456031a74688d537835",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nushell",
+        "repo": "tree-sitter-nu",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nuScripts": "nuScripts",
+        "nuTreeSitter": "nuTreeSitter"
       }
     }
   },
