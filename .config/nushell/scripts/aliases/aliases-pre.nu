@@ -9,7 +9,6 @@ export alias yd = yadm enter exec nu
 export alias vi = nvim
 
 export alias q = exit
-export alias r = exec nu
 export alias nue = yadm enter exec nvim ~/.config/nushell/
 
 export alias ll = ls --long

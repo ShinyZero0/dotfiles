@@ -101,3 +101,4 @@ let-env ENV_CONVERSIONS = {
 	}
 }
 
+export alias r = exec nu
