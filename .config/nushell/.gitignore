@@ -2,3 +2,5 @@ history.sqlite3
 history.sqlite3-shm
 history.sqlite3-wal
 history.txt
+scripts/aliases/packages.nu
+scripts/alt.nu

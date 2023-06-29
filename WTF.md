@@ -57,7 +57,9 @@ cat << EOF >> /etc/fstab
 UUID=$uuid /media/$mountpoint auto defaults,user,nofail 0 2
 EOF
 ```
+
 ## Mount flash drives automatically
+
 ```bash
 sudo
 xbps-install udevil

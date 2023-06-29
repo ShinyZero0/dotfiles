@@ -418,6 +418,9 @@ if not (which direnv | is-empty) {
 		)
 }
 
+source zoxide.nu
+source hydra.nu
+
 use theme.nu *
 # Use nushell functions to define your right and left prompt
 let-env PROMPT_COMMAND = { create_left_prompt }
@@ -432,9 +435,7 @@ use pipes.nu *
 use commands.nu *
 
 use alt.nu  *
-if not (which AltEnv | is-empty) {
-	export-env { AltEnv }
-}
+export-env { AltEnv }
 
 use langTools.nu *
 
@@ -451,7 +452,7 @@ use rename.nu *
 
 use git-completions.nu *
 use make-completions.nu *
-use man-cmp.nu *
+use man-completions.nu *
 use zellij-completions.nu *
 use proc-cmp.nu *
 use udevil-cmp.nu *
@@ -460,7 +461,4 @@ use runit-cmp.nu *
 use pass-cmp.nu *
 
 use aliases/aliases-post.nu *
-
-source zoxide.nu
-source hydra.nu
 

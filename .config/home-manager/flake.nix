@@ -11,9 +11,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nuScripts = {
+      url = "github:nushell/nu_scripts";
+      flake = false;
+    };
+    nuTreeSitter = {
+      url = "github:nushell/tree-sitter-nu";
+      flake = false;
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, nuScripts, nuTreeSitter, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -24,6 +32,10 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [ ./home.nix ];
+        extraSpecialArgs = {
+          nuScripts = nuScripts;
+          nuTreeSitter = nuTreeSitter;
+        };
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix

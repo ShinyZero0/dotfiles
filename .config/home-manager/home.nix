@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, nuScripts, nuTreeSitter, ... }: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "zero";
@@ -104,6 +104,14 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".local/share/nushell/man-completions.nu".source =
+      "${nuScripts}/custom-completions/man/man-completions.nu";
+    ".local/share/nvim/lazy/nvim-treesitter/queries/nu/highlights.scm".source =
+      "${nuTreeSitter}/queries/highlights.scm";
+    ".local/share/nushell/zellij-completions.nu".source =
+      "${nuScripts}/custom-completions/zellij/zellij-completions.nu";
+    ".local/share/nushell/make-completions.nu".source =
+      "${nuScripts}/custom-completions/make/make-completions.nu";
   };
 
   # You can also manage environment variables but you will have to manually
