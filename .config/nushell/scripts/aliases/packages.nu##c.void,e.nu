@@ -1,4 +1,4 @@
-export alias pkin = sudo xbps-install
+export alias pkin = sudo xbps-install -S
 export alias pkrm = sudo xbps-remove
 export alias pkup = sudo xbps-install -Su
 export alias pkfd = xbps-query -Rs
