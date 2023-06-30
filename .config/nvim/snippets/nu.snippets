@@ -2,7 +2,7 @@ snippet #! "shebang"
 	#!/usr/bin/env nu
 
 snippet for '"for" invocation'
-	for ${1:entry} in ${2:list} {
+	for ${1:entry} in $${2:list} {
 		$0
 	}
 
@@ -12,17 +12,21 @@ snippet if '"if" invocation'
 	}
 
 snippet xd '"export def" invocation'
-	export def "${1:name}" [] {
+	export def "${1}" [] {
 		$0
 	}
-
-snippet xa "export alias"
-	export alias $1 = $0
 
 snippet xda '"export def" invocation'
-	export def "${1:name}" [ ...args ] {
+	export def "${1}" [ ...args ] {
 		$0
 	}
+
+snippet xde "export def-env"
+	export def-env "${1}" [] {
+		$0
+	}
+snippet xa "export alias"
+	export alias $1 = $0
 
 snippet xm "export module"
 	export module $1 {
@@ -30,12 +34,17 @@ snippet xm "export module"
 	}
 
 snippet d '"def" invocation'
-	def "${1:name}" [] {
+	def "${1}" [] {
 		$0
 	}
 
 snippet da '"def" invocation'
-	def "${1:name}" [ ...args ] {
+	def "${1}" [ ...args ] {
+		$0
+	}
+
+snippet de '"def-env" invocation'
+	def-env "${1}" [] {
 		$0
 	}
 
@@ -56,6 +65,12 @@ snippet ua "use all exports from module"
 
 snippet xu "export use module"
 	export use $0
+
+snippet l "let"
+	let $1 = $0
+
+snippet le "let-env"
+	let-env $1 = $0
 
 snippet clr "color"
 	{ fg: ${1} bg: ${2:none} attr: ${3:b} }
