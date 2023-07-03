@@ -1,20 +1,16 @@
 # Nushell Environment Config File
-#
-# version = 0.78.1
 
-# Directories to search for scripts when calling source or use
-#
-# By default, <nushell-config-dir>/scripts is added
 use ~/.config/nushell/scripts/utils.nu [
 	Home,
 ]
 
 let dataDir = (Home '.local/share/nushell')
 mkdir $dataDir
+# By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIRS = [
 
-    ($nu.config-path | path dirname | path join 'scripts')
-    ($nu.config-path | path dirname | path join 'completions')
+	($nu.config-path | path dirname | path join 'scripts')
+	($nu.config-path | path dirname | path join 'completions')
 	$dataDir
 ]
 
@@ -92,15 +88,16 @@ let-env PROMPT_MULTILINE_INDICATOR = { "::: " }
 # Note: The conversions happen *after* config.nu is loaded
 let-env ENV_CONVERSIONS = {
 
-  "PATH": {
+	"PATH": {
 
-    from_string: { |s| $s | split row (char esep) | path expand -n }
-    to_string: { |v| $v | path expand -n | str join (char esep) }
-  }
-  "XDG_DATA_DIRS": {
+		from_string: { |s| $s | split row (char esep) | path expand -n }
+		to_string: { |v| $v | path expand -n | str join (char esep) }
+	}
+	"XDG_DATA_DIRS": {
 
-    from_string: { |s| $s | split row (char esep) | path expand -n }
-    to_string: { |v| $v | path expand -n | str join (char esep) }
-  }
+		from_string: { |s| $s | split row (char esep) | path expand -n }
+		to_string: { |v| $v | path expand -n | str join (char esep) }
+	}
 }
 
+export alias r = exec nu
