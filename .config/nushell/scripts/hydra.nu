@@ -4,7 +4,7 @@ overlay use funcs
 # get command usage
 def "get-usage" [ command ] {
 	use pipes.nu First
-	$nu.scope.commands
+	scope commands
 		| First {$in.name == $command}
 		| get usage
 }
