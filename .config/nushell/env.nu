@@ -44,28 +44,37 @@ let-env PLATES_DIR = ( Home '.stuff/plates' )
 # User options
 
 # used in some places e.g. focus.nu
-let-env FUZZY_FINDER = "zf"
+let-env FUZZY_FINDER = "fzf"
+let-env PAGER = "less -RF --incsearch --status-line --mouse --wheel-lines 3"
+let-env MANPAGER = $env.PAGER
+let-env DELTA_PAGER = $env.PAGER
+let-env BAT_PAGER = $env.PAGER
+
 # used for multiple selection
 let-env FZF_DEFAULT_OPTS = (
-	[ 
+	[
 		'--reverse',
-		' --scheme=path',
-		' --cycle',
-		' --color=dark',
-		',fg:#cbe3e7',
-		',bg:#1b182c',
-		',hl:#ff99e3',
-		',fg+:#aaffe4',
-		',bg+:#565575',
-		',hl+:#63f2f1',
-		',gutter:#1b182c',
-		',pointer:#aaffe4',
-		',prompt:#ff99e3',
-		',info:#ffe9aa',
-		',header:#cbe3e7',
-		',spinner:#63f2f1',
+		'--scheme=path',
+		'--cycle',
+		'--color=dark'
 	]
-	| str join
+	| str join " "
+	| $in ++
+	[
+		'fg:#cbe3e7',
+		'bg:#1b182c',
+		'hl:#ff99e3',
+		'fg+:#aaffe4',
+		'bg+:#565575',
+		'hl+:#63f2f1',
+		'gutter:#1b182c',
+		'pointer:#aaffe4',
+		'prompt:#ff99e3',
+		'info:#ffe9aa',
+		'header:#cbe3e7',
+		'spinner:#63f2f1'
+	]
+	| str join ","
 )
 
 mkdir $env.NQDIR
