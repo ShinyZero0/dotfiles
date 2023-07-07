@@ -26,3 +26,4 @@ export extern "pkg info" [
 	
 	...args: string@"termux pkg all"
 ]
+export extern "pkg list-installed" []
