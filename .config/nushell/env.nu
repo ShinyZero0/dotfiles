@@ -52,7 +52,8 @@ let-env BAT_PAGER = $env.PAGER
 
 # used for multiple selection
 let-env FZF_DEFAULT_OPTS = (
-	[
+	# DON'T REMOVE THE FUCKING TRAILING WHITESPACE
+	[ 
 		'--reverse',
 		'--scheme=path',
 		'--cycle',

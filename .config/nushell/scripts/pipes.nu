@@ -37,6 +37,6 @@ export def is-child-of [ parent: string ] {
 # take first element to match the closure condition
 export def First [ func: closure default?: any ] {
 	# TODO: the "default" doesn't work actually
-	where {do $func } | first
+	where {do $func} | first
 }
 
