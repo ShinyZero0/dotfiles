@@ -1,3 +1,5 @@
+use xbps-cmp.nu *
+
 export alias pkin = sudo xbps-install -S
 export alias pkrm = sudo xbps-remove
 export alias pkup = sudo xbps-install -Su
