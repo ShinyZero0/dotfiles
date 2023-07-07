@@ -5,6 +5,10 @@ snippet rsic "Reactive Property"
 		get => ${2:_name};
 		set => this.RaiseAndSetIfChanged(ref ${2:_name}, value);
 	}
+
 snippet ls "List"
-	List<${2}>() ${1} = new();
-	$0
+	List<${2}> ${1} = new();${0}
+
+snippet gs "autoprop"
+	{ get; set; }${0}
+	

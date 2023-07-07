@@ -59,7 +59,7 @@ function SelectAll()
 		call feedkeys("A", 'n')
 	endif
 endfunction
-vnoremap A <cmd>call SelectAll()<CR>
+xnoremap A <cmd>call SelectAll()<CR>
 
 function RemapGotoDefinition() abort
 	if &ft =~ 'cs'

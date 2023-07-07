@@ -42,9 +42,7 @@ define_keymap(
         K("C-R"): K("C-Y"),
         # Tridactyl does it
         # K("C-W"): K("PAGE_UP"),
-        # K("C-U"): K("PAGE_UP"),
         # K("C-S"): K("PAGE_DOWN"),
-        # K("C-D"): K("PAGE_DOWN"),
         K("C-M"): K("C-D"),
     },
 )
@@ -57,5 +55,9 @@ define_keymap(
         # Switch tabs with Alt+Tab and Alt+Tilda
         K("Alt-Tab"): K("C-tab"),
         K("Alt-grave"): K("C-Shift-tab"),
+        # Erase with C-W
+        K("Ctrl-W"): K("C-Backspace"),
+        # K("C-U"): K("PAGE_UP"),
+        # K("C-D"): K("PAGE_DOWN"),
     },
 )

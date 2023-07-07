@@ -21,6 +21,7 @@ config.load_autoconfig(False)
 # `session.default_name` setting.
 # Type: Bool
 c.auto_save.session = True
+c.session.lazy_restore = True
 
 # Which cookies to accept. With QtWebEngine, this setting also controls
 # other features with tracking capabilities similar to those of cookies;
@@ -190,3 +191,13 @@ c.fonts.web.size.minimum_logical = 6
 # Bindings for normal mode
 config.bind('gM', 'tab-move -1')
 config.bind('<alt-r>', 'fake-key -g <ctrl-tab>')
+c.aliases["h"] = "help"
+
+c.aliases["bmark-add"] = "spawn --userscript linkding.nu post"
+c.aliases["bmark-open"] = "spawn --userscript linkding.nu get"
+config.unbind('b')
+config.bind('ba', 'bmark-add')
+config.bind('bo', 'bmark-open')
+
+c.aliases["localport-open"] = "spawn --userscript localport"
+config.bind('xl', 'localport-open')

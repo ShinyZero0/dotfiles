@@ -1,2 +1,17 @@
-snippet git "full git repo url"
+snippet gh "full github repo url"
 	https://github.com/${1:$VISUAL}/
+
+snippet ( "parens"
+	($1)$0
+
+snippet [ "square"
+	[$1]$0
+
+snippet { "curly"
+	{$1}$0
+
+snippet " "quotes"
+	"$1"$0
+
+snippet < "tag"
+  <${1}>${0}</${1}>

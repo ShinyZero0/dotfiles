@@ -59,6 +59,7 @@ return {
 	},
 	{
 		"altermo/npairs-integrate-upair",
+		enabled = false,
 		event = {
 
 			"InsertEnter",

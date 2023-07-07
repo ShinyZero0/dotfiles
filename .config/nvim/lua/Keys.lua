@@ -1,9 +1,9 @@
 -- Keymappings
 
 noremap("n", "dD", "ddk")
-noremap("v", "gy", "y']")
+noremap("x", "gy", "y']")
 noremap("n", "<LEADER>s", SplitAtCursor)
-noremap("v", "gy", "y']")
+noremap("x", "gy", "y']")
 map("i", "<C-a>", ToggleEndingStuff)
 map("i", "<C-e>", "<End>")
 map("n", "<leader>a", ToggleEndingStuff)
@@ -12,9 +12,9 @@ map("n", "<CR>", function()
 end)
 
 -- Map system clipboard
-noremap({ "n", "v" }, "<Leader>y", '"+y')
-noremap({ "n", "v" }, "<Leader>p", '"+p')
-noremap({ "n", "v" }, "<Leader>P", '"+P')
+noremap({ "n", "x" }, "<Leader>y", '"+y')
+noremap({ "n", "x" }, "<Leader>p", '"+p')
+noremap({ "n", "x" }, "<Leader>P", '"+P')
 
 -- Switch windows with alt_hjkl
 mapcmd({ "n", "t" }, "<M-h>", "wincmd h", {})
@@ -52,7 +52,7 @@ end, {})
 map("n", "<leader>SW", function()
 	Spectre.open_visual({ select_word = true })
 end, {})
-map("v", "<leader>S", function()
+map("x", "<leader>S", function()
 	Spectre.open_visual()
 end, {})
 map("n", "<leader>SF", function()

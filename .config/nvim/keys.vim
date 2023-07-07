@@ -26,7 +26,7 @@ cnoreabbrev m +1mark z \| move
 " VISUAL MODE
 
 " vnoremap p "_d "='v:register'P
-vnoremap & :'<,'>&<CR>
+xnoremap & :'<,'>&<CR>
 
 " MISC PLUGINS
 
