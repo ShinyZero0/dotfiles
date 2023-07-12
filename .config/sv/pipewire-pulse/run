@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# nq bash -c "sleep 4; sv force-restart ../polybar"
+exec nice -n -15 pipewire-pulse

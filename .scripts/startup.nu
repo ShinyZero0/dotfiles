@@ -8,6 +8,8 @@ let services = [
 	"~/.config/sv/keynav",
 	"~/.config/sv/corectrl",
 	"~/.config/sv/pipewire",
+	"~/.config/sv/pipewire-pulse",
+	"~/.config/sv/wireplumber",
 	"~/.config/sv/picom",
 	"~/.config/sv/polybar",
 	"~/.config/sv/wallpapers",
@@ -18,4 +20,4 @@ let services = [
 for sv in $services {
 	try { ln -s ($sv | path expand) $svdir }
 }
-runsv ~/.config/sv/runsvdir-graphic 
+exec runsv ~/.config/sv/runsvdir-graphic 

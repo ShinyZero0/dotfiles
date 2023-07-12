@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
 
-pipewire & 
-sleep 1
-wireplumber & 
-sleep 1
-nq bash -c "sleep 3; ~/.scripts/xsettings.bash"
-exec pipewire-pulse
+nq bash -c "sleep 1; sv restart ../wireplumber"
+exec nice -n -15 pipewire

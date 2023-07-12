@@ -1,1 +1,4 @@
-exec wireplumber
+#!/usr/bin/env bash
+
+nq bash -c "sleep 1; sv restart ../pipewire-pulse"
+exec nice -n -15 wireplumber
