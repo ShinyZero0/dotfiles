@@ -1,0 +1,20 @@
+#!/usr/bin/env nu
+
+def "main" [] {
+	
+	ss -tlpnH
+		| lines
+		| each {
+			split row -r '\s+'
+			| get 3
+			| each {
+				split row ':'
+				| last
+			}
+		}
+		| uniq
+		| to text
+		| rofi -dmenu
+		| $"open -t localhost:($in)"
+		| save -f $env.QUTE_FIFO
+}

@@ -1,6 +1,7 @@
 use utils.nu Home
 export use termux-pkg-cmp.nu *
 export def-env AltEnv [] {
+
 	$env.config.rm.always_trash = false
 	$env.PATH = (
 		$env.PATH

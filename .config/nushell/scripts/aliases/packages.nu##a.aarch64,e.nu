@@ -1,3 +1,4 @@
+use termux-pkg-cmp.nu *
 export alias pkin = pkg install
 export alias pkrm = pkg remove
 export alias pkup = pkg upgrade

@@ -70,8 +70,8 @@ export def yankfile [] {
 
 # list runit services
 export def svls [
-	--all(-a)
-	--root(-r)
+	--all(-a) # list currently disabled ones
+	--root(-r) # list system-wide services
 ] {
 	if $all {
 
@@ -138,7 +138,7 @@ export def "peacemaker" [] {
 			each { |it|
 				$env.HOME | path join $it
 			}
-		}
+		} else {$in}
 	)
 }
 

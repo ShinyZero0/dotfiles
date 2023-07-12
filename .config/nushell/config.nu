@@ -271,7 +271,7 @@ let-env config = {
 				description_text: yellow
 			}
 			source: { |buffer, position|
-				$nu.scope.commands
+				scope commands
 				| where name =~ $buffer
 				| each { |it| { value: $it.name description: $it.usage } }
 			}
@@ -292,7 +292,7 @@ let-env config = {
 				description_text: yellow
 			}
 			source: { |buffer, position|
-				$nu.scope.vars
+				scope variables
 				| where name =~ $buffer
 				| sort-by name
 				| each { |it| { value: $it.name description: $it.type } }
@@ -318,7 +318,7 @@ let-env config = {
 				description_text: yellow
 			}
 			source: { |buffer, position|
-				$nu.scope.commands
+				scope commands
 				| where name =~ $buffer
 				| each { |it| { value: $it.name description: $it.usage } }
 			}
@@ -452,7 +452,7 @@ use rename.nu *
 
 use git-completions.nu *
 use make-completions.nu *
-use man-cmp.nu *
+use man-completions.nu *
 use zellij-completions.nu *
 use proc-cmp.nu *
 use udevil-cmp.nu *

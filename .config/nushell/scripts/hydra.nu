@@ -1,10 +1,11 @@
 use choose.nu funcs
 overlay use funcs
+use pipes.nu First
 
 # get command usage
 def "get-usage" [ command ] {
-	use pipes.nu First
-	$nu.scope.commands
+
+	scope commands
 		| First {$in.name == $command}
 		| get usage
 }

@@ -1,4 +1,7 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, system, ... }:
+let 
+  inherit (inputs) nuScripts nuTreeSitter sentsplit jsonfmt;
+in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "zero";
@@ -15,83 +18,102 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
+  home.packages = with pkgs;
+    ([
 
-    # Stuff
+      # Stuff
+      firefox-devedition-bin
+      onlyoffice-bin
+      xkeysnail
+      keynav
 
-    firefox-devedition-bin
-    onlyoffice-bin
-    xkeysnail
-    keynav
+      # Language tooling
 
-    # Language tooling
+      yamlfmt
 
-    pyright
-    black
+      pyright
+      black
 
-    # Nix
-    nixfmt
-    nil
+      # Nix
+      nix-tree
+      nixfmt
+      nil
 
-    comrak
-    marksman
+      comrak
+      marksman
 
-    shellcheck
+      shellcheck
 
-    # Required in flakes:
-    # lua-language-server
-    # stylua
-    # omnisharp-roslyn 
+      # Installed in devshells:
+      # lua-language-server
+      # stylua
+      # jsbeautifier
 
-    # CLI stuff
+      rome
+      # rslint
+      # flow
+      quick-lint-js
+      # eslint_d
+      omnisharp-roslyn
 
-    magic-wormhole-rs
-    delta
-    bat
-    gum
-    vivid
+      # CLI stuff
 
-    duf
-    du-dust
+      croc
+      delta
+      bat
+      gum
 
-    btop
-    bottom
-    qrencode
-    entr # run commands on file changes
-    zellij
-    moreutils
-    fd
-    ripgrep
-    sd # sed
-    skim
-    fzf
-    # pagers
-    moar
-    ov
-    chroma
-    translate-shell
-    python310Packages.grip # markdown previewer
-    github-cli
-    empty # needed for rofi-connman
+      duf
+      du-dust
 
-    # Fonts
-    ibm-plex
-    (nerdfonts.override {
-      fonts = [
-        "InconsolataLGC"
-        "IBMPlexMono"
-        "NerdFontsSymbolsOnly"
-        "CascadiaCode"
-      ];
-    })
+      # selfhost
+      bore-cli
+      jellyfin
+      jellyfin-mpv-shim
+      jellycli
+      jftui
+      jellyfin-web
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ];
+      btop
+      bottom
+      qrencode
+      entr
+      zellij
+
+      moreutils
+      fd
+      ripgrep
+      sd # sed
+      fzf
+      chroma
+      translate-shell
+      # markdown previewer
+      python311Packages.grip
+      github-cli
+      # needed for rofi-connman
+      empty
+
+      # Fonts
+      ibm-plex
+      (nerdfonts.override {
+        fonts = [
+          "InconsolataLGC"
+          "IBMPlexMono"
+          "NerdFontsSymbolsOnly"
+          "CascadiaCode"
+        ];
+      })
+
+      # # You can also create simple shell scripts directly inside your
+      # # configuration. For example, this adds a command 'my-hello' to your
+      # # environment:
+      # (pkgs.writeShellScriptBin "my-hello" ''
+      #   echo "Hello, ${config.home.username}!"
+      # '')
+    ] ++ [
+      jsonfmt.packages.${system}.default
+      sentsplit.packages.${system}.default
+    ]);
 
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
@@ -104,18 +126,16 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".local/share/nushell/man-completions.nu".source =
+      "${nuScripts}/custom-completions/man/man-completions.nu";
+    ".local/share/nvim/lazy/nvim-treesitter/queries/nu/highlights.scm".source =
+      "${nuTreeSitter}/queries/highlights.scm";
+    ".local/share/nushell/zellij-completions.nu".source =
+      "${nuScripts}/custom-completions/zellij/zellij-completions.nu";
+    ".local/share/nushell/make-completions.nu".source =
+      "${nuScripts}/custom-completions/make/make-completions.nu";
   };
 
-  # You can also manage environment variables but you will have to manually
-  # source
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/zero/etc/profile.d/hm-session-vars.sh
-  #
-  # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     # DOTNET_ROOT = "${pkgs.dotnet-sdk_7}";
     NIXPKGS = "${pkgs.path}";

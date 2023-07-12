@@ -1,4 +1,5 @@
 export module funcs {
+
 	use utils.nu [ "Clip o" "Clip i"]
 	# open file or dir
 	export def-env _select [
@@ -75,7 +76,7 @@ export module funcs {
 		let exit = ( gum confirm $'Open with default handler: "($hand)"?' | complete | get exit_code )
 		if $exit == 0 {
 			# my custom opener
-			opener $file
+			^$hand $file
 		} else {
 			# paste the path into clipboard. full path if not focused and basename if focused, see line 41
 			$file | Clip i

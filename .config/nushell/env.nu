@@ -1,20 +1,16 @@
 # Nushell Environment Config File
-#
-# version = 0.78.1
 
-# Directories to search for scripts when calling source or use
-#
-# By default, <nushell-config-dir>/scripts is added
 use ~/.config/nushell/scripts/utils.nu [
 	Home,
 ]
 
 let dataDir = (Home '.local/share/nushell')
 mkdir $dataDir
+# By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIRS = [
 
-    ($nu.config-path | path dirname | path join 'scripts')
-    ($nu.config-path | path dirname | path join 'completions')
+	($nu.config-path | path dirname | path join 'scripts')
+	($nu.config-path | path dirname | path join 'completions')
 	$dataDir
 ]
 
@@ -48,28 +44,38 @@ let-env PLATES_DIR = ( Home '.stuff/plates' )
 # User options
 
 # used in some places e.g. focus.nu
-let-env FUZZY_FINDER = "zf"
+let-env FUZZY_FINDER = "fzf"
+let-env PAGER = "less -RF --incsearch --status-line --mouse --wheel-lines 3"
+let-env MANPAGER = $env.PAGER
+let-env DELTA_PAGER = $env.PAGER
+let-env BAT_PAGER = $env.PAGER
+
 # used for multiple selection
 let-env FZF_DEFAULT_OPTS = (
+	# DON'T REMOVE THE FUCKING TRAILING WHITESPACE
 	[ 
 		'--reverse',
-		' --scheme=path',
-		' --cycle',
-		' --color=dark',
-		',fg:#cbe3e7',
-		',bg:#1b182c',
-		',hl:#ff99e3',
-		',fg+:#aaffe4',
-		',bg+:#565575',
-		',hl+:#63f2f1',
-		',gutter:#1b182c',
-		',pointer:#aaffe4',
-		',prompt:#ff99e3',
-		',info:#ffe9aa',
-		',header:#cbe3e7',
-		',spinner:#63f2f1',
+		'--scheme=path',
+		'--cycle',
+		'--color=dark'
 	]
-	| str join
+	| str join " "
+	| $in ++
+	[
+		'fg:#cbe3e7',
+		'bg:#1b182c',
+		'hl:#ff99e3',
+		'fg+:#aaffe4',
+		'bg+:#565575',
+		'hl+:#63f2f1',
+		'gutter:#1b182c',
+		'pointer:#aaffe4',
+		'prompt:#ff99e3',
+		'info:#ffe9aa',
+		'header:#cbe3e7',
+		'spinner:#63f2f1'
+	]
+	| str join ","
 )
 
 mkdir $env.NQDIR
@@ -92,15 +98,16 @@ let-env PROMPT_MULTILINE_INDICATOR = { "::: " }
 # Note: The conversions happen *after* config.nu is loaded
 let-env ENV_CONVERSIONS = {
 
-  "PATH": {
+	"PATH": {
 
-    from_string: { |s| $s | split row (char esep) | path expand -n }
-    to_string: { |v| $v | path expand -n | str join (char esep) }
-  }
-  "XDG_DATA_DIRS": {
+		from_string: { |s| $s | split row (char esep) | path expand -n }
+		to_string: { |v| $v | path expand -n | str join (char esep) }
+	}
+	"XDG_DATA_DIRS": {
 
-    from_string: { |s| $s | split row (char esep) | path expand -n }
-    to_string: { |v| $v | path expand -n | str join (char esep) }
-  }
+		from_string: { |s| $s | split row (char esep) | path expand -n }
+		to_string: { |v| $v | path expand -n | str join (char esep) }
+	}
 }
 
+export alias r = exec nu
