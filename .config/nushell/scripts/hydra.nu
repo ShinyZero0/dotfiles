@@ -1,11 +1,11 @@
-use choose.nu funcs
-overlay use funcs
+use choose.nu funcs *
 use pipes.nu First
 
+let ScopeCommands = (scope commands | select name usage)
 # get command usage
 def "get-usage" [ command ] {
 
-	scope commands
+	$ScopeCommands
 		| First {$in.name == $command}
 		| get usage
 }
