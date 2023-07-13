@@ -10,7 +10,7 @@ export def "nq ls" [] {
 		| wrap name
 		| merge ($in.name | _nqProcessesCommands)
 		| merge ($in.name | _nqProcessesModtime)
-		| recent
+		| sort-by modified
 }
 # input: process lockfiles list
 # output: their modified time list

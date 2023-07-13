@@ -251,6 +251,7 @@ export def "order-files" [ dir? = ".", by? = modified ] {
 	cd $dir
 	ls
 	| where type == file
+	| sort-by $by
 	| get name
 	| indexate
 	| each { |it|
@@ -279,4 +280,19 @@ export def "order-files" [ dir? = ".", by? = modified ] {
 			}
 		)"
 	}
+}
+
+export def "hell" [ program query? ] {
+
+	^$program --help
+		| if ($query | is-empty) {
+			bat -p -l help
+		} else {
+			rg --context 3 -- $query
+			| bat -p -l help
+		}
+}
+
+export def "yankpath" [ file ] {
+	$file | path expand | Clip i
 }

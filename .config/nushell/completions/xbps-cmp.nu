@@ -1,11 +1,12 @@
 def "xbps local packages" [] {
 
-    ^xbps-query -l | lines
-    | each {
-
-        parse -r 'ii\s+(?P<value>\S+)-\S+\s+(?P<description>.+) '
-		| into record
-    }
+	^xbps-query -s "*" 
+		| lines 
+		| each { |line|
+			$line
+			| parse -r '\[.\]\s+(?P<value>\S+)-\S+\s+(?P<description>.+)'
+			| into record
+		} 
 }
 def "xbps all packages" [] {
 

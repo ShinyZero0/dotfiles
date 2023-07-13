@@ -6,11 +6,7 @@ export def indexate [] {
 }
 
 # well, invert
-export def invert [] {
-
-	let value = $in
-	if $value { false } else { true }
-}
+export def invert [] { not $in }
 
 # get file without extension
 export def un-ext [] {
