@@ -1,6 +1,5 @@
 { config, pkgs, inputs, system, ... }:
-let 
-  inherit (inputs) nuScripts nuTreeSitter sentsplit jsonfmt;
+let inherit (inputs) nuScripts nuTreeSitter sentsplit jsonfmt descfmt;
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -22,6 +21,7 @@ in {
     ([
 
       # Stuff
+
       firefox-devedition-bin
       onlyoffice-bin
       xkeysnail
@@ -113,6 +113,7 @@ in {
     ] ++ [
       jsonfmt.packages.${system}.default
       sentsplit.packages.${system}.default
+      descfmt.packages.${system}.default
     ]);
 
   home.file = {

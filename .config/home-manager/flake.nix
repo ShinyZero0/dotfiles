@@ -24,6 +24,7 @@
     };
     jsonfmt = { url = "github:shinyzero0/jsonfmt"; };
     sentsplit = { url = "github:shinyzero0/sentsplit.cs"; };
+    descfmt = { url = "github:shinyzero0/descfmt"; };
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
