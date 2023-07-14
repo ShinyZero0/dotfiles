@@ -1,6 +1,6 @@
 # How to make shit work on Void linux and some other guides
 
-## Make Steam work 
+# Make Steam work 
 
 ```bash
 xbps-install -S void-repo-multilib{,-nonfree}
@@ -11,7 +11,7 @@ For mesa users this would result in:
 ```bash
 xbps-install -S libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mesa-dri-32bit
 ```
-## Add keyboard layouts
+# Add keyboard layouts
 
 With fcitx, but that doesn't work in some programs and games:
 ```bash
@@ -23,7 +23,7 @@ With setxkbmap:
 setxkbmap -layout us,ru -option 'grp:alt_shift_toggle'
 ```
 
-## Make nix work
+# Make nix work
 
 ```bash
 sudo ln -s /etc/sv/nix-daemon/ /var/service 
@@ -33,21 +33,24 @@ nix-channel --update
 
 set `ui.key.menuAccessKeyFocuses` to false
 
-## Readline bindings
+# Readline bindings
 
 Undo: <C-/>
 To line start: <C-a>
 To line end: <C-e>
 
-## See pipe progress
-xbps-install pv
+# See pipe progress
 
-## Clear nuget cache
+install http://www.ivarch.com/programs/pv.shtml
+pv is a pipe viewer
+
+# Clear nuget cache
+
 ```bash
 dotnet nuget locals all --clear
 ```
 
-## Make partition and filesystem and mount a flash drive
+# Make partition and filesystem and mount a flash drive
 
 ```bash
 sudo
@@ -58,13 +61,39 @@ UUID=$uuid /media/$mountpoint auto defaults,user,nofail 0 2
 EOF
 ```
 
-## Mount flash drives automatically
+# Mount flash drives automatically
 
 ```bash
 sudo
 xbps-install udevil
 # copy the service from ~/.config/sv/devmon
 ln -s /etc/sv/devmon/run /var/service/
+```
+
+# Port forwarding
+
+> xwindows:
+"commonly used when one needs to expose some server which listens only on localhost to LAN (my case) or to
+internet?", I think a common one on *nix is `socat`.
+Alternatively, if you are into GNU/Linux netadmin mojo, you can also use `iptables`/`nftables` + `ip route`
+sorcery to set up NAT'ish port-forwarding that looks more "real" (i.e. remote address-preserving) to the software you use.
+
+## Make Kestrel listen for external requests
+
+That was the X problem of Y problem above actually
+In `appsettings.json` file near to the executable
+use 0.0.0.0 instead of localhost or 127.0.0.1
+
+```json
+{
+  "Kestrel": {
+    "Endpoints": {
+      "Http": {
+        "Url": "http://0.0.0.0:5000"
+      }
+    },
+  }
+}
 ```
 
 # Configure x11 sleep
