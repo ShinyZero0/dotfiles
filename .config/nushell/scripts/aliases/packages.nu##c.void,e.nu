@@ -11,7 +11,7 @@ export def pkfd [ query ] {
 		| find --invert '-32bit'
 		| each { |line|
 			$line
-			|  parse -r '\[-\]\s+(?P<value>\S+)-\S+\s+(?P<description>.+)'
+			|  parse -r '\[.\]\s+(?P<value>\S+)-\S+\s+(?P<description>.+)'
 			| into record
 		}
 }
