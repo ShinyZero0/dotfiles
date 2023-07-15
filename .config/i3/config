@@ -17,7 +17,7 @@ set $ws10 "10"
 exec --no-startup-id ~/.scripts/startup.nu
 exec --no-startup-id "dex --autostart --environment i3"
 
-exec --no-startup-id "setxkbmap us,ru -option 'grp:alt_shift_toggle'"
+exec --no-startup-id "~/.scripts/xsettings.bash"
 exec --no-startup-id "xset r rate 250 15"
 exec --no-startup-id "nitrogen --restore"
 
@@ -37,12 +37,13 @@ smart_borders on
 
 for_window [instance="DesktopEditors"] move container to workspace $ws4
 for_window [class="libreoffice.*"]     move container to workspace $ws4
-for_window [class="Steam"]             move container to workspace $ws6
+for_window [class="(?i)Steam"]             move container to workspace $ws6
 
 for_window [class=".*War Thunder.*"]   move container to workspace $ws3
 for_window [class=".*doometernalx64vk.*"]   move container to workspace $ws3
-for_window [class="corectrl"]          move scratchpad
+for_window [class="risk of rain 2.exe"]   move container to workspace $ws3
 
+for_window [class="corectrl"]          move scratchpad
 for_window [class="(?i)todo"]     floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Gpick"]        floating enable

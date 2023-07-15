@@ -9,8 +9,8 @@ bindsym XF86PowerOff exec "rofi -show power-menu -modi power-menu:rofi-power-men
 bindsym $mod+Shift+E exec "rofi -show power-menu -modi power-menu:rofi-power-menu"
 
 # Screenshots
-bindsym Print exec --no-startup-id maim --format=png | tee "$HOME/Pictures/$(date).png" | xclip -selection clipboard -t image/png
-bindsym Control+Print exec --no-startup-id maim --select --format=png | tee "$HOME/Pictures/$(date).png" | xclip -selection clipboard -t image/png
+bindsym Print exec --no-startup-id maim --format=png | tee "$HOME/Pictures/$(date -Iseconds).png" | xclip -selection clipboard -t image/png
+bindsym Control+Print exec --no-startup-id maim --select --format=png | tee "$HOME/Pictures/$(date -Iseconds).png" | xclip -selection clipboard -t image/png
 
 # something
 
@@ -55,6 +55,7 @@ bindsym $mod+Shift+Up    move up 100
 bindsym $mod+Shift+Right move right 100
 
 bindsym $mod+T layout tabbed
+bindsym $mod+Control+S layout stacked
 # made as in vim so vertical
 bindsym $mod+Control+H split v 
 # is splitting window by vertical line
