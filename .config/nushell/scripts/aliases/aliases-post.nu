@@ -1,5 +1,5 @@
-export def l [] {
-	ls | sort-by type modified
+export def l [ dir? = . ] {
+	ls $dir | sort-by modified
 }
 
 

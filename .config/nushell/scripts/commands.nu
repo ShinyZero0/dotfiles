@@ -131,14 +131,28 @@ export def ungit-cb [ --short(-s): bool ] {
 # resolve conflicts
 export def "peacemaker" [] {
 
+	let gitroot = (git rev-parse --show-toplevel)
 	nvim (
 		git diff --name-only --diff-filter=U
 		| lines
-		| if $env.IS_YADM {
-			each { |it|
-				$env.HOME | path join $it
-			}
-		} else {$in}
+		| each { |it|
+			$gitroot
+			| str trim
+			| path join $it
+		}
+	)
+}
+export def "patchmaker" [ dir = . ] {
+	
+	let gitroot = (git rev-parse --show-toplevel)
+	nvim (
+		git diff --name-only $dir
+		| lines
+		| each { |it|
+			$gitroot
+			| str trim
+			| path join $it
+		}
 	)
 }
 
@@ -295,4 +309,8 @@ export def "hell" [ program query? ] {
 
 export def "yankpath" [ file ] {
 	$file | path expand | Clip i
+}
+# pack directory as comic book tar+gzip archive
+export def "cbr" [ dir ] {
+	tar --create --gzip --file $"($dir | path basename).cbr" $"($dir)/*"
 }
