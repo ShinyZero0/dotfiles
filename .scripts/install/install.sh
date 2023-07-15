@@ -8,4 +8,8 @@ fi
 
 mkdir -p ~/.misc/
 mkdir -p ~/sources/
-
+cat << EOF > ~/.local/bin/shell
+#!/usr/bin/env bash
+exec bash
+EOF
+chmod +x ~/.local/bin/shell
