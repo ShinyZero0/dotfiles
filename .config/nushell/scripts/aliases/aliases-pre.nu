@@ -5,6 +5,7 @@ export alias visu = nvim +SudaRead
 export alias dn = dotnet
 
 export alias yd = yadm enter exec nu
+export alias yz = yadm enter exec zellij
 
 export alias vi = nvim
 
@@ -12,6 +13,7 @@ export alias q = exit
 export alias r = exec nu
 export alias nued = yadm enter exec nvim ~/.config/nushell/
 
+export alias duf = duf --only local
 export alias ll = ls --long
 export def ll0 [ arg? = . ] { ls --long --directory $arg | get 0 }
 export alias la = ls --all
@@ -44,6 +46,6 @@ export alias hms = home-manager switch
 export alias hme = yadm enter exec home-manager edit
 
 export alias ru = trans :ru
-export alias англ = trans :en
+export alias англ = trans ru:en
 
-export alias mpvs = mpv --shuffle
+export alias mpvs = mpv --shuffle --no-video 
