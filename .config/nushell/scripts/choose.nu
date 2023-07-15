@@ -5,8 +5,8 @@ export module funcs {
 	export def-env _select [
 		dir?: string 
 	] {
-		let-env FOCUS = false
-		let-env NOCD = true
+		$env.FOCUS = false
+		$env.NOCD = true
 		_confirmOpener $dir
 	}
 	
@@ -14,8 +14,8 @@ export module funcs {
 	export def-env _open [
 		dir?: string 
 	] {
-		let-env FOCUS = false
-		let-env NOCD = false
+		$env.FOCUS = false
+		$env.NOCD = false
 		_confirmOpener $dir
 	}
 
@@ -23,8 +23,8 @@ export module funcs {
 	export def-env _focus [
 		dir?: string
 	] {
-		let-env FOCUS = true
-		let-env NOCD = false
+		$env.FOCUS = true
+		$env.NOCD = false
 		_confirmOpener $dir
 	}
 	def _shortenPaths [] {
@@ -45,7 +45,7 @@ export module funcs {
 
 	def-env _confirmOpener [ dir ] {
 
-		let-env OBJ = (_getFocusChoice $dir)	
+		$env.OBJ = (_getFocusChoice $dir)	
 		if $env.OBJ == "" { return }
 		let path = (
 			$env.OBJ | path expand
@@ -73,7 +73,11 @@ export module funcs {
 		# 	$path | path basename
 		# }
 		let hand = ( opener -q $file ) # get the program name
-		let exit = ( gum confirm $'Open with default handler: "($hand)"?' | complete | get exit_code )
+		let exit = (
+			gum confirm $'Open with default handler: "($hand)"?'
+			| complete
+			| get exit_code
+		)
 		if $exit == 0 {
 			# my custom opener
 			^$hand $file

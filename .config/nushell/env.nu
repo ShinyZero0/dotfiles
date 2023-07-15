@@ -7,27 +7,27 @@ use ~/.config/nushell/scripts/utils.nu [
 let dataDir = (Home '.local/share/nushell')
 mkdir $dataDir
 # By default, <nushell-config-dir>/scripts is added
-let-env NU_LIB_DIRS = [
+$env.NU_LIB_DIRS = [
 
 	($nu.config-path | path dirname | path join 'scripts')
 	($nu.config-path | path dirname | path join 'completions')
 	$dataDir
 ]
 
-let-env NU_PLUGIN_DIRS = [
+$env.NU_PLUGIN_DIRS = [
 
     ($nu.config-path | path dirname | path join 'plugins')
 ]
 
-let-env GH_USER = "ShinyZero0"
-let-env EDITOR = 'nvim'
-let-env IS_YADM = (
+$env.GH_USER = "ShinyZero0"
+$env.EDITOR = 'nvim'
+$env.IS_YADM = (
 	$env.PROMPT?
 		| default ""
 		| str contains "yadm"
 )
 # for neovim
-# let-env COLORSCHEME = if (
+# $env.COLORSCHEME = if (
 #
 # 	$env.PROMPT?
 # 	| default ""
@@ -38,20 +38,20 @@ let-env IS_YADM = (
 # 	"warm"
 # }
 
-let-env NQDIR = ( Home '.stuff/nq' )
-let-env PLATES_DIR = ( Home '.stuff/plates' )
+$env.NQDIR = ( Home '.stuff/nq' )
+$env.PLATES_DIR = ( Home '.stuff/plates' )
 
 # User options
 
 # used in some places e.g. focus.nu
-let-env FUZZY_FINDER = "fzf"
-let-env PAGER = "less -RF --incsearch --status-line --mouse --wheel-lines 3"
-let-env MANPAGER = $env.PAGER
-let-env DELTA_PAGER = $env.PAGER
-let-env BAT_PAGER = $env.PAGER
+$env.FUZZY_FINDER = "fzf"
+$env.PAGER = "less -RF --incsearch --status-line --mouse --wheel-lines 3"
+$env.MANPAGER = $env.PAGER
+$env.DELTA_PAGER = $env.PAGER
+$env.BAT_PAGER = $env.PAGER
 
 # used for multiple selection
-let-env FZF_DEFAULT_OPTS = (
+$env.FZF_DEFAULT_OPTS = (
 	# DON'T REMOVE THE FUCKING TRAILING WHITESPACE
 	[ 
 		'--reverse',
@@ -83,20 +83,20 @@ mkdir $env.NQDIR
 # if ( $dataDir | path join 'zoxide.nu' | path exists ) {} else {
 # 	zoxide init nushell | save ( $dataDir | path join 'zoxide.nu' )
 # }
-let-env LS_COLORS = ( open ~/.local/share/nushell/lscolors.txt )
+$env.LS_COLORS = ( open ~/.local/share/nushell/lscolors.txt )
 
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
-let-env PROMPT_INDICATOR = { "> " }
-let-env PROMPT_INDICATOR_VI_INSERT = { ": " }
-let-env PROMPT_INDICATOR_VI_NORMAL = { "> " }
-let-env PROMPT_MULTILINE_INDICATOR = { "::: " }
+$env.PROMPT_INDICATOR = { "> " }
+$env.PROMPT_INDICATOR_VI_INSERT = { ": " }
+$env.PROMPT_INDICATOR_VI_NORMAL = { "> " }
+$env.PROMPT_MULTILINE_INDICATOR = { "::: " }
 
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
 # - converted from a value back to a string when running external commands (to_string)
 # Note: The conversions happen *after* config.nu is loaded
-let-env ENV_CONVERSIONS = {
+$env.ENV_CONVERSIONS = {
 
 	"PATH": {
 

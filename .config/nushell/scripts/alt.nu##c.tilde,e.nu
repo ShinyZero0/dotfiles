@@ -1,3 +1,3 @@
 export def-env "AltEnv" [] {
-	let-env FUZZY_FINDER = fzf
+	$env.FUZZY_FINDER = fzf
 }

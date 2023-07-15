@@ -6,11 +6,11 @@ export def mvnrp [
 	old: string
 	new: string
 ] {
-	let-env NvimConfig = ( "~/.config/nvim" | path expand )
+	$env.NvimConfig = ( "~/.config/nvim" | path expand )
 
 	mv $old $new
-	let-env oldFull = ( $old | path expand )
-	let-env newFull = ( $new | path expand )
+	$env.oldFull = ( $old | path expand )
+	$env.newFull = ( $new | path expand )
 	if ( $new | get-ext ) == "lua" and (
 		$new | is-child-of $env.NvimConfig
 	) {

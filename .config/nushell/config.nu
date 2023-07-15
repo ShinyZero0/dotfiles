@@ -33,7 +33,7 @@ let external_completer = { |spans|
 
 
 # The default config record. This is where much of your global configuration is setup.
-let-env config = {
+$env.config = {
 
 	show_banner: false
 	ls: {
@@ -366,7 +366,6 @@ let-env config = {
 			event: {
 
 				until: [
-
 					{ edit: CutToLineEnd }
 				]
 			}
@@ -409,13 +408,16 @@ let-env config = {
 	]
 }
 if not (which direnv | is-empty) {
+
 	$env.config.hooks.pre_prompt = (
-			$env.config.hooks.pre_prompt | append {
-				let direnv = (direnv export json | from json)
-				let direnv = if ($direnv | length) == 1 { $direnv } else { { } }
-				$direnv | load-env
-			}
-		)
+
+		$env.config.hooks.pre_prompt
+		| append {
+			let direnv = (direnv export json | from json)
+			let direnv = if ($direnv | length) == 1 { $direnv } else { { } }
+			$direnv | load-env
+		}
+	)
 }
 
 source zoxide.nu
@@ -423,8 +425,8 @@ source hydra.nu
 
 use theme.nu *
 # Use nushell functions to define your right and left prompt
-let-env PROMPT_COMMAND = { create_left_prompt }
-let-env PROMPT_COMMAND_RIGHT = { create_right_prompt }
+$env.PROMPT_COMMAND = { create_left_prompt }
+$env.PROMPT_COMMAND_RIGHT = { create_right_prompt }
 $env.config.color_config = ( GetDarkTheme )
 
 use aliases/aliases-pre.nu *
