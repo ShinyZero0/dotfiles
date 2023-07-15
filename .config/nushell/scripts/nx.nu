@@ -2,8 +2,16 @@ use utils [
 	Home
 ]
 
+def "lang-cmp" [] {
+	
+	ls ~/.stuff/nix/
+	| where type == dir
+	| get name
+	| path basename
+}
+
 export def nx-init [
-	lang: any
+	lang: string@lang-cmp
 	--name(-n): any
 	--version(-v): any
 ] {
@@ -29,15 +37,19 @@ export def nx-init [
 		| str replace -as "<version>" $version
 		| save flake.nix
 
+	ls $"~/.stuff/nix/($lang)"
+		| where name != flake.nix
+		| get name
+		| each {cp $in ./}
+
 	git add flake.nix
 	direnv allow
 }
 
-export def nx-sync [ dir?: any ] {
+export def nx-sync [ dir?: any = /home/zero/dev ] {
 
 	let LockFile = ( "~/.stuff/nix/flake.lock" | path expand )
 
-	let directory = ( $dir | default ( Home dev ) )
 	open $LockFile
 		| from json
 		| upsert nodes.nixpkgs (
@@ -47,7 +59,7 @@ export def nx-sync [ dir?: any ] {
 		| to json
 		| save -f $LockFile
 
-	let list = ( fd flake.lock $directory | lines )
+	let list = ( fd flake.lock $dir | lines )
 	for entry in $list {
 		cd ( $entry | path dirname )
 		open flake.lock
@@ -61,8 +73,26 @@ export def nx-sync [ dir?: any ] {
 	}
 }
 
-export def nx-update [ ...args ] {
+export def nx-update [] {
 
 	nix flake update ~/.stuff/nix/
 	nx-sync
+}
+export def "nx-inspect" [ dir?: any = /home/zero/dev ] {
+	
+	fd flake.lock $dir
+	| lines
+	| wrap file
+	| each { |entry|
+		upsert value (
+			open $entry.file
+				| from json
+				| get nodes
+				| transpose key value
+				| where key =~ nixpkgs
+				| get value.locked.rev
+		)
+	}
+	| flatten
+	# | wrap 
 }
