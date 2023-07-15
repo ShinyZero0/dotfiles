@@ -53,38 +53,48 @@ export def fq [
 
 # Enqueue
 export def nq [
-	--now(-n): bool
+	--sudo(-s): bool # if should run command as root
+	--clean(-c): bool
 	--thread(-t): any
 	...args: any
 ] {
 
-# TODO: make a sudo flag to prompt for password
-	if ($now) {
-
-		let-env NQDIR = (_getFreeThread)
-		^nq nu -c $"( $args | str join ' ' )"
-		print $env.NQDIR
-	} else if not ($thread | is-empty) {
-
-		let-env NQDIR = ($env.NQDIR | path join $thread)
-		^nq nu -c $"( $args | str join ' ' )"
+	# TODO: make a sudo flag to prompt for password
+	if not ($thread | is-empty) {
+		$env.NQDIR = ($env.NQDIR | path join $thread)
 	} else {
+		$env.NQDIR = (_getFreeThread)
+	}
 
-		let-env NQDIR = ($env.NQDIR | path join "Main")
+	if $sudo {
+		let pass = (input "Password:\n")
+		^nq echo $pass | sudo -S nu -c $"( $args | str join ' ' )"
+	} else {
 		^nq nu -c $"( $args | str join ' ' )"
+	}
+	print $env.NQDIR
+
+	if $clean {
+		^nq sh -c $"rm -r ($env.NQDIR)"
 	}
 }
 
 export def "nq clean" [] {
 
-	let active = ( fd -t x . $env.NQDIR )
-
 	fd -t f . $env.NQDIR
 		| lines
 		| filter {
-			not $in in $active
+
+			ls -l $in
+			| first
+			| get mode
+			| str contains "x"
+			| invert
 		}
-		| each { |f| rm -r ( $f | path dirname ) }
+		| each { |f|
+			rm -r ( $f | path dirname );
+			print $"Removed ($f)"
+		}
 		| ignore
 }
 export def "nq kill" [
