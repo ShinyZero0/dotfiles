@@ -10,29 +10,12 @@
     },
     {
       "GlobPatterns": [
-        "*.tar*",
+        "*.tar",
         "*.gz",
         "*.zip"
       ],
-      "Exec": "atool -x",
+      "Exec": "atool --extract; read -p 'Press any key'",
       "Term": true
-    },
-		{
-			"GlobPatterns": [
-				"*.png",
-				"*.jpg",
-				"*.jpeg",
-				"*.webm",
-				"*.gif"
-			],
-			"Exec": "nomacs"
-		},
-    {
-      "RegexPatterns": [
-        "^https?://.*"
-      ],
-      "Exec": "firefox-devedition",
-      "Term": false
     },
     {
 			"GlobPatterns": [
@@ -43,7 +26,29 @@
     },
 		{
 			"GlobPatterns": [
-				"*.pdf"
+				"*.{png,jpg,jpeg,webm,gif}"
+			],
+			"Exec": "imv"
+		},
+    {
+      "RegexPatterns": [
+        "^https?://.*"
+      ],
+			"GlobPatterns": [
+				"*.{com,net,org,io}"
+			],
+      "Exec": "qutebrowser"
+    },
+		{
+      "RegexPatterns": [
+        "^https?://.*\\.(png|jpg|jpeg)$"
+      ],
+			"Exec": "sh -c 'curl $@ | imv -' -- "
+		},
+		{
+			"GlobPatterns": [
+				"*.pdf",
+				"*.cbr"
 			],
 			"Exec": "zathura"
 		}

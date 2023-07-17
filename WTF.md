@@ -1,5 +1,15 @@
 # How to make shit work on Void linux and some other guides
 
+# Software list
+
+- ddns client:
+    - inadyn
+- automount:
+    - udevil
+- tunneling:
+    - socat
+    - bore.pub
+
 # Make Steam work 
 
 ```bash
@@ -80,7 +90,8 @@ sorcery to set up NAT'ish port-forwarding that looks more "real" (i.e. remote ad
 
 ## Make Kestrel listen for external requests
 
-That was the X problem of Y problem above actually
+That was the X problem of Y problem above actually.
+
 In `appsettings.json` file near to the executable
 use 0.0.0.0 instead of localhost or 127.0.0.1
 
@@ -99,8 +110,8 @@ use 0.0.0.0 instead of localhost or 127.0.0.1
 # Configure x11 sleep
 
 ```bash
-xset -s on
-xset -s off
+xset -s off # disable sleep
+xset -dpms # disable Display Power Management Signaling, enable with +dpms
 ```
 
 # Pipewire + pulse network streaming through rtp
@@ -115,8 +126,9 @@ pactl load-module module-rtp-send source=rtp.monitor destination=224.0.0.56 port
 # Zswap
 
 ```bash
-# in /etc/default/grub:
+cat << EOF >> /etc/default/grub
 GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4 zswap.enabled=1"
+EOF
 # then run
 sudo update-grub
 ```
@@ -128,4 +140,22 @@ in /etc/fstab:
 
 ```bash
 UUID=$uuid / btrfs defaults,compress=zstd:3 0 0
+```
+
+# See mount options
+
+```bash
+grep $fs /proc/mounts
+```
+
+# Diff branches by commits in git
+
+```bash
+git log --oneline $branch1 ^$branch2
+```
+
+# See who is logged in in which tty and their PIDs
+
+```bash
+who -la
 ```

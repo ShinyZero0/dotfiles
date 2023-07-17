@@ -17,7 +17,6 @@ keybinds clear-defaults=true {
         // bind "Alt c" { Copy; }
     }
     locked {
-
         bind "Alt g" { SwitchToMode "Normal"; }
     }
     resize {
@@ -161,7 +160,6 @@ keybinds clear-defaults=true {
     shared_except "locked" {
 
         bind "Alt g" { SwitchToMode "Locked"; }
-        bind "Alt q" { Quit; }
         bind "Alt n" { NewPane; }
         bind "Alt Left" { MoveFocusOrTab "Left"; }
         bind "Alt Right" { MoveFocusOrTab "Right"; }
