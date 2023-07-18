@@ -6,6 +6,6 @@ def "main" [] {
 	| split row (char esep)
 	| match $in.12 {
 		"TF" => {bspc node -f newest.local.!floating}
-		_ => {bspc node -f any.local.floating}
+		_ => {bspc node -f newest.local.floating}
 	}
 }

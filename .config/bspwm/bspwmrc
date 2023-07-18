@@ -21,11 +21,13 @@ bspc config normal_border_color $bground
 bspc config split_ratio          0.51
 bspc config borderless_monocle true
 bspc config single_monocle     true
-bspc config gapless_monocle    false
+bspc config directional_focus_tightness    low
+bspc config click_to_focus any
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+
 bspc rule -a floatwin state=floating

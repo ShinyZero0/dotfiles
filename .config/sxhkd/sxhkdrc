@@ -20,6 +20,10 @@ super + Escape
 # playerctl
 XF86Audio{Prev,Next,Play}
 	playerctl {previous,next,play-pause}
+XF86Audio{Raise,Lower}Volume
+	pactl set-sink-volume @DEFAULT_SINK@ {+,-}10% && $refresh_i3status
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 
 super + g
 	~/.scripts/TogglePicom.sh
@@ -48,11 +52,11 @@ super + c
 
 # set the window state
 super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+	bspc node -t ~{tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
-super + ctrl + {m,x,y,z, shift + h}
-	bspc node -g {marked,locked,sticky,private,hidden}
+super + ctrl + f
+	bspc node -g $(printf "%s\n" "marked" "locked" "sticky" "private" "hidden" | rofi -dmenu)
 
 # focus/swap
 
@@ -72,13 +76,21 @@ super + {p,comma,period}
 super + {_,shift + }Tab
 	bspc node -f {next,prev}.local.!hidden.window
 
+# for monocle
+super + button1
+	bspc node -f next.local.!hidden.window
+
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
+	bspc desktop -f {prev,next}.occupied
+super + shift + bracket{left,right}
+	bspc desktop -f {prev,next}.!occupied
 
-# focus the last node/desktop
-super + {grave,r}
-	bspc {node,desktop} -f last
+# focus the latest desktop
+super + r
+	bspc desktop -f last.occupied
+super + grave
+	bspc node -f last
 
 # focus the older or newer node in the focus history
 super + {o,i}
@@ -116,10 +128,13 @@ super + {_,shift + }{1-9,0}
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
-	bspc node -z {left -30 0,bottom 0 30,top 0 -30,right 30 0}
+	bspc node -z {left -20 0 || bspc node -z right -20 0, \
+	bottom 0 20 || bspc node -z top 0 20,\
+	top 0 -20 || bspc node -z bottom 0 -20,\
+	right 20 0 || bspc node -z left 20 0}
 
-# contract a window by moving one of its side inward
-super + ctrl + {h,j,k,l}
+# contract a window by moving one of its side inward (left for floatings)
+super + alt + ctrl + {h,j,k,l}
 	bspc node -z {right -30 0,top 0 30,bottom 0 -30,left 30 0}
 
 # balance
