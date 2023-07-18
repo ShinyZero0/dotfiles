@@ -13,8 +13,7 @@ let services = [
 	"~/.config/sv/picom",
 	"~/.config/sv/polybar",
 	"~/.config/sv/wallpapers",
-	"~/.config/sv/i3lock",
-	"~/.config/sv/i3helper",
+	"~/.config/sv/sxhkd",
 	"~/.config/sv/xkeysnail",
 ]
 for sv in $services {

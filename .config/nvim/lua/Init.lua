@@ -11,6 +11,7 @@ vim.filetype.add({
 
 		["flake.lock"] = "json",
 		["run"] = "sh",
+		["sxhkdrc"] = "sxhkdrc",
 	},
 })
 require("Options")
