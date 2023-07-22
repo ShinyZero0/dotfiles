@@ -6,6 +6,11 @@ ctrl + alt + {t,f}
 super + Return
 	rofi -show-icons -show combi -modes combi -combi-modes run,drun -display-run '' -display-drun ''
 
+super + shift + u
+	~/.scripts/ffmpeg.sh
+super + v
+	~/.scripts/VimInsert.nu
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd; \
@@ -30,7 +35,7 @@ super + g
 
 # powermenu
 super + shift + e
-	rofi -show power-menu -modi power-menu:rofi-power-menu
+	rofi -auto-select -show power-menu -modi power-menu:rofi-power-menu
 
 # close and kill
 super + {_,shift + }q
@@ -50,34 +55,40 @@ super + c
 
 # state/flags
 
+# show
+super + ctrl + s
+	~/.scripts/BspwmShowHidden.nu
 # set the window state
 super + {t,shift + t,s,f}
 	bspc node -t ~{tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
 super + ctrl + f
-	bspc node -g $(printf "%s\n" "marked" "locked" "sticky" "private" "hidden" | rofi -dmenu)
+	bspc node -g $(printf "%s\n" "marked" "locked" "sticky" "private" "hidden" | rofi -dmenu -auto-select)
 
 # focus/swap
 
 # toggle-focus floating window, like in i3wm
-super + space
+super + period
 	~/.scripts/BspwmFocusFloating.nu
 
 # focus/swap the node in the given direction
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
+# rotate
+super + {a, d}
+	bspc node @parent -R {270,90}
 # focus the node for the given path jump
-super + {p,comma,period}
-	bspc node -f @{parent,first,second}
+super + {p,comma}
+	bspc node -f @{parent,first}
 
 # focus the next/previous window in the current desktop
 super + {_,shift + }Tab
 	bspc node -f {next,prev}.local.!hidden.window
 
 # for monocle
-super + button1
+super + button2
 	bspc node -f next.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor

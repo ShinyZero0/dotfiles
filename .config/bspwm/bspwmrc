@@ -32,3 +32,4 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
 bspc rule -a floatwin state=floating
+bspc rule -a corectrl state=floating hidden=on

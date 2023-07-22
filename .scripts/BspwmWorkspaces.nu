@@ -21,8 +21,7 @@ def "main" [] {
 	}
 	| format '{ws} : {content}'
 	| to text
-	| rofi -dmenu -auto-select
+	| rofi -dmenu -i -auto-select
 	| split words
 	| first
-	# | bspc desktop -f $in
 }

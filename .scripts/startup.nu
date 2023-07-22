@@ -14,9 +14,10 @@ let services = [
 	"~/.config/sv/polybar",
 	"~/.config/sv/wallpapers",
 	"~/.config/sv/sxhkd",
-	"~/.config/sv/xkeysnail",
+	"~/.config/sv/keyd-app",
 ]
 for sv in $services {
 	try { ln -s ($sv | path expand) $svdir }
 }
+playerctld daemon
 exec runsv ~/.config/sv/runsvdir-graphic 
