@@ -22,6 +22,10 @@ controls{
       keyboardKey:i=58
     }
 
+    ID_AIR_BRAKE{
+      keyboardKey:i=48
+    }
+
     ID_BAILOUT{
       keyboardKey:i=56
       keyboardKey:i=36
@@ -206,6 +210,11 @@ controls{
 
     ID_ZOOM_TOGGLE{
       keyboardKey:i=29
+    }
+
+    ID_ZOOM_TOGGLE{
+      keyboardKey:i=29
+      keyboardKey:i=44
     }
 
     sweep_rangeMax{
