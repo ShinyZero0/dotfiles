@@ -8,6 +8,6 @@ def "main" [] {
 	| first
 	| match $in {
 		"TF" => {bspc node -f newest.local.!floating}
-		_ => {bspc node -f newest.local.floating}
+		_ => {bspc node -f next.local.floating}
 	}
 }

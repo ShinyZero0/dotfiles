@@ -63,7 +63,7 @@ super + {t,shift + t,s,f}
 	bspc node -t ~{tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
-super + ctrl + f
+super + backslash
 	bspc node -g $(printf "%s\n" "marked" "locked" "sticky" "private" "hidden" | rofi -dmenu -auto-select)
 
 # focus/swap
@@ -84,12 +84,8 @@ super + {p,comma}
 	bspc node -f @{parent,first}
 
 # focus the next/previous window in the current desktop
-super + {_,shift + }Tab
-	bspc node -f {next,prev}.local.!hidden.window
-
-# for monocle
-super + button2
-	bspc node -f next.local.!hidden.window
+super + {_,button2,shift + }Tab
+	bspc node -f {next,next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
