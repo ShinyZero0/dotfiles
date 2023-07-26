@@ -7,64 +7,78 @@ local stdOpts = {
 	capabilities = capabilities,
 }
 
-local omnisharpOpts = {
+local specOpts = {
 
-	capabilities = capabilities,
-	cmd = { "OmniSharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+	omnisharpOpts = {
 
-	on_attach = function(client, bufnr)
-		client.server_capabilities.semanticTokensProvider = nil
-	end,
-}
+		cmd = { "OmniSharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
 
-local lualsOpts = {
+		on_attach = function(client, bufnr)
+			client.server_capabilities.semanticTokensProvider = nil
+		end,
+	},
 
-	settings = {
+	lualsOpts = {
 
-		Lua = {
+		settings = {
 
-			runtime = {
-				version = "LuaJIT",
-			},
-			diagnostics = {
+			Lua = {
 
-				disable = {
-					"lowercase-global",
+				runtime = {
+					version = "LuaJIT",
 				},
-				globals = { "vim" },
-			},
-			workspace = {
+				diagnostics = {
 
-				library = {
-
-					vim.api.nvim_get_runtime_file("", true),
-					vim.fn.stdpath("config"),
+					disable = {
+						"lowercase-global",
+					},
+					globals = { "vim" },
 				},
-				checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
-			},
-			telemetry = {
-				enable = false,
+				workspace = {
+
+					library = {
+
+						vim.api.nvim_get_runtime_file("", true),
+						vim.fn.stdpath("config"),
+					},
+					checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
+				},
+				telemetry = {
+					enable = false,
+				},
 			},
 		},
 	},
-	capabilities = capabilities,
 }
-
+for _, opts in ipairs(specOpts) do
+	for key, value in pairs(stdOpts) do
+		if opts[key] == nil then
+			opts[key] = value
+		end
+	end
+end
 local servers = {
 
 	nil_ls = stdOpts,
 	clangd = stdOpts,
 	pyright = stdOpts,
 	marksman = stdOpts,
-	omnisharp = omnisharpOpts,
-	lua_ls = lualsOpts,
+	omnisharp = specOpts.omnisharpOpts,
+	lua_ls = specOpts.lualsOpts,
 }
 
 for server, opts in pairs(servers) do
 	Lsp[server].setup(opts)
 end
 local function onAttach()
-	vim.call("RemapGotoDefinition")
+	local function RemapGotoDefinition()
+		if vim.bo.filetype == "cs" then
+			return
+		else
+			mapcmd({ "n" }, "gd", "lua vim.lsp.buf.definition()")
+		end
+	end
+	RemapGotoDefinition()
 	require("hydras.lsp")
 end
 A.nvim_create_autocmd("LspAttach", {

@@ -61,9 +61,9 @@ function SelectAll()
 endfunction
 xnoremap A <cmd>call SelectAll()<CR>
 
-function RemapGotoDefinition() abort
-	if &ft =~ 'cs'
-		return
-	endif
-	nnoremap <buffer> gd <cmd>lua vim.lsp.buf.definition()<CR>
-endfunction
+" function RemapGotoDefinition() abort
+" 	if &ft =~ 'cs'
+" 		return
+" 	endif
+" 	nnoremap <buffer> gd <cmd>lua vim.lsp.buf.definition()<CR>
+" endfunction
