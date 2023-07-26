@@ -1,27 +1,21 @@
 #! /usr/bin/env guile
 !#
 (use-modules (json parser)
-             ;; (rnrs io ports)
              (ice-9 popen)
-             (ice-9 rdelim)
-             (ice-9 regex)
              (ice-9 textual-ports)
              )
-(define (call-command cmd)
+(define (call-command cmd args)
   (let* (
          (pipes
            (pipe))
-         (cmd-ls (string-split cmd #\space))
          (pid
-             (spawn
-               (car cmd-ls)
-               cmd-ls
-               #:output (cdr pipes)
-               ))
+           (spawn
+             cmd
+             (cons cmd args)
+             #:output (cdr pipes)
+             ))
          )
-    (force-output (cdr pipes))
     (waitpid pid)
-    ;; (close-port pipes)
     (close-port (cdr pipes))
     (string-trim-both
       (get-string-all (car pipes))
@@ -37,20 +31,20 @@
          ws-filter
          (list-tail
            (string-split
-             (call-command "bspc query -D --names")
+             (call-command "bspc" '("query" "-D" "--names"))
              #\newline)
            10)))
      (get-ws-desc 
        (lambda (ws)
          (call-command
-           (string-append
-             "xdotool getwindowname "
-             (number->string
-               (assoc-ref 
-                 (json-string->scm
-                   (call-command
-                     (string-append "bspc query -T -d " ws)))
-                 "focusedNodeId"))))))
+           "xdotool"
+           (list "getwindowname"
+                 (number->string
+                   (assoc-ref 
+                     (json-string->scm
+                       (call-command
+                         "bspc" (list "query" "-T" "-d" ws)))
+                     "focusedNodeId"))))))
      (append-ws-desc
        (lambda (ws)
          (let ((desc (get-ws-desc ws)))
