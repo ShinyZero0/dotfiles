@@ -110,7 +110,7 @@ super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 super + {_, shift +} w
-	bspc {desktop -f, node -d} $(~/.scripts/BspwmWorkspaces.nu)
+	bspc {desktop -f, node -d} $(~/.scripts/BspwmWorkspaces.scm | rofi -dmenu -auto-select -i | awk '\{print $1\}')
 
 #
 # preselect
