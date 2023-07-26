@@ -13,6 +13,9 @@ vim.filetype.add({
 		["run"] = "sh",
 		["sxhkdrc"] = "sxhkdrc",
 	},
+	pattern = {
+		[ [[.*/etc/wireguard/.*%.conf]] ] = "confini",
+	},
 })
 require("Options")
 require("Autorun")

@@ -11,6 +11,13 @@ return {
 	-- "AndrewRadev/splitjoin.vim",
 	-- "FooSoft/vim-argwrap",
 	{
+		"HiPhish/nvim-ts-rainbow2",
+		config = false,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
+	{
 		"echasnovski/mini.splitjoin",
 		opts = {
 			mappings = { toggle = "<leader>w" },

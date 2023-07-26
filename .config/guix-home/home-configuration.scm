@@ -11,36 +11,64 @@
              (guix gexp)
              (gnu home services shells))
 
-(home-environment
-  ;; Below is the list of packages that will show up in your
-  ;; Home profile, under ~/.guix-home/profile.
-  (packages (specifications->packages (list
-                                        ;; "r-minimal"
-                                        ;; "r-pracma"
-                                        ;; "r-colorout"
-                                        ;; "r-testthat"
-                                        "ripgrep"
-                                        "fd"
-                                        ;; "bfs"
-                                        )))
-  ;; (local-file "nushell.scm")
-  ;; Below is the list of Home services.  To search for available
-  ;; services, run 'guix home search KEYWORD' in a terminal.
-  (services
-    (list (service home-bash-service-type
-                   (home-bash-configuration
-                     (environment-variables 
-                       '(("GNUPKGS" . "~/.config/guix/current/share/guile/site/3.0/gnu/"))
+(define store (open-connection))
+(define home
+  (home-environment
+    ;; Below is the list of packages that will show up in your
+    ;; Home profile, under ~/.guix-home/profile.
+    (packages
+      (append
+        (specifications->packages
+        (list
+          "ripgrep"
+          "glibc-locales"
+          "keynav"
+          "detox"
+          ;; "bfs"
+          ))
+          (list
+            guile-lsp-server
+            ;; #$(program-file "scheme-ls"
+            )
+        ))
+    (services
+      (list
+        (service home-bash-service-type
+                 (home-bash-configuration
+                   (environment-variables 
+                     `(
+                       ("GNUPKGS" .
+                        ,((package-file guix "share/guile/site/3.0")
+                          store))
+                       ("GUIX_LOCPATH" .
+                        ,((package-file glibc-locales "lib/locale")
+                          store))
+                       ("PATH" .
+                        ,(string-join
+                           (list "$HOME/.local/bin"
+                                 "$HOME/.dotnet/tools"
+                                 "$HOME/.cargo/bin"
+                                 "$HOME/.dotnet"
+                                 "$PATH"
+                                 )
+                           ":"))
                        )
-                     (aliases '(("ls" . "ls --color=auto")))
-                     (bashrc (list (local-file
-                                     ".bashrc"
-                                     "bashrc")))
-                     (bash-profile (list (local-file
-                                           ".bash_profile"
-                                           "bash_profile")))
-                     (bash-logout (list (local-file
-                                          ".bash_logout"
-                                          "bash_logout")))))
-          ;; (service home-environment-variables)
-          )))
+                     )
+                   (bashrc (list
+                             (local-file
+                               "./bash/bashrc")))
+                   (bash-profile (list
+                                   (local-file
+                                     "./bash/bash_profile")))
+                   (bash-logout (list
+                                  (local-file
+                                    "./bash/bash_logout")))))
+        (service home-files
+                 )
+        ;; (service home-mcron-configuration
+        ;;          (jobs 
+        ;;            (list
+        ;;              )))
+        ))))
+(close-connection store)
+home

@@ -48,4 +48,9 @@ require("nvim-treesitter.configs").setup({
 
 		additional_vim_regex_highlighting = false,
 	},
+	rainbow = {
+		enable = true,
+		query = "rainbow-parens",
+		strategy = require("ts-rainbow").strategy.global,
+	},
 })
