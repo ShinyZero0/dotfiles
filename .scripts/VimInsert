@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+win=$(xdotool getactivewindow)
+xkb-switch -s us
+
+xdotool windowactivate $win
+
+xsel -ob > ~/.viminsertoldclip.txt
+
+xdotool keyup shift
+xdotool keyup super
+xdotool keyup alt
+xdotool keyup ctrl
+xdotool key ctrl+c
+
+sleep 0.1
+
+xsel -ob > ~/.viminsert.md
+open ~/.viminsertoldclip.md | xsel -ib
+
+alacritty --class floatwin -e bash -c "nvim -c 'set et' ~/.viminsert.md"
+# open ~/.viminsert.md | xsel -ib
+# xdotool key ctrl+v 
+xdotool type --clearmodifiers --window $win --file ~/.viminsert.md
+# sleep 3sec
+# open ~/.viminsertoldclip.md | xsel -ib
