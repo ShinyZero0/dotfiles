@@ -193,11 +193,14 @@ config.bind('gM', 'tab-move -1')
 config.bind('<alt-r>', 'fake-key -g <ctrl-tab>')
 c.aliases["h"] = "help"
 
-c.aliases["bmark-add"] = "spawn --userscript linkding.nu post"
-c.aliases["bmark-open"] = "spawn --userscript linkding.nu get"
+c.aliases["bmark-add"] = "spawn --userscript linkding.scm post"
+c.aliases["bmark-open"] = "spawn --userscript linkding.scm get"
+c.aliases["bmark-del"] = "spawn --userscript linkding.scm delete"
 config.unbind('b')
 config.bind('ba', 'bmark-add')
 config.bind('bo', 'bmark-open')
+config.bind('bd', 'bmark-del')
+config.bind('gD', 'set-cmd-text -s :tab-give')
 
 c.aliases["localport-open"] = "spawn --userscript localport"
 config.bind('xl', 'localport-open')
