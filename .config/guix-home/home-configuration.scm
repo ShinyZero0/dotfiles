@@ -11,7 +11,7 @@
              (guix gexp)
              (gnu home services shells))
 
-(define store (open-connection))
+;; (define store (open-connection))
 (define home
   (home-environment
     ;; Below is the list of packages that will show up in your
@@ -38,11 +38,11 @@
                    (environment-variables 
                      `(
                        ("GNUPKGS" .
-                        ,((package-file guix "share/guile/site/3.0")
-                          store))
+                        ,(file-append guix "/share/guile/site/3.0")
+                          )
                        ("GUIX_LOCPATH" .
-                        ,((package-file glibc-locales "lib/locale")
-                          store))
+                        ,(file-append glibc-locales "/lib/locale"
+                          ))
                        ("PATH" .
                         ,(string-join
                            (list "$HOME/.local/bin"
@@ -50,6 +50,12 @@
                                  "$HOME/.cargo/bin"
                                  "$HOME/.dotnet"
                                  "$PATH"
+                                 )
+                           ":"))
+                       ("GUILE_LOAD_PATH" .
+                        ,(string-join
+                           (list "$HOME/.local/share/guile/site/3.0"
+                                 "$GUILE_LOAD_PATH"
                                  )
                            ":"))
                        )
@@ -70,5 +76,5 @@
         ;;            (list
         ;;              )))
         ))))
-(close-connection store)
+;; (close-connection store)
 home
