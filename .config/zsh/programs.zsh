@@ -1,6 +1,4 @@
-#  ╭──────────────────────────────────────────────────────────╮
-#  │                Zinit installing stuff                    │
-#  ╰──────────────────────────────────────────────────────────╯
+#  Zinit installing programs
 
 # Install desktop-only apps
 # zinit if="[[ $(uname -m) = x86_64 ]]" depth="1" as="null" from="gh-r" for \
@@ -18,16 +16,12 @@
 
 # Install non-release apps
 
-zinit as="null" depth="1" for \
-    atclone="mkcd build && cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build . --config Release" sbin="build/uncrustify" \
-        uncrustify/uncrustify \
-    sbin="nq" sbin="fq" atclone="make" \
-        atpull="%atclone" \
-        leahneukirchen/nq
-
-    # sbin="jaro" isamert/jaro \
-#     if="[[ $(uname -m) = x86_64 ]]" atclone="cargo install --path=." atpull="%atclone" I60R/page \
+# zinit as="null" depth="1" for \
+#     sbin="jaro" isamert/jaro \
 #     atclone="npm i ./" atpull="%atclone" sbin="bin/cli.js -> typograf-cli" typograf/typograf-cli \
+#     atclone="mkcd build && cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build . --config Release" sbin="build/uncrustify" \
+#         uncrustify/uncrustify \
+#     if="[[ $(uname -m) = x86_64 ]]" atclone="cargo install --path=." atpull="%atclone" I60R/page \
 
 # Install apps
 # zinit as="null" depth"1" from="gh-r" \
