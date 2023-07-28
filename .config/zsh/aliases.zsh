@@ -16,22 +16,28 @@ alias reabbr="\
     && unabbr bc which git z zi"
 
 alias yd="yadm enter exec zsh"
+alias camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' $HOME/.config/WarThunder/Controls/TankRB.blk"
+alias winclass="xprop WM_CLASS"
+alias dn="dotnet"
 
+# shortenings
 alias zn="zinit"
 alias vi="nvim"
 alias py="python"
 alias bc='bc -q <(echo "scale=5")'
 alias mime="xdg-mime query filetype"
+
+# sane defaults
 alias duf="duf -only local"
-alias ls="ls --color=auto"
+alias ls="ls --color=auto -H"
 alias la="ls -A"
-alias ll="ls -l"
+alias ll="ls -lh"
+alias lla="ls -lhA"
+alias grep="grep --color=auto"
 
 # ZSH
 alias r="exec zsh"
-alias edz="$EDITOR ~/.zshrc"
-alias eda="$EDITOR ~/.zsh/aliases.zsh"
-alias q="exit"
+alias edz='$EDITOR ~/.zshrc'
 
 # GIT
 alias ga="git add"

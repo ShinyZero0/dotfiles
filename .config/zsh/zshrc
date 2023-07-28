@@ -20,15 +20,14 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-source ~/.config/zsh/alt.zsh
 source ~/.config/zsh/aliases-pm.zsh
-# source ~/.config/zsh/lfcd.zsh
 source ~/.config/zsh/aliases.zsh
 
 source ~/.config/zsh/p10k.zsh
 
 # TURBO MODE
 zinit wait lucid depth="1" for \
+    peterhurford/git-it-on.zsh \
     zsh-users/zsh-history-substring-search \
     olets/zsh-abbr \
 	zsh-users/zsh-autosuggestions \
