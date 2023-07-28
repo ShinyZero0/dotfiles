@@ -4,14 +4,20 @@
 ;; need to capture the channels being used, as returned by "guix describe".
 ;; See the "Replicating Guix" section in the manual.
 
-(use-modules (gnu home)
-             ;; ((gnu) #:prefix gnu:)
-             (gnu packages)
-             (gnu services)
-             (guix gexp)
-             (gnu home services shells))
-
-;; (define store (open-connection))
+(load "./scheme-ls.scm")
+(load "./bspwm-git.scm")
+(use-modules
+  (gnu home)
+  (gnu packages)
+  (gnu packages package-management)
+  (gnu packages base)
+  (gnu services)
+  (guix gexp)
+  (gnu home services shells)
+  (gnu home services mcron)
+  (gnu home services)
+  (guile-lsp-server)
+  )
 (define home
   (home-environment
     ;; Below is the list of packages that will show up in your
@@ -19,17 +25,19 @@
     (packages
       (append
         (specifications->packages
-        (list
-          "ripgrep"
-          "glibc-locales"
-          "keynav"
-          "detox"
-          ;; "bfs"
-          ))
           (list
-            guile-lsp-server
-            ;; #$(program-file "scheme-ls"
-            )
+            "ripgrep"
+            "glibc-locales"
+            "keynav"
+            "detox"
+            "qutebrowser"
+            ;; "bfs"
+            ))
+        (list
+          guile-lsp-server
+          bspwm-git
+          ;; #$(program-file "scheme-ls"
+          )
         ))
     (services
       (list
@@ -37,14 +45,12 @@
                  (home-bash-configuration
                    (environment-variables 
                      `(
-                       ("GNUPKGS" .
-                        ,(file-append guix "/share/guile/site/3.0")
-                          )
-                       ("GUIX_LOCPATH" .
-                        ,(file-append glibc-locales "/lib/locale"
-                          ))
-                       ("PATH" .
-                        ,(string-join
+                       ("GNUPKGS"
+                        . ,(file-append guix "/share/guile/site/3.0"))
+                       ("GUIX_LOCPATH"
+                        . ,(file-append glibc-locales "/lib/locale"))
+                       ("PATH"
+                        . ,(string-join
                            (list "$HOME/.local/bin"
                                  "$HOME/.dotnet/tools"
                                  "$HOME/.cargo/bin"
@@ -52,8 +58,8 @@
                                  "$PATH"
                                  )
                            ":"))
-                       ("GUILE_LOAD_PATH" .
-                        ,(string-join
+                       ("GUILE_LOAD_PATH"
+                        . ,(string-join
                            (list "$HOME/.local/share/guile/site/3.0"
                                  "$GUILE_LOAD_PATH"
                                  )
@@ -76,5 +82,4 @@
         ;;            (list
         ;;              )))
         ))))
-;; (close-connection store)
 home
