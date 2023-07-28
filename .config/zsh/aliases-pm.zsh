@@ -1,8 +1,0 @@
-alias pkin="sudo xbps-install -S"
-alias pkrm="sudo xbps-remove"
-alias pkfd="xbps-query --regex -Rs"
-alias pkup="sudo xbps-install -Su"
-alias pkdb="sudo xbps-pkgdb"
-alias pkinf="xbps-query -RS"
-alias pkls="xbps-query -l"
-alias xman="xmandoc"

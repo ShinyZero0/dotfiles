@@ -1,0 +1,8 @@
+abbr pkin="sudo xbps-install -S"
+abbr pkrm="sudo xbps-remove"
+abbr pkfd="xbps-query --regex -Rs"
+abbr pkup="sudo xbps-install -Su"
+abbr pkdb="sudo xbps-pkgdb"
+abbr pkinf="xbps-query -RS"
+abbr pkls="xbps-query -l"
+abbr xman="xmandoc"

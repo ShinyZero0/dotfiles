@@ -12,18 +12,21 @@
   (gnu packages package-management)
   (gnu packages base)
   (gnu services)
-  (guix gexp)
   (gnu home services shells)
   (gnu home services mcron)
   (gnu home services)
+  (guix gexp)
   (guile-lsp-server)
+  (ice-9 textual-ports)
   )
+
 (define-syntax-rule (colon-join args ...)
   (string-join (list args ...) ":"))
+(define-syntax-rule (newline-join args ...)
+  (string-join (list args ...) "\n"))
+(define (read-all-lines filepath) (get-string-all (open-file filepath "r")))
 (define home
   (home-environment
-    ;; Below is the list of packages that will show up in your
-    ;; Home profile, under ~/.guix-home/profile.
     (packages
       (append
         (specifications->packages
@@ -42,6 +45,17 @@
         ))
     (services
       (list
+        (service
+          home-zsh-service-type
+          (home-zsh-configuration
+            (zshrc
+              (list
+                (local-file "./zsh/zshrc")
+                (local-file "./zsh/aliases.zsh")
+                (local-file "./zsh/commands.zsh")
+                (local-file "./zsh/p10k.zsh")
+                ))
+            ))
         (service home-bash-service-type
                  (home-bash-configuration
                    (environment-variables 
@@ -103,8 +117,22 @@
                    (bash-logout (list
                                   (local-file
                                     "./bash/bash_logout")))))
-        (service home-files
-                 )
+        (simple-service
+          'zsh-abbr
+          home-files-service-type
+          `(
+            (".config/zsh-abbr/user-abbreviations"
+             ,(plain-file
+                "user-abbreviations"
+                (newline-join
+                  (read-all-lines
+                    "./zsh/abbrs.zsh")
+                  (read-all-lines
+                    "./zsh/abbrs-xbps.zsh")
+                  )))
+            ))
+
+
         ;; (service home-mcron-configuration
         ;;          (jobs 
         ;;            (list
