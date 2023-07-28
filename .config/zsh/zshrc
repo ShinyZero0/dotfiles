@@ -21,6 +21,7 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 source ~/.config/zsh/alt.zsh
+source ~/.config/zsh/aliases-pm.zsh
 # source ~/.config/zsh/lfcd.zsh
 source ~/.config/zsh/aliases.zsh
 
@@ -29,28 +30,22 @@ source ~/.config/zsh/p10k.zsh
 # TURBO MODE
 zinit wait lucid depth="1" for \
     zsh-users/zsh-history-substring-search \
-    hlissner/zsh-autopair \
-    ShinyZero0/z-git-filter \
-    RobSis/zsh-completion-generator \
     olets/zsh-abbr \
+	zsh-users/zsh-autosuggestions \
+	Aloxaf/fzf-tab \
     OMZL::git.zsh \
+    # RobSis/zsh-completion-generator \
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode depth="1" for \
     romkatv/powerlevel10k \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust \
 
 zinit wait depth="1" lucid for \
     blockf atpull'zinit creinstall -q .' \
     zsh-users/zsh-completions \
     blockf completions \
     https://github.com/TheLocehiliosan/yadm/raw/master/completion/zsh/_yadm \
-
-source ~/.config/zsh/programs.zsh
 
 eval "$(zoxide init zsh)"
 
@@ -67,8 +62,15 @@ zstyle :compinstall filename "$HOME/.zshrc"
 zmodload zsh/complist
 # zinit compinit > /dev/null
 
+bindkey -v
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 bindkey -M menuselect '\e' send-break
+bindkey -M viins "^A" beginning-of-line
+bindkey -M viins "^E" end-of-line
+bindkey -M viins "^K" kill-line
+bindkey -M viins "^U" kill-whole-line
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 # zvm_bindkey viins '^H' 
 # zvm_bindkey "\C-H" backward-kill-word
 

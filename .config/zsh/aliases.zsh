@@ -11,23 +11,24 @@ unabbr()
 }
 
 alias reabbr="\
-    rip $HOME/.config/zsh-abbr/user-abbreviations \
+    rm $HOME/.config/zsh-abbr/user-abbreviations \
     && abbr import-aliases \
-    && unabbr rip bc which git"
+    && unabbr bc which git z zi"
 
 alias yd="yadm enter exec zsh"
 
 alias zn="zinit"
-alias lf="lfcd"
 alias vi="nvim"
 alias py="python"
-alias whrs="wormhole-rs"
 alias bc='bc -q <(echo "scale=5")'
 alias mime="xdg-mime query filetype"
-
+alias duf="duf -only local"
+alias ls="ls --color=auto"
+alias la="ls -A"
+alias ll="ls -l"
 
 # ZSH
-alias rez="exec zsh"
+alias r="exec zsh"
 alias edz="$EDITOR ~/.zshrc"
 alias eda="$EDITOR ~/.zsh/aliases.zsh"
 alias q="exit"
@@ -36,32 +37,22 @@ alias q="exit"
 alias ga="git add"
 alias gc="git commit -m"
 alias gd="git diff"
-alias gca="git commit -am"
-alias gcd="git add . && git commit -m"
+alias gca="git commit --amend"
 alias gcl="git clone"
 alias gst="git status"
 alias gch="git checkout"
 alias gds="git diff --staged"
-alias grs="git restore --staged"
-alias grm="git rm --cached"
-alias gmenocom="git merge --no-commit --no-ff"
-alias gcomall="git add --all && git commit"
+alias grss="git restore --staged"
+alias grmc="git rm --cached"
 
 mkcd()
 {
     mkdir -p "$1"
     cd "$1"
 }
-
-ddns="shinyzero.ddns.net"
-
-# gitt()
-# {
-#     if [[ $(exec git rev-parse --is-inside-work-tree 2>/dev/null) ]] then
-#         git $@
-#     else
-#         yadm $@
-#     fi
-# }
-
-
+ungit-cb()
+{
+	xsel -ob \
+	| awk -F "[/#]" '{print $4 "/" $5}' \
+	| xsel -ib --trim
+}
