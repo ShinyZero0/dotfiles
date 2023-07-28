@@ -18,6 +18,8 @@
   (gnu home services)
   (guile-lsp-server)
   )
+(define-syntax-rule (colon-join args ...)
+  (string-join (list args ...) ":"))
 (define home
   (home-environment
     ;; Below is the list of packages that will show up in your
@@ -36,7 +38,6 @@
         (list
           guile-lsp-server
           bspwm-git
-          ;; #$(program-file "scheme-ls"
           )
         ))
     (services
@@ -50,22 +51,49 @@
                        ("GUIX_LOCPATH"
                         . ,(file-append glibc-locales "/lib/locale"))
                        ("PATH"
-                        . ,(string-join
-                           (list "$HOME/.local/bin"
-                                 "$HOME/.dotnet/tools"
-                                 "$HOME/.cargo/bin"
-                                 "$HOME/.dotnet"
-                                 "$PATH"
-                                 )
-                           ":"))
+                        . ,(colon-join
+                             "$HOME/.local/bin"
+                             "$HOME/.dotnet/tools"
+                             "$HOME/.cargo/bin"
+                             "$HOME/.dotnet"
+                             "$PATH"
+                             ))
                        ("GUILE_LOAD_PATH"
-                        . ,(string-join
-                           (list "$HOME/.local/share/guile/site/3.0"
-                                 "$GUILE_LOAD_PATH"
-                                 )
-                           ":"))
+                        . ,(colon-join
+                             "$HOME/.local/share/guile/site/3.0"
+                             "$GUILE_LOAD_PATH"
+                             ))
+                       ("FZF_DEFAULT_OPTS"
+                        . ,(let
+                             ((args '("--reverse"
+                                      "--scheme=path"
+                                      "--cycle"))
+                              (colors '("dark"
+                                        "fg:#cbe3e7"
+                                        "bg:#1b182c"
+                                        "hl:#ff99e3"
+                                        "fg+:#aaffe4"
+                                        "bg+:#565575"
+                                        "hl+:#63f2f1"
+                                        "gutter:#1b182c"
+                                        "pointer:#aaffe4"
+                                        "prompt:#ff99e3"
+                                        "info:#ffe9aa"
+                                        "header:#cbe3e7"
+                                        "spinner:#63f2f1")))
+                             (string-append
+                               (string-join args " ")
+                               " --color="
+                               (string-join colors ","))))
+                       ("PAGER" . "less -RF --incsearch --status-line --mouse --wheel-lines 3")
+                       ("MANPAGER" . "$PAGER")
+                       ("DOTNET_CLI_TELEMETRY_OPTOUT" . "1")
+                       ("POWERSHELL_TELEMETRY_OPTOUT" . "1")
+                       ("LINKDING_TOKEN" . "28185e63c63f3324f5613ce152094b34731379a2")
+                       ("XDG_DATA_DIRS"
+                        . ,(colon-join "$HOME/.nix-profile/share" "/usr/share" "$XDG_DATA_DIRS")
                        )
-                     )
+                     ))
                    (bashrc (list
                              (local-file
                                "./bash/bashrc")))
