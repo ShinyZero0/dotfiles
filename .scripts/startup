@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+cd ~/.config/sv
+services=(
+	"./keynav"
+	"./corectrl"
+	"./pipewire"
+	"./pipewire-pulse"
+	"./wireplumber"
+	"./picom"
+	"./polybar"
+	"./wallpapers"
+	"./sxhkd"
+	"./keyd-app"
+)
+svdir="~/.local/share/service-graphic/"
+rm -rf $svdir
+for sv in $services
+do
+	ln -s $(realpath $sv) $svdir
+done
+playerctld daemon
+~/.scripts/xsettings
+exec runsv ~/.config/sv/runsvdir-graphic

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+bspc subscribe report -c 1 \
+	| tr ':' '\n' \
+	| awk '/^T/' \
+	| \
+	if xargs -i test {} = "TF"; then
+		bspc node -f newest.local.!floating
+	else
+		bspc node -f next.local.floating
+	fi

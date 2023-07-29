@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+for window in $(bspc query -N -n .hidden.window)
+do
+	printf "%s\t%s\n" $window $(xdotool getwindowname $window)
+done \
+	| rofi -dmenu -i -auto-select \
+	| cut -f 1 \
+	| xargs -i -- sh -c 'bspc node {} -g hidden=off -t floating; \
+	bspc node {} -d any.focused;\
+	bspc node -f {}'
+

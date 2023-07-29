@@ -9,7 +9,7 @@ super + Return
 super + shift + u
 	~/.scripts/ffmpeg.sh
 super + v
-	~/.scripts/VimInsert.nu
+	~/.scripts/VimInsert
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -57,7 +57,7 @@ super + c
 
 # show
 super + ctrl + s
-	~/.scripts/BspwmShowHidden.nu
+	~/.scripts/BspwmShowHidden
 # set the window state
 super + {t,shift + t,s,f}
 	bspc node -t ~{tiled,pseudo_tiled,floating,fullscreen}
@@ -70,7 +70,7 @@ super + backslash
 
 # toggle-focus floating window, like in i3wm
 super + period
-	~/.scripts/BspwmFocusFloating.nu
+	~/.scripts/BspwmFocusFloating
 
 # focus/swap the node in the given direction
 super + {_,shift + }{h,j,k,l}
