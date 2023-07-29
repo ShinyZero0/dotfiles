@@ -16,15 +16,17 @@
   (gnu home services mcron)
   (gnu home services)
   (guix gexp)
+  (guix utils)
   (guile-lsp-server)
   (ice-9 textual-ports)
   )
+(chdir (current-source-directory))
 
 (define-syntax-rule (colon-join args ...)
   (string-join (list args ...) ":"))
 (define-syntax-rule (newline-join args ...)
   (string-join (list args ...) "\n"))
-(define (read-all-lines filepath) (get-string-all (open-file filepath "r")))
+(define (read-all-text filepath) (get-string-all (open-file filepath "r")))
 (define home
   (home-environment
     (packages
@@ -36,6 +38,8 @@
             "keynav"
             "detox"
             "qutebrowser"
+            "fzf"
+            "zoxide"
             ;; "bfs"
             ))
         (list
@@ -104,6 +108,8 @@
                        ("DOTNET_CLI_TELEMETRY_OPTOUT" . "1")
                        ("POWERSHELL_TELEMETRY_OPTOUT" . "1")
                        ("LINKDING_TOKEN" . "28185e63c63f3324f5613ce152094b34731379a2")
+                       ("EDITOR" ."nvim")
+                       ("VISUAL" . "$EDITOR")
                        ("XDG_DATA_DIRS"
                         . ,(colon-join "$HOME/.nix-profile/share" "/usr/share" "$XDG_DATA_DIRS")
                        )
@@ -125,9 +131,9 @@
              ,(plain-file
                 "user-abbreviations"
                 (newline-join
-                  (read-all-lines
+                  (read-all-text
                     "./zsh/abbrs.zsh")
-                  (read-all-lines
+                  (read-all-text
                     "./zsh/abbrs-xbps.zsh")
                   )))
             ))
