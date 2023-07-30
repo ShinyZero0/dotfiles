@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec entr -np ~/.scripts/packages/termux/packages.sh < <(echo "$PREFIX/var/lib/apt/extended_states")
