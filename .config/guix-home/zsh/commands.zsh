@@ -7,5 +7,9 @@ ungit-cb()
 {
 	xsel -ob \
 	| awk -F "[/#]" '{print $4 "/" $5}' \
-	| xsel -ib --trim
+	| yank
+}
+yankpath()
+{
+	realpath $1 | yank
 }

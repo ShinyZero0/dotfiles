@@ -4,8 +4,6 @@
 ;; need to capture the channels being used, as returned by "guix describe".
 ;; See the "Replicating Guix" section in the manual.
 
-(load "./scheme-ls.scm")
-(load "./bspwm-git.scm")
 (use-modules
   (gnu home)
   (gnu packages)
@@ -17,16 +15,15 @@
   (gnu home services)
   (guix gexp)
   (guix utils)
-  (guile-lsp-server)
+  (zero packages guile-lsp-server)
+  (zero packages bspwm-git)
+  (zero packages zerolib)
   (ice-9 textual-ports)
   )
-(chdir (current-source-directory))
-
 (define-syntax-rule (colon-join args ...)
   (string-join (list args ...) ":"))
 (define-syntax-rule (newline-join args ...)
   (string-join (list args ...) "\n"))
-(define (read-all-text filepath) (get-string-all (open-file filepath "r")))
 (define home
   (home-environment
     (packages
@@ -40,6 +37,7 @@
             "qutebrowser"
             "fzf"
             "zoxide"
+            "neovim"
             ;; "bfs"
             ))
         (list
@@ -85,7 +83,8 @@
                         . ,(let
                              ((args '("--reverse"
                                       "--scheme=path"
-                                      "--cycle"))
+                                      "--cycle"
+                                      "-i"))
                               (colors '("dark"
                                         "fg:#cbe3e7"
                                         "bg:#1b182c"
@@ -105,10 +104,12 @@
                                (string-join colors ","))))
                        ("PAGER" . "less -RF --incsearch --status-line --mouse --wheel-lines 3")
                        ("MANPAGER" . "$PAGER")
+                       ("BAT_PAGER" . "$PAGER")
+                       ("DELTA_PAGER" . "$PAGER")
                        ("DOTNET_CLI_TELEMETRY_OPTOUT" . "1")
                        ("POWERSHELL_TELEMETRY_OPTOUT" . "1")
                        ("LINKDING_TOKEN" . "28185e63c63f3324f5613ce152094b34731379a2")
-                       ("EDITOR" ."nvim")
+                       ("EDITOR" . "nvim")
                        ("VISUAL" . "$EDITOR")
                        ("XDG_DATA_DIRS"
                         . ,(colon-join "$HOME/.nix-profile/share" "/usr/share" "$XDG_DATA_DIRS")
@@ -125,17 +126,32 @@
                                     "./bash/bash_logout")))))
         (simple-service
           'zsh-abbr
-          home-files-service-type
+          home-xdg-configuration-files-service-type
           `(
-            (".config/zsh-abbr/user-abbreviations"
-             ,(plain-file
+            ("zsh-abbr/user-abbreviations"
+             ,(computed-file
                 "user-abbreviations"
-                (newline-join
-                  (read-all-text
-                    "./zsh/abbrs.zsh")
-                  (read-all-text
-                    "./zsh/abbrs-xbps.zsh")
-                  )))
+                (with-extensions
+                  (list guile-zerolib)
+                  (with-imported-modules
+                    '((guix build utils)
+                      (ice-9 textual-ports)
+                      (zerolib)
+                      )
+                    #~(begin
+                        (use-modules (guix build utils)
+                                     (ice-9 textual-ports)
+                                     (zerolib))
+                        (copy-recursively
+                          #$(local-file "zsh" #:recursive? #t) ".")
+                        (write-all-lines
+                          (list
+                            (read-all-text "./abbrs.zsh")
+                            (read-all-text "./abbrs-xbps.zsh"))
+                          (open-output-file #$output))
+                        ))
+                  )
+                ))
             ))
 
 
