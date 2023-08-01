@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+LENGTH=22
+PERIOD=0.15
+
+while true; do
+	playerctl metadata &>/dev/null || exec sleep 0.5
+	line=""
+	artist="$(playerctl metadata artist 2>/dev/null)"
+	[[ -n $artist ]] && line+="${artist} — "
+	line+="$(playerctl metadata title)"
+	sleep $(($PERIOD * ($LENGTH + $#line + 1))) # quick maths
+	print $line
+done \
+	| skroll -r -n $LENGTH -d $PERIOD
