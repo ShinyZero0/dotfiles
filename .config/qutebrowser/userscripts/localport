@@ -1,20 +1,9 @@
-#!/usr/bin/env nu
+#!/bin/sh
 
-def "main" [] {
-	
-	ss -tlpnH
-		| lines
-		| each {
-			split row -r '\s+'
-			| get 3
-			| each {
-				split row ':'
-				| last
-			}
-		}
-		| uniq
-		| to text
-		| rofi -dmenu
-		| $"open -t localhost:($in)"
-		| save -f $env.QUTE_FIFO
-}
+ss -tlnH \
+	| awk '{print $4}' \
+	| sed -E 's/^.*:(.+)$/\1/' \
+	| uniq \
+	| rofi -dmenu \
+	| xargs printf "open -tr http://localhost:%s" \
+	| xargs -i echo {} > $QUTE_FIFO

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+path=$(mktemp --suffix png)
+qrencode -t PNG -o $path $QUTE_URL
+rm $path

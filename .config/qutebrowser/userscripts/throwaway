@@ -1,0 +1,5 @@
+#!/bin/sh
+
+TAB=$QUTE_TAB_INDEX
+echo "tab-move -1" > $QUTE_FIFO
+echo "tab-focus ${TAB}" > $QUTE_FIFO
