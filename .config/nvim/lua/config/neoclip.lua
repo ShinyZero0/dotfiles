@@ -5,6 +5,6 @@ end
 require("neoclip").setup({
 	default_register = "*",
 	filter = function(data)
-		return not All(data.event.regcontents, is_whitespace)
+		return not require("Skills").All(data.event.regcontents, is_whitespace)
 	end,
 })

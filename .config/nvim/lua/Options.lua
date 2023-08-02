@@ -1,3 +1,4 @@
+local M = {}
 local tabWidth = 4
 local opts = {
 
@@ -40,11 +41,15 @@ local opts = {
 	swapfile = false,
 }
 
-for key, value in pairs(opts) do
-	vim.opt[key] = value
-end
+M.setup = function()
+	for key, value in pairs(opts) do
+		vim.opt[key] = value
+	end
 
-vim.g.vim_json_conceal = 0
-vim.g.vim_markdown_conceal = 0
-vim.g.vim_markdown_conceal_code_blocks = 0
-vim.opt.fillchars:append({ diff = "╱" })
+	vim.g.mapleader = " "
+	vim.g.vim_json_conceal = 0
+	vim.g.vim_markdown_conceal = 0
+	vim.g.vim_markdown_conceal_code_blocks = 0
+	vim.opt.fillchars:append({ diff = "╱" })
+end
+return M

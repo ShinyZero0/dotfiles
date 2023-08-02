@@ -7,17 +7,10 @@ fun FoldUsings()
 endf
 
 autocmd BufEnter *.cs call FoldUsings()
-autocmd BufEnter *.axaml,*.xaml setlocal ft=xml ts=2 sw=2
 
 autocmd BufWritePre *.lua Neoformat
 autocmd BufNewFile * silent! !mkdir -p $(dirname %)
 
-" fun! RetabHard()
-"	set noet
-"	mark z
-"	silent! %s/\(^\s*\)\@<=	   /\t/g
-"	'z
-" endf
 fun! RetabSoft()
 	set et
 	retab!

@@ -1,3 +1,4 @@
+vim.bo.expandtab = true
 require("Skills")
 map("n", "gd", function()
 	require("omnisharp_extended").lsp_definitions()

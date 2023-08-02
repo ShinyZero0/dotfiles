@@ -1,44 +1,27 @@
+-- imports {{{
 local A = vim.api
-local F = vim.fn
-local f = require("Utils").Interpolate
+local Fn = vim.fn
+local M = {} -- }}}
 
--- Aliases
-
-map = vim.keymap.set
-unmap = vim.keymap.del
-noremap = function(modes, lhs, rhs)
-	map(modes, lhs, rhs, { noremap = true })
-end
-mapcmd = function(modes, lhs, cmd, opts)
-	map(modes, lhs, f("<CMD>{cmd}<CR>"), opts)
-end
-mapColon = function(modes, lhs, cmd, opts)
-	-- That's needed for visual mode sometimes
-	map(modes, lhs, f(":{cmd}<CR>"), opts)
-end
-
-function All(tbl, check)
+M.All = function(tbl, check) -- {{{
 	for _, entry in ipairs(tbl) do
 		if not check(entry) then
 			return false
 		end
 	end
 	return true
-end
+end -- }}}
 
-function SplitAtCursor()
+M.SplitAtCursor = function() -- {{{
 	vim.cmd([[exe "normal i\<CR>\<ESC>^"]])
-	local lineAboveNum = F.line(".") - 1
-	local lineAbove = F.trim(F.getline(lineAboveNum), " ", 2)
-	F.setline(lineAboveNum, lineAbove)
-end
+	local lineAboveNr = Fn.line(".") - 1
+	local lineAbove = Fn.trim(Fn.getline(lineAboveNr), " ", 2)
+	Fn.setline(lineAboveNr, lineAbove)
+end -- }}}
 
--- Recusively show and close all buffers when leaving the last window
-function CoolExitFunc()
-	local cnt = 0
-	for _ in pairs(vim.api.nvim_list_wins()) do
-		cnt = cnt + 1
-	end
+-- Recusively show and close all buffers when leaving the last window -- {{{
+M.CoolExitFunc = function()
+	local cnt = #vim.api.nvim_list_wins()
 	if cnt == 1 then
 		-- CoolerExitFunc()
 		if vim.bo[0].modified or vim.bo[0].buftype == "terminal" then
@@ -46,7 +29,7 @@ function CoolExitFunc()
 			return
 		else
 			vim.cmd("bd")
-			CoolerExitFunc()
+			M.CoolerExitFunc()
 			return
 		end
 	else
@@ -58,7 +41,8 @@ function CoolExitFunc()
 	end
 end
 -- continuation
-function CoolerExitFunc()
+M.CoolerExitFunc = function()
+	local f = require("Utils").Interpolate
 	for _, id in ipairs(vim.api.nvim_list_bufs()) do
 		if vim.bo[id].modified or vim.bo[id].buftype == "terminal" then
 			vim.cmd(f("buffer {id}"))
@@ -68,11 +52,12 @@ function CoolerExitFunc()
 			vim.cmd(f("buffer {id} | silent! q!"))
 		end
 	end
-end
+end -- }}}
 
 -- Append delimiters
-function ToggleEndingStuff()
-	local charsMap = {
+M.ToggleEndingStuff = function() -- {{{
+	local charsMap = { -- {{{
+
 		cs = ";",
 		zig = ";",
 		nix = ";",
@@ -84,9 +69,8 @@ function ToggleEndingStuff()
 		css = ";",
 		javascript = ";",
 		typescript = ";",
-	}
-	local char
-	char = charsMap[vim.bo[0].filetype]
+	} -- }}}
+	local char = charsMap[vim.bo[0].filetype]
 	if char == nil then
 		return
 	end
@@ -97,8 +81,8 @@ function ToggleEndingStuff()
 		line = line .. char
 	end
 	vim.fn.setline(".", line)
-end
-function FoldLevelByNames()
+end -- }}}
+function FoldLevelByNames() -- {{{
 	local map = {
 
 		[2] = { "*/.config/nvim/lua/plugins/*" },
@@ -117,8 +101,8 @@ function FoldLevelByNames()
 			})
 		end
 	end
-end
-function FoldMethodByNames()
+end -- }}}
+function FoldMethodByNames() -- {{{
 	local map = {
 
 		["indent"] = { "*.nu" },
@@ -135,4 +119,5 @@ function FoldMethodByNames()
 			})
 		end
 	end
-end
+end -- }}}
+return M

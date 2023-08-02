@@ -1,7 +1,7 @@
-local Module = {}
+local M = {}
 
--- String interpolation
-function Module.Interpolate(str)
+-- String interpolation{{{
+function M.Interpolate(str)
 	local outer_env = _ENV
 	return (
 		str:gsub("%b{}", function(block)
@@ -33,6 +33,21 @@ function Module.Interpolate(str)
 			end
 		end)
 	)
-end
+end -- }}}
+-- Aliases {{{
+local f = M.Interpolate
 
-return Module
+M.map = vim.keymap.set
+M.unmap = vim.keymap.del
+M.noremap = function(modes, lhs, rhs)
+	M.map(modes, lhs, rhs, { noremap = true })
+end
+M.mapcmd = function(modes, lhs, cmd, opts)
+	M.map(modes, lhs, f("<CMD>{cmd}<CR>"), opts)
+end
+-- That's needed for visual mode sometimes
+M.mapColon = function(modes, lhs, cmd, opts)
+	M.map(modes, lhs, f(":{cmd}<CR>"), opts)
+end -- }}}
+
+return M
