@@ -13,14 +13,14 @@ require("telescope").setup({
 		},
 		mappings = {
 
-			["n"] = {
+			["n"] = { -- {{{
 
 				["<Tab>"] = actions.move_selection_next,
 				["<S-Tab>"] = actions.move_selection_previous,
 				["q"] = actions.close,
 				["<C-q>"] = actions.close,
-			},
-			["i"] = {
+			}, -- }}}
+			["i"] = { -- {{{
 
 				["<C-g>"] = function(prompt_bufnr)
 					-- Use nvim-window-picker to choose the window by dynamically attaching a function
@@ -46,7 +46,7 @@ require("telescope").setup({
 				["<C-q>"] = actions.close,
 				["<S-CR>"] = actions.select_tab,
 				["<C-BS>"] = { "<c-s-w>", type = "command" },
-			},
+			}, -- }}}
 		},
 	},
 	pickers = {
@@ -54,7 +54,7 @@ require("telescope").setup({
 		find_files = {
 
 			follow = false,
-			find_command = {
+			find_command = { -- {{{
 
 				"fd",
 				"-H",
@@ -64,7 +64,7 @@ require("telescope").setup({
 				"f",
 				"-t",
 				"l",
-			},
+			}, -- }}}
 			mappings = {
 
 				["i"] = {
@@ -75,7 +75,7 @@ require("telescope").setup({
 	},
 	extensions = {
 
-		["zf-native"] = {
+		["zf-native"] = { -- {{{
 
 			file = {
 
@@ -90,6 +90,6 @@ require("telescope").setup({
 				highlight_results = true,
 				match_filename = false,
 			},
-		},
+		}, -- }}}
 	},
 })

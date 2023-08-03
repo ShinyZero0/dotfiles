@@ -1,10 +1,10 @@
 autocmd BufEnter * set formatoptions=1jtc
 
-fun FoldUsings()
+fun FoldUsings()"{{{
 	syn region FoldUsings start=/^using.*$/ end=/^$/ fold
 	syn sync fromstart
 	set foldmethod=syntax
-endf
+endf"}}}
 
 autocmd BufEnter *.cs call FoldUsings()
 

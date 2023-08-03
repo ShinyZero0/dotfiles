@@ -9,49 +9,34 @@ local hints = require("hydras.hints")
 local Splits = require("smart-splits")
 vim.g.mapleader = " "
 
-local function _boolHint(option)
-	local func = function()
+local function _boolHint(option) -- {{{
+	return function()
 		if vim.o[option] then
 			return "[x]"
 		else
 			return "[ ]"
 		end
 	end
-	return func
-end
+end -- }}}
 
-local function _reduceTabwidth()
+local function _reduceTabWidth() -- {{{
 	if vim.o.tabstop > 1 then
 		vim.o.tabstop = vim.o.tabstop / 2
 		vim.o.shiftwidth = vim.o.tabstop
 	end
-end
-local function _increaseTabwidth()
+end -- }}}
+local function _increaseTabwidth() -- {{{
 	vim.o.tabstop = vim.o.tabstop * 2
 	vim.o.shiftwidth = vim.o.tabstop
-end
+end -- }}}
+-- Options{{{
 Hydra({
 
 	name = "Options",
 	mode = "n",
 	body = "<Leader>O",
 	hint = hints.Options,
-	heads = {
-
-		{ "s", cmd("set spell!") },
-		{ "w", cmd("set wrap!") },
-		{ "b", cmd("set linebreak!") },
-		{ "R", cmd("set readonly!") },
-		{ "C", cmd("ColorizerToggle") },
-		{ "+", _increaseTabwidth },
-		{ "-", _reduceTabwidth },
-		{ "t", cmd("Telescope filetypes"), { exit = true } },
-		{ "L", cmd("Lazy"), { exit = true } },
-		{ "<Esc>", nil, { exit = true, nowait = true } },
-		{ "q", nil, { exit = true, nowait = true } },
-		{ "<C-q>", nil, { exit = true, nowait = true } },
-	},
-	config = {
+	config = { -- {{{
 
 		color = "amaranth",
 		invoke_on_body = true,
@@ -69,9 +54,25 @@ Hydra({
 				end,
 			},
 		},
-	},
-})
+	}, -- }}}
+	heads = {
 
+		{ "s", cmd("set spell!") },
+		{ "w", cmd("set wrap!") },
+		{ "b", cmd("set linebreak!") },
+		{ "R", cmd("set readonly!") },
+		{ "C", cmd("ColorizerToggle") },
+		{ "+", _increaseTabwidth },
+		{ "-", _reduceTabWidth },
+		{ "t", cmd("Telescope filetypes"), { exit = true } },
+		{ "L", cmd("Lazy"), { exit = true } },
+		{ "<Esc>", nil, { exit = true, nowait = true } },
+		{ "q", nil, { exit = true, nowait = true } },
+		{ "<C-q>", nil, { exit = true, nowait = true } },
+	},
+}) -- }}}
+
+-- Windows{{{
 Hydra({
 
 	name = "Windows",
@@ -120,8 +121,9 @@ Hydra({
 			end,
 		},
 	},
-})
+}) -- }}}
 
+-- Quick words{{{
 Hydra({
 	name = "Quick words",
 	config = {
@@ -139,8 +141,9 @@ Hydra({
 		{ "<Esc>", nil, { exit = true, mode = "n" } },
 		{ ",", nil, { exit = true, nowait = true } },
 	},
-})
+}) -- }}}
 
+-- Formatting -- {{{
 Hydra({
 	name = "Formatting",
 	body = "<Leader>.",
@@ -178,8 +181,9 @@ Hydra({
 		{ ".", cmd("Neoformat"), { exit = true } },
 		{ "<Esc>", nil, { exit = true } },
 	},
-})
+}) -- }}}
 
+-- Formatting visual{{{
 Hydra({
 
 	name = "Formatting visual",
@@ -216,9 +220,9 @@ Hydra({
 		{ ".", ":Neoformat<CR>", { exit = true } },
 		{ "<Esc>", nil, { exit = true } },
 	},
-})
+}) -- }}}
 
-SaveOrExit = Hydra({
+SaveOrExit = Hydra({ -- {{{
 
 	name = "Are you sure?",
 	hint = hints.SaveOrExit,
@@ -240,9 +244,9 @@ SaveOrExit = Hydra({
 		{ "<C-s>", cmd("w|bd|lua CoolerExitFunc()"), { desc = "Save & quit" } },
 		{ "s", cmd("w|bd|lua CoolerExitFunc()"), { desc = "Save & quit" } },
 	},
-})
+}) -- }}}}}}
 
-SaveOrExitOne = Hydra({
+SaveOrExitOne = Hydra({ -- {{{
 
 	name = "Are you sure?",
 	hint = hints.SaveOrExit,
@@ -264,4 +268,4 @@ SaveOrExitOne = Hydra({
 		{ "<C-s>", cmd("w|q"), { desc = "Save & quit" } },
 		{ "s", cmd("w|q"), { desc = "Save & quit" } },
 	},
-})
+}) -- }}}

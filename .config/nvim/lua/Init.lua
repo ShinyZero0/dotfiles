@@ -12,19 +12,20 @@ require("Autorun").setup()
 require("config.lazy").setup() -- }}}
 
 vim.filetype.add({
-	extension = {
+
+	extension = { -- {{{
 
 		nu = "nu",
 		kdl = "kdl",
 		xaml = "xml",
 		axaml = "xml",
-	},
-	filename = {
+	}, -- }}}
+	filename = { -- {{{
 
 		["flake.lock"] = "json",
 		["run"] = "sh",
 		["sxhkdrc"] = "sxhkdrc",
-	},
+	}, -- }}}
 	pattern = {
 		[ [[.*/etc/wireguard/.*%.conf]] ] = "confini",
 	},

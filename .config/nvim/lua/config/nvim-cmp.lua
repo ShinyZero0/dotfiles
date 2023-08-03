@@ -1,4 +1,4 @@
-local has_words_before = function()
+local has_words_before = function() -- {{{
 	unpack = unpack or table.unpack
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -8,7 +8,7 @@ local feedkey = function(key, mode)
 end
 local cmp = require("cmp")
 local lspkind = require("lspkind")
-local snippy = require("snippy")
+local snippy = require("snippy") -- }}}
 
 cmp.setup({
 
@@ -23,7 +23,7 @@ cmp.setup({
 	formatting = {
 		format = lspkind.cmp_format(),
 	},
-	sources = cmp.config.sources({
+	sources = cmp.config.sources({ -- {{{
 
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
@@ -44,8 +44,7 @@ cmp.setup({
 			keyword_length = 3,
 		},
 		{ name = "omni" },
-		-- { name = "nvim_lsp_signature_help" },
-	}),
+	}), -- }}}
 	snippet = {
 
 		expand = function(args)
@@ -57,7 +56,7 @@ cmp.setup({
 		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
 	},
-	mapping = {
+	mapping = { -- {{{
 
 		["<C-Tab>"] = cmp.mapping(function(fallback)
 			if snippy.can_expand_or_advance() then
@@ -86,5 +85,5 @@ cmp.setup({
 		end, { "i", "s" }),
 		["<C-c>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
-	},
+	}, -- }}}
 })

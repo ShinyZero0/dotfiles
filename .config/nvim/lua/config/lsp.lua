@@ -9,16 +9,22 @@ local stdOpts = {
 
 local specOpts = {
 
-	omnisharpOpts = {
+	omnisharpOpts = { -- {{{
 
-		cmd = { "OmniSharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+		cmd = {
+
+			"OmniSharp",
+			"--languageserver",
+			"--hostPID",
+			tostring(vim.fn.getpid()),
+		},
 
 		on_attach = function(client, bufnr)
 			client.server_capabilities.semanticTokensProvider = nil
 		end,
-	},
+	}, -- }}}
 
-	lualsOpts = {
+	lualsOpts = { -- {{{
 
 		settings = {
 
@@ -48,7 +54,7 @@ local specOpts = {
 				},
 			},
 		},
-	},
+	}, -- }}}
 }
 for _, opts in ipairs(specOpts) do
 	for key, value in pairs(stdOpts) do

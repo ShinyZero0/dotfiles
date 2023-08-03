@@ -2,7 +2,7 @@ local M = {}
 local tabWidth = 4
 local opts = {
 
-	-- UI
+	-- UI{{{
 	number = true,
 	title = true,
 	cursorline = true,
@@ -13,28 +13,24 @@ local opts = {
 	splitright = true,
 	splitbelow = true,
 	termguicolors = true,
-	list = true,
+	list = true, -- }}}
 
-	-- Format
+	-- Format{{{
 	tabstop = tabWidth,
 	shiftwidth = tabWidth,
-	breakindent = true,
+	breakindent = true, -- }}}
 
-	-- Fold
+	-- Fold{{{
 	foldenable = true,
-	-- foldcolumn = "1",
-	-- foldlevel = 99,
-	foldlevelstart = 99,
-	foldmethod = "expr",
-	foldexpr = "nvim_treesitter#foldexpr()",
+	foldmethod = "marker", -- }}}
 
-	-- Input
+	-- Input{{{
 	completeopt = { "noselect" },
 	pumheight = 10,
 	whichwrap = vim.opt.whichwrap:append("<,>,[,],h,l"),
 	timeoutlen = 5000,
 	formatoptions = "1jtc",
-	ignorecase = true,
+	ignorecase = true, -- }}}
 
 	-- Stuff
 	undofile = true,

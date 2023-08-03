@@ -2,7 +2,7 @@ require("Comment").setup({
 	sticky = true,
 })
 
--- Textobject for adjacent commented lines
+-- Textobject for adjacent commented lines -- {{{
 
 local function commented_lines_textobject()
 	local U = require("Comment.utils")
@@ -36,6 +36,6 @@ local function commented_lines_textobject()
 	re = re - 1
 
 	vim.fn.execute("normal! " .. rs .. "GV" .. re .. "G")
-end
+end -- }}}
 
 map("o", "ic", commented_lines_textobject, { silent = true, desc = "Textobject for adjacent commented lines" })

@@ -1,5 +1,5 @@
 return {
-
+	-- {{{
 	Telescope = [[
     Telescope:
 
@@ -17,7 +17,8 @@ return {
     _c_: Commands history _;_: execute Command    
 
     _<Enter>_: Builtin           _<Esc>_
-    ]],
+    ]], -- }}}
+	-- {{{
 	Options = [[
     Options:
 
@@ -31,8 +32,8 @@ return {
     _L_: Lazy.nvim
 
     _q_, _<Esc>_, _<C-q>_    
-    ]],
-
+    ]], -- }}}
+	-- {{{
 	Formatting = [[
     Formatting
 
@@ -42,9 +43,9 @@ return {
     _s_: Split %{ft}
     _j_: Join %{ft}
 
-    ]],
-
+    ]], -- }}}
+	-- {{{
 	SaveOrExit = [[
 _<C-s>_,_s_: Save and quit
-_<C-q>_,_q_: Quit without saving]],
+_<C-q>_,_q_: Quit without saving]], -- }}}
 }
