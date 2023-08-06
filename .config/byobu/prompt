@@ -1,0 +1,1 @@
+[ -r /gnu/store/gqv60i24cy0jvqk2d8msw61d7yrsdw0j-byobu-5.133/share/byobu/profiles/bashrc ] && . /gnu/store/gqv60i24cy0jvqk2d8msw61d7yrsdw0j-byobu-5.133/share/byobu/profiles/bashrc  #byobu-prompt#
