@@ -64,6 +64,8 @@
             "qutebrowser"
             "fzf"
             "bat"
+            "byobu"
+            "tmux"
             "skroll"))
         (list
           guile-lsp-server
@@ -119,7 +121,7 @@
                        ("FZF_DEFAULT_OPTS"
                         . ,fzf-options)
                        ("PAGER" . "less -RF --incsearch --status-line --mouse --wheel-lines 3")
-                       ("MANPAGER" . "$PAGER")
+                       ("MANPAGER" . "sh -c 'col -bx | bat -l man'")
                        ("BAT_PAGER" . "$PAGER")
                        ("DELTA_PAGER" . "$PAGER")
                        ("DOTNET_CLI_TELEMETRY_OPTOUT" . "1")
