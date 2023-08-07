@@ -3,6 +3,11 @@
 return {
 
 	{
+		"eraserhd/parinfer-rust",
+		ft = "scheme",
+		build = "cargo build --release",
+	},
+	{
 		"zdharma-continuum/zinit-vim-syntax",
 		ft = "zsh",
 	},
