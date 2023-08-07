@@ -7,7 +7,7 @@ Hydra({
 
 	name = "Telescope",
 	hint = hints.Telescope,
-	config = {
+	config = { -- {{{
 
 		color = "teal",
 		invoke_on_body = true,
@@ -17,7 +17,7 @@ Hydra({
 			position = "middle",
 			border = "rounded",
 		},
-	},
+	}, -- }}}
 	mode = "n",
 	body = "<Leader>/",
 	heads = {
@@ -38,10 +38,10 @@ Hydra({
 		{ "/", cmd("Telescope current_buffer_fuzzy_find") },
 		{ ";", cmd("Telescope commands") },
 		{
-			"f",
+			"f", -- {{{
 			function()
 				require("telescope.builtin").find_files({ hidden = true, no_ignore = true })
-			end,
+			end, -- }}}
 		},
 
 		{ "<Esc>", nil, { exit = true, nowait = true } },

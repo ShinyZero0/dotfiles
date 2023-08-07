@@ -8,11 +8,8 @@ return {
 	"junegunn/vim-easy-align", -- align text
 	"AndrewRadev/dsf.vim", -- surrounding function textobj
 	"fedepujol/move.nvim",
-	-- "AndrewRadev/splitjoin.vim",
-	-- "FooSoft/vim-argwrap",
 	{
 		"HiPhish/nvim-ts-rainbow2",
-		config = false,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},

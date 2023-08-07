@@ -2,20 +2,6 @@
 
 lua require("Skills") -- the lua functions module
 
-" open main file for pwd
-" function MainFile() abort
-"     call SourceIfExists(".mainfile.vim")
-" endfunction
-
-" function AddMainFile() abort
-"     let current = expand("%")
-"     " let bufnr = bufadd(".mainfile.vim")
-"     " call bufload(bufnr)
-"     " call setbufline(bufnr, 1, [ "text" ])
-"     call writefile([ printf("edit %s", current) ], ".mainfile.vim")
-"     " buffer#
-" endfunction
-
 " Show relative numbers in visual mode only
 function ToggleNumbers()
 	set number!
@@ -35,7 +21,6 @@ function! SourceIfExists(file)
 		exe "source " a:file
 	endif
 endfunction
-
 
 " Change keyboard layout on switching mode
 function SetEnglish()
@@ -60,10 +45,3 @@ function SelectAll()
 	endif
 endfunction
 xnoremap A <cmd>call SelectAll()<CR>
-
-" function RemapGotoDefinition() abort
-" 	if &ft =~ 'cs'
-" 		return
-" 	endif
-" 	nnoremap <buffer> gd <cmd>lua vim.lsp.buf.definition()<CR>
-" endfunction

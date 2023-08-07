@@ -13,7 +13,7 @@ autocmd BufNewFile * silent! !mkdir -p $(dirname %)
 
 fun! RetabSoft()
 	set et
-	retab!
+	retab
 endf
 autocmd BufWritePre *.md call RetabSoft()
 

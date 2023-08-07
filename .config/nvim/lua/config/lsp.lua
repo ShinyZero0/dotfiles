@@ -67,8 +67,6 @@ local servers = {
 
 	nil_ls = stdOpts,
 	clangd = stdOpts,
-	pyright = stdOpts,
-	marksman = stdOpts,
 	omnisharp = specOpts.omnisharpOpts,
 	lua_ls = specOpts.lualsOpts,
 }
@@ -78,9 +76,7 @@ for server, opts in pairs(servers) do
 end
 local function onAttach()
 	local function RemapGotoDefinition()
-		if vim.bo.filetype == "cs" then
-			return
-		else
+		if vim.bo.filetype ~= "cs" then
 			mapcmd({ "n" }, "gd", "lua vim.lsp.buf.definition()")
 		end
 	end
