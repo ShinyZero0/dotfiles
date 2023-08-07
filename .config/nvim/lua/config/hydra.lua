@@ -3,6 +3,8 @@ require("hydras.git")
 require("hydras.folds")
 require("hydras.telescope")
 
+require("Exit")
+
 local Hydra = require("hydra")
 local cmd = require("hydra.keymap-util").cmd
 local hints = require("hydras.hints")

@@ -7,15 +7,13 @@ end
 local function SplitAtCursor()
 	require("Skills").SplitAtCursor()
 end
-local function CoolExitFunc()
-	require("Skills").CoolExitFunc()
-end -- }}}
+require("Exit")
+-- }}}
 
 noremap("n", "dD", "ddk") -- kill line & move up
--- yank & move down {{{
-noremap("x", "gy", "y']")
-noremap("x", "gy", "y']") -- }}}
+noremap("x", "gy", "y']") -- yank & move down
 
+noremap("", "<space>", "<Nop>")
 noremap("n", "<LEADER>s", SplitAtCursor)
 mapColon("c", "&", "'<,'>&")
 map("i", "<C-a>", ToggleEndingStuff)
@@ -24,6 +22,8 @@ map("i", "<C-e>", "<End>")
 map("", "<C-q>", CoolExitFunc)
 map({ "x", "n" }, "ga", "<Plug>(EasyAlign)")
 map({ "x", "n" }, "<C-Tab>", "<Plug>(snippy-cut-text)")
+mapcmd("n", "<Esc>", "noh")
+mapColon("n", "<C-s>", "w")
 -- newline{{{
 map("n", "<CR>", function()
 	local Fn = vim.fn
@@ -96,17 +96,19 @@ map("v", "g<C-a>", "g<Plug>(dial-increment)")
 map("v", "g<C-x>", "g<Plug>(dial-decrement)") -- }}}
 
 -- Spectre{{{
-local Spectre = require("spectre")
+local Spectre = function()
+	return (require("spectre"))
+end
 
 map("n", "<leader>SS", function()
-	Spectre.open()
+	Spectre().open()
 end, {})
 map("n", "<leader>SW", function()
-	Spectre.open_visual({ select_word = true })
+	Spectre().open_visual({ select_word = true })
 end, {})
 map("x", "<leader>S", function()
-	Spectre.open_visual()
+	Spectre().open_visual()
 end, {})
 map("n", "<leader>SF", function()
-	Spectre.open_file_search({ select_word = true })
+	Spectre().open_file_search({ select_word = true })
 end, {}) -- }}}

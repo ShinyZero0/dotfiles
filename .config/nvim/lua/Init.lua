@@ -10,6 +10,7 @@ mapColon = Utils.mapColon
 require("Options").setup()
 require("Autorun").setup()
 require("config.lazy").setup() -- }}}
+require("Keys")
 
 vim.filetype.add({
 
