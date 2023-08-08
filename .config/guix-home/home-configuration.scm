@@ -10,6 +10,7 @@
   (gnu packages shells)
   (gnu packages package-management)
   (gnu packages base)
+  (gnu services configuration)
   (gnu services)
   (gnu home services shells)
   (gnu home services mcron)
@@ -23,8 +24,15 @@
   (zerolib));}}}
 
 (chdir (current-source-directory))
-(define (list->search-path lst)
-  (string-join lst ":"))
+(define (compound-file name files)
+  (computed-file
+    name
+    #~(begin
+        (display
+          #$(serialize-text-config
+              ""
+              files)
+          (open-output-file #$output)))))
 (define-syntax-rule (colon-join args ...)
                     (string-join (list args ...) ":"))
 (define fzf-options;{{{
@@ -76,13 +84,14 @@
                  (home-zsh-configuration
                    (environment-variables
                      `(("FPATH"
-                        . ,(list->search-path
+                        . ,(string-join
                              (append
                                (string-product
                                  "$HOME/.guix-home/profile/share/zsh/"
                                  '("5.9/functions/" "site-functions"))
                                '("$HOME/.config/guix/current/share/zsh/site-functions"
-                                 "/usr/share/zsh/site-functions"))))
+                                 "/usr/share/zsh/site-functions"))
+                             ":"))
                        ("SHELL" . ,(file-append zsh "/bin/zsh"))))
                    (zshrc
                      (map (lambda (s)
@@ -142,23 +151,12 @@
                         home-xdg-configuration-files-service-type
                         `(
                           ("zsh-abbr/user-abbreviations"
-                           ,(computed-file
+                           ,(compound-file
                               "user-abbreviations"
-                              (with-extensions
-                                (list guile-zerolib)
-                                (with-imported-modules
-                                  '((guix build utils)
-                                    (zerolib fs))
-                                  #~(begin
-                                      (use-modules (guix build utils)
-                                                   (zerolib fs))
-                                      (copy-recursively
-                                        #$(local-file "zsh" #:recursive? #t) ".")
-                                      (merge-files
-                                        (list
-                                          "./abbrs.zsh"
-                                          "./abbrs-xbps.zsh")
-                                        #$output)))))))) ;}}}
+                              (list
+                                (local-file "./zsh/abbrs.zsh")
+                                (local-file "./zsh/abbrs-xbps.zsh"))))))
+                                     ;}}}
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))))))
 
