@@ -8,6 +8,7 @@
   (gnu home)
   (gnu packages)
   (gnu packages shells)
+  (gnu packages shellutils)
   (gnu packages package-management)
   (gnu packages base)
   (gnu services configuration)
@@ -18,10 +19,8 @@
   (gnu home services)
   (guix gexp)
   (guix utils)
-  (zero packages guile-lsp-server)
-  (zero packages bspwm-git)
-  (zero packages zerolib)
-  (zerolib));}}}
+  (guix modules)
+  (zero packages guile-zerolib))
 
 (chdir (current-source-directory))
 (define (compound-file name files)
@@ -96,12 +95,43 @@
                    (zshrc
                      (map (lambda (s)
                             (local-file (string-append "zsh/" s)))
-                          (list "zshrc" "aliases.zsh"
-                                "commands.zsh" "p10k.zsh"
-                                "x11.zsh")))));}}}
+                          (list "zshrc"
+                                "aliases.zsh"
+                                "x11.zsh"
+                                "commands.zsh"
+                                "p10k-single.zsh")))));}}}
+        (simple-service 'zsh-direnv;{{{
+                        home-zsh-service-type
+                        (home-zsh-extension
+                          (zshrc
+                            (list
+                              (computed-file
+                                "direnv"
+                                (with-extensions
+                                  (list guile-zerolib)
+                                  (with-imported-modules
+                                    '((guix build utils))
+                                    #~(begin
+                                        (use-modules (guix build utils)
+                                                     (zerolib shell))
+                                        (display
+                                          (call-command
+                                            #+(file-append direnv "/bin/direnv")
+                                            "hook"
+                                            "zsh")
+                                          (open-output-file #$output))))))))));}}}
+        (simple-service 'zsh-abbr ;{{{
+                        home-xdg-configuration-files-service-type
+                        `(
+                          ("zsh-abbr/user-abbreviations"
+                           ,(compound-file
+                              "user-abbreviations"
+                              (list
+                                (local-file "./zsh/abbrs.zsh")
+                                (local-file "./zsh/abbrs-xbps.zsh")))))) ;}}}
         (service home-bash-service-type;{{{
                  (home-bash-configuration
-                   (environment-variables 
+                   (environment-variables ;{{{
                      `(
                        ("GUIX_HOME_CONFIG_ROOT"
                         . "$HOME/.config/guix-home")
@@ -129,7 +159,7 @@
                              "/usr/share" "$XDG_DATA_DIRS"))
                        ("FZF_DEFAULT_OPTS"
                         . ,fzf-options)
-                       ("PAGER" . "less -RF --incsearch --status-line --mouse --wheel-lines 3")
+                       ("PAGER" . "less -s -M -j.357 -w -RF --incsearch --mouse --wheel-lines 3")
                        ("MANPAGER" . "sh -c 'col -bx | bat -l man'")
                        ("BAT_PAGER" . "$PAGER")
                        ("DELTA_PAGER" . "$PAGER")
@@ -137,26 +167,27 @@
                        ("POWERSHELL_TELEMETRY_OPTOUT" . "1")
                        ("LINKDING_TOKEN" . "28185e63c63f3324f5613ce152094b34731379a2")
                        ("EDITOR" . "nvim")
-                       ("VISUAL" . "$EDITOR")))
+                       ("VISUAL" . "$EDITOR")));}}}
                    (bashrc (list
-                             (local-file
-                               "./bash/bashrc")))
+                             (plain-file ""
+                                         "PS1='[\\u@\\h \\W]\\$ '")))
                    (bash-profile (list
-                                   (local-file
-                                     "./bash/bash_profile")))
-                   (bash-logout (list
-                                  (local-file
-                                    "./bash/bash_logout")))));}}}
-        (simple-service 'zsh-abbr ;{{{
-                        home-xdg-configuration-files-service-type
-                        `(
-                          ("zsh-abbr/user-abbreviations"
-                           ,(compound-file
-                              "user-abbreviations"
-                              (list
-                                (local-file "./zsh/abbrs.zsh")
-                                (local-file "./zsh/abbrs-xbps.zsh"))))))
-                                     ;}}}
+                                   (plain-file
+                                     "guix"
+                                     (string-join
+                                       '("GUIX_PROFILE=$HOME/.config/guix/current"
+                                         ". $GUIX_PROFILE/etc/profile"
+                                         "GUIX_PROFILE=$HOME/.guix-profile"
+                                         ". $GUIX_PROFILE/etc/profile")
+                                       "\n"))
+                                   (plain-file
+                                     "autorun"
+                                     "mkdir -p /tmp/Pictures")
+                                   (plain-file
+                                     "nix"
+                                     (string-append
+                                       "[ -f $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]"
+                                       "&& . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh")))))) ;}}}
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))))))
 

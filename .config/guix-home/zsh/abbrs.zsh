@@ -1,5 +1,5 @@
+# vim: ft=sh
 abbr yd="yadm enter exec zsh"
-abbr camerasmooth="perl -i -pe 's/cameraSmooth.*/cameraSmooth:r=-1/' $HOME/.config/WarThunder/Controls/TankRB.blk"
 abbr winclass="xprop WM_CLASS"
 abbr dn="dotnet"
 
@@ -8,6 +8,9 @@ abbr zn="zinit"
 abbr vi="nvim"
 abbr py="python"
 abbr mime="xdg-mime query filetype"
+abbr ru="trans en:ru"
+abbr en="trans ru:en"
+abbr bfg="bfs -L -name"
 
 # sane defaults
 abbr duf="duf -only local"
@@ -26,7 +29,7 @@ abbr gc="git commit -m"
 abbr gd="git diff"
 abbr gca="git commit --amend"
 abbr gcl="git clone"
-abbr gst="git status"
+abbr gst="git status ."
 abbr gch="git checkout"
 abbr gds="git diff --staged"
 abbr grss="git restore --staged"

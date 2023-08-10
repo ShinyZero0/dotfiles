@@ -1,14 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
-
-# fpath+=~/.zsh/completions/
-
 if [[ ! -r $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
     command git clone --depth 1 https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
@@ -19,6 +8,54 @@ fi
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
+
+zstyle ':completion:*' completer _complete _ignored _approximate 
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
+zstyle ':completion:*' max-errors 3
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle :compinstall filename "$HOME/.zshrc"
+
+autoload -Uz zmv
+
+bindkey -v
+export KEYTIMEOUT=1
+# Change cursor shape for different vi modes.
+function zle-keymap-select () {
+    case $KEYMAP in
+        vicmd) echo -ne '\e[1 q';;      # block
+        viins|main) echo -ne '\e[5 q';; # beam
+    esac
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M viins "^O" edit-command-line
+
+autoload -Uz expand-absolute-path
+zle -N expand-absolute-path
+bindkey -M viins '^[[27;5;9~' expand-absolute-path
+bindkey -M viins "^A" beginning-of-line
+bindkey -M viins "^E" end-of-line
+bindkey -M viins "^?" backward-delete-char 
+bindkey -M viins "^[[3~" delete-char
+bindkey -M viins "^K" kill-line
+bindkey -M viins "^U" backward-kill-line
+bindkey -M viins "[1~" beginning-of-line # home
+bindkey -M viins "[4~" end-of-line # end
+bindkey "^[[1;5C" forward-word # ctrl right
+bindkey "^[[1;5D" backward-word # ctrl left
+bindkey "^R" history-incremental-search-backward
+bindkey "^S" history-incremental-search-forward
 
 # TURBO MODE
 zinit wait lucid depth="1" for \
@@ -31,7 +68,7 @@ zinit wait lucid depth="1" for \
     # RobSis/zsh-completion-generator \
 
 zinit light-mode depth="1" for \
-    romkatv/powerlevel10k \
+    romkatv/powerlevel10k
 
 zinit wait depth="1" lucid for \
     blockf atpull'zinit creinstall -q .' \
@@ -41,34 +78,11 @@ zinit wait depth="1" lucid for \
 
 eval "$(zoxide init zsh)"
 
-zstyle ':completion:*' menu select completer _complete _ignored _approximate 
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
-zstyle ':completion:*' max-errors 3
-# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle :compinstall filename "$HOME/.zshrc"
-
-# autoload -Uz compinit
-# compinit
 zmodload zsh/complist
-# zinit compinit > /dev/null
-
-bindkey -v
-bindkey -M menuselect '^[[Z' reverse-menu-complete
-bindkey -M menuselect '\e' send-break
-bindkey -M viins "^A" beginning-of-line
-bindkey -M viins "^E" end-of-line
-bindkey -M viins "^K" kill-line
-bindkey -M viins "^U" kill-whole-line
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-# zvm_bindkey viins '^H' 
-# zvm_bindkey "\C-H" backward-kill-word
 
 zle_highlight+=(paste:none)
 
-setopt autocd menu_complete extendedglob
+setopt autocd extendedglob
 setopt HIST_EXPIRE_DUPS_FIRST HIST_IGNORE_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_FIND_NO_DUPS HIST_SAVE_NO_DUPS SHARE_HISTORY
 # INC_APPEND_HISTORY
 
@@ -82,5 +96,4 @@ zinit wait lucid for \
     atload="zicompinit; zicdreplay" \
     atload:'bindkey "^[[A" history-substring-search-up' \
     atload:'bindkey "^[[B" history-substring-search-down' \
-    zdharma-continuum/fast-syntax-highlighting \
-
+    zdharma-continuum/fast-syntax-highlighting

@@ -1,9 +1,0 @@
-# .bash_profile
-# vim: ft=bash
-
-# Get the aliases and functions
-[ -f $HOME/.bashrc ] && . $HOME/.bashrc
-[ -f $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ] && . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh 
-. $HOME/.config/guix/current/etc/profile
-GUIX_PROFILE="/home/zero/.guix-profile"
-. "$GUIX_PROFILE/etc/profile"
