@@ -19,7 +19,7 @@ super + Escape
 # screenshots
 {ctrl +,_}Print
 	maim {--select,_} --format=png \
-		| tee "$HOME/Pictures/$(date -Iseconds).png" \
+		| tee "/tmp/Pictures/$(date -Iseconds).png" \
 		| xclip -selection clipboard -t image/png
 
 # playerctl
