@@ -8,9 +8,7 @@ bground='#1e1c31'
 alert='#ff99e3'
 border='#aaffe4'
 indicator=$border
-
-~/.scripts/startup &
-
+~/.scripts/xsettings
 bspc monitor -d 1 2 3 4 5 6 7 8 9 10 \
 	a s d f h j k l
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-while [ ! -r /run/user/1000/pulse/native ]; do
-	sleep 0.5
-done
+[ -r /run/user/1000/pulse/native ] || exit 1
+cd ~/.config/polybar/
+m4 config.m4 > config.ini
+cd
 exec polybar

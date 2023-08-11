@@ -56,18 +56,19 @@ font-4 = InconsolataLGC Nerd Font Mono: style=Bold: size=24; 7
 # angles separator for i3 module font:
 font-5 = InconsolataLGC Nerd Font Mono: style=Bold: size=40; 12 
 
-width = 100%
+define(`gaps', `10')
+# gaps
+offset-y = gaps()px
+offset-x = gaps()px
+
+changequote(`[', `]')dnl
+width = eval(esyscmd([xrandr -q | awk '$2 ~ "+" {print $1}' | cut -d x -f 1])-gaps()*2)px
+changequote()dnl
 height = 26pt
 radius = 0
 
 background = ${colors.background}
 foreground = ${colors.foreground}
-
-# gaps
-border-right-size = 10px
-border-left-size = 10px 
-border-top-size = 10px
-border-color = ${colors.transparent}
 
 padding-left = 0
 padding-right = 0
