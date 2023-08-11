@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sed -i "1a=> ${QUTE_URL} ${QUTE_TITLE}" ~/.local/share/offpunk/lists/tour.gmi
+echo "tab-close" > $QUTE_FIFO

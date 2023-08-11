@@ -201,6 +201,8 @@ c.fonts.keyhint = "default_size default_family"
 c.fonts.web.size.minimum_logical = 6  # }}}
 
 # scripts{{{
+c.aliases["offpop"] = "spawn -u offpop"
+config.bind("bp", "offpop")
 
 c.aliases["qr-display"] = "spawn --userscript qr"
 
