@@ -174,6 +174,21 @@ c.scrolling.smooth = False
 #   - right
 c.tabs.position = "left"
 
+c.tabs.show = "multiple"
+c.tabs.tooltips = False
+
+c.tabs.new_position.unrelated = "first"
+
+c.editor.command = [
+    "alacritty",
+    "--class",
+    "floatwin",
+    "-e",
+    "nvim",
+    "-c",
+    "normal {line}G{column0}l",
+    "{file}",
+]
 # Default font families to use. Whenever "default_family" is used in a
 # font setting, it's replaced with the fonts listed here. If set to an
 # empty value, a system-specific monospace default is used.
