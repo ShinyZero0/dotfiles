@@ -1,0 +1,10 @@
+#!/bin/bash
+
+bspc subscribe report -c 1 \
+	| awk -v RS=: '/^T/' \
+	| \
+	if xargs -i test {} = "TF"; then
+		bspc node -f ${1}'.!hidden.local.floating.window'
+	else
+		bspc node -f ${1}'.!hidden.local.!floating.window'
+	fi

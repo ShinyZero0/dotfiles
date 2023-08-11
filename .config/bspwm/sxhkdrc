@@ -19,8 +19,8 @@ super + Escape
 # screenshots
 {ctrl +,_}Print
 	maim {--select,_} --format=png \
-	| tee "$HOME/Pictures/$(date -Iseconds).png" \
-	| xclip -selection clipboard -t image/png
+		| tee "$HOME/Pictures/$(date -Iseconds).png" \
+		| xclip -selection clipboard -t image/png
 
 # playerctl
 XF86Audio{Prev,Next,Play}
@@ -83,9 +83,9 @@ super + {a, d}
 super + {p,comma}
 	bspc node -f @{parent,first}
 
-# focus the next/previous window in the current desktop
+# focus the next/previous window in the current desktop, i3-like
 super + {_,button2,shift + }Tab
-	bspc node -f {next,next,prev}.local.!hidden.window
+	~/.scripts/BspwmCycle {next,next,prev}
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -110,7 +110,8 @@ super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 super + {_, shift +} w
-	bspc {desktop -f, node -d} $(~/.scripts/BspwmWorkspaces.scm | rofi -dmenu -auto-select -i | awk '\{print $1\}')
+	xkb-switch -s us; \
+	bspc {desktop -f, node -d} $(~/.scripts/BspwmWorkspaces.scm | rofi -matching regex -filter '^' -dmenu -auto-select -i | cut -f 1)
 
 #
 # preselect
@@ -145,7 +146,7 @@ super + alt + {h,j,k,l}
 
 # contract a window by moving one of its side inward (left for floatings)
 super + alt + ctrl + {h,j,k,l}
-	bspc node -z {right -30 0,top 0 30,bottom 0 -30,left 30 0}
+	bspc node -z {left 30 0,bottom 0 -30,top 0 30,right -30 0}
 
 # balance
 super + b

@@ -2,6 +2,7 @@
 !#
 (use-modules (json parser)
              (zerolib)
+             (zerolib shell)
              (ice-9 threads))
 
 (define (get-workspace-strings)
@@ -29,11 +30,11 @@
      (append-ws-desc
        (lambda (ws)
          (let1 (desc (get-ws-desc ws))
-           (string-append
-             ws " : " 
-             (if (string? desc) desc ""))))))
+               (string-append
+                 ws "\t" 
+                 (if (string? desc) desc ""))))))
     (par-map
       append-ws-desc
       workspaces)))
 
-(write-lines (get-workspace-strings))
+(write-all-lines (get-workspace-strings))
