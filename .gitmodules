@@ -1,0 +1,3 @@
+[submodule ".config/mpv/submodules/mpv-toolbox"]
+	path = .config/mpv/submodules/mpv-toolbox
+	url = https://codeberg.org/NRK/mpv-toolbox
