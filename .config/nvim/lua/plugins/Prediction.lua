@@ -6,7 +6,7 @@ return {
 			require("config.nvim-cmp")
 		end,
 		keys = { ":", ";" },
-		dependencies = {
+		dependencies = { -- {{{
 
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
@@ -16,7 +16,7 @@ return {
 			"onsails/lspkind.nvim",
 			"lukas-reineke/cmp-rg",
 			"hrsh7th/cmp-cmdline",
-		},
+		}, -- }}}
 	},
 	{
 		"hrsh7th/cmp-cmdline",

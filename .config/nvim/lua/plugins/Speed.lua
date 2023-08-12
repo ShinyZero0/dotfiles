@@ -6,7 +6,7 @@ return {
 		"ethanholz/nvim-lastplace",
 		config = true,
 	},
-	{
+	{ -- {{{
 		"ShinyZero0/reach.nvim",
 		-- dir = "~/dev/vim/reach.nvim/",
 		cmd = "ReachOpen",
@@ -41,7 +41,7 @@ return {
 			"'",
 			"gt",
 		},
-	},
+	}, -- }}}
 	{
 		"cbochs/portal.nvim",
 		config = function()
@@ -72,14 +72,14 @@ return {
 		end,
 		branch = "v2.x",
 		cmd = "Neotree",
-		dependencies = {
+		dependencies = { -- {{{
 
 			"s1n7ax/nvim-window-picker",
 			"mrbjarksen/neo-tree-diagnostics.nvim",
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 			"nvim-lua/plenary.nvim",
-		},
+		}, -- }}}
 	},
 	{
 		"s1n7ax/nvim-window-picker",
@@ -98,7 +98,7 @@ return {
 		end,
 		cmd = "Telescope",
 		branch = "0.1.x",
-		dependencies = {
+		dependencies = { -- {{{
 
 			{
 				"smartpde/telescope-recent-files",
@@ -124,6 +124,6 @@ return {
 					require("telescope").load_extension("neoclip")
 				end,
 			},
-		},
+		}, -- }}}
 	},
 }

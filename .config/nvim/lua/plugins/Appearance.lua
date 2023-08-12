@@ -38,7 +38,7 @@ return {
 	{
 		"rebelot/heirline.nvim",
 		enabled = false,
-		config = function(...)
+		config = function()
 			require("config.heirline")
 		end,
 	},

@@ -7,33 +7,33 @@ return {
 
 			override = {
 
-				["cs"] = {
+				["cs"] = { -- {{{
 
 					icon = "󰌛",
 					color = "#95ffa4",
 					name = "cs",
-				},
-				["xml"] = {
+				}, -- }}}
+				["xml"] = { -- {{{
 
 					icon = "",
 					color = "#ffb378",
 					name = "xml",
-				},
+				}, -- }}}
 			},
 			override_by_extension = {
 
-				["xaml"] = {
+				["xaml"] = { -- {{{
 
 					icon = "",
 					color = "#FFC3E1",
 					name = "axaml",
-				},
-				["axaml"] = {
+				}, -- }}}
+				["axaml"] = { -- {{{
 
 					icon = "",
 					color = "#FFC3E1",
 					name = "axaml",
-				},
+				}, -- }}}
 			},
 		},
 	},
