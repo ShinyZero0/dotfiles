@@ -4,7 +4,7 @@ for window in $(bspc query -N -n .hidden.window)
 do
 	printf "%s\t%s\n" $window "$(xdotool getwindowname $window)"
 done \
-	| rofi -dmenu -i -auto-select \
+	| rofi -dmenu -i -auto-select -p "Show window" \
 	| cut -f 1 \
 	| read node
 

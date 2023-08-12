@@ -64,7 +64,7 @@ super + {t,shift + t,s,f}
 
 # set the node flags
 super + backslash
-	bspc node -g $(printf "%s\n" "marked" "locked" "sticky" "private" "hidden" | rofi -dmenu -auto-select)
+	bspc node -g $(printf "%s\n" "marked" "locked" "sticky" "private" "hidden" | rofi -dmenu -auto-select -p "set flag")
 
 # focus/swap
 
@@ -111,7 +111,10 @@ super + {_,shift + }{1-9,0}
 
 super + {_, shift +} w
 	xkb-switch -s us; \
-	bspc {desktop -f, node -d} $(~/.scripts/BspwmWorkspaces.scm | rofi -matching regex -filter '^' -dmenu -auto-select -i | cut -f 1)
+		bspc {desktop -f, node -d} $(~/.scripts/BspwmWorkspaces.scm \
+		| rofi -matching regex \
+			-filter '^' -dmenu -auto-select -i -p "Choose workspace" \
+		| cut -f 1)
 
 #
 # preselect
