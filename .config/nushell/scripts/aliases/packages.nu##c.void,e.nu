@@ -17,3 +17,4 @@ export def pkfd [ query ] {
 }
 export alias pkinf = xbps-query -RS
 export alias pkls = open ~/.scripts/install/pc/packages.json
+export alias xman = xmandoc

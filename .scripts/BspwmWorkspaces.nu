@@ -1,4 +1,4 @@
-#!/usr/bin/env nu
+#!/usr/bin/env -S nu --no-std-lib
 
 def "main" [] {
 
@@ -6,7 +6,7 @@ def "main" [] {
 	| lines
 	| skip 10
 	| wrap ws
-	| each { |it|
+	| par-each { |it|
 		upsert content (
 			try {
 				bspc query -d $it.ws -T
@@ -21,7 +21,7 @@ def "main" [] {
 	}
 	| format '{ws} : {content}'
 	| to text
-	| rofi -dmenu -i -auto-select
-	| split words
-	| first
+	# | rofi -dmenu -i -auto-select
+	# | split words
+	# | first
 }

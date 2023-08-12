@@ -13,9 +13,7 @@ def "main" [] {
 	| split row -r '\s+'
 	| first
 	| do { |it|
-		| bspc node $it -g hidden=off
-		| bspc node $it -d (bspc query -D -d focused)
+		bspc node $it -g hidden=off
+		bspc node $it -d (bspc query -D -d focused)
 	} $in
-	
-
 }

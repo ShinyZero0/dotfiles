@@ -64,9 +64,9 @@ export module funcs {
 			z ( $path | path dirname )
 		}
 
-		let file = (
-			$path | path relative-to $env.PWD
-		)
+		let file = if $env.FOCUS {
+				$path | path relative-to $dir
+			} else { $path }
 		# if not $env.FOCUS {
 		# 	$path | path expand -n # don't resolve symlinks
 		# } else {

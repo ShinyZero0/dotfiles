@@ -1,3 +1,5 @@
+use std clip
+
 # get a string with styling applied and resetted ansi
 export def ansi-temp [ text: string color: any ] {
 	[
@@ -21,7 +23,7 @@ export def "Clip o" [] {
 
 	to text
 	| if not ( which xsel | is-empty ) {
-		xsel -ob
+		xsel --output --clipboard
 	} else {
 		termux-clipboard-get
 	}
@@ -29,11 +31,9 @@ export def "Clip o" [] {
 
 # yank to clipboard
 export def "Clip i" [] {
+	to text | clip
+}
 
-	to text
-	| if not ( which xsel | is-empty ) {
-		xsel -ib
-	} else {
-		termux-clipboard-set
-	}
+def "ensure" [file] {
+	mkdir ($file | path expand | path dirname)
 }

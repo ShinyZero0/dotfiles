@@ -1,5 +1,5 @@
 #!/usr/bin/env nu
 
 xpkg -m
-| lines 
+| lines
 | save -f ~/.scripts/install/pc/packages.json

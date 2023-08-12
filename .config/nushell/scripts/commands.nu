@@ -1,11 +1,23 @@
 use utils.nu *
 use pipes.nu *
-use nq-utils.nu *
 use std "assert"
 
 export def "clipped" [ ft: any ] {
 	Clip o | vipe --suffix $ft | Clip i
 }
+
+use pathring.nu *
+# play the selected files in mpv
+export def "ring play" [
+    --shuffle(-s) 
+] {
+    if $shuffle {
+        mpv --shuffle --no-video (ring ls)
+    } else {
+        mpv --no-video (ring ls)
+    }
+}
+
 export def "edpipe" [] {
 
 	let input = $in
@@ -43,8 +55,12 @@ export def clip [ arg? ] {
 	}
 }
 
+use nq-utils.nu *
+# copy to clipboard and clean it 1 minute later
 export def "clip-temp" [] {
+
 	Clip i
+	rm -rpf ~/.stuff/nq/clip-temp
 	nq -t clip-temp "use utils.nu *; sleep 1min; '' | Clip i"
 }
 
@@ -76,16 +92,16 @@ export def svls [
 	if $all {
 
 		if $root {
-			ls /etc/sv/
+			ls "/etc/sv/"
 		} else {
-			ls ~/.config/sv/
+			ls "~/.config/sv/"
 		}
 	} else {
 
 		if $root {
-			ls /var/service/
+			ls "/var/service/"
 		} else {
-			ls $env.SVDIR
+			ls "~/.local/share/service/"
 		}
 	}
 }
@@ -300,11 +316,16 @@ export def "hell" [ program query? ] {
 
 	^$program --help
 		| if ($query | is-empty) {
-			bat -p -l help
+			bat -l help --paging always
 		} else {
 			rg --context 3 -- $query
-			| bat -p -l help
+			| bat -l help --paging always
 		}
+}
+
+# Like which but outputs only one string - the path
+export def "witch" [ program: string ] {
+	which $program | get 0.path
 }
 
 export def "yankpath" [ file ] {
@@ -313,4 +334,44 @@ export def "yankpath" [ file ] {
 # pack directory as comic book tar+gzip archive
 export def "cbr" [ dir ] {
 	tar --create --gzip --file $"($dir | path basename).cbr" $"($dir)/*"
+}
+export def "pr" [] {
+	let input = $in
+	print $input
+	$input
+}
+export def "loc" [ dir = .] {
+	ls $dir
+	| where type == file
+	| select name
+	| each { |it|
+		upsert count (
+			open --raw $it.name
+			| lines
+			| length
+		)
+	}
+	| pr
+	| get count
+	| math sum
+	| $"Total: ($in)"
+}
+
+export def "fint" [ query: string path? ] {
+
+	if ($path | is-empty) {
+		filter { str contains $query }
+	} else {
+		filter { get $path | str contains $query }
+	}
+		
+}
+export def "path ensure" [ --root(-r) ] {
+	let file = $in
+	if $root {
+		sudo mkdir -p ($file | path expand | path dirname)
+	} else {
+		mkdir ($file | path expand | path dirname)
+	}
+	$file
 }

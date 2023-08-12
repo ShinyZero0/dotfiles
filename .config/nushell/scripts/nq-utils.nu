@@ -1,24 +1,21 @@
 use pipes.nu [
 	"invert"
 ]
+def "_nqDir" [] {
+
+	$env.HOME
+	| path join .stuff/nq
+}
 
 # list enqueued processes
 export def "nq ls" [] {
 
-	fd -t x . $env.NQDIR
+	fd -t x . (_nqDir)
 		| lines
 		| wrap name
 		| merge ($in.name | _nqProcessesCommands)
 		| merge ($in.name | _nqProcessesModtime)
 		| sort-by modified
-}
-# input: process lockfiles list
-# output: their modified time list
-def _nqProcessesModtime [] {
-
-	each { ls $in }
-		| flatten
-		| select modified
 }
 
 # see the enqueued process output
@@ -58,29 +55,28 @@ export def nq [
 	--thread(-t): any
 	...args: any
 ] {
-
-	# TODO: make a sudo flag to prompt for password
-	if not ($thread | is-empty) {
-		$env.NQDIR = ($env.NQDIR | path join $thread)
-	} else {
+	if ($thread | is-empty) {
 		$env.NQDIR = (_getFreeThread)
-	}
-
-	if $sudo {
-		let pass = (input "Password:\n")
-		^nq echo $pass | sudo -S nu -c $"( $args | str join ' ' )"
 	} else {
-		^nq nu -c $"( $args | str join ' ' )"
+		$env.NQDIR = ($thread | _expandNQ)
 	}
 	print $env.NQDIR
 
+	if $sudo {
+		let pass = (input "Password:\n")
+		^nq bash -c $"echo $pass | exec sudo -S nu -c ( $args | str join ' ' )"
+	} else {
+		^nq nu -c $"( $args | str join ' ' )"
+	}
+
 	if $clean {
-		^nq sh -c $"rm -r ($env.NQDIR)"
+		^nq rm -r $env.NQDIR
 	}
 }
 
 export def "nq clean" [] {
 
+	error make { msg: "Dangerous to use" }
 	fd -t f . $env.NQDIR
 		| lines
 		| filter {
@@ -100,22 +96,28 @@ export def "nq clean" [] {
 export def "nq kill" [
 	...args: string@_nqActiveProcessesCompletion
 ] {
+	error make { msg: "Not implemented!" }
+}
 
+# input: process lockfiles list
+# output: their modified times list
+def _nqProcessesModtime [] {
+
+	par-each { ls $in }
+		| flatten
+		| select modified
 }
 
 # input: process lockfiles list
 # output: list of commands executed in each process
 def "_nqProcessesCommands" [] {
 
-	$in
-		| each {
-			open $in
-			| lines
-			| get 0
-			| parse "exec nq nu -c '{foo}'"
-			| get foo.0
-		}
-		| wrap description
+	par-each {
+		open $in
+		| lines
+		| get 0
+	}
+	| wrap description
 }
 
 def _nqActiveProcessesCompletion [] {
@@ -126,27 +128,27 @@ def _nqActiveProcessesCompletion [] {
 
 def _nqThreads [] {
 
-	fd -d 1 -t d . $env.NQDIR
+	fd -d 1 -t d . (_nqDir)
 		| lines
 		| where { |it|
 			fd -d 1 -t x . $it
 				| is-empty
 				| invert
 		}
-		| each { path relative-to $env.NQDIR }
+		| each { path relative-to (_nqDir) }
 }
 
 def _expandNQ [] {
 
 	let child = $in
-	$env.NQDIR | path join $child
+	_nqDir | path join $child
 }
 
 def _getFreeThread [] {
 
 	let freeThreads = (
 
-		fd -d 1 -t d . $env.NQDIR
+		fd -d 1 -t d . (_nqDir)
 			| lines
 			| where { |it|
 				fd -d 1 -t x . $it | is-empty
@@ -155,10 +157,9 @@ def _getFreeThread [] {
 	if ($freeThreads | length) > 0 {
 		$freeThreads.0
 	} else {
-		$env.NQDIR
-			| path join (
-				"q" + (random uuid | str substring 0..8)
-			)
-
+		_nqDir
+		| path join (
+			"q" + (random uuid | str substring 0..8)
+		)
 	}
 }

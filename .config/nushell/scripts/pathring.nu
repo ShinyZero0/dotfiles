@@ -23,7 +23,7 @@ export def "ring add" [
 			fd --no-ignore-vcs -Hd 1 . 
 			| fzf --scheme path --multi
 			| lines
-		}
+		} else { [] }
 	)
 	let data = (
 
@@ -106,7 +106,7 @@ export def "ring clean" [
 		open $ringPath
 
 	} else {
-		rm $ringPath
+		[] | save -f $ringPath
 	}
 }
 
@@ -124,6 +124,9 @@ export def "ring switch" [
 	ln -sf ($currentRing) (_getRingPath)
 }
 
+export def "ring dragon" [] {
+	dragon-drop (open (_getRingPath))
+}
 def "_completeRings" [] {
 
 	ls ~/.local/share/nushell/rings/**/*.json
@@ -158,6 +161,6 @@ def "_getRingPath" [] {
 def _writeToRing [] {
 	
 	px
-	| uniq 
+	| uniq
 	| save -f (_getRingPath)
 }

@@ -38,7 +38,7 @@ $env.IS_YADM = (
 # 	"warm"
 # }
 
-$env.NQDIR = ( Home '.stuff/nq' )
+# $env.NU_NQDIR = ( Home '.stuff/nq' )
 $env.PLATES_DIR = ( Home '.stuff/plates' )
 
 # User options
@@ -78,7 +78,7 @@ $env.FZF_DEFAULT_OPTS = (
 	| str join ","
 )
 
-mkdir $env.NQDIR
+# mkdir $env.NQDIR
 
 # if ( $dataDir | path join 'zoxide.nu' | path exists ) {} else {
 # 	zoxide init nushell | save ( $dataDir | path join 'zoxide.nu' )
