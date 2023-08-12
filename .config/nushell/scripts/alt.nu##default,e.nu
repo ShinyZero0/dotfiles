@@ -1,3 +1,0 @@
-export def-env "AltEnv" [] {
-	
-}
