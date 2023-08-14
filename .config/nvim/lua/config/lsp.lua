@@ -77,7 +77,9 @@ end
 local function onAttach()
 	local function RemapGotoDefinition()
 		if vim.bo.filetype ~= "cs" then
-			mapcmd({ "n" }, "gd", "lua vim.lsp.buf.definition()")
+			map({ "n" }, "gd", function()
+				require("telescope.builtin").lsp_definitions()
+			end)
 		end
 	end
 	RemapGotoDefinition()

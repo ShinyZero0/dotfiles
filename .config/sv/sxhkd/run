@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 cd
-exec sxhkd
+SHELL=sh exec sxhkd
