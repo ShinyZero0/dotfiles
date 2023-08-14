@@ -73,10 +73,14 @@
             "bat"
             "byobu"
             "tmux"
-            "skroll"))
-        (list
-          guile-lsp-server
-          bspwm-git)));}}}
+            "skroll"
+            "rust-stylua"
+            "guile-lsp-server"
+            "guile"
+            "guile-json"
+            "guile-zerolib"
+            "guile-readline"
+            "bspwm-git"))));}}}
     (services
       (list
         (service home-zsh-service-type;{{{
