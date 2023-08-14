@@ -1,3 +1,6 @@
 [submodule ".config/mpv/submodules/mpv-toolbox"]
 	path = .config/mpv/submodules/mpv-toolbox
 	url = https://codeberg.org/NRK/mpv-toolbox
+[submodule ".config/mpv/submodules/mpv-plugin-bookmark"]
+	path = .config/mpv/submodules/mpv-plugin-bookmark
+	url = https://github.com/yozorayuki/mpv-plugin-bookmark

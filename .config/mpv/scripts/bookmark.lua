@@ -1,0 +1,1 @@
+../submodules/mpv-plugin-bookmark/bookmark.lua
