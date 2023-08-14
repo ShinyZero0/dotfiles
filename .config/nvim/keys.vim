@@ -2,6 +2,7 @@
 
 cnoreabbrev pl lua print
 cnoreabbrev m +1mark z \| move
+cnoreabbrev h vertical help
 
 " 0 TO FIRST WORD
 
