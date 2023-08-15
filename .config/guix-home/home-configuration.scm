@@ -135,30 +135,27 @@
                    (bash-logout (list
                                   (local-file
                                     "./bash/bash_logout")))));}}}
-        (simple-service
-          'zsh-abbr ;{{{
-          home-xdg-configuration-files-service-type
-          `(
-            ("zsh-abbr/user-abbreviations"
-             ,(computed-file
-                "user-abbreviations"
-                (with-extensions
-                  (list guile-zerolib)
-                  (with-imported-modules
-                    '((guix build utils)
-                      (ice-9 textual-ports)
-                      (zerolib fs))
-                    #~(begin
-                        (use-modules (guix build utils)
-                                     (ice-9 textual-ports)
-                                     (zerolib fs))
-                        (copy-recursively
-                          #$(local-file "zsh" #:recursive? #t) ".")
-                        (file/write-all-lines
-                          (list
-                            (file/read-all-text "./abbrs.zsh")
-                            (file/read-all-text "./abbrs-xbps.zsh"))
-                          #$output)))))))) ;}}}
+        (simple-service 'zsh-abbr ;{{{
+                        home-xdg-configuration-files-service-type
+                        `(
+                          ("zsh-abbr/user-abbreviations"
+                           ,(computed-file
+                              "user-abbreviations"
+                              (with-extensions
+                                (list guile-zerolib)
+                                (with-imported-modules
+                                  '((guix build utils)
+                                    (zerolib fs))
+                                  #~(begin
+                                      (use-modules (guix build utils)
+                                                   (zerolib fs))
+                                      (copy-recursively
+                                        #$(local-file "zsh" #:recursive? #t) ".")
+                                      (merge-files
+                                        (list
+                                          "./abbrs.zsh"
+                                          "./abbrs-xbps.zsh")
+                                        #$output)))))))) ;}}}
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))))))
 
