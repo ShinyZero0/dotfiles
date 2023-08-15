@@ -25,7 +25,7 @@ share()
 }
 fzcd()
 {
-	cd $(bfs -depth 4 -type d $1 | fzf || print .)
+	cd "$(bfs -maxdepth 4 -type d $1 -print0 | fzf --read0 || print .)"
 }
 zsanity()
 {
