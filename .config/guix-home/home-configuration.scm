@@ -17,6 +17,7 @@
   (gnu home services mcron)
   (gnu home services ssh)
   (gnu home services)
+  (srfi srfi-26)
   (guix gexp)
   (guix utils)
   (guix modules)
@@ -92,9 +93,9 @@
                      `(("FPATH"
                         . ,(string-join
                              (append
-                               (string-product
-                                 "$HOME/.guix-home/profile/share/zsh/"
-                                 '("5.9/functions/" "site-functions"))
+                               (map
+                                 (cute string-append "$HOME/.guix-home/profile/share/zsh/" <>)
+                                 '("5.9/functions" "site-functions"))
                                '("$HOME/.config/guix/current/share/zsh/site-functions"
                                  "/usr/share/zsh/site-functions"))
                              ":"))
