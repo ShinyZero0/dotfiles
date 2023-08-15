@@ -80,6 +80,9 @@
             "guile-json"
             "guile-zerolib"
             "guile-readline"
+            "offpunk"
+            "chafa"
+            "direnv"
             "bspwm-git"))));}}}
     (services
       (list
