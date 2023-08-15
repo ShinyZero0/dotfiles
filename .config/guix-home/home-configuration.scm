@@ -21,6 +21,10 @@
   (zero packages zerolib)
   (ice-9 textual-ports)
   )
+
+(chdir (current-source-directory))
+(define (list->search-path lst)
+  (string-join lst ":"))
 (define-syntax-rule (colon-join args ...)
                     (string-join (list args ...) ":"))
 (define fzf-options;{{{
@@ -69,17 +73,23 @@
         ))
     (services
       (list
-        (service
-          home-zsh-service-type
-          (home-zsh-configuration
-            (zshrc
-              (list
-                (local-file "./zsh/zshrc")
-                (local-file "./zsh/aliases.zsh")
-                (local-file "./zsh/commands.zsh")
-                (local-file "./zsh/p10k.zsh")
-                ))
-            ))
+        (service home-zsh-service-type;{{{
+                 (home-zsh-configuration
+                   (environment-variables
+                     `(("FPATH"
+                        . ,(list->search-path
+                             (append
+                               (string-product
+                                 "$HOME/.guix-home/profile/share/zsh/"
+                                 '("5.9/functions/" "site-functions"))
+                               '("$HOME/.config/guix/current/share/zsh/site-functions"))))
+                       ("SHELL" . ,(file-append zsh "/bin/zsh"))))
+                   (zshrc
+                     (map (lambda (s)
+                            (local-file (string-append "zsh/" s)))
+                          (list "zshrc" "aliases.zsh"
+                                "commands.zsh" "p10k.zsh"
+                                "x11.zsh")))));}}}
         (service home-bash-service-type
                  (home-bash-configuration
                    (environment-variables 
