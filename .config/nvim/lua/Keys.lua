@@ -13,6 +13,7 @@ require("Exit")
 noremap("n", "dD", "ddk") -- kill line & move up
 noremap("x", "gy", "y']") -- yank & move down
 
+mapcmd("n", "gD", "vsplit | normal gd")
 noremap("", "<space>", "<Nop>")
 noremap("n", "<LEADER>s", SplitAtCursor)
 mapColon("c", "&", "'<,'>&")

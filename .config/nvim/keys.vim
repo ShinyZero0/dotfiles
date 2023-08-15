@@ -3,7 +3,7 @@
 cnoreabbrev pl lua print
 cnoreabbrev m +1mark z \| move
 cnoreabbrev h vertical help
-
+command TSFold setlocal foldexpr=nvim_treesitter#foldexpr() | setlocal foldmethod=expr
 " 0 TO FIRST WORD
 
 nnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
