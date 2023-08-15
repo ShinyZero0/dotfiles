@@ -1,1 +1,1 @@
-p10k.zsh##a.x86_64
+p10k-desktop.zsh
