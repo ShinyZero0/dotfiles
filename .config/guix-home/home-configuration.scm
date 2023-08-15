@@ -22,9 +22,30 @@
   (ice-9 textual-ports)
   )
 (define-syntax-rule (colon-join args ...)
-  (string-join (list args ...) ":"))
-(define-syntax-rule (newline-join args ...)
-  (string-join (list args ...) "\n"))
+                    (string-join (list args ...) ":"))
+(define fzf-options;{{{
+  (let
+    ((args '("--reverse"
+             "--scheme=path"
+             "--cycle"
+             "-i"))
+     (colors '("dark"
+               "fg:#cbe3e7"
+               "bg:#1b182c"
+               "hl:#ff99e3"
+               "fg+:#aaffe4"
+               "bg+:#565575"
+               "hl+:#63f2f1"
+               "gutter:#1b182c"
+               "pointer:#aaffe4"
+               "prompt:#ff99e3"
+               "info:#ffe9aa"
+               "header:#cbe3e7"
+               "spinner:#63f2f1")))
+    (string-append
+      (string-join args " ")
+      " --color="
+      (string-join colors ","))));}}}
 (define home
   (home-environment
     (packages
@@ -81,28 +102,7 @@
                              "$GUILE_LOAD_PATH"
                              ))
                        ("FZF_DEFAULT_OPTS"
-                        . ,(let
-                             ((args '("--reverse"
-                                      "--scheme=path"
-                                      "--cycle"
-                                      "-i"))
-                              (colors '("dark"
-                                        "fg:#cbe3e7"
-                                        "bg:#1b182c"
-                                        "hl:#ff99e3"
-                                        "fg+:#aaffe4"
-                                        "bg+:#565575"
-                                        "hl+:#63f2f1"
-                                        "gutter:#1b182c"
-                                        "pointer:#aaffe4"
-                                        "prompt:#ff99e3"
-                                        "info:#ffe9aa"
-                                        "header:#cbe3e7"
-                                        "spinner:#63f2f1")))
-                             (string-append
-                               (string-join args " ")
-                               " --color="
-                               (string-join colors ","))))
+                        . ,fzf-options)
                        ("PAGER" . "less -RF --incsearch --status-line --mouse --wheel-lines 3")
                        ("MANPAGER" . "$PAGER")
                        ("BAT_PAGER" . "$PAGER")
