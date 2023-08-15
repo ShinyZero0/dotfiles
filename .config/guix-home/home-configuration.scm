@@ -4,9 +4,10 @@
 ;; need to capture the channels being used, as returned by "guix describe".
 ;; See the "Replicating Guix" section in the manual.
 
-(use-modules
+(use-modules;{{{
   (gnu home)
   (gnu packages)
+  (gnu packages shells)
   (gnu packages package-management)
   (gnu packages base)
   (gnu services)
@@ -19,8 +20,7 @@
   (zero packages guile-lsp-server)
   (zero packages bspwm-git)
   (zero packages zerolib)
-  (ice-9 textual-ports)
-  )
+  (zerolib));}}}
 
 (chdir (current-source-directory))
 (define (list->search-path lst)
@@ -52,7 +52,7 @@
       (string-join colors ","))));}}}
 (define home
   (home-environment
-    (packages
+    (packages;{{{
       (append
         (specifications->packages
           (list
@@ -67,9 +67,7 @@
             "skroll"))
         (list
           guile-lsp-server
-          bspwm-git
-          )
-        ))
+          bspwm-git)));}}}
     (services
       (list
         (service home-zsh-service-type;{{{
@@ -89,7 +87,7 @@
                           (list "zshrc" "aliases.zsh"
                                 "commands.zsh" "p10k.zsh"
                                 "x11.zsh")))));}}}
-        (service home-bash-service-type
+        (service home-bash-service-type;{{{
                  (home-bash-configuration
                    (environment-variables 
                      `(
@@ -105,8 +103,7 @@
                              "$HOME/.dotnet/tools"
                              "$HOME/.cargo/bin"
                              "$HOME/.dotnet"
-                             "$PATH"
-                             ))
+                             "$PATH"))
                        ("GUILE_LOAD_PATH"
                         . ,(colon-join
                              "$HOME/.local/share/guile/site/3.0"
@@ -137,9 +134,9 @@
                                      "./bash/bash_profile")))
                    (bash-logout (list
                                   (local-file
-                                    "./bash/bash_logout")))))
+                                    "./bash/bash_logout")))));}}}
         (simple-service
-          'zsh-abbr
+          'zsh-abbr ;{{{
           home-xdg-configuration-files-service-type
           `(
             ("zsh-abbr/user-abbreviations"
@@ -161,7 +158,7 @@
                           (list
                             (file/read-all-text "./abbrs.zsh")
                             (file/read-all-text "./abbrs-xbps.zsh"))
-                          #$output))))))))
+                          #$output)))))))) ;}}}
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))))))
 
