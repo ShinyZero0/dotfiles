@@ -151,24 +151,18 @@
                   (with-imported-modules
                     '((guix build utils)
                       (ice-9 textual-ports)
-                      (zerolib)
-                      )
+                      (zerolib fs))
                     #~(begin
                         (use-modules (guix build utils)
                                      (ice-9 textual-ports)
-                                     (zerolib))
+                                     (zerolib fs))
                         (copy-recursively
                           #$(local-file "zsh" #:recursive? #t) ".")
-                        (write-all-lines
+                        (file/write-all-lines
                           (list
-                            (read-all-text "./abbrs.zsh")
-                            (read-all-text "./abbrs-xbps.zsh"))
-                          (open-output-file #$output))
-                        ))
-                  )
-                ))
-            ))
-
+                            (file/read-all-text "./abbrs.zsh")
+                            (file/read-all-text "./abbrs-xbps.zsh"))
+                          #$output))))))))
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))))))
 
