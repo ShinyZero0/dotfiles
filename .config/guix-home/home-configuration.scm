@@ -79,7 +79,8 @@
                                (string-product
                                  "$HOME/.guix-home/profile/share/zsh/"
                                  '("5.9/functions/" "site-functions"))
-                               '("$HOME/.config/guix/current/share/zsh/site-functions"))))
+                               '("$HOME/.config/guix/current/share/zsh/site-functions"
+                                 "/usr/share/zsh/site-functions"))))
                        ("SHELL" . ,(file-append zsh "/bin/zsh"))))
                    (zshrc
                      (map (lambda (s)
@@ -97,13 +98,13 @@
                         . ,(file-append guix "/share/guile/site/3.0"))
                        ("GUIX_LOCPATH"
                         . ,(file-append glibc-locales "/lib/locale"))
-                       ("PATH"
+                       ("PATH";{{{
                         . ,(colon-join
                              "$HOME/.local/bin"
                              "$HOME/.dotnet/tools"
                              "$HOME/.cargo/bin"
                              "$HOME/.dotnet"
-                             "$PATH"))
+                             "$PATH"));}}}
                        ("GUILE_LOAD_PATH"
                         . ,(colon-join
                              "$HOME/.local/share/guile/site/3.0"
