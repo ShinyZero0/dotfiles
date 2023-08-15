@@ -168,9 +168,4 @@
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))))))
 
-        ;; (service home-mcron-configuration
-        ;;          (jobs 
-        ;;            (list
-        ;;              )))
-        ))))
 home
