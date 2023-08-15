@@ -33,7 +33,7 @@
 
 (define (main-get)
   (let1 (selected-bmark (car (string-split (select-bmark) #\tab)))
-        (if (not (string-null? selected-bmark))
+        (unless (string-null? selected-bmark)
           (with-output-to-file
             (getenv "QUTE_FIFO")
             (lambda _
@@ -43,7 +43,7 @@
                   selected-bmark)))))))
 (define (main-delete)
   (define selected-bmark (select-bmark))
-  (if (not (string-null? selected-bmark))
+  (unless (string-null? selected-bmark)
     (del-bookmark 
       (last
         (string-split selected-bmark #\tab)))))
