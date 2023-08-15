@@ -94,6 +94,8 @@
                  (home-bash-configuration
                    (environment-variables 
                      `(
+                       ("GUIX_HOME_CONFIG_ROOT"
+                        . "$HOME/.config/guix-home")
                        ("GNUPKGS"
                         . ,(file-append guix "/share/guile/site/3.0"))
                        ("GUIX_LOCPATH"
@@ -109,8 +111,14 @@
                        ("GUILE_LOAD_PATH"
                         . ,(colon-join
                              "$HOME/.local/share/guile/site/3.0"
-                             "$GUILE_LOAD_PATH"
-                             ))
+                             "$GUILE_LOAD_PATH"))
+                       ("GUIX_PACKAGE_PATH"
+                        . ,(colon-join
+                             "$HOME/.config/guix-packages"))
+                       ("XDG_DATA_DIRS"
+                        . ,(colon-join
+                             "$HOME/.nix-profile/share"
+                             "/usr/share" "$XDG_DATA_DIRS"))
                        ("FZF_DEFAULT_OPTS"
                         . ,fzf-options)
                        ("PAGER" . "less -RF --incsearch --status-line --mouse --wheel-lines 3")
@@ -121,11 +129,7 @@
                        ("POWERSHELL_TELEMETRY_OPTOUT" . "1")
                        ("LINKDING_TOKEN" . "28185e63c63f3324f5613ce152094b34731379a2")
                        ("EDITOR" . "nvim")
-                       ("VISUAL" . "$EDITOR")
-                       ("XDG_DATA_DIRS"
-                        . ,(colon-join "$HOME/.nix-profile/share" "/usr/share" "$XDG_DATA_DIRS")
-                       )
-                     ))
+                       ("VISUAL" . "$EDITOR")))
                    (bashrc (list
                              (local-file
                                "./bash/bashrc")))
