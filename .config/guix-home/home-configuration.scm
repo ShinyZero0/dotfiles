@@ -12,6 +12,7 @@
   (gnu services)
   (gnu home services shells)
   (gnu home services mcron)
+  (gnu home services ssh)
   (gnu home services)
   (guix gexp)
   (guix utils)
@@ -154,6 +155,8 @@
                 ))
             ))
 
+        (service home-ssh-agent-service-type
+                 (home-ssh-agent-configuration))))))
 
         ;; (service home-mcron-configuration
         ;;          (jobs 
