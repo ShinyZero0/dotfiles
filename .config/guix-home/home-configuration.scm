@@ -57,15 +57,14 @@
         (specifications->packages
           (list
             "ripgrep"
+            "zoxide"
             "glibc-locales"
             "keynav"
             "detox"
             "qutebrowser"
             "fzf"
-            "zoxide"
-            "neovim"
-            ;; "bfs"
-            ))
+            "bat"
+            "skroll"))
         (list
           guile-lsp-server
           bspwm-git
