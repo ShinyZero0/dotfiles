@@ -13,9 +13,9 @@
 (define (main args)
   (let1 (arg1 (cadr args))
         (cond
-          ((equal? arg1 "get") => (lambda _ (main-get)))
-          ((equal? arg1 "post") => (lambda _ (main-post)))
-          ((equal? arg1 "delete") => (lambda _ (main-delete))))))
+          ((equal? arg1 "get") (main-get))
+          ((equal? arg1 "post") (main-post))
+          ((equal? arg1 "delete") (main-delete)))))
 
 (define (main-post)
   (let*
