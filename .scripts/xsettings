@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/usr/bin/env sh
 
 setxkbmap us,ru -option 'grp:win_space_toggle'
 xset r rate 250 15
