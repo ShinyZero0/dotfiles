@@ -1,4 +1,4 @@
 #!/bin/sh
 
 imv /tmp/Pictures \
-	| xargs -i mv {} ~/Pictures/
+	| xargs -i mv {} ~/Pictures/Screenshots/
