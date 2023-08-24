@@ -9,7 +9,7 @@ while true; do
 	artist="$(playerctl metadata artist 2>/dev/null)"
 	[[ -n $artist ]] && line+="${artist} — "
 	line+="$(playerctl metadata title)"
-	sleep $(($PERIOD * ($LENGTH + $#line + 1))) # quick maths
+	sleep $(($PERIOD * ($LENGTH + $(echo $line | wc -m) + 2))) # quick maths
 	print $line
 done \
 	| skroll -r -n $LENGTH -d $PERIOD
