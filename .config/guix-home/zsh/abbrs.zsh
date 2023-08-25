@@ -37,5 +37,5 @@ abbr grss="git restore --staged"
 abbr grmc="git rm --cached"
 
 # GUIX
-abbr GHC="guix home reconfigure ~/.config/guix-home/home-configuration.scm"
+abbr GHC="guix home reconfigure -L $GUIX_HOME_CONFIG_ROOT $GUIX_HOME_CONFIG_ROOT/home-configuration.scm"
 abbr GHR="guix home roll-back"

@@ -43,7 +43,7 @@ bindkey -M viins "^O" edit-command-line
 
 autoload -Uz expand-absolute-path
 zle -N expand-absolute-path
-bindkey -M viins '^[[27;5;9~' expand-absolute-path
+bindkey -M viins '^T' expand-absolute-path
 bindkey -M viins "^A" beginning-of-line
 bindkey -M viins "^E" end-of-line
 bindkey -M viins "^?" backward-delete-char 
