@@ -22,6 +22,7 @@
   (guix gexp)
   (guix utils)
   (guix modules)
+  (scripts-pkg)
   (zero packages guile-zerolib))
 
 (chdir (current-source-directory)) ; from (guix utils)
@@ -97,7 +98,10 @@
             "offpunk"
             "chafa"
             "direnv"
-            "bspwm-git"))));}}}
+            "bspwm-git"))
+        (list
+          scripts-pkg)))
+          ;}}}
     (services
       (list
         (service home-zsh-service-type;{{{
@@ -118,7 +122,6 @@
                             (local-file (string-append "zsh/" s)))
                           (list "zshrc"
                                 "aliases.zsh"
-                                "x11.zsh"
                                 "commands.zsh"
                                 "p10k-single.zsh")))));}}}
         (simple-service 'zsh-direnv;{{{

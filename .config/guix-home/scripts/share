@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+link=$(curl -F file="@$1" "https://0x0.st") 
+print $link | yank
+print "$link copied to clipboard!"

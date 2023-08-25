@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+share $(picget $1)

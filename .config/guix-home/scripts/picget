@@ -1,0 +1,4 @@
+#!/usr/bin/env dash
+
+cd ${1:-/tmp/Pictures}
+imv $(ls --sort=time)

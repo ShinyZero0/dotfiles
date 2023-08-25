@@ -1,0 +1,4 @@
+#!/usr/bin/env dash
+
+imv /tmp/Pictures \
+	| xargs -i mv {} ~/Pictures/Screenshots/

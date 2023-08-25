@@ -17,12 +17,6 @@ yankpath()
 {
 	realpath $1 | yank
 }
-share()
-{
-	link=$(curl -F file="@$1" "https://0x0.st")
-	print $link | yank
-	print "$link copied to clipboard!"
-}
 fzcd()
 {
 	cd "$(bfs -maxdepth 4 -type d $1 -print0 | fzf --read0 || print .)"
