@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+autoload -z zmv
+zmv -v '(**/)(*)' '$1${2//[#* ()\{\}\[\]]/_}'

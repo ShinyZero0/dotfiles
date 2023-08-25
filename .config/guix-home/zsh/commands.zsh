@@ -21,10 +21,6 @@ fzcd()
 {
 	cd "$(bfs -maxdepth 4 -type d $1 -print0 | fzf --read0 || print .)"
 }
-zsanity()
-{
-	zmv -v '(**/)(* *)' '$1${2//[,* #]/_}'
-}
 ghcd()
 {
 	cd "$(guix home build -L $GUIX_HOME_CONFIG_ROOT $GUIX_HOME_CONFIG_ROOT/home-configuration.scm || print .)"

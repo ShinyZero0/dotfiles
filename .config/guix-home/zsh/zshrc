@@ -17,8 +17,6 @@ zstyle ':completion:*' max-errors 3
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle :compinstall filename "$HOME/.zshrc"
 
-autoload -Uz zmv
-
 bindkey -v
 export KEYTIMEOUT=1
 # Change cursor shape for different vi modes.

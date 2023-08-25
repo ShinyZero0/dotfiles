@@ -29,6 +29,7 @@
               ("picsave" "bin/")
               ("recent" "bin/")
               ("coolmusic" "bin/")
+              ("zsanity" "bin/")
               ("picshare" "bin/")
               ("picyank" "bin/"))))
       (inputs (list
