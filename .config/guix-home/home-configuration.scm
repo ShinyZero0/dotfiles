@@ -77,29 +77,35 @@
     (packages;{{{
       (append
         (specifications->packages
-          (list
-            "ripgrep"
-            "bfs"
-            "zoxide"
-            "glibc-locales"
-            "keynav"
-            "detox"
-            "qutebrowser"
-            "fzf"
-            "bat"
-            "byobu"
-            "tmux"
-            "skroll"
-            "rust-stylua"
-            "guile"
-            "guile-json"
-            "guile-zerolib"
-            "guile-readline"
-            "offpunk"
-            "chafa"
-            "direnv"
-            "bspwm-git"
-            "sxhkd"))
+          (let
+            ((tools '("ripgrep"
+                     "bfs"
+                     "fzf"
+                     "byobu"
+                     "tmux"
+                     "skroll"
+                     "bat"
+                     "detox"))
+            (shell '("zoxide"
+                     "direnv"))
+            (guile '("guile"
+                     "guile-json"
+                     "guile-zerolib"
+                     "guile-readline"))
+            (web '("offpunk"
+                   "chafa"
+                   "qutebrowser"))
+            (wm '("keynav"
+                  "bspwm-git"
+                  "sxhkd"))
+            (lua '("rust-stylua")))
+           (append
+             tools
+             guile
+             web
+             shell
+             lua
+             '("glibc-locales"))))
         (list
           scripts-pkg)))
           ;}}}
