@@ -8,6 +8,7 @@
   (gnu home)
   (gnu packages)
   (gnu packages shells)
+  (gnu packages rust-apps)
   (gnu packages shellutils)
   (gnu packages package-management)
   (gnu packages base)
@@ -23,7 +24,19 @@
   (guix modules)
   (zero packages guile-zerolib))
 
-(chdir (current-source-directory))
+(chdir (current-source-directory)) ; from (guix utils)
+(define (shell-script-file name file-like)
+  (computed-file
+    name
+    (with-imported-modules
+      '((guix build utils))
+      #~(begin
+          (use-modules
+            (guix build utils))
+          (copy-file #$file-like
+                     #$output)
+          (patch-shebang #$output)
+          (chmod #$output #o755)))))
 (define (compound-file name files)
   (computed-file
     name
@@ -197,6 +210,15 @@
                                        "[ -f $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]"
                                        "&& . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh")))))) ;}}}
         (service home-ssh-agent-service-type
-                 (home-ssh-agent-configuration))))))
-
+                 (home-ssh-agent-configuration))
+        (service home-files-service-type
+                 `((".local/bin/rg"
+                    ,(shell-script-file
+                       "rg"
+                       (mixed-text-file
+                         "rg"
+                         "#!" dash "/bin/dash"
+                         "\n" "if [ ! $PWD = $HOME ]; then"
+                         "\n\t" ripgrep "/bin/rg $@"
+                         "\n" "fi")))))))))
 home
