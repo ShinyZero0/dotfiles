@@ -79,29 +79,30 @@
         (specifications->packages
           (let
             ((tools '("ripgrep"
-                     "bfs"
-                     "fzf"
-                     "byobu"
-                     "tmux"
-                     "skroll"
-                     "bat"
-                     "detox"))
-            (shell '("zoxide"
-                     "direnv"))
-            (guile '("guile"
-                     "guile-json"
-                     "guile-zerolib"
-                     "guile-readline"))
-            (web '("offpunk"
-                   "chafa"
-                   "qutebrowser"))
-            (wm '("keynav"
-                  "bspwm-git"
-                  "sxhkd"))
-            (lua '("rust-stylua")))
+                      "bfs"
+                      "fzf"
+                      "byobu"
+                      "tmux"
+                      "skroll"
+                      "bat"
+                      "detox"))
+             (shell '("zoxide"
+                      "direnv"))
+             (guile '("guile"
+                      "guile-json"
+                      "guile-zerolib"
+                      "guile-readline"))
+             (web '("offpunk"
+                    "chafa"
+                    "qutebrowser"))
+             (wm '("keynav"
+                   "bspwm-git"
+                   "sxhkd"))
+             (lua '("rust-stylua")))
            (append
              tools
              guile
+             wm
              web
              shell
              lua
