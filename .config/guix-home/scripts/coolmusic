@@ -1,0 +1,7 @@
+#!/usr/bin/env dash
+
+mpv --no-vid \
+	$(bfs ${1:-$HOME/Music/} -exclude -name .git \
+	-type f -print0 \
+	| recent \
+	| grep mp3)

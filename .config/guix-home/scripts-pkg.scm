@@ -28,6 +28,7 @@
               ("picget" "bin/")
               ("picsave" "bin/")
               ("recent" "bin/")
+              ("coolmusic" "bin/")
               ("picshare" "bin/")
               ("picyank" "bin/"))))
       (inputs (list
