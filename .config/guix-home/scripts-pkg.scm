@@ -27,6 +27,7 @@
               ("put-x11" "bin/put")
               ("picget" "bin/")
               ("picsave" "bin/")
+              ("recent" "bin/")
               ("picshare" "bin/")
               ("picyank" "bin/"))))
       (inputs (list

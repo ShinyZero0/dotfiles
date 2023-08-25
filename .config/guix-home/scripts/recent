@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+while read -d $'\0' file; do
+	stat -t $file
+done \
+	| sort -b --key=13 \
+	| tac \
+	| cut -d " " -f 1
