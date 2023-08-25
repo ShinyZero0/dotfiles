@@ -79,6 +79,7 @@
         (specifications->packages
           (list
             "ripgrep"
+            "bfs"
             "zoxide"
             "glibc-locales"
             "keynav"
@@ -90,7 +91,6 @@
             "tmux"
             "skroll"
             "rust-stylua"
-            "guile-lsp-server"
             "guile"
             "guile-json"
             "guile-zerolib"
@@ -98,7 +98,8 @@
             "offpunk"
             "chafa"
             "direnv"
-            "bspwm-git"))
+            "bspwm-git"
+            "sxhkd"))
         (list
           scripts-pkg)))
           ;}}}
