@@ -31,6 +31,9 @@ local function _increaseTabWidth() -- {{{
 	vim.o.tabstop = vim.o.tabstop * 2
 	vim.o.shiftwidth = vim.o.tabstop
 end -- }}}
+local function exitMapping(lhs)
+	return { lhs, nil, { exit = true, nowait = true } }
+end
 -- Options{{{
 Hydra({
 
@@ -68,9 +71,9 @@ Hydra({
 		{ "-", _reduceTabWidth },
 		{ "t", cmd("Telescope filetypes"), { exit = true } },
 		{ "L", cmd("Lazy"), { exit = true } },
-		{ "<Esc>", nil, { exit = true, nowait = true } },
-		{ "q", nil, { exit = true, nowait = true } },
-		{ "<C-q>", nil, { exit = true, nowait = true } },
+		exitMapping("<Esc>"),
+		exitMapping("q"),
+		exitMapping("<C-q>"),
 	},
 }) -- }}}
 
@@ -92,7 +95,7 @@ Hydra({
 	body = "<leader>W",
 	heads = {
 
-		{ "<Esc>", nil, { exit = true, nowait = true } },
+		exitMapping("<Esc>"),
 		{ "o", vim.cmd.only, { exit = true } },
 		{ "H", cmd("WinShift left") },
 		{ "J", cmd("WinShift down") },
@@ -141,7 +144,7 @@ Hydra({
 		{ "e", "<Plug>(smartword-e)" },
 		{ "ge", "<Plug>(smartword-ge)" },
 		{ "<Esc>", nil, { exit = true, mode = "n" } },
-		{ ",", nil, { exit = true, nowait = true } },
+		exitMapping(","),
 	},
 }) -- }}}
 
@@ -220,7 +223,7 @@ Hydra({
 		{ "s", ":Neoformat! markdown Split<CR>" },
 		{ "j", ":Neoformat! markdown Join<CR>" },
 		{ ".", ":Neoformat<CR>", { exit = true } },
-		{ "<Esc>", nil, { exit = true } },
+		exitMapping("<Esc>"),
 	},
 }) -- }}}
 
