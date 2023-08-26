@@ -27,7 +27,7 @@ local function _reduceTabWidth() -- {{{
 		vim.o.shiftwidth = vim.o.tabstop
 	end
 end -- }}}
-local function _increaseTabwidth() -- {{{
+local function _increaseTabWidth() -- {{{
 	vim.o.tabstop = vim.o.tabstop * 2
 	vim.o.shiftwidth = vim.o.tabstop
 end -- }}}
@@ -64,7 +64,7 @@ Hydra({
 		{ "b", cmd("set linebreak!") },
 		{ "R", cmd("set readonly!") },
 		{ "C", cmd("ColorizerToggle") },
-		{ "+", _increaseTabwidth },
+		{ "+", _increaseTabWidth },
 		{ "-", _reduceTabWidth },
 		{ "t", cmd("Telescope filetypes"), { exit = true } },
 		{ "L", cmd("Lazy"), { exit = true } },
