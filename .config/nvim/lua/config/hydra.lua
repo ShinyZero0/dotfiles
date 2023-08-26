@@ -202,16 +202,6 @@ Hydra({
 			position = "middle",
 			border = "rounded",
 			type = "window",
-			funcs = {
-
-				ft = function()
-					if vim.o.filetype ~= "text" then
-						return "Wrong filetype!    "
-					else
-						return ""
-					end
-				end,
-			},
 		},
 	},
 	mode = { "v" },

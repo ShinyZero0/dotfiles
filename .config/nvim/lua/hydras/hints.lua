@@ -37,10 +37,10 @@ return {
     Formatting
 
     _._: Default Formatter    
-    _r_: To Russian %{ft}
-    _e_: To English %{ft}
-    _s_: Split %{ft}
-    _j_: Join %{ft}
+    _r_: To Russian
+    _e_: To English
+    _s_: Split
+    _j_: Join
 
     ]], -- }}}
 	-- {{{
