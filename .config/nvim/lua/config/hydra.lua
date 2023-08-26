@@ -62,7 +62,6 @@ Hydra({
 	}, -- }}}
 	heads = {
 
-		{ "s", cmd("set spell!") },
 		{ "w", cmd("set wrap!") },
 		{ "b", cmd("set linebreak!") },
 		{ "R", cmd("set readonly!") },

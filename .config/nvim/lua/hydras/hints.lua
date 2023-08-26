@@ -23,7 +23,6 @@ return {
     Options:
 
     _w_: wrap      %{wrap}
-    _s_: spell     %{spell}
     _b_: linebreak %{lb}
     _R_: readonly  %{ro}
 	_+_, _-_: tabstop +-1
