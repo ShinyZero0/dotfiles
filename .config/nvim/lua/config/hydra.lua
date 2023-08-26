@@ -147,47 +147,7 @@ Hydra({
 	},
 }) -- }}}
 
--- Formatting -- {{{
-Hydra({
-	name = "Formatting",
-	body = "<Leader>.",
-	hint = hints.Formatting,
-	mode = { "n" },
-
-	config = {
-
-		invoke_on_body = true,
-		color = "red",
-
-		hint = {
-
-			position = "middle",
-			border = "rounded",
-			type = "window",
-			funcs = {
-				ft = function()
-					if vim.o.filetype ~= "text" then
-						return "< Wrong filetype! >  "
-					else
-						return ""
-					end
-				end,
-			},
-		},
-	},
-
-	heads = {
-
-		{ "e", cmd("Neoformat! markdown ToEng") },
-		{ "r", cmd("Neoformat! markdown ToRus") },
-		{ "s", cmd("Neoformat! markdown Split") },
-		{ "j", cmd("Neoformat! markdown Join") },
-		{ ".", cmd("Neoformat"), { exit = true } },
-		{ "<Esc>", nil, { exit = true } },
-	},
-}) -- }}}
-
--- Formatting visual{{{
+-- Formatting {{{
 Hydra({
 
 	name = "Formatting visual",
@@ -204,7 +164,7 @@ Hydra({
 			type = "window",
 		},
 	},
-	mode = { "v" },
+	mode = { "v", "n" },
 	heads = {
 
 		{ "e", ":Neoformat! markdown ToEng<CR>" },
