@@ -27,7 +27,7 @@
   (zero packages guile-zerolib))
 
 (chdir (current-source-directory)) ; from (guix utils)
-(define (shell-script-file name file-like)
+(define (executable-file name file-like)
   (computed-file
     name
     (with-imported-modules
@@ -227,7 +227,7 @@
                  (home-ssh-agent-configuration))
         (service home-files-service-type
                  `((".local/bin/rg"
-                    ,(shell-script-file
+                    ,(executable-file
                        "rg"
                        (mixed-text-file
                          "rg"
