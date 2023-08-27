@@ -12,6 +12,7 @@
   (gnu packages shellutils)
   (gnu packages package-management)
   (gnu packages base)
+  (gnu packages video)
   (gnu services configuration)
   (gnu services)
   (gnu home services shells)
@@ -86,6 +87,7 @@
                       "skroll"
                       "bat"
                       "detox"))
+             (apps '("mpv" "mpv-mpris"))
              (shell '("zoxide"
                       "direnv"))
              (guile '("guile"
@@ -100,6 +102,7 @@
                    "sxhkd"))
              (lua '("rust-stylua")))
            (append
+             apps
              tools
              guile
              wm
@@ -231,5 +234,7 @@
                          "#!" dash "/bin/dash"
                          "\n" "if [ ! $PWD = $HOME ]; then"
                          "\n\t" ripgrep "/bin/rg $@"
-                         "\n" "fi")))))))))
+                         "\n" "fi")))
+                   (".config/mpv/scripts/mpris.so"
+                    ,(file-append mpv-mpris "/lib/mpris.so"))))))))
 home
