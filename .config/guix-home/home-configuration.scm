@@ -108,15 +108,15 @@
                    "bspwm-git"
                    "sxhkd"))
              (lua '("rust-stylua")))
-           (append
-             apps
-             tools
-             guile
-             wm
-             web
-             shell
-             lua
-             '("glibc-locales"))))
+            (append
+              apps
+              tools
+              guile
+              wm
+              web
+              shell
+              lua
+              '("glibc-locales"))))
         (list
           scripts-pkg)))
     ;}}}
