@@ -7,6 +7,7 @@
 (use-modules;{{{
   (guix gexp)
   (guix utils)
+  (guix build utils)
   (guix modules)
   (gnu home)
   (gnu packages)
@@ -32,6 +33,23 @@
   (zero packages guile-zerolib))
 
 (chdir (current-source-directory)) ; from (guix utils)
+(define (augmented-directory name dir files);{{{
+  (directory-union name
+    (cons
+      dir
+      (map
+        (lambda (file)
+          (computed-file "additional-file"
+                         (with-imported-modules
+                           '((guix build utils))
+                           #~(begin
+                               (use-modules (guix build utils))
+                               (mkdir-p #$output)
+                               (copy-file
+                                 #$file
+                                 (string-append
+                                   #$output "/" (strip-store-file-name #$file)))))))
+        files))));}}}
 (define (executable-file name file-like);{{{
   (computed-file
     name
@@ -212,8 +230,7 @@
                                        "&& . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh")
                                      (environment-variable-shell-definitions
                                        environment-variables)))))) ;}}}
-        (simple-service;{{{
-          'nvim-config
+        (simple-service 'nvim-config ;{{{
           home-xdg-configuration-files-service-type
           (map
             (match-lambda ((path . rest)
@@ -237,7 +254,17 @@
                             '("A" "I" "a" "i")))
                         "\n")))))
               ("lua/plugins"
-               ,(local-file "nvim/lua/plugins" #:recursive? #t)))));}}}
+               ,(augmented-directory "plugins"
+                  (local-file "./nvim/lua/plugins"
+                              #:recursive? #t
+                              #:select?
+                              (lambda (file _)
+                                (not
+                                  (member
+                                    (basename file)
+                                    '("plugins.d")))))
+                  (list
+                    (local-file "./nvim/lua/plugins.d/desktop.lua")))))))
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))
         (service home-files-service-type;{{{
