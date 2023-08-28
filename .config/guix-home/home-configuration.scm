@@ -32,7 +32,7 @@
   (zero packages guile-zerolib))
 
 (chdir (current-source-directory)) ; from (guix utils)
-(define (executable-file name file-like)
+(define (executable-file name file-like);{{{
   (computed-file
     name
     (with-imported-modules
@@ -43,8 +43,8 @@
           (copy-file #$file-like
                      #$output)
           (patch-shebang #$output)
-          (chmod #$output #o755)))))
-(define (compound-file name files)
+          (chmod #$output #o755)))));}}}
+(define (compound-file name files);{{{
   (computed-file
     name
     #~(begin
@@ -52,7 +52,7 @@
           #$(serialize-text-config
               ""
               files)
-          (open-output-file #$output)))))
+          (open-output-file #$output)))));}}}
 (define-syntax-rule (colon-join args ...)
                     (string-join (list args ...) ":"))
 (define fzf-options;{{{
@@ -119,7 +119,7 @@
              '("glibc-locales"))))
         (list
           scripts-pkg)))
-          ;}}}
+    ;}}}
     (services
       (list
         (service home-zsh-service-type;{{{
@@ -212,7 +212,7 @@
                                        "&& . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh")
                                      (environment-variable-shell-definitions
                                        environment-variables)))))) ;}}}
-        (simple-service
+        (simple-service;{{{
           'nvim-config
           home-xdg-configuration-files-service-type
           (map
@@ -237,10 +237,10 @@
                             '("A" "I" "a" "i")))
                         "\n")))))
               ("lua/plugins"
-               ,(local-file "nvim/lua/plugins" #:recursive? #t)))))
+               ,(local-file "nvim/lua/plugins" #:recursive? #t)))));}}}
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))
-        (service home-files-service-type
+        (service home-files-service-type;{{{
                  `((".local/bin/rg"
                     ,(executable-file
                        "rg"
@@ -251,5 +251,5 @@
                          "\n\t" ripgrep "/bin/rg $@"
                          "\n" "fi")))
                    (".config/mpv/scripts/mpris.so"
-                    ,(file-append mpv-mpris "/lib/mpris.so"))))))))
+                    ,(file-append mpv-mpris "/lib/mpris.so"))))))));}}}
 home
