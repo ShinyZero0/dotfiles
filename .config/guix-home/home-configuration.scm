@@ -5,26 +5,30 @@
 ;; See the "Replicating Guix" section in the manual.
 
 (use-modules;{{{
+  (guix gexp)
+  (guix utils)
+  (guix modules)
   (gnu home)
   (gnu packages)
   (gnu packages shells)
   (gnu packages rust-apps)
-  (gnu packages shellutils)
   (gnu packages package-management)
   (gnu packages base)
   (gnu packages video)
   (gnu services configuration)
   (gnu services)
-  (gnu home services shells)
   (gnu home services mcron)
   (gnu home services ssh)
   (gnu home services)
+  ;; rde
+  (gnu home-services shells)
+  (gnu home-services shellutils)
+  (rde gexp)
+
   (srfi srfi-26)
-  (guix gexp)
-  (guix utils)
-  (guix modules)
   (scripts-pkg)
   (ice-9 match)
+  (zerolib)
   (zero packages guile-zerolib))
 
 (chdir (current-source-directory)) ; from (guix utils)
@@ -91,8 +95,7 @@
                       "detox"))
              (apps '("mpv" "mpv-mpris"
                      "aerc"))
-             (shell '("zoxide"
-                      "direnv"))
+             (shell '("zoxide"))
              (guile '("guile"
                       "guile-json"
                       "guile-zerolib"
@@ -120,7 +123,7 @@
     (services
       (list
         (service home-zsh-service-type;{{{
-                 (home-zsh-configuration
+                 (let1
                    (environment-variables
                      `(("FPATH"
                         . ,(string-join
@@ -132,33 +135,19 @@
                                  "/usr/share/zsh/site-functions"))
                              ":"))
                        ("SHELL" . ,(file-append zsh "/bin/zsh"))))
-                   (zshrc
-                     (map (lambda (s)
-                            (local-file (string-append "zsh/" s)))
-                          (list "zshrc"
-                                "aliases.zsh"
-                                "commands.zsh"
-                                "p10k-single.zsh")))));}}}
-        (simple-service 'zsh-direnv;{{{
-                        home-zsh-service-type
-                        (home-zsh-extension
-                          (zshrc
-                            (list
-                              (computed-file
-                                "direnv"
-                                (with-extensions
-                                  (list guile-zerolib)
-                                  (with-imported-modules
-                                    '((guix build utils))
-                                    #~(begin
-                                        (use-modules (guix build utils)
-                                                     (zerolib shell))
-                                        (display
-                                          (call-command
-                                            #+(file-append direnv "/bin/direnv")
-                                            "hook"
-                                            "zsh")
-                                          (open-output-file #$output))))))))));}}}
+                   (home-zsh-configuration
+                     (zshenv
+                       (list
+                         (environment-variable-shell-definitions environment-variables)))
+                     (zshrc
+                       (map (lambda (s)
+                              (slurp-file-like
+                                (local-file (string-append "zsh/" s))))
+                            (list "zshrc"
+                                  "aliases.zsh"
+                                  "commands.zsh"
+                                  "p10k-single.zsh"))))));}}}
+        (service home-zsh-direnv-service-type)
         (simple-service 'zsh-abbr ;{{{
                         home-xdg-configuration-files-service-type
                         `(
@@ -169,7 +158,7 @@
                                 (local-file "./zsh/abbrs.zsh")
                                 (local-file "./zsh/abbrs-xbps.zsh")))))) ;}}}
         (service home-bash-service-type;{{{
-                 (home-bash-configuration
+                 (let1
                    (environment-variables ;{{{
                      `(
                        ("GUIX_HOME_CONFIG_ROOT"
@@ -206,27 +195,23 @@
                        ("POWERSHELL_TELEMETRY_OPTOUT" . "1")
                        ("LINKDING_TOKEN" . "28185e63c63f3324f5613ce152094b34731379a2")
                        ("EDITOR" . "nvim")
-                       ("VISUAL" . "$EDITOR")));}}}
-                   (bashrc (list
-                             (plain-file ""
-                                         "PS1='[\\u@\\h \\W]\\$ '")))
-                   (bash-profile (list
-                                   (plain-file
-                                     "guix"
+                       ("VISUAL" . "$EDITOR"))) ;}}}
+                   (home-bash-configuration
+                     (bashrc (list
+                               "PS1='[\\u@\\h \\W]\\$ '"))
+                     (bash-profile (list
                                      (string-join
                                        '("GUIX_PROFILE=$HOME/.config/guix/current"
                                          ". $GUIX_PROFILE/etc/profile"
                                          "GUIX_PROFILE=$HOME/.guix-profile"
                                          ". $GUIX_PROFILE/etc/profile")
-                                       "\n"))
-                                   (plain-file
-                                     "autorun"
-                                     "mkdir -p /tmp/Pictures")
-                                   (plain-file
-                                     "nix"
-                                     (string-append
+                                       "\n")
+                                     "mkdir -p /tmp/Pictures"
+                                     (s+
                                        "[ -f $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]"
-                                       "&& . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh")))))) ;}}}
+                                       "&& . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh")
+                                     (environment-variable-shell-definitions
+                                       environment-variables)))))) ;}}}
         (simple-service
           'nvim-config
           home-xdg-configuration-files-service-type
