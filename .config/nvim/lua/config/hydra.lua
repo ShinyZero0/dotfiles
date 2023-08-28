@@ -9,7 +9,6 @@ local Hydra = require("hydra")
 local cmd = require("hydra.keymap-util").cmd
 local hints = require("hydras.hints")
 local Splits = require("smart-splits")
-vim.g.mapleader = " "
 
 local function _boolHint(option) -- {{{
 	return function()
