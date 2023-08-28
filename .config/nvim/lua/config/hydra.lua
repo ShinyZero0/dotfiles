@@ -176,21 +176,22 @@ Hydra({
 	},
 }) -- }}}
 
+local saveOrExitCfg = { -- {{{
+
+	color = "blue",
+	invoke_on_body = true,
+	hint = {
+
+		type = "window",
+		position = "bottom",
+		border = "rounded",
+	},
+} -- }}}
 SaveOrExit = Hydra({ -- {{{
 
 	name = "Are you sure?",
 	hint = hints.SaveOrExit,
-	config = {
-
-		color = "blue",
-		invoke_on_body = true,
-		hint = {
-
-			type = "window",
-			position = "bottom",
-			border = "rounded",
-		},
-	},
+	config = saveOrExitCfg,
 	heads = {
 
 		{ "<C-q>", cmd("bd!|lua CoolerExitFunc()"), { desc = "Quit without saving" } },
@@ -204,17 +205,7 @@ SaveOrExitOne = Hydra({ -- {{{
 
 	name = "Are you sure?",
 	hint = hints.SaveOrExit,
-	config = {
-
-		color = "blue",
-		invoke_on_body = true,
-		hint = {
-
-			type = "window",
-			position = "bottom",
-			border = "rounded",
-		},
-	},
+	config = saveOrExitCfg,
 	heads = {
 
 		{ "<C-q>", cmd("q!"), { desc = "Quit without saving" } },
