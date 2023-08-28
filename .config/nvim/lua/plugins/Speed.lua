@@ -8,7 +8,8 @@ return {
 	},
 	{ -- {{{
 		"ShinyZero0/reach.nvim",
-		-- dir = "~/dev/vim/reach.nvim/",
+		dev = false,
+		dir = "~/dev/vim/reach.nvim/",
 		cmd = "ReachOpen",
 		config = function()
 			local reachOptions = {
