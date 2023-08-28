@@ -246,7 +246,9 @@
                             #f
                             "~{nnoremap <expr> ~a getline('.') =~~ '^\\s*$' ? 'S' : '~@*~a'~%~}"
                             '("A" "I" "a" "i")))
-                        "\n"))))))))
+                        "\n")))))
+              ("lua/plugins"
+               ,(local-file "nvim/lua/plugins" #:recursive? #t)))))
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))
         (service home-files-service-type
