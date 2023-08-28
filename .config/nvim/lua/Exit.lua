@@ -2,20 +2,17 @@
 CoolExitFunc = function()
 	local cnt = #vim.api.nvim_list_wins()
 	if cnt == 1 then
-		-- CoolerExitFunc()
-		if vim.bo[0].modified or vim.bo[0].buftype == "terminal" then
+		if vim.bo.modified or vim.bo.buftype == "terminal" then
 			SaveOrExit:activate() -- Hydra will call the CoolerExitFunc
-			return
 		else
-			vim.cmd("bd")
+			vim.cmd.bd()
 			CoolerExitFunc()
-			return
 		end
 	else
-		if vim.bo[0].modified then
+		if vim.bo.modified then
 			SaveOrExitOne:activate()
 		else
-			vim.cmd("quit")
+			vim.cmd.quit()
 		end
 	end
 end
@@ -25,8 +22,7 @@ CoolerExitFunc = function()
 	for _, id in ipairs(vim.api.nvim_list_bufs()) do
 		if vim.bo[id].modified or vim.bo[id].buftype == "terminal" then
 			vim.cmd(f("buffer {id}"))
-			SaveOrExit:activate() -- Hydra will call this function recusively
-			return
+			return SaveOrExit:activate() -- Hydra will call this function recusively
 		else
 			vim.cmd(f("buffer {id} | silent! q!"))
 		end
