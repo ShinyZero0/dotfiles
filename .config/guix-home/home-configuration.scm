@@ -223,6 +223,28 @@
                                      (string-append
                                        "[ -f $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]"
                                        "&& . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh")))))) ;}}}
+        (service home-xdg-configuration-files-service-type
+                 `(("nvim/keys.vim"
+                    ,(compound-file
+                       "keys.vim"
+                       (list
+                         (local-file "nvim/keys.vim")
+                         (plain-file
+                           ""
+                           (string-join
+                             (append
+                               (map
+                                 (cute
+                                   format #f
+                                   "~anoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'"
+                                   <>)
+                                 '("n" "x" "o"))
+                              (map
+                                (cute
+                                  format #f
+                                  "nnoremap <expr> ~a getline('.') =~~ '^\\s*$' ? 'S' : '~@*~a'" <>)
+                                '("A" "I" "a" "i")))
+                             "\n")))))))
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))
         (service home-files-service-type
