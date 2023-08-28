@@ -253,6 +253,11 @@
                             "~{nnoremap <expr> ~a getline('.') =~~ '^\\s*$' ? 'S' : '~@*~a'~%~}"
                             '("A" "I" "a" "i")))
                         "\n")))));}}}
+              ("init.vim"
+               ,(compound-file "shit"
+                  (list
+                    (local-file "./nvim/init.vim")
+                    (local-file "./nvim/init-desktop.vim"))))
               ("lua/plugins";{{{
                ,(augmented-directory "plugins"
                   (local-file "./nvim/lua/plugins"
