@@ -87,8 +87,10 @@
                       "tmux"
                       "skroll"
                       "bat"
+                      "ffmpeg"
                       "detox"))
-             (apps '("mpv" "mpv-mpris"))
+             (apps '("mpv" "mpv-mpris"
+                     "aerc"))
              (shell '("zoxide"
                       "direnv"))
              (guile '("guile"
@@ -99,6 +101,7 @@
                     "chafa"
                     "qutebrowser"))
              (wm '("keynav"
+                   "rofi"
                    "bspwm-git"
                    "sxhkd"))
              (lua '("rust-stylua")))
