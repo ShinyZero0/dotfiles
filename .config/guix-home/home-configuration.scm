@@ -24,6 +24,7 @@
   (guix utils)
   (guix modules)
   (scripts-pkg)
+  (ice-9 match)
   (zero packages guile-zerolib))
 
 (chdir (current-source-directory)) ; from (guix utils)
