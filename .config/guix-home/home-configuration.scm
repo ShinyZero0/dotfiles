@@ -269,7 +269,14 @@
                                     (basename file)
                                     '("plugins.d")))))
                   (list
-                    (local-file "./nvim/lua/plugins.d/desktop.lua"))))))) ;}}}}}}
+                    (local-file "./nvim/lua/plugins.d/desktop.lua"))))
+              ("lua/config"
+               ,(augmented-directory "config"
+                  (local-file "./nvim/lua/config"
+                              #:recursive? #t)
+                  (list
+                    (local-file "./nvim/lua/config.d/lualine-desktop.lua" "lualine.lua")))))))
+                                      ;}}}}}}
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))
         (service home-files-service-type;{{{
