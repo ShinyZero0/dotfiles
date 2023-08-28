@@ -261,13 +261,7 @@
               ("lua/plugins";{{{
                ,(augmented-directory "plugins"
                   (local-file "./nvim/lua/plugins"
-                              #:recursive? #t
-                              #:select?
-                              (lambda (file _)
-                                (not
-                                  (member
-                                    (basename file)
-                                    '("plugins.d")))))
+                              #:recursive? #t)
                   (list
                     (local-file "./nvim/lua/plugins.d/desktop.lua"))))
               ("lua/config"
