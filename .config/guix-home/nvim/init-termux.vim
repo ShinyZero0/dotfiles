@@ -2,7 +2,3 @@ set shell=/data/data/com.termux/files/usr/bin/sh
 set ts=2
 set sw=2
 set clipboard-=unnamed
-
-" lua require("config.lazy-mobile")
-" source $HOME/.config/nvim/lightline-mobile.vim
-let g:org_default_notes_file = "~/org/notes.org"
