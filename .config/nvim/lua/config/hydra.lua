@@ -194,10 +194,10 @@ SaveOrExit = Hydra({ -- {{{
 	config = saveOrExitCfg,
 	heads = {
 
-		{ "<C-q>", cmd("bd!|lua CoolerExitFunc()"), { desc = "Quit without saving" } },
-		{ "q", cmd("bd!|lua CoolerExitFunc()"), { desc = "Quit without saving" } },
-		{ "<C-s>", cmd("w|bd|lua CoolerExitFunc()"), { desc = "Save & quit" } },
-		{ "s", cmd("w|bd|lua CoolerExitFunc()"), { desc = "Save & quit" } },
+		{ "<C-q>", cmd("bd!|lua CoolerExitFunc()") },
+		{ "q", cmd("bd!|lua CoolerExitFunc()") },
+		{ "<C-s>", cmd("w|bd|lua CoolerExitFunc()") },
+		{ "s", cmd("w|bd|lua CoolerExitFunc()") },
 	},
 }) -- }}}}}}
 
@@ -208,9 +208,9 @@ SaveOrExitOne = Hydra({ -- {{{
 	config = saveOrExitCfg,
 	heads = {
 
-		{ "<C-q>", cmd("q!"), { desc = "Quit without saving" } },
-		{ "q", cmd("q!"), { desc = "Quit without saving" } },
-		{ "<C-s>", cmd("w|q"), { desc = "Save & quit" } },
-		{ "s", cmd("w|q"), { desc = "Save & quit" } },
+		{ "<C-q>", cmd("q!") },
+		{ "q", cmd("q!") },
+		{ "<C-s>", cmd("w|q") },
+		{ "s", cmd("w|q") },
 	},
 }) -- }}}
