@@ -232,18 +232,15 @@
                          (plain-file
                            ""
                            (string-join
-                             (append
-                               (map
-                                 (cute
-                                   format #f
-                                   "~anoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'"
-                                   <>)
+                             (list
+                               (format
+                                 #f
+                                 "~{~anoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'~%~}"
                                  '("n" "x" "o"))
-                              (map
-                                (cute
-                                  format #f
-                                  "nnoremap <expr> ~a getline('.') =~~ '^\\s*$' ? 'S' : '~@*~a'" <>)
-                                '("A" "I" "a" "i")))
+                               (format
+                                 #f
+                                 "~{nnoremap <expr> ~a getline('.') =~~ '^\\s*$' ? 'S' : '~@*~a'~%~}"
+                                 '("A" "I" "a" "i")))
                              "\n")))))))
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))
