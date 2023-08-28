@@ -235,7 +235,7 @@
           (map
             (match-lambda ((path . rest)
                            (cons (string-append "nvim/" path) rest)))
-            `(("keys.vim"
+            `(("keys.vim";{{{
                ,(compound-file
                   "keys.vim"
                   (list
@@ -252,8 +252,8 @@
                             #f
                             "~{nnoremap <expr> ~a getline('.') =~~ '^\\s*$' ? 'S' : '~@*~a'~%~}"
                             '("A" "I" "a" "i")))
-                        "\n")))))
-              ("lua/plugins"
+                        "\n")))));}}}
+              ("lua/plugins";{{{
                ,(augmented-directory "plugins"
                   (local-file "./nvim/lua/plugins"
                               #:recursive? #t
@@ -264,7 +264,7 @@
                                     (basename file)
                                     '("plugins.d")))))
                   (list
-                    (local-file "./nvim/lua/plugins.d/desktop.lua"))))))) ;}}}
+                    (local-file "./nvim/lua/plugins.d/desktop.lua"))))))) ;}}}}}}
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))
         (service home-files-service-type;{{{
