@@ -41,13 +41,13 @@ M.ToggleEndingStuff = function() -- {{{
 	if char == nil then
 		return
 	end
-	local line = vim.fn.getline(".")
+	local line = Fn.getline(".")
 	if string.sub(line, -#char) == char then
 		line = string.sub(line, 0, -1 - #char)
 	else
 		line = line .. char
 	end
-	vim.fn.setline(".", line)
+	Fn.setline(".", line)
 end -- }}}
 function FoldLevelByNames() -- {{{
 	local map = {
