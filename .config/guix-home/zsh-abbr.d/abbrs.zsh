@@ -1,5 +1,6 @@
 # vim: ft=sh
 abbr yd="yadm enter exec zsh"
+abbr yb="yadm enter exec byobu -L yadm"
 abbr winclass="xprop WM_CLASS"
 abbr dn="dotnet"
 

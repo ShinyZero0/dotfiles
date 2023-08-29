@@ -158,13 +158,11 @@
                        (list
                          (environment-variable-shell-definitions environment-variables)))
                      (zshrc
-                       (map (lambda (s)
+                       (map (lambda (f)
                               (slurp-file-like
-                                (local-file (string-append "zsh/" s))))
-                            (list "zshrc"
-                                  "aliases.zsh"
-                                  "commands.zsh"
-                                  "p10k-single.zsh"))))));}}}
+                                (local-file f)))
+                            (append (find-files "zsh.d")
+                                    '("./zsh/p10k-single.zsh")))))));}}}
         (service home-zsh-direnv-service-type)
         (simple-service 'zsh-abbr ;{{{
                         home-xdg-configuration-files-service-type
@@ -172,9 +170,9 @@
                           ("zsh-abbr/user-abbreviations"
                            ,(compound-file
                               "user-abbreviations"
-                              (list
-                                (local-file "./zsh/abbrs.zsh")
-                                (local-file "./zsh/abbrs-xbps.zsh")))))) ;}}}
+                              (map (lambda (f) (local-file f))
+                                   (append (find-files "zsh-abbr.d")
+                                           '("./zsh-abbr/abbrs-xbps.zsh"))))))) ;}}}
         (service home-bash-service-type;{{{
                  (let1
                    (environment-variables ;{{{
