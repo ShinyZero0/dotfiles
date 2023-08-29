@@ -226,7 +226,7 @@
                                      "mkdir -p /tmp/Pictures"
                                      (s+
                                        "[ -f $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]"
-                                       "&& . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh")
+                                       " && . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh")
                                      (environment-variable-shell-definitions
                                        environment-variables)))))) ;}}}
         (simple-service 'nvim-config ;{{{
