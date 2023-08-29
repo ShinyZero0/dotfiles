@@ -22,16 +22,11 @@
       (arguments
         (list
           #:install-plan
-          #~'(("share" "bin/")
-              ("yank-x11" "bin/yank")
-              ("put-x11" "bin/put")
-              ("picget" "bin/")
-              ("picsave" "bin/")
-              ("recent" "bin/")
-              ("coolmusic" "bin/")
-              ("zsanity" "bin/")
-              ("picshare" "bin/")
-              ("picyank" "bin/"))))
+          (with-imported-modules
+            '((guix build utils))
+            #~'(("scripts.d/" "bin/")
+                ("yank-x11" "bin/yank")
+                ("put-x11" "bin/put")))))
       (inputs (list
                 dash
                 bash
@@ -41,4 +36,5 @@
       (synopsis "scripts-pkg")
       (description "scripts-pkg")
       (home-page url)
-      (license license:expat))))
+      (license license:gpl3))))
+scripts-pkg
