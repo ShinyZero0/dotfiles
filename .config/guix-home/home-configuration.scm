@@ -113,7 +113,7 @@
                       "ffmpeg"
                       "perl-image-exiftool"
                       "detox"))
-             (apps '("mpv" "mpv-mpris"
+             (apps '("mpv"
                      "aerc"))
              (shell '("zoxide"))
              (guile '("guile"
@@ -287,7 +287,8 @@
                          "#!" dash "/bin/dash"
                          "\n" "if [ ! $PWD = $HOME ]; then"
                          "\n\t" ripgrep "/bin/rg $@"
-                         "\n" "fi")))
-                   (".config/mpv/scripts/mpris.so"
+                         "\n" "fi")))))
+        (service home-xdg-configuration-files-service-type
+                 `((".config/mpv/scripts/mpris.so"
                     ,(file-append mpv-mpris "/lib/mpris.so"))))))));}}}
 home
