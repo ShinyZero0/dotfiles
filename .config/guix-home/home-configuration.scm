@@ -217,19 +217,24 @@
                    (home-bash-configuration
                      (bashrc (list
                                "PS1='[\\u@\\h \\W]\\$ '"))
-                     (bash-profile (list
-                                     (string-join
-                                       '("GUIX_PROFILE=$HOME/.config/guix/current"
-                                         ". $GUIX_PROFILE/etc/profile"
-                                         "GUIX_PROFILE=$HOME/.guix-profile"
-                                         ". $GUIX_PROFILE/etc/profile")
-                                       "\n")
-                                     "mkdir -p /tmp/Pictures"
-                                     (s+
-                                       "[ -f $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]"
-                                       " && . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh")
-                                     (environment-variable-shell-definitions
-                                       environment-variables)))))) ;}}}
+                     (bash-profile (let
+                                     ((guix;{{{
+                                        (string-join
+                                          '("GUIX_PROFILE=$HOME/.config/guix/current"
+                                            ". $GUIX_PROFILE/etc/profile"
+                                            "GUIX_PROFILE=$HOME/.guix-profile"
+                                            ". $GUIX_PROFILE/etc/profile")
+                                          "\n"))
+                                      (nix
+                                        (s+
+                                          "[ -f $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]"
+                                          " && . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"))
+                                      (pics
+                                        "mkdir -p /tmp/Pictures"));}}}
+                                     (list
+                                       guix nix pics
+                                       (environment-variable-shell-definitions
+                                         environment-variables))))))) ;}}}
         (simple-service 'nvim-config ;{{{
           home-xdg-configuration-files-service-type
           (map
