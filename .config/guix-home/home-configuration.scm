@@ -111,6 +111,7 @@
                       "bat"
                       "tokei"
                       "ffmpeg"
+                      "perl-image-exiftool"
                       "detox"))
              (apps '("mpv" "mpv-mpris"
                      "aerc"))
