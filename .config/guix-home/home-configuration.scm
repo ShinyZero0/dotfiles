@@ -109,6 +109,7 @@
                       "tmux"
                       "skroll"
                       "bat"
+                      "tokei"
                       "ffmpeg"
                       "detox"))
              (apps '("mpv" "mpv-mpris"
