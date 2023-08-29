@@ -2,6 +2,7 @@
 
 return {
 
+	"alx741/vinfo",
 	{
 		"eraserhd/parinfer-rust",
 		ft = "scheme",
