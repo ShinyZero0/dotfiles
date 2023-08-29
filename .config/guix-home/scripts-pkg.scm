@@ -29,7 +29,7 @@
                 ("put-x11" "bin/put")))))
       (inputs (list
                 dash
-                bash
+                bash-minimal
                 zsh
                 guile-3.0))
       ;; (native-inputs (list))
