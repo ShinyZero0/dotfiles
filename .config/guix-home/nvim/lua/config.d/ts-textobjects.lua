@@ -9,9 +9,11 @@ require("nvim-treesitter.configs").setup({
 			enable = true,
 			keymaps = {
 
+				-- ["if"] = "@function.inner",
+				-- ["af"] = "@function.outer",
 				["ia"] = "@parameter.inner",
 				["aa"] = "@parameter.outer",
-				["is"] = "@scope.inner",
+				["is"] = { query = "@scope.inner", query_group = "locals" },
 				["as"] = "@scope.outer",
 				["ib"] = "@block.inner",
 				["ab"] = "@block.outer",

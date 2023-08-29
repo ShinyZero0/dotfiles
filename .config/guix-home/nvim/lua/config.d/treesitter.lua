@@ -4,8 +4,8 @@
 
 require("nvim-treesitter.configs").setup({
 
+	incremental_selection = { enable = true },
 	ensure_installed = {
-		"c",
 		"lua",
 		"vim",
 		"vimdoc",

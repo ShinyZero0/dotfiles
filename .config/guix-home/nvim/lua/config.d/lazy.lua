@@ -25,9 +25,6 @@ M.setup = function()
 		change_detection = {
 			notify = false, -- get a notification when changes are found
 		},
-		git = {
-			timeout = 300,
-		},
 		install = {
 			colorscheme = { "challenger_deep" },
 		},
