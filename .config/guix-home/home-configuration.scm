@@ -272,14 +272,13 @@
                   (local-file "./nvim/lua/plugins.d"
                               #:recursive? #t)
                   (list
-                    (local-file "./nvim/lua/plugins/desktop.lua"))))
-              ("lua/config"
+                    (local-file "./nvim/lua/plugins/desktop.lua"))));}}}
+              ("lua/config";{{{
                ,(augmented-directory "config"
                   (local-file "./nvim/lua/config.d"
                               #:recursive? #t)
                   (list
-                    (local-file "./nvim/lua/config/lualine-desktop.lua" "lualine.lua")))))))
-                                      ;}}}}}}
+                    (local-file "./nvim/lua/config/lualine-desktop.lua" "lualine.lua")))))));}}}}}}
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))
         (service home-files-service-type;{{{
