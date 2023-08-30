@@ -291,8 +291,12 @@
                          "#!" dash "/bin/dash"
                          "\n" "if [ ! $PWD = $HOME ]; then"
                          "\n\t" ripgrep "/bin/rg $@"
-                         "\n" "fi")))))
-        (service home-xdg-configuration-files-service-type
+                         "\n" "fi"))))) ;}}}
+        (service home-xdg-configuration-files-service-type ;{{{
                  `((".config/mpv/scripts/mpris.so"
-                    ,(file-append mpv-mpris "/lib/mpris.so"))))))));}}}
+                    ,(file-append mpv-mpris "/lib/mpris.so"))
+                   ("bspwm/bspwmrc"
+                    ,(local-file "./bspwm/bspwmrc"))
+                   ("sxhkd/sxhkdrc"
+                    ,(local-file "./bspwm/sxhkdrc")))))))) ;}}}
 home
