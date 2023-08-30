@@ -142,10 +142,11 @@ super + {_, shift +} w
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
-	bspc node -z {left -20 0 || bspc node -z right -20 0, \
-	bottom 0 20 || bspc node -z top 0 20,\
-	top 0 -20 || bspc node -z bottom 0 -20,\
-	right 20 0 || bspc node -z left 20 0}
+	bspc node -z \
+	{left -20 0 || bspc node -z right -20 0, \
+	bottom 0 20 || bspc node -z top 0 20, \
+	top 0 -20   || bspc node -z bottom 0 -20, \
+	right 20 0  || bspc node -z left 20 0}
 
 # contract a window by moving one of its side inward (left for floatings)
 super + alt + ctrl + {h,j,k,l}
