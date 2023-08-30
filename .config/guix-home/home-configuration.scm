@@ -263,6 +263,8 @@
                   (list
                     (local-file "./nvim/init.vim")
                     (local-file "./nvim/init-desktop.vim"))))
+              ("ftplugin"
+               ,(local-file "./nvim/ftplugin.d" #:recursive? #t))
               ("lua/plugins";{{{
                ,(augmented-directory "plugins"
                   (local-file "./nvim/lua/plugins.d"
