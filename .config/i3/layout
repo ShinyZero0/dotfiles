@@ -1,5 +1,0 @@
-# exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.config/i3/layouts/ws1.json'"
-# exec --no-startup-id firefox
-exec --no-startup-id telegram-desktop
-
-# vim:ft=i3config:sw=2:ts=2
