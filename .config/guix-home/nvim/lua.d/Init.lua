@@ -25,6 +25,7 @@ vim.filetype.add({
 
 		["flake.lock"] = "json",
 		["run"] = "sh",
+		[".envrc"] = "sh",
 		["sxhkdrc"] = "sxhkdrc",
 	}, -- }}}
 	pattern = {

@@ -31,6 +31,7 @@ M.ToggleEndingStuff = function() -- {{{
 		markdown = "\\",
 		zsh = " \\",
 		sh = " \\",
+		sxhkdrc = " \\",
 		json = ",",
 		python = ":",
 		css = ";",

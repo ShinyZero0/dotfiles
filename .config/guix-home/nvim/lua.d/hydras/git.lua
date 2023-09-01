@@ -25,9 +25,7 @@ Hydra({
 		{ "ct", "<Plug>(git-conflict-theirs)" },
 		{ "cb", "<Plug>(git-conflict-both)" },
 		{ "c0", "<Plug>(git-conflict-none)" },
-		{ "[", cmd("GitConflictPrevConflict"), { nowait = true } },
-		{ "]", cmd("GitConflictNextConflict"), { nowait = true } },
+		{ "[", "<Plug>(git-conflict-prev-conflict)", { nowait = true } },
+		{ "]", "<Plug>(git-conflict-next-conflict)", { nowait = true } },
 	},
 })
-
--- vim:ft=lua

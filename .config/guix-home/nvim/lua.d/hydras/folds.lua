@@ -9,7 +9,7 @@ Hydra({
 	body = "z",
 	config = {
 
-		invoke_on_body = true,
+		invoke_on_body = false,
 		color = "pink",
 		hint = { type = "window" },
 	},
@@ -24,7 +24,7 @@ Hydra({
 		{ "O", "zO" },
 		{ "c", "zc", { nowait = true } },
 		{ "C", "zC", { nowait = true } },
-		{ "m", "zm" },
+		{ "m", "zm", { nowait = true } },
 		{ "M", "zM" },
 		{ "r", "zr" },
 		{ "R", "zR" },
