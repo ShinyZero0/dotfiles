@@ -224,8 +224,8 @@
           home-xdg-configuration-files-service-type
           `(("nvim"
              ,(let
-                ((lua (let
-                        ((plugins (directory-union
+                ((lua (let;{{{
+                        ((plugins (directory-union;{{{
                                     "plugins"
                                     (list
                                       (local-file
@@ -233,8 +233,8 @@
                                         #:recursive? #t)
                                       (file-union
                                         "plugins"
-                                        `(("desktop.lua" ,(local-file "./nvim/lua/plugins/desktop.lua")))))))
-                         (config (directory-union
+                                        `(("desktop.lua" ,(local-file "./nvim/lua/plugins/desktop.lua")))))));}}}
+                         (config (directory-union;{{{
                                    "config"
                                    (list
                                      (local-file "./nvim/lua/config.d"
@@ -242,7 +242,7 @@
                                      (file-union
                                        "config"
                                        `(("lualine.lua"
-                                          ,(local-file "./nvim/lua/config/lualine-desktop.lua"))))))))
+                                          ,(local-file "./nvim/lua/config/lualine-desktop.lua"))))))));}}}
                         (directory-union
                           "lua"
                           (list
@@ -252,8 +252,8 @@
                               `(("plugins"
                                  ,plugins)
                                 ("config"
-                                 ,config)))))))
-                 (keys (compound-file
+                                 ,config)))))));}}}
+                 (keys (compound-file;{{{
                          "keys.vim"
                          (list
                            (local-file "nvim/keys.vim")
@@ -269,7 +269,7 @@
                                    #f
                                    "~{nnoremap <expr> ~a getline('.') =~~ '^\\s*$' ? 'S' : '~@*~a'~%~}"
                                    '("A" "I" "a" "i")))
-                               "\n"))))))
+                               "\n"))))));}}}
                 (directory-union
                   "nvim"
                   (list
