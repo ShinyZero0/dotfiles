@@ -1,0 +1,7 @@
+;; vim: ft=scheme
+(use-modules (ice-9 readline)
+             (ice-9 colorized)
+             (ice-9 pretty-print)
+             (zerolib))
+(activate-readline)
+(activate-colorized)

@@ -103,7 +103,8 @@
              (guile '("guile"
                       "guile-json"
                       "guile-zerolib"
-                      "guile-readline"))
+                      "guile-readline"
+                      "guile-colorized"))
              (web '("offpunk"
                     "chafa"
                     "qutebrowser"))
@@ -293,7 +294,9 @@
                          "#!" dash "/bin/dash"
                          "\n" "if [ ! $PWD = $HOME ]; then"
                          "\n\t" ripgrep "/bin/rg $@"
-                         "\n" "fi"))))) ;}}}
+                         "\n" "fi")))
+                   (".guile"
+                    ,(local-file "./misc/guilerc")))) ;}}}
         (service home-xdg-configuration-files-service-type ;{{{
                  `(("mpv/scripts/mpris.so"
                     ,(file-append mpv-mpris "/lib/mpris.so"))
