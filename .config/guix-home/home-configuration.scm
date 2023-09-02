@@ -305,7 +305,7 @@
                  `(("mpv/scripts/mpris.so"
                     ,(file-append mpv-mpris "/lib/mpris.so"))
                    ("bspwm/bspwmrc"
-                    ,(local-file "./bspwm/bspwmrc"))
+                    ,(local-file "./bspwm/bspwmrc" #:recursive? #t))
                    ("sxhkd/sxhkdrc"
                     ,(local-file "./bspwm/sxhkdrc")))))))) ;}}}
 home
