@@ -16,6 +16,7 @@ M.setup = function()
 
 	require("lazy").setup("plugins", {
 
+		lockfile = os.getenv("HOME") .. ".local/share/lazy-lock.json",
 		ui = {
 			border = "rounded",
 		},
