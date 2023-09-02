@@ -223,48 +223,9 @@
         (simple-service 'nvim-config ;{{{
           home-xdg-configuration-files-service-type
           `(("nvim"
-             ,(directory-union
-                "nvim"
-                (list
-                  (local-file "./nvim.d" #:recursive? #t)
-                  (file-union
-                    "nvim"
-                    `(("keys.vim"
-                       ,(compound-file
-                          "keys.vim"
-                          (list
-                            (local-file "nvim/keys.vim")
-                            (plain-file
-                              "keys.vim"
-                              (string-join
-                                (list
-                                  (format
-                                    #f
-                                    "~{~anoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'~%~}"
-                                    '("n" "x" "o"))
-                                  (format
-                                    #f
-                                    "~{nnoremap <expr> ~a getline('.') =~~ '^\\s*$' ? 'S' : '~@*~a'~%~}"
-                                    '("A" "I" "a" "i")))
-                                "\n")))))
-                      ("init.vim"
-                       ,(compound-file "init.vim"
-                                       (list
-                                         (local-file "./nvim/init.vim")
-                                         (local-file "./nvim/init-desktop.vim"))))
-                      ("ftplugin" 
-                       ,(local-file "./nvim/ftplugin.d" #:recursive? #t))
-                      ("snippets"
-                       ,(local-file "./nvim/snippets.d" #:recursive? #t))
-                      ("lua"
-                       ,(directory-union
-                          "lua"
-                          (list
-                            (local-file "./nvim/lua.d" #:recursive? #t)
-                            (file-union
-                              "lua"
-                              `(("plugins"
-                                 ,(directory-union
+             ,(let
+                ((lua (let
+                        ((plugins (directory-union
                                     "plugins"
                                     (list
                                       (local-file
@@ -273,16 +234,59 @@
                                       (file-union
                                         "plugins"
                                         `(("desktop.lua" ,(local-file "./nvim/lua/plugins/desktop.lua")))))))
+                         (config (directory-union
+                                   "config"
+                                   (list
+                                     (local-file "./nvim/lua/config.d"
+                                                 #:recursive? #t)
+                                     (file-union
+                                       "config"
+                                       `(("lualine.lua"
+                                          ,(local-file "./nvim/lua/config/lualine-desktop.lua"))))))))
+                        (directory-union
+                          "lua"
+                          (list
+                            (local-file "./nvim/lua.d" #:recursive? #t)
+                            (file-union
+                              "lua"
+                              `(("plugins"
+                                 ,plugins)
                                 ("config"
-                                 ,(directory-union
-                                    "config"
-                                    (list
-                                      (local-file "./nvim/lua/config.d"
-                                                  #:recursive? #t)
-                                      (file-union
-                                        "config"
-                                        `(("lualine.lua"
-                                           ,(local-file "./nvim/lua/config/lualine-desktop.lua")))))))))))))))))));}}}
+                                 ,config)))))))
+                 (keys (compound-file
+                         "keys.vim"
+                         (list
+                           (local-file "nvim/keys.vim")
+                           (plain-file
+                             "keys.vim"
+                             (string-join
+                               (list
+                                 (format
+                                   #f
+                                   "~{~anoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'~%~}"
+                                   '("n" "x" "o"))
+                                 (format
+                                   #f
+                                   "~{nnoremap <expr> ~a getline('.') =~~ '^\\s*$' ? 'S' : '~@*~a'~%~}"
+                                   '("A" "I" "a" "i")))
+                               "\n"))))))
+                (directory-union
+                  "nvim"
+                  (list
+                    (local-file "./nvim.d" #:recursive? #t)
+                    (file-union
+                      "nvim"
+                      `(("keys.vim" ,keys)
+                        ("init.vim"
+                         ,(compound-file "init.vim"
+                                         (list
+                                           (local-file "./nvim/init.vim")
+                                           (local-file "./nvim/init-desktop.vim"))))
+                        ("ftplugin"
+                         ,(local-file "./nvim/ftplugin.d" #:recursive? #t))
+                        ("snippets"
+                         ,(local-file "./nvim/snippets.d" #:recursive? #t))
+                        ("lua" ,lua)))))))));}}}
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))
         (service home-files-service-type;{{{
