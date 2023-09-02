@@ -34,23 +34,6 @@
 ;}}}
 
 (chdir (current-source-directory)) ; from (guix utils)
-(define (augmented-directory name dir files);{{{
-  (directory-union name
-    (cons
-      dir
-      (map
-        (lambda (file)
-          (computed-file "additional-file"
-                         (with-imported-modules
-                           '((guix build utils))
-                           #~(begin
-                               (use-modules (guix build utils))
-                               (mkdir-p #$output)
-                               (copy-recursively
-                                 #$file
-                                 (string-append
-                                   #$output "/" (strip-store-file-name #$file)))))))
-        files))));}}}
 (define (executable-file name file-like);{{{
   (computed-file
     name
@@ -239,53 +222,66 @@
         (simple-service 'nvim-config ;{{{
           home-xdg-configuration-files-service-type
           `(("nvim"
-             ,(augmented-directory
+             ,(directory-union
                 "nvim"
-                (local-file "./nvim.d" #:recursive? #t)
                 (list
-                  (compound-file
-                    "keys.vim"
-                    (list
-                      (local-file "nvim/keys.vim")
-                      (plain-file
-                        ""
-                        (string-join
+                  (local-file "./nvim.d" #:recursive? #t)
+                  (file-union
+                    "nvim"
+                    `(("keys.vim"
+                       ,(compound-file
+                          "keys.vim"
                           (list
-                            (format
-                              #f
-                              "~{~anoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'~%~}"
-                              '("n" "x" "o"))
-                            (format
-                              #f
-                              "~{nnoremap <expr> ~a getline('.') =~~ '^\\s*$' ? 'S' : '~@*~a'~%~}"
-                              '("A" "I" "a" "i")))
-                          "\n"))))
-                  (compound-file "init.vim"
-                                 (list
-                                   (local-file "./nvim/init.vim")
-                                   (local-file "./nvim/init-desktop.vim")))
-                  (local-file "./nvim/ftplugin.d" "ftplugin" #:recursive? #t)
-                  (local-file "./nvim/snippets.d" "snippets" #:recursive? #t)
-                  (directory-union "lua"
-                    (list
-                      (local-file "./nvim/lua.d" #:recursive? #t)
-                      (file-union
-                        "lua"
-                        `(("plugins"
-                           ,(augmented-directory
-                              "plugins"
-                              (local-file
-                                "./nvim/lua/plugins.d"
-                                #:recursive? #t)
-                              (list
-                                (local-file "./nvim/lua/plugins/desktop.lua"))))
-                          ("config"
-                           ,(augmented-directory
-                              "config"
-                              (local-file "./nvim/lua/config.d"
-                                          #:recursive? #t)
-                              (list
-                                (local-file "./nvim/lua/config/lualine-desktop.lua" "lualine.lua")))))))))))));}}}
+                            (local-file "nvim/keys.vim")
+                            (plain-file
+                              "keys.vim"
+                              (string-join
+                                (list
+                                  (format
+                                    #f
+                                    "~{~anoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'~%~}"
+                                    '("n" "x" "o"))
+                                  (format
+                                    #f
+                                    "~{nnoremap <expr> ~a getline('.') =~~ '^\\s*$' ? 'S' : '~@*~a'~%~}"
+                                    '("A" "I" "a" "i")))
+                                "\n")))))
+                      ("init.vim"
+                       ,(compound-file "init.vim"
+                                       (list
+                                         (local-file "./nvim/init.vim")
+                                         (local-file "./nvim/init-desktop.vim"))))
+                      ("ftplugin" 
+                       ,(local-file "./nvim/ftplugin.d" #:recursive? #t))
+                      ("snippets"
+                       ,(local-file "./nvim/snippets.d" #:recursive? #t))
+                      ("lua"
+                       ,(directory-union
+                          "lua"
+                          (list
+                            (local-file "./nvim/lua.d" #:recursive? #t)
+                            (file-union
+                              "lua"
+                              `(("plugins"
+                                 ,(directory-union
+                                    "plugins"
+                                    (list
+                                      (local-file
+                                        "./nvim/lua/plugins.d"
+                                        #:recursive? #t)
+                                      (file-union
+                                        "plugins"
+                                        `(("desktop.lua" ,(local-file "./nvim/lua/plugins/desktop.lua")))))))
+                                ("config"
+                                 ,(directory-union
+                                    "config"
+                                    (list
+                                      (local-file "./nvim/lua/config.d"
+                                                  #:recursive? #t)
+                                      (file-union
+                                        "config"
+                                        `(("lualine.lua"
+                                           ,(local-file "./nvim/lua/config/lualine-desktop.lua")))))))))))))))))));}}}
         (service home-ssh-agent-service-type
                  (home-ssh-agent-configuration))
         (service home-files-service-type;{{{
